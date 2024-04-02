@@ -10,6 +10,8 @@ filters:
 Please reference the `webR-intro` programming exercise for information and instructions on how to interact with the programming exercise below.
 :::
 
+## Getting started
+
 In this exercise, we will be exploring the `flights` data set, containing information about all flights that departed from NYC to destinations in the United States, Puerto Rico, and the American Virgin Island in 2013. A data key can be found below:
 
 | Variable       | Description                                                            |
@@ -31,6 +33,50 @@ In this exercise, we will be exploring the `flights` data set, containing inform
 | distance       | distance between airports in miles                                     |
 | hour           | the hour of time scheduled departure                                   |
 | minutes        | the minutes of time of scheduled departure                             |
-| time_hour      | scheduled date and hour of the flight as a POSIXct date.               |
+| time_hour      | scheduled date and hour of the flight as a POSIXct date.            |
+
+### Packages
+
+We'll use: **tidyverse** for majority of the analysis and **scales** for pretty plot labels later on. These data we are using are in the **nycflights13** package. These are ready to use for you in this programming exercise!
+
+```{r}
+#| label: load-packages
+#| echo: false
+#| message: false
+#| warning: false
+library(tidyverse)
+library(scales)
+library(nycflights13)
+```
+
+## Data wrangling 
+
+Data wrangling is the process of transforming or reshaping data into a form that is more suitable for analysis. In this exercise, we will practice with a variety of functions used to wrangle data. 
+
+## Exercise 1
+
+Before we begin, use `glimpse` to report how many rows the `flights` data frame has. What does each row represent? 
+
+```{webr-r}
+# add code here
+```
+
+<br>
+```{=html}
+<textarea rows="4" cols="50">
+</textarea>
+```
+<br><br>
+
+::: {.callout-tip collapse="true"}
+## Solution
+
+```{r}
+#| echo: true
+glimpse(flights)
+```
+
+Each observation represents a **flight**.
+:::
 
 {{< include _reflection_question.qmd >}}
