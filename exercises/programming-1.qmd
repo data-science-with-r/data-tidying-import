@@ -149,4 +149,162 @@ flights |>
 ```
 :::
 
+## Exercise 3 - `slice()`
+
+Display the first five rows of the `flights` data frame.
+
+```{r}
+
+```
+
+::: {.callout-tip collapse="true"}
+## Solution
+
+```{r}
+#| echo: true
+flights |>
+  slice(1:5)
+```
+:::
+
+We can use the function `n()`to reference the total number of rows in a data frame. Using this with slice, display the last two rows of the flights data frame.
+
+```{r}
+
+```
+
+::: {.callout-tip collapse="true"}
+## Solution
+
+```{r}
+#| echo: true
+flights |>
+  slice((n()-1):n())
+```
+:::
+
+## Exercise 4 - `arrange()`
+
+Let’s arrange the data by `dep_delay`, so the flights with the shortest departure delays will be at the top of the data frame.
+
+```{r}
+
+```
+
+::: {.callout-tip collapse="true"}
+## Solution
+
+```{r}
+#| echo: true
+flights |>
+  arrange(dep_delay)
+```
+:::
+
+We can use the helper `desc` to arrange the the data by descending departure delay. Do so below. 
+
+```{r}
+
+```
+
+::: {.callout-tip collapse="true"}
+## Solution
+
+```{r}
+#| echo: true
+flights |>
+  arrange(desc(dep_delay))
+```
+:::
+
+## Exercise 5 - `filter()`
+
+Filter the data frame by selecting the rows where the destination airport is `RDU`.
+
+```{r}
+
+```
+
+::: {.callout-tip collapse="true"}
+## Solution
+
+```{r}
+#| echo: true
+flights |>
+  filter(dest == "RDU")
+```
+:::
+
+We can also filter using more than one condition. Here we select all rows where the destination airport is RDU and the arrival delay is less than 0.
+
+```{r}
+
+```
+
+::: {.callout-tip collapse="true"}
+## Solution
+
+```{r}
+#| echo: true
+flights |>
+  filter(dest == "RDU", arr_delay < 0)
+```
+:::
+
+Describe what the code is doing in words.
+
+```{r}
+flights |>
+  filter(
+    dest %in% c("RDU", "GSO"),
+    arr_delay < 0 | dep_delay < 0
+    )
+```
+
+<br>
+```{=html}
+<textarea rows="4" cols="50">
+</textarea>
+```
+<br><br>
+
+::: {.callout-tip collapse="true"}
+## Solution
+
+
+:::
+
+::: {.callout-tip collapse="true"}
+## more operators
+
+| operator      | definition                                               |
+|:--------------|:---------------------------------------------------------|
+| `<`           | is less than?                                            |
+| `<=`          | is less than or equal to?                                |
+| `>`           | is greater than?                                         |
+| `>=`          | is greater than or equal to?                             |
+| `==`          | is exactly equal to?                                     |
+| `!=`          | is not equal to?                                         |
+| `x & y`       | is x AND y?                                              |
+| `x \| y`      | is x OR y?                                               |
+| `is.na(x)`    | is x NA?                                                 |
+| `!is.na(x)`   | is x not NA?                                             |
+| `x %in% y`    | is x in y?                                               |
+| `!(x %in% y)` | is x not in y?                                           |
+| `!x`          | is not x? (only makes sense if `x` is `TRUE` or `FALSE`) |
+
+:::
+
+
+## Your turn 
+
+Create a data frame that only includes the plane tail number (tailnum), carrier (carrier), and departure delay for the flight with the longest departure delay. What is the plane tail number (tailnum) for this flight?
+
+```{r}
+flights |>
+  select(tailnum, carrier, dep_delay) %>%
+  arrange(dep_delay) |>
+  slice(1)
+```
+
 {{< include _reflection_question.qmd >}}
