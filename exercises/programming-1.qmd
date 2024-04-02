@@ -1,19 +1,36 @@
 ---
-title: "Programming 1"
+title: "NYC flights + data wrangling"
 webr:
-  packages: ['tidyverse', 'scales']
+  packages: ['tidyverse', 'scales', 'nycflights13']
 filters:
   - webr
 ---
 
-::: {.callout-important}
+::: callout-important
 Please reference the `webR-intro` programming exercise for information and instructions on how to interact with the programming exercise below.
 :::
 
+In this exercise, we will be exploring the `flights` data set, containing information about all flights that departed from NYC to destinations in the United States, Puerto Rico, and the American Virgin Island in 2013. A data key can be found below:
 
-```{webr-r}
-summary(mtcars)
-```
-
+| Variable       | Description                                                            |
+|----------------|------------------------------------------------------------------------|
+| year           | year of departure                                                      |
+| month          | month of departure                                                     |
+| day            | day of departure                                                       |
+| dep_time       | departure time                                                         |
+| arr_time       | arrival time                                                           |
+| sched_dep_time | scheduled departure time                                               |
+| sched_arr_time | scheduled arrival time                                                 |
+| dep_delay      | departure delays in minutes. Negative times represent early departures |
+| arr_delay      | arrival delays in minutes. Negative times represent early arrivals     |
+| carrier        | two letter carrier abbreviation                                        |
+| tailnum        | plane tail number                                                      |
+| orgin          | origin                                                                 |
+| dest           | destination                                                            |
+| air_time       | amount of time spent in the air in minutes                             |
+| distance       | distance between airports in miles                                     |
+| hour           | the hour of time scheduled departure                                   |
+| minutes        | the minutes of time of scheduled departure                             |
+| time_hour      | scheduled date and hour of the flight as a POSIXct date.               |
 
 {{< include _reflection_question.qmd >}}
