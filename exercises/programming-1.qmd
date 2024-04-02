@@ -82,4 +82,71 @@ glimpse(flights)
 There are 336,776 rows in the `flights` data set. Each observation represents a **flight**.
 :::
 
+## Exercise 2 - `select()`
+
+Make a data frame that only contains the variables `dep_delay` and `arr_delay`.
+
+```{webr-r}
+
+```
+
+::: {.callout-tip collapse="true"}
+## Solution
+
+```{r}
+#| echo: true
+flights |>
+  select(dep_delay, arr_delay)
+```
+:::
+
+Make a data frame that keeps every variable except `dep_delay`.
+
+```{webr-r}
+
+```
+
+::: {.callout-tip collapse="true"}
+## Solution
+
+```{r}
+#| echo: true
+flights |>
+  select(-dep_delay)
+```
+:::
+
+Make a data frame that includes all variables between `year` through `dep_delay` (inclusive). These are all variables that provide information about the departure of each flight.
+
+```{webr-r}
+
+```
+
+
+::: {.callout-tip collapse="true"}
+## Solution
+
+```{r}
+#| echo: true
+flights |>
+  select(year:dep_delay)
+```
+:::
+
+Use the select helper `contains()` to make a data frame that includes the variables associated with the arrival, i.e., contains the string `arr_` in the name.
+
+```{r}
+
+```
+
+::: {.callout-tip collapse="true"}
+## Solution
+
+```{r}
+#| echo: true
+flights |>
+  select(contains("arr_"))
+```
+:::
+
 {{< include _reflection_question.qmd >}}
