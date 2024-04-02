@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>quarto-input17c8c3de</title>
+<title>quarto-inputb0e11090</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -233,7 +233,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"options":{"read-only":"false","fig-width":7,"fig-height":5,"message":"true","autorun":"false","results":"markup","label":"unnamed-chunk-1","output":"true","classes":"","out-height":"","comment":"","dpi":72,"fig-cap":"","warning":"true","out-width":"700px","context":"interactive"},"code":"# add code here"}];
+globalThis.qwebrCellDetails = [{"id":1,"options":{"output":"true","context":"interactive","out-width":"700px","label":"unnamed-chunk-1","comment":"","warning":"true","read-only":"false","out-height":"","results":"markup","message":"true","fig-height":5,"fig-cap":"","autorun":"false","fig-width":7,"classes":"","dpi":72},"code":"# add code here"}];
 
 </script>
 <script type="module">
@@ -1153,6 +1153,18 @@ Important
 <section id="getting-started" class="level2">
 <h2 class="anchored" data-anchor-id="getting-started">Getting started</h2>
 <p>In this exercise, we will be exploring the <code>flights</code> data set, containing information about all flights that departed from NYC to destinations in the United States, Puerto Rico, and the American Virgin Island in 2013. A data key can be found below:</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+data key
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <table class="table">
 <colgroup>
 <col style="width: 18%">
@@ -1239,6 +1251,9 @@ Important
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+</div>
 <section id="packages" class="level3">
 <h3 class="anchored" data-anchor-id="packages">Packages</h3>
 <p>We’ll use: <strong>tidyverse</strong> for majority of the analysis and <strong>scales</strong> for pretty plot labels later on. These data we are using are in the <strong>nycflights13</strong> package. These are ready to use for you in this programming exercise!</p>
@@ -1257,7 +1272,7 @@ Important
 <textarea rows="4" cols="50"></textarea>
 <p><br><br></p>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1266,7 +1281,7 @@ Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(flights)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1294,7 +1309,7 @@ $ minute         &lt;dbl&gt; 15, 29, 40, 45, 0, 58, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5
 $ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-01 0…</code></pre>
 </div>
 </div>
-<p>Each observation represents a <strong>flight</strong>.</p>
+<p>There are 336,776 rows in the <code>flights</code> data set. Each observation represents a <strong>flight</strong>.</p>
 </div>
 </div>
 </div>

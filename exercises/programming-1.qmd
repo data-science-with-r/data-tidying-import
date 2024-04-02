@@ -14,6 +14,9 @@ Please reference the `webR-intro` programming exercise for information and instr
 
 In this exercise, we will be exploring the `flights` data set, containing information about all flights that departed from NYC to destinations in the United States, Puerto Rico, and the American Virgin Island in 2013. A data key can be found below:
 
+::: {.callout-note collapse="true"}
+## data key
+
 | Variable       | Description                                                            |
 |----------------|------------------------------------------------------------------------|
 | year           | year of departure                                                      |
@@ -34,7 +37,7 @@ In this exercise, we will be exploring the `flights` data set, containing inform
 | hour           | the hour of time scheduled departure                                   |
 | minutes        | the minutes of time of scheduled departure                             |
 | time_hour      | scheduled date and hour of the flight as a POSIXct date.            |
-
+:::
 ### Packages
 
 We'll use: **tidyverse** for majority of the analysis and **scales** for pretty plot labels later on. These data we are using are in the **nycflights13** package. These are ready to use for you in this programming exercise!
@@ -76,7 +79,7 @@ Before we begin, use `glimpse` to report how many rows the `flights` data frame 
 glimpse(flights)
 ```
 
-Each observation represents a **flight**.
+There are 336,776 rows in the `flights` data set. Each observation represents a **flight**.
 :::
 
 {{< include _reflection_question.qmd >}}
