@@ -1,5 +1,6 @@
 ---
 title: "NYC flights + data wrangling"
+toc: true
 webr:
   packages: ['tidyverse', 'scales', 'nycflights13']
 filters:
@@ -40,7 +41,9 @@ In this exercise, we will be exploring the `flights` data set, containing inform
 :::
 ### Packages
 
-We'll use: **tidyverse** for majority of the analysis and **scales** for pretty plot labels later on. These data we are using are in the **nycflights13** package. These are ready to use for you in this programming exercise!
+We'll use: **tidyverse** for majority of the exploration. Section headers of this exercise refer to the function we will be practicing with. Each header is hyperlinked to their associated help file if you would like to further explore each function. 
+
+These data we are using are in the **nycflights13** package. These are ready to use for you in this programming exercise!
 
 ```{r}
 #| label: load-packages
@@ -55,8 +58,6 @@ library(nycflights13)
 ## Data wrangling 
 
 Data wrangling is the process of transforming or reshaping data into a form that is more suitable for analysis. In this exercise, we will practice with a variety of functions used to wrangle data. 
-
-## Exercise 1
 
 Before we begin, use `glimpse` to report how many rows the `flights` data frame has. What does each row represent? 
 
@@ -82,9 +83,11 @@ glimpse(flights)
 There are 336,776 rows in the `flights` data set. Each observation represents a **flight**.
 :::
 
-## Exercise 2 - `select()`
+## [`select()`](https://dplyr.tidyverse.org/reference/select.html)
 
-Make a data frame that only contains the variables `dep_delay` and `arr_delay`.
+The function `select()` makes it easy to select variable(s) in your data set based on their name or position. 
+
+Using `select()`, make a data frame that only contains the variables `dep_delay` and `arr_delay`.
 
 ```{webr-r}
 
@@ -135,7 +138,7 @@ flights |>
 
 Use the select helper `contains()` to make a data frame that includes the variables associated with the arrival, i.e., contains the string `arr_` in the name.
 
-```{r}
+```{webr-r}
 
 ```
 
@@ -149,11 +152,13 @@ flights |>
 ```
 :::
 
-## Exercise 3 - `slice()`
+## [`slice()`](https://dplyr.tidyverse.org/reference/slice.html)
+
+The function [`slice()`](https://dplyr.tidyverse.org/reference/slice.html) lets you index rows by their name or (integer) locations. Other common uses of `slice()` include selecting and removing rows.
 
 Display the first five rows of the `flights` data frame.
 
-```{r}
+```{webr-r}
 
 ```
 
@@ -169,7 +174,7 @@ flights |>
 
 We can use the function `n()`to reference the total number of rows in a data frame. Using this with slice, display the last two rows of the flights data frame.
 
-```{r}
+```{webr-r}
 
 ```
 
@@ -183,11 +188,13 @@ flights |>
 ```
 :::
 
-## Exercise 4 - `arrange()`
+## [`arrange()`](https://dplyr.tidyverse.org/reference/arrange.html)
+
+We can use `arrange()` to order rows of a data frame by the values of selected columns.
 
 Let’s arrange the data by `dep_delay`, so the flights with the shortest departure delays will be at the top of the data frame.
 
-```{r}
+```{webr-r}
 
 ```
 
@@ -201,9 +208,9 @@ flights |>
 ```
 :::
 
-We can use the helper `desc` to arrange the the data by descending departure delay. Do so below. 
+We can use the helper `desc()` to arrange the the data by descending departure delay. Do so below. 
 
-```{r}
+```{webr-r}
 
 ```
 
@@ -217,11 +224,13 @@ flights |>
 ```
 :::
 
-## Exercise 5 - `filter()`
+## [`filter()`](https://dplyr.tidyverse.org/reference/filter.html)
+
+The function `filter()` is used to subset a data frame, retaining all rows that satisfy your conditions. 
 
 Filter the data frame by selecting the rows where the destination airport is `RDU`.
 
-```{r}
+```{webr-r}
 
 ```
 
@@ -237,7 +246,7 @@ flights |>
 
 We can also filter using more than one condition. Here we select all rows where the destination airport is RDU and the arrival delay is less than 0.
 
-```{r}
+```{webr-r}
 
 ```
 
@@ -253,7 +262,7 @@ flights |>
 
 Describe what the code is doing in words.
 
-```{r}
+```{webr-r}
 flights |>
   filter(
     dest %in% c("RDU", "GSO"),
@@ -270,8 +279,7 @@ flights |>
 
 ::: {.callout-tip collapse="true"}
 ## Solution
-
-
+We are piping the flights data set into the function filter, where we want to keep all rows where destination has the value of RDU or GSO, and where arrival delay is less than 0 or departure delay is less than 0.
 :::
 
 ::: {.callout-tip collapse="true"}
@@ -292,19 +300,176 @@ flights |>
 | `x %in% y`    | is x in y?                                               |
 | `!(x %in% y)` | is x not in y?                                           |
 | `!x`          | is not x? (only makes sense if `x` is `TRUE` or `FALSE`) |
+:::
 
+## [`count()`](https://dplyr.tidyverse.org/reference/count.html)
+
+We can use the function `count()` to create frequency tables of selected variables.
+
+Create a frequency table of the destination locations for flights from New York.
+
+```{webr-r}
+
+```
+
+::: {.callout-tip collapse="true"}
+## Solution
+```{r}
+flights |>
+  count(dest)
+```
+:::
+
+In which month was there the fewest number of flights? How many flights were there in that month?
+
+```{webr-r}
+
+```
+
+::: {.callout-tip collapse="true"}
+## Solution
+
+```{r}
+flights |>
+  count(month) |>
+  filter(n == min(n))
+```
+:::
+
+On which date (month + day) was there the largest number of flights? How many flights were there on that day?
+
+```{webr-r}
+
+```
+
+::: {.callout-tip collapse="true"}
+## Solution
+
+```{r}
+flights |>
+  count(month, day) |>
+  filter(n == max(n))
+```
+:::
+
+## [`mutate()`](https://dplyr.tidyverse.org/reference/mutate.html)
+
+We can use the function `mutate()` to create new columns or modify existing columns in your data set.
+
+Convert air_time (minutes in the air) to hours and then create a new variable, mph, the miles per hour of the flight
+
+```{webr-r}
+
+```
+
+::: {.callout-tip collapse="true"}
+## Solution
+
+```{r}
+flights |>
+  mutate(
+    hours = air_time / 60,
+    mph = distance / hours
+    ) |>
+  select(air_time, distance, hours, mph)
+```
+:::
+
+Create a new variable, `rdu_bound`, which indicates whether the flight is to RDU or not. Then, for each departure airport `(origin)`, calculate what proportion of flights originating from that airport are to RDU.
+
+```{webr-r}
+
+```
+
+::: {.callout-tip collapse="true"}
+## Solution
+
+```{r}
+flights |>
+  mutate(rdu_bound = if_else(dest == "RDU", "Yes", "No")) |>
+  count(origin, rdu_bound) |>
+  group_by(origin) |>
+  mutate(prop = n / sum(n)) |>
+  filter(rdu_bound == "Yes")
+```
+:::
+
+## [`summarize()`](https://dplyr.tidyverse.org/reference/summarise.html) & [`group_by()`](https://dplyr.tidyverse.org/reference/group_by.html)
+
+We can use the function `summarize()` to calculate summary statistics for a selected column. `summarize()` is often accompanied with `group_by()`, which converts a data frame into a grouped tbl where operations (like `summarize()`) are performed for each group.
+
+Find mean arrival delay for all flights.
+
+```{webr-r}
+
+```
+
+::: {.callout-tip collapse="true"}
+## Solution
+
+```{r}
+flights |>
+  summarize(mean_dep_delay = mean(dep_delay))
+```
+:::
+
+Find mean arrival delay for for each month.
+
+```{webr-r}
+
+```
+
+::: {.callout-tip collapse="true"}
+## Solution
+
+```{r}
+flights |>
+  group_by(month) |>
+  summarize(mean_arr_delay = mean(arr_delay, na.rm = TRUE))
+```
 :::
 
 
-## Your turn 
+## Additional Practice 
 
 Create a data frame that only includes the plane tail number (tailnum), carrier (carrier), and departure delay for the flight with the longest departure delay. What is the plane tail number (tailnum) for this flight?
 
-```{r}
+```{webr-r}
 flights |>
   select(tailnum, carrier, dep_delay) %>%
   arrange(dep_delay) |>
   slice(1)
 ```
+
+On which date (month + day) was there the largest number of flights? How many flights were there on that day?
+
+```{webr-r}
+flights |>
+  count(month, day) |>
+  filter(n == max(n))
+```
+
+Create a new variable to calculate the percentage of flights in each month. What percentage of flights take place in July?
+
+```{webr-r}
+flights |>
+  count(month) |>
+  mutate(perc = n / sum(n) * 100)
+```
+
+What is the median departure delay for each airports around NYC (origin)? Which airport has the shortest median departure delay?
+
+```{webr-r}
+flights |>
+  group_by(origin) |>
+  summarize(med_dep_delay = median(dep_delay, na.rm = TRUE))
+```
+
+Create a new dataset that only contains flights that do not have a missing departure time. Include the columns `year`, `month`, `day`, `dep_time`, `dep_delay`, and `dep_delay_hours` (the departure delay in hours). Hint: Note you may need to use `mutate()` to make one or more of these variables.
+
+```{r}
+
+```
+
 
 {{< include _reflection_question.qmd >}}
