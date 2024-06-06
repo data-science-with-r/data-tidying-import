@@ -1,0 +1,42 @@
+---
+title: "Tidy Basketball"
+toc: true
+webr:
+  packages: ['tidyverse', 'scales']
+filters:
+  - webr
+---
+
+## Getting Started
+
+```{r}
+#| echo: false
+#| include: false
+library(tidyverse) # put in r file to r chunks have packages to use
+library(scales)
+library(ggridges)
+library(gridExtra)
+```
+
+
+```{webr-r}
+#| context: setup
+download.file(
+  "https://raw.githubusercontent.com/ElijahMeyer3/Coursera/main/data/trailblazer21.csv",
+  "mariokart.csv"
+)
+
+options(readr.show_progress = FALSE)
+```
+
+```{webr-r}
+#| echo: false
+blazer <- read_csv("trailblazer21.csv")
+```
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+blazer <- read_csv("data/trailblazer21.csv") # put in R file to r chunks have data to use
+```
