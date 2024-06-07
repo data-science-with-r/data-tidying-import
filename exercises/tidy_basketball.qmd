@@ -7,6 +7,10 @@ filters:
   - webr
 ---
 
+::: callout-important
+Please reference the `Meet the toolkit: Programming exercises` in `course 1` for information and instructions on how to interact with the programming exercise below.
+:::
+
 ## Getting Started
 
 ```{r}
@@ -40,3 +44,5 @@ blazer <- read_csv("trailblazer21.csv")
 #| message: false
 blazer <- read_csv("data/trailblazer21.csv") # put in R file to r chunks have data to use
 ```
+
+The Portland Trailblazers are a National Basketball Association (NBA) sports team. In this mini analysis, we will work with a data set that has informatino of the points scored by 9 Portland Trailblazers players across the first 10 games of the 2021-2022 NBA season. If you would like to become more familiar with the game of basketball, please click [here](https://www.britannica.com/sports/basketball). If you would like more information on the Portland Trailblazers, please click [here](https://en.wikipedia.org/wiki/Portland_Trail_Blazers).
