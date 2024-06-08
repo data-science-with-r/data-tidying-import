@@ -22,7 +22,6 @@ library(ggridges)
 library(gridExtra)
 ```
 
-
 ```{webr-r}
 #| context: setup
 download.file(
@@ -32,6 +31,18 @@ download.file(
 
 options(readr.show_progress = FALSE)
 ```
+
+The Portland Trailblazers are a National Basketball Association (NBA) sports team. In this mini analysis, we will work with a data set that has informatino of the points scored by 9 Portland Trailblazers players across the first 10 games of the 2021-2022 NBA season. If you would like to become more familiar with the game of basketball, please click [here](https://www.britannica.com/sports/basketball). If you would like more information on the Portland Trailblazers, please click [here](https://en.wikipedia.org/wiki/Portland_Trail_Blazers).
+
+A key to these data can be found below:
+
+| variable name | description                           |
+|---------------|---------------------------------------|
+| player        | name of player                        |
+| game1_home    | points scored on game 1 on home court |
+| ...           | ...                                   |
+| game3_away    | points scored on game 3 on away court |
+| ...           | ...                                   |
 
 ```{webr-r}
 #| echo: false
@@ -45,4 +56,58 @@ blazer <- read_csv("trailblazer21.csv")
 blazer <- read_csv("data/trailblazer21.csv") # put in R file to r chunks have data to use
 ```
 
-The Portland Trailblazers are a National Basketball Association (NBA) sports team. In this mini analysis, we will work with a data set that has informatino of the points scored by 9 Portland Trailblazers players across the first 10 games of the 2021-2022 NBA season. If you would like to become more familiar with the game of basketball, please click [here](https://www.britannica.com/sports/basketball). If you would like more information on the Portland Trailblazers, please click [here](https://en.wikipedia.org/wiki/Portland_Trail_Blazers).
+### Packages
+
+We'll use **tidyverse** for the majority of the analysis and **scales** for pretty plot labels later on.
+
+
+```{r}
+#| label: load-packages
+#| message: false
+#| warning: false
+library(tidyverse)
+library(scales)
+```
+
+### Get to know the data
+
+Use `glimpse()` to get an overview (or "glimpse") of the data. How many rows and columns are in this data set? In addition, make note of the types of variables you are working with.
+
+```{webr-r}
+
+```
+
+::: callout-warning
+If you receive the error [Error: object 'blazer' not found]{style="color:red;"}, go back and read in your data above.
+:::
+
+::: {.callout-tip collapse="true"}
+## Solution
+
+```{r}
+glimpse(blazer)
+```
+
+There are 9 rows and 11 columns in blazer data set.
+
+`player` is a character variable; the remaining variables are doubles.
+:::
+
+Suppose you are asked to recreate the plot below... 
+
+![](images/blazer_pic.png){fig-align="center" width="320"}
+
+Identify the variables you would need to use to recreate this plot. Can this plot be recreated with how your `blazer` data set current format? 
+
+::: {.callout-tip collapse="true"}
+## Solution
+Variables in the above plot include `player`, `game`, `location`, and `points`. This plot can not be recreated with how the `blazer` data set is currently formatted. 
+:::
+
+Now, think critically about how we could transform our `blazer` data set to have the variables necessary to make the plot above... 
+
+::: {.callout-tip collapse="true"}
+## Solution
+We have a `player` column in the data set. In order to get a  `game`, `location`, and `points`, we can use `pivot_longer()`, which will take this wide data set and make it into a longer data set. That is, we can bring the variable names of `game1_home`, `game2_home`, etc. into our data set as values, which is needed to recreate the plot above. See more information about `pivot_longer()` [here](https://tidyr.tidyverse.org/reference/pivot_longer.html).
+:::
+

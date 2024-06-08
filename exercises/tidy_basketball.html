@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -199,7 +233,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"download.file(\n  \"https://raw.githubusercontent.com/ElijahMeyer3/Coursera/main/data/trailblazer21.csv\",\n  \"mariokart.csv\"\n)\n\noptions(readr.show_progress = FALSE)","id":1,"options":{"output":"true","dpi":72,"results":"markup","autorun":"true","out-width":"700px","out-height":"","message":"true","fig-width":7,"read-only":"false","context":"setup","warning":"true","comment":"","fig-cap":"","label":"unnamed-chunk-1","fig-height":5,"classes":""}},{"code":"blazer <- read_csv(\"trailblazer21.csv\")","id":2,"options":{"output":"true","dpi":72,"results":"markup","message":"true","fig-width":7,"context":"interactive","fig-height":5,"label":"unnamed-chunk-2","autorun":"false","out-height":"","echo":"false","warning":"true","out-width":"700px","fig-cap":"","comment":"","read-only":"false","classes":""}}];
+globalThis.qwebrCellDetails = [{"id":1,"options":{"warning":"true","context":"setup","label":"unnamed-chunk-1","fig-cap":"","autorun":"true","fig-height":5,"message":"true","comment":"","results":"markup","out-height":"","output":"true","out-width":"700px","dpi":72,"read-only":"false","classes":"","fig-width":7},"code":"download.file(\n  \"https://raw.githubusercontent.com/ElijahMeyer3/Coursera/main/data/trailblazer21.csv\",\n  \"mariokart.csv\"\n)\n\noptions(readr.show_progress = FALSE)"},{"id":2,"options":{"label":"unnamed-chunk-2","fig-cap":"","autorun":"false","message":"true","out-height":"","context":"interactive","fig-width":7,"fig-height":5,"output":"true","comment":"","results":"markup","echo":"false","out-width":"700px","dpi":72,"read-only":"false","classes":"","warning":"true"},"code":"blazer <- read_csv(\"trailblazer21.csv\")"},{"id":3,"options":{"warning":"true","context":"interactive","label":"unnamed-chunk-3","fig-cap":"","autorun":"false","fig-height":5,"message":"true","comment":"","results":"markup","out-height":"","output":"true","out-width":"700px","dpi":72,"read-only":"false","classes":"","fig-width":7},"code":""}];
 
 </script>
 <script type="module">
@@ -928,7 +962,11 @@ globalThis.qwebrExecuteCode = async function (
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#getting-started" id="toc-getting-started" class="nav-link active" data-scroll-target="#getting-started">Getting Started</a></li>
+  <li><a href="#getting-started" id="toc-getting-started" class="nav-link active" data-scroll-target="#getting-started">Getting Started</a>
+  <ul class="collapse">
+  <li><a href="#packages" id="toc-packages" class="nav-link" data-scroll-target="#packages">Packages</a></li>
+  <li><a href="#get-to-know-the-data" id="toc-get-to-know-the-data" class="nav-link" data-scroll-target="#get-to-know-the-data">Get to know the data</a></li>
+  </ul></li>
   </ul>
 </nav>
 </div>
@@ -1144,9 +1182,142 @@ Important
 <h2 class="anchored" data-anchor-id="getting-started">Getting Started</h2>
 <div id="qwebr-insertion-location-1"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p>The Portland Trailblazers are a National Basketball Association (NBA) sports team. In this mini analysis, we will work with a data set that has informatino of the points scored by 9 Portland Trailblazers players across the first 10 games of the 2021-2022 NBA season. If you would like to become more familiar with the game of basketball, please click <a href="https://www.britannica.com/sports/basketball">here</a>. If you would like more information on the Portland Trailblazers, please click <a href="https://en.wikipedia.org/wiki/Portland_Trail_Blazers">here</a>.</p>
+<p>A key to these data can be found below:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>variable name</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>player</td>
+<td>name of player</td>
+</tr>
+<tr class="even">
+<td>game1_home</td>
+<td>points scored on game 1 on home court</td>
+</tr>
+<tr class="odd">
+<td>…</td>
+<td>…</td>
+</tr>
+<tr class="even">
+<td>game3_away</td>
+<td>points scored on game 3 on away court</td>
+</tr>
+<tr class="odd">
+<td>…</td>
+<td>…</td>
+</tr>
+</tbody>
+</table>
 <div id="qwebr-insertion-location-2"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>The Portland Trailblazers are a National Basketball Association (NBA) sports team. In this mini analysis, we will work with a data set that has informatino of the points scored by 9 Portland Trailblazers players across the first 10 games of the 2021-2022 NBA season. If you would like to become more familiar with the game of basketball, please click <a href="https://www.britannica.com/sports/basketball">here</a>. If you would like more information on the Portland Trailblazers, please click <a href="https://en.wikipedia.org/wiki/Portland_Trail_Blazers">here</a>.</p>
+<section id="packages" class="level3">
+<h3 class="anchored" data-anchor-id="packages">Packages</h3>
+<p>We’ll use <strong>tidyverse</strong> for the majority of the analysis and <strong>scales</strong> for pretty plot labels later on.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="get-to-know-the-data" class="level3">
+<h3 class="anchored" data-anchor-id="get-to-know-the-data">Get to know the data</h3>
+<p>Use <code>glimpse()</code> to get an overview (or “glimpse”) of the data. How many rows and columns are in this data set? In addition, make note of the types of variables you are working with.</p>
+<div id="qwebr-insertion-location-3"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you receive the error <span style="color:red;">Error: object ‘blazer’ not found</span>, go back and read in your data above.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(blazer)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 9
+Columns: 11
+$ player      &lt;chr&gt; "Damian Lillard", "CJ McCollum", "Norman Powell", "Robert …
+$ game1_home  &lt;dbl&gt; 20, 24, 14, 8, 20, 5, 11, 2, 7
+$ game2_home  &lt;dbl&gt; 19, 28, 16, 6, 9, 5, 18, 8, 11
+$ game3_away  &lt;dbl&gt; 12, 20, NA, 0, 4, 8, 12, 5, 5
+$ game4_home  &lt;dbl&gt; 20, 25, NA, 3, 17, 10, 17, 8, 9
+$ game5_home  &lt;dbl&gt; 25, 14, 12, 9, 14, 9, 5, 3, 8
+$ game6_away  &lt;dbl&gt; 14, 25, 14, 6, 13, 6, 19, 8, 8
+$ game7_away  &lt;dbl&gt; 20, 20, 22, 0, 7, 0, 17, 7, 4
+$ game8_away  &lt;dbl&gt; 26, 21, 23, 6, 6, 7, 15, 0, 0
+$ game9_home  &lt;dbl&gt; 4, 27, 25, 19, 10, 0, 16, 2, 7
+$ game10_home &lt;dbl&gt; 25, 7, 13, 12, 15, 6, 10, 4, 8</code></pre>
+</div>
+</div>
+<p>There are 9 rows and 11 columns in blazer data set.</p>
+<p><code>player</code> is a character variable; the remaining variables are doubles.</p>
+</div>
+</div>
+</div>
+<p>Suppose you are asked to recreate the plot below…</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/blazer_pic.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="320"></p>
+</figure>
+</div>
+<p>Identify the variables you would need to use to recreate this plot. Can this plot be recreated with how your <code>blazer</code> data set current format?</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Variables in the above plot include <code>player</code>, <code>game</code>, <code>location</code>, and <code>points</code>. This plot can not be recreated with how the <code>blazer</code> data set is currently formatted.</p>
+</div>
+</div>
+</div>
+<p>Now, think critically about how we could transform our <code>blazer</code> data set to have the variables necessary to make the plot above…</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>We have a <code>player</code> column in the data set. In order to get a <code>game</code>, <code>location</code>, and <code>points</code>, we can use <code>pivot_longer()</code>, which will take this wide data set and make it into a longer data set. That is, we can bring the variable names of <code>game1_home</code>, <code>game2_home</code>, etc. into our data set as values, which is needed to recreate the plot above. See more information about <code>pivot_longer()</code> <a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">here</a>.</p>
+</div>
+</div>
+</div>
+</section>
 </section>
 
 </main>
