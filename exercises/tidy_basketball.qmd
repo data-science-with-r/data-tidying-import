@@ -8,7 +8,7 @@ filters:
 ---
 
 ::: callout-important
-Please reference the `Meet the toolkit: Programming exercises` in `course 1` for information and instructions on how to interact with the programming exercise below.
+Please reference the `Meet the toolkit: Programming exercises` in `course 1 (or refresher)` for information and instructions on how to interact with the programming exercise below.
 :::
 
 ## Getting Started
@@ -26,7 +26,7 @@ library(gridExtra)
 #| context: setup
 download.file(
   "https://raw.githubusercontent.com/ElijahMeyer3/Coursera/main/data/trailblazer21.csv",
-  "mariokart.csv"
+  "blazer.csv"
 )
 
 options(readr.show_progress = FALSE)
@@ -43,6 +43,7 @@ A key to these data can be found below:
 | ...           | ...                                   |
 | game3_away    | points scored on game 3 on away court |
 | ...           | ...                                   |
+| game10_home   | points scored on game 10 on home court|
 
 ```{webr-r}
 #| echo: false
