@@ -233,7 +233,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"code":"download.file(\n  \"https://raw.githubusercontent.com/ElijahMeyer3/Coursera/main/data/trailblazer21.csv\",\n  \"blazer.csv\"\n)\n\noptions(readr.show_progress = FALSE)","options":{"label":"unnamed-chunk-1","autorun":"true","fig-width":7,"comment":"","output":"true","classes":"","warning":"true","context":"setup","out-height":"","results":"markup","fig-height":5,"dpi":72,"message":"true","fig-cap":"","out-width":"700px","read-only":"false"}},{"id":2,"code":"blazer <- read_csv(\"trailblazer21.csv\")","options":{"label":"unnamed-chunk-2","classes":"","fig-cap":"","read-only":"false","out-width":"700px","autorun":"false","output":"true","warning":"true","message":"true","out-height":"","dpi":72,"fig-height":5,"context":"interactive","results":"markup","comment":"","echo":"false","fig-width":7}},{"id":3,"code":"","options":{"label":"unnamed-chunk-3","autorun":"false","fig-width":7,"comment":"","output":"true","classes":"","warning":"true","context":"interactive","out-height":"","results":"markup","fig-height":5,"dpi":72,"message":"true","fig-cap":"","out-width":"700px","read-only":"false"}},{"id":4,"code":"","options":{"label":"unnamed-chunk-4","autorun":"false","fig-width":7,"comment":"","output":"true","classes":"","warning":"true","context":"interactive","out-height":"","results":"markup","fig-height":5,"dpi":72,"message":"true","fig-cap":"","out-width":"700px","read-only":"false"}},{"id":5,"code":"","options":{"label":"unnamed-chunk-5","autorun":"false","fig-width":7,"comment":"","output":"true","classes":"","warning":"true","context":"interactive","out-height":"","results":"markup","fig-height":5,"dpi":72,"message":"true","fig-cap":"","out-width":"700px","read-only":"false"}}];
+globalThis.qwebrCellDetails = [{"options":{"output":"true","dpi":72,"out-height":"","read-only":"false","results":"markup","fig-height":5,"autorun":"true","context":"setup","message":"true","fig-width":7,"comment":"","fig-cap":"","out-width":"700px","label":"unnamed-chunk-1","warning":"true","classes":""},"id":1,"code":"download.file(\n  \"https://raw.githubusercontent.com/ElijahMeyer3/Coursera/main/data/trailblazer21.csv\",\n  \"blazer.csv\"\n)\n\noptions(readr.show_progress = FALSE)"},{"options":{"output":"true","dpi":72,"read-only":"false","results":"markup","message":"true","label":"unnamed-chunk-2","classes":"","autorun":"false","out-height":"","context":"interactive","echo":"false","fig-width":7,"fig-cap":"","out-width":"700px","comment":"","warning":"true","fig-height":5},"id":2,"code":"blazer <- read_csv(\"trailblazer21.csv\")"},{"options":{"output":"true","dpi":72,"out-height":"","read-only":"false","results":"markup","fig-height":5,"autorun":"false","context":"interactive","message":"true","fig-width":7,"comment":"","fig-cap":"","out-width":"700px","label":"unnamed-chunk-3","warning":"true","classes":""},"id":3,"code":"# insert code here"},{"options":{"output":"true","dpi":72,"out-height":"","read-only":"false","results":"markup","fig-height":5,"autorun":"false","context":"interactive","message":"true","fig-width":7,"comment":"","fig-cap":"","out-width":"700px","label":"unnamed-chunk-4","warning":"true","classes":""},"id":4,"code":"# insert code here"},{"options":{"output":"true","dpi":72,"out-height":"","read-only":"false","results":"markup","fig-height":5,"autorun":"false","context":"interactive","message":"true","fig-width":7,"comment":"","fig-cap":"","out-width":"700px","label":"unnamed-chunk-5","warning":"true","classes":""},"id":5,"code":"# insert code here"},{"options":{"output":"true","dpi":72,"out-height":"","read-only":"false","results":"markup","fig-height":5,"autorun":"false","context":"interactive","message":"true","fig-width":7,"comment":"","fig-cap":"","out-width":"700px","label":"unnamed-chunk-6","warning":"true","classes":""},"id":6,"code":"# insert code here"},{"options":{"output":"true","dpi":72,"out-height":"","read-only":"false","results":"markup","fig-height":5,"autorun":"false","context":"interactive","message":"true","fig-width":7,"comment":"","fig-cap":"","out-width":"700px","label":"unnamed-chunk-7","warning":"true","classes":""},"id":7,"code":"# insert code here"},{"options":{"output":"true","dpi":72,"out-height":"","read-only":"false","results":"markup","fig-height":5,"autorun":"false","context":"interactive","message":"true","fig-width":7,"comment":"","fig-cap":"","out-width":"700px","label":"unnamed-chunk-8","warning":"true","classes":""},"id":8,"code":"# insert code here"},{"options":{"output":"true","dpi":72,"out-height":"","read-only":"false","results":"markup","fig-height":5,"autorun":"false","context":"interactive","message":"true","fig-width":7,"comment":"","fig-cap":"","out-width":"700px","label":"unnamed-chunk-9","warning":"true","classes":""},"id":9,"code":"# insert code here"},{"options":{"output":"true","dpi":72,"out-height":"","read-only":"false","results":"markup","fig-height":5,"autorun":"false","context":"interactive","message":"true","fig-width":7,"comment":"","fig-cap":"","out-width":"700px","label":"unnamed-chunk-10","warning":"true","classes":""},"id":10,"code":"blazer_long |>\n  mutate(game = as.numeric(game)) |>\n  # insert code here"}];
 
 </script>
 <script type="module">
@@ -966,7 +966,9 @@ globalThis.qwebrExecuteCode = async function (
   <ul class="collapse">
   <li><a href="#packages" id="toc-packages" class="nav-link" data-scroll-target="#packages">Packages</a></li>
   <li><a href="#get-to-know-the-data" id="toc-get-to-know-the-data" class="nav-link" data-scroll-target="#get-to-know-the-data">Get to know the data</a></li>
+  <li><a href="#summary-statistics" id="toc-summary-statistics" class="nav-link" data-scroll-target="#summary-statistics">Summary statistics</a></li>
   </ul></li>
+  <li><a href="#bonus-challange" id="toc-bonus-challange" class="nav-link" data-scroll-target="#bonus-challange">Bonus Challange</a></li>
   </ul>
 </nav>
 </div>
@@ -1218,6 +1220,7 @@ Important
 </tr>
 </tbody>
 </table>
+<p>Read in the data below.</p>
 <div id="qwebr-insertion-location-2"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <section id="packages" class="level3">
@@ -1284,7 +1287,7 @@ $ game10_home &lt;dbl&gt; 25, 7, 13, 12, 15, 6, 10, 4, 8</code></pre>
 <p>Suppose you are asked to recreate the plot below…</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/blazer_pic.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="320"></p>
+<p><img src="images/blazer_pic.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
 </figure>
 </div>
 <p>Identify the variables you would need to use to recreate this plot. Can this plot be recreated with how your <code>blazer</code> data set current format?</p>
@@ -1304,7 +1307,7 @@ Solution
 </div>
 </div>
 </div>
-<p>Now, think critically about how we could transform our <code>blazer</code> data set to have the variables necessary to make the plot above…</p>
+<p>Now, think critically about how we could transform our <code>blazer</code> data set to have the variables necessary to make the plot above. What would our new data set have to look like?</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -1427,8 +1430,214 @@ Solution
 </div>
 </div>
 </div>
-<p>We now need to separate the values away from the location in the <code>game</code> column. Please see the documentation on <code>separate_wider_delim</code> <a href="https://tidyr.tidyverse.org/reference/separate_wider_delim.html">here</a></p>
+<p>We now need to separate the values away from the location in the <code>game</code> column. Please see the documentation on <code>separate_wider_delim</code> <a href="https://tidyr.tidyverse.org/reference/separate_wider_delim.html">here</a>. Add to your existing code to split the game number and game location into two columns. Call the new column <code>location</code>. Save and name this data set as <code>blazer_long</code> to be used in the next section.</p>
+<div id="qwebr-insertion-location-6"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>blazer_long <span class="ot">&lt;-</span> blazer <span class="sc">|&gt;</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="sc">-</span>player,</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">"game"</span>,</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"points"</span>,</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_prefix =</span> <span class="st">"game"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">separate_wider_delim</span>(game, <span class="at">delim =</span> <span class="st">"_"</span>, <span class="at">names =</span> <span class="fu">c</span>(<span class="st">"game"</span>, <span class="st">"location"</span>))</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>blazer_long</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 90 × 4
+   player         game  location points
+   &lt;chr&gt;          &lt;chr&gt; &lt;chr&gt;     &lt;dbl&gt;
+ 1 Damian Lillard 1     home         20
+ 2 Damian Lillard 2     home         19
+ 3 Damian Lillard 3     away         12
+ 4 Damian Lillard 4     home         20
+ 5 Damian Lillard 5     home         25
+ 6 Damian Lillard 6     away         14
+ 7 Damian Lillard 7     away         20
+ 8 Damian Lillard 8     away         26
+ 9 Damian Lillard 9     home          4
+10 Damian Lillard 10    home         25
+# ℹ 80 more rows</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section>
+<section id="summary-statistics" class="level3">
+<h3 class="anchored" data-anchor-id="summary-statistics">Summary statistics</h3>
+<p>Let’s use the new <code>blazer_long</code> data set to calculate some summary statistics for the Portland Trailblazers to learn more about their performance for these 10 games!</p>
+<ol type="1">
+<li>Calculate the mean points scored across all players between home and away games.</li>
+</ol>
+<div id="qwebr-insertion-location-7"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>blazer_long <span class="sc">|&gt;</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(location) <span class="sc">|&gt;</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean_points =</span> <span class="fu">mean</span>(points, <span class="at">na.rm =</span> T))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 2
+  location mean_points
+  &lt;chr&gt;          &lt;dbl&gt;
+1 away            10.9
+2 home            12.2</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<ol start="2" type="1">
+<li>Now, calculate the mean points scored for the player <code>Damian Lillard</code> for both home and away games.</li>
+</ol>
+<div id="qwebr-insertion-location-8"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>blazer_long <span class="sc">|&gt;</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(player <span class="sc">==</span> <span class="st">"Damian Lillard"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(location) <span class="sc">|&gt;</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean_points =</span> <span class="fu">mean</span>(points, <span class="at">na.rm =</span> T))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 2
+  location mean_points
+  &lt;chr&gt;          &lt;dbl&gt;
+1 away            18  
+2 home            18.8</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<ol start="3" type="1">
+<li>Now, create a table that counts the number of times a player scored 15 points (or more) a game versus the number of times a player scored less than 15 points a game.</li>
+</ol>
+<div id="qwebr-insertion-location-9"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>blazer_long <span class="sc">|&gt;</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">points_cat =</span> <span class="fu">ifelse</span>(points <span class="sc">&gt;=</span> <span class="dv">15</span>, <span class="st">"yes"</span>, <span class="st">"no"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(points_cat) <span class="sc">|&gt;</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(points_cat) <span class="sc">|&gt;</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 2
+# Groups:   points_cat [3]
+  points_cat     n
+  &lt;chr&gt;      &lt;int&gt;
+1 no            59
+2 yes           29
+3 &lt;NA&gt;           2</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="bonus-challange" class="level2">
+<h2 class="anchored" data-anchor-id="bonus-challange">Bonus Challange</h2>
+<p>Recreate the plot, using the <code>blazer_long</code> data set!</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/blazer_pic.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
+<p>Hints: The code you start with makes sure that game is appropriately treated as a quantitative variable. You will learn more about data types in the following lessons! The plot above uses <code>theme_bw()</code>.</p>
+<div id="qwebr-insertion-location-10"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>blazer_long <span class="sc">|&gt;</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">game =</span> <span class="fu">as.numeric</span>(game)) <span class="sc">|&gt;</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> game, <span class="at">y =</span> points, <span class="at">color =</span> location, <span class="at">group =</span> player)</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">shape =</span> <span class="st">"square"</span>) <span class="sc">+</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>player) <span class="sc">+</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)) <span class="sc">+</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Game"</span>,</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Points Scored"</span>,</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Points Scored Across 10 Games"</span>,</span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Portland Trailblazers (2021-2022 Season)"</span>,</span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"https://www.basketball-reference.com/teams/POR/2021_games.html"</span></span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 2 rows containing missing values or values outside the scale range
+(`geom_point()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="tidy_basketball_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section>
 
 </main>

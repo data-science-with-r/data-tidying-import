@@ -45,6 +45,9 @@ A key to these data can be found below:
 | ...           | ...                                   |
 | game10_home   | points scored on game 10 on home court|
 
+
+Read in the data below.
+
 ```{webr-r}
 #| echo: false
 blazer <- read_csv("trailblazer21.csv")
@@ -75,7 +78,7 @@ library(scales)
 Use `glimpse()` to get an overview (or "glimpse") of the data. How many rows and columns are in this data set? In addition, make note of the types of variables you are working with.
 
 ```{webr-r}
-
+# insert code here
 ```
 
 ::: callout-warning
@@ -96,7 +99,7 @@ There are 9 rows and 11 columns in blazer data set.
 
 Suppose you are asked to recreate the plot below... 
 
-![](images/blazer_pic.png){fig-align="center" width="320"}
+![](images/blazer_pic.png){fig-align="center"}
 
 Identify the variables you would need to use to recreate this plot. Can this plot be recreated with how your `blazer` data set current format? 
 
@@ -105,7 +108,7 @@ Identify the variables you would need to use to recreate this plot. Can this plo
 Variables in the above plot include `player`, `game`, `location`, and `points`. This plot can not be recreated with how the `blazer` data set is currently formatted. 
 :::
 
-Now, think critically about how we could transform our `blazer` data set to have the variables necessary to make the plot above... 
+Now, think critically about how we could transform our `blazer` data set to have the variables necessary to make the plot above. What would our new data set have to look like? 
 
 ::: {.callout-tip collapse="true"}
 ## Solution
@@ -115,7 +118,7 @@ We have a `player` column in the data set. In order to get a  `game`, `location`
 See more information about `pivot_longer()` [here](https://tidyr.tidyverse.org/reference/pivot_longer.html). We are going to create our final data set in steps. First use `pivot_longer()` to change our data set that has 90 rows and 3 columns that are named player, game, and points.
 
 ```{webr-r}
-
+# insert code here
 ```
 
 ::: {.callout-tip collapse="true"}
@@ -143,7 +146,7 @@ We still need to:
 Re-visit the documentation for `pivot_longer()`. Add the argument `names_prefix` to your existing code above to remove the text "game" from the `game` column. 
 
 ```{webr-r}
-
+# insert code here
 ```
 
 ::: {.callout-tip collapse="true"}
@@ -159,4 +162,113 @@ blazer |>
 ```
 :::
 
-We now need to separate the values away from the location in the `game` column. Please see the documentation on `separate_wider_delim` [here](https://tidyr.tidyverse.org/reference/separate_wider_delim.html)
+We now need to separate the values away from the location in the `game` column. Please see the documentation on `separate_wider_delim` [here](https://tidyr.tidyverse.org/reference/separate_wider_delim.html). Add to your existing code to split the game number and game location into two columns. Call the new column `location`. Save and name this data set as `blazer_long` to be used in the next section. 
+
+```{webr-r}
+# insert code here
+```
+
+::: {.callout-tip collapse="true"}
+## Solution
+```{r}
+blazer_long <- blazer |>
+  pivot_longer(
+    cols = -player,
+    names_to = "game",
+    values_to = "points",
+    names_prefix = "game") |>
+    separate_wider_delim(game, delim = "_", names = c("game", "location"))
+
+blazer_long
+```
+:::
+
+### Summary statistics 
+
+Let's use the new `blazer_long` data set to calculate some summary statistics for the Portland Trailblazers to learn more about their performance for these 10 games! 
+
+1. Calculate the mean points scored across all players between home and away games. 
+
+```{webr-r}
+# insert code here
+```
+
+::: {.callout-tip collapse="true"}
+## Solution
+```{r}
+blazer_long |>
+  group_by(location) |>
+  summarize(mean_points = mean(points, na.rm = T))
+```
+:::
+
+2. Now, calculate the mean points scored for the player `Damian Lillard` for both home and away games.
+
+```{webr-r}
+# insert code here
+```
+
+
+::: {.callout-tip collapse="true"}
+## Solution
+```{r}
+blazer_long |>
+  filter(player == "Damian Lillard") |>
+  group_by(location) |>
+  summarize(mean_points = mean(points, na.rm = T))
+```
+:::
+
+3. Now, create a table that counts the number of times a player scored 15 points (or more) a game versus the number of times a player scored less than 15 points a game. 
+
+```{webr-r}
+# insert code here
+```
+
+
+::: {.callout-tip collapse="true"}
+## Solution
+```{r}
+blazer_long |>
+  mutate(points_cat = ifelse(points >= 15, "yes", "no")) |>
+  select(points_cat) |>
+  group_by(points_cat) |>
+  count()
+```
+:::
+## Bonus Challange 
+
+Recreate the plot, using the `blazer_long` data set! 
+
+![](images/blazer_pic.png){fig-align="center"}
+
+Hints: The code you start with makes sure that game is appropriately treated as a quantitative variable. You will learn more about data types in the following lessons! The plot above uses `theme_bw()`. 
+```{webr-r}
+blazer_long |>
+  mutate(game = as.numeric(game)) |>
+  # insert code here
+```
+
+::: {.callout-tip collapse="true"}
+## Solution
+```{r}
+blazer_long |>
+  mutate(game = as.numeric(game)) |>
+  ggplot(
+    aes(x = game, y = points, color = location, group = player)
+  ) +
+  geom_line() +
+  geom_point(shape = "square") +
+  facet_wrap(~player) +
+  scale_x_continuous(breaks = c(1:10)) +
+  theme_bw() +
+  labs(
+    x = "Game",
+    y = "Points Scored",
+    title = "Points Scored Across 10 Games",
+    subtitle = "Portland Trailblazers (2021-2022 Season)",
+    caption = "https://www.basketball-reference.com/teams/POR/2021_games.html"
+  )
+```
+:::
+
