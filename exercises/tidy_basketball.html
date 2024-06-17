@@ -233,7 +233,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"id":1,"options":{"warning":"true","context":"setup","label":"unnamed-chunk-1","fig-cap":"","autorun":"true","fig-height":5,"message":"true","comment":"","results":"markup","out-height":"","output":"true","out-width":"700px","dpi":72,"read-only":"false","classes":"","fig-width":7},"code":"download.file(\n  \"https://raw.githubusercontent.com/ElijahMeyer3/Coursera/main/data/trailblazer21.csv\",\n  \"mariokart.csv\"\n)\n\noptions(readr.show_progress = FALSE)"},{"id":2,"options":{"label":"unnamed-chunk-2","fig-cap":"","autorun":"false","message":"true","out-height":"","context":"interactive","fig-width":7,"fig-height":5,"output":"true","comment":"","results":"markup","echo":"false","out-width":"700px","dpi":72,"read-only":"false","classes":"","warning":"true"},"code":"blazer <- read_csv(\"trailblazer21.csv\")"},{"id":3,"options":{"warning":"true","context":"interactive","label":"unnamed-chunk-3","fig-cap":"","autorun":"false","fig-height":5,"message":"true","comment":"","results":"markup","out-height":"","output":"true","out-width":"700px","dpi":72,"read-only":"false","classes":"","fig-width":7},"code":""}];
+globalThis.qwebrCellDetails = [{"id":1,"code":"download.file(\n  \"https://raw.githubusercontent.com/ElijahMeyer3/Coursera/main/data/trailblazer21.csv\",\n  \"mariokart.csv\"\n)\n\noptions(readr.show_progress = FALSE)","options":{"message":"true","output":"true","label":"unnamed-chunk-1","results":"markup","context":"setup","comment":"","fig-width":7,"warning":"true","autorun":"true","dpi":72,"out-width":"700px","read-only":"false","fig-cap":"","classes":"","fig-height":5,"out-height":""}},{"id":2,"code":"blazer <- read_csv(\"trailblazer21.csv\")","options":{"label":"unnamed-chunk-2","results":"markup","comment":"","fig-width":7,"warning":"true","echo":"false","read-only":"false","message":"true","autorun":"false","output":"true","dpi":72,"out-width":"700px","out-height":"","fig-cap":"","fig-height":5,"classes":"","context":"interactive"}},{"id":3,"code":"","options":{"message":"true","output":"true","label":"unnamed-chunk-3","results":"markup","context":"interactive","comment":"","fig-width":7,"warning":"true","autorun":"false","dpi":72,"out-width":"700px","read-only":"false","fig-cap":"","classes":"","fig-height":5,"out-height":""}},{"id":4,"code":"","options":{"message":"true","output":"true","label":"unnamed-chunk-4","results":"markup","context":"interactive","comment":"","fig-width":7,"warning":"true","autorun":"false","dpi":72,"out-width":"700px","read-only":"false","fig-cap":"","classes":"","fig-height":5,"out-height":""}},{"id":5,"code":"","options":{"message":"true","output":"true","label":"unnamed-chunk-5","results":"markup","context":"interactive","comment":"","fig-width":7,"warning":"true","autorun":"false","dpi":72,"out-width":"700px","read-only":"false","fig-cap":"","classes":"","fig-height":5,"out-height":""}}];
 
 </script>
 <script type="module">
@@ -1313,10 +1313,117 @@ Solution
 </div>
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>We have a <code>player</code> column in the data set. In order to get a <code>game</code>, <code>location</code>, and <code>points</code>, we can use <code>pivot_longer()</code>, which will take this wide data set and make it into a longer data set. That is, we can bring the variable names of <code>game1_home</code>, <code>game2_home</code>, etc. into our data set as values, which is needed to recreate the plot above. See more information about <code>pivot_longer()</code> <a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">here</a>.</p>
+<p>We have a <code>player</code> column in the data set. In order to get a <code>game</code>, <code>location</code>, and <code>points</code>, we can use <code>pivot_longer()</code>, which will take this wide data set and make it into a longer data set. That is, we can bring the variable names of <code>game1_home</code>, <code>game2_home</code>, etc. into our data set as values, which is needed to recreate the plot above).</p>
 </div>
 </div>
 </div>
+<p>See more information about <code>pivot_longer()</code> <a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">here</a>. We are going to create our final data set in steps. First use <code>pivot_longer()</code> to change our data set that has 90 rows and 3 columns that are named player, game, and points.</p>
+<div id="qwebr-insertion-location-4"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>blazer <span class="sc">|&gt;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="sc">-</span>player,</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">"game"</span>,</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"points"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 90 × 3
+   player         game        points
+   &lt;chr&gt;          &lt;chr&gt;        &lt;dbl&gt;
+ 1 Damian Lillard game1_home      20
+ 2 Damian Lillard game2_home      19
+ 3 Damian Lillard game3_away      12
+ 4 Damian Lillard game4_home      20
+ 5 Damian Lillard game5_home      25
+ 6 Damian Lillard game6_away      14
+ 7 Damian Lillard game7_away      20
+ 8 Damian Lillard game8_away      26
+ 9 Damian Lillard game9_home       4
+10 Damian Lillard game10_home     25
+# ℹ 80 more rows</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>What are the next steps we need to take to change our data set to recreate the plot above?</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>We still need to:</p>
+<ul>
+<li>remove “game” text from the <code>game</code> column</li>
+<li>separate the numeric value of game from home/away</li>
+<li>create a location column</li>
+</ul>
+</div>
+</div>
+</div>
+<p>Re-visit the documentation for <code>pivot_longer()</code>. Add the argument <code>names_prefix</code> to your existing code above to remove the text “game” from the <code>game</code> column.</p>
+<div id="qwebr-insertion-location-5"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>blazer <span class="sc">|&gt;</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="sc">-</span>player,</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">"game"</span>,</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"points"</span>,</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_prefix =</span> <span class="st">"game"</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 90 × 3
+   player         game    points
+   &lt;chr&gt;          &lt;chr&gt;    &lt;dbl&gt;
+ 1 Damian Lillard 1_home      20
+ 2 Damian Lillard 2_home      19
+ 3 Damian Lillard 3_away      12
+ 4 Damian Lillard 4_home      20
+ 5 Damian Lillard 5_home      25
+ 6 Damian Lillard 6_away      14
+ 7 Damian Lillard 7_away      20
+ 8 Damian Lillard 8_away      26
+ 9 Damian Lillard 9_home       4
+10 Damian Lillard 10_home     25
+# ℹ 80 more rows</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>We now need to separate the values away from the location in the <code>game</code> column. Please see the documentation on <code>separate_wider_delim</code> <a href="https://tidyr.tidyverse.org/reference/separate_wider_delim.html">here</a></p>
 </section>
 </section>
 

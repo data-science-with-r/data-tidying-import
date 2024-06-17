@@ -108,6 +108,54 @@ Now, think critically about how we could transform our `blazer` data set to have
 
 ::: {.callout-tip collapse="true"}
 ## Solution
-We have a `player` column in the data set. In order to get a  `game`, `location`, and `points`, we can use `pivot_longer()`, which will take this wide data set and make it into a longer data set. That is, we can bring the variable names of `game1_home`, `game2_home`, etc. into our data set as values, which is needed to recreate the plot above. See more information about `pivot_longer()` [here](https://tidyr.tidyverse.org/reference/pivot_longer.html).
+We have a `player` column in the data set. In order to get a  `game`, `location`, and `points`, we can use `pivot_longer()`, which will take this wide data set and make it into a longer data set. That is, we can bring the variable names of `game1_home`, `game2_home`, etc. into our data set as values, which is needed to recreate the plot above).
 :::
 
+See more information about `pivot_longer()` [here](https://tidyr.tidyverse.org/reference/pivot_longer.html). We are going to create our final data set in steps. First use `pivot_longer()` to change our data set that has 90 rows and 3 columns that are named player, game, and points.
+
+```{webr-r}
+
+```
+
+::: {.callout-tip collapse="true"}
+## Solution
+```{r}
+blazer |>
+  pivot_longer(
+    cols = -player,
+    names_to = "game",
+    values_to = "points")
+```
+:::
+
+What are the next steps we need to take to change our data set to recreate the plot above? 
+
+::: {.callout-tip collapse="true"}
+## Solution
+We still need to: 
+
+-   remove "game" text from the `game` column 
+-   separate the numeric value of game from home/away 
+-   create a location column
+:::
+
+Re-visit the documentation for `pivot_longer()`. Add the argument `names_prefix` to your existing code above to remove the text "game" from the `game` column. 
+
+```{webr-r}
+
+```
+
+::: {.callout-tip collapse="true"}
+## Solution
+```{r}
+blazer |>
+  pivot_longer(
+    cols = -player,
+    names_to = "game",
+    values_to = "points",
+    names_prefix = "game"
+  )
+```
+:::
+
+We now need to separate the values away from the location in the `game` column. Please see the documentation on `separate_wider_delim` [here](https://tidyr.tidyverse.org/reference/separate_wider_delim.html)
