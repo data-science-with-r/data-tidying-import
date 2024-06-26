@@ -30,6 +30,10 @@ download.file(
 )
 
 options(readr.show_progress = FALSE)
+
+blazer_long |>
+  group_by(player) |>
+  count(player)
 ```
 
 The Portland Trailblazers are a National Basketball Association (NBA) sports team. In this mini analysis, we will work with a data set that has informatino of the points scored by 9 Portland Trailblazers players across the first 10 games of the 2021-2022 NBA season. If you would like to become more familiar with the game of basketball, please click [here](https://www.britannica.com/sports/basketball). If you would like more information on the Portland Trailblazers, please click [here](https://en.wikipedia.org/wiki/Portland_Trail_Blazers).
