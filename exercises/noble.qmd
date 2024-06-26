@@ -1,26 +1,189 @@
 ---
-title: "Untitled"
-format: html
-editor: visual
+title: "Nobel"
+toc: true
+webr:
+  packages: ['tidyverse', 'scales', 'readxl']
+filters:
+  - webr
 ---
 
-## Quarto
+## Packages
 
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+We will use the following two packages in this application exercise.
 
-## Running Code
-
-When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+-   **tidyverse**: For data import, wrangling, and visualization.
+-   **readxl:** For importing data from Excel.
 
 ```{r}
-1 + 1
+#| label: load-packages
+#| message: false
+#| warning: false
+#| echo: false
+
+library(tidyverse)
+library(readxl)
 ```
 
-You can add options to executable code like this
+## Nobel winners
+
+For this exercise, we are going to work with a Noble Prize winners data set from the years 1901 through 2018. Please read in the following data below.
+
+```{webr-r}
+#| context: setup
+download.file(
+  "https://raw.githubusercontent.com/ElijahMeyer3/Coursera/main/data/nobel.csv",
+  "nobel.csv"
+)
+
+download.file(
+  "https://raw.githubusercontent.com/ElijahMeyer3/Coursera/main/data/sales.xlsx",
+  "sales.xlsx"
+)
+
+options(readr.show_progress = FALSE)
+```
+
 
 ```{r}
 #| echo: false
-2 * 2
+nobel <- read_csv("data/nobel.csv" , show_col_types = FALSE)
+
+sales <- read_excel(
+  "data/sales.xlsx", 
+  skip = 3,
+  col_names = c("id", "n")
+)
 ```
 
-The `echo: false` option disables the printing of code (only output is displayed).
+
+```{webr-r}
+nobel <- read_csv("nobel.csv")
+```
+
+Based on the tibble output, what are the number of rows and columns of the nobel data set? What types of variables are you working with?
+
+::: callout-warning
+If you receive the error [Error: object 'noble' not found]{style="color:red;"}, go back and read in your data above.
+:::
+
+::: {.callout-tip collapse="true"}
+## Solution
+There are 935 rows and 26 columns in nobel data set.
+
+There are 21 character variables, 3 dbl variables, and 2 date variables
+:::
+
+Now, rerun the code above to read in the data set, but use the argument `show_col_types = FALSE` to suppress the given data set information
+
+```{webr-r}
+
+```
+
+::: {.callout-tip collapse="true"}
+## Solution
+```{r}
+nobel <- read_csv("nobel.csv", show_col_types = FALSE)
+```
+
+Notice that there is no given message when running the code. This code simply loads the data set.
+:::
+
+## Do we want to just show them how to export data? Where does it go in the webr universe?
+
+## Do we want to do some data type stuff here instead? 
+
+Something like 
+
+- Can't turn a character into a number (will get NAs)
+- Can turn character into a factor 
+- Can turn factor into a number (see what R does)
+```{r}
+nobel |>
+  group_by(gender) |>
+  count(gender)
+
+nobel |>
+  mutate(gender = as.factor(gender)) |>
+  mutate(gender = as.numeric(gender)) |>
+  select(gender)
+```
+
+
+## Sales 
+
+For the remaining part of this exercise, we are going to learn how to read in and clean up data that come from excel. The messy data that we are going to work with can be seen in below. 
+
+![](images/salex-excel.png){fig-align="center" width="801"}
+
+We are going to use `read_excel()` to read in a xlsx excel file. Read in the file and take a glimpse of these data. Why can we not work with these data in their current form?
+
+```{webr-r}
+#| label: sales-import
+sales <- read_excel(
+  "sales.xlsx"
+)
+
+glimpse(sales)
+```
+
+::: {.callout-tip collapse="true"}
+## Solution
+The data are not tidy. The data are read in with the text as a column name, and creates another column name called `...2 `. 
+:::
+
+See the help file for `read_excel()` [here](https://www.rdocumentation.org/packages/readxl/versions/0.1.1/topics/read_excel). Notice that, in the current `sales` data set, we want to skip 3 rows (the first row acts as a header for the column names). We can do this using the `skip` argument. At the same time, we can specify names for each column by giving the argument `col_names` a character vector. Use these arguments and add to the code below to skip 3 lines and name the columns `id` and `n`.  
+
+```{web-r}
+sales <- read_excel(
+  "sales.xlsx", 
+# add code here
+)
+```
+
+::: {.callout-tip collapse="true"}
+## Solution
+```{r}
+#| eval: false
+sales <- read_excel(
+  "sales.xlsx", 
+  skip = 3,
+  col_names = c("id", "n")
+)
+
+sales
+```
+:::
+
+## Putting it all together 
+
+Manipulate the sales data such such that it looks like the following using functions you have learned from the `tidyverse` to transform data.
+
+![](images/sales-2.png){width="300"}
+
+```{webr-r}
+read_excel(
+  "sales.xlsx", 
+  skip = 3,
+  col_names = c("id", "n")
+) |>
+# add code here
+```
+
+::: {.callout-tip collapse="true"}
+## Solution
+
+```{r}
+#| label: sales-cleanup
+sales |>
+  mutate(
+    is_brand_name = str_detect(id, "Brand"),
+    brand = if_else(is_brand_name, id, NA)
+  ) |>
+  fill(brand) |>
+  filter(!is_brand_name) |>
+  select(brand, id, n)
+```
+:::
+
+
+**Takeaway** We should write code to manipulate data instead of opening Excel and editing the data in there because it allows us to re-use the data multiple times, and leaves a transparent trail of any modifications done while manipulating the data. Changing data in Excel is neither reproducible nor reusable.  
