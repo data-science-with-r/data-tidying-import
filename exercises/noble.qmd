@@ -1,5 +1,5 @@
 ---
-title: "Nobel"
+title: "Nobel Prize Winners & Sales Data"
 toc: true
 webr:
   packages: ['tidyverse', 'scales', 'readxl']
@@ -26,7 +26,7 @@ library(readxl)
 
 ## Nobel winners
 
-For this exercise, we are going to work with a Noble Prize winners data set from the years 1901 through 2018. Please read in the following data below.
+For this exercise, we are going to work with a Nobel Prize winners data set from the years 1901 through 2018. Please read in the following data below.
 
 ```{webr-r}
 #| context: setup
@@ -63,7 +63,7 @@ nobel <- read_csv("nobel.csv")
 Based on the tibble output, what are the number of rows and columns of the nobel data set? What types of variables are you working with?
 
 ::: callout-warning
-If you receive the error [Error: object 'noble' not found]{style="color:red;"}, go back and read in your data above.
+If you receive the error [Error: object 'nobel' not found]{style="color:red;"}, go back and read in your data above.
 :::
 
 ::: {.callout-tip collapse="true"}
@@ -76,7 +76,7 @@ There are 21 character variables, 3 dbl variables, and 2 date variables
 Now, rerun the code above to read in the data set, but use the argument `show_col_types = FALSE` to suppress the given data set information
 
 ```{webr-r}
-
+# add code here
 ```
 
 ::: {.callout-tip collapse="true"}
@@ -88,25 +88,70 @@ nobel <- read_csv("nobel.csv", show_col_types = FALSE)
 Notice that there is no given message when running the code. This code simply loads the data set.
 :::
 
-## Do we want to just show them how to export data? Where does it go in the webr universe?
 
-## Do we want to do some data type stuff here instead? 
+## Type coercion 
 
-Something like 
+We are going to use the `nobel` data set to explore type coercion. Using `glimpse()`, identify what type of variable `gender` is in this data set. Additionally, identify the levels of this variable.
 
-- Can't turn a character into a number (will get NAs)
-- Can turn character into a factor 
-- Can turn factor into a number (see what R does)
 ```{r}
+# add response here
+```
+
+::: {.callout-tip collapse="true"}
+## Solution
+```{r}
+glimpse(nobel)
+
 nobel |>
   group_by(gender) |>
   count(gender)
+```
+`gender` is a character variable. These data have three different genders: male, female, and org. 
+:::
 
+Suppose we want to turn the three listed genders into values. Run the following code. What happened? 
+
+```{webr-r}
 nobel |>
-  mutate(gender = as.factor(gender)) |>
   mutate(gender = as.numeric(gender)) |>
   select(gender)
 ```
+
+::: {.callout-tip collapse="true"}
+## Solution
+When trying to change `male`, `female` and `org` into numbers from characters, each value became an NA.
+:::
+
+If we want the function `as.numeric()` to coerce these values into numbers, we need to change them to be a factor first. Run the following code, and compare the results. What values were assiged to which group? How do you think R determined this?
+
+```{webr-r}
+
+nobel |>
+  mutate(gender_num = as.numeric(as.factor(gender))) |>
+  select(gender, gender_num) |>
+  unique()
+```
+
+::: {.callout-tip collapse="true"}
+## Solution
+R assigned male = 2; female = 1; and org = 3. These were assigned alpha-numerically. 
+:::
+
+Note, that you can also avoid type coercion by manually setting values (see example code below).
+
+```{r}
+nobel |>
+  mutate(gender_num = case_when(
+      gender == "female" ~ 1,
+      gender == "male" ~ 2,
+      gender == "org" ~ 3
+    )
+  ) |>
+  select(gender, gender_num) |>
+  unique()
+```
+
+Suppose you wanted to make this change to the nobel data set, and export a new csv to your current working directory on your local installment. This can be accomplished using `write_csv()`. See the help file [here](https://www.rdocumentation.org/packages/readr/versions/0.1.0/topics/write_csv).
 
 
 ## Sales 
