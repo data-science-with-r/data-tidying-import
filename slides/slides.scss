@@ -1,0 +1,216 @@
+/*-- scss:defaults --*/
+
+// fonts
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gochi+Hand&display=swap');
+
+$font-family-sans-serif: "Atkinson Hyperlegible", sans-serif;
+$font-family-monospace: "Source Code Pro", monospace;
+$presentation-heading-color: #0E538F;
+$link-color: #0E538F;
+$code-block-font-size: 0.85em;
+$presentation-h2-font-size: 1.4em !default;
+$presentation-h3-font-size: 1.1em !default;
+$presentation-font-size-root: 36px !default;
+$presentation-title-slide-text-align: left;
+
+/*-- scss:rules --*/
+
+/* title slide */
+
+#title-slide .title {
+  color: $presentation-heading-color;
+}
+
+#title-slide .subtitle {
+  color: $presentation-heading-color;
+  font-weight: bold;
+  font-size: 1.6em;
+}
+
+#title-slide .quarto-title-authors {
+  color: #66676D;
+  font-size: 1.4em;
+}
+
+/* section break slide */
+
+.section-break .reveal a { /* not working */
+  color: #FFFFFF !important;
+}
+
+.section-break .slide-background-content {
+  background-color: $presentation-heading-color;
+}
+
+.section-break h1 {
+  color: #FFFFFF;
+}
+
+/* font sizes */
+
+.smallest {
+  font-size: 0.3em;
+}
+
+.smaller {
+  font-size: 0.4em;
+}
+
+.small {
+  font-size: 0.55em;
+}
+
+.medium {
+  font-size: 0.70em;
+}
+
+.midi {
+  font-size: 0.8em;
+}
+
+.large {
+  font-size: 1.5em;
+}
+
+/* inline code should be blue */
+
+.reveal code {
+  color: $presentation-heading-color;
+}
+
+/* bold should be blue */
+
+b, strong {
+  color: $presentation-heading-color;
+}
+
+/* alignment */
+
+.center-align {
+  text-align: center;
+}
+
+/* h2 */
+
+.reveal h2 {
+  margin-top: 5px;
+}
+
+/* h3 */
+
+.reveal h3 {
+  color: #8f0e53;
+}
+
+/* handwriting font */
+
+.reveal .hand {
+  font-family: 'Gochi Hand', cursive;
+  font-size: 1.2em;
+}
+
+.reveal .hand-pink {
+  font-family: 'Gochi Hand', cursive;
+  font-size: 1.2em;
+  color: #93798b;
+}
+
+.reveal .hand-pink-large {
+  font-family: 'Gochi Hand', cursive;
+  font-size: 4em;
+  color: #93798b;
+}
+
+.reveal .hand-blue-large {
+  font-family: 'Gochi Hand', cursive;
+  font-size: 4em;
+  color: #0E538F;
+}
+
+.reveal .hand-white {
+  font-family: 'Gochi Hand', cursive;
+  font-size: 1.2em;
+  color: #ffffff;
+}
+
+.reveal .pink-bold {
+  color: #8f0e53;
+  font-weight: bold;
+}
+
+/* white space on left */
+
+.cell-output {
+  overflow-x: scroll;
+  white-space: nowrap;
+  width: 1200px;
+}
+
+.sourceCode {
+  width: 1200px;
+}
+
+.reveal pre.sourceCode code {
+  max-height: 1000px;
+}
+
+.reveal blockquote {
+  width: 75%;
+  text-align: left;
+  margin-left: 0;
+}
+
+.reveal p {
+  width: 75%;
+}
+
+.reveal ul {
+  width: 75%;
+}
+
+.reveal table {
+  width: 75%;
+  margin: 0px;
+}
+
+.reveal .slide aside {
+  width: 75%;
+}
+
+.columns p {
+  width: 100%;
+}
+
+.columns .cell-output {
+  width: auto;
+}
+
+.columns .sourceCode {
+  width: auto;
+}
+
+/* custom divs */
+
+.reveal .slide .task {
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  margin-bottom: 6px;
+  margin-top: 6px;
+  margin-right: 6px;
+  border-left: solid 5px #0E538F;
+  background-color: #0E538F50;
+  width: 1173px;
+}
+
+.reveal .slide .task p {
+  width: 100%;
+}
+
+.reveal .slide .task ul {
+  width: 100%;
+}

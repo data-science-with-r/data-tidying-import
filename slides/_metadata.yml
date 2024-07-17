@@ -1,0 +1,21 @@
+subtitle: "<br><br> {{< fa book-open >}} Data tidying and importing"
+author: "{{< fa book >}} Data Science with R"
+format:
+  revealjs:
+    theme: ../slides.scss
+    highlight-style: a11y-dark
+    height: 900
+    width: 1600
+    fig-width: 6
+    fig-asp: 0.618
+    code-link: true
+    slide-number: c
+    auto-stretch: false
+execute:
+  echo: true
+  warning: true
+engine: knitr
+knitr:
+  opts_chunk:
+    R.options:
+      width: 60

@@ -1,0 +1,40 @@
+---
+title: "Welcome"
+format: revealjs
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+ggplot2::theme_set(ggplot2::theme_gray(base_size = 16))
+library(tidyverse)
+```
+
+# Hello tidy data! {.section-break}
+
+## Data science life cycle
+
+![](images/data-science-cycle/data-science-cycle.001.png){fig-align="left" width="1280"}
+
+## Import
+
+![](images/data-science-cycle/data-science-cycle.002.png){fig-align="left" width="1280"}
+
+## Tidy -\> transform
+
+![](images/data-science-cycle/data-science-cycle.003.png){fig-align="left" width="1280"}
+
+# Background
+
+Something about Course 1 material
+
+# Outline
+
+Even though natural order is import then tidy, we'll first do some joing and tidying
+
+then step back to importing
+
+from rectangular data
+
+then from unstructured data like webscraping

@@ -1,0 +1,42 @@
+---
+title: "{{< fa book-open >}} Data tidying and importing"
+subtitle: "{{< fa book >}} Data Science with R"
+author: "Mine Çetinkaya-Rundel + Elijah Meyer"
+listing:
+  - id: slides
+    contents: slides/*/*.qmd
+    type: table
+    fields: [title]
+    filter-ui: false
+    sort-ui: false
+    sort: [filename]
+  - id: code-alongs
+    contents: code-alongs/*/*.qmd
+    type: table
+    fields: [title]
+    filter-ui: false
+    sort-ui: false
+    sort: [filename]
+  - id: exercises
+    contents: exercises/*.qmd
+    type: table
+    fields: [title]
+    sort: [order]
+    filter-ui: false
+    sort-ui: false
+---
+
+## Slides
+
+::: {#slides}
+:::
+
+## Code alongs
+
+::: {#code-alongs}
+:::
+
+## Exercises
+
+::: {#exercises}
+:::
