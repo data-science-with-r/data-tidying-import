@@ -224,6 +224,13 @@
     "text": "What makes this data not tidy?\n\n\n\nSource: US Census Fact Finder, General Economic Characteristics, ACS 2017"
   },
   {
+    "objectID": "slides/1-2-tidy-data/1-2-tidy-data.html#what-makes-data-tidy",
+    "href": "slides/1-2-tidy-data/1-2-tidy-data.html#what-makes-data-tidy",
+    "title": "Tidy data",
+    "section": "What makes data tidy?",
+    "text": "What makes data tidy?\n\n“Tidy datasets are easy to manipulate, model and visualise, and have a specific structure: each variable is a column, each observation is a row, and each type of observational unit is a table.”\n\n\n\n\n\n\n\n\nNote\n\n\n“easy to manipulate” = “straightforward to manipulate”\n\n\n\n\n\n\nWickham, H. (2014). Tidy data. Journal of statistical software, 59, 1-23."
+  },
+  {
     "objectID": "slides/1-2-tidy-data/1-2-tidy-data.html#displaying-vs.-summarizing-data",
     "href": "slides/1-2-tidy-data/1-2-tidy-data.html#displaying-vs.-summarizing-data",
     "title": "Tidy data",
