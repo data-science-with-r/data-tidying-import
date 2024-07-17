@@ -17,7 +17,7 @@ library(tidyverse)
 
 ::: {.columns}
 
-::: {.column}
+::: {.column width="40%"}
 **Characteristics of tidy data:**
 
 - Each variable forms a column.
@@ -25,7 +25,7 @@ library(tidyverse)
 - Each type of observational unit forms a table.
 :::
 
-::: {.column}
+::: {.column width="40%"}
 **Characteristics of untidy data:**
 
 !@#$%^&*()
@@ -56,6 +56,21 @@ Source: [Gapminder, Estimated HIV prevalence among 15-49 year olds](https://www.
 ::: aside
 Source: [US Census Fact Finder, General Economic Characteristics, ACS 2017](https://factfinder.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_17_5YR_DP03&src=pt)
 :::
+
+## What makes data tidy?
+
+> “Tidy datasets are easy to manipulate, model and visualise, and have a specific structure: each variable is a column, each observation is a row, and each type of observational unit is a table.”
+
+. . .
+
+::: callout-note
+“easy to manipulate” = “straightforward to manipulate”
+:::
+
+::: aside
+Wickham, H. (2014). [Tidy data](https://www.jstatsoft.org/article/view/v059i10). Journal of statistical software, 59, 1-23.
+:::
+
 
 ## Displaying vs. summarizing data
 

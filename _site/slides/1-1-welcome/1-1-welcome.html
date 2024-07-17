@@ -9,17 +9,17 @@
 <link href="../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
-<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.37">
-<meta name="author" content=" Data Science with R">
-<title>Data tidying and importing – Welcome</title>
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-<link rel="stylesheet" href="../../site_libs/revealjs/dist/reset.css">
-<link rel="stylesheet" href="../../site_libs/revealjs/dist/reveal.css">
-<style>
+<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.5.37">
+
+  <meta name="author" content=" Data Science with R">
+  <title>Data tidying and importing – Welcome</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reveal.css">
+  <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -32,12 +32,12 @@
       vertical-align: middle;
     }
   </style>
-<link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto.css">
-<link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-<link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-<link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-<link href="../../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
-<style type="text/css">
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto.css">
+  <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="../../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
 
   .callout {
     margin-top: 1em;
@@ -235,7 +235,7 @@
   }
 
   </style>
-<style type="text/css">
+  <style type="text/css">
     .reveal div.sourceCode {
       margin: 0;
       overflow: auto;
@@ -327,8 +327,9 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" class="quarto-title-block center"><h1 class="title">Welcome</h1>
-  <p class="subtitle"><br><br><i class="fa-solid fa-book-open" aria-label="book-open"></i> Data tidying and importing</p>
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Welcome</h1>
+  <p class="subtitle"><br><br> <i class="fa-solid fa-book-open" aria-label="book-open"></i> Data tidying and importing</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -338,26 +339,43 @@
 </div>
 </div>
 
-</section><section><section id="hello-tidy-data" class="title-slide slide level1 section-break center"><h1>Hello tidy data!</h1>
+</section>
+<section>
+<section id="hello-tidy-data" class="title-slide slide level1 section-break center">
+<h1>Hello tidy data!</h1>
 
-</section><section id="data-science-life-cycle" class="slide level2"><h2>Data science life cycle</h2>
+</section>
+<section id="data-science-life-cycle" class="slide level2">
+<h2>Data science life cycle</h2>
 <div class="quarto-figure quarto-figure-left">
-<figure><p><img data-src="images/data-science-cycle/data-science-cycle.001.png" class="quarto-figure quarto-figure-left" width="1280"></p>
+<figure>
+<p><img data-src="images/data-science-cycle/data-science-cycle.001.png" class="quarto-figure quarto-figure-left" width="1280"></p>
 </figure>
 </div>
-</section><section id="import" class="slide level2"><h2>Import</h2>
+</section>
+<section id="import" class="slide level2">
+<h2>Import</h2>
 <div class="quarto-figure quarto-figure-left">
-<figure><p><img data-src="images/data-science-cycle/data-science-cycle.002.png" class="quarto-figure quarto-figure-left" width="1280"></p>
+<figure>
+<p><img data-src="images/data-science-cycle/data-science-cycle.002.png" class="quarto-figure quarto-figure-left" width="1280"></p>
 </figure>
 </div>
-</section><section id="tidy---transform" class="slide level2"><h2>Tidy -&gt; transform</h2>
+</section>
+<section id="tidy---transform" class="slide level2">
+<h2>Tidy -&gt; transform</h2>
 <div class="quarto-figure quarto-figure-left">
-<figure><p><img data-src="images/data-science-cycle/data-science-cycle.003.png" class="quarto-figure quarto-figure-left" width="1280"></p>
+<figure>
+<p><img data-src="images/data-science-cycle/data-science-cycle.003.png" class="quarto-figure quarto-figure-left" width="1280"></p>
 </figure>
 </div>
-</section></section><section id="background" class="title-slide slide level1 center"><h1>Background</h1>
+</section></section>
+<section id="background" class="title-slide slide level1 center">
+<h1>Background</h1>
 <p>Something about Course 1 material</p>
-</section><section id="outline" class="title-slide slide level1 center"><h1>Outline</h1>
+</section>
+
+<section id="outline" class="title-slide slide level1 center">
+<h1>Outline</h1>
 <p>Even though natural order is import then tidy, we’ll first do some joing and tidying</p>
 <p>then step back to importing</p>
 <p>from rectangular data</p>
@@ -369,10 +387,26 @@
 </div>
 </div>
 </section>
-</div>
+    </div>
   </div>
 
-  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="../../site_libs/revealjs/dist/reveal.js"></script><!-- reveal.js plugins --><script src="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script><script src="../../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script><script src="../../site_libs/revealjs/plugin/reveal-menu/menu.js"></script><script src="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script><script src="../../site_libs/revealjs/plugin/quarto-support/support.js"></script><script src="../../site_libs/revealjs/plugin/notes/notes.js"></script><script src="../../site_libs/revealjs/plugin/search/search.js"></script><script src="../../site_libs/revealjs/plugin/zoom/zoom.js"></script><script src="../../site_libs/revealjs/plugin/math/math.js"></script><script>window.define = window.backupDefine; window.backupDefine = undefined;</script><script>
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="../../site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="../../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="../../site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="../../site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="../../site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="../../site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="../../site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
 
       // Full list of configuration options available at:
       // https://revealjs.com/config/
@@ -562,7 +596,9 @@
           RevealZoom
         ]
       });
-    </script><script>
+    </script>
+    
+    <script>
       // htmlwidgets need to know to resize themselves when slides are shown/hidden.
       // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
       // slide changes (different for each slide format).
@@ -597,7 +633,9 @@
         }
 
       })();
-    </script><script id="quarto-html-after-body" type="application/javascript">
+    </script>
+
+    <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {
         const mode = bsSheetEl.getAttribute("data-mode");
@@ -784,6 +822,6 @@
       }
     });
     </script>
-
+    
 
 </body></html>

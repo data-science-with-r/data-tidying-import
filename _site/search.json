@@ -126,88 +126,53 @@
     "text": "Putting it all together\nManipulate the sales data such such that it looks like the following using functions you have learned from the tidyverse to transform data.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nsales |&gt;\n  mutate(\n    is_brand_name = str_detect(id, \"Brand\"),\n    brand = if_else(is_brand_name, id, NA)\n  ) |&gt;\n  fill(brand) |&gt;\n  filter(!is_brand_name) |&gt;\n  select(brand, id, n)\n\n# A tibble: 7 × 3\n  brand   id    n    \n  &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;\n1 Brand 1 1234  8    \n2 Brand 1 8721  2    \n3 Brand 1 1822  3    \n4 Brand 2 3333  1    \n5 Brand 2 2156  3    \n6 Brand 2 3987  6    \n7 Brand 2 3216  5    \n\n\n\n\n\nTakeaway We should write code to manipulate data instead of opening Excel and editing the data in there because it allows us to re-use the data multiple times, and leaves a transparent trail of any modifications done while manipulating the data. Changing data in Excel is neither reproducible nor reusable."
   },
   {
-    "objectID": "slides/1-2-tidy-data/1-2-tidy-data.html#by-the-end-of-the-course-you-will-be-able-to",
-    "href": "slides/1-2-tidy-data/1-2-tidy-data.html#by-the-end-of-the-course-you-will-be-able-to",
-    "title": "Meet the toolkit: R and RStudio",
-    "section": "By the end of the course, you will be able to…",
-    "text": "By the end of the course, you will be able to…\n\n\ngain insights from data\ngain insights from data, using modern programming tools and techniques\ngain insights from data, using modern programming tools and techniques, reproducibly with literate programming\ngain insights from data, using modern programming tools and techniques, reproducibly with literate programming and version control"
+    "objectID": "slides/1-2-tidy-data/1-2-tidy-data.html#tidy-data",
+    "href": "slides/1-2-tidy-data/1-2-tidy-data.html#tidy-data",
+    "title": "Tidy data",
+    "section": "Tidy data",
+    "text": "Tidy data\n\nHappy families are all alike; every unhappy family is unhappy in its own way.\nLeo Tolstoy\n\n\n\nCharacteristics of tidy data:\n\nEach variable forms a column.\nEach observation forms a row.\nEach type of observational unit forms a table.\n\n\nCharacteristics of untidy data:\n!@#$%^&*()"
   },
   {
-    "objectID": "slides/1-2-tidy-data/1-2-tidy-data.html#by-the-end-of-the-course-you-will-be-able-to-1",
-    "href": "slides/1-2-tidy-data/1-2-tidy-data.html#by-the-end-of-the-course-you-will-be-able-to-1",
-    "title": "Meet the toolkit: R and RStudio",
-    "section": "By the end of the course, you will be able to…",
-    "text": "By the end of the course, you will be able to…\n\ngain insights from data\ngain insights from data, using modern programming tools and techniques\ngain insights from data, using modern programming tools and techniques, reproducibly with literate programming\ngain insights from data, using modern programming tools and techniques, reproducibly with literate programming and version control"
+    "objectID": "slides/1-2-tidy-data/1-2-tidy-data.html#what-makes-this-data-not-tidy",
+    "href": "slides/1-2-tidy-data/1-2-tidy-data.html#what-makes-this-data-not-tidy",
+    "title": "Tidy data",
+    "section": "What makes this data not tidy?",
+    "text": "What makes this data not tidy?\n\n\n\nSource: Army Air Forces Statistical Digest, WW II"
   },
   {
-    "objectID": "slides/1-2-tidy-data/1-2-tidy-data.html#section",
-    "href": "slides/1-2-tidy-data/1-2-tidy-data.html#section",
-    "title": "Meet the toolkit: R and RStudio",
-    "section": "",
-    "text": "Open-source statistical programming language\n\nAlso an environment for statistical computing and graphics"
+    "objectID": "slides/1-2-tidy-data/1-2-tidy-data.html#what-makes-this-data-not-tidy-1",
+    "href": "slides/1-2-tidy-data/1-2-tidy-data.html#what-makes-this-data-not-tidy-1",
+    "title": "Tidy data",
+    "section": "What makes this data not tidy?",
+    "text": "What makes this data not tidy?\n\n\n\nSource: Gapminder, Estimated HIV prevalence among 15-49 year olds"
   },
   {
-    "objectID": "slides/1-2-tidy-data/1-2-tidy-data.html#section-1",
-    "href": "slides/1-2-tidy-data/1-2-tidy-data.html#section-1",
-    "title": "Meet the toolkit: R and RStudio",
-    "section": "",
-    "text": "Convenient interface for R called an IDE (integrated development environment), e.g. “I write R code in the RStudio IDE”\n\nNot a requirement for programming with R, but it’s very commonly used by R programmers and data scientists"
+    "objectID": "slides/1-2-tidy-data/1-2-tidy-data.html#what-makes-this-data-not-tidy-2",
+    "href": "slides/1-2-tidy-data/1-2-tidy-data.html#what-makes-this-data-not-tidy-2",
+    "title": "Tidy data",
+    "section": "What makes this data not tidy?",
+    "text": "What makes this data not tidy?\n\n\n\nSource: US Census Fact Finder, General Economic Characteristics, ACS 2017"
   },
   {
-    "objectID": "slides/1-2-tidy-data/1-2-tidy-data.html#r-vs.-rstudio",
-    "href": "slides/1-2-tidy-data/1-2-tidy-data.html#r-vs.-rstudio",
-    "title": "Meet the toolkit: R and RStudio",
-    "section": "R vs. RStudio",
-    "text": "R vs. RStudio\n\n\n\n\n\n\n\n“engine”\n\n\n\n\n\n\n\n\n\n\n\n“dashboard”"
+    "objectID": "slides/1-2-tidy-data/1-2-tidy-data.html#what-makes-data-tidy",
+    "href": "slides/1-2-tidy-data/1-2-tidy-data.html#what-makes-data-tidy",
+    "title": "Tidy data",
+    "section": "What makes data tidy?",
+    "text": "What makes data tidy?\n\n“Tidy datasets are easy to manipulate, model and visualise, and have a specific structure: each variable is a column, each observation is a row, and each type of observational unit is a table.”\n\n\n\n\n\n\n\n\nNote\n\n\n“easy to manipulate” = “straightforward to manipulate”\n\n\n\n\n\n\nWickham, H. (2014). Tidy data. Journal of statistical software, 59, 1-23."
   },
   {
-    "objectID": "slides/1-2-tidy-data/1-2-tidy-data.html#r-packages",
-    "href": "slides/1-2-tidy-data/1-2-tidy-data.html#r-packages",
-    "title": "Meet the toolkit: R and RStudio",
-    "section": "R packages",
-    "text": "R packages\n\n\nPackages are the fundamental units of reproducible R code – they include reusable R functions, documentation of these functions, and sample data\nPackages are how the community extends R\nAs of April 2024, there are over 20,000 R packages available on CRAN (the Comprehensive R Archive Network)\nWe’re going to work with a small (but important) subset of these!"
+    "objectID": "slides/1-2-tidy-data/1-2-tidy-data.html#displaying-vs.-summarizing-data",
+    "href": "slides/1-2-tidy-data/1-2-tidy-data.html#displaying-vs.-summarizing-data",
+    "title": "Tidy data",
+    "section": "Displaying vs. summarizing data",
+    "text": "Displaying vs. summarizing data\n\n\nDisplay\n\n\n# A tibble: 87 × 3\n   name               height  mass\n   &lt;chr&gt;               &lt;int&gt; &lt;dbl&gt;\n 1 Luke Skywalker        172    77\n 2 C-3PO                 167    75\n 3 R2-D2                  96    32\n 4 Darth Vader           202   136\n 5 Leia Organa           150    49\n 6 Owen Lars             178   120\n 7 Beru Whitesun Lars    165    75\n 8 R5-D4                  97    32\n 9 Biggs Darklighter     183    84\n10 Obi-Wan Kenobi        182    77\n# ℹ 77 more rows\n\n\n\nSummarize\n\n\n# A tibble: 3 × 2\n  gender    avg_ht\n  &lt;chr&gt;      &lt;dbl&gt;\n1 feminine    167.\n2 masculine   177.\n3 &lt;NA&gt;        175"
   },
   {
-    "objectID": "slides/1-2-tidy-data/1-2-tidy-data.html#section-2",
-    "href": "slides/1-2-tidy-data/1-2-tidy-data.html#section-2",
-    "title": "Meet the toolkit: R and RStudio",
-    "section": "",
-    "text": "Let’s take a tour of\n     and"
-  },
-  {
-    "objectID": "slides/1-2-tidy-data/1-2-tidy-data.html#tour-recap-r-and-rstudio",
-    "href": "slides/1-2-tidy-data/1-2-tidy-data.html#tour-recap-r-and-rstudio",
-    "title": "Meet the toolkit: R and RStudio",
-    "section": "Tour recap: R and RStudio",
-    "text": "Tour recap: R and RStudio"
-  },
-  {
-    "objectID": "slides/1-2-tidy-data/1-2-tidy-data.html#a-short-list-for-now-of-r-essentials",
-    "href": "slides/1-2-tidy-data/1-2-tidy-data.html#a-short-list-for-now-of-r-essentials",
-    "title": "Meet the toolkit: R and RStudio",
-    "section": "A short list (for now) of R essentials",
-    "text": "A short list (for now) of R essentials\n\nFunctions are (most often) verbs, followed by what they will be applied to in parentheses:\n\n\ndo_this(to_this)\ndo_that(to_this, to_that, with_those)\n\n\n\nPackages are installed with the install.packages() function and loaded with the library function, once per session:\n\n\ninstall.packages(\"package_name\")\nlibrary(package_name)"
-  },
-  {
-    "objectID": "slides/1-2-tidy-data/1-2-tidy-data.html#r-essentials-continued",
-    "href": "slides/1-2-tidy-data/1-2-tidy-data.html#r-essentials-continued",
-    "title": "Meet the toolkit: R and RStudio",
-    "section": "R essentials (continued)",
-    "text": "R essentials (continued)\n\nColumns (variables) in data frames are accessed with $:\n\n\ndataframe$var_name\n\n\n\nObject documentation can be accessed with ?\n\n\n\n?mean"
-  },
-  {
-    "objectID": "slides/1-2-tidy-data/1-2-tidy-data.html#tidyverse",
-    "href": "slides/1-2-tidy-data/1-2-tidy-data.html#tidyverse",
-    "title": "Meet the toolkit: R and RStudio",
-    "section": "tidyverse",
-    "text": "tidyverse\n\n\n\n\n\ntidyverse.org\n\n\n\nThe tidyverse is an opinionated collection of R packages designed for data science\nAll packages share an underlying philosophy and a common grammar"
-  },
-  {
-    "objectID": "slides/1-2-tidy-data/1-2-tidy-data.html#acknowledgements",
-    "href": "slides/1-2-tidy-data/1-2-tidy-data.html#acknowledgements",
-    "title": "Meet the toolkit: R and RStudio",
-    "section": "Acknowledgements",
-    "text": "Acknowledgements\n\nPhoto of car engine: Image by Davgood Kirshot from Pixabay\n\nPhoto of car dashboard: Image by VariousPhotography from Pixabay\n\nNumber of R packages: CRAN contributed packages"
+    "objectID": "slides/1-2-tidy-data/1-2-tidy-data.html#displaying-vs.-summarizing-data-1",
+    "href": "slides/1-2-tidy-data/1-2-tidy-data.html#displaying-vs.-summarizing-data-1",
+    "title": "Tidy data",
+    "section": "Displaying vs. summarizing data",
+    "text": "Displaying vs. summarizing data\n\n\nDisplay\n\nstarwars |&gt;\n  select(name, height, mass)\n\n\nSummarize\n\nstarwars |&gt;\n  group_by(gender) |&gt;\n  summarize(\n    avg_ht = mean(height, na.rm = TRUE)\n  )"
   },
   {
     "objectID": "index.html",
@@ -278,47 +243,5 @@
     "title": "Tidy Basketball",
     "section": "Bonus Challange",
     "text": "Bonus Challange\nRecreate the plot, using the blazer_long data set!\n\n\n\n\n\nHints: The code you start with makes sure that game is appropriately treated as a quantitative variable. You will learn more about data types in the following lessons! The plot above uses theme_bw().\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nblazer_long |&gt;\n  mutate(game = as.numeric(game)) |&gt;\n  ggplot(\n    aes(x = game, y = points, color = location, group = player)\n  ) +\n  geom_line() +\n  geom_point(shape = \"square\") +\n  facet_wrap(~player) +\n  scale_x_continuous(breaks = c(1:10)) +\n  theme_bw() +\n  labs(\n    x = \"Game\",\n    y = \"Points Scored\",\n    title = \"Points Scored Across 10 Games\",\n    subtitle = \"Portland Trailblazers (2021-2022 Season)\",\n    caption = \"https://www.basketball-reference.com/teams/POR/2021_games.html\"\n  )\n\nWarning: Removed 2 rows containing missing values or values outside the scale range\n(`geom_point()`)."
-  },
-  {
-    "objectID": "slides/1-2-tidy-data/1-2-tidy-data.html#tidy-data",
-    "href": "slides/1-2-tidy-data/1-2-tidy-data.html#tidy-data",
-    "title": "Tidy data",
-    "section": "Tidy data",
-    "text": "Tidy data\n\nHappy families are all alike; every unhappy family is unhappy in its own way.\nLeo Tolstoy\n\n\n\nCharacteristics of tidy data:\n\nEach variable forms a column.\nEach observation forms a row.\nEach type of observational unit forms a table.\n\n\nCharacteristics of untidy data:\n!@#$%^&*()"
-  },
-  {
-    "objectID": "slides/1-2-tidy-data/1-2-tidy-data.html#what-makes-this-data-not-tidy",
-    "href": "slides/1-2-tidy-data/1-2-tidy-data.html#what-makes-this-data-not-tidy",
-    "title": "Tidy data",
-    "section": "What makes this data not tidy?",
-    "text": "What makes this data not tidy?\n\n\n\nSource: Army Air Forces Statistical Digest, WW II"
-  },
-  {
-    "objectID": "slides/1-2-tidy-data/1-2-tidy-data.html#what-makes-this-data-not-tidy-1",
-    "href": "slides/1-2-tidy-data/1-2-tidy-data.html#what-makes-this-data-not-tidy-1",
-    "title": "Tidy data",
-    "section": "What makes this data not tidy?",
-    "text": "What makes this data not tidy?\n\n\n\nSource: Gapminder, Estimated HIV prevalence among 15-49 year olds"
-  },
-  {
-    "objectID": "slides/1-2-tidy-data/1-2-tidy-data.html#what-makes-this-data-not-tidy-2",
-    "href": "slides/1-2-tidy-data/1-2-tidy-data.html#what-makes-this-data-not-tidy-2",
-    "title": "Tidy data",
-    "section": "What makes this data not tidy?",
-    "text": "What makes this data not tidy?\n\n\n\nSource: US Census Fact Finder, General Economic Characteristics, ACS 2017"
-  },
-  {
-    "objectID": "slides/1-2-tidy-data/1-2-tidy-data.html#displaying-vs.-summarizing-data",
-    "href": "slides/1-2-tidy-data/1-2-tidy-data.html#displaying-vs.-summarizing-data",
-    "title": "Tidy data",
-    "section": "Displaying vs. summarizing data",
-    "text": "Displaying vs. summarizing data\n\n\nDisplay\n\n\n# A tibble: 87 × 3\n   name               height  mass\n   &lt;chr&gt;               &lt;int&gt; &lt;dbl&gt;\n 1 Luke Skywalker        172    77\n 2 C-3PO                 167    75\n 3 R2-D2                  96    32\n 4 Darth Vader           202   136\n 5 Leia Organa           150    49\n 6 Owen Lars             178   120\n 7 Beru Whitesun Lars    165    75\n 8 R5-D4                  97    32\n 9 Biggs Darklighter     183    84\n10 Obi-Wan Kenobi        182    77\n# ℹ 77 more rows\n\n\n\nSummarize\n\n\n# A tibble: 3 × 2\n  gender    avg_ht\n  &lt;chr&gt;      &lt;dbl&gt;\n1 feminine    167.\n2 masculine   177.\n3 &lt;NA&gt;        175"
-  },
-  {
-    "objectID": "slides/1-2-tidy-data/1-2-tidy-data.html#displaying-vs.-summarizing-data-1",
-    "href": "slides/1-2-tidy-data/1-2-tidy-data.html#displaying-vs.-summarizing-data-1",
-    "title": "Tidy data",
-    "section": "Displaying vs. summarizing data",
-    "text": "Displaying vs. summarizing data\n\n\nDisplay\n\nstarwars |&gt;\n  select(name, height, mass)\n\n\nSummarize\n\nstarwars |&gt;\n  group_by(gender) |&gt;\n  summarize(\n    avg_ht = mean(height, na.rm = TRUE)\n  )"
   }
 ]
