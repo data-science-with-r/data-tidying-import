@@ -1,0 +1,121 @@
+[
+  {
+    "objectID": "slides/1-1-welcome/1-1-welcome.html#data-science",
+    "href": "slides/1-1-welcome/1-1-welcome.html#data-science",
+    "title": "Welcome",
+    "section": "Data science",
+    "text": "Data science\n\n\nData science is an exciting discipline that allows you to turn raw data into understanding, insight, and knowledge.\nYou’re going to learn to do this the tidy way – more on that later!\nThis is a course on introduction to data science, with an emphasis on statistical thinking."
+  },
+  {
+    "objectID": "slides/1-1-welcome/1-1-welcome.html#course-faq",
+    "href": "slides/1-1-welcome/1-1-welcome.html#course-faq",
+    "title": "Welcome",
+    "section": "Course FAQ",
+    "text": "Course FAQ\nQ: What data science background does this course assume?\nA: None. But it does require a willingness to learn and a motivation to work with data.\n\nQ: Will we be doing computing?\nA: Yes.\n\n\nQ: What computing language will we learn?\nA: R.\n\n\nQ: Why not language X?\nA: A great discussion for the course forum!"
+  },
+  {
+    "objectID": "slides/1-1-welcome/1-1-welcome.html#excel-not",
+    "href": "slides/1-1-welcome/1-1-welcome.html#excel-not",
+    "title": "Welcome",
+    "section": "Excel, not…",
+    "text": "Excel, not…"
+  },
+  {
+    "objectID": "slides/1-1-welcome/1-1-welcome.html#r",
+    "href": "slides/1-1-welcome/1-1-welcome.html#r",
+    "title": "Welcome",
+    "section": "R",
+    "text": "R"
+  },
+  {
+    "objectID": "slides/1-1-welcome/1-1-welcome.html#rstudio",
+    "href": "slides/1-1-welcome/1-1-welcome.html#rstudio",
+    "title": "Welcome",
+    "section": "RStudio",
+    "text": "RStudio"
+  },
+  {
+    "objectID": "slides/1-1-welcome/1-1-welcome.html#data-science-life-cycle-1",
+    "href": "slides/1-1-welcome/1-1-welcome.html#data-science-life-cycle-1",
+    "title": "Welcome",
+    "section": "Data science life cycle",
+    "text": "Data science life cycle\n\n\n\n\n\n\nWickham, Hadley, Mine Çetinkaya-Rundel, and Garrett Grolemund. “R for Data Science.” O’Reilly Media, Inc.”, 2023."
+  },
+  {
+    "objectID": "slides/1-1-welcome/1-1-welcome.html#import",
+    "href": "slides/1-1-welcome/1-1-welcome.html#import",
+    "title": "Welcome",
+    "section": "Import",
+    "text": "Import"
+  },
+  {
+    "objectID": "slides/1-1-welcome/1-1-welcome.html#tidy---transform",
+    "href": "slides/1-1-welcome/1-1-welcome.html#tidy---transform",
+    "title": "Welcome",
+    "section": "Tidy -> transform",
+    "text": "Tidy -&gt; transform"
+  },
+  {
+    "objectID": "slides/1-1-welcome/1-1-welcome.html#visualize",
+    "href": "slides/1-1-welcome/1-1-welcome.html#visualize",
+    "title": "Welcome",
+    "section": "Visualize",
+    "text": "Visualize"
+  },
+  {
+    "objectID": "slides/1-1-welcome/1-1-welcome.html#model",
+    "href": "slides/1-1-welcome/1-1-welcome.html#model",
+    "title": "Welcome",
+    "section": "Model",
+    "text": "Model"
+  },
+  {
+    "objectID": "slides/1-1-welcome/1-1-welcome.html#understand",
+    "href": "slides/1-1-welcome/1-1-welcome.html#understand",
+    "title": "Welcome",
+    "section": "Understand",
+    "text": "Understand"
+  },
+  {
+    "objectID": "slides/1-1-welcome/1-1-welcome.html#communicate",
+    "href": "slides/1-1-welcome/1-1-welcome.html#communicate",
+    "title": "Welcome",
+    "section": "Communicate",
+    "text": "Communicate"
+  },
+  {
+    "objectID": "slides/1-1-welcome/1-1-welcome.html#understand-1",
+    "href": "slides/1-1-welcome/1-1-welcome.html#understand-1",
+    "title": "Welcome",
+    "section": "Understand",
+    "text": "Understand\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n# A tibble: 5 × 2\n  date             season\n  &lt;chr&gt;            &lt;chr&gt; \n1 23 January 2017  winter\n2 4 March 2017     spring\n3 14 June 2017     summer\n4 1 September 2017 fall  \n5 ...              ..."
+  },
+  {
+    "objectID": "slides/1-1-welcome/1-1-welcome.html#understand-communicate",
+    "href": "slides/1-1-welcome/1-1-welcome.html#understand-communicate",
+    "title": "Welcome",
+    "section": "Understand + communicate",
+    "text": "Understand + communicate"
+  },
+  {
+    "objectID": "slides/1-1-welcome/1-1-welcome.html#program",
+    "href": "slides/1-1-welcome/1-1-welcome.html#program",
+    "title": "Welcome",
+    "section": "Program",
+    "text": "Program"
+  },
+  {
+    "objectID": "slides/1-1-welcome/1-1-welcome.html#data-visualization-and-transformation",
+    "href": "slides/1-1-welcome/1-1-welcome.html#data-visualization-and-transformation",
+    "title": "Welcome",
+    "section": "Data visualization and transformation",
+    "text": "Data visualization and transformation"
+  },
+  {
+    "objectID": "slides/1-1-welcome/1-1-welcome.html#data-science-life-cycle",
+    "href": "slides/1-1-welcome/1-1-welcome.html#data-science-life-cycle",
+    "title": "Welcome",
+    "section": "Data science life cycle",
+    "text": "Data science life cycle"
+  }
+]
