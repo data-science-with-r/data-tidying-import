@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Data tidying and importing - Nobel Prize Winners &amp; Sales Data</title>
+<title>Data tidying and importing - Nobel Prize winners &amp; sales data</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -266,7 +266,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"options":{"autorun":"true","output":"true","warning":"true","label":"unnamed-chunk-1","fig-height":5,"comment":"","message":"true","fig-cap":"","classes":"","out-width":"700px","results":"markup","fig-width":7,"context":"setup","read-only":"false","dpi":72,"out-height":""},"id":1,"code":"download.file(\n  \"https://raw.githubusercontent.com/ElijahMeyer3/Coursera/main/data/nobel.csv\",\n  \"nobel.csv\"\n)\n\ndownload.file(\n  \"https://raw.githubusercontent.com/ElijahMeyer3/Coursera/main/data/sales.xlsx\",\n  \"sales.xlsx\"\n)\n\noptions(readr.show_progress = FALSE)"},{"options":{"autorun":"false","output":"true","warning":"true","label":"unnamed-chunk-2","fig-height":5,"comment":"","message":"true","fig-cap":"","classes":"","out-width":"700px","results":"markup","fig-width":7,"context":"interactive","read-only":"false","dpi":72,"out-height":""},"id":2,"code":"nobel <- read_csv(\"nobel.csv\")"},{"options":{"autorun":"false","output":"true","warning":"true","label":"unnamed-chunk-3","fig-height":5,"comment":"","message":"true","fig-cap":"","classes":"","out-width":"700px","results":"markup","fig-width":7,"context":"interactive","read-only":"false","dpi":72,"out-height":""},"id":3,"code":"# add code here"},{"options":{"autorun":"false","output":"true","warning":"true","label":"unnamed-chunk-4","fig-height":5,"comment":"","message":"true","fig-cap":"","classes":"","out-width":"700px","results":"markup","fig-width":7,"context":"interactive","read-only":"false","dpi":72,"out-height":""},"id":4,"code":"nobel |>\n  mutate(gender = as.numeric(gender)) |>\n  select(gender)"},{"options":{"autorun":"false","output":"true","warning":"true","label":"unnamed-chunk-5","fig-height":5,"comment":"","message":"true","fig-cap":"","classes":"","out-width":"700px","results":"markup","fig-width":7,"context":"interactive","read-only":"false","dpi":72,"out-height":""},"id":5,"code":"\nnobel |>\n  mutate(gender_num = as.numeric(as.factor(gender))) |>\n  select(gender, gender_num) |>\n  unique()"},{"options":{"autorun":"false","output":"true","warning":"true","label":"sales-import","fig-height":5,"comment":"","message":"true","fig-cap":"","classes":"","out-width":"700px","results":"markup","fig-width":7,"context":"interactive","read-only":"false","dpi":72,"out-height":""},"id":6,"code":"sales <- read_excel(\n  \"sales.xlsx\"\n)\n\nglimpse(sales)"},{"options":{"autorun":"false","output":"true","warning":"true","label":"unnamed-chunk-7","fig-height":5,"comment":"","message":"true","fig-cap":"","classes":"","out-width":"700px","results":"markup","fig-width":7,"context":"interactive","read-only":"false","dpi":72,"out-height":""},"id":7,"code":"read_excel(\n  \"sales.xlsx\", \n  skip = 3,\n  col_names = c(\"id\", \"n\")\n) |>\n# add code here"}];
+globalThis.qwebrCellDetails = [{"id":1,"options":{"results":"markup","read-only":"false","warning":"true","message":"true","autorun":"true","fig-height":5,"context":"setup","dpi":72,"out-height":"","out-width":"700px","output":"true","label":"unnamed-chunk-1","classes":"","fig-cap":"","fig-width":7,"comment":""},"code":"download.file(\n  \"https://raw.githubusercontent.com/ElijahMeyer3/Coursera/main/data/nobel.csv\",\n  \"nobel.csv\"\n)\n\ndownload.file(\n  \"https://raw.githubusercontent.com/ElijahMeyer3/Coursera/main/data/sales.xlsx\",\n  \"sales.xlsx\"\n)\n\noptions(readr.show_progress = FALSE)"},{"id":2,"options":{"results":"markup","read-only":"false","warning":"true","message":"true","autorun":"false","fig-height":5,"context":"interactive","dpi":72,"out-height":"","out-width":"700px","output":"true","label":"unnamed-chunk-2","classes":"","fig-cap":"","fig-width":7,"comment":""},"code":"nobel <- read_csv(\"nobel.csv\")"},{"id":3,"options":{"results":"markup","read-only":"false","warning":"true","message":"true","autorun":"false","fig-height":5,"context":"interactive","dpi":72,"out-height":"","out-width":"700px","output":"true","label":"unnamed-chunk-3","classes":"","fig-cap":"","fig-width":7,"comment":""},"code":"nobel <- read_csv(\"nobel.csv\", # add code here)"},{"id":4,"options":{"results":"markup","read-only":"false","warning":"true","message":"true","autorun":"false","fig-height":5,"context":"interactive","dpi":72,"out-height":"","out-width":"700px","output":"true","label":"unnamed-chunk-4","classes":"","fig-cap":"","fig-width":7,"comment":""},"code":"nobel |>\n  mutate(gender = as.numeric(gender)) |>\n  select(gender)"},{"id":5,"options":{"results":"markup","read-only":"false","warning":"true","message":"true","autorun":"false","fig-height":5,"context":"interactive","dpi":72,"out-height":"","out-width":"700px","output":"true","label":"unnamed-chunk-5","classes":"","fig-cap":"","fig-width":7,"comment":""},"code":"nobel |>\n  mutate(gender_num = as.numeric(as.factor(gender))) |>\n  select(gender, gender_num) |>\n  unique()"},{"id":6,"options":{"results":"markup","read-only":"false","warning":"true","message":"true","autorun":"false","fig-height":5,"context":"interactive","dpi":72,"out-height":"","out-width":"700px","output":"true","label":"sales-import","classes":"","fig-cap":"","fig-width":7,"comment":""},"code":"sales <- read_excel(\n  \"sales.xlsx\"\n)\n\nglimpse(sales)"},{"id":7,"options":{"results":"markup","read-only":"false","warning":"true","message":"true","autorun":"false","fig-height":5,"context":"interactive","dpi":72,"out-height":"","out-width":"700px","output":"true","label":"unnamed-chunk-7","classes":"","fig-cap":"","fig-width":7,"comment":""},"code":"read_excel(\n  \"sales.xlsx\", \n  skip = 3,\n  col_names = c(\"id\", \"n\")\n) |>\n# add code here"}];
 
 </script>
 <script type="module">
@@ -1026,7 +1026,7 @@ globalThis.qwebrExecuteCode = async function (
    
   <ul>
   <li><a href="#packages" id="toc-packages" class="nav-link active" data-scroll-target="#packages">Packages</a></li>
-  <li><a href="#nobel-winners" id="toc-nobel-winners" class="nav-link" data-scroll-target="#nobel-winners">Nobel winners</a></li>
+  <li><a href="#nobel-prize-winners" id="toc-nobel-prize-winners" class="nav-link" data-scroll-target="#nobel-prize-winners">Nobel Prize winners</a></li>
   <li><a href="#type-coercion" id="toc-type-coercion" class="nav-link" data-scroll-target="#type-coercion">Type coercion</a></li>
   <li><a href="#sales" id="toc-sales" class="nav-link" data-scroll-target="#sales">Sales</a></li>
   <li><a href="#putting-it-all-together" id="toc-putting-it-all-together" class="nav-link" data-scroll-target="#putting-it-all-together">Putting it all together</a></li>
@@ -1212,7 +1212,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Nobel Prize Winners &amp; Sales Data</h1>
+<h1 class="title">Nobel Prize winners &amp; sales data</h1>
 </div>
 
 
@@ -1237,27 +1237,34 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <li><strong>readxl:</strong> For importing data from Excel.</li>
 </ul>
 </section>
-<section id="nobel-winners" class="level2">
-<h2 class="anchored" data-anchor-id="nobel-winners">Nobel winners</h2>
-<p>For this exercise, we are going to work with a Nobel Prize winners data set from the years 1901 through 2018. Please read in the following data below.</p>
+<section id="nobel-prize-winners" class="level2">
+<h2 class="anchored" data-anchor-id="nobel-prize-winners">Nobel Prize winners</h2>
+<p>For this exercise, we are going to work with a Nobel Prize winners dataset from the years 1901 through 2018. Please read in the following data below.</p>
 <div id="qwebr-insertion-location-1"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <div id="qwebr-insertion-location-2"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>Based on the tibble output, what are the number of rows and columns of the nobel data set? What types of variables are you working with?</p>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
+<p>Based on the tibble output, what are the number of rows and columns of the nobel dataset? What types of variables are you working with?</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Warning
+Solution
 </div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>If you receive the error <span style="color:red;">Error: object ‘nobel’ not found</span>, go back and read in your data above.</p>
+<p>There are 935 rows and 26 columns in nobel dataset.</p>
+<p>There are 21 character variables, 3 dbl variables, and 2 date variables</p>
 </div>
 </div>
+</div>
+<p>Now, rerun the code above to read in the dataset, but use the argument <code>show_col_types = FALSE</code> to suppress the given dataset information</p>
+<div id="qwebr-insertion-location-3"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -1270,14 +1277,20 @@ Solution
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>There are 935 rows and 26 columns in nobel data set.</p>
-<p>There are 21 character variables, 3 dbl variables, and 2 date variables</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>nobel <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"nobel.csv"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Notice that there is no given message when running the code. This code simply loads the dataset.</p>
 </div>
 </div>
 </div>
-<p>Now, rerun the code above to read in the data set, but use the argument <code>show_col_types = FALSE</code> to suppress the given data set information</p>
-<div id="qwebr-insertion-location-3"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section>
+<section id="type-coercion" class="level2">
+<h2 class="anchored" data-anchor-id="type-coercion">Type coercion</h2>
+<p>We are going to use the <code>nobel</code> dataset to explore type coercion. Using <code>glimpse()</code>, identify what type of variable <code>gender</code> is in this dataset. Additionally, identify the levels of this variable.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add response here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -1289,32 +1302,6 @@ Solution
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>nobel <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"nobel.csv"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Notice that there is no given message when running the code. This code simply loads the data set.</p>
-</div>
-</div>
-</div>
-</section>
-<section id="type-coercion" class="level2">
-<h2 class="anchored" data-anchor-id="type-coercion">Type coercion</h2>
-<p>We are going to use the <code>nobel</code> data set to explore type coercion. Using <code>glimpse()</code>, identify what type of variable <code>gender</code> is in this data set. Additionally, identify the levels of this variable.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add response here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Solution
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(nobel)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1361,12 +1348,31 @@ $ country_original      &lt;chr&gt; "Germany", "the Netherlands", "the Netherlan
 3 org       27</code></pre>
 </div>
 </div>
-<p><code>gender</code> is a character variable. These data have three different genders: male, female, and org.</p>
+<p><code>gender</code> is a character variable. This variable has three different genders: <code>male</code>, <code>female</code>, and <code>org</code>.</p>
 </div>
 </div>
 </div>
-<p>Suppose we want to turn the three listed genders into values. Run the following code. What happened?</p>
+<p>Suppose we want to turn the three listed genders into numeric values. Run the following code. What happened?</p>
 <div id="qwebr-insertion-location-4"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>When trying to change <code>male</code>, <code>female</code> and <code>org</code> into numbers from characters, each value became an NA.</p>
+</div>
+</div>
+</div>
+<p>If we want the function <code>as.numeric()</code> to coerce these values into numbers, we need to change them to be a factor first. Run the following code, and compare the results. What values were assigned to which group? How do you think R determined this?</p>
+<div id="qwebr-insertion-location-5"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
@@ -1380,25 +1386,6 @@ Solution
 </div>
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>When trying to change <code>male</code>, <code>female</code> and <code>org</code> into numbers from characters, each value became an NA.</p>
-</div>
-</div>
-</div>
-<p>If we want the function <code>as.numeric()</code> to coerce these values into numbers, we need to change them to be a factor first. Run the following code, and compare the results. What values were assiged to which group? How do you think R determined this?</p>
-<div id="qwebr-insertion-location-5"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Solution
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
 <p>R assigned male = 2; female = 1; and org = 3. These were assigned alpha-numerically.</p>
 </div>
 </div>
@@ -1407,13 +1394,12 @@ Solution
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>nobel <span class="sc">|&gt;</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">gender_num =</span> <span class="fu">case_when</span>(</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>      gender <span class="sc">==</span> <span class="st">"female"</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>      gender <span class="sc">==</span> <span class="st">"male"</span> <span class="sc">~</span> <span class="dv">2</span>,</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>      gender <span class="sc">==</span> <span class="st">"org"</span> <span class="sc">~</span> <span class="dv">3</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(gender, gender_num) <span class="sc">|&gt;</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unique</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    gender <span class="sc">==</span> <span class="st">"female"</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    gender <span class="sc">==</span> <span class="st">"male"</span> <span class="sc">~</span> <span class="dv">2</span>,</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    gender <span class="sc">==</span> <span class="st">"org"</span> <span class="sc">~</span> <span class="dv">3</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  )) <span class="sc">|&gt;</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(gender, gender_num) <span class="sc">|&gt;</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unique</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 2
   gender gender_num
@@ -1423,7 +1409,7 @@ Solution
 3 org             3</code></pre>
 </div>
 </div>
-<p>Suppose you wanted to make this change to the nobel data set, and export a new csv to your current working directory on your local installment. This can be accomplished using <code>write_csv()</code>. See the help file <a href="https://www.rdocumentation.org/packages/readr/versions/0.1.0/topics/write_csv">here</a>.</p>
+<p>Suppose you wanted to make this change to the <code>nobel</code> dataset, and export a new csv to your current working directory on your local installment. This can be accomplished using <code>write_csv()</code>. See the help file <a href="https://www.rdocumentation.org/packages/readr/versions/0.1.0/topics/write_csv">here</a>.</p>
 </section>
 <section id="sales" class="level2">
 <h2 class="anchored" data-anchor-id="sales">Sales</h2>
@@ -1437,6 +1423,27 @@ Solution
 <div id="qwebr-insertion-location-6"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>These data are not tidy. These data are read in with the text as a column name, and creates another column name called <code>...2</code>.</p>
+</div>
+</div>
+</div>
+<p>See the help file for <code>read_excel()</code> <a href="https://www.rdocumentation.org/packages/readxl/versions/0.1.1/topics/read_excel">here</a>. Notice that, in the current <code>sales</code> dataset, we want to skip 3 rows (the first row acts as a header for the column names). We can do this using the <code>skip</code> argument. At the same time, we can specify names for each column by giving the argument <code>col_names</code> a character vector. Use these arguments and add to the code below to skip 3 lines and name the columns <code>id</code> and <code>n</code>.</p>
+<pre class="{web-r}"><code>sales &lt;- read_excel(
+  "sales.xlsx", 
+# add code here
+)</code></pre>
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -1448,30 +1455,9 @@ Solution
 </div>
 <div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>The data are not tidy. The data are read in with the text as a column name, and creates another column name called <code>...2</code>.</p>
-</div>
-</div>
-</div>
-<p>See the help file for <code>read_excel()</code> <a href="https://www.rdocumentation.org/packages/readxl/versions/0.1.1/topics/read_excel">here</a>. Notice that, in the current <code>sales</code> data set, we want to skip 3 rows (the first row acts as a header for the column names). We can do this using the <code>skip</code> argument. At the same time, we can specify names for each column by giving the argument <code>col_names</code> a character vector. Use these arguments and add to the code below to skip 3 lines and name the columns <code>id</code> and <code>n</code>.</p>
-<pre class="{web-r}"><code>sales &lt;- read_excel(
-  "sales.xlsx", 
-# add code here
-)</code></pre>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Solution
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-8" class="callout-8-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>sales <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"sales.xlsx"</span>, </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"sales.xlsx"</span>,</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">skip =</span> <span class="dv">3</span>,</span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">col_names =</span> <span class="fu">c</span>(<span class="st">"id"</span>, <span class="st">"n"</span>)</span>
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>)</span>
@@ -1489,7 +1475,7 @@ Solution
 <div id="qwebr-insertion-location-7"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -1498,7 +1484,7 @@ Solution
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>sales <span class="sc">|&gt;</span></span>
