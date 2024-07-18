@@ -30,13 +30,9 @@ download.file(
 )
 
 options(readr.show_progress = FALSE)
-
-blazer_long |>
-  group_by(player) |>
-  count(player)
 ```
 
-The Portland Trailblazers are a National Basketball Association (NBA) sports team. In this mini analysis, we will work with a data set that has informatino of the points scored by 9 Portland Trailblazers players across the first 10 games of the 2021-2022 NBA season. If you would like to become more familiar with the game of basketball, please click [here](https://www.britannica.com/sports/basketball). If you would like more information on the Portland Trailblazers, please click [here](https://en.wikipedia.org/wiki/Portland_Trail_Blazers).
+The Portland Trailblazers are a National Basketball Association (NBA) sports team. In this mini analysis, we will work with a dataset that has informatino of the points scored by 9 Portland Trailblazers players across the first 10 games of the 2021-2022 NBA season. If you would like to become more familiar with the game of basketball, please click [here](https://www.britannica.com/sports/basketball). If you would like more information on the Portland Trailblazers, please click [here](https://en.wikipedia.org/wiki/Portland_Trail_Blazers).
 
 A key to these data can be found below:
 
@@ -79,7 +75,7 @@ library(scales)
 
 ### Get to know the data
 
-Use `glimpse()` to get an overview (or "glimpse") of the data. How many rows and columns are in this data set? In addition, make note of the types of variables you are working with.
+Use `glimpse()` to get an overview (or "glimpse") of the data. How many rows and columns are in this dataset? In addition, make note of the types of variables you are working with.
 
 ```{webr-r}
 # insert code here
@@ -96,7 +92,7 @@ If you receive the error [Error: object 'blazer' not found]{style="color:red;"},
 glimpse(blazer)
 ```
 
-There are 9 rows and 11 columns in blazer data set.
+There are 9 rows and 11 columns in blazer dataset.
 
 `player` is a character variable; the remaining variables are doubles.
 :::
@@ -105,21 +101,21 @@ Suppose you are asked to recreate the plot below...
 
 ![](images/blazer_pic.png){fig-align="center"}
 
-Identify the variables you would need to use to recreate this plot. Can this plot be recreated with how your `blazer` data set current format? 
+Identify the variables you would need to use to recreate this plot. Can this plot be recreated with how your `blazer` dataset current format? 
 
 ::: {.callout-tip collapse="true"}
 ## Solution
-Variables in the above plot include `player`, `game`, `location`, and `points`. This plot can not be recreated with how the `blazer` data set is currently formatted. 
+Variables in the above plot include `player`, `game`, `location`, and `points`. This plot can not be recreated with how the `blazer` dataset is currently formatted. 
 :::
 
-Now, think critically about how we could transform our `blazer` data set to have the variables necessary to make the plot above. What would our new data set have to look like? 
+Now, think critically about how we could transform our `blazer` dataset to have the variables necessary to make the plot above. What would our new dataset have to look like? What R function(s) could we use to transform our data into what we need?
 
 ::: {.callout-tip collapse="true"}
 ## Solution
-We have a `player` column in the data set. In order to get a  `game`, `location`, and `points`, we can use `pivot_longer()`, which will take this wide data set and make it into a longer data set. That is, we can bring the variable names of `game1_home`, `game2_home`, etc. into our data set as values, which is needed to recreate the plot above).
+We have a `player` column in the dataset. In order to get a  `game`, `location`, and `points`, we can use `pivot_longer()`, which will take this wide dataset and make it into a longer dataset. That is, we can bring the variable names of `game1_home`, `game2_home`, etc. into our dataset as values, which is needed to recreate the plot above.
 :::
 
-See more information about `pivot_longer()` [here](https://tidyr.tidyverse.org/reference/pivot_longer.html). We are going to create our final data set in steps. First use `pivot_longer()` to change our data set that has 90 rows and 3 columns that are named player, game, and points.
+See more information about `pivot_longer()` [here](https://tidyr.tidyverse.org/reference/pivot_longer.html). We are going to create our final dataset in steps. First use `pivot_longer()` to change our dataset that has 90 rows and 3 columns that are named player, game, and points.
 
 ```{webr-r}
 # insert code here
@@ -136,7 +132,7 @@ blazer |>
 ```
 :::
 
-What are the next steps we need to take to change our data set to recreate the plot above? 
+What are the next steps we need to take to change our dataset to recreate the plot above? 
 
 ::: {.callout-tip collapse="true"}
 ## Solution
@@ -166,7 +162,7 @@ blazer |>
 ```
 :::
 
-We now need to separate the values away from the location in the `game` column. Please see the documentation on `separate_wider_delim` [here](https://tidyr.tidyverse.org/reference/separate_wider_delim.html). Add to your existing code to split the game number and game location into two columns. Call the new column `location`. Save and name this data set as `blazer_long` to be used in the next section. 
+We now need to separate the values away from the location in the `game` column. Please see the documentation on `separate_wider_delim` [here](https://tidyr.tidyverse.org/reference/separate_wider_delim.html). Add to your existing code to split the game number and game location into two columns. Call the new column `location`. Save and name this dataset as `blazer_long` to be used in the next section. 
 
 ```{webr-r}
 # insert code here
@@ -189,7 +185,7 @@ blazer_long
 
 ### Summary statistics 
 
-Let's use the new `blazer_long` data set to calculate some summary statistics for the Portland Trailblazers to learn more about their performance for these 10 games! 
+Let's use the new `blazer_long` dataset to calculate some summary statistics for the Portland Trailblazers to learn more about their performance for these 10 games! 
 
 1. Calculate the mean points scored across all players between home and away games. 
 
@@ -242,7 +238,7 @@ blazer_long |>
 :::
 ## Bonus Challange 
 
-Recreate the plot, using the `blazer_long` data set! 
+Recreate the plot, using the `blazer_long` dataset! 
 
 ![](images/blazer_pic.png){fig-align="center"}
 
