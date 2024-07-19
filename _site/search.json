@@ -126,104 +126,6 @@
     "text": "Putting it all together\nManipulate the sales data such such that it looks like the following using functions you have learned from the tidyverse to transform data.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nsales |&gt;\n  mutate(\n    is_brand_name = str_detect(id, \"Brand\"),\n    brand = if_else(is_brand_name, id, NA)\n  ) |&gt;\n  fill(brand) |&gt;\n  filter(!is_brand_name) |&gt;\n  select(brand, id, n)\n\n# A tibble: 7 × 3\n  brand   id    n    \n  &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;\n1 Brand 1 1234  8    \n2 Brand 1 8721  2    \n3 Brand 1 1822  3    \n4 Brand 2 3333  1    \n5 Brand 2 2156  3    \n6 Brand 2 3987  6    \n7 Brand 2 3216  5    \n\n\n\n\n\nTakeaway We should write code to manipulate data instead of opening Excel and editing the data in there because it allows us to re-use the data multiple times, and leaves a transparent trail of any modifications done while manipulating the data. Changing data in Excel is neither reproducible nor reusable."
   },
   {
-    "objectID": "slides/1-1-welcome/1-1-welcome.html#data-science-life-cycle",
-    "href": "slides/1-1-welcome/1-1-welcome.html#data-science-life-cycle",
-    "title": "Welcome",
-    "section": "Data science life cycle",
-    "text": "Data science life cycle"
-  },
-  {
-    "objectID": "slides/1-1-welcome/1-1-welcome.html#import",
-    "href": "slides/1-1-welcome/1-1-welcome.html#import",
-    "title": "Welcome",
-    "section": "Import",
-    "text": "Import"
-  },
-  {
-    "objectID": "slides/1-1-welcome/1-1-welcome.html#tidy---transform",
-    "href": "slides/1-1-welcome/1-1-welcome.html#tidy---transform",
-    "title": "Welcome",
-    "section": "Tidy -> transform",
-    "text": "Tidy -&gt; transform"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": " Data tidying and importing",
-    "section": "",
-    "text": "Title\n\n\n\n\n\n\nWelcome\n\n\n\n\nTidy data\n\n\n\n\nTidying data\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "index.html#slides",
-    "href": "index.html#slides",
-    "title": " Data tidying and importing",
-    "section": "",
-    "text": "Title\n\n\n\n\n\n\nWelcome\n\n\n\n\nTidy data\n\n\n\n\nTidying data\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "index.html#code-alongs",
-    "href": "index.html#code-alongs",
-    "title": " Data tidying and importing",
-    "section": "Code alongs",
-    "text": "Code alongs\n\n\n\n\n\nTitle\n\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "index.html#exercises",
-    "href": "index.html#exercises",
-    "title": " Data tidying and importing",
-    "section": "Exercises",
-    "text": "Exercises\n\n\n\n\n\nTitle\n\n\n\n\n\n\nNobel Prize winners & sales data\n\n\n\n\nNYC flights + data wrangling\n\n\n\n\nTidy Basketball\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "slides/1-2-tidy-data/1-2-tidy-data.html#tidy-data",
-    "href": "slides/1-2-tidy-data/1-2-tidy-data.html#tidy-data",
-    "title": "Tidy data",
-    "section": "Tidy data",
-    "text": "Tidy data\n\nHappy families are all alike; every unhappy family is unhappy in its own way.\nLeo Tolstoy\n\n\n\nCharacteristics of tidy data:\n\nEach variable forms a column.\nEach observation forms a row.\nEach type of observational unit forms a table.\n\n\nCharacteristics of untidy data:\n!@#$%^&*()"
-  },
-  {
-    "objectID": "slides/1-2-tidy-data/1-2-tidy-data.html#what-makes-this-data-not-tidy",
-    "href": "slides/1-2-tidy-data/1-2-tidy-data.html#what-makes-this-data-not-tidy",
-    "title": "Tidy data",
-    "section": "What makes this data not tidy?",
-    "text": "What makes this data not tidy?\n\n\n\nSource: Army Air Forces Statistical Digest, WW II"
-  },
-  {
-    "objectID": "slides/1-2-tidy-data/1-2-tidy-data.html#what-makes-this-data-not-tidy-1",
-    "href": "slides/1-2-tidy-data/1-2-tidy-data.html#what-makes-this-data-not-tidy-1",
-    "title": "Tidy data",
-    "section": "What makes this data not tidy?",
-    "text": "What makes this data not tidy?\n\n\n\nSource: Gapminder, Estimated HIV prevalence among 15-49 year olds"
-  },
-  {
-    "objectID": "slides/1-2-tidy-data/1-2-tidy-data.html#what-makes-this-data-not-tidy-2",
-    "href": "slides/1-2-tidy-data/1-2-tidy-data.html#what-makes-this-data-not-tidy-2",
-    "title": "Tidy data",
-    "section": "What makes this data not tidy?",
-    "text": "What makes this data not tidy?\n\n\n\nSource: US Census Fact Finder, General Economic Characteristics, ACS 2017"
-  },
-  {
-    "objectID": "slides/1-2-tidy-data/1-2-tidy-data.html#what-makes-data-tidy",
-    "href": "slides/1-2-tidy-data/1-2-tidy-data.html#what-makes-data-tidy",
-    "title": "Tidy data",
-    "section": "What makes data tidy?",
-    "text": "What makes data tidy?\n\n“Tidy datasets are easy to manipulate, model and visualise, and have a specific structure: each variable is a column, each observation is a row, and each type of observational unit is a table.”\n\n\n\n\n\n\n\n\nNote\n\n\n“easy to manipulate” = “straightforward to manipulate”\n\n\n\n\n\n\nWickham, H. (2014). Tidy data. Journal of statistical software, 59, 1-23."
-  },
-  {
-    "objectID": "slides/1-2-tidy-data/1-2-tidy-data.html#displaying-vs.-summarizing-data",
-    "href": "slides/1-2-tidy-data/1-2-tidy-data.html#displaying-vs.-summarizing-data",
-    "title": "Tidy data",
-    "section": "Displaying vs. summarizing data",
-    "text": "Displaying vs. summarizing data\n\n\nDisplay\n\n\n# A tibble: 87 × 3\n   name               height  mass\n   &lt;chr&gt;               &lt;int&gt; &lt;dbl&gt;\n 1 Luke Skywalker        172    77\n 2 C-3PO                 167    75\n 3 R2-D2                  96    32\n 4 Darth Vader           202   136\n 5 Leia Organa           150    49\n 6 Owen Lars             178   120\n 7 Beru Whitesun Lars    165    75\n 8 R5-D4                  97    32\n 9 Biggs Darklighter     183    84\n10 Obi-Wan Kenobi        182    77\n# ℹ 77 more rows\n\n\n\nSummarize\n\n\n# A tibble: 3 × 2\n  gender    avg_ht\n  &lt;chr&gt;      &lt;dbl&gt;\n1 feminine    167.\n2 masculine   177.\n3 &lt;NA&gt;        175"
-  },
-  {
-    "objectID": "slides/1-2-tidy-data/1-2-tidy-data.html#displaying-vs.-summarizing-data-1",
-    "href": "slides/1-2-tidy-data/1-2-tidy-data.html#displaying-vs.-summarizing-data-1",
-    "title": "Tidy data",
-    "section": "Displaying vs. summarizing data",
-    "text": "Displaying vs. summarizing data\n\n\nDisplay\n\nstarwars |&gt;\n  select(name, height, mass)\n\n\nSummarize\n\nstarwars |&gt;\n  group_by(gender) |&gt;\n  summarize(\n    avg_ht = mean(height, na.rm = TRUE)\n  )"
-  },
-  {
     "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#task-and-goal",
     "href": "slides/1-3-tidying-data/1-3-tidying-data.html#task-and-goal",
     "title": "Tidying data",
@@ -418,6 +320,342 @@
     "title": "Tidying data",
     "section": "Theming",
     "text": "Theming"
+  },
+  {
+    "objectID": "slides/1-2-tidy-data/1-2-tidy-data.html#tidy-data",
+    "href": "slides/1-2-tidy-data/1-2-tidy-data.html#tidy-data",
+    "title": "Tidy data",
+    "section": "Tidy data",
+    "text": "Tidy data\n\nHappy families are all alike; every unhappy family is unhappy in its own way.\nLeo Tolstoy\n\n\n\nCharacteristics of tidy data:\n\nEach variable forms a column.\nEach observation forms a row.\nEach type of observational unit forms a table.\n\n\nCharacteristics of untidy data:\n!@#$%^&*()"
+  },
+  {
+    "objectID": "slides/1-2-tidy-data/1-2-tidy-data.html#what-makes-this-data-not-tidy",
+    "href": "slides/1-2-tidy-data/1-2-tidy-data.html#what-makes-this-data-not-tidy",
+    "title": "Tidy data",
+    "section": "What makes this data not tidy?",
+    "text": "What makes this data not tidy?\n\n\n\nSource: Army Air Forces Statistical Digest, WW II"
+  },
+  {
+    "objectID": "slides/1-2-tidy-data/1-2-tidy-data.html#what-makes-this-data-not-tidy-1",
+    "href": "slides/1-2-tidy-data/1-2-tidy-data.html#what-makes-this-data-not-tidy-1",
+    "title": "Tidy data",
+    "section": "What makes this data not tidy?",
+    "text": "What makes this data not tidy?\n\n\n\nSource: Gapminder, Estimated HIV prevalence among 15-49 year olds"
+  },
+  {
+    "objectID": "slides/1-2-tidy-data/1-2-tidy-data.html#what-makes-this-data-not-tidy-2",
+    "href": "slides/1-2-tidy-data/1-2-tidy-data.html#what-makes-this-data-not-tidy-2",
+    "title": "Tidy data",
+    "section": "What makes this data not tidy?",
+    "text": "What makes this data not tidy?\n\n\n\nSource: US Census Fact Finder, General Economic Characteristics, ACS 2017"
+  },
+  {
+    "objectID": "slides/1-2-tidy-data/1-2-tidy-data.html#what-makes-data-tidy",
+    "href": "slides/1-2-tidy-data/1-2-tidy-data.html#what-makes-data-tidy",
+    "title": "Tidy data",
+    "section": "What makes data tidy?",
+    "text": "What makes data tidy?\n\n“Tidy datasets are easy to manipulate, model and visualise, and have a specific structure: each variable is a column, each observation is a row, and each type of observational unit is a table.”\n\n\n\n\n\n\n\n\nNote\n\n\n“easy to manipulate” = “straightforward to manipulate”\n\n\n\n\n\n\nWickham, H. (2014). Tidy data. Journal of statistical software, 59, 1-23."
+  },
+  {
+    "objectID": "slides/1-2-tidy-data/1-2-tidy-data.html#displaying-vs.-summarizing-data",
+    "href": "slides/1-2-tidy-data/1-2-tidy-data.html#displaying-vs.-summarizing-data",
+    "title": "Tidy data",
+    "section": "Displaying vs. summarizing data",
+    "text": "Displaying vs. summarizing data\n\n\nDisplay\n\n\n# A tibble: 87 × 3\n   name               height  mass\n   &lt;chr&gt;               &lt;int&gt; &lt;dbl&gt;\n 1 Luke Skywalker        172    77\n 2 C-3PO                 167    75\n 3 R2-D2                  96    32\n 4 Darth Vader           202   136\n 5 Leia Organa           150    49\n 6 Owen Lars             178   120\n 7 Beru Whitesun Lars    165    75\n 8 R5-D4                  97    32\n 9 Biggs Darklighter     183    84\n10 Obi-Wan Kenobi        182    77\n# ℹ 77 more rows\n\n\n\nSummarize\n\n\n# A tibble: 3 × 2\n  gender    avg_ht\n  &lt;chr&gt;      &lt;dbl&gt;\n1 feminine    167.\n2 masculine   177.\n3 &lt;NA&gt;        175"
+  },
+  {
+    "objectID": "slides/1-2-tidy-data/1-2-tidy-data.html#displaying-vs.-summarizing-data-1",
+    "href": "slides/1-2-tidy-data/1-2-tidy-data.html#displaying-vs.-summarizing-data-1",
+    "title": "Tidy data",
+    "section": "Displaying vs. summarizing data",
+    "text": "Displaying vs. summarizing data\n\n\nDisplay\n\nstarwars |&gt;\n  select(name, height, mass)\n\n\nSummarize\n\nstarwars |&gt;\n  group_by(gender) |&gt;\n  summarize(\n    avg_ht = mean(height, na.rm = TRUE)\n  )"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": " Data tidying and importing",
+    "section": "",
+    "text": "Title\n\n\n\n\n\n\nWelcome\n\n\n\n\nTidy data\n\n\n\n\nTidying data\n\n\n\n\nJoining data\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "index.html#slides",
+    "href": "index.html#slides",
+    "title": " Data tidying and importing",
+    "section": "",
+    "text": "Title\n\n\n\n\n\n\nWelcome\n\n\n\n\nTidy data\n\n\n\n\nTidying data\n\n\n\n\nJoining data\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "index.html#code-alongs",
+    "href": "index.html#code-alongs",
+    "title": " Data tidying and importing",
+    "section": "Code alongs",
+    "text": "Code alongs\n\n\n\n\n\nTitle\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "index.html#exercises",
+    "href": "index.html#exercises",
+    "title": " Data tidying and importing",
+    "section": "Exercises",
+    "text": "Exercises\n\n\n\n\n\nTitle\n\n\n\n\n\n\nNobel Prize winners & sales data\n\n\n\n\nNYC flights + data wrangling\n\n\n\n\nTidy Basketball\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "slides/1-1-welcome/1-1-welcome.html#data-science-life-cycle",
+    "href": "slides/1-1-welcome/1-1-welcome.html#data-science-life-cycle",
+    "title": "Welcome",
+    "section": "Data science life cycle",
+    "text": "Data science life cycle"
+  },
+  {
+    "objectID": "slides/1-1-welcome/1-1-welcome.html#import",
+    "href": "slides/1-1-welcome/1-1-welcome.html#import",
+    "title": "Welcome",
+    "section": "Import",
+    "text": "Import"
+  },
+  {
+    "objectID": "slides/1-1-welcome/1-1-welcome.html#tidy---transform",
+    "href": "slides/1-1-welcome/1-1-welcome.html#tidy---transform",
+    "title": "Welcome",
+    "section": "Tidy -> transform",
+    "text": "Tidy -&gt; transform"
+  },
+  {
+    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#task-and-goal",
+    "href": "slides/1-4-joining-data/1-4-joining-data.html#task-and-goal",
+    "title": "Joining data",
+    "section": "Task and goal",
+    "text": "Task and goal\n\nWe…\nhave multiple data frames\nwant to bring them together"
+  },
+  {
+    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#data-women-in-science",
+    "href": "slides/1-4-joining-data/1-4-joining-data.html#data-women-in-science",
+    "title": "Joining data",
+    "section": "Data: Women in science",
+    "text": "Data: Women in science\nInformation on 10 women in science who changed the world:\n\n\n\n\n\n\n\n\nname\n\n\n\n\nAda Lovelace\n\n\nMarie Curie\n\n\nJanaki Ammal\n\n\nChien-Shiung Wu\n\n\nKatherine Johnson\n\n\nRosalind Franklin\n\n\nVera Rubin\n\n\nGladys West\n\n\nFlossie Wong-Staal\n\n\nJennifer Doudna\n\n\n\n\n\n\n\n\n\nSource: Discover Magazine"
+  },
+  {
+    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#input-1-professions",
+    "href": "slides/1-4-joining-data/1-4-joining-data.html#input-1-professions",
+    "title": "Joining data",
+    "section": "Input 1: professions",
+    "text": "Input 1: professions\n\nprofessions\n\n# A tibble: 10 × 2\n   name               profession                        \n   &lt;chr&gt;              &lt;chr&gt;                             \n 1 Ada Lovelace       Mathematician                     \n 2 Marie Curie        Physicist and Chemist             \n 3 Janaki Ammal       Botanist                          \n 4 Chien-Shiung Wu    Physicist                         \n 5 Katherine Johnson  Mathematician                     \n 6 Rosalind Franklin  Chemist                           \n 7 Vera Rubin         Astronomer                        \n 8 Gladys West        Mathematician                     \n 9 Flossie Wong-Staal Virologist and Molecular Biologist\n10 Jennifer Doudna    Biochemist"
+  },
+  {
+    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#input-2-dates",
+    "href": "slides/1-4-joining-data/1-4-joining-data.html#input-2-dates",
+    "title": "Joining data",
+    "section": "Input 2: dates",
+    "text": "Input 2: dates\n\ndates\n\n# A tibble: 8 × 3\n  name               birth_year death_year\n  &lt;chr&gt;                   &lt;dbl&gt;      &lt;dbl&gt;\n1 Janaki Ammal             1897       1984\n2 Chien-Shiung Wu          1912       1997\n3 Katherine Johnson        1918       2020\n4 Rosalind Franklin        1920       1958\n5 Vera Rubin               1928       2016\n6 Gladys West              1930         NA\n7 Flossie Wong-Staal       1947         NA\n8 Jennifer Doudna          1964         NA"
+  },
+  {
+    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#input-3-works",
+    "href": "slides/1-4-joining-data/1-4-joining-data.html#input-3-works",
+    "title": "Joining data",
+    "section": "Input 3: works",
+    "text": "Input 3: works\n\nworks\n\n# A tibble: 9 × 2\n  name               known_for                              \n  &lt;chr&gt;              &lt;chr&gt;                                  \n1 Ada Lovelace       first computer algorithm               \n2 Marie Curie        theory of radioactivity,  discovery of…\n3 Janaki Ammal       hybrid species, biodiversity protection\n4 Chien-Shiung Wu    confim and refine theory of radioactiv…\n5 Katherine Johnson  calculations of orbital mechanics crit…\n6 Vera Rubin         existence of dark matter               \n7 Gladys West        mathematical modeling of the shape of …\n8 Flossie Wong-Staal first scientist to clone HIV and creat…\n9 Jennifer Doudna    one of the primary developers of CRISP…"
+  },
+  {
+    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#desired-output",
+    "href": "slides/1-4-joining-data/1-4-joining-data.html#desired-output",
+    "title": "Joining data",
+    "section": "Desired output",
+    "text": "Desired output\n\n\n# A tibble: 10 × 5\n   name           profession birth_year death_year known_for\n   &lt;chr&gt;          &lt;chr&gt;           &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;    \n 1 Ada Lovelace   Mathemati…         NA         NA first co…\n 2 Marie Curie    Physicist…         NA         NA theory o…\n 3 Janaki Ammal   Botanist         1897       1984 hybrid s…\n 4 Chien-Shiung … Physicist        1912       1997 confim a…\n 5 Katherine Joh… Mathemati…       1918       2020 calculat…\n 6 Rosalind Fran… Chemist          1920       1958 &lt;NA&gt;     \n 7 Vera Rubin     Astronomer       1928       2016 existenc…\n 8 Gladys West    Mathemati…       1930         NA mathemat…\n 9 Flossie Wong-… Virologis…       1947         NA first sc…\n10 Jennifer Doud… Biochemist       1964         NA one of t…"
+  },
+  {
+    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#inputs-reminder",
+    "href": "slides/1-4-joining-data/1-4-joining-data.html#inputs-reminder",
+    "title": "Joining data",
+    "section": "Inputs, reminder",
+    "text": "Inputs, reminder\n\n\n\nnames(professions)\n\n[1] \"name\"       \"profession\"\n\nnames(dates)\n\n[1] \"name\"       \"birth_year\" \"death_year\"\n\nnames(works)\n\n[1] \"name\"      \"known_for\"\n\n\n\n\nnrow(professions)\n\n[1] 10\n\nnrow(dates)\n\n[1] 8\n\nnrow(works)\n\n[1] 9"
+  },
+  {
+    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#joining-data-frames-1",
+    "href": "slides/1-4-joining-data/1-4-joining-data.html#joining-data-frames-1",
+    "title": "Joining data",
+    "section": "Joining data frames",
+    "text": "Joining data frames\n\nsomething_join(x, y)\n\n\nleft_join(): all rows from x\nright_join(): all rows from y\nfull_join(): all rows from both x and y\nsemi_join(): all rows from x where there are matching values in y, keeping just columns from x\ninner_join(): all rows from x where there are matching values in y, return all combination of multiple matches in the case of multiple matches\nanti_join(): return all rows from x where there are not matching values in y, never duplicate rows of x\n…"
+  },
+  {
+    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#setup-1",
+    "href": "slides/1-4-joining-data/1-4-joining-data.html#setup-1",
+    "title": "Joining data",
+    "section": "Setup",
+    "text": "Setup\nFor the next few slides…\n\n\n\nx &lt;- tibble(\n  id = c(1, 2, 3),\n  value_x = c(\"x1\", \"x2\", \"x3\")\n  )\n\nx\n\n# A tibble: 3 × 2\n     id value_x\n  &lt;dbl&gt; &lt;chr&gt;  \n1     1 x1     \n2     2 x2     \n3     3 x3     \n\n\n\n\ny &lt;- tibble(\n  id = c(1, 2, 4),\n  value_y = c(\"y1\", \"y2\", \"y4\")\n  )\n\ny\n\n# A tibble: 3 × 2\n     id value_y\n  &lt;dbl&gt; &lt;chr&gt;  \n1     1 y1     \n2     2 y2     \n3     4 y4"
+  },
+  {
+    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#left_join",
+    "href": "slides/1-4-joining-data/1-4-joining-data.html#left_join",
+    "title": "Joining data",
+    "section": "left_join()",
+    "text": "left_join()\n\n\n\nleft_join(x, y)\n\nJoining with `by = join_by(id)`\n\n\n# A tibble: 3 × 3\n     id value_x value_y\n  &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;  \n1     1 x1      y1     \n2     2 x2      y2     \n3     3 x3      &lt;NA&gt;"
+  },
+  {
+    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#left_join-1",
+    "href": "slides/1-4-joining-data/1-4-joining-data.html#left_join-1",
+    "title": "Joining data",
+    "section": "left_join()",
+    "text": "left_join()\n\nprofessions |&gt;\n  left_join(dates)\n\nJoining with `by = join_by(name)`\n\n\n# A tibble: 10 × 4\n   name               profession       birth_year death_year\n   &lt;chr&gt;              &lt;chr&gt;                 &lt;dbl&gt;      &lt;dbl&gt;\n 1 Ada Lovelace       Mathematician            NA         NA\n 2 Marie Curie        Physicist and C…         NA         NA\n 3 Janaki Ammal       Botanist               1897       1984\n 4 Chien-Shiung Wu    Physicist              1912       1997\n 5 Katherine Johnson  Mathematician          1918       2020\n 6 Rosalind Franklin  Chemist                1920       1958\n 7 Vera Rubin         Astronomer             1928       2016\n 8 Gladys West        Mathematician          1930         NA\n 9 Flossie Wong-Staal Virologist and …       1947         NA\n10 Jennifer Doudna    Biochemist             1964         NA"
+  },
+  {
+    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#right_join",
+    "href": "slides/1-4-joining-data/1-4-joining-data.html#right_join",
+    "title": "Joining data",
+    "section": "right_join()",
+    "text": "right_join()\n\n\n\nright_join(x, y)\n\nJoining with `by = join_by(id)`\n\n\n# A tibble: 3 × 3\n     id value_x value_y\n  &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;  \n1     1 x1      y1     \n2     2 x2      y2     \n3     4 &lt;NA&gt;    y4"
+  },
+  {
+    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#left_join-2",
+    "href": "slides/1-4-joining-data/1-4-joining-data.html#left_join-2",
+    "title": "Joining data",
+    "section": "left_join()",
+    "text": "left_join()\n\nprofessions |&gt;\n  right_join(dates)\n\nJoining with `by = join_by(name)`\n\n\n# A tibble: 8 × 4\n  name               profession        birth_year death_year\n  &lt;chr&gt;              &lt;chr&gt;                  &lt;dbl&gt;      &lt;dbl&gt;\n1 Janaki Ammal       Botanist                1897       1984\n2 Chien-Shiung Wu    Physicist               1912       1997\n3 Katherine Johnson  Mathematician           1918       2020\n4 Rosalind Franklin  Chemist                 1920       1958\n5 Vera Rubin         Astronomer              1928       2016\n6 Gladys West        Mathematician           1930         NA\n7 Flossie Wong-Staal Virologist and M…       1947         NA\n8 Jennifer Doudna    Biochemist              1964         NA"
+  },
+  {
+    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#full_join",
+    "href": "slides/1-4-joining-data/1-4-joining-data.html#full_join",
+    "title": "Joining data",
+    "section": "full_join()",
+    "text": "full_join()\n\n\n\nfull_join(x, y)\n\nJoining with `by = join_by(id)`\n\n\n# A tibble: 4 × 3\n     id value_x value_y\n  &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;  \n1     1 x1      y1     \n2     2 x2      y2     \n3     3 x3      &lt;NA&gt;   \n4     4 &lt;NA&gt;    y4"
+  },
+  {
+    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#left_join-3",
+    "href": "slides/1-4-joining-data/1-4-joining-data.html#left_join-3",
+    "title": "Joining data",
+    "section": "left_join()",
+    "text": "left_join()\n\nprofessions |&gt;\n  full_join(dates)\n\nJoining with `by = join_by(name)`\n\n\n# A tibble: 10 × 4\n   name               profession       birth_year death_year\n   &lt;chr&gt;              &lt;chr&gt;                 &lt;dbl&gt;      &lt;dbl&gt;\n 1 Ada Lovelace       Mathematician            NA         NA\n 2 Marie Curie        Physicist and C…         NA         NA\n 3 Janaki Ammal       Botanist               1897       1984\n 4 Chien-Shiung Wu    Physicist              1912       1997\n 5 Katherine Johnson  Mathematician          1918       2020\n 6 Rosalind Franklin  Chemist                1920       1958\n 7 Vera Rubin         Astronomer             1928       2016\n 8 Gladys West        Mathematician          1930         NA\n 9 Flossie Wong-Staal Virologist and …       1947         NA\n10 Jennifer Doudna    Biochemist             1964         NA"
+  },
+  {
+    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#inner_join",
+    "href": "slides/1-4-joining-data/1-4-joining-data.html#inner_join",
+    "title": "Joining data",
+    "section": "inner_join()",
+    "text": "inner_join()\n\n\n\ninner_join(x, y)\n\nJoining with `by = join_by(id)`\n\n\n# A tibble: 2 × 3\n     id value_x value_y\n  &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;  \n1     1 x1      y1     \n2     2 x2      y2"
+  },
+  {
+    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#inner_join-1",
+    "href": "slides/1-4-joining-data/1-4-joining-data.html#inner_join-1",
+    "title": "Joining data",
+    "section": "inner_join()",
+    "text": "inner_join()\n\nprofessions |&gt;\n  inner_join(dates)\n\nJoining with `by = join_by(name)`\n\n\n# A tibble: 8 × 4\n  name               profession        birth_year death_year\n  &lt;chr&gt;              &lt;chr&gt;                  &lt;dbl&gt;      &lt;dbl&gt;\n1 Janaki Ammal       Botanist                1897       1984\n2 Chien-Shiung Wu    Physicist               1912       1997\n3 Katherine Johnson  Mathematician           1918       2020\n4 Rosalind Franklin  Chemist                 1920       1958\n5 Vera Rubin         Astronomer              1928       2016\n6 Gladys West        Mathematician           1930         NA\n7 Flossie Wong-Staal Virologist and M…       1947         NA\n8 Jennifer Doudna    Biochemist              1964         NA"
+  },
+  {
+    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#inner_join-2",
+    "href": "slides/1-4-joining-data/1-4-joining-data.html#inner_join-2",
+    "title": "Joining data",
+    "section": "inner_join()",
+    "text": "inner_join()\n\n\n\nsemi_join(x, y)\n\nJoining with `by = join_by(id)`\n\n\n# A tibble: 2 × 2\n     id value_x\n  &lt;dbl&gt; &lt;chr&gt;  \n1     1 x1     \n2     2 x2"
+  },
+  {
+    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#semi_join",
+    "href": "slides/1-4-joining-data/1-4-joining-data.html#semi_join",
+    "title": "Joining data",
+    "section": "semi_join()",
+    "text": "semi_join()\n\nprofessions |&gt;\n  semi_join(dates)\n\nJoining with `by = join_by(name)`\n\n\n# A tibble: 8 × 2\n  name               profession                        \n  &lt;chr&gt;              &lt;chr&gt;                             \n1 Janaki Ammal       Botanist                          \n2 Chien-Shiung Wu    Physicist                         \n3 Katherine Johnson  Mathematician                     \n4 Rosalind Franklin  Chemist                           \n5 Vera Rubin         Astronomer                        \n6 Gladys West        Mathematician                     \n7 Flossie Wong-Staal Virologist and Molecular Biologist\n8 Jennifer Doudna    Biochemist"
+  },
+  {
+    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#anti_join",
+    "href": "slides/1-4-joining-data/1-4-joining-data.html#anti_join",
+    "title": "Joining data",
+    "section": "anti_join()",
+    "text": "anti_join()\n\n\n\nanti_join(x, y)\n\nJoining with `by = join_by(id)`\n\n\n# A tibble: 1 × 2\n     id value_x\n  &lt;dbl&gt; &lt;chr&gt;  \n1     3 x3"
+  },
+  {
+    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#anti_join-1",
+    "href": "slides/1-4-joining-data/1-4-joining-data.html#anti_join-1",
+    "title": "Joining data",
+    "section": "anti_join()",
+    "text": "anti_join()\n\nprofessions |&gt;\n  anti_join(dates)\n\nJoining with `by = join_by(name)`\n\n\n# A tibble: 2 × 2\n  name         profession           \n  &lt;chr&gt;        &lt;chr&gt;                \n1 Ada Lovelace Mathematician        \n2 Marie Curie  Physicist and Chemist"
+  },
+  {
+    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#putting-it-altogether",
+    "href": "slides/1-4-joining-data/1-4-joining-data.html#putting-it-altogether",
+    "title": "Joining data",
+    "section": "Putting it altogether",
+    "text": "Putting it altogether\n\nprofessions |&gt;\n  left_join(dates) |&gt;\n  left_join(works)\n\nJoining with `by = join_by(name)`\nJoining with `by = join_by(name)`\n\n\n# A tibble: 10 × 5\n   name           profession birth_year death_year known_for\n   &lt;chr&gt;          &lt;chr&gt;           &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;    \n 1 Ada Lovelace   Mathemati…         NA         NA first co…\n 2 Marie Curie    Physicist…         NA         NA theory o…\n 3 Janaki Ammal   Botanist         1897       1984 hybrid s…\n 4 Chien-Shiung … Physicist        1912       1997 confim a…\n 5 Katherine Joh… Mathemati…       1918       2020 calculat…\n 6 Rosalind Fran… Chemist          1920       1958 &lt;NA&gt;     \n 7 Vera Rubin     Astronomer       1928       2016 existenc…\n 8 Gladys West    Mathemati…       1930         NA mathemat…\n 9 Flossie Wong-… Virologis…       1947         NA first sc…\n10 Jennifer Doud… Biochemist       1964         NA one of t…"
+  },
+  {
+    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#student-records",
+    "href": "slides/1-4-joining-data/1-4-joining-data.html#student-records",
+    "title": "Joining data",
+    "section": "Student records",
+    "text": "Student records\n\nWe…\nhave enrollment data (from official university records) and survey data (provided by students, missing from those who never filled it out and including students who filled it out but dropped the class)\nwant survey info for all students enrolled in the class"
+  },
+  {
+    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#data",
+    "href": "slides/1-4-joining-data/1-4-joining-data.html#data",
+    "title": "Joining data",
+    "section": "Data",
+    "text": "Data\n\n\n\nenrolment\n\n# A tibble: 3 × 2\n     id name           \n  &lt;dbl&gt; &lt;chr&gt;          \n1     1 Dave Friday    \n2     2 Hermine        \n3     3 Sura Selvarajah\n\n\n\n\nsurvey\n\n# A tibble: 4 × 3\n     id name    username            \n  &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;               \n1     2 Hermine bakealongwithhermine\n2     3 Sura    surasbakes          \n3     4 Peter   peter_bakes         \n4     5 Mark    thebakingbuddha"
+  },
+  {
+    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#student-records---in-class",
+    "href": "slides/1-4-joining-data/1-4-joining-data.html#student-records---in-class",
+    "title": "Joining data",
+    "section": "Student records - In class",
+    "text": "Student records - In class\n\nenrolment |&gt;\n  left_join(survey, by = \"id\")\n\n# A tibble: 3 × 4\n     id name.x          name.y  username            \n  &lt;dbl&gt; &lt;chr&gt;           &lt;chr&gt;   &lt;chr&gt;               \n1     1 Dave Friday     &lt;NA&gt;    &lt;NA&gt;                \n2     2 Hermine         Hermine bakealongwithhermine\n3     3 Sura Selvarajah Sura    surasbakes"
+  },
+  {
+    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#student-records---survey-missing",
+    "href": "slides/1-4-joining-data/1-4-joining-data.html#student-records---survey-missing",
+    "title": "Joining data",
+    "section": "Student records - Survey missing",
+    "text": "Student records - Survey missing\n\nenrolment |&gt;\n  anti_join(survey, by = \"id\")\n\n# A tibble: 1 × 2\n     id name       \n  &lt;dbl&gt; &lt;chr&gt;      \n1     1 Dave Friday"
+  },
+  {
+    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#student-records---dropped",
+    "href": "slides/1-4-joining-data/1-4-joining-data.html#student-records---dropped",
+    "title": "Joining data",
+    "section": "Student records - Dropped",
+    "text": "Student records - Dropped\n\nsurvey |&gt;\n  anti_join(enrolment, by = \"id\")\n\n# A tibble: 2 × 3\n     id name  username       \n  &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;          \n1     4 Peter peter_bakes    \n2     5 Mark  thebakingbuddha"
+  },
+  {
+    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#grocery-sales",
+    "href": "slides/1-4-joining-data/1-4-joining-data.html#grocery-sales",
+    "title": "Joining data",
+    "section": "Grocery sales",
+    "text": "Grocery sales\n\nWe…\nhave purchase data (one row per customer per item, listing purchases they made) and price data (one row per item in the store, listing their prices)\nwant total revenue"
+  },
+  {
+    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#data-1",
+    "href": "slides/1-4-joining-data/1-4-joining-data.html#data-1",
+    "title": "Joining data",
+    "section": "Data",
+    "text": "Data\n\n\n\npurchases\n\n# A tibble: 5 × 2\n  customer_id item        \n        &lt;dbl&gt; &lt;chr&gt;       \n1           1 bread       \n2           1 milk        \n3           1 banana      \n4           2 milk        \n5           2 toilet paper\n\n\n\n\nprices\n\n# A tibble: 5 × 2\n  item         price\n  &lt;chr&gt;        &lt;dbl&gt;\n1 avocado       0.5 \n2 banana        0.15\n3 bread         1   \n4 milk          0.8 \n5 toilet paper  3"
+  },
+  {
+    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#grocery-sales---total-revenue",
+    "href": "slides/1-4-joining-data/1-4-joining-data.html#grocery-sales---total-revenue",
+    "title": "Joining data",
+    "section": "Grocery sales - Total revenue",
+    "text": "Grocery sales - Total revenue\n\npurchases |&gt;\n  left_join(prices)\n\nJoining with `by = join_by(item)`\n\n\n# A tibble: 5 × 3\n  customer_id item         price\n        &lt;dbl&gt; &lt;chr&gt;        &lt;dbl&gt;\n1           1 bread         1   \n2           1 milk          0.8 \n3           1 banana        0.15\n4           2 milk          0.8 \n5           2 toilet paper  3"
+  },
+  {
+    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#grocery-sales---total-revenue-1",
+    "href": "slides/1-4-joining-data/1-4-joining-data.html#grocery-sales---total-revenue-1",
+    "title": "Joining data",
+    "section": "Grocery sales - Total revenue",
+    "text": "Grocery sales - Total revenue\n\npurchases |&gt;\n  left_join(prices)\n\nJoining with `by = join_by(item)`\n\n\n# A tibble: 5 × 3\n  customer_id item         price\n        &lt;dbl&gt; &lt;chr&gt;        &lt;dbl&gt;\n1           1 bread         1   \n2           1 milk          0.8 \n3           1 banana        0.15\n4           2 milk          0.8 \n5           2 toilet paper  3"
+  },
+  {
+    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#grocery-sales---total-revenue-2",
+    "href": "slides/1-4-joining-data/1-4-joining-data.html#grocery-sales---total-revenue-2",
+    "title": "Joining data",
+    "section": "Grocery sales - Total revenue",
+    "text": "Grocery sales - Total revenue\n\npurchases |&gt;\n  left_join(prices) |&gt;\n  summarise(total_revenue = sum(price))\n\nJoining with `by = join_by(item)`\n\n\n# A tibble: 1 × 1\n  total_revenue\n          &lt;dbl&gt;\n1          5.75"
+  },
+  {
+    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#grocery-sales---revenue-per-customer",
+    "href": "slides/1-4-joining-data/1-4-joining-data.html#grocery-sales---revenue-per-customer",
+    "title": "Joining data",
+    "section": "Grocery sales - Revenue per customer",
+    "text": "Grocery sales - Revenue per customer\n\npurchases |&gt;\n  left_join(prices)\n\nJoining with `by = join_by(item)`\n\n\n# A tibble: 5 × 3\n  customer_id item         price\n        &lt;dbl&gt; &lt;chr&gt;        &lt;dbl&gt;\n1           1 bread         1   \n2           1 milk          0.8 \n3           1 banana        0.15\n4           2 milk          0.8 \n5           2 toilet paper  3"
+  },
+  {
+    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#grocery-sales---revenue-per-customer-1",
+    "href": "slides/1-4-joining-data/1-4-joining-data.html#grocery-sales---revenue-per-customer-1",
+    "title": "Joining data",
+    "section": "Grocery sales - Revenue per customer",
+    "text": "Grocery sales - Revenue per customer\n\npurchases |&gt;\n  left_join(prices) |&gt;\n  group_by(customer_id) |&gt;\n  summarise(total_revenue = sum(price))\n\nJoining with `by = join_by(item)`\n\n\n# A tibble: 2 × 2\n  customer_id total_revenue\n        &lt;dbl&gt;         &lt;dbl&gt;\n1           1          1.95\n2           2          3.8"
   },
   {
     "objectID": "exercises/tidy_basketball.html",

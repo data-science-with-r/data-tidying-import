@@ -1,0 +1,419 @@
+---
+title: "Joining data"
+format: revealjs
+---
+
+```{r}
+#| include: false
+library(tidyverse)
+library(gt)
+```
+
+# Setup
+
+## Task and goal
+
+::: hand
+We...
+
+[have]{.hand-blue-medium} multiple data frames
+
+[want]{.hand-pink-medium} to bring them together
+:::
+
+```{r}
+#| include: false
+professions <- read_csv("data/scientists/professions.csv")
+dates <- read_csv("data/scientists/dates.csv")
+works <- read_csv("data/scientists/works.csv")
+```
+
+## Data: Women in science 
+
+Information on 10 women in science who changed the world:
+
+```{r}
+#| echo: false
+professions |> select(name) |> gt()
+```
+
+::: aside
+Source: [Discover Magazine](https://www.discovermagazine.com/the-sciences/meet-10-women-in-science-who-changed-the-world)
+:::
+
+## Input 1: `professions`
+
+```{r}
+professions
+```
+
+## Input 2: `dates`
+
+```{r}
+dates
+```
+
+## Input 3: `works`
+
+```{r}
+works
+```
+
+## Desired output
+
+```{r}
+#| echo: false
+#| message: false
+professions |>
+  left_join(dates) |>
+  left_join(works)
+```
+
+## Inputs, reminder
+
+:::: {.columns}
+
+::: {.column width="35%"}
+```{r}
+names(professions)
+names(dates)
+names(works)
+```
+:::
+
+::: {.column width="35%"}
+```{r}
+nrow(professions)
+nrow(dates)
+nrow(works)
+```
+:::
+
+::::
+
+# Joining data frames
+
+## Joining data frames
+
+```{r}
+#| eval: false
+something_join(x, y)
+```
+
+- `left_join()`: all rows from x
+- `right_join()`: all rows from y
+- `full_join()`: all rows from both x and y
+- `semi_join()`: all rows from x where there are matching values in y, keeping just columns from x
+- `inner_join()`: all rows from x where there are matching values in y, return 
+all combination of multiple matches in the case of multiple matches
+- `anti_join()`: return all rows from x where there are not matching values in y, never duplicate rows of x
+- ...
+
+## Setup
+
+For the next few slides...
+
+:::: {.columns}
+
+::: {.column width="35%"}
+```{r}
+x <- tibble(
+  id = c(1, 2, 3),
+  value_x = c("x1", "x2", "x3")
+  )
+
+x
+```
+:::
+
+::: {.column width="35%"}
+```{r}
+y <- tibble(
+  id = c(1, 2, 4),
+  value_y = c("y1", "y2", "y4")
+  )
+
+y
+```
+:::
+
+::::
+
+## `left_join()`
+
+:::: {.columns}
+
+::: {.column width="35%"}
+```{r}
+left_join(x, y)
+```
+:::
+
+::: {.column width="35%"}
+![](images/left-join.gif)
+:::
+
+::::
+
+## `left_join()`
+
+```{r}
+professions |>
+  left_join(dates)
+```
+
+## `right_join()`
+
+:::: {.columns}
+
+::: {.column width="35%"}
+```{r}
+right_join(x, y)
+```
+:::
+
+::: {.column width="35%"}
+![](images/right-join.gif)
+:::
+
+::::
+
+## `left_join()`
+
+```{r}
+professions |>
+  right_join(dates)
+```
+
+## `full_join()`
+
+:::: {.columns}
+
+::: {.column width="35%"}
+```{r}
+full_join(x, y)
+```
+:::
+
+::: {.column width="35%"}
+![](images/full-join.gif)
+:::
+
+::::
+
+## `left_join()`
+
+```{r}
+professions |>
+  full_join(dates)
+```
+
+
+## `inner_join()`
+
+:::: {.columns}
+
+::: {.column width="35%"}
+```{r}
+inner_join(x, y)
+```
+:::
+
+::: {.column width="35%"}
+![](images/inner-join.gif)
+:::
+
+::::
+
+## `inner_join()`
+
+```{r}
+professions |>
+  inner_join(dates)
+```
+
+
+## `inner_join()`
+
+:::: {.columns}
+
+::: {.column width="35%"}
+```{r}
+semi_join(x, y)
+```
+:::
+
+::: {.column width="35%"}
+![](images/semi-join.gif)
+:::
+
+::::
+
+## `semi_join()`
+
+```{r}
+professions |>
+  semi_join(dates)
+```
+
+## `anti_join()`
+
+:::: {.columns}
+
+::: {.column width="35%"}
+```{r}
+anti_join(x, y)
+```
+:::
+
+::: {.column width="35%"}
+![](images/anti-join.gif)
+:::
+
+::::
+
+## `anti_join()`
+
+```{r}
+professions |>
+  anti_join(dates)
+```
+
+## Putting it altogether
+
+```{r}
+professions |>
+  left_join(dates) |>
+  left_join(works)
+```
+
+# Case study: Student records
+
+## Student records
+
+::: hand
+We...
+
+[have]{.hand-blue-medium} enrollment data (from official university records) and survey data (provided by students, missing from those who never filled it out and including students who filled it out but dropped the class)
+
+[want]{.hand-pink-medium} survey info for all students enrolled in the class 
+:::
+
+## Data
+
+```{r}
+#| include: false
+enrolment <- read_csv("data/students/enrolment.csv")
+survey <- read_csv("data/students/survey.csv")
+```
+
+:::: {.columns}
+
+::: {.column width="30%"}
+```{r}
+enrolment
+```
+:::
+
+::: {.column width="45%"}
+```{r}
+survey
+```
+:::
+
+::::
+
+## Student records - In class
+
+```{r}
+enrolment |>
+  left_join(survey, by = "id")
+```
+
+## Student records - Survey missing
+
+```{r}
+enrolment |>
+  anti_join(survey, by = "id")
+```
+
+## Student records - Dropped
+
+```{r}
+survey |>
+  anti_join(enrolment, by = "id")
+```
+
+# Case study: Grocery sales
+
+## Grocery sales
+
+::: hand
+We...
+
+[have]{.hand-blue-medium} purchase data (one row per customer per item, listing purchases they made) and price data (one row per item in the store, listing their prices)
+
+[want]{.hand-pink-medium} total revenue
+:::
+
+```{r}
+#| include: false
+purchases <- read_csv("data/sales/purchases.csv")
+prices <- read_csv("data/sales/prices.csv")
+```
+
+## Data
+
+:::: {.columns}
+
+::: {.column width="35%"}
+```{r}
+purchases
+```
+:::
+
+::: {.column width="35%"}
+```{r}
+prices
+```
+:::
+
+::::
+
+## Grocery sales - Total revenue
+
+```{r}
+purchases |>
+  left_join(prices)
+```
+
+## Grocery sales - Total revenue
+
+```{r}
+purchases |>
+  left_join(prices)
+```
+
+## Grocery sales - Total revenue
+
+```{r}
+purchases |>
+  left_join(prices) |>
+  summarise(total_revenue = sum(price))
+```
+
+## Grocery sales - Revenue per customer
+
+```{r}
+purchases |>
+  left_join(prices)
+```
+
+## Grocery sales - Revenue per customer
+
+```{r}
+purchases |>
+  left_join(prices) |>
+  group_by(customer_id) |>
+  summarise(total_revenue = sum(price))
+```
