@@ -1,0 +1,510 @@
+---
+title: "Tidying data"
+format: revealjs
+---
+
+```{r}
+#| include: false
+library(tidyverse)
+library(scales)
+```
+
+# Setup
+
+## Task and goal
+
+::: hand
+We...
+
+[have]{.hand-blue-medium} data organised in an unideal way for our analysis
+
+[want]{.hand-pink-medium} to reorganize the data to carry on with our analysis
+:::
+
+## Data: Sales
+
+```{r}
+#| include: false
+customers <- read_csv("data/sales/customers.csv")
+prices <- read_csv("data/sales/prices.csv")
+```
+
+::: columns
+::: {.column width="35%"}
+[have]{.hand-blue-medium}
+
+::: medium
+```{r}
+#| echo: false
+customers
+```
+:::
+:::
+
+::: {.column width="35%"}
+[want]{.hand-pink-medium}
+
+::: medium
+```{r}
+#| echo: false
+customers |>
+  pivot_longer(
+  cols = item_1:item_3, 
+  names_to = "item_no", 
+  values_to = "item"
+)
+```
+:::
+:::
+:::
+
+## Grammar of data tidying
+
+::: columns
+::: {.column width="30%"}
+![](images/tidyr-part-of-tidyverse.png){fig-alt="tidyr is part of the tidyverse"}
+:::
+
+::: {.column width="40%"}
+The goal of **tidyr** is to help you tidy your data via
+
+::: incremental
+-   pivoting for going between wide and long data
+-   splitting and combining character columns
+-   nesting and unnesting columns
+-   clarifying how `NA`s should be treated
+:::
+:::
+:::
+
+# Pivoting data
+
+## Pivoting
+
+::: columns
+::: {.column width="40%"}
+Not this...
+
+![](images/pivot.gif){width="500"}
+:::
+
+::: {.column .fragment width="30%"}
+but this!
+
+![](images/tidyr-longer-wider.gif)
+:::
+:::
+
+## Wider vs. longer {.smaller}
+
+::: columns
+::: {.column width="35%"}
+[wider]{.hand-blue-medium} - more columns
+
+```{r}
+#| echo: false
+customers
+```
+:::
+
+::: {.column width="35%"}
+[longer]{.hand-pink-medium} - more rows
+
+```{r}
+#| echo: false
+customers |>
+  pivot_longer(
+  cols = item_1:item_3, 
+  names_to = "item_no", 
+  values_to = "item"
+)
+```
+:::
+:::
+
+## `pivot_longer()`
+
+::: columns
+::: {.column width="50%"}
+```{r}
+#| eval: false
+pivot_longer(
+  data |> # <1>
+  cols, 
+  names_to = "name", 
+  values_to = "value"
+  )
+```
+
+1.  `data` (as usual)
+:::
+:::
+
+## `pivot_longer()`
+
+::: columns
+::: {.column width="50%"}
+```{r}
+#| eval: false
+pivot_longer(
+  data |> # <1>
+  cols,   # <2>
+  names_to = "name", 
+  values_to = "value"
+  )
+```
+
+1.  `data` (as usual)
+2.  `cols`: columns to pivot into longer format
+:::
+:::
+
+## `pivot_longer()`
+
+::: columns
+::: {.column width="50%"}
+```{r}
+#| eval: false
+pivot_longer(
+  data |> # <1>
+  cols,   # <2>
+  names_to = "name", # <3>
+  values_to = "value"
+  )
+```
+
+1.  `data` (as usual)
+2.  `cols`: columns to pivot into longer format
+3.  `names_to`: name of the column where column names of pivoted variables go (character string)
+:::
+:::
+
+## `pivot_longer()`
+
+::: columns
+::: {.column width="50%"}
+```{r}
+#| eval: false
+pivot_longer(
+  data |> # <1>
+  cols,   # <2>
+  names_to = "name", # <3>
+  values_to = "value" # <4>
+  )
+```
+
+1.  `data` (as usual)
+2.  `cols`: columns to pivot into longer format
+3.  `names_to`: name of the column where column names of pivoted variables go (character string)
+4.  `values_to`: name of the column where data in pivoted variables go (character string)
+:::
+:::
+
+## Customers $\rightarrow$ purchases
+
+::: columns
+::: {.column width="60%"}
+```{r}
+#| code-line-numbers: "|3|4|5"
+purchases <- customers |>
+  pivot_longer(
+    cols = item_1:item_3, #<1>
+    names_to = "item_no", #<2>
+    values_to = "item"    #<3>
+  )
+```
+
+1.  `cols` to pivot: `item_1` to `item_3`
+2.  Column `names_to` new column called `item_no`
+3.  `values_to` new column called `item`
+:::
+:::
+
+## Customers $\rightarrow$ purchases
+
+::: columns
+::: {.column width="50%"}
+```{r}
+purchases <- customers |>
+  pivot_longer(
+    cols = item_1:item_3,
+    names_to = "item_no",
+    values_to = "item"   
+  )
+
+purchases
+```
+:::
+:::
+
+## Why pivot?
+
+Most likely, because the next step of your analysis needs it
+
+. . .
+
+::: medium
+::: columns
+::: {.column width="35%"}
+```{r}
+prices
+```
+:::
+
+::: {.column width="35%"}
+```{r}
+purchases |>
+  left_join(prices)
+```
+:::
+:::
+:::
+
+## Purchases $\rightarrow$ customers
+
+::: columns
+::: {.column width="50%"}
+```{r}
+#| code-line-numbers: "|1|2,5|3|4"
+customers <- purchases |> # <1>
+  pivot_wider(            # <2>
+    names_from = item_no, # <3>
+    values_from = item    # <4>
+  )
+```
+
+1.  `data` (as usual)
+2.  `pivot_wider()`: Function to pivot wider
+3.  `names_from`: Which column in the long format contains the what should be column names in the wide format
+4.  `values_from`: Which column in the long format contains the what should be values in the new columns in the wide format
+:::
+:::
+
+# Case study: <br>Approval rating of Joe Biden
+
+## Inspiration
+
+![](images/biden-approval.png){fig-alt="Approval rating of Joe Biden since the beginning of his term until July 2024."}
+
+::: aside
+Source: [FiveThirtyEight](https://projects.fivethirtyeight.com/polls/approval/joe-biden/)
+:::
+
+## Data
+
+```{r}
+#| message: false
+biden <- read_csv("data/biden/biden.csv")
+biden
+```
+
+## Goal
+
+```{r}
+#| echo: false
+#| fig-asp: 0.4
+#| out-width: 90%
+#| fig-width: 9
+biden_longer <- biden |>
+  pivot_longer(
+    cols = c(approval, disapproval),
+    names_to = "rating_type",
+    values_to = "rating_value"
+  )
+
+ggplot(
+  biden_longer, 
+  aes(
+    x = date, 
+    y = rating_value, 
+    color = rating_type
+    )
+  ) +
+  geom_line() +
+  facet_wrap(~ population) +
+  scale_color_manual(values = c("darkgreen", "deeppink")) +
+  scale_y_continuous(labels = label_percent(scale = 1)) +
+  scale_x_date(date_breaks = "1 year", date_labels = "%b %e, %Y") +
+  labs(
+    x = "Date",
+    y = "Rating",
+    color = NULL,
+    title = "Do Americans approve or disapprove of Joe Biden?",
+    subtitle = "Estimates based on polls of all adults and polls of registered voters",
+    caption = "Source: FiveThirtyEight"
+  ) +
+  theme_minimal() +
+  theme(legend.position = "bottom")
+```
+
+::: columns
+::: {.column .fragment width="30%"}
+**Aesthetic mappings:**
+
+✅ x = `date`
+
+❌ y = `rating_value`
+
+❌ color = `rating_type`
+:::
+
+::: {.column .fragment width="40%"}
+**Facet:**
+
+✅ `population` (Adults and Voters)
+:::
+:::
+
+## Pivot
+
+```{r}
+#| code-line-numbers: "|1|2,6|3|4|5|8"
+biden_longer <- biden |>
+  pivot_longer(
+    cols = c(approval, disapproval),
+    names_to = "rating_type",
+    values_to = "rating_value"
+  )
+
+biden_longer
+```
+
+## Plot {.smaller}
+
+::: columns
+::: {.column width="28%"}
+```{r}
+#| label: biden-plot-1
+#| fig-show: hide
+ggplot(
+  biden_longer, 
+  aes(
+    x = date, 
+    y = rating_value, 
+    color = rating_type
+    )
+  ) +
+  geom_line() +
+  facet_wrap(~ population)
+```
+:::
+
+::: {.column width="42%"}
+```{r}
+#| ref-label: biden-plot-1
+#| echo: false
+#| fig-asp: 0.4
+#| code-line-numbers: "2|4|5|6||9|10"
+```
+:::
+:::
+
+## Colors
+
+```{r}
+#| fig-asp: 0.4
+#| output-location: slide
+#| code-line-numbers: "7"
+#| out-width: 100%
+#| fig-width: 8
+ggplot(
+  biden_longer, 
+  aes(x = date, y = rating_value, color = rating_type)
+  ) +
+  geom_line() +
+  facet_wrap(~ population) +
+  scale_color_manual(values = c("darkgreen", "deeppink"))
+```
+
+## y-axis labels
+
+```{r}
+#| fig-asp: 0.4
+#| output-location: slide
+#| code-line-numbers: "8"
+#| out-width: 100%
+#| fig-width: 8
+ggplot(
+  biden_longer, 
+  aes(x = date, y = rating_value, color = rating_type)
+  ) +
+  geom_line() +
+  facet_wrap(~ population) +
+  scale_color_manual(values = c("darkgreen", "deeppink")) +
+  scale_y_continuous(labels = label_percent(scale = 1))
+```
+
+## x-axis labels
+
+```{r}
+#| fig-asp: 0.4
+#| output-location: slide
+#| code-line-numbers: "9"
+#| out-width: 100%
+#| fig-width: 8
+ggplot(
+  biden_longer, 
+  aes(x = date, y = rating_value, color = rating_type)
+  ) +
+  geom_line() +
+  facet_wrap(~ population) +
+  scale_color_manual(values = c("darkgreen", "deeppink")) +
+  scale_y_continuous(labels = label_percent(scale = 1)) +
+  scale_x_date(date_breaks = "1 year", date_labels = "%b %e, %Y")
+```
+
+## Plot labels {.smaller}
+
+```{r}
+#| fig-asp: 0.4
+#| output-location: slide
+#| code-line-numbers: "10-17"
+#| out-width: 100%
+#| fig-width: 8
+ggplot(
+  biden_longer, 
+  aes(x = date, y = rating_value, color = rating_type)
+  ) +
+  geom_line() +
+  facet_wrap(~ population) +
+  scale_color_manual(values = c("darkgreen", "deeppink")) +
+  scale_y_continuous(labels = label_percent(scale = 1)) +
+  scale_x_date(date_breaks = "1 year", date_labels = "%b %e, %Y") +
+  labs(
+    x = "Date",
+    y = "Rating",
+    color = NULL,
+    title = "How popular is Joe Biden?",
+    subtitle = "Estimates based on polls of all adults and polls of registered voters",
+    caption = "Source: FiveThirtyEight"
+  )
+```
+
+## Theming {.smaller}
+
+```{r}
+#| fig-asp: 0.5
+#| output-location: slide
+#| code-line-numbers: "18-19"
+#| out-width: 100%
+#| fig-width: 8
+ggplot(
+  biden_longer, 
+  aes(x = date, y = rating_value, color = rating_type)
+  ) +
+  geom_line() +
+  facet_wrap(~ population) +
+  scale_color_manual(values = c("darkgreen", "deeppink")) +
+  scale_y_continuous(labels = label_percent(scale = 1)) +
+  scale_x_date(date_breaks = "1 year", date_labels = "%b %e, %Y") +
+  labs(
+    x = "Date",
+    y = "Rating",
+    color = NULL,
+    title = "How popular is Joe Biden?",
+    subtitle = "Estimates based on polls of all adults and polls of registered voters",
+    caption = "Source: FiveThirtyEight"
+  ) +
+  theme_minimal() +
+  theme(legend.position = "bottom")
+```
