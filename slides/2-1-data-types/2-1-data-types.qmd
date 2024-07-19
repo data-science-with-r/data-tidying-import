@@ -1,0 +1,414 @@
+---
+title: "Data types"
+format: revealjs
+---
+
+```{r}
+#| include: false
+library(tidyverse)
+library(gt)
+```
+
+# Why should you care about data types?
+
+## Example: Cat lovers
+
+A survey asked respondents their name and number of cats. The instructions said to enter the number of cats as a numerical value.
+
+```{r}
+#| message: false
+cat_lovers <- read_csv("data/cat-lovers.csv")
+cat_lovers
+```
+
+## Oh why won't you work?!
+
+```{r}
+cat_lovers |>
+  summarize(mean_cats = mean(number_of_cats))
+```
+
+## Let's read the docs!
+
+```{r}
+#| eval: false
+?mean
+```
+
+![](images/mean-docs.gif){fig-alt="Documentation for the mean function."}
+
+## Oh why won't you still work??!!
+
+```{r}
+#| output-location: fragment
+cat_lovers |>
+  summarize(mean_cats = mean(number_of_cats, na.rm = TRUE))
+```
+
+## Take a breath and look at your data
+
+::: task
+What is the type of the `number_of_cats` variable?
+:::
+
+```{r}
+glimpse(cat_lovers)
+```
+
+## Let's take another look {.scrollable}
+
+```{r}
+#| echo: false
+cat_lovers |>
+  gt()
+```
+
+## Sometimes you might need to babysit your respondents
+
+```{r}
+#| code-line-numbers: "|2-8|9"
+#| output-location: fragment
+cat_lovers |>
+  mutate(
+    number_of_cats = case_when(
+      name == "Ginger Clark" ~ 2,
+      name == "Doug Bass"    ~ 3,
+      .default = as.numeric(number_of_cats)
+      )
+    ) |>
+  summarize(mean_cats = mean(number_of_cats))
+```
+
+## Always you need to respect data types
+
+```{r}
+#| code-line-numbers: "|4-6|8"
+#| output-location: fragment
+cat_lovers |>#| 
+  mutate(
+    number_of_cats = case_when(
+      name == "Ginger Clark" ~ "2",
+      name == "Doug Bass"    ~ "3",
+      .default = number_of_cats
+      ),
+    number_of_cats = as.numeric(number_of_cats)
+    ) |>
+  summarize(mean_cats = mean(number_of_cats))
+```
+
+## Now that we know what we're doing...
+
+```{r}
+#| code-line-numbers: "|1"
+cat_lovers <- cat_lovers |>
+  mutate(
+    number_of_cats = case_when(
+      name == "Ginger Clark" ~ "2",
+      name == "Doug Bass"    ~ "3",
+      .default = number_of_cats
+      ),
+    number_of_cats = as.numeric(number_of_cats)
+    )
+```
+
+## Moral of the story
+
+- If your data does not behave how you expect it to, type coercion upon reading in the data might be the reason.
+- Go in and investigate your data, apply the fix, *save your data*, live happily ever after.
+
+## 
+
+::: hand-pink-medium
+now that we have a good motivation for
+learning about data types in R
+:::
+
+. . .
+
+::: hand-blue-large
+let's learn about data types in R!
+:::
+
+# Data types
+
+## Data types in R
+
+- **logical**
+- **double**
+- **integer**
+- **character**
+- and some more, but we won't be focusing on those
+
+## Logical & character
+
+:::: {.columns}
+
+::: {.column width="35%"}
+**logical** - boolean values `TRUE` and `FALSE`
+
+<br>
+
+```{r}
+typeof(TRUE)
+```
+:::
+
+::: {.column width="35%" .fragment}
+**character** - character strings
+
+<br>
+<br>
+
+```{r}
+typeof("hello")
+```
+:::
+
+::::
+
+## Double & integer
+
+:::: {.columns}
+
+::: {.column width="35%"}
+**double** - floating point numerical values (default numerical type)
+
+<br>
+
+```{r}
+typeof(1.335)
+typeof(7)
+```
+:::
+
+::: {.column width="35%" .fragment}
+**integer** - integer numerical values (indicated with an `L`)
+
+<br>
+
+```{r}
+typeof(7L)
+typeof(1:3)
+```
+:::
+
+::::
+
+## Concatenation
+
+Vectors can be constructed using the `c()` function.
+
+```{r}
+c(1, 2, 3)
+```
+
+. . .
+```{r}
+c("Hello", "World!")
+```
+
+. . .
+
+```{r}
+c(c("hi", "hello"), c("bye", "jello"))
+```
+
+## Converting between types
+
+::: hand
+with intention...
+:::
+
+:::: {.columns}
+
+::: {.column width="35%"}
+```{r}
+x <- 1:3
+x
+typeof(x)
+```
+:::
+
+::: {.column width="35%" .fragment}
+```{r}
+y <- as.character(x)
+y
+typeof(y)
+```
+:::
+
+::::
+
+## Converting between types
+
+::: hand
+with intention...
+:::
+
+:::: {.columns}
+
+::: {.column width="35%"}
+```{r}
+x <- c(TRUE, FALSE)
+x
+typeof(x)
+```
+:::
+
+::: {.column width="35%" .fragment}
+```{r}
+y <- as.numeric(x)
+y
+typeof(y)
+```
+:::
+
+::::
+
+## Converting between types
+
+::: hand
+without intention...
+:::
+
+```{r}
+c(1, "Hello")
+```
+
+. . .
+
+R will happily convert between various types without complaint when different types of data are concatenated in a vector, and that's not always a great thing!
+
+. . .
+
+```{r}
+c(FALSE, 3L)
+```
+. . .
+
+```{r}
+c(1.2, 3L)
+```
+
+. . .
+
+```{r}
+c(2L, "two")
+```
+
+## Explicit vs. implicit coercion
+
+Let's give formal names to what we've seen so far:
+
+::: incremental
+- **Explicit coercion** is when you call a function like `as.logical()`, `as.numeric()`, `as.integer()`, `as.double()`, or `as.character()`
+
+- **Implicit coercion** happens when you use a vector in a specific context that expects a certain type of vector
+:::
+
+# Special values
+
+## Special values
+
+- `NA`: Not available
+
+. . .
+
+- `NaN`: Not a number
+
+```{r}
+0 / 0
+```
+
+. . .
+
+- `Inf`: Positive infinity
+
+```{r}
+pi / 0
+```
+
+. . .
+
+- `-Inf`: Negative infinity
+
+```{r}
+-1 * (pi / 0)
+```
+
+## `NA`s are special ❄️s
+
+```{r}
+x <- c(1, 2, 3, 4, NA)
+```
+
+```{r}
+mean(x)
+```
+
+. . .
+
+```{r}
+mean(x, na.rm = TRUE)
+summary(x)
+```
+
+## `NA`s are logical
+
+R uses `NA` to represent missing values in its data structures.
+
+```{r}
+typeof(NA)
+```
+
+## Mental model for `NA`s
+
+- Unlike `NaN`, `NA`s are genuinely unknown values
+- But that doesn't mean they can't function in a logical way
+- Let's think about why `NA`s are logical...
+
+. . .
+
+::: task
+Why do the following give different answers?
+:::
+
+:::: {.columns}
+
+::: {.column width="35%"}
+```{r}
+# TRUE or NA
+TRUE | NA
+```
+:::
+
+::: {.column width="35%"}
+```{r}
+# FALSE or NA
+FALSE | NA
+```
+:::
+
+::::
+
+## Mental model for `NA`s
+
+- `NA` is unknown, so it could be `TRUE` or `FALSE`
+
+- `TRUE | NA` gives `TRUE`, because the answer is always `TRUE` whether the unknown `NA` is actually `TRUE` or `FALSE`
+
+```{r}
+TRUE | TRUE  # if NA was TRUE
+TRUE | FALSE # if NA was FALSE
+```
+
+- `FALSE | NA` gives `FALSE`, because the answer changes depending whether the unknown `NA` is actually `TRUE` or `FALSE`
+
+```{r}
+FALSE | TRUE  # if NA was TRUE
+FALSE | FALSE # if NA was FALSE
+```
+
+. . .
+
+- This may not make sense for mathematical operations, but it does make sense in the context of missing data
