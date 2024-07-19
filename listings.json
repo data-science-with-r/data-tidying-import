@@ -4,6 +4,7 @@
     "items": [
       "/slides/1-1-welcome/1-1-welcome.html",
       "/slides/1-2-tidy-data/1-2-tidy-data.html",
+      "/slides/1-3-tidying-data/1-3-tidying-data.html",
       "/exercises/noble.html",
       "/exercises/nyc_flights.html",
       "/exercises/tidy_basketball.html"
