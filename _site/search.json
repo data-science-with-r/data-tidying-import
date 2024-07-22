@@ -347,7 +347,7 @@
     "href": "slides/1-2-tidy-data/1-2-tidy-data.html#what-makes-this-data-not-tidy-2",
     "title": "Tidy data",
     "section": "What makes this data not tidy?",
-    "text": "What makes this data not tidy?\n\n\n\nSource: US Census Fact Finder, General Economic Characteristics, ACS 2017"
+    "text": "What makes this data not tidy?\n\n\n\nSource: US Census, Selected Economic Characteristics, ACS 2022"
   },
   {
     "objectID": "slides/1-2-tidy-data/1-2-tidy-data.html#what-makes-data-tidy",
@@ -361,14 +361,14 @@
     "href": "slides/1-2-tidy-data/1-2-tidy-data.html#displaying-vs.-summarizing-data",
     "title": "Tidy data",
     "section": "Displaying vs. summarizing data",
-    "text": "Displaying vs. summarizing data\n\n\nDisplay\n\n\n# A tibble: 87 × 3\n   name               height  mass\n   &lt;chr&gt;               &lt;int&gt; &lt;dbl&gt;\n 1 Luke Skywalker        172    77\n 2 C-3PO                 167    75\n 3 R2-D2                  96    32\n 4 Darth Vader           202   136\n 5 Leia Organa           150    49\n 6 Owen Lars             178   120\n 7 Beru Whitesun Lars    165    75\n 8 R5-D4                  97    32\n 9 Biggs Darklighter     183    84\n10 Obi-Wan Kenobi        182    77\n# ℹ 77 more rows\n\n\n\nSummarize\n\n\n# A tibble: 3 × 2\n  gender    avg_ht\n  &lt;chr&gt;      &lt;dbl&gt;\n1 feminine    167.\n2 masculine   177.\n3 &lt;NA&gt;        175"
+    "text": "Displaying vs. summarizing data\n\n\nDisplay\n\nstarwars |&gt;\n  select(name, height, gender)\n\n# A tibble: 87 × 3\n   name               height gender   \n   &lt;chr&gt;               &lt;int&gt; &lt;chr&gt;    \n 1 Luke Skywalker        172 masculine\n 2 C-3PO                 167 masculine\n 3 R2-D2                  96 masculine\n 4 Darth Vader           202 masculine\n 5 Leia Organa           150 feminine \n 6 Owen Lars             178 masculine\n 7 Beru Whitesun Lars    165 feminine \n 8 R5-D4                  97 masculine\n 9 Biggs Darklighter     183 masculine\n10 Obi-Wan Kenobi        182 masculine\n# ℹ 77 more rows\n\n\n\nSummarize\n\nstarwars |&gt;\n  group_by(gender) |&gt;\n  summarize(\n    n = n(),\n    avg_height = mean(height, na.rm = TRUE)\n  )\n\n# A tibble: 3 × 3\n  gender        n avg_height\n  &lt;chr&gt;     &lt;int&gt;      &lt;dbl&gt;\n1 feminine     17       167.\n2 masculine    66       177.\n3 &lt;NA&gt;          4       175"
   },
   {
     "objectID": "slides/1-2-tidy-data/1-2-tidy-data.html#displaying-vs.-summarizing-data-1",
     "href": "slides/1-2-tidy-data/1-2-tidy-data.html#displaying-vs.-summarizing-data-1",
     "title": "Tidy data",
     "section": "Displaying vs. summarizing data",
-    "text": "Displaying vs. summarizing data\n\n\nDisplay\n\nstarwars |&gt;\n  select(name, height, mass)\n\n\nSummarize\n\nstarwars |&gt;\n  group_by(gender) |&gt;\n  summarize(\n    avg_ht = mean(height, na.rm = TRUE)\n  )"
+    "text": "Displaying vs. summarizing data\n\n\nDisplay\n\nstarwars |&gt;\n  select(name, height, gender)\n\n\nSummarize\n\nstarwars |&gt;\n  group_by(gender) |&gt;\n  summarize(\n    n = n(),\n    avg_height = mean(height, na.rm = TRUE)\n  )"
   },
   {
     "objectID": "index.html",
