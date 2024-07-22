@@ -3,23 +3,33 @@ title: "Tidying data"
 format: revealjs
 ---
 
+# Setup
+
+## Task, goal, and tools
+
+<br>
+
+::: hand
+{{< fa list-check >}} [have]{.hand-blue-medium} data organised in an unideal way for our analysis
+:::
+
+. . .
+
+::: hand
+{{< fa bullseye >}} [want]{.hand-pink-medium} to reorganize the data for our analysis
+:::
+
+. . .
+
+::: hand
+{{< fa screwdriver-wrench >}} [using]{.hand-yellow-medium} tools from the **tidyverse**
+:::
+
 ```{r}
-#| include: false
+#| message: false
 library(tidyverse)
 library(scales)
 ```
-
-# Setup
-
-## Task and goal
-
-::: hand
-We...
-
-[have]{.hand-blue-medium} data organised in an unideal way for our analysis
-
-[want]{.hand-pink-medium} to reorganize the data to carry on with our analysis
-:::
 
 ## Data: Sales
 
@@ -29,8 +39,8 @@ customers <- read_csv("data/sales/customers.csv")
 prices <- read_csv("data/sales/prices.csv")
 ```
 
-::: columns
-::: {.column width="35%"}
+::::::: columns
+:::: {.column width="35%"}
 [have]{.hand-blue-medium}
 
 ::: medium
@@ -39,9 +49,9 @@ prices <- read_csv("data/sales/prices.csv")
 customers
 ```
 :::
-:::
+::::
 
-::: {.column width="35%"}
+:::: {.column .fragment width="35%"}
 [want]{.hand-pink-medium}
 
 ::: medium
@@ -55,17 +65,17 @@ customers |>
 )
 ```
 :::
-:::
-:::
+::::
+:::::::
 
 ## Grammar of data tidying
 
-::: columns
+:::::: columns
 ::: {.column width="30%"}
 ![](images/tidyr-part-of-tidyverse.png){fig-alt="tidyr is part of the tidyverse"}
 :::
 
-::: {.column width="40%"}
+:::: {.column width="40%"}
 The goal of **tidyr** is to help you tidy your data via
 
 ::: incremental
@@ -74,14 +84,14 @@ The goal of **tidyr** is to help you tidy your data via
 -   nesting and unnesting columns
 -   clarifying how `NA`s should be treated
 :::
-:::
-:::
+::::
+::::::
 
 # Pivoting data
 
 ## Pivoting
 
-::: columns
+::::: columns
 ::: {.column width="40%"}
 Not this...
 
@@ -93,11 +103,11 @@ but this!
 
 ![](images/tidyr-longer-wider.gif)
 :::
-:::
+:::::
 
 ## Wider vs. longer {.smaller}
 
-::: columns
+::::: columns
 ::: {.column width="35%"}
 [wider]{.hand-blue-medium} - more columns
 
@@ -107,7 +117,7 @@ customers
 ```
 :::
 
-::: {.column width="35%"}
+::: {.column .fragment width="35%"}
 [longer]{.hand-pink-medium} - more rows
 
 ```{r}
@@ -120,16 +130,33 @@ customers |>
 )
 ```
 :::
-:::
+:::::
 
 ## `pivot_longer()`
 
-::: columns
-::: {.column width="50%"}
+:::: columns
+::: {.column width="60%"}
 ```{r}
 #| eval: false
 pivot_longer(
-  data |> # <1>
+  data,
+  cols, 
+  names_to = "name", 
+  values_to = "value"
+  )
+```
+:::
+::::
+
+## `pivot_longer()`
+
+:::: columns
+::: {.column width="60%"}
+```{r}
+#| eval: false
+#| code-line-numbers: "2"
+pivot_longer(
+  data, # <1>
   cols, 
   names_to = "name", 
   values_to = "value"
@@ -138,16 +165,17 @@ pivot_longer(
 
 1.  `data` (as usual)
 :::
-:::
+::::
 
 ## `pivot_longer()`
 
-::: columns
-::: {.column width="50%"}
+:::: columns
+::: {.column width="60%"}
 ```{r}
 #| eval: false
+#| code-line-numbers: "3"
 pivot_longer(
-  data |> # <1>
+  data,   # <1>
   cols,   # <2>
   names_to = "name", 
   values_to = "value"
@@ -157,16 +185,17 @@ pivot_longer(
 1.  `data` (as usual)
 2.  `cols`: columns to pivot into longer format
 :::
-:::
+::::
 
 ## `pivot_longer()`
 
-::: columns
-::: {.column width="50%"}
+:::: columns
+::: {.column width="60%"}
 ```{r}
 #| eval: false
+#| code-line-numbers: "4"
 pivot_longer(
-  data |> # <1>
+  data,   # <1>
   cols,   # <2>
   names_to = "name", # <3>
   values_to = "value"
@@ -177,16 +206,17 @@ pivot_longer(
 2.  `cols`: columns to pivot into longer format
 3.  `names_to`: name of the column where column names of pivoted variables go (character string)
 :::
-:::
+::::
 
 ## `pivot_longer()`
 
-::: columns
-::: {.column width="50%"}
+:::: columns
+::: {.column width="60%"}
 ```{r}
 #| eval: false
+#| code-line-numbers: "5"
 pivot_longer(
-  data |> # <1>
+  data,   # <1>
   cols,   # <2>
   names_to = "name", # <3>
   values_to = "value" # <4>
@@ -198,11 +228,11 @@ pivot_longer(
 3.  `names_to`: name of the column where column names of pivoted variables go (character string)
 4.  `values_to`: name of the column where data in pivoted variables go (character string)
 :::
-:::
+::::
 
 ## Customers $\rightarrow$ purchases
 
-::: columns
+:::: columns
 ::: {.column width="60%"}
 ```{r}
 #| code-line-numbers: "|3|4|5"
@@ -218,11 +248,11 @@ purchases <- customers |>
 2.  Column `names_to` new column called `item_no`
 3.  `values_to` new column called `item`
 :::
-:::
+::::
 
 ## Customers $\rightarrow$ purchases
 
-::: columns
+:::: columns
 ::: {.column width="50%"}
 ```{r}
 purchases <- customers |>
@@ -235,7 +265,18 @@ purchases <- customers |>
 purchases
 ```
 :::
-:::
+::::
+
+## Dealing with `NA`s
+
+```{r}
+customers |>
+  pivot_longer(
+    cols = item_1:item_3,
+    names_to = "item_no",
+    values_to = "item"   
+  )
+```
 
 ## Why pivot?
 
@@ -243,26 +284,26 @@ Most likely, because the next step of your analysis needs it
 
 . . .
 
-::: medium
-::: columns
+:::::: medium
+::::: columns
 ::: {.column width="35%"}
 ```{r}
 prices
 ```
 :::
 
-::: {.column width="35%"}
+::: {.column .fragment width="35%"}
 ```{r}
 purchases |>
   left_join(prices)
 ```
 :::
-:::
-:::
+:::::
+::::::
 
 ## Purchases $\rightarrow$ customers
 
-::: columns
+:::: columns
 ::: {.column width="50%"}
 ```{r}
 #| code-line-numbers: "|1|2,5|3|4"
@@ -278,7 +319,7 @@ customers <- purchases |> # <1>
 3.  `names_from`: Which column in the long format contains the what should be column names in the wide format
 4.  `values_from`: Which column in the long format contains the what should be values in the new columns in the wide format
 :::
-:::
+::::
 
 # Case study: <br>Approval rating of Joe Biden
 
@@ -337,7 +378,7 @@ ggplot(
   theme(legend.position = "bottom")
 ```
 
-::: columns
+::::: columns
 ::: {.column .fragment width="30%"}
 **Aesthetic mappings:**
 
@@ -353,7 +394,7 @@ ggplot(
 
 ✅ `population` (Adults and Voters)
 :::
-:::
+:::::
 
 ## Pivot
 
@@ -371,7 +412,7 @@ biden_longer
 
 ## Plot {.smaller}
 
-::: columns
+::::: columns
 ::: {.column width="28%"}
 ```{r}
 #| label: biden-plot-1
@@ -397,7 +438,7 @@ ggplot(
 #| code-line-numbers: "2|4|5|6||9|10"
 ```
 :::
-:::
+:::::
 
 ## Colors
 
