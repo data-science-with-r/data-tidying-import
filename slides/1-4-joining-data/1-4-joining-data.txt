@@ -82,6 +82,8 @@ The GIF on the right visualizes what's happening when joining, which can be help
 
 So, now if we do a left join for the data we're actually interested in, professions and dates, we end up with 10 rows (all of the scientists from the professions dataset) and birth and death year information for 8 of them that were in the dates dataset. Where dates aren't available, they're denoted as NAs.
 
+Another important aspect of the code to point out here is the use of the pipe operator. We could write this as left_join professions comma dates as well, but we're choosing to use the join function in a data pipeline, just like we do everything else in data pipelines as well. Remember that the pipe operator takes what comes before it and plugs it into the next function as its first argument.
+
 >>>
 
 Next, a right join... We keep everything from y this time, and bring in the associated values from the x data frame. Since observation 4 wasn't in x, we end up with an NA for value_x of that row.
