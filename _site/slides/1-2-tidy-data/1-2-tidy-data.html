@@ -412,14 +412,14 @@
 <p>Leo Tolstoy</p>
 </blockquote>
 <div class="columns">
-<div class="column" style="width:40%;">
+<div class="column fragment" style="width:40%;">
 <p><strong>Characteristics of tidy data:</strong></p>
 <ul>
 <li>Each variable forms a column.</li>
 <li>Each observation forms a row.</li>
 <li>Each type of observational unit forms a table.</li>
 </ul>
-</div><div class="column" style="width:40%;">
+</div><div class="column fragment" style="width:40%;">
 <p><strong>Characteristics of untidy data:</strong></p>
 <p>!@#$%^&amp;*()</p>
 </div></div>
@@ -440,34 +440,10 @@
 </div></aside></section>
 <section id="what-makes-this-data-not-tidy-2" class="slide level2">
 <h2>What makes this data not tidy?</h2>
-<p><img data-src="images/us-general-economic-characteristic-acs-2017.png" alt="US General Economic Characteristics, ACS 2017"></p>
+<p><img data-src="images/dp03-selected-economic-characteristics-acs22.png" alt="US Selected Economic Characteristics, ACS 2022"></p>
 
 <aside><div>
-<p>Source: <a href="https://factfinder.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_17_5YR_DP03&amp;src=pt">US Census Fact Finder, General Economic Characteristics, ACS 2017</a></p>
-</div></aside></section>
-<section id="what-makes-data-tidy" class="slide level2">
-<h2>What makes data tidy?</h2>
-<blockquote>
-<p>“Tidy datasets are easy to manipulate, model and visualise, and have a specific structure: each variable is a column, each observation is a row, and each type of observational unit is a table.”</p>
-</blockquote>
-<div class="fragment">
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Note</strong></p>
-</div>
-<div class="callout-content">
-<p>“easy to manipulate” = “straightforward to manipulate”</p>
-</div>
-</div>
-</div>
-
-</div>
-<aside><div>
-<p>Wickham, H. (2014). <a href="https://www.jstatsoft.org/article/view/v059i10">Tidy data</a>. Journal of statistical software, 59, 1-23.</p>
+<p>Source: <a href="https://data.census.gov/table?q=general%20economic%20characteristics%20employment">US Census, Selected Economic Characteristics, ACS 2022</a></p>
 </div></aside></section>
 <section id="displaying-vs.-summarizing-data" class="slide level2">
 <h2>Displaying vs.&nbsp;summarizing data</h2>
@@ -475,54 +451,42 @@
 <div class="column">
 <p><strong>Display</strong></p>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>starwars <span class="sc">|&gt;</span></span>
+<span id="cb1-2"><a></a>  <span class="fu">select</span>(name, height, gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 87 × 3
-   name               height  mass
-   &lt;chr&gt;               &lt;int&gt; &lt;dbl&gt;
- 1 Luke Skywalker        172    77
- 2 C-3PO                 167    75
- 3 R2-D2                  96    32
- 4 Darth Vader           202   136
- 5 Leia Organa           150    49
- 6 Owen Lars             178   120
- 7 Beru Whitesun Lars    165    75
- 8 R5-D4                  97    32
- 9 Biggs Darklighter     183    84
-10 Obi-Wan Kenobi        182    77
+   name               height gender   
+   &lt;chr&gt;               &lt;int&gt; &lt;chr&gt;    
+ 1 Luke Skywalker        172 masculine
+ 2 C-3PO                 167 masculine
+ 3 R2-D2                  96 masculine
+ 4 Darth Vader           202 masculine
+ 5 Leia Organa           150 feminine 
+ 6 Owen Lars             178 masculine
+ 7 Beru Whitesun Lars    165 feminine 
+ 8 R5-D4                  97 masculine
+ 9 Biggs Darklighter     183 masculine
+10 Obi-Wan Kenobi        182 masculine
 # ℹ 77 more rows</code></pre>
 </div>
 </div>
-</div><div class="column">
+</div><div class="column fragment">
 <p><strong>Summarize</strong></p>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb3" data-code-line-numbers="|2|3-6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>starwars <span class="sc">|&gt;</span></span>
+<span id="cb3-2"><a></a>  <span class="fu">group_by</span>(gender) <span class="sc">|&gt;</span></span>
+<span id="cb3-3"><a></a>  <span class="fu">summarize</span>(</span>
+<span id="cb3-4"><a></a>    <span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb3-5"><a></a>    <span class="at">avg_height =</span> <span class="fu">mean</span>(height, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb3-6"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 3 × 2
-  gender    avg_ht
-  &lt;chr&gt;      &lt;dbl&gt;
-1 feminine    167.
-2 masculine   177.
-3 &lt;NA&gt;        175 </code></pre>
+<pre><code># A tibble: 3 × 3
+  gender        n avg_height
+  &lt;chr&gt;     &lt;int&gt;      &lt;dbl&gt;
+1 feminine     17       167.
+2 masculine    66       177.
+3 &lt;NA&gt;          4       175 </code></pre>
 </div>
-</div>
-</div></div>
-</section>
-<section id="displaying-vs.-summarizing-data-1" class="slide level2">
-<h2>Displaying vs.&nbsp;summarizing data</h2>
-<div class="columns">
-<div class="column" style="width:45%;">
-<p><strong>Display</strong></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>starwars <span class="sc">|&gt;</span></span>
-<span id="cb3-2"><a></a>  <span class="fu">select</span>(name, height, mass)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div><div class="column" style="width:55%;">
-<p><strong>Summarize</strong></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>starwars <span class="sc">|&gt;</span></span>
-<span id="cb4-2"><a></a>  <span class="fu">group_by</span>(gender) <span class="sc">|&gt;</span></span>
-<span id="cb4-3"><a></a>  <span class="fu">summarize</span>(</span>
-<span id="cb4-4"><a></a>    <span class="at">avg_ht =</span> <span class="fu">mean</span>(height, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb4-5"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div></div>
 

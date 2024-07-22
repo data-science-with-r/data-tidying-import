@@ -17,7 +17,7 @@ library(tidyverse)
 
 ::: {.columns}
 
-::: {.column width="40%"}
+::: {.column width="40%" .fragment}
 **Characteristics of tidy data:**
 
 - Each variable forms a column.
@@ -25,7 +25,7 @@ library(tidyverse)
 - Each type of observational unit forms a table.
 :::
 
-::: {.column width="40%"}
+::: {.column width="40%" .fragment}
 **Characteristics of untidy data:**
 
 !@#$%^&*()
@@ -51,26 +51,11 @@ Source: [Gapminder, Estimated HIV prevalence among 15-49 year olds](https://www.
 
 ## What makes this data not tidy?
 
-![](images/us-general-economic-characteristic-acs-2017.png){fig-alt="US General Economic Characteristics, ACS 2017"}
+![](images/dp03-selected-economic-characteristics-acs22.png){fig-alt="US Selected Economic Characteristics, ACS 2022"}
 
 ::: aside
-Source: [US Census Fact Finder, General Economic Characteristics, ACS 2017](https://factfinder.census.gov/faces/tableservices/jsf/pages/productview.xhtml?pid=ACS_17_5YR_DP03&src=pt)
+Source: [US Census, Selected Economic Characteristics, ACS 2022](https://data.census.gov/table?q=general%20economic%20characteristics%20employment)
 :::
-
-## What makes data tidy?
-
-> “Tidy datasets are easy to manipulate, model and visualise, and have a specific structure: each variable is a column, each observation is a row, and each type of observational unit is a table.”
-
-. . .
-
-::: callout-note
-“easy to manipulate” = “straightforward to manipulate”
-:::
-
-::: aside
-Wickham, H. (2014). [Tidy data](https://www.jstatsoft.org/article/view/v059i10). Journal of statistical software, 59, 1-23.
-:::
-
 
 ## Displaying vs. summarizing data
 
@@ -81,47 +66,23 @@ Wickham, H. (2014). [Tidy data](https://www.jstatsoft.org/article/view/v059i10).
 
 ```{r}
 #| label: starwars-display
-#| echo: false
 starwars |>
-  select(name, height, mass)
+  select(name, height, gender)
 ```
 :::
 
-::: {.column}
+::: {.column .fragment}
 **Summarize**
 
 ```{r}
 #| label: starwars-summarize
-#| echo: false
+#| code-line-numbers: "|2|3-6"
 starwars |>
   group_by(gender) |>
   summarize(
-    avg_ht = mean(height, na.rm = TRUE)
+    n = n(),
+    avg_height = mean(height, na.rm = TRUE)
   )
-```
-:::
-
-:::
-
-## Displaying vs. summarizing data
-
-::: {.columns}
-
-::: {.column width="45%"}
-**Display**
-
-```{r}
-#| ref-label: starwars-display
-#| output: false
-```
-:::
-
-::: {.column width="55%"}
-**Summarize**
-
-```{r}
-#| ref-label: starwars-summarize
-#| output: false
 ```
 :::
 
