@@ -644,11 +644,11 @@
     "text": "Task, goal, and tools\n\n\n have data organised in an unideal way for our analysis\n\n\n\n want to reorganize the data for our analysis\n\n\n\n\n using tools from the tidyverse\n\n\nlibrary(tidyverse)\nlibrary(scales)"
   },
   {
-    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#data-sales",
-    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#data-sales",
+    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#data-grocery-store-sales",
+    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#data-grocery-store-sales",
     "title": "Tidying data",
-    "section": "Data: Sales",
-    "text": "Data: Sales\n\n\nhave\n\n\n\n# A tibble: 2 × 4\n  customer_id item_1 item_2       item_3\n        &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;        &lt;chr&gt; \n1           1 bread  milk         banana\n2           2 milk   toilet paper &lt;NA&gt;  \n\n\n\n\nwant\n\n\n\n# A tibble: 6 × 3\n  customer_id item_no item        \n        &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;       \n1           1 item_1  bread       \n2           1 item_2  milk        \n3           1 item_3  banana      \n4           2 item_1  milk        \n5           2 item_2  toilet paper\n6           2 item_3  &lt;NA&gt;"
+    "section": "Data: Grocery store sales",
+    "text": "Data: Grocery store sales\n\n\nhave\n\n\n\n# A tibble: 2 × 4\n  customer_id item_1 item_2       item_3\n        &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;        &lt;chr&gt; \n1           1 bread  milk         banana\n2           2 milk   toilet paper &lt;NA&gt;  \n\n\n\n\nwant\n\n\n\n# A tibble: 6 × 3\n  customer_id item_no item        \n        &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;       \n1           1 item_1  bread       \n2           1 item_2  milk        \n3           1 item_3  banana      \n4           2 item_1  milk        \n5           2 item_2  toilet paper\n6           2 item_3  &lt;NA&gt;"
   },
   {
     "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#grammar-of-data-tidying",
@@ -690,160 +690,90 @@
     "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-2",
     "title": "Tidying data",
     "section": "pivot_longer()",
-    "text": "pivot_longer()\n\n\n\npivot_longer(\n1  data,\n2  cols,\n  names_to = \"name\", \n  values_to = \"value\"\n  )\n\n\n1\n\ndata (as usual)\n\n2\n\ncols: columns to pivot into longer format"
+    "text": "pivot_longer()\n\n\n\npivot_longer(\n1  data,\n2  cols,\n  names_to = \"name\", \n  values_to = \"value\"\n  )\n\n\n1\n\ndata (as usual)\n\n2\n\ncols: Columns to pivot into longer format"
   },
   {
     "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-3",
     "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-3",
     "title": "Tidying data",
     "section": "pivot_longer()",
-    "text": "pivot_longer()\n\n\n\npivot_longer(\n1  data,\n2  cols,\n3  names_to = \"name\",\n  values_to = \"value\"\n  )\n\n\n1\n\ndata (as usual)\n\n2\n\ncols: columns to pivot into longer format\n\n3\n\nnames_to: name of the column where column names of pivoted variables go (character string)"
+    "text": "pivot_longer()\n\n\n\npivot_longer(\n1  data,\n2  cols,\n3  names_to = \"name\",\n  values_to = \"value\"\n  )\n\n\n1\n\ndata (as usual)\n\n2\n\ncols: Columns to pivot into longer format\n\n3\n\nnames_to: Name of the column where column names of pivoted variables go (character string)"
   },
   {
     "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-4",
     "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-4",
     "title": "Tidying data",
     "section": "pivot_longer()",
-    "text": "pivot_longer()\n\n\n\npivot_longer(\n1  data,\n2  cols,\n3  names_to = \"name\",\n4  values_to = \"value\"\n  )\n\n\n1\n\ndata (as usual)\n\n2\n\ncols: columns to pivot into longer format\n\n3\n\nnames_to: name of the column where column names of pivoted variables go (character string)\n\n4\n\nvalues_to: name of the column where data in pivoted variables go (character string)"
+    "text": "pivot_longer()\n\n\n\npivot_longer(\n1  data,\n2  cols,\n3  names_to = \"name\",\n4  values_to = \"value\"\n  )\n\n\n1\n\ndata (as usual)\n\n2\n\ncols: Columns to pivot into longer format\n\n3\n\nnames_to: Name of the column where column names of pivoted variables go (character string)\n\n4\n\nvalues_to: Name of the column where data in pivoted variables go (character string)"
   },
   {
-    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#customers-rightarrow-purchases",
-    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#customers-rightarrow-purchases",
+    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-in-context",
+    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-in-context",
     "title": "Tidying data",
-    "section": "Customers \\(\\rightarrow\\) purchases",
-    "text": "Customers \\(\\rightarrow\\) purchases\n\n\n\npurchases &lt;- customers |&gt;\n  pivot_longer(\n1    cols = item_1:item_3,\n2    names_to = \"item_no\",\n3    values_to = \"item\"\n  )\n\n\n1\n\ncols to pivot: item_1 to item_3\n\n2\n\nColumn names_to new column called item_no\n\n3\n\nvalues_to new column called item"
-  },
-  {
-    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#customers-rightarrow-purchases-1",
-    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#customers-rightarrow-purchases-1",
-    "title": "Tidying data",
-    "section": "Customers \\(\\rightarrow\\) purchases",
-    "text": "Customers \\(\\rightarrow\\) purchases\n\n\n\npurchases &lt;- customers |&gt;\n  pivot_longer(\n    cols = item_1:item_3,\n    names_to = \"item_no\",\n    values_to = \"item\"   \n  )\n\npurchases\n\n# A tibble: 6 × 3\n  customer_id item_no item        \n        &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;       \n1           1 item_1  bread       \n2           1 item_2  milk        \n3           1 item_3  banana      \n4           2 item_1  milk        \n5           2 item_2  toilet paper\n6           2 item_3  &lt;NA&gt;"
+    "section": "pivot_longer() in context",
+    "text": "pivot_longer() in context\n\n\n\ncustomers |&gt;\n  pivot_longer(\n1    cols = item_1:item_3,\n2    names_to = \"item_no\",\n3    values_to = \"item\"\n  )\n\n\n1\n\ncols to pivot: item_1 to item_3\n\n2\n\nColumn names_to new column called item_no\n\n3\n\nvalues_to new column called item\n\n\n\n\n# A tibble: 6 × 3\n  customer_id item_no item        \n        &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;       \n1           1 item_1  bread       \n2           1 item_2  milk        \n3           1 item_3  banana      \n4           2 item_1  milk        \n5           2 item_2  toilet paper\n6           2 item_3  &lt;NA&gt;"
   },
   {
     "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#dealing-with-nas",
     "href": "slides/1-3-tidying-data/1-3-tidying-data.html#dealing-with-nas",
     "title": "Tidying data",
     "section": "Dealing with NAs",
-    "text": "Dealing with NAs\n\ncustomers |&gt;\n  pivot_longer(\n    cols = item_1:item_3,\n    names_to = \"item_no\",\n    values_to = \"item\"   \n  )\n\n# A tibble: 6 × 3\n  customer_id item_no item        \n        &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;       \n1           1 item_1  bread       \n2           1 item_2  milk        \n3           1 item_3  banana      \n4           2 item_1  milk        \n5           2 item_2  toilet paper\n6           2 item_3  &lt;NA&gt;"
+    "text": "Dealing with NAs\n\n\n\ncustomers |&gt;\n  pivot_longer(\n1    cols = item_1:item_3,\n2    names_to = \"item_no\",\n3    values_to = \"item\",\n4    values_drop_na = TRUE\n  )\n\n\n1\n\ncols to pivot: item_1 to item_3\n\n2\n\nColumn names_to new column called item_no\n\n3\n\nvalues_to new column called item\n\n4\n\nDrop rows that contain only NAs in the values_to column\n\n\n\n\n# A tibble: 5 × 3\n  customer_id item_no item        \n        &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;       \n1           1 item_1  bread       \n2           1 item_2  milk        \n3           1 item_3  banana      \n4           2 item_1  milk        \n5           2 item_2  toilet paper"
+  },
+  {
+    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#customers-rightarrow-purchases",
+    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#customers-rightarrow-purchases",
+    "title": "Tidying data",
+    "section": "Customers \\(\\rightarrow\\) purchases",
+    "text": "Customers \\(\\rightarrow\\) purchases\n\n\n\npurchases &lt;- customers |&gt;\n  pivot_longer(\n    cols = item_1:item_3,\n    names_to = \"item_no\",\n    values_to = \"item\",\n    values_drop_na = TRUE\n  )\n\npurchases\n\n# A tibble: 5 × 3\n  customer_id item_no item        \n        &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;       \n1           1 item_1  bread       \n2           1 item_2  milk        \n3           1 item_3  banana      \n4           2 item_1  milk        \n5           2 item_2  toilet paper"
   },
   {
     "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#why-pivot",
     "href": "slides/1-3-tidying-data/1-3-tidying-data.html#why-pivot",
     "title": "Tidying data",
     "section": "Why pivot?",
-    "text": "Why pivot?\nMost likely, because the next step of your analysis needs it\n\n\n\n\n\nprices\n\n# A tibble: 5 × 2\n  item         price\n  &lt;chr&gt;        &lt;dbl&gt;\n1 avocado       0.5 \n2 banana        0.15\n3 bread         1   \n4 milk          0.8 \n5 toilet paper  3   \n\n\n\n\npurchases |&gt;\n  left_join(prices)\n\nJoining with `by = join_by(item)`\n\n\n# A tibble: 6 × 4\n  customer_id item_no item         price\n        &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;        &lt;dbl&gt;\n1           1 item_1  bread         1   \n2           1 item_2  milk          0.8 \n3           1 item_3  banana        0.15\n4           2 item_1  milk          0.8 \n5           2 item_2  toilet paper  3   \n6           2 item_3  &lt;NA&gt;         NA"
+    "text": "Why pivot?\nMost likely, because the next step of your analysis needs it\n\n\n\n\n\nprices\n\n# A tibble: 5 × 2\n  item         price\n  &lt;chr&gt;        &lt;dbl&gt;\n1 avocado       0.5 \n2 banana        0.15\n3 bread         1   \n4 milk          0.8 \n5 toilet paper  3   \n\n\n\n\npurchases |&gt;\n  left_join(prices)\n\nJoining with `by = join_by(item)`\n\n\n# A tibble: 5 × 4\n  customer_id item_no item         price\n        &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;        &lt;dbl&gt;\n1           1 item_1  bread         1   \n2           1 item_2  milk          0.8 \n3           1 item_3  banana        0.15\n4           2 item_1  milk          0.8 \n5           2 item_2  toilet paper  3"
   },
   {
     "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#purchases-rightarrow-customers",
     "href": "slides/1-3-tidying-data/1-3-tidying-data.html#purchases-rightarrow-customers",
     "title": "Tidying data",
     "section": "Purchases \\(\\rightarrow\\) customers",
-    "text": "Purchases \\(\\rightarrow\\) customers\n\n\n\n1customers &lt;- purchases |&gt;\n2  pivot_wider(\n3    names_from = item_no,\n4    values_from = item\n  )\n\n\n1\n\ndata (as usual)\n\n2\n\npivot_wider(): Function to pivot wider\n\n3\n\nnames_from: Which column in the long format contains the what should be column names in the wide format\n\n4\n\nvalues_from: Which column in the long format contains the what should be values in the new columns in the wide format"
+    "text": "Purchases \\(\\rightarrow\\) customers\n\n\n\npurchases |&gt;\n  pivot_wider(\n    names_from = item_no,\n    values_from = item\n  )\n\n# A tibble: 2 × 4\n  customer_id item_1 item_2       item_3\n        &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;        &lt;chr&gt; \n1           1 bread  milk         banana\n2           2 milk   toilet paper &lt;NA&gt;"
   },
   {
-    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#inspiration",
-    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#inspiration",
+    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_wider",
+    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_wider",
     "title": "Tidying data",
-    "section": "Inspiration",
-    "text": "Inspiration\n\n\n\nSource: FiveThirtyEight"
+    "section": "pivot_wider()",
+    "text": "pivot_wider()\n\n\n\npivot_wider(\n1  data,\n  names_from = name,\n  values_from = value\n  )\n\n\n1\n\ndata (as usual)"
   },
   {
-    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#data",
-    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#data",
+    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_wider-1",
+    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_wider-1",
     "title": "Tidying data",
-    "section": "Data",
-    "text": "Data\n\nbiden &lt;- read_csv(\"data/biden/biden.csv\")\nbiden\n\n# A tibble: 504 × 5\n   pollster population       date       approval disapproval\n   &lt;chr&gt;    &lt;chr&gt;            &lt;date&gt;        &lt;dbl&gt;       &lt;dbl&gt;\n 1 YouGov   All adults       2024-07-16       37          59\n 2 YouGov   Registered vote… 2024-07-16       40          58\n 3 YouGov   All adults       2024-07-09       37          58\n 4 YouGov   Registered vote… 2024-07-09       40          58\n 5 YouGov   All adults       2024-07-02       37          57\n 6 YouGov   Registered vote… 2024-07-02       40          57\n 7 YouGov   All adults       2024-07-01       38          57\n 8 YouGov   Registered vote… 2024-07-01       41          58\n 9 YouGov   All adults       2024-06-25       36          58\n10 YouGov   Registered vote… 2024-06-25       41          57\n# ℹ 494 more rows"
+    "section": "pivot_wider()",
+    "text": "pivot_wider()\n\n\n\npivot_wider(\n1  data,\n2  names_from = name,\n  values_from = value\n  )\n\n\n1\n\ndata (as usual)\n\n2\n\nnames_from: Which column(s) in the long format contains the what should be column names in the wide format"
   },
   {
-    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#goal",
-    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#goal",
+    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_wider-2",
+    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_wider-2",
     "title": "Tidying data",
-    "section": "Goal",
-    "text": "Goal\n\n\n\n\n\n\n\n\n\n\n\nAesthetic mappings:\n✅ x = date\n❌ y = rating_value\n❌ color = rating_type\n\nFacet:\n✅ population (Adults and Voters)"
+    "section": "pivot_wider()",
+    "text": "pivot_wider()\n\n\n\npivot_wider(\n1  data,\n2  names_from = name,\n3  values_from = value\n  )\n\n\n1\n\ndata (as usual)\n\n2\n\nnames_from: Which column(s) in the long format contains the what should be column names in the wide format\n\n3\n\nvalues_from: Which column(s) in the long format contains the what should be values in the new columns in the wide format"
   },
   {
-    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot",
-    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot",
+    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#wider---longer",
+    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#wider---longer",
     "title": "Tidying data",
-    "section": "Pivot",
-    "text": "Pivot\n\nbiden_longer &lt;- biden |&gt;\n  pivot_longer(\n    cols = c(approval, disapproval),\n    names_to = \"rating_type\",\n    values_to = \"rating_value\"\n  )\n\nbiden_longer\n\n# A tibble: 1,008 × 5\n   pollster population   date       rating_type rating_value\n   &lt;chr&gt;    &lt;chr&gt;        &lt;date&gt;     &lt;chr&gt;              &lt;dbl&gt;\n 1 YouGov   All adults   2024-07-16 approval              37\n 2 YouGov   All adults   2024-07-16 disapproval           59\n 3 YouGov   Registered … 2024-07-16 approval              40\n 4 YouGov   Registered … 2024-07-16 disapproval           58\n 5 YouGov   All adults   2024-07-09 approval              37\n 6 YouGov   All adults   2024-07-09 disapproval           58\n 7 YouGov   Registered … 2024-07-09 approval              40\n 8 YouGov   Registered … 2024-07-09 disapproval           58\n 9 YouGov   All adults   2024-07-02 approval              37\n10 YouGov   All adults   2024-07-02 disapproval           57\n# ℹ 998 more rows"
+    "section": "Wider <-> longer",
+    "text": "Wider &lt;-&gt; longer"
   },
   {
-    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#plot",
-    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#plot",
+    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#additional-arguments",
+    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#additional-arguments",
     "title": "Tidying data",
-    "section": "Plot",
-    "text": "Plot\n\n\n\nggplot(\n  biden_longer, \n  aes(\n    x = date, \n    y = rating_value, \n    color = rating_type\n    )\n  ) +\n  geom_line() +\n  facet_wrap(~ population)"
-  },
-  {
-    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#colors",
-    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#colors",
-    "title": "Tidying data",
-    "section": "Colors",
-    "text": "Colors\n\nggplot(\n  biden_longer, \n  aes(x = date, y = rating_value, color = rating_type)\n  ) +\n  geom_line() +\n  facet_wrap(~ population) +\n  scale_color_manual(values = c(\"darkgreen\", \"deeppink\"))"
-  },
-  {
-    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#colors-output",
-    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#colors-output",
-    "title": "Tidying data",
-    "section": "Colors",
-    "text": "Colors"
-  },
-  {
-    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#y-axis-labels",
-    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#y-axis-labels",
-    "title": "Tidying data",
-    "section": "y-axis labels",
-    "text": "y-axis labels\n\nggplot(\n  biden_longer, \n  aes(x = date, y = rating_value, color = rating_type)\n  ) +\n  geom_line() +\n  facet_wrap(~ population) +\n  scale_color_manual(values = c(\"darkgreen\", \"deeppink\")) +\n  scale_y_continuous(labels = label_percent(scale = 1))"
-  },
-  {
-    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#y-axis-labels-output",
-    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#y-axis-labels-output",
-    "title": "Tidying data",
-    "section": "y-axis labels",
-    "text": "y-axis labels"
-  },
-  {
-    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#x-axis-labels",
-    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#x-axis-labels",
-    "title": "Tidying data",
-    "section": "x-axis labels",
-    "text": "x-axis labels\n\nggplot(\n  biden_longer, \n  aes(x = date, y = rating_value, color = rating_type)\n  ) +\n  geom_line() +\n  facet_wrap(~ population) +\n  scale_color_manual(values = c(\"darkgreen\", \"deeppink\")) +\n  scale_y_continuous(labels = label_percent(scale = 1)) +\n  scale_x_date(date_breaks = \"1 year\", date_labels = \"%b %e, %Y\")"
-  },
-  {
-    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#x-axis-labels-output",
-    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#x-axis-labels-output",
-    "title": "Tidying data",
-    "section": "x-axis labels",
-    "text": "x-axis labels"
-  },
-  {
-    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#plot-labels",
-    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#plot-labels",
-    "title": "Tidying data",
-    "section": "Plot labels",
-    "text": "Plot labels\n\nggplot(\n  biden_longer, \n  aes(x = date, y = rating_value, color = rating_type)\n  ) +\n  geom_line() +\n  facet_wrap(~ population) +\n  scale_color_manual(values = c(\"darkgreen\", \"deeppink\")) +\n  scale_y_continuous(labels = label_percent(scale = 1)) +\n  scale_x_date(date_breaks = \"1 year\", date_labels = \"%b %e, %Y\") +\n  labs(\n    x = \"Date\",\n    y = \"Rating\",\n    color = NULL,\n    title = \"How popular is Joe Biden?\",\n    subtitle = \"Estimates based on polls of all adults and polls of registered voters\",\n    caption = \"Source: FiveThirtyEight\"\n  )"
-  },
-  {
-    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#plot-labels-output",
-    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#plot-labels-output",
-    "title": "Tidying data",
-    "section": "Plot labels",
-    "text": "Plot labels"
-  },
-  {
-    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#theming",
-    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#theming",
-    "title": "Tidying data",
-    "section": "Theming",
-    "text": "Theming\n\nggplot(\n  biden_longer, \n  aes(x = date, y = rating_value, color = rating_type)\n  ) +\n  geom_line() +\n  facet_wrap(~ population) +\n  scale_color_manual(values = c(\"darkgreen\", \"deeppink\")) +\n  scale_y_continuous(labels = label_percent(scale = 1)) +\n  scale_x_date(date_breaks = \"1 year\", date_labels = \"%b %e, %Y\") +\n  labs(\n    x = \"Date\",\n    y = \"Rating\",\n    color = NULL,\n    title = \"How popular is Joe Biden?\",\n    subtitle = \"Estimates based on polls of all adults and polls of registered voters\",\n    caption = \"Source: FiveThirtyEight\"\n  ) +\n  theme_minimal() +\n  theme(legend.position = \"bottom\")"
-  },
-  {
-    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#theming-output",
-    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#theming-output",
-    "title": "Tidying data",
-    "section": "Theming",
-    "text": "Theming"
+    "section": "Additional arguments",
+    "text": "Additional arguments\n\n\npivot_longer()\n\npivot_longer(\n  data,\n  cols,\n  ...,\n  cols_vary = \"fastest\",\n  names_to = \"name\",\n  names_prefix = NULL,\n  names_sep = NULL,\n  names_pattern = NULL,\n  names_ptypes = NULL,\n  names_transform = NULL,\n  names_repair = \"check_unique\",\n  values_to = \"value\",\n  values_drop_na = FALSE,\n  values_ptypes = NULL,\n  values_transform = NULL\n)\n\n\npivot_wider()\n\npivot_wider(\n  data,\n  ...,\n  id_cols = NULL,\n  id_expand = FALSE,\n  names_from = name,\n  names_prefix = \"\",\n  names_sep = \"_\",\n  names_glue = NULL,\n  names_sort = FALSE,\n  names_vary = \"fastest\",\n  names_expand = FALSE,\n  names_repair = \"check_unique\",\n  values_from = value,\n  values_fill = NULL,\n  values_fn = NULL,\n  unused_fn = NULL\n)"
   }
 ]
