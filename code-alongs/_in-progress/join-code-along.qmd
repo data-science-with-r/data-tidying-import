@@ -1,0 +1,131 @@
+
+# Case study: Student records
+
+## Student records
+
+::: hand
+We...
+
+[have]{.hand-blue-medium} enrollment data (from official university records) and survey data (provided by students, missing from those who never filled it out and including students who filled it out but dropped the class)
+
+[want]{.hand-pink-medium} survey info for all students enrolled in the class 
+:::
+
+## Data
+
+```{r}
+#| include: false
+enrolment <- read_csv("data/students/enrolment.csv")
+survey <- read_csv("data/students/survey.csv")
+```
+
+:::: {.columns}
+
+::: {.column width="30%"}
+```{r}
+enrolment
+```
+:::
+
+::: {.column width="45%"}
+```{r}
+survey
+```
+:::
+
+::::
+
+## Student records - In class
+
+```{r}
+enrolment |>
+  left_join(survey, by = "id")
+```
+
+## Student records - Survey missing
+
+```{r}
+enrolment |>
+  anti_join(survey, by = "id")
+```
+
+## Student records - Dropped
+
+```{r}
+survey |>
+  anti_join(enrolment, by = "id")
+```
+
+# Case study: Grocery sales
+
+## Grocery sales
+
+::: hand
+We...
+
+[have]{.hand-blue-medium} purchase data (one row per customer per item, listing purchases they made) and price data (one row per item in the store, listing their prices)
+
+[want]{.hand-pink-medium} total revenue
+:::
+
+```{r}
+#| include: false
+purchases <- read_csv("data/sales/purchases.csv")
+prices <- read_csv("data/sales/prices.csv")
+```
+
+## Data
+
+:::: {.columns}
+
+::: {.column width="35%"}
+```{r}
+purchases
+```
+:::
+
+::: {.column width="35%"}
+```{r}
+prices
+```
+:::
+
+::::
+
+## Grocery sales - Total revenue
+
+```{r}
+purchases |>
+  left_join(prices)
+```
+
+## Grocery sales - Total revenue
+
+```{r}
+purchases |>
+  left_join(prices)
+```
+
+## Grocery sales - Total revenue
+
+```{r}
+purchases |>
+  left_join(prices) |>
+  summarise(total_revenue = sum(price))
+```
+
+## Grocery sales - Revenue per customer
+
+```{r}
+purchases |>
+  left_join(prices)
+```
+
+## Grocery sales - Revenue per customer
+
+```{r}
+purchases |>
+  left_join(prices) |>
+  group_by(customer_id) |>
+  summarise(total_revenue = sum(price))
+```

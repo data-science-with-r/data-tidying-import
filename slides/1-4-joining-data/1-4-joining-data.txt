@@ -1,0 +1,133 @@
+So far we've worked with single data frames and transformed and tidied them using functions primarily from the dplyr and tidyr packages from the tidyverse.
+
+In this video we're going to work with multile data frames that we want to bring together and join based on common information across the datasets.
+
+>>>
+
+Our setup is as follows
+
+>>>
+
+We have multiple data frames
+
+> we want to bring them together
+
+> and we'll accomplish this using our trusted tools from the tidyverse, so let's go ahead and load the tidyverse package
+
+>>>
+
+Our data come from a Discover Magazine article on 10 women in science who changed the world. Hopefully you recognize a few of these names like Ada Lovelace, Marie Curie, etc.
+
+>>>
+
+The data we need for our analysis is spread across three data frames.
+
+The first one is called professions and it has the names and professions of all 10 scientists we're interested in.
+
+>>>
+
+The next one is dates, and it gives the birth and death years of the scientists. You'll note that this information is only given for 8 of the 10 scientists. This is surely annoying, but it's also very real -- often times when you're in the business of joining data from multiple sources you find out that you don't have the same observations in each of these sources, and it can take some manual digging to find the missing pieces you need. Another feature you'll notice here is that some of the dates are NAs -- this is because these scientists are still alive at the time of recording this video, and hence we don't have death dates for them.
+
+>>>
+
+And the third dataset is works, which gives the names of the scientsts and what they're known for. And again we don't have all our scientists here, only 9 of them are in this dataset.
+
+>>>
+
+Our goal is to get to a data frame with 10 rows and information from all three of these sources: name, profession, birth year, death year, and what they're known for. Since all of these data are not available for each of the 10 scientists, we'll end up with NAs in this final output, but that's ok. That might be something we can remedy at a later stage of the analysis by looking up things like the birth and death years of Ada Lovelace -- she lived between 1815 and 1852, and what Rosalind Franklin known for -- her work that  was central to understanding of the molecular structures of DNA and RNA. But, for now, we'll keep these external pieces of information out, and focus on joining the three datasets as they're given.
+
+>>>
+
+Before we dive into that, let's remind ourselves which variables come from which data frame and how many rows each of these data frames have.
+
+The professions data frame has names and professions for 10 scientists
+
+> The dates data frame has names, birth, and death years for 8 scientists
+
+> The works data frame has names and what they're known for for 9 scientists
+
+You'll notice a trend -- names are in all of the data frames, so when we join these data frames we'll use that as our identifying column.
+
+>>>
+
+Alright, let's get to it!
+
+>>>
+
+The functions that are useful for joining data frames all end with underscore-join and the first word of the function name signals what type of join you're doing.
+
+For example, a left join keeps all rows from the data frame on the left -- the one that's passed to the first argument of the function, x, and joins to it information from the data frame on the right.
+
+A right join does the opposite.
+
+But, while this slide is provided to communicate there are many types of joins, let's see them in action, instead of reading through all possible joins.
+
+>>>
+
+For the next few slides we'll work with both our scientists data and much smaller toy datasets that we can use to more easily visualize what's happening in these joins.
+
+> We'll call the first data frame x, it has two columns -- id, which takes on the values 1, 2, and 3 and value_x.
+
+> And we'll call the second data frame y, it has two columns -- id, which takes on the values 1, 2, and 4 and value_y.
+
+So, you can see that some of the IDs are common (1 and 2), some only exist in data frame x, 3, and some only exist in data frame y, 4.
+
+>>>
+
+If we left join x and y, we keep all rows from x and all the values associated with them, and bring in the value column from y for observations with IDs 1 and 2. We end up with an NA for value_y for ID 3, because that observation didn't exist in data frame y, so we have nothing to bring in for it.
+
+The GIF on the right visualizes what's happening when joining, which can be helpful for some learners as well.
+
+>>>
+
+So, now if we do a left join for the data we're actually interested in, professions and dates, we end up with 10 rows (all of the scientists from the professions dataset) and birth and death year information for 8 of them that were in the dates dataset. Where dates aren't available, they're denoted as NAs.
+
+>>>
+
+Next, a right join... We keep everything from y this time, and bring in the associated values from the x data frame. Since observation 4 wasn't in x, we end up with an NA for value_x of that row.
+
+>>>
+
+Similarly, if we were to right join professions and dates, we would end up with the 8 scientists from the dates data frame and all of their professions since they all exist in the professions data frame.
+
+Note the message underneath the code and above the output -- "Joining with `by = join_by(name)`. There was a similar message with the left join too, we glossed over it at the time. What R is telling us here is that it looked for a common column between the two data frames we're joining, found the column named name to be the common one (we noted this earlier too), and joined the rows based on what's in the name column. It's important to note that the names have to be spelled in exactly the same way for the join to succeed.
+
+And there are NAs in this output too, but those are, as we noted before, NAs because these scientists are still alive. Not because we don't have information on them in both datasets.
+
+>>>
+
+A full join keeps all rows from all data frames. So we end up with observations 1, 2, 3, and 4, even though 3 is missing a y value and 4 is missing an x value. It's a useful join when you want to make sure you end up with all possible information available to you, but it can also result in a data frame you need to do further cleaning on.
+
+>>>
+
+So, if we do a full join on professions and dates, we end up with all 10 rows, and NAs wherever the scientist is missing from a dataset.
+
+>>>
+
+An inner join, finds the common observations and only keeps the rows that exist in both data frames. So, with x and y, that's just observations 1 and 2. It can be useful when you want to see who is in two datasets, like who is taking a course and another one as well, or who purchased and item and another one as well.
+
+>>>
+
+Or, in our case of the scientists, who we have both profession and date information on.
+
+>>>
+
+A semi join is similar to an inner join, except it looks up which rows match another data frame, but doesn't actually bring in information from the other data frame. In this case, observations 1 and 2 are in x and y as well, but when we do a semi join we end up with just those observations and just their x values, while an inner join had brought their y values as well.
+
+>>>
+
+In our case of the scientists, a semi join of professions and dates can be used to tease out who from the professions data frame is also represented in the dates data frame, without bringing in their date information.
+
+>>>
+
+Finally, an anti join can be thought of as the opposite of an inner join. It tells us which rows in a data frame are not in another data frame. It can be useful to find out, for example, which student is enrolled in one course but not another. Or which customer bought one item but not another. With the x and y data frames, observation 3 is in x but not y, hence the result here.
+
+>>>
+
+Anti join of professions and dates, then, gives us which scientists we have profession information for but not date information. This information can be useful at the data prep stage, you could use it to do some additional digging to augment the dates data frame first, before joining it to the professions data frame, for example.
+
+>>>
+
+So, let's put all the information on our scientists together -- professions, left joined to dates, which means we want everyone in professions and don't care if someone is in dates but not professions, and the result is piped into another left join to works, which means we again only care about who is in professions and want to just pull in works information about them.
+
+Of course, in our case the professions dataset had everyone we needed, so we can get away with a left join here. In fact, if you're not sure which join to use, I'd recommend first starting with a left join and then trying out right and full as well to get a sense of your data. When sample sizes are small, like in these examples, the correct choices are pretty obvious. As your data gets larger and harder to inspect visually, you'll need to think harder about which observations you lose when you pick a particular type of join over another.
