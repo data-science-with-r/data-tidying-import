@@ -637,11 +637,11 @@
     "text": "Displaying vs. summarizing data\n\n\nDisplay\n\nstarwars |&gt;\n  select(name, height, gender)\n\n# A tibble: 87 × 3\n   name               height gender   \n   &lt;chr&gt;               &lt;int&gt; &lt;chr&gt;    \n 1 Luke Skywalker        172 masculine\n 2 C-3PO                 167 masculine\n 3 R2-D2                  96 masculine\n 4 Darth Vader           202 masculine\n 5 Leia Organa           150 feminine \n 6 Owen Lars             178 masculine\n 7 Beru Whitesun Lars    165 feminine \n 8 R5-D4                  97 masculine\n 9 Biggs Darklighter     183 masculine\n10 Obi-Wan Kenobi        182 masculine\n# ℹ 77 more rows\n\n\n\nSummarize\n\nstarwars |&gt;\n  group_by(gender) |&gt;\n  summarize(\n    n = n(),\n    avg_height = mean(height, na.rm = TRUE)\n  )\n\n# A tibble: 3 × 3\n  gender        n avg_height\n  &lt;chr&gt;     &lt;int&gt;      &lt;dbl&gt;\n1 feminine     17       167.\n2 masculine    66       177.\n3 &lt;NA&gt;          4       175"
   },
   {
-    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#task-and-goal",
-    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#task-and-goal",
+    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#task-goal-and-tools",
+    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#task-goal-and-tools",
     "title": "Tidying data",
-    "section": "Task and goal",
-    "text": "Task and goal\n\nWe…\nhave data organised in an unideal way for our analysis\nwant to reorganize the data to carry on with our analysis"
+    "section": "Task, goal, and tools",
+    "text": "Task, goal, and tools\n\n\n have data organised in an unideal way for our analysis\n\n\n\n want to reorganize the data for our analysis\n\n\n\n\n using tools from the tidyverse\n\n\nlibrary(tidyverse)\nlibrary(scales)"
   },
   {
     "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#data-sales",
@@ -676,28 +676,35 @@
     "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer",
     "title": "Tidying data",
     "section": "pivot_longer()",
-    "text": "pivot_longer()\n\n\n\npivot_longer(\n1  data |&gt;\n  cols, \n  names_to = \"name\", \n  values_to = \"value\"\n  )\n\n\n1\n\ndata (as usual)"
+    "text": "pivot_longer()\n\n\n\npivot_longer(\n  data,\n  cols, \n  names_to = \"name\", \n  values_to = \"value\"\n  )"
   },
   {
     "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-1",
     "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-1",
     "title": "Tidying data",
     "section": "pivot_longer()",
-    "text": "pivot_longer()\n\n\n\npivot_longer(\n1  data |&gt;\n2  cols,\n  names_to = \"name\", \n  values_to = \"value\"\n  )\n\n\n1\n\ndata (as usual)\n\n2\n\ncols: columns to pivot into longer format"
+    "text": "pivot_longer()\n\n\n\npivot_longer(\n1  data,\n  cols, \n  names_to = \"name\", \n  values_to = \"value\"\n  )\n\n\n1\n\ndata (as usual)"
   },
   {
     "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-2",
     "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-2",
     "title": "Tidying data",
     "section": "pivot_longer()",
-    "text": "pivot_longer()\n\n\n\npivot_longer(\n1  data |&gt;\n2  cols,\n3  names_to = \"name\",\n  values_to = \"value\"\n  )\n\n\n1\n\ndata (as usual)\n\n2\n\ncols: columns to pivot into longer format\n\n3\n\nnames_to: name of the column where column names of pivoted variables go (character string)"
+    "text": "pivot_longer()\n\n\n\npivot_longer(\n1  data,\n2  cols,\n  names_to = \"name\", \n  values_to = \"value\"\n  )\n\n\n1\n\ndata (as usual)\n\n2\n\ncols: columns to pivot into longer format"
   },
   {
     "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-3",
     "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-3",
     "title": "Tidying data",
     "section": "pivot_longer()",
-    "text": "pivot_longer()\n\n\n\npivot_longer(\n1  data |&gt;\n2  cols,\n3  names_to = \"name\",\n4  values_to = \"value\"\n  )\n\n\n1\n\ndata (as usual)\n\n2\n\ncols: columns to pivot into longer format\n\n3\n\nnames_to: name of the column where column names of pivoted variables go (character string)\n\n4\n\nvalues_to: name of the column where data in pivoted variables go (character string)"
+    "text": "pivot_longer()\n\n\n\npivot_longer(\n1  data,\n2  cols,\n3  names_to = \"name\",\n  values_to = \"value\"\n  )\n\n\n1\n\ndata (as usual)\n\n2\n\ncols: columns to pivot into longer format\n\n3\n\nnames_to: name of the column where column names of pivoted variables go (character string)"
+  },
+  {
+    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-4",
+    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-4",
+    "title": "Tidying data",
+    "section": "pivot_longer()",
+    "text": "pivot_longer()\n\n\n\npivot_longer(\n1  data,\n2  cols,\n3  names_to = \"name\",\n4  values_to = \"value\"\n  )\n\n\n1\n\ndata (as usual)\n\n2\n\ncols: columns to pivot into longer format\n\n3\n\nnames_to: name of the column where column names of pivoted variables go (character string)\n\n4\n\nvalues_to: name of the column where data in pivoted variables go (character string)"
   },
   {
     "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#customers-rightarrow-purchases",
@@ -712,6 +719,13 @@
     "title": "Tidying data",
     "section": "Customers \\(\\rightarrow\\) purchases",
     "text": "Customers \\(\\rightarrow\\) purchases\n\n\n\npurchases &lt;- customers |&gt;\n  pivot_longer(\n    cols = item_1:item_3,\n    names_to = \"item_no\",\n    values_to = \"item\"   \n  )\n\npurchases\n\n# A tibble: 6 × 3\n  customer_id item_no item        \n        &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;       \n1           1 item_1  bread       \n2           1 item_2  milk        \n3           1 item_3  banana      \n4           2 item_1  milk        \n5           2 item_2  toilet paper\n6           2 item_3  &lt;NA&gt;"
+  },
+  {
+    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#dealing-with-nas",
+    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#dealing-with-nas",
+    "title": "Tidying data",
+    "section": "Dealing with NAs",
+    "text": "Dealing with NAs\n\ncustomers |&gt;\n  pivot_longer(\n    cols = item_1:item_3,\n    names_to = \"item_no\",\n    values_to = \"item\"   \n  )\n\n# A tibble: 6 × 3\n  customer_id item_no item        \n        &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;       \n1           1 item_1  bread       \n2           1 item_2  milk        \n3           1 item_3  banana      \n4           2 item_1  milk        \n5           2 item_2  toilet paper\n6           2 item_3  &lt;NA&gt;"
   },
   {
     "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#why-pivot",
