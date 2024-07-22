@@ -691,5 +691,19 @@
     "title": "Tidy Basketball",
     "section": "Bonus Challange",
     "text": "Bonus Challange\nRecreate the plot, using the blazer_long dataset!\n\n\n\n\n\nHints: The code you start with makes sure that game is appropriately treated as a quantitative variable. You will learn more about data types in the following lessons! The plot above uses theme_bw().\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nblazer_long |&gt;\n  mutate(game = as.numeric(game)) |&gt;\n  ggplot(\n    aes(x = game, y = points, color = location, group = player)\n  ) +\n  geom_line() +\n  geom_point(shape = \"square\") +\n  facet_wrap(~player) +\n  scale_x_continuous(breaks = c(1:10)) +\n  theme_bw() +\n  labs(\n    x = \"Game\",\n    y = \"Points Scored\",\n    title = \"Points Scored Across 10 Games\",\n    subtitle = \"Portland Trailblazers (2021-2022 Season)\",\n    caption = \"https://www.basketball-reference.com/teams/POR/2021_games.html\"\n  )\n\nWarning: Removed 2 rows containing missing values or values outside the scale range\n(`geom_point()`)."
+  },
+  {
+    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#from-customers-to-purchases",
+    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#from-customers-to-purchases",
+    "title": "Tidying data",
+    "section": "From customers to purchases",
+    "text": "From customers to purchases\n\n\n\npurchases &lt;- customers |&gt;\n  pivot_longer(\n    cols = item_1:item_3,\n    names_to = \"item_no\",\n    values_to = \"item\",\n    values_drop_na = TRUE\n  )\n\npurchases\n\n# A tibble: 5 × 3\n  customer_id item_no item        \n        &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;       \n1           1 item_1  bread       \n2           1 item_2  milk        \n3           1 item_3  banana      \n4           2 item_1  milk        \n5           2 item_2  toilet paper"
+  },
+  {
+    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#from-purchases-to-customers",
+    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#from-purchases-to-customers",
+    "title": "Tidying data",
+    "section": "From purchases to customers",
+    "text": "From purchases to customers\n\n\n\npurchases |&gt;\n  pivot_wider(\n    names_from = item_no,\n    values_from = item\n  )\n\n# A tibble: 2 × 4\n  customer_id item_1 item_2       item_3\n        &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;        &lt;chr&gt; \n1           1 bread  milk         banana\n2           2 milk   toilet paper &lt;NA&gt;"
   }
 ]

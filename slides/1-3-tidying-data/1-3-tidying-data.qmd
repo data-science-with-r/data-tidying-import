@@ -273,7 +273,7 @@ customers |>
 :::
 ::::
 
-## Customers $\rightarrow$ purchases
+## From customers to purchases
 
 :::: columns
 ::: {.column width="50%"}
@@ -318,8 +318,7 @@ purchases |>
 
 # From longer to wider
 
-
-## Purchases $\rightarrow$ customers
+## From purchases to customers
 
 :::: columns
 ::: {.column width="50%"}
