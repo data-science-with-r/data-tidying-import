@@ -637,11 +637,11 @@
     "text": "Dealing with NAs\n\n\n\ncustomers |&gt;\n  pivot_longer(\n1    cols = item_1:item_3,\n2    names_to = \"item_no\",\n3    values_to = \"item\",\n4    values_drop_na = TRUE\n  )\n\n\n1\n\ncols to pivot: item_1 to item_3\n\n2\n\nColumn names_to new column called item_no\n\n3\n\nvalues_to new column called item\n\n4\n\nDrop rows that contain only NAs in the values_to column\n\n\n\n\n# A tibble: 5 × 3\n  customer_id item_no item        \n        &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;       \n1           1 item_1  bread       \n2           1 item_2  milk        \n3           1 item_3  banana      \n4           2 item_1  milk        \n5           2 item_2  toilet paper"
   },
   {
-    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#customers-rightarrow-purchases",
-    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#customers-rightarrow-purchases",
+    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#from-customers-to-purchases",
+    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#from-customers-to-purchases",
     "title": "Tidying data",
-    "section": "Customers \\(\\rightarrow\\) purchases",
-    "text": "Customers \\(\\rightarrow\\) purchases\n\n\n\npurchases &lt;- customers |&gt;\n  pivot_longer(\n    cols = item_1:item_3,\n    names_to = \"item_no\",\n    values_to = \"item\",\n    values_drop_na = TRUE\n  )\n\npurchases\n\n# A tibble: 5 × 3\n  customer_id item_no item        \n        &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;       \n1           1 item_1  bread       \n2           1 item_2  milk        \n3           1 item_3  banana      \n4           2 item_1  milk        \n5           2 item_2  toilet paper"
+    "section": "From customers to purchases",
+    "text": "From customers to purchases\n\n\n\npurchases &lt;- customers |&gt;\n  pivot_longer(\n    cols = item_1:item_3,\n    names_to = \"item_no\",\n    values_to = \"item\",\n    values_drop_na = TRUE\n  )\n\npurchases\n\n# A tibble: 5 × 3\n  customer_id item_no item        \n        &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;       \n1           1 item_1  bread       \n2           1 item_2  milk        \n3           1 item_3  banana      \n4           2 item_1  milk        \n5           2 item_2  toilet paper"
   },
   {
     "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#why-pivot",
@@ -651,11 +651,11 @@
     "text": "Why pivot?\nMost likely, because the next step of your analysis needs it\n\n\n\n\n\nprices\n\n# A tibble: 5 × 2\n  item         price\n  &lt;chr&gt;        &lt;dbl&gt;\n1 avocado       0.5 \n2 banana        0.15\n3 bread         1   \n4 milk          0.8 \n5 toilet paper  3   \n\n\n\n\npurchases |&gt;\n  left_join(prices)\n\nJoining with `by = join_by(item)`\n\n\n# A tibble: 5 × 4\n  customer_id item_no item         price\n        &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;        &lt;dbl&gt;\n1           1 item_1  bread         1   \n2           1 item_2  milk          0.8 \n3           1 item_3  banana        0.15\n4           2 item_1  milk          0.8 \n5           2 item_2  toilet paper  3"
   },
   {
-    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#purchases-rightarrow-customers",
-    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#purchases-rightarrow-customers",
+    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#from-purchases-to-customers",
+    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#from-purchases-to-customers",
     "title": "Tidying data",
-    "section": "Purchases \\(\\rightarrow\\) customers",
-    "text": "Purchases \\(\\rightarrow\\) customers\n\n\n\npurchases |&gt;\n  pivot_wider(\n    names_from = item_no,\n    values_from = item\n  )\n\n# A tibble: 2 × 4\n  customer_id item_1 item_2       item_3\n        &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;        &lt;chr&gt; \n1           1 bread  milk         banana\n2           2 milk   toilet paper &lt;NA&gt;"
+    "section": "From purchases to customers",
+    "text": "From purchases to customers\n\n\n\npurchases |&gt;\n  pivot_wider(\n    names_from = item_no,\n    values_from = item\n  )\n\n# A tibble: 2 × 4\n  customer_id item_1 item_2       item_3\n        &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;        &lt;chr&gt; \n1           1 bread  milk         banana\n2           2 milk   toilet paper &lt;NA&gt;"
   },
   {
     "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_wider",
