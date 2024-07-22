@@ -9,17 +9,17 @@
 <link href="../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
-<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.5.55">
-
-  <meta name="author" content=" Data Science with R">
-  <title>Data tidying and importing – Tidy data</title>
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reset.css">
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reveal.css">
-  <style>
+<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.55">
+<meta name="author" content=" Data Science with R">
+<title>Data tidying and importing – Tidy data</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+<link rel="stylesheet" href="../../site_libs/revealjs/dist/reset.css">
+<link rel="stylesheet" href="../../site_libs/revealjs/dist/reveal.css">
+<style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -97,12 +97,12 @@
     code span.vs { color: #abe338; } /* VerbatimString */
     code span.wa { color: #d4d0ab; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto.css">
-  <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-  <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-  <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-  <link href="../../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
-  <style type="text/css">
+<link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto.css">
+<link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+<link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+<link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+<link href="../../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+<style type="text/css">
 
   .callout {
     margin-top: 1em;
@@ -300,7 +300,7 @@
   }
 
   </style>
-  <style type="text/css">
+<style type="text/css">
     .reveal div.sourceCode {
       margin: 0;
       overflow: auto;
@@ -392,9 +392,8 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Tidy data</h1>
-  <p class="subtitle"><br><br> <i class="fa-solid fa-book-open" aria-label="book-open"></i> Data tidying and importing</p>
+<section id="title-slide" class="quarto-title-block center"><h1 class="title">Tidy data</h1>
+  <p class="subtitle"><br><br><i class="fa-solid fa-book-open" aria-label="book-open"></i> Data tidying and importing</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -404,9 +403,7 @@
 </div>
 </div>
 
-</section>
-<section id="tidy-data" class="slide level2">
-<h2>Tidy data</h2>
+</section><section id="tidy-data" class="slide level2"><h2>Tidy data</h2>
 <blockquote>
 <p>Happy families are all alike; every unhappy family is unhappy in its own way.</p>
 <p>Leo Tolstoy</p>
@@ -423,30 +420,22 @@
 <p><strong>Characteristics of untidy data:</strong></p>
 <p>!@#$%^&amp;*()</p>
 </div></div>
-</section>
-<section id="what-makes-this-data-not-tidy" class="slide level2">
-<h2>What makes this data not tidy?</h2>
+</section><section id="what-makes-this-data-not-tidy" class="slide level2"><h2>What makes this data not tidy?</h2>
 <p><img data-src="images/hyperwar-airplanes-on-hand.png" alt="WW2 Army Air Force combat aircraft"></p>
 
 <aside><div>
 <p>Source: <a href="https://www.ibiblio.org/hyperwar/AAF/StatDigest/aafsd-3.html">Army Air Forces Statistical Digest, WW II</a></p>
-</div></aside></section>
-<section id="what-makes-this-data-not-tidy-1" class="slide level2">
-<h2>What makes this data not tidy?</h2>
+</div></aside></section><section id="what-makes-this-data-not-tidy-1" class="slide level2"><h2>What makes this data not tidy?</h2>
 <p><img data-src="images/hiv-est-prevalence-15-49.png" alt="Estimated HIV prevalence among 15-49 year olds"></p>
 
 <aside><div>
 <p>Source: <a href="https://www.gapminder.org/data">Gapminder, Estimated HIV prevalence among 15-49 year olds</a></p>
-</div></aside></section>
-<section id="what-makes-this-data-not-tidy-2" class="slide level2">
-<h2>What makes this data not tidy?</h2>
+</div></aside></section><section id="what-makes-this-data-not-tidy-2" class="slide level2"><h2>What makes this data not tidy?</h2>
 <p><img data-src="images/dp03-selected-economic-characteristics-acs22.png" alt="US Selected Economic Characteristics, ACS 2022"></p>
 
 <aside><div>
 <p>Source: <a href="https://data.census.gov/table?q=general%20economic%20characteristics%20employment">US Census, Selected Economic Characteristics, ACS 2022</a></p>
-</div></aside></section>
-<section id="displaying-vs.-summarizing-data" class="slide level2">
-<h2>Displaying vs.&nbsp;summarizing data</h2>
+</div></aside></section><section id="displaying-vs.-summarizing-data" class="slide level2"><h2>Displaying vs.&nbsp;summarizing data</h2>
 <div class="columns">
 <div class="column">
 <p><strong>Display</strong></p>
@@ -496,26 +485,10 @@
 </div>
 </div>
 </section>
-    </div>
+</div>
   </div>
 
-  <script>window.backupDefine = window.define; window.define = undefined;</script>
-  <script src="../../site_libs/revealjs/dist/reveal.js"></script>
-  <!-- reveal.js plugins -->
-  <script src="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
-  <script src="../../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
-  <script src="../../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
-  <script src="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="../../site_libs/revealjs/plugin/quarto-support/support.js"></script>
-  
-
-  <script src="../../site_libs/revealjs/plugin/notes/notes.js"></script>
-  <script src="../../site_libs/revealjs/plugin/search/search.js"></script>
-  <script src="../../site_libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="../../site_libs/revealjs/plugin/math/math.js"></script>
-  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
-
-  <script>
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="../../site_libs/revealjs/dist/reveal.js"></script><!-- reveal.js plugins --><script src="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script><script src="../../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script><script src="../../site_libs/revealjs/plugin/reveal-menu/menu.js"></script><script src="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script><script src="../../site_libs/revealjs/plugin/quarto-support/support.js"></script><script src="../../site_libs/revealjs/plugin/notes/notes.js"></script><script src="../../site_libs/revealjs/plugin/search/search.js"></script><script src="../../site_libs/revealjs/plugin/zoom/zoom.js"></script><script src="../../site_libs/revealjs/plugin/math/math.js"></script><script>window.define = window.backupDefine; window.backupDefine = undefined;</script><script>
 
       // Full list of configuration options available at:
       // https://revealjs.com/config/
@@ -705,9 +678,7 @@
           RevealZoom
         ]
       });
-    </script>
-    
-    <script>
+    </script><script>
       // htmlwidgets need to know to resize themselves when slides are shown/hidden.
       // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
       // slide changes (different for each slide format).
@@ -742,9 +713,7 @@
         }
 
       })();
-    </script>
-
-    <script id="quarto-html-after-body" type="application/javascript">
+    </script><script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {
         const mode = bsSheetEl.getAttribute("data-mode");
@@ -931,6 +900,6 @@
       }
     });
     </script>
-    
+
 
 </body></html>

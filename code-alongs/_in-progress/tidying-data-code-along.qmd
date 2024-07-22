@@ -1,0 +1,228 @@
+# Case study: <br>Approval rating of Joe Biden
+
+## Inspiration
+
+![](images/biden-approval.png){fig-alt="Approval rating of Joe Biden since the beginning of his term until July 2024."}
+
+::: aside
+Source: [FiveThirtyEight](https://projects.fivethirtyeight.com/polls/approval/joe-biden/)
+:::
+
+## Data
+
+```{r}
+#| message: false
+biden <- read_csv("data/biden/biden.csv")
+biden
+```
+
+## Goal
+
+```{r}
+#| echo: false
+#| fig-asp: 0.4
+#| out-width: 90%
+#| fig-width: 9
+biden_longer <- biden |>
+  pivot_longer(
+    cols = c(approval, disapproval),
+    names_to = "rating_type",
+    values_to = "rating_value"
+  )
+
+ggplot(
+  biden_longer, 
+  aes(
+    x = date, 
+    y = rating_value, 
+    color = rating_type
+    )
+  ) +
+  geom_line() +
+  facet_wrap(~ population) +
+  scale_color_manual(values = c("darkgreen", "deeppink")) +
+  scale_y_continuous(labels = label_percent(scale = 1)) +
+  scale_x_date(date_breaks = "1 year", date_labels = "%b %e, %Y") +
+  labs(
+    x = "Date",
+    y = "Rating",
+    color = NULL,
+    title = "Do Americans approve or disapprove of Joe Biden?",
+    subtitle = "Estimates based on polls of all adults and polls of registered voters",
+    caption = "Source: FiveThirtyEight"
+  ) +
+  theme_minimal() +
+  theme(legend.position = "bottom")
+```
+
+::::: columns
+::: {.column .fragment width="30%"}
+**Aesthetic mappings:**
+
+✅ x = `date`
+
+❌ y = `rating_value`
+
+❌ color = `rating_type`
+:::
+
+::: {.column .fragment width="40%"}
+**Facet:**
+
+✅ `population` (Adults and Voters)
+:::
+:::::
+
+## Pivot
+
+```{r}
+#| code-line-numbers: "|1|2,6|3|4|5|8"
+biden_longer <- biden |>
+  pivot_longer(
+    cols = c(approval, disapproval),
+    names_to = "rating_type",
+    values_to = "rating_value"
+  )
+
+biden_longer
+```
+
+## Plot {.smaller}
+
+::::: columns
+::: {.column width="28%"}
+```{r}
+#| label: biden-plot-1
+#| fig-show: hide
+ggplot(
+  biden_longer, 
+  aes(
+    x = date, 
+    y = rating_value, 
+    color = rating_type
+    )
+  ) +
+  geom_line() +
+  facet_wrap(~ population)
+```
+:::
+
+::: {.column width="42%"}
+```{r}
+#| ref-label: biden-plot-1
+#| echo: false
+#| fig-asp: 0.4
+#| code-line-numbers: "2|4|5|6||9|10"
+```
+:::
+:::::
+
+## Colors
+
+```{r}
+#| fig-asp: 0.4
+#| output-location: slide
+#| code-line-numbers: "7"
+#| out-width: 100%
+#| fig-width: 8
+ggplot(
+  biden_longer, 
+  aes(x = date, y = rating_value, color = rating_type)
+  ) +
+  geom_line() +
+  facet_wrap(~ population) +
+  scale_color_manual(values = c("darkgreen", "deeppink"))
+```
+
+## y-axis labels
+
+```{r}
+#| fig-asp: 0.4
+#| output-location: slide
+#| code-line-numbers: "8"
+#| out-width: 100%
+#| fig-width: 8
+ggplot(
+  biden_longer, 
+  aes(x = date, y = rating_value, color = rating_type)
+  ) +
+  geom_line() +
+  facet_wrap(~ population) +
+  scale_color_manual(values = c("darkgreen", "deeppink")) +
+  scale_y_continuous(labels = label_percent(scale = 1))
+```
+
+## x-axis labels
+
+```{r}
+#| fig-asp: 0.4
+#| output-location: slide
+#| code-line-numbers: "9"
+#| out-width: 100%
+#| fig-width: 8
+ggplot(
+  biden_longer, 
+  aes(x = date, y = rating_value, color = rating_type)
+  ) +
+  geom_line() +
+  facet_wrap(~ population) +
+  scale_color_manual(values = c("darkgreen", "deeppink")) +
+  scale_y_continuous(labels = label_percent(scale = 1)) +
+  scale_x_date(date_breaks = "1 year", date_labels = "%b %e, %Y")
+```
+
+## Plot labels {.smaller}
+
+```{r}
+#| fig-asp: 0.4
+#| output-location: slide
+#| code-line-numbers: "10-17"
+#| out-width: 100%
+#| fig-width: 8
+ggplot(
+  biden_longer, 
+  aes(x = date, y = rating_value, color = rating_type)
+  ) +
+  geom_line() +
+  facet_wrap(~ population) +
+  scale_color_manual(values = c("darkgreen", "deeppink")) +
+  scale_y_continuous(labels = label_percent(scale = 1)) +
+  scale_x_date(date_breaks = "1 year", date_labels = "%b %e, %Y") +
+  labs(
+    x = "Date",
+    y = "Rating",
+    color = NULL,
+    title = "How popular is Joe Biden?",
+    subtitle = "Estimates based on polls of all adults and polls of registered voters",
+    caption = "Source: FiveThirtyEight"
+  )
+```
+
+## Theming {.smaller}
+
+```{r}
+#| fig-asp: 0.5
+#| output-location: slide
+#| code-line-numbers: "18-19"
+#| out-width: 100%
+#| fig-width: 8
+ggplot(
+  biden_longer, 
+  aes(x = date, y = rating_value, color = rating_type)
+  ) +
+  geom_line() +
+  facet_wrap(~ population) +
+  scale_color_manual(values = c("darkgreen", "deeppink")) +
+  scale_y_continuous(labels = label_percent(scale = 1)) +
+  scale_x_date(date_breaks = "1 year", date_labels = "%b %e, %Y") +
+  labs(
+    x = "Date",
+    y = "Rating",
+    color = NULL,
+    title = "How popular is Joe Biden?",
+    subtitle = "Estimates based on polls of all adults and polls of registered voters",
+    caption = "Source: FiveThirtyEight"
+  ) +
+  theme_minimal() +
+  theme(legend.position = "bottom")
+```

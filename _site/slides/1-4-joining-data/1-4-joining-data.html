@@ -9,17 +9,17 @@
 <link href="../../site_libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
-<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.5.55">
-
-  <meta name="author" content=" Data Science with R">
-  <title>Data tidying and importing – Joining data</title>
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reset.css">
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/reveal.css">
-  <style>
+<link href="../../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.55">
+<meta name="author" content=" Data Science with R">
+<title>Data tidying and importing – Joining data</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+<link rel="stylesheet" href="../../site_libs/revealjs/dist/reset.css">
+<link rel="stylesheet" href="../../site_libs/revealjs/dist/reveal.css">
+<style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -97,12 +97,12 @@
     code span.vs { color: #abe338; } /* VerbatimString */
     code span.wa { color: #d4d0ab; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto.css">
-  <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-  <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-  <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-  <link href="../../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
-  <style type="text/css">
+<link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto.css">
+<link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+<link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+<link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+<link href="../../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+<style type="text/css">
 
   .callout {
     margin-top: 1em;
@@ -300,7 +300,7 @@
   }
 
   </style>
-  <style type="text/css">
+<style type="text/css">
     .reveal div.sourceCode {
       margin: 0;
       overflow: auto;
@@ -392,9 +392,8 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Joining data</h1>
-  <p class="subtitle"><br><br> <i class="fa-solid fa-book-open" aria-label="book-open"></i> Data tidying and importing</p>
+<section id="title-slide" class="quarto-title-block center"><h1 class="title">Joining data</h1>
+  <p class="subtitle"><br><br><i class="fa-solid fa-book-open" aria-label="book-open"></i> Data tidying and importing</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -404,22 +403,15 @@
 </div>
 </div>
 
-</section>
-<section>
-<section id="setup" class="title-slide slide level1 center">
-<h1>Setup</h1>
+</section><section><section id="setup" class="title-slide slide level1 center"><h1>Setup</h1>
 
-</section>
-<section id="task-and-goal" class="slide level2">
-<h2>Task and goal</h2>
+</section><section id="task-and-goal" class="slide level2"><h2>Task and goal</h2>
 <div class="hand">
 <p>We…</p>
 <p><span class="hand-blue-medium">have</span> multiple data frames</p>
 <p><span class="hand-pink-medium">want</span> to bring them together</p>
 </div>
-</section>
-<section id="data-women-in-science" class="slide level2">
-<h2>Data: Women in science</h2>
+</section><section id="data-women-in-science" class="slide level2"><h2>Data: Women in science</h2>
 <p>Information on 10 women in science who changed the world:</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -872,13 +864,10 @@
   height: 0px !important;
 }
 </style>
-
 <table class="gt_table caption-top" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
-<thead>
-<tr class="header gt_col_headings">
+<thead><tr class="header gt_col_headings">
 <th id="name" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">name</th>
-</tr>
-</thead>
+</tr></thead>
 <tbody class="gt_table_body">
 <tr class="odd">
 <td class="gt_row gt_left" headers="name">Ada Lovelace</td>
@@ -912,16 +901,14 @@
 </tr>
 </tbody>
 </table>
-
 </div>
 </div>
 </div>
 
 <aside><div>
 <p>Source: <a href="https://www.discovermagazine.com/the-sciences/meet-10-women-in-science-who-changed-the-world">Discover Magazine</a></p>
-</div></aside></section>
-<section id="input-1-professions" class="slide level2">
-<h2>Input 1: <code>professions</code></h2>
+</div></aside></section><section id="input-1-professions" class="slide level2"><h2>Input 1: <code>professions</code>
+</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>professions</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -940,9 +927,8 @@
 10 Jennifer Doudna    Biochemist                        </code></pre>
 </div>
 </div>
-</section>
-<section id="input-2-dates" class="slide level2">
-<h2>Input 2: <code>dates</code></h2>
+</section><section id="input-2-dates" class="slide level2"><h2>Input 2: <code>dates</code>
+</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>dates</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -959,9 +945,8 @@
 8 Jennifer Doudna          1964         NA</code></pre>
 </div>
 </div>
-</section>
-<section id="input-3-works" class="slide level2">
-<h2>Input 3: <code>works</code></h2>
+</section><section id="input-3-works" class="slide level2"><h2>Input 3: <code>works</code>
+</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>works</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -979,9 +964,7 @@
 9 Jennifer Doudna    one of the primary developers of CRISP…</code></pre>
 </div>
 </div>
-</section>
-<section id="desired-output" class="slide level2">
-<h2>Desired output</h2>
+</section><section id="desired-output" class="slide level2"><h2>Desired output</h2>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 10 × 5
@@ -999,9 +982,7 @@
 10 Jennifer Doud… Biochemist       1964         NA one of t…</code></pre>
 </div>
 </div>
-</section>
-<section id="inputs-reminder" class="slide level2">
-<h2>Inputs, reminder</h2>
+</section><section id="inputs-reminder" class="slide level2"><h2>Inputs, reminder</h2>
 <div class="columns">
 <div class="column" style="width:35%;">
 <div class="cell">
@@ -1034,29 +1015,27 @@
 </div>
 </div>
 </div></div>
-</section></section>
-<section>
-<section id="joining-data-frames" class="title-slide slide level1 center">
-<h1>Joining data frames</h1>
+</section></section><section><section id="joining-data-frames" class="title-slide slide level1 center"><h1>Joining data frames</h1>
 
-</section>
-<section id="joining-data-frames-1" class="slide level2">
-<h2>Joining data frames</h2>
+</section><section id="joining-data-frames-1" class="slide level2"><h2>Joining data frames</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a><span class="fu">something_join</span>(x, y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
-<li><code>left_join()</code>: all rows from x</li>
-<li><code>right_join()</code>: all rows from y</li>
-<li><code>full_join()</code>: all rows from both x and y</li>
-<li><code>semi_join()</code>: all rows from x where there are matching values in y, keeping just columns from x</li>
-<li><code>inner_join()</code>: all rows from x where there are matching values in y, return all combination of multiple matches in the case of multiple matches</li>
-<li><code>anti_join()</code>: return all rows from x where there are not matching values in y, never duplicate rows of x</li>
+<li>
+<code>left_join()</code>: all rows from x</li>
+<li>
+<code>right_join()</code>: all rows from y</li>
+<li>
+<code>full_join()</code>: all rows from both x and y</li>
+<li>
+<code>semi_join()</code>: all rows from x where there are matching values in y, keeping just columns from x</li>
+<li>
+<code>inner_join()</code>: all rows from x where there are matching values in y, return all combination of multiple matches in the case of multiple matches</li>
+<li>
+<code>anti_join()</code>: return all rows from x where there are not matching values in y, never duplicate rows of x</li>
 <li>…</li>
-</ul>
-</section>
-<section id="setup-1" class="slide level2">
-<h2>Setup</h2>
+</ul></section><section id="setup-1" class="slide level2"><h2>Setup</h2>
 <p>For the next few slides…</p>
 <div class="columns">
 <div class="column" style="width:35%;">
@@ -1094,9 +1073,7 @@
 </div>
 </div>
 </div></div>
-</section>
-<section id="left_join" class="slide level2">
-<h2><code>left_join()</code></h2>
+</section><section id="left_join" class="slide level2"><h2><code>left_join()</code></h2>
 <div class="columns">
 <div class="column" style="width:35%;">
 <div class="cell">
@@ -1116,9 +1093,7 @@
 </div><div class="column" style="width:35%;">
 <p><img data-src="images/left-join.gif"></p>
 </div></div>
-</section>
-<section id="left_join-1" class="slide level2">
-<h2><code>left_join()</code></h2>
+</section><section id="left_join-1" class="slide level2"><h2><code>left_join()</code></h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a>professions <span class="sc">|&gt;</span></span>
 <span id="cb28-2"><a></a>  <span class="fu">left_join</span>(dates)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1141,9 +1116,7 @@
 10 Jennifer Doudna    Biochemist             1964         NA</code></pre>
 </div>
 </div>
-</section>
-<section id="right_join" class="slide level2">
-<h2><code>right_join()</code></h2>
+</section><section id="right_join" class="slide level2"><h2><code>right_join()</code></h2>
 <div class="columns">
 <div class="column" style="width:35%;">
 <div class="cell">
@@ -1163,9 +1136,7 @@
 </div><div class="column" style="width:35%;">
 <p><img data-src="images/right-join.gif"></p>
 </div></div>
-</section>
-<section id="left_join-2" class="slide level2">
-<h2><code>left_join()</code></h2>
+</section><section id="left_join-2" class="slide level2"><h2><code>left_join()</code></h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a></a>professions <span class="sc">|&gt;</span></span>
 <span id="cb34-2"><a></a>  <span class="fu">right_join</span>(dates)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1186,9 +1157,7 @@
 8 Jennifer Doudna    Biochemist              1964         NA</code></pre>
 </div>
 </div>
-</section>
-<section id="full_join" class="slide level2">
-<h2><code>full_join()</code></h2>
+</section><section id="full_join" class="slide level2"><h2><code>full_join()</code></h2>
 <div class="columns">
 <div class="column" style="width:35%;">
 <div class="cell">
@@ -1209,9 +1178,7 @@
 </div><div class="column" style="width:35%;">
 <p><img data-src="images/full-join.gif"></p>
 </div></div>
-</section>
-<section id="left_join-3" class="slide level2">
-<h2><code>left_join()</code></h2>
+</section><section id="left_join-3" class="slide level2"><h2><code>left_join()</code></h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a></a>professions <span class="sc">|&gt;</span></span>
 <span id="cb40-2"><a></a>  <span class="fu">full_join</span>(dates)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1234,9 +1201,7 @@
 10 Jennifer Doudna    Biochemist             1964         NA</code></pre>
 </div>
 </div>
-</section>
-<section id="inner_join" class="slide level2">
-<h2><code>inner_join()</code></h2>
+</section><section id="inner_join" class="slide level2"><h2><code>inner_join()</code></h2>
 <div class="columns">
 <div class="column" style="width:35%;">
 <div class="cell">
@@ -1255,9 +1220,7 @@
 </div><div class="column" style="width:35%;">
 <p><img data-src="images/inner-join.gif"></p>
 </div></div>
-</section>
-<section id="inner_join-1" class="slide level2">
-<h2><code>inner_join()</code></h2>
+</section><section id="inner_join-1" class="slide level2"><h2><code>inner_join()</code></h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a></a>professions <span class="sc">|&gt;</span></span>
 <span id="cb46-2"><a></a>  <span class="fu">inner_join</span>(dates)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1278,9 +1241,7 @@
 8 Jennifer Doudna    Biochemist              1964         NA</code></pre>
 </div>
 </div>
-</section>
-<section id="inner_join-2" class="slide level2">
-<h2><code>inner_join()</code></h2>
+</section><section id="inner_join-2" class="slide level2"><h2><code>inner_join()</code></h2>
 <div class="columns">
 <div class="column" style="width:35%;">
 <div class="cell">
@@ -1299,9 +1260,7 @@
 </div><div class="column" style="width:35%;">
 <p><img data-src="images/semi-join.gif"></p>
 </div></div>
-</section>
-<section id="semi_join" class="slide level2">
-<h2><code>semi_join()</code></h2>
+</section><section id="semi_join" class="slide level2"><h2><code>semi_join()</code></h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a></a>professions <span class="sc">|&gt;</span></span>
 <span id="cb52-2"><a></a>  <span class="fu">semi_join</span>(dates)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1322,9 +1281,7 @@
 8 Jennifer Doudna    Biochemist                        </code></pre>
 </div>
 </div>
-</section>
-<section id="anti_join" class="slide level2">
-<h2><code>anti_join()</code></h2>
+</section><section id="anti_join" class="slide level2"><h2><code>anti_join()</code></h2>
 <div class="columns">
 <div class="column" style="width:35%;">
 <div class="cell">
@@ -1342,9 +1299,7 @@
 </div><div class="column" style="width:35%;">
 <p><img data-src="images/anti-join.gif"></p>
 </div></div>
-</section>
-<section id="anti_join-1" class="slide level2">
-<h2><code>anti_join()</code></h2>
+</section><section id="anti_join-1" class="slide level2"><h2><code>anti_join()</code></h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a></a>professions <span class="sc">|&gt;</span></span>
 <span id="cb58-2"><a></a>  <span class="fu">anti_join</span>(dates)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1359,9 +1314,7 @@
 2 Marie Curie  Physicist and Chemist</code></pre>
 </div>
 </div>
-</section>
-<section id="putting-it-altogether" class="slide level2">
-<h2>Putting it altogether</h2>
+</section><section id="putting-it-altogether" class="slide level2"><h2>Putting it altogether</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a></a>professions <span class="sc">|&gt;</span></span>
 <span id="cb61-2"><a></a>  <span class="fu">left_join</span>(dates) <span class="sc">|&gt;</span></span>
@@ -1386,22 +1339,15 @@ Joining with `by = join_by(name)`</code></pre>
 10 Jennifer Doud… Biochemist       1964         NA one of t…</code></pre>
 </div>
 </div>
-</section></section>
-<section>
-<section id="case-study-student-records" class="title-slide slide level1 center">
-<h1>Case study: Student records</h1>
+</section></section><section><section id="case-study-student-records" class="title-slide slide level1 center"><h1>Case study: Student records</h1>
 
-</section>
-<section id="student-records" class="slide level2">
-<h2>Student records</h2>
+</section><section id="student-records" class="slide level2"><h2>Student records</h2>
 <div class="hand">
 <p>We…</p>
 <p><span class="hand-blue-medium">have</span> enrollment data (from official university records) and survey data (provided by students, missing from those who never filled it out and including students who filled it out but dropped the class)</p>
 <p><span class="hand-pink-medium">want</span> survey info for all students enrolled in the class</p>
 </div>
-</section>
-<section id="data" class="slide level2">
-<h2>Data</h2>
+</section><section id="data" class="slide level2"><h2>Data</h2>
 <div class="columns">
 <div class="column" style="width:30%;">
 <div class="cell">
@@ -1429,9 +1375,7 @@ Joining with `by = join_by(name)`</code></pre>
 </div>
 </div>
 </div></div>
-</section>
-<section id="student-records---in-class" class="slide level2">
-<h2>Student records - In class</h2>
+</section><section id="student-records---in-class" class="slide level2"><h2>Student records - In class</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a></a>enrolment <span class="sc">|&gt;</span></span>
 <span id="cb68-2"><a></a>  <span class="fu">left_join</span>(survey, <span class="at">by =</span> <span class="st">"id"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1444,9 +1388,7 @@ Joining with `by = join_by(name)`</code></pre>
 3     3 Sura Selvarajah Sura    surasbakes          </code></pre>
 </div>
 </div>
-</section>
-<section id="student-records---survey-missing" class="slide level2">
-<h2>Student records - Survey missing</h2>
+</section><section id="student-records---survey-missing" class="slide level2"><h2>Student records - Survey missing</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a></a>enrolment <span class="sc">|&gt;</span></span>
 <span id="cb70-2"><a></a>  <span class="fu">anti_join</span>(survey, <span class="at">by =</span> <span class="st">"id"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1457,9 +1399,7 @@ Joining with `by = join_by(name)`</code></pre>
 1     1 Dave Friday</code></pre>
 </div>
 </div>
-</section>
-<section id="student-records---dropped" class="slide level2">
-<h2>Student records - Dropped</h2>
+</section><section id="student-records---dropped" class="slide level2"><h2>Student records - Dropped</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a></a>survey <span class="sc">|&gt;</span></span>
 <span id="cb72-2"><a></a>  <span class="fu">anti_join</span>(enrolment, <span class="at">by =</span> <span class="st">"id"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1471,22 +1411,15 @@ Joining with `by = join_by(name)`</code></pre>
 2     5 Mark  thebakingbuddha</code></pre>
 </div>
 </div>
-</section></section>
-<section>
-<section id="case-study-grocery-sales" class="title-slide slide level1 center">
-<h1>Case study: Grocery sales</h1>
+</section></section><section><section id="case-study-grocery-sales" class="title-slide slide level1 center"><h1>Case study: Grocery sales</h1>
 
-</section>
-<section id="grocery-sales" class="slide level2">
-<h2>Grocery sales</h2>
+</section><section id="grocery-sales" class="slide level2"><h2>Grocery sales</h2>
 <div class="hand">
 <p>We…</p>
 <p><span class="hand-blue-medium">have</span> purchase data (one row per customer per item, listing purchases they made) and price data (one row per item in the store, listing their prices)</p>
 <p><span class="hand-pink-medium">want</span> total revenue</p>
 </div>
-</section>
-<section id="data-1" class="slide level2">
-<h2>Data</h2>
+</section><section id="data-1" class="slide level2"><h2>Data</h2>
 <div class="columns">
 <div class="column" style="width:35%;">
 <div class="cell">
@@ -1517,9 +1450,7 @@ Joining with `by = join_by(name)`</code></pre>
 </div>
 </div>
 </div></div>
-</section>
-<section id="grocery-sales---total-revenue" class="slide level2">
-<h2>Grocery sales - Total revenue</h2>
+</section><section id="grocery-sales---total-revenue" class="slide level2"><h2>Grocery sales - Total revenue</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb78"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a></a>purchases <span class="sc">|&gt;</span></span>
 <span id="cb78-2"><a></a>  <span class="fu">left_join</span>(prices)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1537,9 +1468,7 @@ Joining with `by = join_by(name)`</code></pre>
 5           2 toilet paper  3   </code></pre>
 </div>
 </div>
-</section>
-<section id="grocery-sales---total-revenue-1" class="slide level2">
-<h2>Grocery sales - Total revenue</h2>
+</section><section id="grocery-sales---total-revenue-1" class="slide level2"><h2>Grocery sales - Total revenue</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb81"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a></a>purchases <span class="sc">|&gt;</span></span>
 <span id="cb81-2"><a></a>  <span class="fu">left_join</span>(prices)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1557,9 +1486,7 @@ Joining with `by = join_by(name)`</code></pre>
 5           2 toilet paper  3   </code></pre>
 </div>
 </div>
-</section>
-<section id="grocery-sales---total-revenue-2" class="slide level2">
-<h2>Grocery sales - Total revenue</h2>
+</section><section id="grocery-sales---total-revenue-2" class="slide level2"><h2>Grocery sales - Total revenue</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb84"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a></a>purchases <span class="sc">|&gt;</span></span>
 <span id="cb84-2"><a></a>  <span class="fu">left_join</span>(prices) <span class="sc">|&gt;</span></span>
@@ -1574,9 +1501,7 @@ Joining with `by = join_by(name)`</code></pre>
 1          5.75</code></pre>
 </div>
 </div>
-</section>
-<section id="grocery-sales---revenue-per-customer" class="slide level2">
-<h2>Grocery sales - Revenue per customer</h2>
+</section><section id="grocery-sales---revenue-per-customer" class="slide level2"><h2>Grocery sales - Revenue per customer</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb87"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a></a>purchases <span class="sc">|&gt;</span></span>
 <span id="cb87-2"><a></a>  <span class="fu">left_join</span>(prices)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1594,9 +1519,7 @@ Joining with `by = join_by(name)`</code></pre>
 5           2 toilet paper  3   </code></pre>
 </div>
 </div>
-</section>
-<section id="grocery-sales---revenue-per-customer-1" class="slide level2">
-<h2>Grocery sales - Revenue per customer</h2>
+</section><section id="grocery-sales---revenue-per-customer-1" class="slide level2"><h2>Grocery sales - Revenue per customer</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb90"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a></a>purchases <span class="sc">|&gt;</span></span>
 <span id="cb90-2"><a></a>  <span class="fu">left_join</span>(prices) <span class="sc">|&gt;</span></span>
@@ -1620,26 +1543,10 @@ Joining with `by = join_by(name)`</code></pre>
 </div>
 </div>
 </section></section>
-    </div>
+</div>
   </div>
 
-  <script>window.backupDefine = window.define; window.define = undefined;</script>
-  <script src="../../site_libs/revealjs/dist/reveal.js"></script>
-  <!-- reveal.js plugins -->
-  <script src="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
-  <script src="../../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
-  <script src="../../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
-  <script src="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="../../site_libs/revealjs/plugin/quarto-support/support.js"></script>
-  
-
-  <script src="../../site_libs/revealjs/plugin/notes/notes.js"></script>
-  <script src="../../site_libs/revealjs/plugin/search/search.js"></script>
-  <script src="../../site_libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="../../site_libs/revealjs/plugin/math/math.js"></script>
-  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
-
-  <script>
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="../../site_libs/revealjs/dist/reveal.js"></script><!-- reveal.js plugins --><script src="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script><script src="../../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script><script src="../../site_libs/revealjs/plugin/reveal-menu/menu.js"></script><script src="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script><script src="../../site_libs/revealjs/plugin/quarto-support/support.js"></script><script src="../../site_libs/revealjs/plugin/notes/notes.js"></script><script src="../../site_libs/revealjs/plugin/search/search.js"></script><script src="../../site_libs/revealjs/plugin/zoom/zoom.js"></script><script src="../../site_libs/revealjs/plugin/math/math.js"></script><script>window.define = window.backupDefine; window.backupDefine = undefined;</script><script>
 
       // Full list of configuration options available at:
       // https://revealjs.com/config/
@@ -1829,9 +1736,7 @@ Joining with `by = join_by(name)`</code></pre>
           RevealZoom
         ]
       });
-    </script>
-    
-    <script>
+    </script><script>
       // htmlwidgets need to know to resize themselves when slides are shown/hidden.
       // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
       // slide changes (different for each slide format).
@@ -1866,9 +1771,7 @@ Joining with `by = join_by(name)`</code></pre>
         }
 
       })();
-    </script>
-
-    <script id="quarto-html-after-body" type="application/javascript">
+    </script><script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {
         const mode = bsSheetEl.getAttribute("data-mode");
@@ -2055,6 +1958,6 @@ Joining with `by = join_by(name)`</code></pre>
       }
     });
     </script>
-    
+
 
 </body></html>

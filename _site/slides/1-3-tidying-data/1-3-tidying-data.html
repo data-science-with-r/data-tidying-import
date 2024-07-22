@@ -410,16 +410,29 @@
 <h1>Setup</h1>
 
 </section>
-<section id="task-and-goal" class="slide level2">
-<h2>Task and goal</h2>
+<section id="task-goal-and-tools" class="slide level2">
+<h2>Task, goal, and tools</h2>
+<p><br></p>
 <div class="hand">
-<p>We…</p>
-<p><span class="hand-blue-medium">have</span> data organised in an unideal way for our analysis</p>
-<p><span class="hand-pink-medium">want</span> to reorganize the data to carry on with our analysis</p>
+<p><i class="fa-solid fa-list-check" aria-label="list-check"></i> <span class="hand-blue-medium">have</span> data organised in an unideal way for our analysis</p>
+</div>
+<div class="fragment">
+<div class="hand">
+<p><i class="fa-solid fa-bullseye" aria-label="bullseye"></i> <span class="hand-pink-medium">want</span> to reorganize the data for our analysis</p>
+</div>
+</div>
+<div class="fragment">
+<div class="hand">
+<p><i class="fa-solid fa-screwdriver-wrench" aria-label="screwdriver-wrench"></i> <span class="hand-yellow-medium">using</span> tools from the <strong>tidyverse</strong></p>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a></a><span class="fu">library</span>(scales)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </div>
 </section>
-<section id="data-sales" class="slide level2">
-<h2>Data: Sales</h2>
+<section id="data-grocery-store-sales" class="slide level2">
+<h2>Data: Grocery store sales</h2>
 <div class="columns">
 <div class="column" style="width:35%;">
 <p><span class="hand-blue-medium">have</span></p>
@@ -434,7 +447,7 @@
 </div>
 </div>
 </div>
-</div><div class="column" style="width:35%;">
+</div><div class="column fragment" style="width:35%;">
 <p><span class="hand-pink-medium">want</span></p>
 <div class="medium">
 <div class="cell">
@@ -500,7 +513,7 @@
 2           2 milk   toilet paper &lt;NA&gt;  </code></pre>
 </div>
 </div>
-</div><div class="column" style="width:35%;">
+</div><div class="column fragment" style="width:35%;">
 <p><span class="hand-pink-medium">longer</span> - more rows</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
@@ -516,49 +529,42 @@
 </div>
 </div>
 </div></div>
+</section></section>
+<section>
+<section id="from-wider-to-longer" class="title-slide slide level1 center">
+<h1>From wider to longer</h1>
+
 </section>
 <section id="pivot_longer" class="slide level2">
 <h2><code>pivot_longer()</code></h2>
 <div class="columns">
-<div class="column" style="width:50%;">
+<div class="column" style="width:60%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="annotated-cell-12"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-12-1"><a href="#annotated-cell-12-1"></a><span class="fu">pivot_longer</span>(</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-12" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-12-2" class="code-annotation-target"><a href="#annotated-cell-12-2"></a>  data <span class="sc">|&gt;</span></span>
-<span id="annotated-cell-12-3"><a href="#annotated-cell-12-3"></a>  cols, </span>
-<span id="annotated-cell-12-4"><a href="#annotated-cell-12-4"></a>  <span class="at">names_to =</span> <span class="st">"name"</span>, </span>
-<span id="annotated-cell-12-5"><a href="#annotated-cell-12-5"></a>  <span class="at">values_to =</span> <span class="st">"value"</span></span>
-<span id="annotated-cell-12-6"><a href="#annotated-cell-12-6"></a>  )</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-annotation">
-<dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-12" data-target-annotation="1">1</dt>
-<dd>
-<span data-code-cell="annotated-cell-12" data-code-lines="2" data-code-annotation="1"><code>data</code> (as usual)</span>
-</dd>
-</dl>
-</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a><span class="fu">pivot_longer</span>(</span>
+<span id="cb6-2"><a></a>  data,</span>
+<span id="cb6-3"><a></a>  cols, </span>
+<span id="cb6-4"><a></a>  <span class="at">names_to =</span> <span class="st">"name"</span>, </span>
+<span id="cb6-5"><a></a>  <span class="at">values_to =</span> <span class="st">"value"</span></span>
+<span id="cb6-6"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div></div>
 </section>
 <section id="pivot_longer-1" class="slide level2">
 <h2><code>pivot_longer()</code></h2>
 <div class="columns">
-<div class="column" style="width:50%;">
+<div class="column" style="width:60%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="annotated-cell-13"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-13-1"><a href="#annotated-cell-13-1"></a><span class="fu">pivot_longer</span>(</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-13" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-13-2" class="code-annotation-target"><a href="#annotated-cell-13-2"></a>  data <span class="sc">|&gt;</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-13" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-13-3" class="code-annotation-target"><a href="#annotated-cell-13-3"></a>  cols,</span>
-<span id="annotated-cell-13-4"><a href="#annotated-cell-13-4"></a>  <span class="at">names_to =</span> <span class="st">"name"</span>, </span>
-<span id="annotated-cell-13-5"><a href="#annotated-cell-13-5"></a>  <span class="at">values_to =</span> <span class="st">"value"</span></span>
-<span id="annotated-cell-13-6"><a href="#annotated-cell-13-6"></a>  )</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="annotated-cell-7" data-code-line-numbers="2"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-7-1"><a href="#annotated-cell-7-1"></a><span class="fu">pivot_longer</span>(</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-7" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-7-2" class="code-annotation-target"><a href="#annotated-cell-7-2"></a>  data,</span>
+<span id="annotated-cell-7-3"><a href="#annotated-cell-7-3"></a>  cols, </span>
+<span id="annotated-cell-7-4"><a href="#annotated-cell-7-4"></a>  <span class="at">names_to =</span> <span class="st">"name"</span>, </span>
+<span id="annotated-cell-7-5"><a href="#annotated-cell-7-5"></a>  <span class="at">values_to =</span> <span class="st">"value"</span></span>
+<span id="annotated-cell-7-6"><a href="#annotated-cell-7-6"></a>  )</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-13" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-7" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-13" data-code-lines="2" data-code-annotation="1"><code>data</code> (as usual)</span>
-</dd>
-<dt data-target-cell="annotated-cell-13" data-target-annotation="2">2</dt>
-<dd>
-<span data-code-cell="annotated-cell-13" data-code-lines="3" data-code-annotation="2"><code>cols</code>: columns to pivot into longer format</span>
+<span data-code-cell="annotated-cell-7" data-code-lines="2" data-code-annotation="1"><code>data</code> (as usual)</span>
 </dd>
 </dl>
 </div>
@@ -568,27 +574,23 @@
 <section id="pivot_longer-2" class="slide level2">
 <h2><code>pivot_longer()</code></h2>
 <div class="columns">
-<div class="column" style="width:50%;">
+<div class="column" style="width:60%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="annotated-cell-14"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-14-1"><a href="#annotated-cell-14-1"></a><span class="fu">pivot_longer</span>(</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-14-2" class="code-annotation-target"><a href="#annotated-cell-14-2"></a>  data <span class="sc">|&gt;</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-14-3" class="code-annotation-target"><a href="#annotated-cell-14-3"></a>  cols,</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-14" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-14-4" class="code-annotation-target"><a href="#annotated-cell-14-4"></a>  <span class="at">names_to =</span> <span class="st">"name"</span>,</span>
-<span id="annotated-cell-14-5"><a href="#annotated-cell-14-5"></a>  <span class="at">values_to =</span> <span class="st">"value"</span></span>
-<span id="annotated-cell-14-6"><a href="#annotated-cell-14-6"></a>  )</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="annotated-cell-8" data-code-line-numbers="3"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-8-1"><a href="#annotated-cell-8-1"></a><span class="fu">pivot_longer</span>(</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-8-2" class="code-annotation-target"><a href="#annotated-cell-8-2"></a>  data,</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-8" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-8-3" class="code-annotation-target"><a href="#annotated-cell-8-3"></a>  cols,</span>
+<span id="annotated-cell-8-4"><a href="#annotated-cell-8-4"></a>  <span class="at">names_to =</span> <span class="st">"name"</span>, </span>
+<span id="annotated-cell-8-5"><a href="#annotated-cell-8-5"></a>  <span class="at">values_to =</span> <span class="st">"value"</span></span>
+<span id="annotated-cell-8-6"><a href="#annotated-cell-8-6"></a>  )</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-14" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-8" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-14" data-code-lines="2" data-code-annotation="1"><code>data</code> (as usual)</span>
+<span data-code-cell="annotated-cell-8" data-code-lines="2" data-code-annotation="1"><code>data</code> (as usual)</span>
 </dd>
-<dt data-target-cell="annotated-cell-14" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-8" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-14" data-code-lines="3" data-code-annotation="2"><code>cols</code>: columns to pivot into longer format</span>
-</dd>
-<dt data-target-cell="annotated-cell-14" data-target-annotation="3">3</dt>
-<dd>
-<span data-code-cell="annotated-cell-14" data-code-lines="4" data-code-annotation="3"><code>names_to</code>: name of the column where column names of pivoted variables go (character string)</span>
+<span data-code-cell="annotated-cell-8" data-code-lines="3" data-code-annotation="2"><code>cols</code>: Columns to pivot into longer format</span>
 </dd>
 </dl>
 </div>
@@ -598,80 +600,94 @@
 <section id="pivot_longer-3" class="slide level2">
 <h2><code>pivot_longer()</code></h2>
 <div class="columns">
-<div class="column" style="width:50%;">
+<div class="column" style="width:60%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="annotated-cell-15"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-15-1"><a href="#annotated-cell-15-1"></a><span class="fu">pivot_longer</span>(</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-15-2" class="code-annotation-target"><a href="#annotated-cell-15-2"></a>  data <span class="sc">|&gt;</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-15-3" class="code-annotation-target"><a href="#annotated-cell-15-3"></a>  cols,</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-15-4" class="code-annotation-target"><a href="#annotated-cell-15-4"></a>  <span class="at">names_to =</span> <span class="st">"name"</span>,</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-15-5" class="code-annotation-target"><a href="#annotated-cell-15-5"></a>  <span class="at">values_to =</span> <span class="st">"value"</span></span>
-<span id="annotated-cell-15-6"><a href="#annotated-cell-15-6"></a>  )</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="annotated-cell-9" data-code-line-numbers="4"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-9-1"><a href="#annotated-cell-9-1"></a><span class="fu">pivot_longer</span>(</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-9-2" class="code-annotation-target"><a href="#annotated-cell-9-2"></a>  data,</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-9-3" class="code-annotation-target"><a href="#annotated-cell-9-3"></a>  cols,</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-9" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-9-4" class="code-annotation-target"><a href="#annotated-cell-9-4"></a>  <span class="at">names_to =</span> <span class="st">"name"</span>,</span>
+<span id="annotated-cell-9-5"><a href="#annotated-cell-9-5"></a>  <span class="at">values_to =</span> <span class="st">"value"</span></span>
+<span id="annotated-cell-9-6"><a href="#annotated-cell-9-6"></a>  )</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-15" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-9" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-15" data-code-lines="2" data-code-annotation="1"><code>data</code> (as usual)</span>
+<span data-code-cell="annotated-cell-9" data-code-lines="2" data-code-annotation="1"><code>data</code> (as usual)</span>
 </dd>
-<dt data-target-cell="annotated-cell-15" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-9" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-15" data-code-lines="3" data-code-annotation="2"><code>cols</code>: columns to pivot into longer format</span>
+<span data-code-cell="annotated-cell-9" data-code-lines="3" data-code-annotation="2"><code>cols</code>: Columns to pivot into longer format</span>
 </dd>
-<dt data-target-cell="annotated-cell-15" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-9" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-15" data-code-lines="4" data-code-annotation="3"><code>names_to</code>: name of the column where column names of pivoted variables go (character string)</span>
-</dd>
-<dt data-target-cell="annotated-cell-15" data-target-annotation="4">4</dt>
-<dd>
-<span data-code-cell="annotated-cell-15" data-code-lines="5" data-code-annotation="4"><code>values_to</code>: name of the column where data in pivoted variables go (character string)</span>
+<span data-code-cell="annotated-cell-9" data-code-lines="4" data-code-annotation="3"><code>names_to</code>: Name of the column where column names of pivoted variables go (character string)</span>
 </dd>
 </dl>
 </div>
 </div>
 </div></div>
 </section>
-<section id="customers-rightarrow-purchases" class="slide level2">
-<h2>Customers <span class="math inline">\(\rightarrow\)</span> purchases</h2>
+<section id="pivot_longer-4" class="slide level2">
+<h2><code>pivot_longer()</code></h2>
 <div class="columns">
 <div class="column" style="width:60%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="annotated-cell-16" data-code-line-numbers="|3|4|5"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-16-1"><a href="#annotated-cell-16-1"></a>purchases <span class="ot">&lt;-</span> customers <span class="sc">|&gt;</span></span>
-<span id="annotated-cell-16-2"><a href="#annotated-cell-16-2"></a>  <span class="fu">pivot_longer</span>(</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-16" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-16-3" class="code-annotation-target"><a href="#annotated-cell-16-3"></a>    <span class="at">cols =</span> item_1<span class="sc">:</span>item_3,</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-16" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-16-4" class="code-annotation-target"><a href="#annotated-cell-16-4"></a>    <span class="at">names_to =</span> <span class="st">"item_no"</span>,</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-16" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-16-5" class="code-annotation-target"><a href="#annotated-cell-16-5"></a>    <span class="at">values_to =</span> <span class="st">"item"</span></span>
-<span id="annotated-cell-16-6"><a href="#annotated-cell-16-6"></a>  )</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="annotated-cell-10" data-code-line-numbers="5"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-10-1"><a href="#annotated-cell-10-1"></a><span class="fu">pivot_longer</span>(</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-10-2" class="code-annotation-target"><a href="#annotated-cell-10-2"></a>  data,</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-10-3" class="code-annotation-target"><a href="#annotated-cell-10-3"></a>  cols,</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-10-4" class="code-annotation-target"><a href="#annotated-cell-10-4"></a>  <span class="at">names_to =</span> <span class="st">"name"</span>,</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-10-5" class="code-annotation-target"><a href="#annotated-cell-10-5"></a>  <span class="at">values_to =</span> <span class="st">"value"</span></span>
+<span id="annotated-cell-10-6"><a href="#annotated-cell-10-6"></a>  )</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-16" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-10" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-16" data-code-lines="3" data-code-annotation="1"><code>cols</code> to pivot: <code>item_1</code> to <code>item_3</code></span>
+<span data-code-cell="annotated-cell-10" data-code-lines="2" data-code-annotation="1"><code>data</code> (as usual)</span>
 </dd>
-<dt data-target-cell="annotated-cell-16" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-10" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-16" data-code-lines="4" data-code-annotation="2">Column <code>names_to</code> new column called <code>item_no</code></span>
+<span data-code-cell="annotated-cell-10" data-code-lines="3" data-code-annotation="2"><code>cols</code>: Columns to pivot into longer format</span>
 </dd>
-<dt data-target-cell="annotated-cell-16" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-10" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-16" data-code-lines="5" data-code-annotation="3"><code>values_to</code> new column called <code>item</code></span>
+<span data-code-cell="annotated-cell-10" data-code-lines="4" data-code-annotation="3"><code>names_to</code>: Name of the column where column names of pivoted variables go (character string)</span>
+</dd>
+<dt data-target-cell="annotated-cell-10" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-cell="annotated-cell-10" data-code-lines="5" data-code-annotation="4"><code>values_to</code>: Name of the column where data in pivoted variables go (character string)</span>
 </dd>
 </dl>
 </div>
 </div>
 </div></div>
 </section>
-<section id="customers-rightarrow-purchases-1" class="slide level2">
-<h2>Customers <span class="math inline">\(\rightarrow\)</span> purchases</h2>
+<section id="pivot_longer-in-context" class="slide level2">
+<h2><code>pivot_longer()</code> in context</h2>
 <div class="columns">
-<div class="column" style="width:50%;">
+<div class="column" style="width:60%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>purchases <span class="ot">&lt;-</span> customers <span class="sc">|&gt;</span></span>
-<span id="cb5-2"><a></a>  <span class="fu">pivot_longer</span>(</span>
-<span id="cb5-3"><a></a>    <span class="at">cols =</span> item_1<span class="sc">:</span>item_3,</span>
-<span id="cb5-4"><a></a>    <span class="at">names_to =</span> <span class="st">"item_no"</span>,</span>
-<span id="cb5-5"><a></a>    <span class="at">values_to =</span> <span class="st">"item"</span>   </span>
-<span id="cb5-6"><a></a>  )</span>
-<span id="cb5-7"><a></a></span>
-<span id="cb5-8"><a></a>purchases</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="annotated-cell-11" data-code-line-numbers="|3|4|5"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-11-1"><a href="#annotated-cell-11-1"></a>customers <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-11-2"><a href="#annotated-cell-11-2"></a>  <span class="fu">pivot_longer</span>(</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-11-3" class="code-annotation-target"><a href="#annotated-cell-11-3"></a>    <span class="at">cols =</span> item_1<span class="sc">:</span>item_3,</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-11-4" class="code-annotation-target"><a href="#annotated-cell-11-4"></a>    <span class="at">names_to =</span> <span class="st">"item_no"</span>,</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-11-5" class="code-annotation-target"><a href="#annotated-cell-11-5"></a>    <span class="at">values_to =</span> <span class="st">"item"</span></span>
+<span id="annotated-cell-11-6"><a href="#annotated-cell-11-6"></a>  )</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-11" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-11" data-code-lines="3" data-code-annotation="1"><code>cols</code> to pivot: <code>item_1</code> to <code>item_3</code></span>
+</dd>
+<dt data-target-cell="annotated-cell-11" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-11" data-code-lines="4" data-code-annotation="2">Column <code>names_to</code> new column called <code>item_no</code></span>
+</dd>
+<dt data-target-cell="annotated-cell-11" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-11" data-code-lines="5" data-code-annotation="3"><code>values_to</code> new column called <code>item</code></span>
+</dd>
+</dl>
+</div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 3
   customer_id item_no item        
@@ -686,6 +702,78 @@
 </div>
 </div></div>
 </section>
+<section id="dealing-with-nas" class="slide level2">
+<h2>Dealing with <code>NA</code>s</h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="annotated-cell-13" data-code-line-numbers="|6"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-13-1"><a href="#annotated-cell-13-1"></a>customers <span class="sc">|&gt;</span></span>
+<span id="annotated-cell-13-2"><a href="#annotated-cell-13-2"></a>  <span class="fu">pivot_longer</span>(</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-13" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-13-3" class="code-annotation-target"><a href="#annotated-cell-13-3"></a>    <span class="at">cols =</span> item_1<span class="sc">:</span>item_3,</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-13" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-13-4" class="code-annotation-target"><a href="#annotated-cell-13-4"></a>    <span class="at">names_to =</span> <span class="st">"item_no"</span>,</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-13" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-13-5" class="code-annotation-target"><a href="#annotated-cell-13-5"></a>    <span class="at">values_to =</span> <span class="st">"item"</span>,</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-13" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-13-6" class="code-annotation-target"><a href="#annotated-cell-13-6"></a>    <span class="at">values_drop_na =</span> <span class="cn">TRUE</span></span>
+<span id="annotated-cell-13-7"><a href="#annotated-cell-13-7"></a>  )</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-13" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-13" data-code-lines="3" data-code-annotation="1"><code>cols</code> to pivot: <code>item_1</code> to <code>item_3</code></span>
+</dd>
+<dt data-target-cell="annotated-cell-13" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-13" data-code-lines="4" data-code-annotation="2">Column <code>names_to</code> new column called <code>item_no</code></span>
+</dd>
+<dt data-target-cell="annotated-cell-13" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-13" data-code-lines="5" data-code-annotation="3"><code>values_to</code> new column called <code>item</code></span>
+</dd>
+<dt data-target-cell="annotated-cell-13" data-target-annotation="4">4</dt>
+<dd>
+<span data-code-cell="annotated-cell-13" data-code-lines="6" data-code-annotation="4">Drop rows that contain only <code>NA</code>s in the <code>values_to</code> column</span>
+</dd>
+</dl>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 3
+  customer_id item_no item        
+        &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;       
+1           1 item_1  bread       
+2           1 item_2  milk        
+3           1 item_3  banana      
+4           2 item_1  milk        
+5           2 item_2  toilet paper</code></pre>
+</div>
+</div>
+</div></div>
+</section>
+<section id="customers-rightarrow-purchases" class="slide level2">
+<h2>Customers <span class="math inline">\(\rightarrow\)</span> purchases</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>purchases <span class="ot">&lt;-</span> customers <span class="sc">|&gt;</span></span>
+<span id="cb9-2"><a></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb9-3"><a></a>    <span class="at">cols =</span> item_1<span class="sc">:</span>item_3,</span>
+<span id="cb9-4"><a></a>    <span class="at">names_to =</span> <span class="st">"item_no"</span>,</span>
+<span id="cb9-5"><a></a>    <span class="at">values_to =</span> <span class="st">"item"</span>,</span>
+<span id="cb9-6"><a></a>    <span class="at">values_drop_na =</span> <span class="cn">TRUE</span></span>
+<span id="cb9-7"><a></a>  )</span>
+<span id="cb9-8"><a></a></span>
+<span id="cb9-9"><a></a>purchases</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 3
+  customer_id item_no item        
+        &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;       
+1           1 item_1  bread       
+2           1 item_2  milk        
+3           1 item_3  banana      
+4           2 item_1  milk        
+5           2 item_2  toilet paper</code></pre>
+</div>
+</div>
+</div></div>
+</section>
 <section id="why-pivot" class="slide level2">
 <h2>Why pivot?</h2>
 <p>Most likely, because the next step of your analysis needs it</p>
@@ -694,7 +782,7 @@
 <div class="columns">
 <div class="column" style="width:35%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>prices</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>prices</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5 × 2
   item         price
@@ -706,312 +794,186 @@
 5 toilet paper  3   </code></pre>
 </div>
 </div>
-</div><div class="column" style="width:35%;">
+</div><div class="column fragment" style="width:35%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>purchases <span class="sc">|&gt;</span></span>
-<span id="cb9-2"><a></a>  <span class="fu">left_join</span>(prices)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>purchases <span class="sc">|&gt;</span></span>
+<span id="cb13-2"><a></a>  <span class="fu">left_join</span>(prices)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Joining with `by = join_by(item)`</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 4
+<pre><code># A tibble: 5 × 4
   customer_id item_no item         price
         &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;        &lt;dbl&gt;
 1           1 item_1  bread         1   
 2           1 item_2  milk          0.8 
 3           1 item_3  banana        0.15
 4           2 item_1  milk          0.8 
-5           2 item_2  toilet paper  3   
-6           2 item_3  &lt;NA&gt;         NA   </code></pre>
+5           2 item_2  toilet paper  3   </code></pre>
 </div>
 </div>
 </div></div>
 </div>
 </div>
+</section></section>
+<section>
+<section id="from-longer-to-wider" class="title-slide slide level1 center">
+<h1>From longer to wider</h1>
+
 </section>
 <section id="purchases-rightarrow-customers" class="slide level2">
 <h2>Purchases <span class="math inline">\(\rightarrow\)</span> customers</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="annotated-cell-24" data-code-line-numbers="|1|2,5|3|4"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><a class="code-annotation-anchor" data-target-cell="annotated-cell-24" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-24-1" class="code-annotation-target"><a href="#annotated-cell-24-1"></a>customers <span class="ot">&lt;-</span> purchases <span class="sc">|&gt;</span></span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-24" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-24-2" class="code-annotation-target"><a href="#annotated-cell-24-2"></a>  <span class="fu">pivot_wider</span>(</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-24" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-24-3" class="code-annotation-target"><a href="#annotated-cell-24-3"></a>    <span class="at">names_from =</span> item_no,</span>
-<a class="code-annotation-anchor" data-target-cell="annotated-cell-24" data-target-annotation="4" onclick="event.preventDefault();">4</a><span id="annotated-cell-24-4" class="code-annotation-target"><a href="#annotated-cell-24-4"></a>    <span class="at">values_from =</span> item</span>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>purchases <span class="sc">|&gt;</span></span>
+<span id="cb16-2"><a></a>  <span class="fu">pivot_wider</span>(</span>
+<span id="cb16-3"><a></a>    <span class="at">names_from =</span> item_no,</span>
+<span id="cb16-4"><a></a>    <span class="at">values_from =</span> item</span>
+<span id="cb16-5"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 4
+  customer_id item_1 item_2       item_3
+        &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;        &lt;chr&gt; 
+1           1 bread  milk         banana
+2           2 milk   toilet paper &lt;NA&gt;  </code></pre>
+</div>
+</div>
+</div></div>
+</section>
+<section id="pivot_wider" class="slide level2">
+<h2><code>pivot_wider()</code></h2>
+<div class="columns">
+<div class="column" style="width:60%;">
+<div class="cell">
+<div class="sourceCode cell-code" id="annotated-cell-24" data-code-line-numbers="1,2,5"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-24-1"><a href="#annotated-cell-24-1"></a><span class="fu">pivot_wider</span>(</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-24" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-24-2" class="code-annotation-target"><a href="#annotated-cell-24-2"></a>  data,</span>
+<span id="annotated-cell-24-3"><a href="#annotated-cell-24-3"></a>  <span class="at">names_from =</span> name,</span>
+<span id="annotated-cell-24-4"><a href="#annotated-cell-24-4"></a>  <span class="at">values_from =</span> value</span>
 <span id="annotated-cell-24-5"><a href="#annotated-cell-24-5"></a>  )</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-annotation">
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-24" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-24" data-code-lines="1" data-code-annotation="1"><code>data</code> (as usual)</span>
-</dd>
-<dt data-target-cell="annotated-cell-24" data-target-annotation="2">2</dt>
-<dd>
-<span data-code-cell="annotated-cell-24" data-code-lines="2" data-code-annotation="2"><code>pivot_wider()</code>: Function to pivot wider</span>
-</dd>
-<dt data-target-cell="annotated-cell-24" data-target-annotation="3">3</dt>
-<dd>
-<span data-code-cell="annotated-cell-24" data-code-lines="3" data-code-annotation="3"><code>names_from</code>: Which column in the long format contains the what should be column names in the wide format</span>
-</dd>
-<dt data-target-cell="annotated-cell-24" data-target-annotation="4">4</dt>
-<dd>
-<span data-code-cell="annotated-cell-24" data-code-lines="4" data-code-annotation="4"><code>values_from</code>: Which column in the long format contains the what should be values in the new columns in the wide format</span>
+<span data-code-cell="annotated-cell-24" data-code-lines="2" data-code-annotation="1"><code>data</code> (as usual)</span>
 </dd>
 </dl>
 </div>
 </div>
 </div></div>
-</section></section>
-<section>
-<section id="case-study-approval-rating-of-joe-biden" class="title-slide slide level1 center">
-<h1>Case study: <br>Approval rating of Joe Biden</h1>
-
 </section>
-<section id="inspiration" class="slide level2">
-<h2>Inspiration</h2>
-<p><img data-src="images/biden-approval.png" alt="Approval rating of Joe Biden since the beginning of his term until July 2024."></p>
-
-<aside><div>
-<p>Source: <a href="https://projects.fivethirtyeight.com/polls/approval/joe-biden/">FiveThirtyEight</a></p>
-</div></aside></section>
-<section id="data" class="slide level2">
-<h2>Data</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>biden <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/biden/biden.csv"</span>)</span>
-<span id="cb12-2"><a></a>biden</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 504 × 5
-   pollster population       date       approval disapproval
-   &lt;chr&gt;    &lt;chr&gt;            &lt;date&gt;        &lt;dbl&gt;       &lt;dbl&gt;
- 1 YouGov   All adults       2024-07-16       37          59
- 2 YouGov   Registered vote… 2024-07-16       40          58
- 3 YouGov   All adults       2024-07-09       37          58
- 4 YouGov   Registered vote… 2024-07-09       40          58
- 5 YouGov   All adults       2024-07-02       37          57
- 6 YouGov   Registered vote… 2024-07-02       40          57
- 7 YouGov   All adults       2024-07-01       38          57
- 8 YouGov   Registered vote… 2024-07-01       41          58
- 9 YouGov   All adults       2024-06-25       36          58
-10 YouGov   Registered vote… 2024-06-25       41          57
-# ℹ 494 more rows</code></pre>
-</div>
-</div>
-</section>
-<section id="goal" class="slide level2">
-<h2>Goal</h2>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="1-3-tidying-data_files/figure-revealjs/unnamed-chunk-17-1.png" style="width:90.0%"></p>
-</figure>
-</div>
-</div>
-</div>
+<section id="pivot_wider-1" class="slide level2">
+<h2><code>pivot_wider()</code></h2>
 <div class="columns">
-<div class="column fragment" style="width:30%;">
-<p><strong>Aesthetic mappings:</strong></p>
-<p>✅ x = <code>date</code></p>
-<p>❌ y = <code>rating_value</code></p>
-<p>❌ color = <code>rating_type</code></p>
-</div><div class="column fragment" style="width:40%;">
-<p><strong>Facet:</strong></p>
-<p>✅ <code>population</code> (Adults and Voters)</p>
-</div></div>
-</section>
-<section id="pivot" class="slide level2">
-<h2>Pivot</h2>
+<div class="column" style="width:60%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14" data-code-line-numbers="|1|2,6|3|4|5|8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>biden_longer <span class="ot">&lt;-</span> biden <span class="sc">|&gt;</span></span>
-<span id="cb14-2"><a></a>  <span class="fu">pivot_longer</span>(</span>
-<span id="cb14-3"><a></a>    <span class="at">cols =</span> <span class="fu">c</span>(approval, disapproval),</span>
-<span id="cb14-4"><a></a>    <span class="at">names_to =</span> <span class="st">"rating_type"</span>,</span>
-<span id="cb14-5"><a></a>    <span class="at">values_to =</span> <span class="st">"rating_value"</span></span>
-<span id="cb14-6"><a></a>  )</span>
-<span id="cb14-7"><a></a></span>
-<span id="cb14-8"><a></a>biden_longer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1,008 × 5
-   pollster population   date       rating_type rating_value
-   &lt;chr&gt;    &lt;chr&gt;        &lt;date&gt;     &lt;chr&gt;              &lt;dbl&gt;
- 1 YouGov   All adults   2024-07-16 approval              37
- 2 YouGov   All adults   2024-07-16 disapproval           59
- 3 YouGov   Registered … 2024-07-16 approval              40
- 4 YouGov   Registered … 2024-07-16 disapproval           58
- 5 YouGov   All adults   2024-07-09 approval              37
- 6 YouGov   All adults   2024-07-09 disapproval           58
- 7 YouGov   Registered … 2024-07-09 approval              40
- 8 YouGov   Registered … 2024-07-09 disapproval           58
- 9 YouGov   All adults   2024-07-02 approval              37
-10 YouGov   All adults   2024-07-02 disapproval           57
-# ℹ 998 more rows</code></pre>
-</div>
-</div>
-</section>
-<section id="plot" class="slide level2 smaller">
-<h2>Plot</h2>
-<div class="columns">
-<div class="column" style="width:28%;">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="fu">ggplot</span>(</span>
-<span id="cb16-2"><a></a>  biden_longer, </span>
-<span id="cb16-3"><a></a>  <span class="fu">aes</span>(</span>
-<span id="cb16-4"><a></a>    <span class="at">x =</span> date, </span>
-<span id="cb16-5"><a></a>    <span class="at">y =</span> rating_value, </span>
-<span id="cb16-6"><a></a>    <span class="at">color =</span> rating_type</span>
-<span id="cb16-7"><a></a>    )</span>
-<span id="cb16-8"><a></a>  ) <span class="sc">+</span></span>
-<span id="cb16-9"><a></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb16-10"><a></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> population)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div><div class="column" style="width:42%;">
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="1-3-tidying-data_files/figure-revealjs/unnamed-chunk-20-1.png" width="576"></p>
-</figure>
-</div>
+<div class="sourceCode cell-code" id="annotated-cell-25" data-code-line-numbers="1,3,5"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-25-1"><a href="#annotated-cell-25-1"></a><span class="fu">pivot_wider</span>(</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-25" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-25-2" class="code-annotation-target"><a href="#annotated-cell-25-2"></a>  data,</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-25" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-25-3" class="code-annotation-target"><a href="#annotated-cell-25-3"></a>  <span class="at">names_from =</span> name,</span>
+<span id="annotated-cell-25-4"><a href="#annotated-cell-25-4"></a>  <span class="at">values_from =</span> value</span>
+<span id="annotated-cell-25-5"><a href="#annotated-cell-25-5"></a>  )</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-25" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-25" data-code-lines="2" data-code-annotation="1"><code>data</code> (as usual)</span>
+</dd>
+<dt data-target-cell="annotated-cell-25" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-25" data-code-lines="3" data-code-annotation="2"><code>names_from</code>: Which column(s) in the long format contains the what should be column names in the wide format</span>
+</dd>
+</dl>
 </div>
 </div>
 </div></div>
 </section>
-<section id="colors" class="slide level2">
-<h2>Colors</h2>
+<section id="pivot_wider-2" class="slide level2">
+<h2><code>pivot_wider()</code></h2>
+<div class="columns">
+<div class="column" style="width:60%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17" data-code-line-numbers="7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">ggplot</span>(</span>
-<span id="cb17-2"><a></a>  biden_longer, </span>
-<span id="cb17-3"><a></a>  <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> rating_value, <span class="at">color =</span> rating_type)</span>
-<span id="cb17-4"><a></a>  ) <span class="sc">+</span></span>
-<span id="cb17-5"><a></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb17-6"><a></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> population) <span class="sc">+</span></span>
-<span id="cb17-7"><a></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"darkgreen"</span>, <span class="st">"deeppink"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="annotated-cell-26" data-code-line-numbers="1,4,5"><pre class="sourceCode numberSource r code-annotation-code number-lines code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-26-1"><a href="#annotated-cell-26-1"></a><span class="fu">pivot_wider</span>(</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-26" data-target-annotation="1" onclick="event.preventDefault();">1</a><span id="annotated-cell-26-2" class="code-annotation-target"><a href="#annotated-cell-26-2"></a>  data,</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-26" data-target-annotation="2" onclick="event.preventDefault();">2</a><span id="annotated-cell-26-3" class="code-annotation-target"><a href="#annotated-cell-26-3"></a>  <span class="at">names_from =</span> name,</span>
+<a class="code-annotation-anchor" data-target-cell="annotated-cell-26" data-target-annotation="3" onclick="event.preventDefault();">3</a><span id="annotated-cell-26-4" class="code-annotation-target"><a href="#annotated-cell-26-4"></a>  <span class="at">values_from =</span> value</span>
+<span id="annotated-cell-26-5"><a href="#annotated-cell-26-5"></a>  )</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-annotation">
+<dl class="code-annotation-container-grid">
+<dt data-target-cell="annotated-cell-26" data-target-annotation="1">1</dt>
+<dd>
+<span data-code-cell="annotated-cell-26" data-code-lines="2" data-code-annotation="1"><code>data</code> (as usual)</span>
+</dd>
+<dt data-target-cell="annotated-cell-26" data-target-annotation="2">2</dt>
+<dd>
+<span data-code-cell="annotated-cell-26" data-code-lines="3" data-code-annotation="2"><code>names_from</code>: Which column(s) in the long format contains the what should be column names in the wide format</span>
+</dd>
+<dt data-target-cell="annotated-cell-26" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-26" data-code-lines="4" data-code-annotation="3"><code>values_from</code>: Which column(s) in the long format contains the what should be values in the new columns in the wide format</span>
+</dd>
+</dl>
 </div>
-
+</div>
+</div></div>
 </section>
-<section id="colors-output" class="slide level2 output-location-slide"><h2>Colors</h2><div class="cell output-location-slide">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="1-3-tidying-data_files/figure-revealjs/unnamed-chunk-21-1.png" style="width:100.0%"></p>
-</figure>
-</div>
-</div>
-</div></section><section id="y-axis-labels" class="slide level2">
-<h2>y-axis labels</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb18" data-code-line-numbers="8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="fu">ggplot</span>(</span>
-<span id="cb18-2"><a></a>  biden_longer, </span>
-<span id="cb18-3"><a></a>  <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> rating_value, <span class="at">color =</span> rating_type)</span>
-<span id="cb18-4"><a></a>  ) <span class="sc">+</span></span>
-<span id="cb18-5"><a></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb18-6"><a></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> population) <span class="sc">+</span></span>
-<span id="cb18-7"><a></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"darkgreen"</span>, <span class="st">"deeppink"</span>)) <span class="sc">+</span></span>
-<span id="cb18-8"><a></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="fu">label_percent</span>(<span class="at">scale =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-
+<section id="wider---longer" class="slide level2">
+<h2>Wider &lt;-&gt; longer</h2>
+<p><img data-src="images/tidyr-longer-wider.gif"></p>
 </section>
-<section id="y-axis-labels-output" class="slide level2 output-location-slide"><h2>y-axis labels</h2><div class="cell output-location-slide">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="1-3-tidying-data_files/figure-revealjs/unnamed-chunk-22-1.png" style="width:100.0%"></p>
-</figure>
-</div>
-</div>
-</div></section><section id="x-axis-labels" class="slide level2">
-<h2>x-axis labels</h2>
+<section id="additional-arguments" class="slide level2 smaller">
+<h2>Additional arguments</h2>
+<div class="columns">
+<div class="column" style="width:35%;">
+<p><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html"><code>pivot_longer()</code></a></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19" data-code-line-numbers="9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="fu">ggplot</span>(</span>
-<span id="cb19-2"><a></a>  biden_longer, </span>
-<span id="cb19-3"><a></a>  <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> rating_value, <span class="at">color =</span> rating_type)</span>
-<span id="cb19-4"><a></a>  ) <span class="sc">+</span></span>
-<span id="cb19-5"><a></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb19-6"><a></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> population) <span class="sc">+</span></span>
-<span id="cb19-7"><a></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"darkgreen"</span>, <span class="st">"deeppink"</span>)) <span class="sc">+</span></span>
-<span id="cb19-8"><a></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="fu">label_percent</span>(<span class="at">scale =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
-<span id="cb19-9"><a></a>  <span class="fu">scale_x_date</span>(<span class="at">date_breaks =</span> <span class="st">"1 year"</span>, <span class="at">date_labels =</span> <span class="st">"%b %e, %Y"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18" data-code-line-numbers="|1,4-5,7-12,14-17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="fu">pivot_longer</span>(</span>
+<span id="cb18-2"><a></a>  data,</span>
+<span id="cb18-3"><a></a>  cols,</span>
+<span id="cb18-4"><a></a>  ...,</span>
+<span id="cb18-5"><a></a>  <span class="at">cols_vary =</span> <span class="st">"fastest"</span>,</span>
+<span id="cb18-6"><a></a>  <span class="at">names_to =</span> <span class="st">"name"</span>,</span>
+<span id="cb18-7"><a></a>  <span class="at">names_prefix =</span> <span class="cn">NULL</span>,</span>
+<span id="cb18-8"><a></a>  <span class="at">names_sep =</span> <span class="cn">NULL</span>,</span>
+<span id="cb18-9"><a></a>  <span class="at">names_pattern =</span> <span class="cn">NULL</span>,</span>
+<span id="cb18-10"><a></a>  <span class="at">names_ptypes =</span> <span class="cn">NULL</span>,</span>
+<span id="cb18-11"><a></a>  <span class="at">names_transform =</span> <span class="cn">NULL</span>,</span>
+<span id="cb18-12"><a></a>  <span class="at">names_repair =</span> <span class="st">"check_unique"</span>,</span>
+<span id="cb18-13"><a></a>  <span class="at">values_to =</span> <span class="st">"value"</span>,</span>
+<span id="cb18-14"><a></a>  <span class="at">values_drop_na =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb18-15"><a></a>  <span class="at">values_ptypes =</span> <span class="cn">NULL</span>,</span>
+<span id="cb18-16"><a></a>  <span class="at">values_transform =</span> <span class="cn">NULL</span></span>
+<span id="cb18-17"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-
-</section>
-<section id="x-axis-labels-output" class="slide level2 output-location-slide"><h2>x-axis labels</h2><div class="cell output-location-slide">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="1-3-tidying-data_files/figure-revealjs/unnamed-chunk-23-1.png" style="width:100.0%"></p>
-</figure>
-</div>
-</div>
-</div></section><section id="plot-labels" class="slide level2 smaller">
-<h2>Plot labels</h2>
+</div><div class="column" style="width:35%;">
+<p><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html"><code>pivot_wider()</code></a></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20" data-code-line-numbers="10-17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a><span class="fu">ggplot</span>(</span>
-<span id="cb20-2"><a></a>  biden_longer, </span>
-<span id="cb20-3"><a></a>  <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> rating_value, <span class="at">color =</span> rating_type)</span>
-<span id="cb20-4"><a></a>  ) <span class="sc">+</span></span>
-<span id="cb20-5"><a></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb20-6"><a></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> population) <span class="sc">+</span></span>
-<span id="cb20-7"><a></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"darkgreen"</span>, <span class="st">"deeppink"</span>)) <span class="sc">+</span></span>
-<span id="cb20-8"><a></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="fu">label_percent</span>(<span class="at">scale =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
-<span id="cb20-9"><a></a>  <span class="fu">scale_x_date</span>(<span class="at">date_breaks =</span> <span class="st">"1 year"</span>, <span class="at">date_labels =</span> <span class="st">"%b %e, %Y"</span>) <span class="sc">+</span></span>
-<span id="cb20-10"><a></a>  <span class="fu">labs</span>(</span>
-<span id="cb20-11"><a></a>    <span class="at">x =</span> <span class="st">"Date"</span>,</span>
-<span id="cb20-12"><a></a>    <span class="at">y =</span> <span class="st">"Rating"</span>,</span>
-<span id="cb20-13"><a></a>    <span class="at">color =</span> <span class="cn">NULL</span>,</span>
-<span id="cb20-14"><a></a>    <span class="at">title =</span> <span class="st">"How popular is Joe Biden?"</span>,</span>
-<span id="cb20-15"><a></a>    <span class="at">subtitle =</span> <span class="st">"Estimates based on polls of all adults and polls of registered voters"</span>,</span>
-<span id="cb20-16"><a></a>    <span class="at">caption =</span> <span class="st">"Source: FiveThirtyEight"</span></span>
-<span id="cb20-17"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19" data-code-line-numbers="|1,3-5,7-13,15-18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="fu">pivot_wider</span>(</span>
+<span id="cb19-2"><a></a>  data,</span>
+<span id="cb19-3"><a></a>  ...,</span>
+<span id="cb19-4"><a></a>  <span class="at">id_cols =</span> <span class="cn">NULL</span>,</span>
+<span id="cb19-5"><a></a>  <span class="at">id_expand =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb19-6"><a></a>  <span class="at">names_from =</span> name,</span>
+<span id="cb19-7"><a></a>  <span class="at">names_prefix =</span> <span class="st">""</span>,</span>
+<span id="cb19-8"><a></a>  <span class="at">names_sep =</span> <span class="st">"_"</span>,</span>
+<span id="cb19-9"><a></a>  <span class="at">names_glue =</span> <span class="cn">NULL</span>,</span>
+<span id="cb19-10"><a></a>  <span class="at">names_sort =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb19-11"><a></a>  <span class="at">names_vary =</span> <span class="st">"fastest"</span>,</span>
+<span id="cb19-12"><a></a>  <span class="at">names_expand =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb19-13"><a></a>  <span class="at">names_repair =</span> <span class="st">"check_unique"</span>,</span>
+<span id="cb19-14"><a></a>  <span class="at">values_from =</span> value,</span>
+<span id="cb19-15"><a></a>  <span class="at">values_fill =</span> <span class="cn">NULL</span>,</span>
+<span id="cb19-16"><a></a>  <span class="at">values_fn =</span> <span class="cn">NULL</span>,</span>
+<span id="cb19-17"><a></a>  <span class="at">unused_fn =</span> <span class="cn">NULL</span></span>
+<span id="cb19-18"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-
-</section>
-<section id="plot-labels-output" class="slide level2 smaller output-location-slide"><h2>Plot labels</h2><div class="cell output-location-slide">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="1-3-tidying-data_files/figure-revealjs/unnamed-chunk-24-1.png" style="width:100.0%"></p>
-</figure>
-</div>
-</div>
-</div></section><section id="theming" class="slide level2 smaller">
-<h2>Theming</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb21" data-code-line-numbers="18-19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="fu">ggplot</span>(</span>
-<span id="cb21-2"><a></a>  biden_longer, </span>
-<span id="cb21-3"><a></a>  <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> rating_value, <span class="at">color =</span> rating_type)</span>
-<span id="cb21-4"><a></a>  ) <span class="sc">+</span></span>
-<span id="cb21-5"><a></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb21-6"><a></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> population) <span class="sc">+</span></span>
-<span id="cb21-7"><a></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"darkgreen"</span>, <span class="st">"deeppink"</span>)) <span class="sc">+</span></span>
-<span id="cb21-8"><a></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="fu">label_percent</span>(<span class="at">scale =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
-<span id="cb21-9"><a></a>  <span class="fu">scale_x_date</span>(<span class="at">date_breaks =</span> <span class="st">"1 year"</span>, <span class="at">date_labels =</span> <span class="st">"%b %e, %Y"</span>) <span class="sc">+</span></span>
-<span id="cb21-10"><a></a>  <span class="fu">labs</span>(</span>
-<span id="cb21-11"><a></a>    <span class="at">x =</span> <span class="st">"Date"</span>,</span>
-<span id="cb21-12"><a></a>    <span class="at">y =</span> <span class="st">"Rating"</span>,</span>
-<span id="cb21-13"><a></a>    <span class="at">color =</span> <span class="cn">NULL</span>,</span>
-<span id="cb21-14"><a></a>    <span class="at">title =</span> <span class="st">"How popular is Joe Biden?"</span>,</span>
-<span id="cb21-15"><a></a>    <span class="at">subtitle =</span> <span class="st">"Estimates based on polls of all adults and polls of registered voters"</span>,</span>
-<span id="cb21-16"><a></a>    <span class="at">caption =</span> <span class="st">"Source: FiveThirtyEight"</span></span>
-<span id="cb21-17"><a></a>  ) <span class="sc">+</span></span>
-<span id="cb21-18"><a></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb21-19"><a></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-
+</div></div>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
 </div>
 </div>
-</section><section id="theming-output" class="slide level2 smaller output-location-slide"><h2>Theming</h2><div class="cell output-location-slide">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="1-3-tidying-data_files/figure-revealjs/unnamed-chunk-25-1.png" style="width:100.0%"></p>
-</figure>
-</div>
-</div>
-</div></section></section>
+</section></section>
     </div>
   </div>
 

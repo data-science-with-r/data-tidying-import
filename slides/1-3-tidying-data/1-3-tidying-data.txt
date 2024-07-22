@@ -1,0 +1,138 @@
+We defined what tidy data is, next let's talk about tidying data. This doesn't necessarily mean the data in its raw form is "messy", it just means it's organized in an unideal way for the analysis we want to conduct. Often, tidying data for this purpose involves reshaping it, and that's what we're going to introduce in this video.
+
+>>>
+
+So, we have data organised in an unideal way for our analysis
+
+> and we want to reorganize the data to carry on with our analysis
+
+> and of course we'll use our trusted tools from the tidyverse to do this.
+
+>>>
+
+The data we have is on grocery sales. Each row represents a customer. There are two customers in the data. Each column is an item they purchased. Customer 1 purchased three items (bread, milk, and banana), customer 2 purchased two items (milk and toilet paper). In this format, it would be cumbersome to answer questions like how many customers purchased milk, what's the most popular item, etc.
+
+> Instead, we want to get the data into a one-row-per-customer -per-item format
+
+>>>
+
+To do so, we're going to use a new tool from our tidyverse toolkit, the tidyr package. The goal of this package is to help you tidy your data via
+
+> pivoting for going between wide and long data -- and we'll discuss in more detail what we mean by "wide" and "long" data shortly
+
+> splitting and combining character columns
+
+> nesting and unnesting columns, and
+
+> clarifying how NAs should be treated while doing these operations
+
+>>>
+
+Let's talk about pivoting data, from wide to long or long to wide
+
+So, what do I mean by "pivoting"
+
+>>>
+
+Not this! (Those of you who have watched the show Friends might get that reference)
+
+> but this -- that is, reorganizing the rows and columns of our data so the same information is captured across many rows or across many columns.
+
+>>>
+
+In the wider format, the original data we had, items purchased by each customer are organized across many columns. The data frame is wider, as it has more columns.
+
+> In the format we said we want to see the data, items purchased are organized across many rows. The data frame is longer, as it has more rows.
+
+>>>
+
+First, let's talk about going from wider to longer
+
+>>>
+
+To go from wider data to longer data, we'll use an aptly named function: pivot_longer().
+
+>>>
+
+The first argument of the function is the data, as usual with most tidyverse functions.
+
+>>>
+
+Then, we specify which columns we want to pivot.
+
+>>>
+
+In the next argument we specify the name we want to give to the column where original column names of pivoted variables go. Let's pause for a moment, that's a mouthful! Remember in the original data we had column names like item_1, item_2, item_3... This argument specifies how to organize them, in other words, what to name the column they go into.
+
+Note that this is a character string -- it's not a variable that already exists in our data so we provide the name of the variable to be created as a character string.
+
+>>>
+
+And in the fourth and final argument we name the column where data in pivoted variables go, also as a character string for the same reason -- the variable is yet to be created so we provide the name of the variable to be created as a character string.
+
+>>>
+
+Putting it altogeter
+
+> we want to pivot columns named item_1 through item_3 -- the column operator means "to" or "through", a shortcut to not have to list every single variable name between these variables.
+
+> the column names from the original data (item_1, item_2, and item_3) will be organized in a column called item_no
+
+> the items themselves, the values in the cells of the original data, will be organized in a column called item
+
+The result is a 6 by 3 data frame -- 6 rows and 3 columns.
+
+Note, however, though the last row has an NA in it, since customer 2 only purhcased 2 items. It seems silly to have a row for an item 3 that doesn't exist when the data is in this format.
+
+>>>
+
+So, let's deal with that NA.
+
+> We can add another argument to our `pivot_longer()` function, values_drop_na, to specify what to do with this row. Here, we're setting it to TRUE, meaning that we want to drop rows that contain only NAs in the values_to column
+
+The result, then, is a 5 by 3 data frame, for 3 items from customer 1 and 2 items from customer 2.
+
+>>>
+
+Putting it altogether, and naming the resulting longer data frame "purchases", we get a data frame with 5 rows where each row corresponds to a customer/item combination. This data frame has a higher number of rows (5 compared to 2) and a lower number of columns (3 compared to 4), hence making it longer than the wider data frame we started with.
+
+Note that we're not making hard and fast rules about what constitutes a wide or long data frame, hence we say "wider" or "longer" compared to our original starting point.
+
+>>>
+
+So, why pivot? Most likely, because the next step of your analysis needs it.
+
+> For example, suppose we have a separate data frame of prices of items.
+
+> We could join these data to our purchases data -- and we'll talk about "joins" soon but you can think of it as bringing in price information into our purchases data frame.
+
+>>>
+
+Now that you've learned about pivoting longer, let's consider the scenario where we go from longer to wider data
+
+>>>
+
+We'll start with the purcases data we created, and pivot it back wider to its original format with one row per customer and items organized across columns.
+
+>>>
+
+To do so, we use the pivot_wider() function, where the first argument (as usual) is the data
+
+>>>
+
+the second argument is names_from, which tells us which column(s) in the long format contains the what should be column names in the wide format
+
+>>>
+
+and the third and last argument is values_from, which tells us which column(s) in the long format contains the what should be values in the new columns in the wide format
+
+>>>
+
+In this video, we've introduced pivoting from wider to longer and longer to wider. We've also defined the fundamental arguments of the pivot_longer and pivot_wider functions. We've even touched on one optional argument that tells us what to do with NAs. 
+
+>>>
+
+Both of these functions have a large number of arguments, 
+
+> some of which we'll introduce in the course and
+> some you might find helful as you continue to use these functions. As usual, reading the function documentation is the best way to familiarize yourself with these additional arguments.
