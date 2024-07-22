@@ -74,11 +74,19 @@ And in the fourth and final argument we name the column where data in pivoted va
 
 Putting it altogeter
 
-> we want to pivot columns named item_1 through item_3 -- the column operator means "to" or "through", a shortcut to not have to list every single variable name between these variables.
+>>>
 
-> the column names from the original data (item_1, item_2, and item_3) will be organized in a column called item_no
+we want to pivot columns named item_1 through item_3 -- the column operator means "to" or "through", a shortcut to not have to list every single variable name between these variables.
 
-> the items themselves, the values in the cells of the original data, will be organized in a column called item
+>>>
+
+the column names from the original data (item_1, item_2, and item_3) will be organized in a column called item_no
+
+>>> 
+
+the items themselves, the values in the cells of the original data, will be organized in a column called item
+
+>>>
 
 The result is a 6 by 3 data frame -- 6 rows and 3 columns.
 

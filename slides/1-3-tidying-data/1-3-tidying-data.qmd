@@ -236,7 +236,62 @@ pivot_longer(
 :::: columns
 ::: {.column width="60%"}
 ```{r}
-#| code-line-numbers: "|3|4|5"
+customers |>
+  pivot_longer(
+    cols = item_1:item_3,
+    names_to = "item_no",
+    values_to = "item"
+  )
+```
+:::
+::::
+
+## `pivot_longer()` in context
+
+:::: columns
+::: {.column width="60%"}
+```{r}
+#| code-line-numbers: "3"
+#| eval: false
+customers |>
+  pivot_longer(
+    cols = item_1:item_3, #<1>
+    names_to = "item_no",
+    values_to = "item"
+  )
+```
+
+1.  `cols` to pivot: `item_1` to `item_3`
+:::
+::::
+
+## `pivot_longer()` in context
+
+:::: columns
+::: {.column width="60%"}
+```{r}
+#| code-line-numbers: "4"
+#| eval: false
+customers |>
+  pivot_longer(
+    cols = item_1:item_3, #<1>
+    names_to = "item_no", #<2>
+    values_to = "item"
+  )
+```
+
+1.  `cols` to pivot: `item_1` to `item_3`
+2.  Column `names_to` new column called `item_no`
+:::
+::::
+
+## `pivot_longer()` in context
+
+:::: columns
+::: {.column width="60%"}
+```{r}
+#| code-line-numbers: "5"
+#| eval: false
 customers |>
   pivot_longer(
     cols = item_1:item_3, #<1>
@@ -248,6 +303,21 @@ customers |>
 1.  `cols` to pivot: `item_1` to `item_3`
 2.  Column `names_to` new column called `item_no`
 3.  `values_to` new column called `item`
+:::
+::::
+
+## `pivot_longer()` in context
+
+:::: columns
+::: {.column width="60%"}
+```{r}
+customers |>
+  pivot_longer(
+    cols = item_1:item_3,
+    names_to = "item_no",
+    values_to = "item"
+  )
+```
 :::
 ::::
 
