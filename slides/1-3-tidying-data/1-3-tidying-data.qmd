@@ -28,7 +28,6 @@ format: revealjs
 ```{r}
 #| message: false
 library(tidyverse)
-library(scales)
 ```
 
 ## Data: Grocery store sales
