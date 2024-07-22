@@ -1,115 +1,44 @@
-In this course and throughout the specialization, we'll use a number of modern data science tools. In this video we'll meet two of them, R and RStudio.
+We've been talking about the tidyverse for a while now and it's time to actually define what we mean by "tidy data".
 
->>
+>>>
 
-Before we meet them, let's review our learning goals
+I'm going to start with a quote from Leo Tolstoy to set the scene:
 
->>
+"Happy families are all alike; every unhappy family is unhappy in its own way."
 
-By the end of the course, you will be able to…
+So, how does this relate to tidy data? 
 
->> gain insights from data, or to be more specific
+> While not all tidy data are alike, we can define characteristics of tidy data: Each variable forms a column, Each observation forms a row, and Each type of observational unit forms a table.
 
->> gain insights from data, using modern programming tools and techniques, or more specifically
+> On the other hand, like unhappy families, untidy data have can be untidy in many ways.
 
->> gain insights from data, using modern programming tools and techniques, reproducibly with literate programming, or even more specifically
+Additonally, a data set that's "tidy" for one analysis may not be ideally tidy for another analysis so we're going to learn about how we actually tidy up data and sometimes even reshape it to make it more appropriate for our analyses.
 
->> gain insights from data, using modern programming tools and techniques, reproducibly with literate programming and version control
+>>>
 
->>
+Let's start with a few examples of untidy data. What makes this particular one not tidy?
 
-In this video, though, we'll focus on gaining insights from data, using modern programming tools and techniques 
+This one comes from, I believe, a hobbyist maintaining information on world war 2 aircrafts. The dataset gives for each month the number of airplanes available by type. But while most rows are months, some rows are years and some rows are merged clls that indicate certain important time points in history. If we were to tidy up these data, we would have another column called year. We might add another column with important events and indicate those in their respective months.
 
->>
+>>>
 
-with R and RStudio
+Here is another dataset, from Gapminder, which is a website that maintains lots and lots of country level information. This partidular data shows estimated HIV prelalance 15-49 year olds across countries and years.
 
->>
+What makes this data not tidy is the orange highlighted cell, which describes the dataset as opposed to naming the values in that column. To make this dataset tidy, that cell would need to say something like country or country name.
 
-So, what's R?
+>>>
 
->> R is an open-source statistical programming language
+And finally here is one from the American Community Survey. Data for these data are collected at the individual level, but there are privacy concerns around releasing it at the individual level so the US, and many countries, release information like this in the aggregate. This is a nicely organized table, but ultimately it's a table of summary statistics. While the table is comprised of rows and columns, the contents of these do not follow tidy data principles. Each row represents a subgroup, some subgroups contain others. For example, the "civilian labor force" number contains the employed and unemployed numbers.
 
->> It's also an environment for statistical computing and graphics
+>>>
 
->>
+Let's clarify what we mean by a table of summary statistics referring to a dataset you might have seen before -- data on Starwars characters where each row represents a character and each column is an attribute of that character. For example, in row 1 here, we can see the height and gender of Luke Skywalker.
 
-And, RStudio?
+> On the table on the left we see how many characters fall into each gender category in the column called n and their average height in the column called avg_height. 
 
->> RStudio is a convenient interface for R called an IDE, an integrated development environment. For example, “I write R code in the RStudio IDE”.
+> These summary statistics are obtained with a group_by then a summarize statement.
 
->> Using RStudio is mot a requirement for programming with R, but it’s very commonly used by R programmers and data scientists
-
->>
-
-A good analogy for R vs. RStudio is
-
->> a car engine
-
->> vs. dashboard
-
-R is like the engine under the hood, RStudio is the dashboard via which you interact with the engine
-
->>
-
-And R packages
-
->> Packages are the fundamental units of reproducible R code – they include reusable R functions, documentation of these functions, and sample data
-
->> They are how the community extends R
-
->> As of April 2024, there are over 20,000 R packages available on CRAN, the Comprehensive R Archive Network
-
->> We’re going to work with a small (but important) subset of these!
-
->>
-
-So, let's take a tour of R and RStudio
-
-...
-
->> As a recap
-
-- we can use the R console as a calculator to do simple arithmetic
-- or for object assignment, which then shows up in the environment tab
-- we can load a package with library
-- we can view datas frames in the data viewer with View
-- we can access variables in a data frame with a question mark
-- R functions, like mean, are followed by parantheses, in which what the object we want to apply them to go
-- when a function gives an unexpected result, like the NA here, or an error, the best first place to go to is the function documentation, which can be accessed in the help pane or by typing question mark followed by name of function
-- further arguments that go into a function are separated by commas
-
->> 
-
-Let's review a short list (for now) of R essentials
-
->> Functions are (most often) verbs, followed by what they will be applied to in parentheses, like do this to that or do this, to this, to that, with those
-
->> Packages are installed with the install.packages() function and loaded with the library function, once per session
-
->>
-
-Columns (variables) in data frames are accessed with $, like dataframe dollar sign var_name
-
->> and object documentation can be accessed with ?, like question mark mean
-
->>
-
-and finally -- the tidyverse
-
->> The tidyverse is an opinionated collection of R packages designed for data science
-
->> All packages share an underlying philosophy and a common grammar
-
-[pause for acknowledgements]
+The table on the right is simply displaying the data, while the table on the left is summarizing it. For most analyses we'll want to start with the table on the right, as opposed to the already summarized data. While each of these data frames are arguably tidy, one gives us a lot more granular information, and leaves the door open for a larger variety of analyses to be conducted based on this information.
 
 
-
-
-
-
-
-
-
-
-
+Tidy data, on the other hand, are easy to 
