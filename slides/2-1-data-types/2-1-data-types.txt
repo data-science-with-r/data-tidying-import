@@ -1,0 +1,21 @@
+We have introduced R and used it as a tool for doing data science. Before we go any further, we're going to pause for a moment and discuss certain features of the R language, starting with data types. Just like natural languages have their peculiarities to them and learning a new language requires familiarizing yourself with these peculiarities, we need to do the same for computing languages as well.
+
+>>>
+
+But I'm not sure if that was convincing enough, so before we learn about data types in R, let's discuss why you should care about data types. And give a very real and practical example.
+
+>>>
+
+We'll do this with an example about a hypothetical, but again very realistic, survey on cat lovers. Suppose a survey asked respondents their name and number of cats. And also suppose that the instructions said to enter the number of cats as a numerical value.
+
+Here we read the survey data in from a CSV file where they're stored and take a peek at it. It looks like there are 60 respondents and for each one we know their name and the number of cats they have. On this slide we can see the first few responses.
+
+A reasonable question we can ask of these data is "how many cats do the survey respondents have on average".
+
+>>>
+
+So we pipe the cat_lovers data frame to the summarize function and calculate the average number of cats using the mean function.
+
+Unfortunately, though, the result is an NA and a pretty wordy warning. It's not an error, the code ran, but the result looks nothing like we would expect.
+
+If we read the warning carefully it says the warning is in summarize, and specifically in finding the mean number of cats. And it's caused by the argument to the mean function not being numeric or logical. Numeric and logical are two data types in R, we'll learn more about them in a bit, but hopefully it's not a huge leap to say "numeric" means numerical data.

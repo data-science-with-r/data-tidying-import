@@ -435,7 +435,7 @@ pivot_wider(
 ```
 
 1.  `data` (as usual)
-2.  `names_from`: Which column(s) in the long format contains the what should be column names in the wide format
+2.  `names_from`: Which column(s) in the long format contains what should be column names in the wide format
 :::
 ::::
 
@@ -454,8 +454,8 @@ pivot_wider(
 ```
 
 1.  `data` (as usual)
-2.  `names_from`: Which column(s) in the long format contains the what should be column names in the wide format
-3.  `values_from`: Which column(s) in the long format contains the what should be values in the new columns in the wide format
+2.  `names_from`: Which column(s) in the long format contains what should be column names in the wide format
+3.  `values_from`: Which column(s) in the long format contains what should be values in the new columns in the wide format
 :::
 ::::
 

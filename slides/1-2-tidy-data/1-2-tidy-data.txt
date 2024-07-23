@@ -39,6 +39,3 @@ Let's clarify what we mean by a table of summary statistics referring to a datas
 > These summary statistics are obtained with a group_by then a summarize statement.
 
 The table on the right is simply displaying the data, while the table on the left is summarizing it. For most analyses we'll want to start with the table on the right, as opposed to the already summarized data. While each of these data frames are arguably tidy, one gives us a lot more granular information, and leaves the door open for a larger variety of analyses to be conducted based on this information.
-
-
-Tidy data, on the other hand, are easy to 

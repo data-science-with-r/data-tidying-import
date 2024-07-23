@@ -411,19 +411,19 @@
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>cat_lovers <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/cat-lovers.csv"</span>)</span>
 <span id="cb1-2"><a></a>cat_lovers</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 60 × 3
-   name           number_of_cats handedness
-   &lt;chr&gt;          &lt;chr&gt;          &lt;chr&gt;     
- 1 Bernice Warren 0              left      
- 2 Woodrow Stone  0              left      
- 3 Willie Bass    1              left      
- 4 Tyrone Estrada 3              left      
- 5 Alex Daniels   3              left      
- 6 Jane Bates     2              left      
- 7 Latoya Simpson 1              left      
- 8 Darin Woods    1              left      
- 9 Agnes Cobb     0              left      
-10 Tabitha Grant  0              left      
+<pre><code># A tibble: 60 × 2
+   name           number_of_cats
+   &lt;chr&gt;          &lt;chr&gt;         
+ 1 Bernice Warren 0             
+ 2 Woodrow Stone  0             
+ 3 Willie Bass    1             
+ 4 Tyrone Estrada 3             
+ 5 Alex Daniels   3             
+ 6 Jane Bates     2             
+ 7 Latoya Simpson 1             
+ 8 Darin Woods    1             
+ 9 Agnes Cobb     0             
+10 Tabitha Grant  0             
 # ℹ 50 more rows</code></pre>
 </div>
 </div>
@@ -477,32 +477,31 @@ Caused by warning in `mean.default()`:
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">glimpse</span>(cat_lovers)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 60
-Columns: 3
+Columns: 2
 $ name           &lt;chr&gt; "Bernice Warren", "Woodrow Stone", …
-$ number_of_cats &lt;chr&gt; "0", "0", "1", "3", "3", "2", "1", …
-$ handedness     &lt;chr&gt; "left", "left", "left", "left", "le…</code></pre>
+$ number_of_cats &lt;chr&gt; "0", "0", "1", "3", "3", "2", "1", …</code></pre>
 </div>
 </div>
 </section><section id="lets-take-another-look" class="slide level2 scrollable"><h2>Let’s take another look</h2>
 <div class="cell">
 <div class="cell-output-display">
-<div id="wjjrocylnv" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#wjjrocylnv table {
+<div id="ixxtuaeqop" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ixxtuaeqop table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#wjjrocylnv thead, #wjjrocylnv tbody, #wjjrocylnv tfoot, #wjjrocylnv tr, #wjjrocylnv td, #wjjrocylnv th {
+#ixxtuaeqop thead, #ixxtuaeqop tbody, #ixxtuaeqop tfoot, #ixxtuaeqop tr, #ixxtuaeqop td, #ixxtuaeqop th {
   border-style: none;
 }
 
-#wjjrocylnv p {
+#ixxtuaeqop p {
   margin: 0;
   padding: 0;
 }
 
-#wjjrocylnv .gt_table {
+#ixxtuaeqop .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -528,12 +527,12 @@ $ handedness     &lt;chr&gt; "left", "left", "left", "left", "le…</code></pre>
   border-left-color: #D3D3D3;
 }
 
-#wjjrocylnv .gt_caption {
+#ixxtuaeqop .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#wjjrocylnv .gt_title {
+#ixxtuaeqop .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -545,7 +544,7 @@ $ handedness     &lt;chr&gt; "left", "left", "left", "left", "le…</code></pre>
   border-bottom-width: 0;
 }
 
-#wjjrocylnv .gt_subtitle {
+#ixxtuaeqop .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -557,7 +556,7 @@ $ handedness     &lt;chr&gt; "left", "left", "left", "left", "le…</code></pre>
   border-top-width: 0;
 }
 
-#wjjrocylnv .gt_heading {
+#ixxtuaeqop .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -569,13 +568,13 @@ $ handedness     &lt;chr&gt; "left", "left", "left", "left", "le…</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#wjjrocylnv .gt_bottom_border {
+#ixxtuaeqop .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#wjjrocylnv .gt_col_headings {
+#ixxtuaeqop .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -590,7 +589,7 @@ $ handedness     &lt;chr&gt; "left", "left", "left", "left", "le…</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#wjjrocylnv .gt_col_heading {
+#ixxtuaeqop .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -610,7 +609,7 @@ $ handedness     &lt;chr&gt; "left", "left", "left", "left", "le…</code></pre>
   overflow-x: hidden;
 }
 
-#wjjrocylnv .gt_column_spanner_outer {
+#ixxtuaeqop .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -622,15 +621,15 @@ $ handedness     &lt;chr&gt; "left", "left", "left", "left", "le…</code></pre>
   padding-right: 4px;
 }
 
-#wjjrocylnv .gt_column_spanner_outer:first-child {
+#ixxtuaeqop .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#wjjrocylnv .gt_column_spanner_outer:last-child {
+#ixxtuaeqop .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#wjjrocylnv .gt_column_spanner {
+#ixxtuaeqop .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -642,11 +641,11 @@ $ handedness     &lt;chr&gt; "left", "left", "left", "left", "le…</code></pre>
   width: 100%;
 }
 
-#wjjrocylnv .gt_spanner_row {
+#ixxtuaeqop .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#wjjrocylnv .gt_group_heading {
+#ixxtuaeqop .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -672,7 +671,7 @@ $ handedness     &lt;chr&gt; "left", "left", "left", "left", "le…</code></pre>
   text-align: left;
 }
 
-#wjjrocylnv .gt_empty_group_heading {
+#ixxtuaeqop .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -687,15 +686,15 @@ $ handedness     &lt;chr&gt; "left", "left", "left", "left", "le…</code></pre>
   vertical-align: middle;
 }
 
-#wjjrocylnv .gt_from_md > :first-child {
+#ixxtuaeqop .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#wjjrocylnv .gt_from_md > :last-child {
+#ixxtuaeqop .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#wjjrocylnv .gt_row {
+#ixxtuaeqop .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -714,7 +713,7 @@ $ handedness     &lt;chr&gt; "left", "left", "left", "left", "le…</code></pre>
   overflow-x: hidden;
 }
 
-#wjjrocylnv .gt_stub {
+#ixxtuaeqop .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -727,7 +726,7 @@ $ handedness     &lt;chr&gt; "left", "left", "left", "left", "le…</code></pre>
   padding-right: 5px;
 }
 
-#wjjrocylnv .gt_stub_row_group {
+#ixxtuaeqop .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -741,15 +740,15 @@ $ handedness     &lt;chr&gt; "left", "left", "left", "left", "le…</code></pre>
   vertical-align: top;
 }
 
-#wjjrocylnv .gt_row_group_first td {
+#ixxtuaeqop .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#wjjrocylnv .gt_row_group_first th {
+#ixxtuaeqop .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#wjjrocylnv .gt_summary_row {
+#ixxtuaeqop .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -759,16 +758,16 @@ $ handedness     &lt;chr&gt; "left", "left", "left", "left", "le…</code></pre>
   padding-right: 5px;
 }
 
-#wjjrocylnv .gt_first_summary_row {
+#ixxtuaeqop .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#wjjrocylnv .gt_first_summary_row.thick {
+#ixxtuaeqop .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#wjjrocylnv .gt_last_summary_row {
+#ixxtuaeqop .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -778,7 +777,7 @@ $ handedness     &lt;chr&gt; "left", "left", "left", "left", "le…</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#wjjrocylnv .gt_grand_summary_row {
+#ixxtuaeqop .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -788,7 +787,7 @@ $ handedness     &lt;chr&gt; "left", "left", "left", "left", "le…</code></pre>
   padding-right: 5px;
 }
 
-#wjjrocylnv .gt_first_grand_summary_row {
+#ixxtuaeqop .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -798,7 +797,7 @@ $ handedness     &lt;chr&gt; "left", "left", "left", "left", "le…</code></pre>
   border-top-color: #D3D3D3;
 }
 
-#wjjrocylnv .gt_last_grand_summary_row_top {
+#ixxtuaeqop .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -808,11 +807,11 @@ $ handedness     &lt;chr&gt; "left", "left", "left", "left", "le…</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#wjjrocylnv .gt_striped {
+#ixxtuaeqop .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#wjjrocylnv .gt_table_body {
+#ixxtuaeqop .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -821,7 +820,7 @@ $ handedness     &lt;chr&gt; "left", "left", "left", "left", "le…</code></pre>
   border-bottom-color: #D3D3D3;
 }
 
-#wjjrocylnv .gt_footnotes {
+#ixxtuaeqop .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -835,7 +834,7 @@ $ handedness     &lt;chr&gt; "left", "left", "left", "left", "le…</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#wjjrocylnv .gt_footnote {
+#ixxtuaeqop .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -844,7 +843,7 @@ $ handedness     &lt;chr&gt; "left", "left", "left", "left", "le…</code></pre>
   padding-right: 5px;
 }
 
-#wjjrocylnv .gt_sourcenotes {
+#ixxtuaeqop .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -858,7 +857,7 @@ $ handedness     &lt;chr&gt; "left", "left", "left", "left", "le…</code></pre>
   border-right-color: #D3D3D3;
 }
 
-#wjjrocylnv .gt_sourcenote {
+#ixxtuaeqop .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -866,72 +865,72 @@ $ handedness     &lt;chr&gt; "left", "left", "left", "left", "le…</code></pre>
   padding-right: 5px;
 }
 
-#wjjrocylnv .gt_left {
+#ixxtuaeqop .gt_left {
   text-align: left;
 }
 
-#wjjrocylnv .gt_center {
+#ixxtuaeqop .gt_center {
   text-align: center;
 }
 
-#wjjrocylnv .gt_right {
+#ixxtuaeqop .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#wjjrocylnv .gt_font_normal {
+#ixxtuaeqop .gt_font_normal {
   font-weight: normal;
 }
 
-#wjjrocylnv .gt_font_bold {
+#ixxtuaeqop .gt_font_bold {
   font-weight: bold;
 }
 
-#wjjrocylnv .gt_font_italic {
+#ixxtuaeqop .gt_font_italic {
   font-style: italic;
 }
 
-#wjjrocylnv .gt_super {
+#ixxtuaeqop .gt_super {
   font-size: 65%;
 }
 
-#wjjrocylnv .gt_footnote_marks {
+#ixxtuaeqop .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#wjjrocylnv .gt_asterisk {
+#ixxtuaeqop .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#wjjrocylnv .gt_indent_1 {
+#ixxtuaeqop .gt_indent_1 {
   text-indent: 5px;
 }
 
-#wjjrocylnv .gt_indent_2 {
+#ixxtuaeqop .gt_indent_2 {
   text-indent: 10px;
 }
 
-#wjjrocylnv .gt_indent_3 {
+#ixxtuaeqop .gt_indent_3 {
   text-indent: 15px;
 }
 
-#wjjrocylnv .gt_indent_4 {
+#ixxtuaeqop .gt_indent_4 {
   text-indent: 20px;
 }
 
-#wjjrocylnv .gt_indent_5 {
+#ixxtuaeqop .gt_indent_5 {
   text-indent: 25px;
 }
 
-#wjjrocylnv .katex-display {
+#ixxtuaeqop .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#wjjrocylnv div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#ixxtuaeqop div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -939,308 +938,247 @@ $ handedness     &lt;chr&gt; "left", "left", "left", "left", "le…</code></pre>
 <thead><tr class="header gt_col_headings">
 <th id="name" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">name</th>
 <th id="number_of_cats" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">number_of_cats</th>
-<th id="handedness" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">handedness</th>
 </tr></thead>
 <tbody class="gt_table_body">
 <tr class="odd">
 <td class="gt_row gt_left" headers="name">Bernice Warren</td>
 <td class="gt_row gt_left" headers="number_of_cats">0</td>
-<td class="gt_row gt_left" headers="handedness">left</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="name">Woodrow Stone</td>
 <td class="gt_row gt_left" headers="number_of_cats">0</td>
-<td class="gt_row gt_left" headers="handedness">left</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="name">Willie Bass</td>
 <td class="gt_row gt_left" headers="number_of_cats">1</td>
-<td class="gt_row gt_left" headers="handedness">left</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="name">Tyrone Estrada</td>
 <td class="gt_row gt_left" headers="number_of_cats">3</td>
-<td class="gt_row gt_left" headers="handedness">left</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="name">Alex Daniels</td>
 <td class="gt_row gt_left" headers="number_of_cats">3</td>
-<td class="gt_row gt_left" headers="handedness">left</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="name">Jane Bates</td>
 <td class="gt_row gt_left" headers="number_of_cats">2</td>
-<td class="gt_row gt_left" headers="handedness">left</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="name">Latoya Simpson</td>
 <td class="gt_row gt_left" headers="number_of_cats">1</td>
-<td class="gt_row gt_left" headers="handedness">left</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="name">Darin Woods</td>
 <td class="gt_row gt_left" headers="number_of_cats">1</td>
-<td class="gt_row gt_left" headers="handedness">left</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="name">Agnes Cobb</td>
 <td class="gt_row gt_left" headers="number_of_cats">0</td>
-<td class="gt_row gt_left" headers="handedness">left</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="name">Tabitha Grant</td>
 <td class="gt_row gt_left" headers="number_of_cats">0</td>
-<td class="gt_row gt_left" headers="handedness">left</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="name">Perry Cross</td>
 <td class="gt_row gt_left" headers="number_of_cats">0</td>
-<td class="gt_row gt_left" headers="handedness">left</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="name">Wanda Silva</td>
 <td class="gt_row gt_left" headers="number_of_cats">0</td>
-<td class="gt_row gt_left" headers="handedness">left</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="name">Alicia Sims</td>
 <td class="gt_row gt_left" headers="number_of_cats">1</td>
-<td class="gt_row gt_left" headers="handedness">left</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="name">Emily Logan</td>
 <td class="gt_row gt_left" headers="number_of_cats">3</td>
-<td class="gt_row gt_left" headers="handedness">right</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="name">Woodrow Elliott</td>
 <td class="gt_row gt_left" headers="number_of_cats">3</td>
-<td class="gt_row gt_left" headers="handedness">right</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="name">Brent Copeland</td>
 <td class="gt_row gt_left" headers="number_of_cats">2</td>
-<td class="gt_row gt_left" headers="handedness">right</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="name">Pedro Carlson</td>
 <td class="gt_row gt_left" headers="number_of_cats">1</td>
-<td class="gt_row gt_left" headers="handedness">right</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="name">Patsy Luna</td>
 <td class="gt_row gt_left" headers="number_of_cats">1</td>
-<td class="gt_row gt_left" headers="handedness">right</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="name">Brett Robbins</td>
 <td class="gt_row gt_left" headers="number_of_cats">0</td>
-<td class="gt_row gt_left" headers="handedness">right</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="name">Oliver George</td>
 <td class="gt_row gt_left" headers="number_of_cats">0</td>
-<td class="gt_row gt_left" headers="handedness">right</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="name">Calvin Perry</td>
 <td class="gt_row gt_left" headers="number_of_cats">1</td>
-<td class="gt_row gt_left" headers="handedness">right</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="name">Lora Gutierrez</td>
 <td class="gt_row gt_left" headers="number_of_cats">1</td>
-<td class="gt_row gt_left" headers="handedness">right</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="name">Charlotte Sparks</td>
 <td class="gt_row gt_left" headers="number_of_cats">0</td>
-<td class="gt_row gt_left" headers="handedness">right</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="name">Earl Mack</td>
 <td class="gt_row gt_left" headers="number_of_cats">0</td>
-<td class="gt_row gt_left" headers="handedness">right</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="name">Leslie Wade</td>
 <td class="gt_row gt_left" headers="number_of_cats">4</td>
-<td class="gt_row gt_left" headers="handedness">right</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="name">Santiago Barker</td>
 <td class="gt_row gt_left" headers="number_of_cats">0</td>
-<td class="gt_row gt_left" headers="handedness">right</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="name">Jose Bell</td>
 <td class="gt_row gt_left" headers="number_of_cats">0</td>
-<td class="gt_row gt_left" headers="handedness">right</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="name">Lynda Smith</td>
 <td class="gt_row gt_left" headers="number_of_cats">0</td>
-<td class="gt_row gt_left" headers="handedness">right</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="name">Bradford Marshall</td>
 <td class="gt_row gt_left" headers="number_of_cats">0</td>
-<td class="gt_row gt_left" headers="handedness">right</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="name">Irving Miller</td>
 <td class="gt_row gt_left" headers="number_of_cats">0</td>
-<td class="gt_row gt_left" headers="handedness">right</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="name">Caroline Simpson</td>
 <td class="gt_row gt_left" headers="number_of_cats">0</td>
-<td class="gt_row gt_left" headers="handedness">right</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="name">Frances Welch</td>
 <td class="gt_row gt_left" headers="number_of_cats">0</td>
-<td class="gt_row gt_left" headers="handedness">right</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="name">Melba Jenkins</td>
 <td class="gt_row gt_left" headers="number_of_cats">0</td>
-<td class="gt_row gt_left" headers="handedness">right</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="name">Veronica Morales</td>
 <td class="gt_row gt_left" headers="number_of_cats">0</td>
-<td class="gt_row gt_left" headers="handedness">right</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="name">Juanita Cunningham</td>
 <td class="gt_row gt_left" headers="number_of_cats">0</td>
-<td class="gt_row gt_left" headers="handedness">right</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="name">Maurice Howard</td>
 <td class="gt_row gt_left" headers="number_of_cats">0</td>
-<td class="gt_row gt_left" headers="handedness">right</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="name">Teri Pierce</td>
 <td class="gt_row gt_left" headers="number_of_cats">0</td>
-<td class="gt_row gt_left" headers="handedness">right</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="name">Phil Franklin</td>
 <td class="gt_row gt_left" headers="number_of_cats">0</td>
-<td class="gt_row gt_left" headers="handedness">right</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="name">Jan Zimmerman</td>
 <td class="gt_row gt_left" headers="number_of_cats">0</td>
-<td class="gt_row gt_left" headers="handedness">right</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="name">Leslie Price</td>
 <td class="gt_row gt_left" headers="number_of_cats">0</td>
-<td class="gt_row gt_left" headers="handedness">right</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="name">Bessie Patterson</td>
 <td class="gt_row gt_left" headers="number_of_cats">0</td>
-<td class="gt_row gt_left" headers="handedness">right</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="name">Ethel Wolfe</td>
 <td class="gt_row gt_left" headers="number_of_cats">0</td>
-<td class="gt_row gt_left" headers="handedness">right</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="name">Naomi Wright</td>
 <td class="gt_row gt_left" headers="number_of_cats">1</td>
-<td class="gt_row gt_left" headers="handedness">right</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="name">Sadie Frank</td>
 <td class="gt_row gt_left" headers="number_of_cats">3</td>
-<td class="gt_row gt_left" headers="handedness">right</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="name">Lonnie Cannon</td>
 <td class="gt_row gt_left" headers="number_of_cats">3</td>
-<td class="gt_row gt_left" headers="handedness">right</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="name">Tony Garcia</td>
 <td class="gt_row gt_left" headers="number_of_cats">2</td>
-<td class="gt_row gt_left" headers="handedness">right</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="name">Darla Newton</td>
 <td class="gt_row gt_left" headers="number_of_cats">1</td>
-<td class="gt_row gt_left" headers="handedness">right</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="name">Ginger Clark</td>
 <td class="gt_row gt_left" headers="number_of_cats">1.5 - honestly I think one of my cats is half human</td>
-<td class="gt_row gt_left" headers="handedness">right</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="name">Lionel Campbell</td>
 <td class="gt_row gt_left" headers="number_of_cats">0</td>
-<td class="gt_row gt_left" headers="handedness">right</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="name">Florence Klein</td>
 <td class="gt_row gt_left" headers="number_of_cats">0</td>
-<td class="gt_row gt_left" headers="handedness">right</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="name">Harriet Leonard</td>
 <td class="gt_row gt_left" headers="number_of_cats">1</td>
-<td class="gt_row gt_left" headers="handedness">right</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="name">Terrence Harrington</td>
 <td class="gt_row gt_left" headers="number_of_cats">0</td>
-<td class="gt_row gt_left" headers="handedness">right</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="name">Travis Garner</td>
 <td class="gt_row gt_left" headers="number_of_cats">1</td>
-<td class="gt_row gt_left" headers="handedness">right</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="name">Doug Bass</td>
 <td class="gt_row gt_left" headers="number_of_cats">three</td>
-<td class="gt_row gt_left" headers="handedness">right</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="name">Pat Norris</td>
 <td class="gt_row gt_left" headers="number_of_cats">1</td>
-<td class="gt_row gt_left" headers="handedness">right</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="name">Dawn Young</td>
 <td class="gt_row gt_left" headers="number_of_cats">1</td>
-<td class="gt_row gt_left" headers="handedness">ambidextrous</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="name">Shari Alvarez</td>
 <td class="gt_row gt_left" headers="number_of_cats">1</td>
-<td class="gt_row gt_left" headers="handedness">ambidextrous</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="name">Tamara Robinson</td>
 <td class="gt_row gt_left" headers="number_of_cats">0</td>
-<td class="gt_row gt_left" headers="handedness">ambidextrous</td>
 </tr>
 <tr class="odd">
 <td class="gt_row gt_left" headers="name">Megan Morgan</td>
 <td class="gt_row gt_left" headers="number_of_cats">0</td>
-<td class="gt_row gt_left" headers="handedness">ambidextrous</td>
 </tr>
 <tr class="even">
 <td class="gt_row gt_left" headers="name">Kara Obrien</td>
 <td class="gt_row gt_left" headers="number_of_cats">2</td>
-<td class="gt_row gt_left" headers="handedness">ambidextrous</td>
 </tr>
 </tbody>
 </table>

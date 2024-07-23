@@ -203,6 +203,34 @@
     "text": "pivot_longer() in context\n\n\n\ncustomers |&gt;\n  pivot_longer(\n    cols = item_1:item_3,\n    names_to = \"item_no\",\n    values_to = \"item\"\n  )\n\n# A tibble: 6 × 3\n  customer_id item_no item        \n        &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;       \n1           1 item_1  bread       \n2           1 item_2  milk        \n3           1 item_3  banana      \n4           2 item_1  milk        \n5           2 item_2  toilet paper\n6           2 item_3  &lt;NA&gt;"
   },
   {
+    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-in-context-1",
+    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-in-context-1",
+    "title": "Tidying data",
+    "section": "pivot_longer() in context",
+    "text": "pivot_longer() in context\n\n\n\ncustomers |&gt;\n  pivot_longer(\n1    cols = item_1:item_3,\n    names_to = \"item_no\",\n    values_to = \"item\"\n  )\n\n\n1\n\ncols to pivot: item_1 to item_3"
+  },
+  {
+    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-in-context-2",
+    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-in-context-2",
+    "title": "Tidying data",
+    "section": "pivot_longer() in context",
+    "text": "pivot_longer() in context\n\n\n\ncustomers |&gt;\n  pivot_longer(\n1    cols = item_1:item_3,\n2    names_to = \"item_no\",\n    values_to = \"item\"\n  )\n\n\n1\n\ncols to pivot: item_1 to item_3\n\n2\n\nColumn names_to new column called item_no"
+  },
+  {
+    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-in-context-3",
+    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-in-context-3",
+    "title": "Tidying data",
+    "section": "pivot_longer() in context",
+    "text": "pivot_longer() in context\n\n\n\ncustomers |&gt;\n  pivot_longer(\n1    cols = item_1:item_3,\n2    names_to = \"item_no\",\n3    values_to = \"item\"\n  )\n\n\n1\n\ncols to pivot: item_1 to item_3\n\n2\n\nColumn names_to new column called item_no\n\n3\n\nvalues_to new column called item"
+  },
+  {
+    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-in-context-4",
+    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-in-context-4",
+    "title": "Tidying data",
+    "section": "pivot_longer() in context",
+    "text": "pivot_longer() in context\n\n\n\ncustomers |&gt;\n  pivot_longer(\n    cols = item_1:item_3,\n    names_to = \"item_no\",\n    values_to = \"item\"\n  )\n\n# A tibble: 6 × 3\n  customer_id item_no item        \n        &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;       \n1           1 item_1  bread       \n2           1 item_2  milk        \n3           1 item_3  banana      \n4           2 item_1  milk        \n5           2 item_2  toilet paper\n6           2 item_3  &lt;NA&gt;"
+  },
+  {
     "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#dealing-with-nas",
     "href": "slides/1-3-tidying-data/1-3-tidying-data.html#dealing-with-nas",
     "title": "Tidying data",
@@ -210,11 +238,11 @@
     "text": "Dealing with NAs\n\n\n\ncustomers |&gt;\n  pivot_longer(\n1    cols = item_1:item_3,\n2    names_to = \"item_no\",\n3    values_to = \"item\",\n4    values_drop_na = TRUE\n  )\n\n\n1\n\ncols to pivot: item_1 to item_3\n\n2\n\nColumn names_to new column called item_no\n\n3\n\nvalues_to new column called item\n\n4\n\nDrop rows that contain only NAs in the values_to column\n\n\n\n\n# A tibble: 5 × 3\n  customer_id item_no item        \n        &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;       \n1           1 item_1  bread       \n2           1 item_2  milk        \n3           1 item_3  banana      \n4           2 item_1  milk        \n5           2 item_2  toilet paper"
   },
   {
-    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#customers-rightarrow-purchases",
-    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#customers-rightarrow-purchases",
+    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#from-customers-to-purchases",
+    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#from-customers-to-purchases",
     "title": "Tidying data",
-    "section": "Customers \\(\\rightarrow\\) purchases",
-    "text": "Customers \\(\\rightarrow\\) purchases\n\n\n\npurchases &lt;- customers |&gt;\n  pivot_longer(\n    cols = item_1:item_3,\n    names_to = \"item_no\",\n    values_to = \"item\",\n    values_drop_na = TRUE\n  )\n\npurchases\n\n# A tibble: 5 × 3\n  customer_id item_no item        \n        &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;       \n1           1 item_1  bread       \n2           1 item_2  milk        \n3           1 item_3  banana      \n4           2 item_1  milk        \n5           2 item_2  toilet paper"
+    "section": "From customers to purchases",
+    "text": "From customers to purchases\n\n\n\npurchases &lt;- customers |&gt;\n  pivot_longer(\n    cols = item_1:item_3,\n    names_to = \"item_no\",\n    values_to = \"item\",\n    values_drop_na = TRUE\n  )\n\npurchases\n\n# A tibble: 5 × 3\n  customer_id item_no item        \n        &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;       \n1           1 item_1  bread       \n2           1 item_2  milk        \n3           1 item_3  banana      \n4           2 item_1  milk        \n5           2 item_2  toilet paper"
   },
   {
     "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#why-pivot",
@@ -224,11 +252,11 @@
     "text": "Why pivot?\nMost likely, because the next step of your analysis needs it\n\n\n\n\n\nprices\n\n# A tibble: 5 × 2\n  item         price\n  &lt;chr&gt;        &lt;dbl&gt;\n1 avocado       0.5 \n2 banana        0.15\n3 bread         1   \n4 milk          0.8 \n5 toilet paper  3   \n\n\n\n\npurchases |&gt;\n  left_join(prices)\n\nJoining with `by = join_by(item)`\n\n\n# A tibble: 5 × 4\n  customer_id item_no item         price\n        &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;        &lt;dbl&gt;\n1           1 item_1  bread         1   \n2           1 item_2  milk          0.8 \n3           1 item_3  banana        0.15\n4           2 item_1  milk          0.8 \n5           2 item_2  toilet paper  3"
   },
   {
-    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#purchases-rightarrow-customers",
-    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#purchases-rightarrow-customers",
+    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#from-purchases-to-customers",
+    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#from-purchases-to-customers",
     "title": "Tidying data",
-    "section": "Purchases \\(\\rightarrow\\) customers",
-    "text": "Purchases \\(\\rightarrow\\) customers\n\n\n\npurchases |&gt;\n  pivot_wider(\n    names_from = item_no,\n    values_from = item\n  )\n\n# A tibble: 2 × 4\n  customer_id item_1 item_2       item_3\n        &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;        &lt;chr&gt; \n1           1 bread  milk         banana\n2           2 milk   toilet paper &lt;NA&gt;"
+    "section": "From purchases to customers",
+    "text": "From purchases to customers\n\n\n\npurchases |&gt;\n  pivot_wider(\n    names_from = item_no,\n    values_from = item\n  )\n\n# A tibble: 2 × 4\n  customer_id item_1 item_2       item_3\n        &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;        &lt;chr&gt; \n1           1 bread  milk         banana\n2           2 milk   toilet paper &lt;NA&gt;"
   },
   {
     "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_wider",
@@ -242,14 +270,14 @@
     "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_wider-1",
     "title": "Tidying data",
     "section": "pivot_wider()",
-    "text": "pivot_wider()\n\n\n\npivot_wider(\n1  data,\n2  names_from = name,\n  values_from = value\n  )\n\n\n1\n\ndata (as usual)\n\n2\n\nnames_from: Which column(s) in the long format contains the what should be column names in the wide format"
+    "text": "pivot_wider()\n\n\n\npivot_wider(\n1  data,\n2  names_from = name,\n  values_from = value\n  )\n\n\n1\n\ndata (as usual)\n\n2\n\nnames_from: Which column(s) in the long format contains what should be column names in the wide format"
   },
   {
     "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_wider-2",
     "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_wider-2",
     "title": "Tidying data",
     "section": "pivot_wider()",
-    "text": "pivot_wider()\n\n\n\npivot_wider(\n1  data,\n2  names_from = name,\n3  values_from = value\n  )\n\n\n1\n\ndata (as usual)\n\n2\n\nnames_from: Which column(s) in the long format contains the what should be column names in the wide format\n\n3\n\nvalues_from: Which column(s) in the long format contains the what should be values in the new columns in the wide format"
+    "text": "pivot_wider()\n\n\n\npivot_wider(\n1  data,\n2  names_from = name,\n3  values_from = value\n  )\n\n\n1\n\ndata (as usual)\n\n2\n\nnames_from: Which column(s) in the long format contains what should be column names in the wide format\n\n3\n\nvalues_from: Which column(s) in the long format contains what should be values in the new columns in the wide format"
   },
   {
     "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#wider---longer",
@@ -333,7 +361,7 @@
     "href": "slides/2-1-data-types/2-1-data-types.html#example-cat-lovers",
     "title": "Data types",
     "section": "Example: Cat lovers",
-    "text": "Example: Cat lovers\nA survey asked respondents their name and number of cats. The instructions said to enter the number of cats as a numerical value.\n\ncat_lovers &lt;- read_csv(\"data/cat-lovers.csv\")\ncat_lovers\n\n# A tibble: 60 × 3\n   name           number_of_cats handedness\n   &lt;chr&gt;          &lt;chr&gt;          &lt;chr&gt;     \n 1 Bernice Warren 0              left      \n 2 Woodrow Stone  0              left      \n 3 Willie Bass    1              left      \n 4 Tyrone Estrada 3              left      \n 5 Alex Daniels   3              left      \n 6 Jane Bates     2              left      \n 7 Latoya Simpson 1              left      \n 8 Darin Woods    1              left      \n 9 Agnes Cobb     0              left      \n10 Tabitha Grant  0              left      \n# ℹ 50 more rows"
+    "text": "Example: Cat lovers\nA survey asked respondents their name and number of cats. The instructions said to enter the number of cats as a numerical value.\n\ncat_lovers &lt;- read_csv(\"data/cat-lovers.csv\")\ncat_lovers\n\n# A tibble: 60 × 2\n   name           number_of_cats\n   &lt;chr&gt;          &lt;chr&gt;         \n 1 Bernice Warren 0             \n 2 Woodrow Stone  0             \n 3 Willie Bass    1             \n 4 Tyrone Estrada 3             \n 5 Alex Daniels   3             \n 6 Jane Bates     2             \n 7 Latoya Simpson 1             \n 8 Darin Woods    1             \n 9 Agnes Cobb     0             \n10 Tabitha Grant  0             \n# ℹ 50 more rows"
   },
   {
     "objectID": "slides/2-1-data-types/2-1-data-types.html#oh-why-wont-you-work",
@@ -361,14 +389,14 @@
     "href": "slides/2-1-data-types/2-1-data-types.html#take-a-breath-and-look-at-your-data",
     "title": "Data types",
     "section": "Take a breath and look at your data",
-    "text": "Take a breath and look at your data\n\nWhat is the type of the number_of_cats variable?\n\n\nglimpse(cat_lovers)\n\nRows: 60\nColumns: 3\n$ name           &lt;chr&gt; \"Bernice Warren\", \"Woodrow Stone\", …\n$ number_of_cats &lt;chr&gt; \"0\", \"0\", \"1\", \"3\", \"3\", \"2\", \"1\", …\n$ handedness     &lt;chr&gt; \"left\", \"left\", \"left\", \"left\", \"le…"
+    "text": "Take a breath and look at your data\n\nWhat is the type of the number_of_cats variable?\n\n\nglimpse(cat_lovers)\n\nRows: 60\nColumns: 2\n$ name           &lt;chr&gt; \"Bernice Warren\", \"Woodrow Stone\", …\n$ number_of_cats &lt;chr&gt; \"0\", \"0\", \"1\", \"3\", \"3\", \"2\", \"1\", …"
   },
   {
     "objectID": "slides/2-1-data-types/2-1-data-types.html#lets-take-another-look",
     "href": "slides/2-1-data-types/2-1-data-types.html#lets-take-another-look",
     "title": "Data types",
     "section": "Let’s take another look",
-    "text": "Let’s take another look\n\n\n\n\n\n\nname\nnumber_of_cats\nhandedness\n\n\n\nBernice Warren\n0\nleft\n\n\nWoodrow Stone\n0\nleft\n\n\nWillie Bass\n1\nleft\n\n\nTyrone Estrada\n3\nleft\n\n\nAlex Daniels\n3\nleft\n\n\nJane Bates\n2\nleft\n\n\nLatoya Simpson\n1\nleft\n\n\nDarin Woods\n1\nleft\n\n\nAgnes Cobb\n0\nleft\n\n\nTabitha Grant\n0\nleft\n\n\nPerry Cross\n0\nleft\n\n\nWanda Silva\n0\nleft\n\n\nAlicia Sims\n1\nleft\n\n\nEmily Logan\n3\nright\n\n\nWoodrow Elliott\n3\nright\n\n\nBrent Copeland\n2\nright\n\n\nPedro Carlson\n1\nright\n\n\nPatsy Luna\n1\nright\n\n\nBrett Robbins\n0\nright\n\n\nOliver George\n0\nright\n\n\nCalvin Perry\n1\nright\n\n\nLora Gutierrez\n1\nright\n\n\nCharlotte Sparks\n0\nright\n\n\nEarl Mack\n0\nright\n\n\nLeslie Wade\n4\nright\n\n\nSantiago Barker\n0\nright\n\n\nJose Bell\n0\nright\n\n\nLynda Smith\n0\nright\n\n\nBradford Marshall\n0\nright\n\n\nIrving Miller\n0\nright\n\n\nCaroline Simpson\n0\nright\n\n\nFrances Welch\n0\nright\n\n\nMelba Jenkins\n0\nright\n\n\nVeronica Morales\n0\nright\n\n\nJuanita Cunningham\n0\nright\n\n\nMaurice Howard\n0\nright\n\n\nTeri Pierce\n0\nright\n\n\nPhil Franklin\n0\nright\n\n\nJan Zimmerman\n0\nright\n\n\nLeslie Price\n0\nright\n\n\nBessie Patterson\n0\nright\n\n\nEthel Wolfe\n0\nright\n\n\nNaomi Wright\n1\nright\n\n\nSadie Frank\n3\nright\n\n\nLonnie Cannon\n3\nright\n\n\nTony Garcia\n2\nright\n\n\nDarla Newton\n1\nright\n\n\nGinger Clark\n1.5 - honestly I think one of my cats is half human\nright\n\n\nLionel Campbell\n0\nright\n\n\nFlorence Klein\n0\nright\n\n\nHarriet Leonard\n1\nright\n\n\nTerrence Harrington\n0\nright\n\n\nTravis Garner\n1\nright\n\n\nDoug Bass\nthree\nright\n\n\nPat Norris\n1\nright\n\n\nDawn Young\n1\nambidextrous\n\n\nShari Alvarez\n1\nambidextrous\n\n\nTamara Robinson\n0\nambidextrous\n\n\nMegan Morgan\n0\nambidextrous\n\n\nKara Obrien\n2\nambidextrous"
+    "text": "Let’s take another look\n\n\n\n\n\n\nname\nnumber_of_cats\n\n\n\nBernice Warren\n0\n\n\nWoodrow Stone\n0\n\n\nWillie Bass\n1\n\n\nTyrone Estrada\n3\n\n\nAlex Daniels\n3\n\n\nJane Bates\n2\n\n\nLatoya Simpson\n1\n\n\nDarin Woods\n1\n\n\nAgnes Cobb\n0\n\n\nTabitha Grant\n0\n\n\nPerry Cross\n0\n\n\nWanda Silva\n0\n\n\nAlicia Sims\n1\n\n\nEmily Logan\n3\n\n\nWoodrow Elliott\n3\n\n\nBrent Copeland\n2\n\n\nPedro Carlson\n1\n\n\nPatsy Luna\n1\n\n\nBrett Robbins\n0\n\n\nOliver George\n0\n\n\nCalvin Perry\n1\n\n\nLora Gutierrez\n1\n\n\nCharlotte Sparks\n0\n\n\nEarl Mack\n0\n\n\nLeslie Wade\n4\n\n\nSantiago Barker\n0\n\n\nJose Bell\n0\n\n\nLynda Smith\n0\n\n\nBradford Marshall\n0\n\n\nIrving Miller\n0\n\n\nCaroline Simpson\n0\n\n\nFrances Welch\n0\n\n\nMelba Jenkins\n0\n\n\nVeronica Morales\n0\n\n\nJuanita Cunningham\n0\n\n\nMaurice Howard\n0\n\n\nTeri Pierce\n0\n\n\nPhil Franklin\n0\n\n\nJan Zimmerman\n0\n\n\nLeslie Price\n0\n\n\nBessie Patterson\n0\n\n\nEthel Wolfe\n0\n\n\nNaomi Wright\n1\n\n\nSadie Frank\n3\n\n\nLonnie Cannon\n3\n\n\nTony Garcia\n2\n\n\nDarla Newton\n1\n\n\nGinger Clark\n1.5 - honestly I think one of my cats is half human\n\n\nLionel Campbell\n0\n\n\nFlorence Klein\n0\n\n\nHarriet Leonard\n1\n\n\nTerrence Harrington\n0\n\n\nTravis Garner\n1\n\n\nDoug Bass\nthree\n\n\nPat Norris\n1\n\n\nDawn Young\n1\n\n\nShari Alvarez\n1\n\n\nTamara Robinson\n0\n\n\nMegan Morgan\n0\n\n\nKara Obrien\n2"
   },
   {
     "objectID": "slides/2-1-data-types/2-1-data-types.html#sometimes-you-might-need-to-babysit-your-respondents",
@@ -691,47 +719,5 @@
     "title": "Tidy Basketball",
     "section": "Bonus Challange",
     "text": "Bonus Challange\nRecreate the plot, using the blazer_long dataset!\n\n\n\n\n\nHints: The code you start with makes sure that game is appropriately treated as a quantitative variable. You will learn more about data types in the following lessons! The plot above uses theme_bw().\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nblazer_long |&gt;\n  mutate(game = as.numeric(game)) |&gt;\n  ggplot(\n    aes(x = game, y = points, color = location, group = player)\n  ) +\n  geom_line() +\n  geom_point(shape = \"square\") +\n  facet_wrap(~player) +\n  scale_x_continuous(breaks = c(1:10)) +\n  theme_bw() +\n  labs(\n    x = \"Game\",\n    y = \"Points Scored\",\n    title = \"Points Scored Across 10 Games\",\n    subtitle = \"Portland Trailblazers (2021-2022 Season)\",\n    caption = \"https://www.basketball-reference.com/teams/POR/2021_games.html\"\n  )\n\nWarning: Removed 2 rows containing missing values or values outside the scale range\n(`geom_point()`)."
-  },
-  {
-    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#from-customers-to-purchases",
-    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#from-customers-to-purchases",
-    "title": "Tidying data",
-    "section": "From customers to purchases",
-    "text": "From customers to purchases\n\n\n\npurchases &lt;- customers |&gt;\n  pivot_longer(\n    cols = item_1:item_3,\n    names_to = \"item_no\",\n    values_to = \"item\",\n    values_drop_na = TRUE\n  )\n\npurchases\n\n# A tibble: 5 × 3\n  customer_id item_no item        \n        &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;       \n1           1 item_1  bread       \n2           1 item_2  milk        \n3           1 item_3  banana      \n4           2 item_1  milk        \n5           2 item_2  toilet paper"
-  },
-  {
-    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#from-purchases-to-customers",
-    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#from-purchases-to-customers",
-    "title": "Tidying data",
-    "section": "From purchases to customers",
-    "text": "From purchases to customers\n\n\n\npurchases |&gt;\n  pivot_wider(\n    names_from = item_no,\n    values_from = item\n  )\n\n# A tibble: 2 × 4\n  customer_id item_1 item_2       item_3\n        &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;        &lt;chr&gt; \n1           1 bread  milk         banana\n2           2 milk   toilet paper &lt;NA&gt;"
-  },
-  {
-    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-in-context-1",
-    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-in-context-1",
-    "title": "Tidying data",
-    "section": "pivot_longer() in context",
-    "text": "pivot_longer() in context\n\n\n\ncustomers |&gt;\n  pivot_longer(\n1    cols = item_1:item_3,\n    names_to = \"item_no\",\n    values_to = \"item\"\n  )\n\n\n1\n\ncols to pivot: item_1 to item_3"
-  },
-  {
-    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-in-context-2",
-    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-in-context-2",
-    "title": "Tidying data",
-    "section": "pivot_longer() in context",
-    "text": "pivot_longer() in context\n\n\n\ncustomers |&gt;\n  pivot_longer(\n1    cols = item_1:item_3,\n2    names_to = \"item_no\",\n    values_to = \"item\"\n  )\n\n\n1\n\ncols to pivot: item_1 to item_3\n\n2\n\nColumn names_to new column called item_no"
-  },
-  {
-    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-in-context-3",
-    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-in-context-3",
-    "title": "Tidying data",
-    "section": "pivot_longer() in context",
-    "text": "pivot_longer() in context\n\n\n\ncustomers |&gt;\n  pivot_longer(\n1    cols = item_1:item_3,\n2    names_to = \"item_no\",\n3    values_to = \"item\"\n  )\n\n\n1\n\ncols to pivot: item_1 to item_3\n\n2\n\nColumn names_to new column called item_no\n\n3\n\nvalues_to new column called item"
-  },
-  {
-    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-in-context-4",
-    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-in-context-4",
-    "title": "Tidying data",
-    "section": "pivot_longer() in context",
-    "text": "pivot_longer() in context\n\n\n\ncustomers |&gt;\n  pivot_longer(\n    cols = item_1:item_3,\n    names_to = \"item_no\",\n    values_to = \"item\"\n  )\n\n# A tibble: 6 × 3\n  customer_id item_no item        \n        &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;       \n1           1 item_1  bread       \n2           1 item_2  milk        \n3           1 item_3  banana      \n4           2 item_1  milk        \n5           2 item_2  toilet paper\n6           2 item_3  &lt;NA&gt;"
   }
 ]
