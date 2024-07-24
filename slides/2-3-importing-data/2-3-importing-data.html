@@ -410,11 +410,11 @@
 <h1>Reading rectangular data into R</h1>
 
 </section>
-<section id="reading-csv-files" class="slide level2">
-<h2>Reading CSV files</h2>
+<section id="reading-delimited-files" class="slide level2">
+<h2>Reading delimited files</h2>
 <div class="columns">
 <div class="column" style="width:35%;">
-<p><img data-src="images/readr.png"></p>
+<p><img data-src="images/readr-part-of-tidyverse.png"></p>
 </div><div class="column" style="width:35%;">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -435,7 +435,6 @@
 <div class="column" style="width:35%;">
 <p><img data-src="images/readxl.png"></p>
 </div><div class="column" style="width:35%;">
-<p><strong>readxl</strong></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">library</span>(readxl)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -458,40 +457,39 @@
 <pre><code>Rows: 1000 Columns: 19
 ── Column specification ────────────────────────────────────
 Delimiter: ","
-chr  (15): first_name, last_name, born_country, born_cou...
-dbl   (2): Id, year
-date  (2): born, died
+chr (17): first_name, last_name, born, died, born_countr...
+dbl  (2): id, year
 
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 </div>
 </div>
 </section>
-<section id="reading-data-1" class="slide level2">
+<section id="reading-data-1" class="slide level2 smaller">
 <h2>Reading data</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>nobel</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,000 × 19
-      Id first_name     last_name   born       died      
-   &lt;dbl&gt; &lt;chr&gt;          &lt;chr&gt;       &lt;date&gt;     &lt;date&gt;    
- 1   160 Jacobus H.     van 't Hoff 1852-08-30 1911-03-01
- 2   569 Sully          Prudhomme   1839-03-16 1907-09-07
- 3   293 Emil           von Behring 1854-03-15 1917-03-31
- 4   462 Henry          Dunant      1828-05-08 1910-10-30
- 5     1 Wilhelm Conrad Röntgen     1845-03-27 1923-02-10
- 6   463 Frédéric       Passy       1822-05-20 1912-06-12
- 7   464 Élie           Ducommun    1833-02-19 1906-12-07
- 8   465 Albert         Gobat       1843-05-21 1914-03-16
- 9   294 Ronald         Ross        1857-05-13 1932-09-16
-10   161 Emil           Fischer     1852-10-09 1919-07-15
+      id first_name     last_name   born  died  born_country
+   &lt;dbl&gt; &lt;chr&gt;          &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;       
+ 1   160 Jacobus H.     van 't Hoff 1852… 3/1/… the Netherl…
+ 2   569 Sully          Prudhomme   1839… 9/7/… France      
+ 3   293 Emil           von Behring 1854… 3/31… Prussia (no…
+ 4   462 Henry          Dunant      1828… 10/3… Switzerland 
+ 5     1 Wilhelm Conrad Röntgen     1845… 2/10… Prussia (no…
+ 6   463 Frédéric       Passy       1822… 6/12… France      
+ 7   464 Élie           Ducommun    1833… 12/7… Switzerland 
+ 8   465 Albert         Gobat       1843… 3/16… Switzerland 
+ 9   294 Ronald         Ross        1857… 9/16… India       
+10   161 Emil           Fischer     1852… 7/15… Prussia (no…
 # ℹ 990 more rows
-# ℹ 14 more variables: born_country &lt;chr&gt;,
-#   born_country_code &lt;chr&gt;, born_city &lt;chr&gt;,
-#   died_country &lt;chr&gt;, died_country_code &lt;chr&gt;,
-#   died_city &lt;chr&gt;, gender &lt;chr&gt;, year &lt;dbl&gt;,
-#   category &lt;chr&gt;, overall_motivation &lt;chr&gt;,
-#   motivation &lt;chr&gt;, organization_name &lt;chr&gt;, …</code></pre>
+# ℹ 13 more variables: born_country_code &lt;chr&gt;,
+#   born_city &lt;chr&gt;, died_country &lt;chr&gt;,
+#   died_country_code &lt;chr&gt;, died_city &lt;chr&gt;, gender &lt;chr&gt;,
+#   year &lt;dbl&gt;, category &lt;chr&gt;, overall_motivation &lt;chr&gt;,
+#   motivation &lt;chr&gt;, organization_name &lt;chr&gt;,
+#   organization_city &lt;chr&gt;, organization_country &lt;chr&gt;</code></pre>
 </div>
 </div>
 </section>
@@ -499,7 +497,7 @@ date  (2): born, died
 <h2>Writing data</h2>
 <p>Write a file:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>df <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
+<div class="sourceCode cell-code" id="cb7" data-code-line-numbers="|1-6|8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>df <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
 <span id="cb7-2"><a></a>  <span class="sc">~</span>x, <span class="sc">~</span>y,</span>
 <span id="cb7-3"><a></a>  <span class="dv">1</span>,  <span class="st">"a"</span>,</span>
 <span id="cb7-4"><a></a>  <span class="dv">2</span>,  <span class="st">"b"</span>,</span>
@@ -509,8 +507,8 @@ date  (2): born, died
 <span id="cb7-8"><a></a><span class="fu">write_csv</span>(df, <span class="at">file =</span> <span class="st">"data/df.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="writing-data-1" class="slide level2">
-<h2>Writing data</h2>
+<section id="reading-data-back" class="slide level2">
+<h2>Reading data back</h2>
 <p>Read it back in to inspect:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">read_csv</span>(<span class="st">"data/df.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -533,6 +531,23 @@ dbl (1): x
 3     3 c    </code></pre>
 </div>
 </div>
+</section>
+<section id="suppressing-messages" class="slide level2">
+<h2>Suppressing messages</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb11-1"><a></a><span class="in">```{r}</span></span>
+<span id="cb11-2"><a></a><span class="in">#| message: false</span></span>
+<span id="cb11-3"><a></a><span class="in">read_csv("data/df.csv")</span></span>
+<span id="cb11-4"><a></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 2
+      x y    
+  &lt;dbl&gt; &lt;chr&gt;
+1     1 a    
+2     2 b    
+3     3 c    </code></pre>
+</div>
+</div>
 </section></section>
 <section>
 <section id="variable-names" class="title-slide slide level1 center">
@@ -542,8 +557,8 @@ dbl (1): x
 <section id="data-with-bad-names" class="slide level2">
 <h2>Data with bad names</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>edibnb_badnames <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/edibnb-badnames.csv"</span>)</span>
-<span id="cb11-2"><a></a><span class="fu">names</span>(edibnb_badnames)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>edibnb_bad_names <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/edibnb-bad-names.csv"</span>)</span>
+<span id="cb13-2"><a></a><span class="fu">names</span>(edibnb_bad_names)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "ID"                   "Price"               
  [3] "neighbourhood"        "accommodates"        
@@ -555,14 +570,14 @@ dbl (1): x
 <div class="fragment">
 <p>… but R doesn’t allow spaces in variable names</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="fu">ggplot</span>(</span>
-<span id="cb13-2"><a></a>  edibnb_badnames, </span>
-<span id="cb13-3"><a></a>  <span class="fu">aes</span>(<span class="at">x =</span> Number of bathrooms, <span class="at">y =</span> Price)</span>
-<span id="cb13-4"><a></a>  ) <span class="sc">+</span></span>
-<span id="cb13-5"><a></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">ggplot</span>(</span>
+<span id="cb15-2"><a></a>  edibnb_bad_names, </span>
+<span id="cb15-3"><a></a>  <span class="fu">aes</span>(<span class="at">x =</span> Number of bathrooms, <span class="at">y =</span> Price)</span>
+<span id="cb15-4"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb15-5"><a></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error: &lt;text&gt;:3:18: unexpected symbol
-2:   edibnb_badnames, 
+2:   edibnb_bad_names, 
 3:   aes(x = Number of
                     ^</code></pre>
 </div>
@@ -572,15 +587,15 @@ dbl (1): x
 <section id="option-1---quote-column-names" class="slide level2">
 <h2>Option 1 - Quote column names</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">ggplot</span>(</span>
-<span id="cb15-2"><a></a>  edibnb_badnames, </span>
-<span id="cb15-3"><a></a>  <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">`</span><span class="at">Number of bathrooms</span><span class="st">`</span>, <span class="at">y =</span> Price)</span>
-<span id="cb15-4"><a></a>  ) <span class="sc">+</span></span>
-<span id="cb15-5"><a></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a><span class="fu">ggplot</span>(</span>
+<span id="cb17-2"><a></a>  edibnb_bad_names, </span>
+<span id="cb17-3"><a></a>  <span class="fu">aes</span>(<span class="at">x =</span> <span class="st">`</span><span class="at">Number of bathrooms</span><span class="st">`</span>, <span class="at">y =</span> Price)</span>
+<span id="cb17-4"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb17-5"><a></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="2-3-importing-data_files/figure-revealjs/unnamed-chunk-9-1.png" style="width:60.0%"></p>
+<p><img data-src="2-3-importing-data_files/figure-revealjs/unnamed-chunk-10-1.png" style="width:60.0%"></p>
 </figure>
 </div>
 </div>
@@ -589,15 +604,18 @@ dbl (1): x
 <section id="option-2---define-column-names" class="slide level2">
 <h2>Option 2 - Define column names</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>edibnb_col_names <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(</span>
-<span id="cb16-2"><a></a>  <span class="st">"data/edibnb-badnames.csv"</span>,</span>
-<span id="cb16-3"><a></a>  <span class="at">col_names =</span> <span class="fu">c</span>(</span>
-<span id="cb16-4"><a></a>    <span class="st">"id"</span>, <span class="st">"price"</span>, <span class="st">"neighbourhood"</span>, <span class="st">"accommodates"</span>, <span class="st">"bathroom"</span>, </span>
-<span id="cb16-5"><a></a>    <span class="st">"bedroom"</span>, <span class="st">"bed"</span>, <span class="st">"review_scores_rating"</span>, <span class="st">"n_reviews"</span>, <span class="st">"url"</span></span>
-<span id="cb16-6"><a></a>  )</span>
-<span id="cb16-7"><a></a>)</span>
-<span id="cb16-8"><a></a></span>
-<span id="cb16-9"><a></a><span class="fu">names</span>(edibnb_col_names)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18" data-code-line-numbers="|5|3-7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a>edibnb_col_names <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(</span>
+<span id="cb18-2"><a></a>  <span class="st">"data/edibnb-bad-names.csv"</span>,</span>
+<span id="cb18-3"><a></a>  <span class="at">col_names =</span> <span class="fu">c</span>(</span>
+<span id="cb18-4"><a></a>    <span class="st">"id"</span>, <span class="st">"price"</span>, <span class="st">"neighbourhood"</span>, <span class="st">"accommodates"</span>, </span>
+<span id="cb18-5"><a></a>    <span class="st">"bathroom"</span>, <span class="st">"bedroom"</span>, <span class="st">"bed"</span>, <span class="st">"review_scores_rating"</span>, </span>
+<span id="cb18-6"><a></a>    <span class="st">"n_reviews"</span>, <span class="st">"url"</span></span>
+<span id="cb18-7"><a></a>  )</span>
+<span id="cb18-8"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="fu">names</span>(edibnb_col_names)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "id"                   "price"               
  [3] "neighbourhood"        "accommodates"        
@@ -606,22 +624,26 @@ dbl (1): x
  [9] "n_reviews"            "url"                 </code></pre>
 </div>
 </div>
+</div>
 </section>
 <section id="option-3---format-column-names-to-snake_case" class="slide level2">
 <h2>Option 3 - Format column names to snake_case</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a><span class="fu">library</span>(janitor)</span>
-<span id="cb18-2"><a></a></span>
-<span id="cb18-3"><a></a>edibnb_clean_names <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/edibnb-badnames.csv"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb18-4"><a></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>()</span>
-<span id="cb18-5"><a></a></span>
-<span id="cb18-6"><a></a><span class="fu">names</span>(edibnb_clean_names)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="fu">library</span>(janitor)</span>
+<span id="cb21-2"><a></a></span>
+<span id="cb21-3"><a></a>edibnb_clean_names <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/edibnb-bad-names.csv"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb21-4"><a></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a><span class="fu">names</span>(edibnb_clean_names)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "id"                   "price"               
  [3] "neighbourhood"        "accommodates"        
  [5] "number_of_bathrooms"  "number_of_bedrooms"  
  [7] "n_beds"               "review_scores_rating"
  [9] "number_of_reviews"    "listing_url"         </code></pre>
+</div>
 </div>
 </div>
 </section></section>
@@ -640,7 +662,7 @@ dbl (1): x
 <p><img data-src="images/df-na.png"></p>
 </div><div class="column fragment" style="width:40%;">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a><span class="fu">read_csv</span>(<span class="st">"data/df-na.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a><span class="fu">read_csv</span>(<span class="st">"data/df-na.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 9 × 3
   x     y              z     
@@ -661,10 +683,10 @@ dbl (1): x
 <section id="option-1.-explicit-nas" class="slide level2">
 <h2>Option 1. Explicit NAs</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a><span class="fu">read_csv</span>(</span>
-<span id="cb22-2"><a></a>  <span class="st">"data/df-na.csv"</span>, </span>
-<span id="cb22-3"><a></a>  <span class="at">na =</span> <span class="fu">c</span>(<span class="st">""</span>, <span class="st">"NA"</span>, <span class="st">"."</span>, <span class="st">"9999"</span>, <span class="st">"Not applicable"</span>)</span>
-<span id="cb22-4"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a><span class="fu">read_csv</span>(</span>
+<span id="cb26-2"><a></a>  <span class="st">"data/df-na.csv"</span>, </span>
+<span id="cb26-3"><a></a>  <span class="at">na =</span> <span class="fu">c</span>(<span class="st">""</span>, <span class="st">"NA"</span>, <span class="st">"."</span>, <span class="st">"9999"</span>, <span class="st">"Not applicable"</span>)</span>
+<span id="cb26-4"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="columns">
 <div class="column fragment" style="width:40%;">
@@ -691,14 +713,20 @@ dbl (1): x
 <section id="option-2.-specify-column-types" class="slide level2">
 <h2>Option 2. Specify column types</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a><span class="fu">read_csv</span>(</span>
-<span id="cb24-2"><a></a>  <span class="st">"data/df-na.csv"</span>, </span>
-<span id="cb24-3"><a></a>  <span class="at">col_types =</span> <span class="fu">list</span>(<span class="fu">col_double</span>(), <span class="fu">col_character</span>(), <span class="fu">col_character</span>())</span>
-<span id="cb24-4"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a><span class="fu">read_csv</span>(</span>
+<span id="cb28-2"><a></a>  <span class="st">"data/df-na.csv"</span>, </span>
+<span id="cb28-3"><a></a>  <span class="at">col_types =</span> <span class="fu">list</span>(<span class="fu">col_double</span>(), <span class="fu">col_character</span>(), <span class="fu">col_character</span>())</span>
+<span id="cb28-4"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="columns">
 <div class="column fragment" style="width:40%;">
 <div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: One or more parsing issues, call `problems()` on your data
+frame for details, e.g.:
+  dat &lt;- vroom(...)
+  problems(dat)</code></pre>
+</div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 9 × 3
       x y              z     
@@ -784,15 +812,17 @@ dbl (1): x
 <h1>Reading Excel spreadsheets</h1>
 
 </section>
-<section id="reading-data-2" class="slide level2">
+<section id="reading-data-2" class="slide level2 smaller">
 <h2>Reading data</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a>nobel <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="at">path =</span> <span class="st">"data/nobel.xlsx"</span>)</span>
-<span id="cb26-2"><a></a></span>
-<span id="cb26-3"><a></a>nobel</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a>nobel <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="at">path =</span> <span class="st">"data/nobel.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a></a>nobel</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,000 × 19
-      Id first_name     last_name  born  died               
+      id first_name     last_name  born  died               
    &lt;dbl&gt; &lt;chr&gt;          &lt;chr&gt;      &lt;chr&gt; &lt;dttm&gt;             
  1   160 Jacobus H.     van 't Ho… 1852… 1911-03-01 00:00:00
  2   569 Sully          Prudhomme  1839… 1907-09-07 00:00:00
@@ -813,13 +843,14 @@ dbl (1): x
 #   motivation &lt;chr&gt;, organization_name &lt;chr&gt;, …</code></pre>
 </div>
 </div>
+</div>
 </section>
 <section id="spreadsheets-with-bad-names" class="slide level2">
 <h2>Spreadsheets with “bad” names</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a>edibnb_bad_names <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/edibnb-badnames.xlsx"</span>)</span>
-<span id="cb28-2"><a></a></span>
-<span id="cb28-3"><a></a><span class="fu">names</span>(edibnb_bad_names)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a></a>edibnb_bad_names <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/edibnb-bad-names.xlsx"</span>)</span>
+<span id="cb34-2"><a></a></span>
+<span id="cb34-3"><a></a><span class="fu">names</span>(edibnb_bad_names)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "ID"                   "Price"               
  [3] "neighbourhood"        "accommodates"        
@@ -832,15 +863,15 @@ dbl (1): x
 <section id="option-1.-define-column-names" class="slide level2">
 <h2>Option 1. Define column names</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a></a>edibnb_col_names <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(</span>
-<span id="cb30-2"><a></a>  <span class="st">"data/edibnb-badnames.xlsx"</span>,</span>
-<span id="cb30-3"><a></a>  <span class="at">col_names =</span> <span class="fu">c</span>(</span>
-<span id="cb30-4"><a></a>    <span class="st">"id"</span>, <span class="st">"price"</span>, <span class="st">"neighbourhood"</span>, <span class="st">"accommodates"</span>, <span class="st">"bathroom"</span>, </span>
-<span id="cb30-5"><a></a>    <span class="st">"bedroom"</span>, <span class="st">"bed"</span>, <span class="st">"review_scores_rating"</span>, <span class="st">"n_reviews"</span>, <span class="st">"url"</span></span>
-<span id="cb30-6"><a></a>  )</span>
-<span id="cb30-7"><a></a>)</span>
-<span id="cb30-8"><a></a></span>
-<span id="cb30-9"><a></a><span class="fu">names</span>(edibnb_col_names)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36" data-code-line-numbers="|3-6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a></a>edibnb_col_names <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(</span>
+<span id="cb36-2"><a></a>  <span class="st">"data/edibnb-bad-names.xlsx"</span>,</span>
+<span id="cb36-3"><a></a>  <span class="at">col_names =</span> <span class="fu">c</span>(</span>
+<span id="cb36-4"><a></a>    <span class="st">"id"</span>, <span class="st">"price"</span>, <span class="st">"neighbourhood"</span>, <span class="st">"accommodates"</span>, <span class="st">"bathroom"</span>, </span>
+<span id="cb36-5"><a></a>    <span class="st">"bedroom"</span>, <span class="st">"bed"</span>, <span class="st">"review_scores_rating"</span>, <span class="st">"n_reviews"</span>, <span class="st">"url"</span></span>
+<span id="cb36-6"><a></a>  )</span>
+<span id="cb36-7"><a></a>)</span>
+<span id="cb36-8"><a></a></span>
+<span id="cb36-9"><a></a><span class="fu">names</span>(edibnb_col_names)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "id"                   "price"               
  [3] "neighbourhood"        "accommodates"        
@@ -853,10 +884,10 @@ dbl (1): x
 <section id="option-2.-format-column-names-to-snake_case" class="slide level2">
 <h2>Option 2. Format column names to snake_case</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a></a>edibnb_clean_names <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/edibnb-badnames.xlsx"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb32-2"><a></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>()</span>
-<span id="cb32-3"><a></a></span>
-<span id="cb32-4"><a></a><span class="fu">names</span>(edibnb_clean_names)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a></a>edibnb_clean_names <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"data/edibnb-bad-names.xlsx"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb38-2"><a></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>()</span>
+<span id="cb38-3"><a></a></span>
+<span id="cb38-4"><a></a><span class="fu">names</span>(edibnb_clean_names)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "id"                   "price"               
  [3] "neighbourhood"        "accommodates"        
@@ -869,7 +900,7 @@ dbl (1): x
 <section id="spreadsheets-with-nas" class="slide level2">
 <h2>Spreadsheets with <code>NA</code>s</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a></a><span class="fu">read_excel</span>(<span class="st">"data/df-na.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a></a><span class="fu">read_excel</span>(<span class="st">"data/df-na.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 9 × 3
   x     y              z     
@@ -889,10 +920,10 @@ dbl (1): x
 <section id="option-1.-explicit-nas-1" class="slide level2">
 <h2>Option 1. Explicit NAs</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a></a><span class="fu">read_excel</span>(</span>
-<span id="cb36-2"><a></a>  <span class="st">"data/df-na.xlsx"</span>, </span>
-<span id="cb36-3"><a></a>  <span class="at">na =</span> <span class="fu">c</span>(<span class="st">""</span>, <span class="st">"NA"</span>, <span class="st">"."</span>, <span class="st">"9999"</span>, <span class="st">"Not applicable"</span>)</span>
-<span id="cb36-4"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42" data-code-line-numbers="|3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a></a><span class="fu">read_excel</span>(</span>
+<span id="cb42-2"><a></a>  <span class="st">"data/df-na.xlsx"</span>, </span>
+<span id="cb42-3"><a></a>  <span class="at">na =</span> <span class="fu">c</span>(<span class="st">""</span>, <span class="st">"NA"</span>, <span class="st">"."</span>, <span class="st">"9999"</span>, <span class="st">"Not applicable"</span>)</span>
+<span id="cb42-4"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 9 × 3
       x y     z     
@@ -912,10 +943,10 @@ dbl (1): x
 <section id="option-2.-specify-column-types-1" class="slide level2">
 <h2>Option 2. Specify column types</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a></a><span class="fu">read_excel</span>(</span>
-<span id="cb38-2"><a></a>  <span class="st">"data/df-na.xlsx"</span>, </span>
-<span id="cb38-3"><a></a>  <span class="at">col_types =</span> <span class="fu">c</span>(<span class="st">"numeric"</span>, <span class="st">"text"</span>, <span class="st">"text"</span>)</span>
-<span id="cb38-4"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44" data-code-line-numbers="3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a></a><span class="fu">read_excel</span>(</span>
+<span id="cb44-2"><a></a>  <span class="st">"data/df-na.xlsx"</span>, </span>
+<span id="cb44-3"><a></a>  <span class="at">col_types =</span> <span class="fu">c</span>(<span class="st">"numeric"</span>, <span class="st">"text"</span>, <span class="st">"text"</span>)</span>
+<span id="cb44-4"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: Expecting numeric in A3 / R3C1: got 'NA'</code></pre>
 </div>
@@ -989,11 +1020,11 @@ dbl (1): x
 <ul>
 <li><strong>googlesheets4:</strong> Google Sheets</li>
 <li><strong>arrow:</strong> parquet files</li>
-<li><strong>haven</strong>: SPSS, Stata, and SAS files</li>
 <li><strong>DBI</strong>, along with a database specific backend (e.g.&nbsp;RMySQL, RSQLite, RPostgreSQL etc): allows you to run SQL queries against a database and return a data frame</li>
+<li><strong>rvest</strong>: web scraping</li>
+<li><strong>haven</strong>: SPSS, Stata, and SAS files</li>
 <li><strong>jsonline</strong>: JSON</li>
 <li><strong>xml2</strong>: xml</li>
-<li><strong>rvest</strong>: web scraping</li>
 <li><strong>httr</strong>: web APIs</li>
 <li><strong>sparklyr</strong>: data loaded into spark</li>
 </ul>
