@@ -1,0 +1,34 @@
+Previously we talked about data types and in this video we're going to talk about 
+
+>>>> data classes
+
+
+>>> Vectors are like lego building blocks 
+> So we stick them together to build more complicated constructs in other words representations of data 
+> The class attribute relates to what is called the s3 class of an object which determines its behavior 
+> And if you're interested in reading more about what s3 classes are or what other classes there are in r i have linked here on the slides to a book chapter that you can read more about but note that that is all of that is not necessarily covered in this course. 
+> We're going to be talking about just a few classes of data that are going to be important for us to know about when we're working with data. These are factors, dates, and data frames.
+
+>>> R uses factors to handle categorical variables. These are variables that have a fixed and known set of possible values. For example, here x is a factor of, let's say, educational attainment. We have people who have bachelor's degrees, master's degrees, and Ph.D.s. So we have four elements here, or four people. The first person has a BS, the second an MS,  the third a Ph.D., and the fourth an MS. But if I save this as a factor variable, you'll see that when I print out the vector, it also tells me that the vector has the levels BS, MS, and Ph.D. So those are the unique observations in this particular vector. 
+> The type of a vector is integer, which can be difficult to reason, but we'll get to that in a second. 
+> And the class is a factor. And that class is what we're talking about here. Factors are comprised of two components, character strings that are the factor level labels and integers which are the level numbers, and they're, in a way, glued together.
+
+>>> Remember, we talked about the idea of constructing things like Lego building blocks. If I were to glimpse at the vector that I just created, it is a factor with three levels: BS, MS, and Ph.D. And the values are 1, 2, 3, and 2. These are the integers R has assigned to the observations under the hood, and the labels are the character strings like BS, MS, and Ph.D. So R will happily convert between factors and integers. If I were to convert this factor to an integer, it will happily return to me just those level numbers. Factors are super important and useful for dealing with categorical data in a statistical context. We'll give an example of this shortly!
+
+>>> Let's take a look at another data class: date. Here I have a character string that looks like a date: that's 2025-01-01, and I am converting it to a date using the `as.Date` function. Note that this is a date with a capital D. If I just print it out, it looks like a plain old character string. But if I ask for the type of it, it's a double. That's again a little difficult to reason around  -- why is a date a double? If I ask for the class, it does give me a date back with that capital D again. So what's happening? We can think of dates like an integer (the number of days since the origin) and another integer (the origin) glued together. So if I take a look at this y value, which was January 1, 2025, `as.integer` gives me 20,089. And if I actually divide that by 365, roughly the number of days per year, I get roughly 55 years -- number of years between 1970 and 2025. In short, when constructing dates in R, these two pieces of information (origin and days since origin) can be thought of to be glued together.
+
+>>> Another class of interest to us is a data frame. Data frames can be thought of as vectors of equal length glued together. For example, here we have a data frame with two variables, x and y, each with 2 observations in them. If we inspect the typeof a data frame, it's a list. The class is a data frame. In a way, two vectors, glued together, makes a data frame.
+
+>>> We just encountered a "list", let's take a closer look at it. Lists are generic vector containers, and vectors of any type can go in them. For example, here we have a list with three elements, one is integers, the other is characters, and the other is logicals. R will happily allow you to put them all together in a single object called l, with no type coercion whatsoever to make these three vectors look like each other. That's why we call a list a generic vector container. If these vectors were of equal length, we could actually combine them in a data frame, which is often how we'll encounter data. 
+
+>>> You can think of data frame as a special list containing vectors of equal length. Using the pull() function, we can extract vectors from data frames. While we like keeping out data in data frames that we can work with in data pipelines, but sometimes it can be useful to pull a variable, a vector, out of a data frame, for example as a final step of an analysis.
+
+>>> Now that we've reviewed a variety of data classes that we'll commonly encounter when working with data in R, let's give an example involving working with factors.
+
+>>> We have data from a survey on handedness. For each respondent we know their name and their preference -- whether they're right handed, left handed, or ambidextrous. Both are character variables.
+
+>>> To start with, we can make a bar graph of these data. Under the hood, when creating a bar plot of these data, R coerces the preference vector into a factor. And it orders them in alphabetical order. Unfortunately, though, alphabetical order is rarely, if ever, the order that makes the most sense.
+
+>>> For example, we can instead order the levels in decreasing order of frequency, with a function called fct_infreq(), which modifies the preference variables and reorders its levels in decreasing order of frequency.
+
+>>> This function comes from the forcats package, which happens to have a really cute logo, is designed to work with factors, and offers many functions for solving common problems with them. Factors are useful when you have true categorical data and you want to override the ordering of character vectors to improve display. Otherwise, everything would be in alphabetical order, which is rarely what you want for your data visualizations or your data summaries. Factors are also useful in modeling scenarios, so that's something we're going to touch on later in the specialization.

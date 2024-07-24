@@ -1,0 +1,175 @@
+---
+title: "Data classes"
+format: revealjs
+---
+
+```{r}
+#| include: false
+library(tidyverse)
+```
+
+# Data classes
+
+## Data classes
+
+We talked about *types* so far, next we'll introduce the concept of *classes*
+
+::: incremental
+- Vectors are like Lego building blocks
+- We stick them together to build more complicated constructs, e.g. *representations of data*
+- The **class** attribute relates to the S3 class of an object which determines its behaviour
+  - You don't need to worry about what S3 classes really mean, but you can read more about it [here](https://adv-r.hadley.nz/s3.html#s3-classes) if you're curious
+- Examples: factors, dates, and data frames
+:::
+
+## Factors
+
+R uses factors to handle categorical variables, variables that have a fixed and known set of possible values
+
+```{r}
+x <- factor(c("BS", "MS", "PhD", "MS"))
+x
+```
+
+:::: {.columns}
+
+::: {.column width="35%" .fragment}
+```{r}
+typeof(x)
+```
+:::
+
+::: {.column width="35%" .fragment}
+```{r}
+class(x)
+```
+:::
+
+::::
+
+## More on factors
+
+We can think of factors like character (level labels) and an integer (level numbers) glued together
+
+```{r}
+glimpse(x)
+as.integer(x)
+```
+
+## Dates
+
+```{r}
+y <- as.Date("2025-01-01")
+y
+typeof(y)
+class(y)
+```
+
+## More on dates
+
+We can think of dates like an integer (the number of days since the origin, 1 Jan 1970) and an integer (the origin) glued together
+
+```{r}
+as.integer(y)
+as.integer(y) / 365 # roughly 55 yrs
+```
+
+## Data frames
+
+We can think of data frames like like vectors of equal length glued together
+
+```{r}
+df <- data.frame(x = 1:2, y = 3:4)
+df
+```
+
+:::: {.columns}
+
+::: {.column width="35%"}
+```{r}
+typeof(df)
+```
+:::
+
+::: {.column width="35%"}
+```{r}
+class(df)
+```
+:::
+
+::::
+
+## Lists
+
+Lists are a generic vector container; vectors of any type can go in them
+
+```{r}
+#| code-line-numbers: "|2|3|4"
+l <- list(
+  x = 1:4,
+  y = c("hi", "hello", "jello"),
+  z = c(TRUE, FALSE)
+)
+l
+```
+
+## Lists and data frames
+
+- A data frame is a special list containing vectors of equal length
+- When we use the `pull()` function, we extract a vector from the data frame
+
+```{r}
+df
+
+df |>
+  pull(y)
+```
+
+# Working with factors
+
+## Read data in as character strings
+
+```{r}
+#| message: false
+handedness <- read_csv("data/handedness.csv")
+glimpse(handedness)
+```
+
+## But coerce when plotting
+
+```{r}
+#| fig-width: 7
+#| out-width: 90%
+ggplot(handedness, mapping = aes(x = preference)) +
+  geom_bar()
+```
+
+## Use forcats to manipulate factors
+
+```{r}
+#| code-line-numbers: "|2"
+#| fig-width: 7
+#| out-width: 90%
+handedness |>
+  mutate(preference = fct_infreq(preference)) |>
+  ggplot(mapping = aes(x = preference)) +
+  geom_bar()
+```
+
+## Come for the functionality
+
+:::: {.columns}
+
+::: {.column width="35%"}
+... stay for the logo
+:::
+
+::: {.column width="35%"}
+![](images/forcats-part-of-tidyverse.png)
+:::
+
+::::
+
+- The **forcats** package provides a suite of useful tools that solve common problems with factors
+- Factors are useful when you have true categorical data and you want to override the ordering of character vectors to improve display
+- They are also useful in modeling scenarios
