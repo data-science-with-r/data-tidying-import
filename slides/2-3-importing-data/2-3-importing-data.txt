@@ -1,0 +1,77 @@
+In this video, we're going to talk about importing data into R, which we've done many times before. However, this time, we're actually going to take a deeper look at how we do it, the various types of data we can import, and what we should pay attention to when we import data into R. 
+
+>>> Let's start with rectangular data. 
+
+>>> Perhaps the most common way to store rectangular data is in a CSV file -- where CSV stands for "comma separated values". In this case the delimiter, or the separated, is a comma. Other common delimitors are tabs or semicolons. The readr package, which is part of the tidyverse so we can just load it with library(tidyverse), offers a variety of functions for reading in tabular, delimited data. read_csv is for reading CSVs, read_csv2 is for reading semicolon separated files, read_tsv is for reading tab separated files, and read_delim allows you to define the delimitor in the function call. read_fwf is for reading fixed width files where you need to provide a schema for how many characters each column spans.
+
+>>> Another common storage method for tabular data is in spreadsheets, and perhaps the most commonly used spreadsheet software is Excel. The readxl package, which is not part of the core tidyverse package but is designed to work well with all tidyverse packages and with the same design philosophy, offers the read_excel function for reading from Excel files. Both readr and readxl offer many more functions, but we'll stick with the basics in this video.
+
+>>> So, let's start with reading and writing CSV files
+
+>>> Here I have a CSV file called nobel, stored in a folder called data, that I want to read. We'll use the read_csv function to do this. The first argument for that function is called `file`, and oftentimes, you'll see me omit this first argument when we write code. Then, we give it the full file path of where we can find this file. We want to use something like an organizational structure where it's very clear where we are placing our files in our projects. We've called that folder "data." We're saving this as an object called `nobel` in R. There's no requirement for the name of the object in R to match the name of the data file. Often, they will be different by a little bit, but it will help you keep things straight if you try to match them as much as possible.
+
+>>> The result of reading a data file using `read_csv` is a tibble -- the implementation of data frames in the tidyverse. It nicely prints out the number of rows and columns for you, and it also doesn't try to print out the entire dataset, which would be overwhelming. Instead, it prints whatever fits on your screen, with the rest summarized by saying we have 990 more rows than the six shown here and 13 more variables.
+
+>>> We can also write out CSV files. To exemplify that, I'm going to create a data frame, or more precisely a tibble, first and then write it out. 
+> We're going to create the tibble using the `tribble` function, which is just a take on `tibble`. This function allows me to create a data frame by typing it out row by row, which, as you can imagine, would get extremely tedious if we were writing a meaningful, large dataset. Here, since I'm just making a small example, it comes in handy. I often use this function for making small code examples for debugging or for sharing with others. I'm creating a data frame called `df` that has two columns, `x` and `y`. `x` has the values 1 through 3, and `y` has the values "a," "b," and "c" as character strings.
+> Once I have this data frame created in R, I can write it out using the `write_csv` function. The first argument is the data frame we're writing out, just like any other tidyverse function, and the second argument is where we want to place that data frame. I want to create a file called `df.csv` and place that in the folder called "data." 
+
+>>> We can then read it back in from that same location and inspect it to make sure that it looks exactly as we intended it to.
+In addition to printing the data, R has also printed some information on the dataset it's reading, that it has 3 rows and 2 columns, that the delimiter is a comma, and the names and types of those columns. It has also added some information about how to retrieve the full column specification -- in other words full information on the types of columns -- as well as how to turn off showing these messages. This is an informative message, though can make your analysis output appear cluttered. 
+
+>>> So, oftentimes we'll turn off the message printing in our Quarto documents by setting the cell option message to false.
+
+>>> Next, let's talk about variable names. 
+
+>>> It's very common to get a data set where the names of the variables are not very user-friendly or coder-friendly. Here, I have a data set called `edibnb`, a dataset on Airbnb listings in Edinburgh, Scotland. When I read this data frame into R and inspect the column names using the `names` function, we can see that some of them are in capital letters, some have spaces in the variable names, some follow the snake_case convention that we've been using, and others use various other structures. While R is perfectly happy handling variable names like this, you're often going to run into issues if you want to use the variable name as-is. 
+> For example, if I wanted to plot the number of bathrooms and the pric of listing from this data frame and I type "number of bathrooms" in my aesthetic mapping the same way it appears in the data frame, it won't work because R doesn't actually allow spaces in variable names. 
+
+>>> One option is to quote that variable name so that it knows it's a character string to look for in the headers of your data. I find this option to be error-prone and tedious to work with, as it's something you'll need to remember to do every time you use this data frame. So my recommendation for when you get a data frame with such "bad" names, is to clean up the names early on in your analysis and reap the benefits of a well-organized data frame later. There are various ways you can do this, but I'm going to show you two.
+
+>>> One option is to define the column names as you're reading them in. Obviously, before you read in your data, you have no idea what those variable names will be. So, you might want to read it in the same way we did before, note what they were, and decide what you actually want to call them. Sometimes, the variable names given to you might be very long, but you can come up with something much shorter. 
+> For example, we had "number of bathrooms" as one of the variable names, but I decided that labeling it simply as "bathroom" would suffice. 
+> You can do this within the `read_csv` function using the `col_names` argument by giving it a vector with the variable names you want to assign. You need to ensure that the length of this vector is equal to the number of columns in the data frame you're reading in. 
+> And then, it's good practice to check that you end up with exactly what you intended.
+
+>>> Another option is using another package called `janitor`. This isn't necessarily a tidyverse package, but it's tidyverse-friendly and works nicely with other tidyverse functions, especially within a pipeline. It has a function called `clean_names` that I really like. It takes a data frame, and, using some heuristics, turns the column names into snake_case. It won't simplify them for you if you have something really long as a variable name. It simply makes everything lowercase and replaces any spaces with underscores. It gives you less customization than the previous option, but if you have many variables to work with, you may not want to write out the names for each one of them. This would give you something quicker to work with. 
+> And you end up with variable names with no spaces, allowing us to use them more easily in our downstream analysis.
+
+>>> Next, let's talk about variable types. We've seen an example of what happens when we read data into R and R makes some guesses about the variable types, performing some type coercion for us. That was the cat lovers example we looked at earlier, and we addressed how we would fix this after reading the data into R. Next I'll present other options for addressing similar problems.
+
+>>> Take a look at this tiny data frame with three columns. If I read this into R, what will R assign as the column type of x and why? Think about it for a second, pause the video if you like.
+> And let's take a look at what R decides to do. It makes x a character variable, even though all the values in there are numbers and there's just one NA. Oh, and 1 period. Which probably stands for NA or missing. We, humans, could guess that. But R won't make such an assumption.
+
+>>> So one option for reading in a dataset where there are various ways NAs are indicated is to specify the various ways they're indicated. By default the read_csv function will convert empty cells and the character string NA in capital letters to true NAs. In this dataset we would also like any periods, Not applicables, and probably the number 9999 -- yes, some people will use a large number like this to indicate an NA! -- as NAs. We pass these as a vector of characters to the na argument of the read_csv function.
+> And the result looks much better -- x is now read in as a double, as we would like. And the others NA strings are properly converted to true NAs as well.
+
+>>> Another option is to specify column types with the col_types argument. This can be helpful when you don't know what to expect of various NA strings, but you have some expectation about column types, probably because you've worked with a version of such data before. We define these types in the col_types argument of the read_csv function as a list. To indicate a double, we specify col_double, to indicate a character, we specify col_character, etc. We'll see the full list of options in a second, but let's take a look at how this option reads in the data. The variable types are indeed what we asked for. In x, anything that wasn't a number is coerced to a double (like the period in row 6) and that's what the warning is about. It's basically telling us that it made some decisions on our behalf. Which of these options you choose depends on your context and analysis aim, but both are good tools to have in your toolkit.
+
+>>> And here is a list of all possible column types for the read_csv function. The goal of this slide is not to give you a long list to memorize, but more to remind you that this is the type of information you can find in the function documentation. You want a logical column? specify col_logical. you want to skip a column? Specify col_skip. And so on and so forth...
+
+>>> Finally, let's talk about importing data into R from Excel. We'll reuse the same data examples from earlier in this video, but read in Excel versions of the spreadsheets.
+
+>>> For instance, if I have an Excel file called nobel.xlsx stored in a folder called "data," I can read it using the read_excel function. The first argument is the file "path" to where the file is stored. 
+> After reading the Excel file into R, the resulting object is a tibble, similar to reading CSV files with readr. We can inspect the tibble to see the number of rows and columns, and R will print the tibble nicely, showing only what fits on the screen and summarizing the rest.
+
+>>> If our Excel spreadsheet has bad names, like in the Edinburgh Airbnb listing examples,
+>>> We can apply the exact same fixes, 
+> such as specifying column names with the col_names argument
+
+>>> Or using the clean_names function from the janior package after reading in the spreadsheet.
+
+>>> If your spreadsheet has many ways in which NAs are defined
+>>> We can use the na argument of the read_excel function to specify them 
+> in the same way as we did before with read_csv
+> or by specifying col_types
+
+However note that how we specify column types is not the same as we did before. And neither is the warning we get, even though the result is the same. The warning is saying that in cells A3 and A7 there were data that were not numeric, so they got coerced to NAs, which is exactly what we wanted.
+
+>>> The column types are specified as character strings, and there are fewer options to choose from but the functionality is very similar to the col-underscore functions we used in read_csv. Once again, the goal of this slide is not to give you a list to memorize, but to show you that there are a variety of options and that you can always access this information in the function documentation.
+
+>>> Alright, we talked about CSV files and Excel spreadsheets in depth. These are probably the most common data types you'll encounter, especially as you start your data science learning journel. But, of course, there are many other types of data you could be reading in to R.
+
+>>> And for just about any type of data, there's an R package that's been designed to help you read it in. For example, the googlesheets4 package allows you to read in data from Google sheets. The arrow package allows you to read parquet files -- common storage type for large data. The DBI package allows database connections, and the rvest package allows you to scrape unstructured data off the web.
+
+While these packages are not all in the core tidyverse, they are all designed to work nicely with the tidyverse so the jump from one of the data import packages we introduced in detail in this video to one of these shouldn't be a huge leap. And you shouldn't feel like you need to learn about all of these packages. When you encounter a dataset of a specific type, it's good to know a solution exists as an R package, and you can learn about using that package then.
+
+To summarize, when importing data into R, it's important to pay attention to the file format, variable names, and variable types. We can use readr and readxl packages for importing rectangular data, specify column names and types using col_names and col_types arguments, and utilize functions like clean_names from the janitor package to clean variable names. By understanding these concepts, we can effectively work with data in R and make our data analysis process smoother and more efficient.

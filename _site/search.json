@@ -805,32 +805,32 @@
     "text": "Putting it altogether\n\nprofessions |&gt;\n  left_join(dates) |&gt;\n  left_join(works)\n\nJoining with `by = join_by(name)`\nJoining with `by = join_by(name)`\n\n\n# A tibble: 10 × 5\n   name           profession birth_year death_year known_for\n   &lt;chr&gt;          &lt;chr&gt;           &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;    \n 1 Ada Lovelace   Mathemati…         NA         NA first co…\n 2 Marie Curie    Physicist…         NA         NA theory o…\n 3 Janaki Ammal   Botanist         1897       1984 hybrid s…\n 4 Chien-Shiung … Physicist        1912       1997 confim a…\n 5 Katherine Joh… Mathemati…       1918       2020 calculat…\n 6 Rosalind Fran… Chemist          1920       1958 &lt;NA&gt;     \n 7 Vera Rubin     Astronomer       1928       2016 existenc…\n 8 Gladys West    Mathemati…       1930         NA mathemat…\n 9 Flossie Wong-… Virologis…       1947       2020 first sc…\n10 Jennifer Doud… Biochemist       1964         NA one of t…"
   },
   {
-    "objectID": "slides/2-3-importing-data/2-3-importing-data.html#reading-csv-files",
-    "href": "slides/2-3-importing-data/2-3-importing-data.html#reading-csv-files",
+    "objectID": "slides/2-3-importing-data/2-3-importing-data.html#reading-delimited-files",
+    "href": "slides/2-3-importing-data/2-3-importing-data.html#reading-delimited-files",
     "title": "Importing data",
-    "section": "Reading CSV files",
-    "text": "Reading CSV files\n\n\n\n\n\nlibrary(tidyverse)\n\n\n\nread_csv() - comma delimited files\n\nread_csv2() - semicolon separated files (common in countries where , is used as the decimal place)\n\nread_tsv() - tab delimited files\n\nread_delim() - reads in files with any delimiter\n\nread_fwf() - fixed width files\n…"
+    "section": "Reading delimited files",
+    "text": "Reading delimited files\n\n\n\n\n\nlibrary(tidyverse)\n\n\n\nread_csv() - comma delimited files\n\nread_csv2() - semicolon separated files (common in countries where , is used as the decimal place)\n\nread_tsv() - tab delimited files\n\nread_delim() - reads in files with any delimiter\n\nread_fwf() - fixed width files\n…"
   },
   {
     "objectID": "slides/2-3-importing-data/2-3-importing-data.html#reading-excel-spreadsheets",
     "href": "slides/2-3-importing-data/2-3-importing-data.html#reading-excel-spreadsheets",
     "title": "Importing data",
     "section": "Reading Excel spreadsheets",
-    "text": "Reading Excel spreadsheets\n\n\n\n\nreadxl\n\nlibrary(readxl)\n\n\n\nread_excel() - read xls or xlsx files\n…"
+    "text": "Reading Excel spreadsheets\n\n\n\n\n\nlibrary(readxl)\n\n\n\nread_excel() - read xls or xlsx files\n…"
   },
   {
     "objectID": "slides/2-3-importing-data/2-3-importing-data.html#reading-data",
     "href": "slides/2-3-importing-data/2-3-importing-data.html#reading-data",
     "title": "Importing data",
     "section": "Reading data",
-    "text": "Reading data\n\nnobel &lt;- read_csv(file = \"data/nobel.csv\")\n\nRows: 1000 Columns: 19\n── Column specification ────────────────────────────────────\nDelimiter: \",\"\nchr  (15): first_name, last_name, born_country, born_cou...\ndbl   (2): Id, year\ndate  (2): born, died\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message."
+    "text": "Reading data\n\nnobel &lt;- read_csv(file = \"data/nobel.csv\")\n\nRows: 1000 Columns: 19\n── Column specification ────────────────────────────────────\nDelimiter: \",\"\nchr (17): first_name, last_name, born, died, born_countr...\ndbl  (2): id, year\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message."
   },
   {
     "objectID": "slides/2-3-importing-data/2-3-importing-data.html#reading-data-1",
     "href": "slides/2-3-importing-data/2-3-importing-data.html#reading-data-1",
     "title": "Importing data",
     "section": "Reading data",
-    "text": "Reading data\n\nnobel\n\n# A tibble: 1,000 × 19\n      Id first_name     last_name   born       died      \n   &lt;dbl&gt; &lt;chr&gt;          &lt;chr&gt;       &lt;date&gt;     &lt;date&gt;    \n 1   160 Jacobus H.     van 't Hoff 1852-08-30 1911-03-01\n 2   569 Sully          Prudhomme   1839-03-16 1907-09-07\n 3   293 Emil           von Behring 1854-03-15 1917-03-31\n 4   462 Henry          Dunant      1828-05-08 1910-10-30\n 5     1 Wilhelm Conrad Röntgen     1845-03-27 1923-02-10\n 6   463 Frédéric       Passy       1822-05-20 1912-06-12\n 7   464 Élie           Ducommun    1833-02-19 1906-12-07\n 8   465 Albert         Gobat       1843-05-21 1914-03-16\n 9   294 Ronald         Ross        1857-05-13 1932-09-16\n10   161 Emil           Fischer     1852-10-09 1919-07-15\n# ℹ 990 more rows\n# ℹ 14 more variables: born_country &lt;chr&gt;,\n#   born_country_code &lt;chr&gt;, born_city &lt;chr&gt;,\n#   died_country &lt;chr&gt;, died_country_code &lt;chr&gt;,\n#   died_city &lt;chr&gt;, gender &lt;chr&gt;, year &lt;dbl&gt;,\n#   category &lt;chr&gt;, overall_motivation &lt;chr&gt;,\n#   motivation &lt;chr&gt;, organization_name &lt;chr&gt;, …"
+    "text": "Reading data\n\nnobel\n\n# A tibble: 1,000 × 19\n      id first_name     last_name   born  died  born_country\n   &lt;dbl&gt; &lt;chr&gt;          &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;       \n 1   160 Jacobus H.     van 't Hoff 1852… 3/1/… the Netherl…\n 2   569 Sully          Prudhomme   1839… 9/7/… France      \n 3   293 Emil           von Behring 1854… 3/31… Prussia (no…\n 4   462 Henry          Dunant      1828… 10/3… Switzerland \n 5     1 Wilhelm Conrad Röntgen     1845… 2/10… Prussia (no…\n 6   463 Frédéric       Passy       1822… 6/12… France      \n 7   464 Élie           Ducommun    1833… 12/7… Switzerland \n 8   465 Albert         Gobat       1843… 3/16… Switzerland \n 9   294 Ronald         Ross        1857… 9/16… India       \n10   161 Emil           Fischer     1852… 7/15… Prussia (no…\n# ℹ 990 more rows\n# ℹ 13 more variables: born_country_code &lt;chr&gt;,\n#   born_city &lt;chr&gt;, died_country &lt;chr&gt;,\n#   died_country_code &lt;chr&gt;, died_city &lt;chr&gt;, gender &lt;chr&gt;,\n#   year &lt;dbl&gt;, category &lt;chr&gt;, overall_motivation &lt;chr&gt;,\n#   motivation &lt;chr&gt;, organization_name &lt;chr&gt;,\n#   organization_city &lt;chr&gt;, organization_country &lt;chr&gt;"
   },
   {
     "objectID": "slides/2-3-importing-data/2-3-importing-data.html#writing-data",
@@ -840,39 +840,46 @@
     "text": "Writing data\nWrite a file:\n\ndf &lt;- tribble(\n  ~x, ~y,\n  1,  \"a\",\n  2,  \"b\",\n  3,  \"c\"\n)\n\nwrite_csv(df, file = \"data/df.csv\")"
   },
   {
-    "objectID": "slides/2-3-importing-data/2-3-importing-data.html#writing-data-1",
-    "href": "slides/2-3-importing-data/2-3-importing-data.html#writing-data-1",
+    "objectID": "slides/2-3-importing-data/2-3-importing-data.html#reading-data-back",
+    "href": "slides/2-3-importing-data/2-3-importing-data.html#reading-data-back",
     "title": "Importing data",
-    "section": "Writing data",
-    "text": "Writing data\nRead it back in to inspect:\n\nread_csv(\"data/df.csv\")\n\nRows: 3 Columns: 2\n── Column specification ────────────────────────────────────\nDelimiter: \",\"\nchr (1): y\ndbl (1): x\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\n\n# A tibble: 3 × 2\n      x y    \n  &lt;dbl&gt; &lt;chr&gt;\n1     1 a    \n2     2 b    \n3     3 c"
+    "section": "Reading data back",
+    "text": "Reading data back\nRead it back in to inspect:\n\nread_csv(\"data/df.csv\")\n\nRows: 3 Columns: 2\n── Column specification ────────────────────────────────────\nDelimiter: \",\"\nchr (1): y\ndbl (1): x\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\n\n# A tibble: 3 × 2\n      x y    \n  &lt;dbl&gt; &lt;chr&gt;\n1     1 a    \n2     2 b    \n3     3 c"
+  },
+  {
+    "objectID": "slides/2-3-importing-data/2-3-importing-data.html#suppressing-messages",
+    "href": "slides/2-3-importing-data/2-3-importing-data.html#suppressing-messages",
+    "title": "Importing data",
+    "section": "Suppressing messages",
+    "text": "Suppressing messages\n\n```{r}\n#| message: false\nread_csv(\"data/df.csv\")\n```\n\n# A tibble: 3 × 2\n      x y    \n  &lt;dbl&gt; &lt;chr&gt;\n1     1 a    \n2     2 b    \n3     3 c"
   },
   {
     "objectID": "slides/2-3-importing-data/2-3-importing-data.html#data-with-bad-names",
     "href": "slides/2-3-importing-data/2-3-importing-data.html#data-with-bad-names",
     "title": "Importing data",
     "section": "Data with bad names",
-    "text": "Data with bad names\n\nedibnb_badnames &lt;- read_csv(\"data/edibnb-badnames.csv\")\nnames(edibnb_badnames)\n\n [1] \"ID\"                   \"Price\"               \n [3] \"neighbourhood\"        \"accommodates\"        \n [5] \"Number of bathrooms\"  \"Number of Bedrooms\"  \n [7] \"n beds\"               \"Review Scores Rating\"\n [9] \"Number of reviews\"    \"listing_url\"         \n\n\n\n… but R doesn’t allow spaces in variable names\n\nggplot(\n  edibnb_badnames, \n  aes(x = Number of bathrooms, y = Price)\n  ) +\n  geom_point()\n\nError: &lt;text&gt;:3:18: unexpected symbol\n2:   edibnb_badnames, \n3:   aes(x = Number of\n                    ^"
+    "text": "Data with bad names\n\nedibnb_bad_names &lt;- read_csv(\"data/edibnb-bad-names.csv\")\nnames(edibnb_bad_names)\n\n [1] \"ID\"                   \"Price\"               \n [3] \"neighbourhood\"        \"accommodates\"        \n [5] \"Number of bathrooms\"  \"Number of Bedrooms\"  \n [7] \"n beds\"               \"Review Scores Rating\"\n [9] \"Number of reviews\"    \"listing_url\"         \n\n\n\n… but R doesn’t allow spaces in variable names\n\nggplot(\n  edibnb_bad_names, \n  aes(x = Number of bathrooms, y = Price)\n  ) +\n  geom_point()\n\nError: &lt;text&gt;:3:18: unexpected symbol\n2:   edibnb_bad_names, \n3:   aes(x = Number of\n                    ^"
   },
   {
     "objectID": "slides/2-3-importing-data/2-3-importing-data.html#option-1---quote-column-names",
     "href": "slides/2-3-importing-data/2-3-importing-data.html#option-1---quote-column-names",
     "title": "Importing data",
     "section": "Option 1 - Quote column names",
-    "text": "Option 1 - Quote column names\n\nggplot(\n  edibnb_badnames, \n  aes(x = `Number of bathrooms`, y = Price)\n  ) +\n  geom_point()"
+    "text": "Option 1 - Quote column names\n\nggplot(\n  edibnb_bad_names, \n  aes(x = `Number of bathrooms`, y = Price)\n  ) +\n  geom_point()"
   },
   {
     "objectID": "slides/2-3-importing-data/2-3-importing-data.html#option-2---define-column-names",
     "href": "slides/2-3-importing-data/2-3-importing-data.html#option-2---define-column-names",
     "title": "Importing data",
     "section": "Option 2 - Define column names",
-    "text": "Option 2 - Define column names\n\nedibnb_col_names &lt;- read_csv(\n  \"data/edibnb-badnames.csv\",\n  col_names = c(\n    \"id\", \"price\", \"neighbourhood\", \"accommodates\", \"bathroom\", \n    \"bedroom\", \"bed\", \"review_scores_rating\", \"n_reviews\", \"url\"\n  )\n)\n\nnames(edibnb_col_names)\n\n [1] \"id\"                   \"price\"               \n [3] \"neighbourhood\"        \"accommodates\"        \n [5] \"bathroom\"             \"bedroom\"             \n [7] \"bed\"                  \"review_scores_rating\"\n [9] \"n_reviews\"            \"url\""
+    "text": "Option 2 - Define column names\n\nedibnb_col_names &lt;- read_csv(\n  \"data/edibnb-bad-names.csv\",\n  col_names = c(\n    \"id\", \"price\", \"neighbourhood\", \"accommodates\", \n    \"bathroom\", \"bedroom\", \"bed\", \"review_scores_rating\", \n    \"n_reviews\", \"url\"\n  )\n)\n\n\n\nnames(edibnb_col_names)\n\n [1] \"id\"                   \"price\"               \n [3] \"neighbourhood\"        \"accommodates\"        \n [5] \"bathroom\"             \"bedroom\"             \n [7] \"bed\"                  \"review_scores_rating\"\n [9] \"n_reviews\"            \"url\""
   },
   {
     "objectID": "slides/2-3-importing-data/2-3-importing-data.html#option-3---format-column-names-to-snake_case",
     "href": "slides/2-3-importing-data/2-3-importing-data.html#option-3---format-column-names-to-snake_case",
     "title": "Importing data",
     "section": "Option 3 - Format column names to snake_case",
-    "text": "Option 3 - Format column names to snake_case\n\nlibrary(janitor)\n\nedibnb_clean_names &lt;- read_csv(\"data/edibnb-badnames.csv\") |&gt;\n  janitor::clean_names()\n\nnames(edibnb_clean_names)\n\n [1] \"id\"                   \"price\"               \n [3] \"neighbourhood\"        \"accommodates\"        \n [5] \"number_of_bathrooms\"  \"number_of_bedrooms\"  \n [7] \"n_beds\"               \"review_scores_rating\"\n [9] \"number_of_reviews\"    \"listing_url\""
+    "text": "Option 3 - Format column names to snake_case\n\nlibrary(janitor)\n\nedibnb_clean_names &lt;- read_csv(\"data/edibnb-bad-names.csv\") |&gt;\n  janitor::clean_names()\n\n\n\nnames(edibnb_clean_names)\n\n [1] \"id\"                   \"price\"               \n [3] \"neighbourhood\"        \"accommodates\"        \n [5] \"number_of_bathrooms\"  \"number_of_bedrooms\"  \n [7] \"n_beds\"               \"review_scores_rating\"\n [9] \"number_of_reviews\"    \"listing_url\""
   },
   {
     "objectID": "slides/2-3-importing-data/2-3-importing-data.html#variable-types-1",
@@ -893,7 +900,7 @@
     "href": "slides/2-3-importing-data/2-3-importing-data.html#option-2.-specify-column-types",
     "title": "Importing data",
     "section": "Option 2. Specify column types",
-    "text": "Option 2. Specify column types\n\nread_csv(\n  \"data/df-na.csv\", \n  col_types = list(col_double(), col_character(), col_character())\n  )\n\n\n\n\n\n# A tibble: 9 × 3\n      x y              z     \n  &lt;dbl&gt; &lt;chr&gt;          &lt;chr&gt; \n1     1 a              hi    \n2    NA b              hello \n3     3 Not applicable 9999  \n4     4 d              ola   \n5     5 e              hola  \n6    NA f              whatup\n7     7 g              wassup\n8     8 h              sup   \n9     9 i              &lt;NA&gt;"
+    "text": "Option 2. Specify column types\n\nread_csv(\n  \"data/df-na.csv\", \n  col_types = list(col_double(), col_character(), col_character())\n  )\n\n\n\n\n\nWarning: One or more parsing issues, call `problems()` on your data\nframe for details, e.g.:\n  dat &lt;- vroom(...)\n  problems(dat)\n\n\n# A tibble: 9 × 3\n      x y              z     \n  &lt;dbl&gt; &lt;chr&gt;          &lt;chr&gt; \n1     1 a              hi    \n2    NA b              hello \n3     3 Not applicable 9999  \n4     4 d              ola   \n5     5 e              hola  \n6    NA f              whatup\n7     7 g              wassup\n8     8 h              sup   \n9     9 i              &lt;NA&gt;"
   },
   {
     "objectID": "slides/2-3-importing-data/2-3-importing-data.html#column-types-for-read_csv",
@@ -907,28 +914,28 @@
     "href": "slides/2-3-importing-data/2-3-importing-data.html#reading-data-2",
     "title": "Importing data",
     "section": "Reading data",
-    "text": "Reading data\n\nnobel &lt;- read_excel(path = \"data/nobel.xlsx\")\n\nnobel\n\n# A tibble: 1,000 × 19\n      Id first_name     last_name  born  died               \n   &lt;dbl&gt; &lt;chr&gt;          &lt;chr&gt;      &lt;chr&gt; &lt;dttm&gt;             \n 1   160 Jacobus H.     van 't Ho… 1852… 1911-03-01 00:00:00\n 2   569 Sully          Prudhomme  1839… 1907-09-07 00:00:00\n 3   293 Emil           von Behri… 1854… 1917-03-31 00:00:00\n 4   462 Henry          Dunant     1828… 1910-10-30 00:00:00\n 5     1 Wilhelm Conrad Röntgen    1845… 1923-02-10 00:00:00\n 6   463 Frédéric       Passy      1822… 1912-06-12 00:00:00\n 7   464 Élie           Ducommun   1833… 1906-12-07 00:00:00\n 8   465 Albert         Gobat      1843… 1914-03-16 00:00:00\n 9   294 Ronald         Ross       1857… 1932-09-16 00:00:00\n10   161 Emil           Fischer    1852… 1919-07-15 00:00:00\n# ℹ 990 more rows\n# ℹ 14 more variables: born_country &lt;chr&gt;,\n#   born_country_code &lt;chr&gt;, born_city &lt;chr&gt;,\n#   died_country &lt;chr&gt;, died_country_code &lt;chr&gt;,\n#   died_city &lt;chr&gt;, gender &lt;chr&gt;, year &lt;dbl&gt;,\n#   category &lt;chr&gt;, overall_motivation &lt;chr&gt;,\n#   motivation &lt;chr&gt;, organization_name &lt;chr&gt;, …"
+    "text": "Reading data\n\nnobel &lt;- read_excel(path = \"data/nobel.xlsx\")\n\n\n\nnobel\n\n# A tibble: 1,000 × 19\n      id first_name     last_name  born  died               \n   &lt;dbl&gt; &lt;chr&gt;          &lt;chr&gt;      &lt;chr&gt; &lt;dttm&gt;             \n 1   160 Jacobus H.     van 't Ho… 1852… 1911-03-01 00:00:00\n 2   569 Sully          Prudhomme  1839… 1907-09-07 00:00:00\n 3   293 Emil           von Behri… 1854… 1917-03-31 00:00:00\n 4   462 Henry          Dunant     1828… 1910-10-30 00:00:00\n 5     1 Wilhelm Conrad Röntgen    1845… 1923-02-10 00:00:00\n 6   463 Frédéric       Passy      1822… 1912-06-12 00:00:00\n 7   464 Élie           Ducommun   1833… 1906-12-07 00:00:00\n 8   465 Albert         Gobat      1843… 1914-03-16 00:00:00\n 9   294 Ronald         Ross       1857… 1932-09-16 00:00:00\n10   161 Emil           Fischer    1852… 1919-07-15 00:00:00\n# ℹ 990 more rows\n# ℹ 14 more variables: born_country &lt;chr&gt;,\n#   born_country_code &lt;chr&gt;, born_city &lt;chr&gt;,\n#   died_country &lt;chr&gt;, died_country_code &lt;chr&gt;,\n#   died_city &lt;chr&gt;, gender &lt;chr&gt;, year &lt;dbl&gt;,\n#   category &lt;chr&gt;, overall_motivation &lt;chr&gt;,\n#   motivation &lt;chr&gt;, organization_name &lt;chr&gt;, …"
   },
   {
     "objectID": "slides/2-3-importing-data/2-3-importing-data.html#spreadsheets-with-bad-names",
     "href": "slides/2-3-importing-data/2-3-importing-data.html#spreadsheets-with-bad-names",
     "title": "Importing data",
     "section": "Spreadsheets with “bad” names",
-    "text": "Spreadsheets with “bad” names\n\nedibnb_bad_names &lt;- read_excel(\"data/edibnb-badnames.xlsx\")\n\nnames(edibnb_bad_names)\n\n [1] \"ID\"                   \"Price\"               \n [3] \"neighbourhood\"        \"accommodates\"        \n [5] \"Number of bathrooms\"  \"Number of Bedrooms\"  \n [7] \"n beds\"               \"Review Scores Rating\"\n [9] \"Number of reviews\"    \"listing_url\""
+    "text": "Spreadsheets with “bad” names\n\nedibnb_bad_names &lt;- read_excel(\"data/edibnb-bad-names.xlsx\")\n\nnames(edibnb_bad_names)\n\n [1] \"ID\"                   \"Price\"               \n [3] \"neighbourhood\"        \"accommodates\"        \n [5] \"Number of bathrooms\"  \"Number of Bedrooms\"  \n [7] \"n beds\"               \"Review Scores Rating\"\n [9] \"Number of reviews\"    \"listing_url\""
   },
   {
     "objectID": "slides/2-3-importing-data/2-3-importing-data.html#option-1.-define-column-names",
     "href": "slides/2-3-importing-data/2-3-importing-data.html#option-1.-define-column-names",
     "title": "Importing data",
     "section": "Option 1. Define column names",
-    "text": "Option 1. Define column names\n\nedibnb_col_names &lt;- read_excel(\n  \"data/edibnb-badnames.xlsx\",\n  col_names = c(\n    \"id\", \"price\", \"neighbourhood\", \"accommodates\", \"bathroom\", \n    \"bedroom\", \"bed\", \"review_scores_rating\", \"n_reviews\", \"url\"\n  )\n)\n\nnames(edibnb_col_names)\n\n [1] \"id\"                   \"price\"               \n [3] \"neighbourhood\"        \"accommodates\"        \n [5] \"bathroom\"             \"bedroom\"             \n [7] \"bed\"                  \"review_scores_rating\"\n [9] \"n_reviews\"            \"url\""
+    "text": "Option 1. Define column names\n\nedibnb_col_names &lt;- read_excel(\n  \"data/edibnb-bad-names.xlsx\",\n  col_names = c(\n    \"id\", \"price\", \"neighbourhood\", \"accommodates\", \"bathroom\", \n    \"bedroom\", \"bed\", \"review_scores_rating\", \"n_reviews\", \"url\"\n  )\n)\n\nnames(edibnb_col_names)\n\n [1] \"id\"                   \"price\"               \n [3] \"neighbourhood\"        \"accommodates\"        \n [5] \"bathroom\"             \"bedroom\"             \n [7] \"bed\"                  \"review_scores_rating\"\n [9] \"n_reviews\"            \"url\""
   },
   {
     "objectID": "slides/2-3-importing-data/2-3-importing-data.html#option-2.-format-column-names-to-snake_case",
     "href": "slides/2-3-importing-data/2-3-importing-data.html#option-2.-format-column-names-to-snake_case",
     "title": "Importing data",
     "section": "Option 2. Format column names to snake_case",
-    "text": "Option 2. Format column names to snake_case\n\nedibnb_clean_names &lt;- read_excel(\"data/edibnb-badnames.xlsx\") |&gt;\n  janitor::clean_names()\n\nnames(edibnb_clean_names)\n\n [1] \"id\"                   \"price\"               \n [3] \"neighbourhood\"        \"accommodates\"        \n [5] \"number_of_bathrooms\"  \"number_of_bedrooms\"  \n [7] \"n_beds\"               \"review_scores_rating\"\n [9] \"number_of_reviews\"    \"listing_url\""
+    "text": "Option 2. Format column names to snake_case\n\nedibnb_clean_names &lt;- read_excel(\"data/edibnb-bad-names.xlsx\") |&gt;\n  janitor::clean_names()\n\nnames(edibnb_clean_names)\n\n [1] \"id\"                   \"price\"               \n [3] \"neighbourhood\"        \"accommodates\"        \n [5] \"number_of_bathrooms\"  \"number_of_bedrooms\"  \n [7] \"n_beds\"               \"review_scores_rating\"\n [9] \"number_of_reviews\"    \"listing_url\""
   },
   {
     "objectID": "slides/2-3-importing-data/2-3-importing-data.html#spreadsheets-with-nas",
@@ -963,7 +970,7 @@
     "href": "slides/2-3-importing-data/2-3-importing-data.html#other-types-of-data-1",
     "title": "Importing data",
     "section": "Other types of data",
-    "text": "Other types of data\n\n\ngooglesheets4: Google Sheets\n\narrow: parquet files\n\nhaven: SPSS, Stata, and SAS files\n\nDBI, along with a database specific backend (e.g. RMySQL, RSQLite, RPostgreSQL etc): allows you to run SQL queries against a database and return a data frame\n\njsonline: JSON\n\nxml2: xml\n\nrvest: web scraping\n\nhttr: web APIs\n\nsparklyr: data loaded into spark"
+    "text": "Other types of data\n\n\ngooglesheets4: Google Sheets\n\narrow: parquet files\n\nDBI, along with a database specific backend (e.g. RMySQL, RSQLite, RPostgreSQL etc): allows you to run SQL queries against a database and return a data frame\n\nrvest: web scraping\n\nhaven: SPSS, Stata, and SAS files\n\njsonline: JSON\n\nxml2: xml\n\nhttr: web APIs\n\nsparklyr: data loaded into spark"
   },
   {
     "objectID": "exercises/tidy_basketball.html",

@@ -5,12 +5,12 @@ format: revealjs
 
 # Reading rectangular data into R
 
-## Reading CSV files
+## Reading delimited files
 
 :::: {.columns}
 
 ::: {.column width="35%"}
-![](images/readr.png)
+![](images/readr-part-of-tidyverse.png)
 :::
 
 ::: {.column width="35%"}
@@ -38,7 +38,6 @@ library(tidyverse)
 :::
 
 ::: {.column width="35%"}
-**readxl**
 
 ```{r}
 #| message: false
@@ -59,7 +58,7 @@ library(readxl)
 nobel <- read_csv(file = "data/nobel.csv")
 ```
 
-## Reading data
+## Reading data {.smaller}
 
 ```{r}
 nobel
@@ -71,6 +70,7 @@ Write a file:
 
 ```{r}
 #| cache: true
+#| code-line-numbers: "|1-6|8"
 df <- tribble(
   ~x, ~y,
   1,  "a",
@@ -81,11 +81,19 @@ df <- tribble(
 write_csv(df, file = "data/df.csv")
 ```
 
-## Writing data
+## Reading data back
 
 Read it back in to inspect:
 
 ```{r}
+read_csv("data/df.csv")
+```
+
+## Suppressing messages
+
+```{r}
+#| echo: fenced
+#| message: false
 read_csv("data/df.csv")
 ```
 
@@ -95,8 +103,8 @@ read_csv("data/df.csv")
 
 ```{r}
 #| message: false
-edibnb_badnames <- read_csv("data/edibnb-badnames.csv")
-names(edibnb_badnames)
+edibnb_bad_names <- read_csv("data/edibnb-bad-names.csv")
+names(edibnb_bad_names)
 ```
 
 . . .
@@ -106,7 +114,7 @@ names(edibnb_badnames)
 ```{r}
 #| error: true
 ggplot(
-  edibnb_badnames, 
+  edibnb_bad_names, 
   aes(x = Number of bathrooms, y = Price)
   ) +
   geom_point()
@@ -119,7 +127,7 @@ ggplot(
 #| out-width: 60%
 #| warning: false
 ggplot(
-  edibnb_badnames, 
+  edibnb_bad_names, 
   aes(x = `Number of bathrooms`, y = Price)
   ) +
   geom_point()
@@ -129,14 +137,20 @@ ggplot(
 
 ```{r}
 #| message: false
+#| code-line-numbers: "|5|3-7"
 edibnb_col_names <- read_csv(
-  "data/edibnb-badnames.csv",
+  "data/edibnb-bad-names.csv",
   col_names = c(
-    "id", "price", "neighbourhood", "accommodates", "bathroom", 
-    "bedroom", "bed", "review_scores_rating", "n_reviews", "url"
+    "id", "price", "neighbourhood", "accommodates", 
+    "bathroom", "bedroom", "bed", "review_scores_rating", 
+    "n_reviews", "url"
   )
 )
+```
 
+. . .
+
+```{r}
 names(edibnb_col_names)
 ```
 
@@ -146,9 +160,13 @@ names(edibnb_col_names)
 #| warning: false
 library(janitor)
 
-edibnb_clean_names <- read_csv("data/edibnb-badnames.csv") |>
+edibnb_clean_names <- read_csv("data/edibnb-bad-names.csv") |>
   janitor::clean_names()
+```
 
+. . .
+
+```{r}
 names(edibnb_clean_names)
 ```
 
@@ -222,7 +240,6 @@ read_csv(
 #| ref-label: specify-col-types
 #| echo: false
 #| message: false
-#| warning: false
 ```
 
 :::
@@ -252,18 +269,22 @@ read_csv(
 
 # Reading Excel spreadsheets
 
-## Reading data
+## Reading data {.smaller}
 
 ```{r}
 nobel <- read_excel(path = "data/nobel.xlsx")
+```
 
+. . .
+
+```{r}
 nobel
 ```
 
 ## Spreadsheets with "bad" names
 
 ```{r}
-edibnb_bad_names <- read_excel("data/edibnb-badnames.xlsx")
+edibnb_bad_names <- read_excel("data/edibnb-bad-names.xlsx")
 
 names(edibnb_bad_names)
 ```
@@ -271,8 +292,9 @@ names(edibnb_bad_names)
 ## Option 1. Define column names
 
 ```{r}
+#| code-line-numbers: "|3-6"
 edibnb_col_names <- read_excel(
-  "data/edibnb-badnames.xlsx",
+  "data/edibnb-bad-names.xlsx",
   col_names = c(
     "id", "price", "neighbourhood", "accommodates", "bathroom", 
     "bedroom", "bed", "review_scores_rating", "n_reviews", "url"
@@ -286,7 +308,7 @@ names(edibnb_col_names)
 
 ```{r}
 #| warning: false
-edibnb_clean_names <- read_excel("data/edibnb-badnames.xlsx") |>
+edibnb_clean_names <- read_excel("data/edibnb-bad-names.xlsx") |>
   janitor::clean_names()
 
 names(edibnb_clean_names)
@@ -301,6 +323,7 @@ read_excel("data/df-na.xlsx")
 ## Option 1. Explicit NAs
 
 ```{r}
+#| code-line-numbers: "|3"
 read_excel(
   "data/df-na.xlsx", 
   na = c("", "NA", ".", "9999", "Not applicable")
@@ -310,6 +333,7 @@ read_excel(
 ## Option 2. Specify column types
 
 ```{r}
+#| code-line-numbers: "3"
 read_excel(
   "data/df-na.xlsx", 
   col_types = c("numeric", "text", "text")
@@ -334,10 +358,10 @@ read_excel(
 
 - **googlesheets4:** Google Sheets
 - **arrow:** parquet files
-- **haven**: SPSS, Stata, and SAS files
 - **DBI**, along with a database specific backend (e.g. RMySQL, RSQLite, RPostgreSQL etc): allows you to run SQL queries against a database and return a data frame
+- **rvest**: web scraping
+- **haven**: SPSS, Stata, and SAS files
 - **jsonline**: JSON
 - **xml2**: xml
-- **rvest**: web scraping
 - **httr**: web APIs
 - **sparklyr**: data loaded into spark
