@@ -1,21 +1,101 @@
 We have introduced R and used it as a tool for doing data science. Before we go any further, we're going to pause for a moment and discuss certain features of the R language, starting with data types. Just like natural languages have their peculiarities to them and learning a new language requires familiarizing yourself with these peculiarities, we need to do the same for computing languages as well.
 
->>>
+>>> But I'm not sure if that was convincing enough, so before we learn about data types in R, let's discuss why you should care about data types. And give a very real and practical example.
 
-But I'm not sure if that was convincing enough, so before we learn about data types in R, let's discuss why you should care about data types. And give a very real and practical example.
-
->>>
-
-We'll do this with an example about a hypothetical, but again very realistic, survey on cat lovers. Suppose a survey asked respondents their name and number of cats. And also suppose that the instructions said to enter the number of cats as a numerical value.
+>>> We'll do this with an example about a hypothetical, but again very realistic, survey on cat lovers. Suppose a survey asked respondents their name and number of cats. And also suppose that the instructions said to enter the number of cats as a numerical value.
 
 Here we read the survey data in from a CSV file where they're stored and take a peek at it. It looks like there are 60 respondents and for each one we know their name and the number of cats they have. On this slide we can see the first few responses.
 
 A reasonable question we can ask of these data is "how many cats do the survey respondents have on average".
 
->>>
-
-So we pipe the cat_lovers data frame to the summarize function and calculate the average number of cats using the mean function.
+>>> So we pipe the cat_lovers data frame to the summarize function and calculate the average number of cats using the mean function.
 
 Unfortunately, though, the result is an NA and a pretty wordy warning. It's not an error, the code ran, but the result looks nothing like we would expect.
 
 If we read the warning carefully it says the warning is in summarize, and specifically in finding the mean number of cats. And it's caused by the argument to the mean function not being numeric or logical. Numeric and logical are two data types in R, we'll learn more about them in a bit, but hopefully it's not a huge leap to say "numeric" means numerical data.
+
+But we know number of cats is a numerical variable, we saw the survey data in the last slide.
+
+Since it's unclear why we're getting this warning and unexpected result, and since we know it has something to do with the mean function, let's review the documentation of this function:
+
+>>> Remember we can get to the documentation with question mark followed by the function name.
+
+We can see in the documentation that mean has an na.rm argument, for removing NAs before calculating the average.
+
+>>> Let's try setting that to TRUE.
+> Unfortunately, no luck. The pesky warning is still there. When looking into the function doesn't solve the problem, it's a good idea to take a closer look at the data.
+
+>>> So, let's glimpse at our cat lovers data frame. 
+
+Next to the names of the variables, we see the letters "chr" in brackets. These stand for character, as in character string. It makes sense that the names are character strings, but doesn't make sense that the number of cats variable is. 
+
+>>> Let's take a closer look at the data -- the first few observations look good.
+
+>>> And the next few
+
+>>> But some respondents clearly didn't follow instructions!
+
+>>> Doug Bass, for example says they have three cats, but they didn't enter it as a number. 
+
+>>> And Ginger Clark... Well, don't get me started on Ginger Clark and their sense of humor. As a cat owner myself I can understand the feeling of thinking your cat is half-human. But, as a data scientist, this is super annoying, 
+
+>>> because due to Ginger and Doug's responses as character strings, the entire number of cats variable is "coerced" to character string. We'll come back to the concept of "type coercion" shortly, but in a nutshell, in R, the type of each entry in a vector must be the same so all answers are converted to character strings upon reading the data. Hence the NA result and the warning we get when we try to find the mean number of cats, in other words, the mean of a bunch of character strings.
+
+>>> So what do we do next? We'll need to clean up Doug and Ginger's responses. Sounds like Ginger has 2 cats that we want to indicate with the number 2, and Doug has 3 cats. For everyone else, we just want their responses as numbers. 
+> So we use a case_when statement that sets number of cats to 2 for Ginger Clark, 3 for Doug Bass, and converts to numeric for everyone else. 
+> Then we try to find the mean number of cats again.
+> And, progress! We have a mean number, but still a warning too! Now, warnings aren't errors, it can be ok to note a warning and move on. But, it's important to understand it first. It seems like there's still some type coercion issue going on.
+
+>>> So let's try this again, 
+> this time first setting 2 and 3 as character strings, just like everything else in that column, and then we convert all values to numeric at once,
+> and finally try to summarize again.
+> Et voila! Finally we not only have a mean number of cats, but we have also addressed the warning!
+
+>>> The moral of the story is that if your data does not behave how you expect it to, type coercion upon reading in the data might be the reason. If this is the case, you need to  go in and investigate your data and apply the appropriate fix,  and live happily ever after. Of course, being able to do so requires understanding data types and concepts like type coercion. So now that we have a good motivation for learning about data types in R, let’s learn about 
+
+>>> data types in R!
+
+>>> Logical, double, integer, and character are some of the data types you'll most commonly encounter in a data science context in R. There are more data types, but but we won’t be focusing on those in this course.
+
+>>> Logicals are boolean values, like TRUE and FALSE.
+> Characters are, well character strings. They're always quoted. You can use single or double quotes. We'll use double quotes as suggested by the Tidyverse style guide, which we'll reference numerous times throughout the course as we learn to not only write R code, but to write "better" R code.
+
+>>> Doubles are floating point numerical values, the default numerical type in R. In simple terms, these are numbers that *can* take on decimal values.
+> And integers, are well, integers -- they're always whole numbers. To make a number an integer in R, we add an L. Also, if you ask R to give you a sequence of number, say from 1 to 3, it will assume you want integers (as opposed to an infinite number of doubles).
+
+>>> We can construct vectors on the fly wth concetation using the c() function in R. All values in a vector must be of the same type, as we've seen in the cat lovers example, like doubles, or characters, or vectors of characters concatenated to make a bigger vector.
+
+>>> As we saw in the cat lovers example, we can, intentionally, convert between data types. For example, here we have a vector of integers, and with the as.character function we can convert the vector to a character.
+
+>>> Similarly, we could start with logicals, and convert them to numerics, or doubles. TRUE is a 1, and FALSE is a 0.
+
+>>> But, again as we saw in the cat lovers example, conversion between data types can also happen without intention. If you create a vector with a double and a character, they both get converted to a character. Why? Because there's no way to represent the character string Hello as a number, but the number 1 can be quoted to turn into a character string.
+> R will happily convert between various types without complaint when different types of data are concatenated in a vector, and sometimes that's handy, it's not always a great thing!
+> A logical and an integer concatenated, we get an integer vector, as it's straightforward to represent a logical as an integer.
+> A double and an integer, we get a double, as it's possible to represent an integer as a double, but we can't go from a number with a decimal to an integer without losing the decimal.
+> And an integer and a character string, everything becomes characters.
+
+>>> We have seen two ways in which types of variables can be changed.
+> Explicitly with functions like as.logical(), as.numeric(), as.integer(), as.double(), or as.character(), called explicit coercion.
+> Implicitly when you use a vector in a specific context that expects a certain type of vector. 
+
+>>> Just like human languages have special cases and exception, so does computing languages.
+
+>>> Some of R's special values are NAs, 
+> not availables, NaNs -- not a numbers like something undefined you get when you divide 0 by 0, 
+> positive infinity and
+> negative infinity
+
+>>> We'll focus on NAs, as those are the ones you'll most commonly encounter when working with data. We've seen already that when we try to apply certain functions to vectors that contain NAs, things fail.
+> NAs often want special treatment, like explicitly being removed before applying a function.
+> Or they show up as special cases in the results of other functions, like summary.
+
+>>> Now here is the last twist we'll touch on in this video. NAs are actually logicals. But why?
+
+>>> Unlike NaN, NAs are genuinely unknown values. But that doesn’t mean they can’t function in a logical way. Let’s think about why NAs are logical…
+> To answer this question, let's take a look at these two scenarios and think about why they give different answers. TRUE or NA gives TRUE while FALSE or NA gives FALSE. But why?
+
+>>> NA is unknown, so it could be TRUE or FALSE
+> TRUE or NA gives TRUE, because the answer is always TRUE whether the unknown NA is actually TRUE or FALSE
+> while FALSE or NA gives FALSE, because the answer changes depending whether the unknown NA is actually TRUE or FALSE
+> Now this may not make sense for mathematical operations, but it does make sense in the context of missing data. And this is the context we will focus on as we continue our foray into data types and classes in R.
