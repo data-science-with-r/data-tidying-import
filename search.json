@@ -221,7 +221,42 @@
     "href": "slides/2-1-data-types/2-1-data-types.html#lets-take-another-look",
     "title": "Data types",
     "section": "Let’s take another look",
-    "text": "Let’s take another look\n\n\n\n\n\n\n\n\nname\nnumber_of_cats\n\n\n\n\nBernice Warren\n0\n\n\nWoodrow Stone\n0\n\n\nWillie Bass\n1\n\n\nTyrone Estrada\n3\n\n\nAlex Daniels\n3\n\n\nJane Bates\n2\n\n\nLatoya Simpson\n1\n\n\nDarin Woods\n1\n\n\nAgnes Cobb\n0\n\n\nTabitha Grant\n0\n\n\nPerry Cross\n0\n\n\nWanda Silva\n0\n\n\nAlicia Sims\n1\n\n\nEmily Logan\n3\n\n\nWoodrow Elliott\n3\n\n\nBrent Copeland\n2\n\n\nPedro Carlson\n1\n\n\nPatsy Luna\n1\n\n\nBrett Robbins\n0\n\n\nOliver George\n0\n\n\nCalvin Perry\n1\n\n\nLora Gutierrez\n1\n\n\nCharlotte Sparks\n0\n\n\nEarl Mack\n0\n\n\nLeslie Wade\n4\n\n\nSantiago Barker\n0\n\n\nJose Bell\n0\n\n\nLynda Smith\n0\n\n\nBradford Marshall\n0\n\n\nIrving Miller\n0\n\n\nCaroline Simpson\n0\n\n\nFrances Welch\n0\n\n\nMelba Jenkins\n0\n\n\nVeronica Morales\n0\n\n\nJuanita Cunningham\n0\n\n\nMaurice Howard\n0\n\n\nTeri Pierce\n0\n\n\nPhil Franklin\n0\n\n\nJan Zimmerman\n0\n\n\nLeslie Price\n0\n\n\nBessie Patterson\n0\n\n\nEthel Wolfe\n0\n\n\nNaomi Wright\n1\n\n\nSadie Frank\n3\n\n\nLonnie Cannon\n3\n\n\nTony Garcia\n2\n\n\nDarla Newton\n1\n\n\nGinger Clark\n1.5 - honestly I think one of my cats is half human\n\n\nLionel Campbell\n0\n\n\nFlorence Klein\n0\n\n\nHarriet Leonard\n1\n\n\nTerrence Harrington\n0\n\n\nTravis Garner\n1\n\n\nDoug Bass\nthree\n\n\nPat Norris\n1\n\n\nDawn Young\n1\n\n\nShari Alvarez\n1\n\n\nTamara Robinson\n0\n\n\nMegan Morgan\n0\n\n\nKara Obrien\n2"
+    "text": "Let’s take another look\n\n\n\n\n\n\n\n\nname\nnumber_of_cats\n\n\n\n\nBernice Warren\n0\n\n\nWoodrow Stone\n0\n\n\nWillie Bass\n1\n\n\nTyrone Estrada\n3\n\n\nAlex Daniels\n3\n\n\nJane Bates\n2\n\n\nLatoya Simpson\n1\n\n\nDarin Woods\n1\n\n\nAgnes Cobb\n0\n\n\nTabitha Grant\n0\n\n\nPerry Cross\n0\n\n\nWanda Silva\n0\n\n\nAlicia Sims\n1\n\n\nEmily Logan\n3\n\n\nWoodrow Elliott\n3\n\n\nBrent Copeland\n2\n\n\nPedro Carlson\n1\n\n\nPatsy Luna\n1\n\n\nBrett Robbins\n0\n\n\nOliver George\n0"
+  },
+  {
+    "objectID": "slides/2-1-data-types/2-1-data-types.html#lets-take-another-look-1",
+    "href": "slides/2-1-data-types/2-1-data-types.html#lets-take-another-look-1",
+    "title": "Data types",
+    "section": "Let’s take another look",
+    "text": "Let’s take another look\n\n\n\n\n\n\n\n\nname\nnumber_of_cats\n\n\n\n\nCalvin Perry\n1\n\n\nLora Gutierrez\n1\n\n\nCharlotte Sparks\n0\n\n\nEarl Mack\n0\n\n\nLeslie Wade\n4\n\n\nSantiago Barker\n0\n\n\nJose Bell\n0\n\n\nLynda Smith\n0\n\n\nBradford Marshall\n0\n\n\nIrving Miller\n0\n\n\nCaroline Simpson\n0\n\n\nFrances Welch\n0\n\n\nMelba Jenkins\n0\n\n\nVeronica Morales\n0\n\n\nJuanita Cunningham\n0\n\n\nMaurice Howard\n0\n\n\nTeri Pierce\n0\n\n\nPhil Franklin\n0\n\n\nJan Zimmerman\n0\n\n\nLeslie Price\n0"
+  },
+  {
+    "objectID": "slides/2-1-data-types/2-1-data-types.html#lets-take-another-look-2",
+    "href": "slides/2-1-data-types/2-1-data-types.html#lets-take-another-look-2",
+    "title": "Data types",
+    "section": "Let’s take another look",
+    "text": "Let’s take another look\n\n\n\n\n\n\n\n\nname\nnumber_of_cats\n\n\n\n\nBessie Patterson\n0\n\n\nEthel Wolfe\n0\n\n\nNaomi Wright\n1\n\n\nSadie Frank\n3\n\n\nLonnie Cannon\n3\n\n\nTony Garcia\n2\n\n\nDarla Newton\n1\n\n\nGinger Clark\n1.5 - honestly I think one of my cats is half human\n\n\nLionel Campbell\n0\n\n\nFlorence Klein\n0\n\n\nHarriet Leonard\n1\n\n\nTerrence Harrington\n0\n\n\nTravis Garner\n1\n\n\nDoug Bass\nthree\n\n\nPat Norris\n1\n\n\nDawn Young\n1\n\n\nShari Alvarez\n1\n\n\nTamara Robinson\n0\n\n\nMegan Morgan\n0\n\n\nKara Obrien\n2"
+  },
+  {
+    "objectID": "slides/2-1-data-types/2-1-data-types.html#lets-take-another-look-3",
+    "href": "slides/2-1-data-types/2-1-data-types.html#lets-take-another-look-3",
+    "title": "Data types",
+    "section": "Let’s take another look",
+    "text": "Let’s take another look\n\n\n\n\n\n\n\n\nname\nnumber_of_cats\n\n\n\n\nBessie Patterson\n0\n\n\nEthel Wolfe\n0\n\n\nNaomi Wright\n1\n\n\nSadie Frank\n3\n\n\nLonnie Cannon\n3\n\n\nTony Garcia\n2\n\n\nDarla Newton\n1\n\n\nGinger Clark\n1.5 - honestly I think one of my cats is half human\n\n\nLionel Campbell\n0\n\n\nFlorence Klein\n0\n\n\nHarriet Leonard\n1\n\n\nTerrence Harrington\n0\n\n\nTravis Garner\n1\n\n\nDoug Bass\nthree\n\n\nPat Norris\n1\n\n\nDawn Young\n1\n\n\nShari Alvarez\n1\n\n\nTamara Robinson\n0\n\n\nMegan Morgan\n0\n\n\nKara Obrien\n2"
+  },
+  {
+    "objectID": "slides/2-1-data-types/2-1-data-types.html#lets-take-another-look-4",
+    "href": "slides/2-1-data-types/2-1-data-types.html#lets-take-another-look-4",
+    "title": "Data types",
+    "section": "Let’s take another look",
+    "text": "Let’s take another look\n\n\n\n\n\n\n\n\nname\nnumber_of_cats\n\n\n\n\nBessie Patterson\n0\n\n\nEthel Wolfe\n0\n\n\nNaomi Wright\n1\n\n\nSadie Frank\n3\n\n\nLonnie Cannon\n3\n\n\nTony Garcia\n2\n\n\nDarla Newton\n1\n\n\nGinger Clark\n1.5 - honestly I think one of my cats is half human\n\n\nLionel Campbell\n0\n\n\nFlorence Klein\n0\n\n\nHarriet Leonard\n1\n\n\nTerrence Harrington\n0\n\n\nTravis Garner\n1\n\n\nDoug Bass\nthree\n\n\nPat Norris\n1\n\n\nDawn Young\n1\n\n\nShari Alvarez\n1\n\n\nTamara Robinson\n0\n\n\nMegan Morgan\n0\n\n\nKara Obrien\n2"
+  },
+  {
+    "objectID": "slides/2-1-data-types/2-1-data-types.html#lets-take-another-look-5",
+    "href": "slides/2-1-data-types/2-1-data-types.html#lets-take-another-look-5",
+    "title": "Data types",
+    "section": "Let’s take another look",
+    "text": "Let’s take another look\n\n\n\n\n\n\n\n\nname\nnumber_of_cats\n\n\n\n\nBessie Patterson\n0\n\n\nEthel Wolfe\n0\n\n\nNaomi Wright\n1\n\n\nSadie Frank\n3\n\n\nLonnie Cannon\n3\n\n\nTony Garcia\n2\n\n\nDarla Newton\n1\n\n\nGinger Clark\n1.5 - honestly I think one of my cats is half human\n\n\nLionel Campbell\n0\n\n\nFlorence Klein\n0\n\n\nHarriet Leonard\n1\n\n\nTerrence Harrington\n0\n\n\nTravis Garner\n1\n\n\nDoug Bass\nthree\n\n\nPat Norris\n1\n\n\nDawn Young\n1\n\n\nShari Alvarez\n1\n\n\nTamara Robinson\n0\n\n\nMegan Morgan\n0\n\n\nKara Obrien\n2"
   },
   {
     "objectID": "slides/2-1-data-types/2-1-data-types.html#sometimes-you-might-need-to-babysit-your-respondents",
@@ -238,25 +273,11 @@
     "text": "Always you need to respect data types\n\ncat_lovers |&gt;#| \n  mutate(\n    number_of_cats = case_when(\n      name == \"Ginger Clark\" ~ \"2\",\n      name == \"Doug Bass\"    ~ \"3\",\n      .default = number_of_cats\n      ),\n    number_of_cats = as.numeric(number_of_cats)\n    ) |&gt;\n  summarize(mean_cats = mean(number_of_cats))\n\n\n\n# A tibble: 1 × 1\n  mean_cats\n      &lt;dbl&gt;\n1     0.833"
   },
   {
-    "objectID": "slides/2-1-data-types/2-1-data-types.html#now-that-we-know-what-were-doing",
-    "href": "slides/2-1-data-types/2-1-data-types.html#now-that-we-know-what-were-doing",
-    "title": "Data types",
-    "section": "Now that we know what we’re doing…",
-    "text": "Now that we know what we’re doing…\n\ncat_lovers &lt;- cat_lovers |&gt;\n  mutate(\n    number_of_cats = case_when(\n      name == \"Ginger Clark\" ~ \"2\",\n      name == \"Doug Bass\"    ~ \"3\",\n      .default = number_of_cats\n      ),\n    number_of_cats = as.numeric(number_of_cats)\n    )"
-  },
-  {
     "objectID": "slides/2-1-data-types/2-1-data-types.html#moral-of-the-story",
     "href": "slides/2-1-data-types/2-1-data-types.html#moral-of-the-story",
     "title": "Data types",
     "section": "Moral of the story",
     "text": "Moral of the story\n\nIf your data does not behave how you expect it to, type coercion upon reading in the data might be the reason.\nGo in and investigate your data, apply the fix, save your data, live happily ever after."
-  },
-  {
-    "objectID": "slides/2-1-data-types/2-1-data-types.html#section",
-    "href": "slides/2-1-data-types/2-1-data-types.html#section",
-    "title": "Data types",
-    "section": "",
-    "text": "now that we have a good motivation for learning about data types in R\n\n\n\nlet’s learn about data types in R!"
   },
   {
     "objectID": "slides/2-1-data-types/2-1-data-types.html#data-types-in-r",
@@ -326,7 +347,7 @@
     "href": "slides/2-1-data-types/2-1-data-types.html#nas-are-special-s",
     "title": "Data types",
     "section": "NAs are special ❄️s",
-    "text": "NAs are special ❄️s\n\nx &lt;- c(1, 2, 3, 4, NA)\n\n\nmean(x)\n\n[1] NA\n\n\n\n\nmean(x, na.rm = TRUE)\n\n[1] 2.5\n\nsummary(x)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's \n   1.00    1.75    2.50    2.50    3.25    4.00       1"
+    "text": "NAs are special ❄️s\n\nx &lt;- c(1, 2, 3, 4, NA)\n\n\nmean(x)\n\n[1] NA\n\n\n\n\nmean(x, na.rm = TRUE)\n\n[1] 2.5\n\n\n\n\n\nsummary(x)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's \n   1.00    1.75    2.50    2.50    3.25    4.00       1"
   },
   {
     "objectID": "slides/2-1-data-types/2-1-data-types.html#nas-are-logical",
@@ -347,7 +368,7 @@
     "href": "slides/2-1-data-types/2-1-data-types.html#mental-model-for-nas-1",
     "title": "Data types",
     "section": "Mental model for NAs",
-    "text": "Mental model for NAs\n\nNA is unknown, so it could be TRUE or FALSE\nTRUE | NA gives TRUE, because the answer is always TRUE whether the unknown NA is actually TRUE or FALSE\n\n\nTRUE | TRUE  # if NA was TRUE\n\n[1] TRUE\n\nTRUE | FALSE # if NA was FALSE\n\n[1] TRUE\n\n\n\nFALSE | NA gives FALSE, because the answer changes depending whether the unknown NA is actually TRUE or FALSE\n\n\nFALSE | TRUE  # if NA was TRUE\n\n[1] TRUE\n\nFALSE | FALSE # if NA was FALSE\n\n[1] FALSE\n\n\n\n\nThis may not make sense for mathematical operations, but it does make sense in the context of missing data"
+    "text": "Mental model for NAs\nNA is unknown, so it could be TRUE or FALSE\n\n\nTRUE | NA gives TRUE, because the answer is always TRUE whether the unknown NA is actually TRUE or FALSE\n\n\nTRUE | TRUE  # if NA was TRUE\n\n[1] TRUE\n\nTRUE | FALSE # if NA was FALSE\n\n[1] TRUE\n\n\n\n\n\nFALSE | NA gives FALSE, because the answer changes depending whether the unknown NA is actually TRUE or FALSE\n\n\nFALSE | TRUE  # if NA was TRUE\n\n[1] TRUE\n\nFALSE | FALSE # if NA was FALSE\n\n[1] FALSE\n\n\n\n\n\nThis may not make sense for mathematical operations, but it does make sense in the context of missing data"
   },
   {
     "objectID": "exercises/nyc_flights.html",
