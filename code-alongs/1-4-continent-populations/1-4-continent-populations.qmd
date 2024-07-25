@@ -25,7 +25,8 @@ library(scales)
 
 ### Population
 
-These data come from [The World Bank](https://databank.worldbank.org/reports.aspx?source=2&series=SP.POP.TOTL&country=#) and reflect population counts for the years 2000 to 2023. The populations given are mid-year estimates.
+These data come from [The World Bank](https://databank.worldbank.org/reports.aspx?source=2&series=SP.POP.TOTL&country=#) and reflect population counts for the years 2000 to 2023.
+The populations given are mid-year estimates.
 
 ```{r}
 #| label: load-population-data

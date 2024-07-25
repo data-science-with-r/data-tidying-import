@@ -1,7 +1,9 @@
 ---
-title: Continent populations
+title: Country populations over time (Notes)
 fig-asp: 0.4
 fig-width: 8
+editor_options: 
+  chunk_output_type: console
 ---
 
 # Introduction
@@ -24,7 +26,8 @@ library(scales)
 
 ## Data
 
-These data come from [The World Bank](https://databank.worldbank.org/reports.aspx?source=2&series=SP.POP.TOTL&country=#) and reflect population counts for the years 2000 to 2023. The populations given are mid-year estimates.
+These data come from [The World Bank](https://databank.worldbank.org/reports.aspx?source=2&series=SP.POP.TOTL&country=#) and reflect population counts for the years 2000 to 2023.
+The populations given are mid-year estimates.
 
 ```{r}
 #| label: load-population-data
@@ -39,9 +42,15 @@ Let's take a look at the data.
 population
 ```
 
-## Pivoting
+# Analysis
 
--   Pivot the `population` data frame *longer* such that each row represents a country / year combination and `year` and `population` of countries for that year are columns in the data frame.
+## Tidying
+
+-   What are the aesthetic mappings in the plot shown above, i.e., what pieces of information do we need represented as columns (variables) in our data frame in order to be able to recreate this plot?
+
+Population, year, and country should each be in their own columns.
+
+-   Reshape the `population` data such that it can be used to recreate the plot above. Note: For now, you can keep all the countries in the dataset.
 
 ```{r}
 #| label: pivot
@@ -55,12 +64,13 @@ population |>
 
 -   What is the type of the `year` variable? Why? What should it be?
 
-It's a character (`chr`) variable since the information came from the columns of the original data frame and R cannot know that these character strings represent years. The variable type should be numeric.
+It's a character (`chr`) variable since the information came from the columns of the original data frame and R cannot know that these character strings represent years.
+The variable type should be numeric.
 
 -   Start over with pivoting, and this time also make sure `year` is a numerical variable in the resulting data frame. Save the resulting data frame as `population_longer`.
 
 ```{r}
-#| label: pivot-better
+#| label: reshape-better
 population_longer <- population |>
   pivot_longer(
     cols = `2000`:`2023`,
@@ -76,8 +86,9 @@ population_longer
 -   Now we start making our plot, but let's not get too fancy right away. Create a line plot of populations of the United States, India, and China over the years. Represent the data with points and lines.
 
 ```{r}
+#| label: line-plot
 population_longer |>
-  filter(country_name == c("United States", "India", "China")) |>
+  filter(country_name %in% c("United States", "India", "China")) |>
   ggplot(aes(x = year, y = population, color = country_name)) +
   geom_point() +
   geom_line()
@@ -90,8 +101,9 @@ Add ...
 -   Use different shapes for each country's points.
 
 ```{r}
+#| label: shapes
 population_longer |>
-  filter(country_name == c("United States", "India", "China")) |>
+  filter(country_name %in% c("United States", "India", "China")) |>
   ggplot(aes(x = year, y = population, color = country_name, shape = country_name)) +
   geom_point() +
   geom_line()
@@ -100,24 +112,26 @@ population_longer |>
 -   Update x-axis scale such that the years displayed go from 2000 to 2024 in increments of 4 years.
 
 ```{r}
+#| label: x-axis
 population_longer |>
-  filter(country_name == c("United States", "India", "China")) |>
+  filter(country_name %in% c("United States", "India", "China")) |>
   ggplot(aes(x = year, y = population, color = country_name, shape = country_name)) +
   geom_point() +
   geom_line() +
   scale_x_continuous(limits = c(2000, 2024), breaks = seq(2000, 2024, 4))
 ```
 
--   Update the y-axis so it's scaled to millions.
+-   Update the y-axis so it's scaled to millions and uses the same breaks as the goal plot.
 
 ```{r}
+#| label: y-axis
 population_longer |>
-  filter(country_name == c("United States", "India", "China")) |>
+  filter(country_name %in% c("United States", "India", "China")) |>
   ggplot(aes(x = year, y = population, color = country_name, shape = country_name)) +
   geom_point() +
   geom_line() +
   scale_x_continuous(limits = c(2000, 2024), breaks = seq(2000, 2024, 4)) +
-  scale_y_continuous(labels = label_number(scale = 1/1000000, suffix = " mil"))
+  scale_y_continuous(breaks = seq(250000000, 1250000000, 250000000), labels = label_number(scale = 1/1000000, suffix = " mil"))
 ```
 
 -   Update colors for each country using the following level / color assignments.
@@ -126,13 +140,14 @@ population_longer |>
     -   "China" = "#EE1C25"
 
 ```{r}
+#| label: colors
 population_longer |>
-  filter(country_name == c("United States", "India", "China")) |>
+  filter(country_name %in% c("United States", "India", "China")) |>
   ggplot(aes(x = year, y = population, color = country_name, shape = country_name)) +
   geom_point() +
   geom_line() +
   scale_x_continuous(limits = c(2000, 2024), breaks = seq(2000, 2024, 4)) +
-  scale_y_continuous(labels = label_number(scale = 1/1000000, suffix = " mil")) +
+  scale_y_continuous(breaks = seq(250000000, 1250000000, 250000000), labels = label_number(scale = 1/1000000, suffix = " mil")) +
   scale_color_manual(
     values = c(
       "United States" = "#0A3161",
@@ -145,13 +160,14 @@ population_longer |>
 -   Update the plot labels (`title`, `subtitle`, `x`, `y`, and `caption`) and use `theme_minimal()`.
 
 ```{r}
+#| label: labels-theme
 population_longer |>
-  filter(country_name == c("United States", "India", "China")) |>
+  filter(country_name %in% c("United States", "India", "China")) |>
   ggplot(aes(x = year, y = population, color = country_name, shape = country_name)) +
   geom_point() +
   geom_line() +
   scale_x_continuous(limits = c(2000, 2024), breaks = seq(2000, 2024, 4)) +
-  scale_y_continuous(labels = label_number(scale = 1/1000000, suffix = " mil")) +
+  scale_y_continuous(breaks = seq(250000000, 1250000000, 250000000), labels = label_number(scale = 1/1000000, suffix = " mil")) +
   scale_color_manual(
     values = c(
       "United States" = "#0A3161",
@@ -172,13 +188,14 @@ population_longer |>
 -   Finally, move the legend to the top of the plot and remove its label.
 
 ```{r}
+#| label: country-populations-years
 population_longer |>
-  filter(country_name == c("United States", "India", "China")) |>
+  filter(country_name %in% c("United States", "India", "China")) |>
   ggplot(aes(x = year, y = population, color = country_name, shape = country_name)) +
   geom_point() +
   geom_line() +
   scale_x_continuous(limits = c(2000, 2024), breaks = seq(2000, 2024, 4)) +
-  scale_y_continuous(labels = label_number(scale = 1/1000000, suffix = " mil")) +
+  scale_y_continuous(breaks = seq(250000000, 1250000000, 250000000), labels = label_number(scale = 1/1000000, suffix = " mil")) +
   scale_color_manual(
     values = c(
       "United States" = "#0A3161",

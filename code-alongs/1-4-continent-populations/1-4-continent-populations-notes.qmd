@@ -1,5 +1,5 @@
 ---
-title: Continent populations
+title: Continent populations (Notes)
 fig-asp: 0.4
 fig-width: 8
 ---
@@ -25,7 +25,8 @@ library(scales)
 
 ### Population
 
-These data come from [The World Bank](https://databank.worldbank.org/reports.aspx?source=2&series=SP.POP.TOTL&country=#) and reflect population counts for the years 2000 to 2023. The populations given are mid-year estimates.
+These data come from [The World Bank](https://databank.worldbank.org/reports.aspx?source=2&series=SP.POP.TOTL&country=#) and reflect population counts for the years 2000 to 2023.
+The populations given are mid-year estimates.
 
 ```{r}
 #| label: load-population-data
@@ -155,4 +156,5 @@ ggplot(population_summary) +
 
 -   What additional improvements would you like to make to this plot.
 
-Answers may vary. Ordering the continents in decreasing order of population.
+Answers may vary.
+Ordering the continents in decreasing order of population.

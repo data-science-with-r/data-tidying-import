@@ -1,5 +1,5 @@
 ---
-title: Continent populations
+title: Country populations over time
 fig-asp: 0.4
 fig-width: 8
 ---
@@ -24,7 +24,8 @@ library(scales)
 
 ## Data
 
-These data come from [The World Bank](https://databank.worldbank.org/reports.aspx?source=2&series=SP.POP.TOTL&country=#) and reflect population counts for the years 2000 to 2023. The populations given are mid-year estimates.
+These data come from [The World Bank](https://databank.worldbank.org/reports.aspx?source=2&series=SP.POP.TOTL&country=#) and reflect population counts for the years 2000 to 2023.
+The populations given are mid-year estimates.
 
 ```{r}
 #| label: load-population-data
@@ -39,9 +40,13 @@ Let's take a look at the data.
 population
 ```
 
-## Pivoting
+# Tidying
 
--   Pivot the `population` data frame *longer* such that each row represents a country / year combination and `year` and `population` of countries for that year are columns in the data frame.
+-   What are the aesthetic mappings in the plot shown above, i.e., what pieces of information do we need represented as columns (variables) in our data frame in order to be able to recreate this plot?
+
+Add response here.
+
+-   Reshape the `population` data such that it can be used to recreate the plot above. Note: For now, you can keep all the countries in the dataset.
 
 ```{r}
 #| label: pivot
@@ -86,7 +91,7 @@ Add response here.
 # add code here
 ```
 
--   Update the y-axis so it's scaled to millions.
+-   Update the y-axis so it's scaled to millions and uses the same breaks as the goal plot.
 
 ```{r}
 #| label: y-axis
@@ -113,6 +118,6 @@ Add response here.
 -   Finally, move the legend to the top of the plot and remove its label.
 
 ```{r}
-#| label: legend
+#| label: country-populations-years
 # add code here
 ```
