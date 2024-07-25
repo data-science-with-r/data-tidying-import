@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Mine Çetinkaya-Rundel + Elijah Meyer">
 
-<title> Data tidying and importing – Data tidying and importing</title>
+<title>Continent populations – Data tidying and importing</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,31 +20,61 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
-<link href="site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -73,121 +102,7 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-slides .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-title',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
-      
-      searchColumns: ["listing-title","listing-author"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-slides'] = new List('listing-slides', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-code-alongs .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-title',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
-      
-      searchColumns: ["listing-title","listing-author"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-code-alongs'] = new List('listing-code-alongs', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-exercises .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-title',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-title-sort'] }],
-      
-      searchColumns: ["listing-title","listing-author"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-exercises'] = new List('listing-exercises', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
@@ -198,7 +113,7 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Data tidying and importing</span>
     </a>
   </div>
@@ -209,7 +124,7 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
 </ul>
@@ -230,9 +145,14 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#slides" id="toc-slides" class="nav-link active" data-scroll-target="#slides">Slides</a></li>
-  <li><a href="#code-alongs" id="toc-code-alongs" class="nav-link" data-scroll-target="#code-alongs">Code alongs</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
+  <ul class="collapse">
+  <li><a href="#goal" id="toc-goal" class="nav-link" data-scroll-target="#goal">Goal</a></li>
+  <li><a href="#packages" id="toc-packages" class="nav-link" data-scroll-target="#packages">Packages</a></li>
+  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">Data</a></li>
+  <li><a href="#pivoting" id="toc-pivoting" class="nav-link" data-scroll-target="#pivoting">Pivoting</a></li>
+  <li><a href="#visualization" id="toc-visualization" class="nav-link" data-scroll-target="#visualization">Visualization</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -241,20 +161,13 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><i class="fa-solid fa-book-open" aria-label="book-open"></i> Data tidying and importing</h1>
-<p class="subtitle lead"><i class="fa-solid fa-book" aria-label="book"></i> Data Science with R</p>
+<h1 class="title">Continent populations</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Mine Çetinkaya-Rundel + Elijah Meyer </p>
-          </div>
-  </div>
     
   
     
@@ -265,145 +178,132 @@ window.Quarto = {
 </header>
 
 
-<section id="slides" class="level2">
-<h2 class="anchored" data-anchor-id="slides">Slides</h2>
-<div id="listing-slides" class="quarto-listing quarto-listing-container-table">
-<table class="quarto-listing-table table">
-<thead>
-<tr>
-<th>
-Title
-</th>
-</tr>
-</thead>
-<tbody class="list">
-<tr data-index="0" data-listing-file-modified-sort="1721186066469" data-listing-reading-time-sort="1" data-listing-word-count-sort="49" data-listing-title-sort="Welcome" data-listing-filename-sort="1-1-welcome.qmd">
-<td>
-<a href="./slides/1-1-welcome/1-1-welcome.html" class="title listing-title">Welcome</a>
-</td>
-</tr>
-<tr data-index="1" data-listing-file-modified-sort="1721675013070" data-listing-reading-time-sort="1" data-listing-word-count-sort="150" data-listing-title-sort="Tidy data" data-listing-filename-sort="1-2-tidy-data.qmd">
-<td>
-<a href="./slides/1-2-tidy-data/1-2-tidy-data.html" class="title listing-title">Tidy data</a>
-</td>
-</tr>
-<tr data-index="2" data-listing-file-modified-sort="1721676439801" data-listing-reading-time-sort="6" data-listing-word-count-sort="1073" data-listing-title-sort="Tidying data" data-listing-filename-sort="1-3-tidying-data.qmd">
-<td>
-<a href="./slides/1-3-tidying-data/1-3-tidying-data.html" class="title listing-title">Tidying data</a>
-</td>
-</tr>
-<tr data-index="3" data-listing-file-modified-sort="1721676611235" data-listing-reading-time-sort="2" data-listing-word-count-sort="344" data-listing-title-sort="Joining data" data-listing-filename-sort="1-4-joining-data.qmd">
-<td>
-<a href="./slides/1-4-joining-data/1-4-joining-data.html" class="title listing-title">Joining data</a>
-</td>
-</tr>
-<tr data-index="4" data-listing-file-modified-sort="1721831104671" data-listing-reading-time-sort="6" data-listing-word-count-sort="1178" data-listing-title-sort="Data types" data-listing-filename-sort="2-1-data-types.qmd">
-<td>
-<a href="./slides/2-1-data-types/2-1-data-types.html" class="title listing-title">Data types</a>
-</td>
-</tr>
-<tr data-index="5" data-listing-file-modified-sort="1721832132651" data-listing-reading-time-sort="2" data-listing-word-count-sort="371" data-listing-title-sort="Data classes" data-listing-filename-sort="2-2-data-classes.qmd">
-<td>
-<a href="./slides/2-2-data-classes/2-2-data-classes.html" class="title listing-title">Data classes</a>
-</td>
-</tr>
-<tr data-index="6" data-listing-file-modified-sort="1721832900400" data-listing-reading-time-sort="4" data-listing-word-count-sort="696" data-listing-title-sort="Importing data" data-listing-filename-sort="2-3-importing-data.qmd">
-<td>
-<a href="./slides/2-3-importing-data/2-3-importing-data.html" class="title listing-title">Importing data</a>
-</td>
-</tr>
-</tbody>
-</table>
-<div class="listing-no-matching d-none">
-No matching items
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<section id="goal" class="level2">
+<h2 class="anchored" data-anchor-id="goal">Goal</h2>
+<p>Our ultimate goal in this application exercise is to make the following data visualization.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://data-science-with-r.github.io/images/country-populations-years.png" class="img-fluid quarto-figure quarto-figure-center figure-img" alt="Line plot of country populations for the United States, India, and China between 2000 and 2023."></p>
+</figure>
+</div>
+</section>
+<section id="packages" class="level2">
+<h2 class="anchored" data-anchor-id="packages">Packages</h2>
+<p>We will use the <strong>tidyverse</strong> and <strong>scales</strong> packages for data wrangling and visualization.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="data" class="level2">
+<h2 class="anchored" data-anchor-id="data">Data</h2>
+<p>These data come from <a href="https://databank.worldbank.org/reports.aspx?source=2&amp;series=SP.POP.TOTL&amp;country=#">The World Bank</a> and reflect population counts for the years 2000 to 2023. The populations given are mid-year estimates.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>population <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://data-science-with-r.github.io/data/population.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Let’s take a look at the data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>population</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 217 × 28
+   series_name series_code country_name country_code `2000` `2001` `2002` `2003`
+   &lt;chr&gt;       &lt;chr&gt;       &lt;chr&gt;        &lt;chr&gt;         &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+ 1 Population… SP.POP.TOTL Afghanistan  AFG          1.95e7 1.97e7 2.10e7 2.26e7
+ 2 Population… SP.POP.TOTL Albania      ALB          3.09e6 3.06e6 3.05e6 3.04e6
+ 3 Population… SP.POP.TOTL Algeria      DZA          3.08e7 3.12e7 3.16e7 3.21e7
+ 4 Population… SP.POP.TOTL American Sa… ASM          5.82e4 5.83e4 5.82e4 5.79e4
+ 5 Population… SP.POP.TOTL Andorra      AND          6.61e4 6.78e4 7.08e4 7.39e4
+ 6 Population… SP.POP.TOTL Angola       AGO          1.64e7 1.69e7 1.75e7 1.81e7
+ 7 Population… SP.POP.TOTL Antigua and… ATG          7.51e4 7.62e4 7.72e4 7.81e4
+ 8 Population… SP.POP.TOTL Argentina    ARG          3.71e7 3.75e7 3.79e7 3.83e7
+ 9 Population… SP.POP.TOTL Armenia      ARM          3.17e6 3.13e6 3.11e6 3.08e6
+10 Population… SP.POP.TOTL Aruba        ABW          8.91e4 9.07e4 9.18e4 9.27e4
+# ℹ 207 more rows
+# ℹ 20 more variables: `2004` &lt;dbl&gt;, `2005` &lt;dbl&gt;, `2006` &lt;dbl&gt;, `2007` &lt;dbl&gt;,
+#   `2008` &lt;dbl&gt;, `2009` &lt;dbl&gt;, `2010` &lt;dbl&gt;, `2011` &lt;dbl&gt;, `2012` &lt;dbl&gt;,
+#   `2013` &lt;dbl&gt;, `2014` &lt;dbl&gt;, `2015` &lt;dbl&gt;, `2016` &lt;dbl&gt;, `2017` &lt;dbl&gt;,
+#   `2018` &lt;dbl&gt;, `2019` &lt;dbl&gt;, `2020` &lt;dbl&gt;, `2021` &lt;dbl&gt;, `2022` &lt;dbl&gt;,
+#   `2023` &lt;dbl&gt;</code></pre>
 </div>
 </div>
 </section>
-<section id="code-alongs" class="level2">
-<h2 class="anchored" data-anchor-id="code-alongs">Code alongs</h2>
-<div id="listing-code-alongs" class="quarto-listing quarto-listing-container-table">
-<table class="quarto-listing-table table">
-<thead>
-<tr>
-<th>
-Title
-</th>
-</tr>
-</thead>
-<tbody class="list">
-<tr data-index="0" data-listing-file-modified-sort="1721907292052" data-listing-reading-time-sort="5" data-listing-word-count-sort="963" data-listing-title-sort="Continent populations" data-listing-filename-sort="1-3-country-populations-notes.qmd">
-<td>
-<a href="./code-alongs/1-3-country-populations/1-3-country-populations-notes.html" class="title listing-title">Continent populations</a>
-</td>
-</tr>
-<tr data-index="1" data-listing-file-modified-sort="1721907284974" data-listing-reading-time-sort="2" data-listing-word-count-sort="392" data-listing-title-sort="Continent populations" data-listing-filename-sort="1-3-country-populations.qmd">
-<td>
-<a href="./code-alongs/1-3-country-populations/1-3-country-populations.html" class="title listing-title">Continent populations</a>
-</td>
-</tr>
-<tr data-index="2" data-listing-file-modified-sort="1721904714837" data-listing-reading-time-sort="4" data-listing-word-count-sort="671" data-listing-title-sort="Continent populations" data-listing-filename-sort="1-4-continent-populations-notes.qmd">
-<td>
-<a href="./code-alongs/1-4-continent-populations/1-4-continent-populations-notes.html" class="title listing-title">Continent populations</a>
-</td>
-</tr>
-<tr data-index="3" data-listing-file-modified-sort="1721904807306" data-listing-reading-time-sort="3" data-listing-word-count-sort="492" data-listing-title-sort="Continent populations" data-listing-filename-sort="1-4-continent-populations.qmd">
-<td>
-<a href="./code-alongs/1-4-continent-populations/1-4-continent-populations.html" class="title listing-title">Continent populations</a>
-</td>
-</tr>
-<tr data-index="4" data-listing-file-modified-sort="1721882641096" data-listing-reading-time-sort="4" data-listing-word-count-sort="732" data-listing-title-sort="Halving CO2 emissions" data-listing-filename-sort="2-2-co2-emissions-notes.qmd">
-<td>
-<a href="./code-alongs/2-2-co2-emissions/2-2-co2-emissions-notes.html" class="title listing-title">Halving CO2 emissions</a>
-</td>
-</tr>
-<tr data-index="5" data-listing-file-modified-sort="1721904910968" data-listing-reading-time-sort="2" data-listing-word-count-sort="300" data-listing-title-sort="Halving CO2 emissions" data-listing-filename-sort="2-2-co2-emissions.qmd">
-<td>
-<a href="./code-alongs/2-2-co2-emissions/2-2-co2-emissions.html" class="title listing-title">Halving CO2 emissions</a>
-</td>
-</tr>
-</tbody>
-</table>
-<div class="listing-no-matching d-none">
-No matching items
+<section id="pivoting" class="level2">
+<h2 class="anchored" data-anchor-id="pivoting">Pivoting</h2>
+<ul>
+<li>Pivot the <code>population</code> data frame <em>longer</em> such that each row represents a country / year combination and <code>year</code> and <code>population</code> of countries for that year are columns in the data frame.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<ul>
+<li>What is the type of the <code>year</code> variable? Why? What should it be?</li>
+</ul>
+<p>Add response here.</p>
+<ul>
+<li>Start over with pivoting, and this time also make sure <code>year</code> is a numerical variable in the resulting data frame. Save the resulting data frame as <code>population_longer</code>.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="exercises" class="level2">
-<h2 class="anchored" data-anchor-id="exercises">Exercises</h2>
-<div id="listing-exercises" class="quarto-listing quarto-listing-container-table">
-<table class="quarto-listing-table table">
-<thead>
-<tr>
-<th>
-Title
-</th>
-</tr>
-</thead>
-<tbody class="list">
-<tr data-index="0" data-listing-file-modified-sort="1721351015989" data-listing-reading-time-sort="4" data-listing-word-count-sort="798" data-listing-title-sort="Nobel Prize winners &amp; sales data" data-listing-filename-sort="noble.qmd">
-<td>
-<a href="./exercises/noble.html" class="title listing-title">Nobel Prize winners &amp; sales data</a>
-</td>
-</tr>
-<tr data-index="1" data-listing-file-modified-sort="1721184628494" data-listing-reading-time-sort="16" data-listing-word-count-sort="3024" data-listing-title-sort="NYC flights + data wrangling" data-listing-filename-sort="nyc_flights.qmd">
-<td>
-<a href="./exercises/nyc_flights.html" class="title listing-title">NYC flights + data wrangling</a>
-</td>
-</tr>
-<tr data-index="2" data-listing-file-modified-sort="1721351015995" data-listing-reading-time-sort="7" data-listing-word-count-sort="1207" data-listing-title-sort="Tidy Basketball" data-listing-filename-sort="tidy_basketball.qmd">
-<td>
-<a href="./exercises/tidy_basketball.html" class="title listing-title">Tidy Basketball</a>
-</td>
-</tr>
-</tbody>
-</table>
-<div class="listing-no-matching d-none">
-No matching items
+<section id="visualization" class="level2">
+<h2 class="anchored" data-anchor-id="visualization">Visualization</h2>
+<ul>
+<li>Now we start making our plot, but let’s not get too fancy right away. Create a line plot of populations of the United States, India, and China over the years. Represent the data with points and lines.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<ul>
+<li>What aspects of the plot need to be updated to go from the draft you created above to the goal plot at the beginning of this application exercise.</li>
+</ul>
+<p>Add response here.</p>
+<ul>
+<li>Use different shapes for each country’s points.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Update x-axis scale such that the years displayed go from 2000 to 2024 in increments of 4 years.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Update the y-axis so it’s scaled to millions.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Update colors for each country using the following level / color assignments.
+<ul>
+<li>“United States” = “#0A3161”</li>
+<li>“India” = “#FF671F”</li>
+<li>“China” = “#EE1C25”</li>
+</ul></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Update the plot labels (<code>title</code>, <code>subtitle</code>, <code>x</code>, <code>y</code>, and <code>caption</code>) and use <code>theme_minimal()</code>.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Finally, move the legend to the top of the plot and remove its label.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
-
+</section>
 </section>
 
 </main> <!-- /main -->
