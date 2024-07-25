@@ -150,6 +150,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#packages" id="toc-packages" class="nav-link" data-scroll-target="#packages">Packages</a></li>
   <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">Data</a></li>
   </ul></li>
+  <li><a href="#analysis" id="toc-analysis" class="nav-link" data-scroll-target="#analysis">Analysis</a></li>
   </ul>
 </nav>
     </div>
@@ -178,9 +179,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
 <p>Visitors to <a href="https://www.gapminder.org/">Gapminder.org</a> are welcomed with a question about common misconceptions. Here is one of them.</p>
-<p><img src="images/gapminder-co2-question.png" class="img-fluid"></p>
+<p><img src="https://data-science-with-r.github.io/images/gapminder-co2-question.png" class="img-fluid"></p>
 <p>Once you make your selection, you are directed to a page that explains the right answer and shows a visualization of the distribution of responses from various countries.</p>
-<p><img src="images/gapminder-co2-answers.png" class="img-fluid"></p>
+<p><img src="https://data-science-with-r.github.io/images/gapminder-co2-answers.png" class="img-fluid"></p>
 <p>Our goal is to create a version of this visualization.</p>
 <section id="packages" class="level2">
 <h2 class="anchored" data-anchor-id="packages">Packages</h2>
@@ -223,6 +224,10 @@ dbl (3): Very wrong, Wrong, Correct
 8 Pakistan                 37    13      50</code></pre>
 </div>
 </div>
+</section>
+</section>
+<section id="analysis" class="level1">
+<h1>Analysis</h1>
 <ul>
 <li>Pivot the <code>co2_emissions</code> data frame <em>longer</em> such that each row represents a country / answer type combination and <code>answer_type</code> and <code>percentage</code> for that country are columns in the data frame.</li>
 </ul>
@@ -272,7 +277,6 @@ dbl (3): Very wrong, Wrong, Correct
 </div>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

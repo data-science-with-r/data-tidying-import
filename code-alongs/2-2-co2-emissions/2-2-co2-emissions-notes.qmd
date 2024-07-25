@@ -1,19 +1,19 @@
 ---
-title: "Halving CO2 emissions"
+title: "Halving CO2 emissions (notes)"
 fig-width: 6
 fig-asp: 0.618
 ---
 
 # Introduction
 
-Visitors to Gapminder.org are welcomed with a question about common misconceptions.
+Visitors to [Gapminder.org](https://www.gapminder.org/) are welcomed with a question about common misconceptions.
 Here is one of them.
 
-![](images/gapminder-co2-questions.png)
+![](https://data-science-with-r.github.io/images/gapminder-co2-question.png)
 
 Once you make your selection, you are directed to a page that explains the right answer and shows a visualization of the distribution of responses from various countries.
 
-![](images/gapminder-co2-answers.png)
+![](https://data-science-with-r.github.io/images/gapminder-co2-answers.png)
 
 Our goal is to create a version of this visualization.
 
@@ -40,8 +40,11 @@ co2_emissions <- read_csv("https://data-science-with-r.github.io/data/co2-emissi
 And let's take a look at the data.
 
 ```{r}
+#| label: view-data
 co2_emissions
 ```
+
+# Analysis
 
 -   Pivot the `co2_emissions` data frame *longer* such that each row represents a country / answer type combination and `answer_type` and `percentage` for that country are columns in the data frame.
 
