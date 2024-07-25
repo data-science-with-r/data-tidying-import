@@ -58,7 +58,9 @@ Let's take a look at the data.
 continents
 ```
 
-## Exercises
+# Analysis
+
+## Data prep
 
 -   For this analysis we'll focus on the latest available population numbers -- 2023. Modify the `population` data frame to only include 2023 population numbers. Then, rename the column containing 2023 population numbers as `population`.
 
@@ -106,6 +108,8 @@ Add response here.
 #| label: population-continents-sum
 # add code here
 ```
+
+## Visualization
 
 -   Make a bar plot with total population on the y-axis and continent on the x-axis, where the height of each bar represents the total population in that continent.
 

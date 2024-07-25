@@ -91,7 +91,7 @@ co2_emissions
 # add code here
 ```
 
--   Updte labels and other elements of the plot to get it closer to the original plot.
+-   Update labels and other elements of the plot to get it closer to the original plot.
 
 ```{r}
 #| label: update-labels
