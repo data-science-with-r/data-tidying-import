@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Halving CO2 emissions – Data tidying and importing</title>
+<title>Continent populations – Data tidying and importing</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -148,7 +148,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
   <ul class="collapse">
   <li><a href="#packages" id="toc-packages" class="nav-link" data-scroll-target="#packages">Packages</a></li>
-  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">Data</a></li>
+  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">Data</a>
+  <ul class="collapse">
+  <li><a href="#population" id="toc-population" class="nav-link" data-scroll-target="#population">Population</a></li>
+  <li><a href="#continents" id="toc-continents" class="nav-link" data-scroll-target="#continents">Continents</a></li>
+  </ul></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises">Exercises</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -158,7 +163,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Halving CO2 emissions</h1>
+<h1 class="title">Continent populations</h1>
 </div>
 
 
@@ -177,11 +182,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
-<p>Visitors to <a href="https://www.gapminder.org/">Gapminder.org</a> are welcomed with a question about common misconceptions. Here is one of them.</p>
-<p><img src="images/gapminder-co2-question.png" class="img-fluid"></p>
-<p>Once you make your selection, you are directed to a page that explains the right answer and shows a visualization of the distribution of responses from various countries.</p>
-<p><img src="images/gapminder-co2-answers.png" class="img-fluid"></p>
-<p>Our goal is to create a version of this visualization.</p>
+<p>Our ultimate goal in this application exercise is to create a bar plot of total populations of continents, where the input data are:</p>
+<ol type="1">
+<li>Countries and populations</li>
+<li>Countries and continents</li>
+</ol>
 <section id="packages" class="level2">
 <h2 class="anchored" data-anchor-id="packages">Packages</h2>
 <p>We will use the <strong>tidyverse</strong> and <strong>scales</strong> packages for data wrangling and visualization.</p>
@@ -192,84 +197,127 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="data" class="level2">
 <h2 class="anchored" data-anchor-id="data">Data</h2>
-<p>The data we’re going to use is in a CSV file called <code>co2-emissions.csv</code> at <a href="https://data-science-with-r.github.io/data/co2-emissions.csv" class="uri">https://data-science-with-r.github.io/data/co2-emissions.csv</a>.</p>
+<section id="population" class="level3">
+<h3 class="anchored" data-anchor-id="population">Population</h3>
+<p>These data come from <a href="https://databank.worldbank.org/reports.aspx?source=2&amp;series=SP.POP.TOTL&amp;country=#">The World Bank</a> and reflect population counts for the years 2000 to 2023. The populations given are mid-year estimates.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>co2_emissions <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://data-science-with-r.github.io/data/co2-emissions.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Rows: 8 Columns: 4
-── Column specification ────────────────────────────────────────────────────────
-Delimiter: ","
-chr (1): country
-dbl (3): Very wrong, Wrong, Correct
-
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>population <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://data-science-with-r.github.io/data/population.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-<p>And let’s take a look at the data.</p>
+<p>Let’s take a look at the data.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>co2_emissions</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>population</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 8 × 4
-  country        `Very wrong` Wrong Correct
-  &lt;chr&gt;                 &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;
-1 Türkiye                  61    23      16
-2 Columbia                 64    16      20
-3 Sweden                   36    35      29
-4 Germany                  26    41      33
-5 United Kingdom           29    37      34
-6 United States            31    32      37
-7 Kenya                    46     8      46
-8 Pakistan                 37    13      50</code></pre>
+<pre><code># A tibble: 217 × 28
+   series_name series_code country_name country_code `2000` `2001` `2002` `2003`
+   &lt;chr&gt;       &lt;chr&gt;       &lt;chr&gt;        &lt;chr&gt;         &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
+ 1 Population… SP.POP.TOTL Afghanistan  AFG          1.95e7 1.97e7 2.10e7 2.26e7
+ 2 Population… SP.POP.TOTL Albania      ALB          3.09e6 3.06e6 3.05e6 3.04e6
+ 3 Population… SP.POP.TOTL Algeria      DZA          3.08e7 3.12e7 3.16e7 3.21e7
+ 4 Population… SP.POP.TOTL American Sa… ASM          5.82e4 5.83e4 5.82e4 5.79e4
+ 5 Population… SP.POP.TOTL Andorra      AND          6.61e4 6.78e4 7.08e4 7.39e4
+ 6 Population… SP.POP.TOTL Angola       AGO          1.64e7 1.69e7 1.75e7 1.81e7
+ 7 Population… SP.POP.TOTL Antigua and… ATG          7.51e4 7.62e4 7.72e4 7.81e4
+ 8 Population… SP.POP.TOTL Argentina    ARG          3.71e7 3.75e7 3.79e7 3.83e7
+ 9 Population… SP.POP.TOTL Armenia      ARM          3.17e6 3.13e6 3.11e6 3.08e6
+10 Population… SP.POP.TOTL Aruba        ABW          8.91e4 9.07e4 9.18e4 9.27e4
+# ℹ 207 more rows
+# ℹ 20 more variables: `2004` &lt;dbl&gt;, `2005` &lt;dbl&gt;, `2006` &lt;dbl&gt;, `2007` &lt;dbl&gt;,
+#   `2008` &lt;dbl&gt;, `2009` &lt;dbl&gt;, `2010` &lt;dbl&gt;, `2011` &lt;dbl&gt;, `2012` &lt;dbl&gt;,
+#   `2013` &lt;dbl&gt;, `2014` &lt;dbl&gt;, `2015` &lt;dbl&gt;, `2016` &lt;dbl&gt;, `2017` &lt;dbl&gt;,
+#   `2018` &lt;dbl&gt;, `2019` &lt;dbl&gt;, `2020` &lt;dbl&gt;, `2021` &lt;dbl&gt;, `2022` &lt;dbl&gt;,
+#   `2023` &lt;dbl&gt;</code></pre>
 </div>
 </div>
-<ul>
-<li>Pivot the <code>co2_emissions</code> data frame <em>longer</em> such that each row represents a country / answer type combination and <code>answer_type</code> and <code>percentage</code> for that country are columns in the data frame.</li>
-</ul>
+</section>
+<section id="continents" class="level3">
+<h3 class="anchored" data-anchor-id="continents">Continents</h3>
+<p>These data come from <a href="https://ourworldindata.org/grapher/continents-according-to-our-world-in-data">Our World in Data</a>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>continents <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://data-science-with-r.github.io/data/continents.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<ul>
-<li>Create a stacked bar plot of response type by countries.</li>
-</ul>
+<p>Let’s take a look at the data.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>continents</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 285 × 4
+   entity                code      year continent    
+   &lt;chr&gt;                 &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt;        
+ 1 Abkhazia              OWID_ABK  2015 Asia         
+ 2 Afghanistan           AFG       2015 Asia         
+ 3 Akrotiri and Dhekelia OWID_AKD  2015 Asia         
+ 4 Aland Islands         ALA       2015 Europe       
+ 5 Albania               ALB       2015 Europe       
+ 6 Algeria               DZA       2015 Africa       
+ 7 American Samoa        ASM       2015 Oceania      
+ 8 Andorra               AND       2015 Europe       
+ 9 Angola                AGO       2015 Africa       
+10 Anguilla              AIA       2015 North America
+# ℹ 275 more rows</code></pre>
 </div>
+</div>
+</section>
+</section>
+<section id="exercises" class="level2">
+<h2 class="anchored" data-anchor-id="exercises">Exercises</h2>
 <ul>
-<li>In the original plot, the levels of <code>answer_type</code> are in the order Very wrong, Wrong, and Correct. Update the previous plot reorder the levels in this order.</li>
+<li>For this analysis we’ll focus on the latest available population numbers – 2023. Modify the <code>population</code> data frame to only include 2023 population numbers. Then, rename the column containing 2023 population numbers as <code>population</code>.</li>
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
-<li>Update the colors of the plot to match the original plot:
+<li>Which variable(s) will we use to join the <code>population</code> and <code>continents</code> data frames?</li>
+</ul>
+<p>Add response here.</p>
 <ul>
-<li>Very wrong: #96283A</li>
-<li>Wrong: #DB4C67</li>
-<li>Correct: #C8F0BF</li>
-</ul></li>
+<li>We want to create a new data frame that keeps all rows and columns from <code>population</code> and brings in the corresponding information from <code>continents</code>. Which join function should we use?</li>
+</ul>
+<p>Add response here.</p>
+<ul>
+<li>Join the two data frames and name assign the joined data frame to a new data frame <code>population_continents</code>.</li>
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
-<li>Move the legend to the bottom and make sure the levels appear in the same order they appear in the plot.</li>
+<li>Take a look at the newly created <code>population_continent</code> data frame. There are some countries that were not in <code>continents</code>. First, identify which countries these are (they will have <code>NA</code> values for <code>continent</code>).</li>
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
-<li>Reorder countries to match the original plot – in increasing order of corect percentages.</li>
+<li>All of these countries are actually in the <code>continents</code> data frame, but under different names. So, let’s clean that data first by updating the country names in the <code>population</code> data frame in a way they will match the <code>continents</code> data frame, and then joining them, using a <code>case_when()</code> statement in <code>mutate()</code>. At the end, check that all countries now have continent information.</li>
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
-<li>Updte labels and other elements of the plot to get it closer to the original plot.</li>
+<li>Which continent do you think has the highest population? Which do you think has the second highest? The lowest?</li>
+</ul>
+<p>Add response here.</p>
+<ul>
+<li>Create a new data frame called <code>population_summary</code> that contains a row for each continent and a column for the total population for that continent, in descending order of population. Note that the function for calculating totals in R is <code>sum()</code>.</li>
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<ul>
+<li>Make a bar plot with total population on the y-axis and continent on the x-axis, where the height of each bar represents the total population in that continent.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>Recreate the following plot, which is commonly referred to as a <strong>lollipop plot</strong>. Hint: Start with the <code>point</code>s, then try adding the <code>segment</code>s, then add axis labels and <code>caption</code>, update the x scale.</li>
+</ul>
+<p><img src="https://data-science-with-r.github.io/images/population-summary-lollipop-2023.png" class="img-fluid"></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add code here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>What additional improvements would you like to make to this plot.</li>
+</ul>
+<p>Add response here.</p>
 
 
 </section>

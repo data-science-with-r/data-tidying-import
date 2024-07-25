@@ -10,7 +10,7 @@ Visitors to [Gapminder.org](https://www.gapminder.org/) are welcomed with a ques
 
 ![](images/gapminder-co2-question.png)
 
-Once you make your selection, you are directed to a page that explains the right answer and shows a visualization of the distribution of responses from various countries. 
+Once you make your selection, you are directed to a page that explains the right answer and shows a visualization of the distribution of responses from various countries.
 
 ![](images/gapminder-co2-answers.png)
 
@@ -53,6 +53,7 @@ co2_emissions
 -   Create a stacked bar plot of response type by countries.
 
 ```{r}
+#| label: stacked-bar-plot
 # add code here
 ```
 
@@ -64,16 +65,16 @@ co2_emissions
 ```
 
 -   Update the colors of the plot to match the original plot:
-    - Very wrong: #96283A
-    - Wrong: #DB4C67
-    - Correct: #C8F0BF
+    -   Very wrong: #96283A
+    -   Wrong: #DB4C67
+    -   Correct: #C8F0BF
 
 ```{r}
 #| label: colors
 # add code here
 ```
 
-- Move the legend to the bottom and make sure the levels appear in the same order they appear in the plot.
+-   Move the legend to the bottom and make sure the levels appear in the same order they appear in the plot.
 
 ```{r}
 #| label: move-legend
@@ -84,6 +85,7 @@ co2_emissions
 
 ```{r}
 #| label: reorder-country
+# add code here
 ```
 
 -   Updte labels and other elements of the plot to get it closer to the original plot.
