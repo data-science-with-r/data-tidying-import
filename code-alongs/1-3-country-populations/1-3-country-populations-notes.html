@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Continent populations – Data tidying and importing</title>
+<title>Country populations over time (Notes) – Data tidying and importing</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -150,7 +150,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#goal" id="toc-goal" class="nav-link" data-scroll-target="#goal">Goal</a></li>
   <li><a href="#packages" id="toc-packages" class="nav-link" data-scroll-target="#packages">Packages</a></li>
   <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">Data</a></li>
-  <li><a href="#pivoting" id="toc-pivoting" class="nav-link" data-scroll-target="#pivoting">Pivoting</a></li>
+  </ul></li>
+  <li><a href="#analysis" id="toc-analysis" class="nav-link" data-scroll-target="#analysis">Analysis</a>
+  <ul class="collapse">
+  <li><a href="#tidying" id="toc-tidying" class="nav-link" data-scroll-target="#tidying">Tidying</a></li>
   <li><a href="#visualization" id="toc-visualization" class="nav-link" data-scroll-target="#visualization">Visualization</a></li>
   </ul></li>
   </ul>
@@ -161,7 +164,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Continent populations</h1>
+<h1 class="title">Country populations over time (Notes)</h1>
 </div>
 
 
@@ -229,10 +232,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="pivoting" class="level2">
-<h2 class="anchored" data-anchor-id="pivoting">Pivoting</h2>
+</section>
+<section id="analysis" class="level1">
+<h1>Analysis</h1>
+<section id="tidying" class="level2">
+<h2 class="anchored" data-anchor-id="tidying">Tidying</h2>
 <ul>
-<li>Pivot the <code>population</code> data frame <em>longer</em> such that each row represents a country / year combination and <code>year</code> and <code>population</code> of countries for that year are columns in the data frame.</li>
+<li>What are the aesthetic mappings in the plot shown above, i.e., what pieces of information do we need represented as columns (variables) in our data frame in order to be able to recreate this plot?</li>
+</ul>
+<p>Population, year, and country should each be in their own columns.</p>
+<ul>
+<li>Reshape the <code>population</code> data such that it can be used to recreate the plot above. Note: For now, you can keep all the countries in the dataset.</li>
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>population <span class="sc">|&gt;</span></span>
@@ -299,14 +309,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>population_longer <span class="sc">|&gt;</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(country_name <span class="sc">==</span> <span class="fu">c</span>(<span class="st">"United States"</span>, <span class="st">"India"</span>, <span class="st">"China"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(country_name <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"United States"</span>, <span class="st">"India"</span>, <span class="st">"China"</span>)) <span class="sc">|&gt;</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> population, <span class="at">color =</span> country_name)) <span class="sc">+</span></span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="1-3-country-populations-notes_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="768"></p>
+<p><img src="1-3-country-populations-notes_files/figure-html/line-plot-1.png" class="img-fluid figure-img" width="768"></p>
 </figure>
 </div>
 </div>
@@ -320,14 +330,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>population_longer <span class="sc">|&gt;</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(country_name <span class="sc">==</span> <span class="fu">c</span>(<span class="st">"United States"</span>, <span class="st">"India"</span>, <span class="st">"China"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(country_name <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"United States"</span>, <span class="st">"India"</span>, <span class="st">"China"</span>)) <span class="sc">|&gt;</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> population, <span class="at">color =</span> country_name, <span class="at">shape =</span> country_name)) <span class="sc">+</span></span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="1-3-country-populations-notes_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="768"></p>
+<p><img src="1-3-country-populations-notes_files/figure-html/shapes-1.png" class="img-fluid figure-img" width="768"></p>
 </figure>
 </div>
 </div>
@@ -337,7 +347,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>population_longer <span class="sc">|&gt;</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(country_name <span class="sc">==</span> <span class="fu">c</span>(<span class="st">"United States"</span>, <span class="st">"India"</span>, <span class="st">"China"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(country_name <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"United States"</span>, <span class="st">"India"</span>, <span class="st">"China"</span>)) <span class="sc">|&gt;</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> population, <span class="at">color =</span> country_name, <span class="at">shape =</span> country_name)) <span class="sc">+</span></span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
 <span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
@@ -345,26 +355,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="1-3-country-populations-notes_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="768"></p>
+<p><img src="1-3-country-populations-notes_files/figure-html/x-axis-1.png" class="img-fluid figure-img" width="768"></p>
 </figure>
 </div>
 </div>
 </div>
 <ul>
-<li>Update the y-axis so it’s scaled to millions.</li>
+<li>Update the y-axis so it’s scaled to millions and uses the same breaks as the goal plot.</li>
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>population_longer <span class="sc">|&gt;</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(country_name <span class="sc">==</span> <span class="fu">c</span>(<span class="st">"United States"</span>, <span class="st">"India"</span>, <span class="st">"China"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(country_name <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"United States"</span>, <span class="st">"India"</span>, <span class="st">"China"</span>)) <span class="sc">|&gt;</span></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> population, <span class="at">color =</span> country_name, <span class="at">shape =</span> country_name)) <span class="sc">+</span></span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
 <span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
 <span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">2000</span>, <span class="dv">2024</span>), <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">2000</span>, <span class="dv">2024</span>, <span class="dv">4</span>)) <span class="sc">+</span></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="fu">label_number</span>(<span class="at">scale =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">1000000</span>, <span class="at">suffix =</span> <span class="st">" mil"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">250000000</span>, <span class="dv">1250000000</span>, <span class="dv">250000000</span>), <span class="at">labels =</span> <span class="fu">label_number</span>(<span class="at">scale =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">1000000</span>, <span class="at">suffix =</span> <span class="st">" mil"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="1-3-country-populations-notes_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="768"></p>
+<p><img src="1-3-country-populations-notes_files/figure-html/y-axis-1.png" class="img-fluid figure-img" width="768"></p>
 </figure>
 </div>
 </div>
@@ -379,12 +389,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>population_longer <span class="sc">|&gt;</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(country_name <span class="sc">==</span> <span class="fu">c</span>(<span class="st">"United States"</span>, <span class="st">"India"</span>, <span class="st">"China"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(country_name <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"United States"</span>, <span class="st">"India"</span>, <span class="st">"China"</span>)) <span class="sc">|&gt;</span></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> population, <span class="at">color =</span> country_name, <span class="at">shape =</span> country_name)) <span class="sc">+</span></span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
 <span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
 <span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">2000</span>, <span class="dv">2024</span>), <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">2000</span>, <span class="dv">2024</span>, <span class="dv">4</span>)) <span class="sc">+</span></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="fu">label_number</span>(<span class="at">scale =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">1000000</span>, <span class="at">suffix =</span> <span class="st">" mil"</span>)) <span class="sc">+</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">250000000</span>, <span class="dv">1250000000</span>, <span class="dv">250000000</span>), <span class="at">labels =</span> <span class="fu">label_number</span>(<span class="at">scale =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">1000000</span>, <span class="at">suffix =</span> <span class="st">" mil"</span>)) <span class="sc">+</span></span>
 <span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(</span>
 <span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">values =</span> <span class="fu">c</span>(</span>
 <span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>      <span class="st">"United States"</span> <span class="ot">=</span> <span class="st">"#0A3161"</span>,</span>
@@ -395,7 +405,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="1-3-country-populations-notes_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="768"></p>
+<p><img src="1-3-country-populations-notes_files/figure-html/colors-1.png" class="img-fluid figure-img" width="768"></p>
 </figure>
 </div>
 </div>
@@ -405,12 +415,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>population_longer <span class="sc">|&gt;</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(country_name <span class="sc">==</span> <span class="fu">c</span>(<span class="st">"United States"</span>, <span class="st">"India"</span>, <span class="st">"China"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(country_name <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"United States"</span>, <span class="st">"India"</span>, <span class="st">"China"</span>)) <span class="sc">|&gt;</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> population, <span class="at">color =</span> country_name, <span class="at">shape =</span> country_name)) <span class="sc">+</span></span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
 <span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
 <span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">2000</span>, <span class="dv">2024</span>), <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">2000</span>, <span class="dv">2024</span>, <span class="dv">4</span>)) <span class="sc">+</span></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="fu">label_number</span>(<span class="at">scale =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">1000000</span>, <span class="at">suffix =</span> <span class="st">" mil"</span>)) <span class="sc">+</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">250000000</span>, <span class="dv">1250000000</span>, <span class="dv">250000000</span>), <span class="at">labels =</span> <span class="fu">label_number</span>(<span class="at">scale =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">1000000</span>, <span class="at">suffix =</span> <span class="st">" mil"</span>)) <span class="sc">+</span></span>
 <span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(</span>
 <span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">values =</span> <span class="fu">c</span>(</span>
 <span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>      <span class="st">"United States"</span> <span class="ot">=</span> <span class="st">"#0A3161"</span>,</span>
@@ -429,7 +439,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="1-3-country-populations-notes_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="768"></p>
+<p><img src="1-3-country-populations-notes_files/figure-html/labels-theme-1.png" class="img-fluid figure-img" width="768"></p>
 </figure>
 </div>
 </div>
@@ -439,12 +449,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>population_longer <span class="sc">|&gt;</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(country_name <span class="sc">==</span> <span class="fu">c</span>(<span class="st">"United States"</span>, <span class="st">"India"</span>, <span class="st">"China"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(country_name <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"United States"</span>, <span class="st">"India"</span>, <span class="st">"China"</span>)) <span class="sc">|&gt;</span></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> population, <span class="at">color =</span> country_name, <span class="at">shape =</span> country_name)) <span class="sc">+</span></span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
 <span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
 <span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">2000</span>, <span class="dv">2024</span>), <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">2000</span>, <span class="dv">2024</span>, <span class="dv">4</span>)) <span class="sc">+</span></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> <span class="fu">label_number</span>(<span class="at">scale =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">1000000</span>, <span class="at">suffix =</span> <span class="st">" mil"</span>)) <span class="sc">+</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">250000000</span>, <span class="dv">1250000000</span>, <span class="dv">250000000</span>), <span class="at">labels =</span> <span class="fu">label_number</span>(<span class="at">scale =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">1000000</span>, <span class="at">suffix =</span> <span class="st">" mil"</span>)) <span class="sc">+</span></span>
 <span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(</span>
 <span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">values =</span> <span class="fu">c</span>(</span>
 <span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>      <span class="st">"United States"</span> <span class="ot">=</span> <span class="st">"#0A3161"</span>,</span>
@@ -466,7 +476,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="1-3-country-populations-notes_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="768"></p>
+<p><img src="1-3-country-populations-notes_files/figure-html/country-populations-years-1.png" class="img-fluid figure-img" width="768"></p>
 </figure>
 </div>
 </div>
