@@ -6,11 +6,12 @@ fig-asp: 0.618
 
 # Introduction
 
-Visitors to Gapminder.org are welcomed with a question about common misconceptions. Here is one of them.
+Visitors to Gapminder.org are welcomed with a question about common misconceptions.
+Here is one of them.
 
 ![](images/gapminder-co2-questions.png)
 
-Once you make your selection, you are directed to a page that explains the right answer and shows a visualization of the distribution of responses from various countries. 
+Once you make your selection, you are directed to a page that explains the right answer and shows a visualization of the distribution of responses from various countries.
 
 ![](images/gapminder-co2-answers.png)
 
@@ -72,9 +73,9 @@ co2_emissions_longer |>
 ```
 
 -   Update the colors of the plot to match the original plot:
-    - Very wrong: #96283A
-    - Wrong: #DB4C67
-    - Correct: #C8F0BF
+    -   Very wrong: #96283A
+    -   Wrong: #DB4C67
+    -   Correct: #C8F0BF
 
 ```{r}
 co2_emissions_longer |>
@@ -92,7 +93,7 @@ co2_emissions_longer |>
   theme(legend.position = "bottom")
 ```
 
-- Move the legend to the bottom and make sure the levels appear in the same order they appear in the plot.
+-   Move the legend to the bottom and make sure the levels appear in the same order they appear in the plot.
 
 ```{r}
 co2_emissions_longer |>
@@ -161,4 +162,3 @@ co2_emissions_longer |>
     x = NULL, y = NULL
   )
 ```
-

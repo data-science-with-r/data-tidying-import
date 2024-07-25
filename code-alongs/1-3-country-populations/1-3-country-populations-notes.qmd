@@ -1,9 +1,7 @@
 ---
-title: Country populations over time (Notes)
+title: "Country populations over time (Notes)"
 fig-asp: 0.4
 fig-width: 8
-editor_options: 
-  chunk_output_type: console
 ---
 
 # Introduction

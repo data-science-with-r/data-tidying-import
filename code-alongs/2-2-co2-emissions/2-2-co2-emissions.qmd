@@ -6,7 +6,8 @@ fig-asp: 0.618
 
 # Introduction
 
-Visitors to [Gapminder.org](https://www.gapminder.org/) are welcomed with a question about common misconceptions. Here is one of them.
+Visitors to [Gapminder.org](https://www.gapminder.org/) are welcomed with a question about common misconceptions.
+Here is one of them.
 
 ![](images/gapminder-co2-question.png)
 

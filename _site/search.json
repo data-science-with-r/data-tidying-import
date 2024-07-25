@@ -37,7 +37,7 @@
   {
     "objectID": "code-alongs/2-1-thats-my-type/2-1-thats-my-type-notes.html",
     "href": "code-alongs/2-1-thats-my-type/2-1-thats-my-type-notes.html",
-    "title": "That’s my type",
+    "title": "That’s my type (Notes)",
     "section": "",
     "text": "In the following exercises, first guess what type the vector will be coerced to, then check your intuition with the typeof() function.\n\nc(1, 1L, \"C\")\n\n\nc(1, 1L, \"C\")\n\n[1] \"1\" \"1\" \"C\"\n\n\n\n1\n\n[1] 1\n\n1L\n\n[1] 1\n\n\"C\"\n\n[1] \"C\"\n\n\nGuess: ___\n\n#typeof(c(1, 1L, \"C\"))\n\n\nc(1L / 0, \"A\")\n\n\nc(1L / 0, \"A\")\n\n[1] \"Inf\" \"A\"  \n\n\n\ntypeof(1L)\n\n[1] \"integer\"\n\ntypeof(0)\n\n[1] \"double\"\n\ntypeof(1L/0)\n\n[1] \"double\"\n\ntypeof(\"A\")\n\n[1] \"character\"\n\n\nGuess: ___\n\ntypeof(c(1L / 0, \"A\"))\n\n[1] \"character\"\n\n\n\nc(1:3, 5)\n\n\nc(1:3, 5)\n\n[1] 1 2 3 5\n\n\n\ntypeof(1:3)\n\n[1] \"integer\"\n\ntypeof(5)\n\n[1] \"double\"\n\n\nGuess: ___\n\ntypeof(c(1:3, 5))\n\n[1] \"double\"\n\n\n\nc(3, \"3+\")\n\n\nc(3, \"3+\")\n\n[1] \"3\"  \"3+\"\n\n\n\ntypeof(3)\n\n[1] \"double\"\n\ntypeof(\"3+\")\n\n[1] \"character\"\n\n\nGuess: ___\n\ntypeof(c(3, \"3+\"))\n\n[1] \"character\"\n\n\n\nc(NA, TRUE)\n\n\nc(NA, TRUE)\n\n[1]   NA TRUE\n\n\n\ntypeof(NA)\n\n[1] \"logical\"\n\ntypeof(TRUE)\n\n[1] \"logical\"\n\n\nGuess: ___\n\ntypeof(c(NA, TRUE))\n\n[1] \"logical\""
   },

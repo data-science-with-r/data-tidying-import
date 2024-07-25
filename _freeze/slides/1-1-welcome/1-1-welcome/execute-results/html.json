@@ -2,8 +2,10 @@
   "hash": "27248e2c2a35cb50c30dc3bc192dc96f",
   "result": {
     "engine": "knitr",
-    "markdown": "---\ntitle: \"Welcome\"\nformat: revealjs\n---\n\n\n\n\n\n# Hello tidy data! {.section-break}\n\n## Data science life cycle\n\n![](images/data-science-cycle/data-science-cycle.001.png){fig-align=\"left\" width=\"1280\"}\n\n## Import\n\n![](images/data-science-cycle/data-science-cycle.002.png){fig-align=\"left\" width=\"1280\"}\n\n## Tidy -\\> transform\n\n![](images/data-science-cycle/data-science-cycle.003.png){fig-align=\"left\" width=\"1280\"}\n\n# Background\n\nSomething about Course 1 material\n\n# Outline\n\nEven though natural order is import then tidy, we'll first do some joing and tidying\n\nthen step back to importing\n\nfrom rectangular data\n\nthen from unstructured data like webscraping\n",
-    "supporting": [],
+    "markdown": "---\ntitle: \"Welcome\"\nformat: revealjs\n---\n\n\n\n\n\n\n# Hello tidy data! {.section-break}\n\n## Data science life cycle\n\n![](images/data-science-cycle/data-science-cycle.001.png){fig-align=\"left\" width=\"1280\"}\n\n## Import\n\n![](images/data-science-cycle/data-science-cycle.002.png){fig-align=\"left\" width=\"1280\"}\n\n## Tidy -\\> transform\n\n![](images/data-science-cycle/data-science-cycle.003.png){fig-align=\"left\" width=\"1280\"}\n\n# Background\n\nSomething about Course 1 material\n\n# Outline\n\nEven though natural order is import then tidy, we'll first do some joing and tidying\n\nthen step back to importing\n\nfrom rectangular data\n\nthen from unstructured data like webscraping\n",
+    "supporting": [
+      "1-1-welcome_files"
+    ],
     "filters": [
       "rmarkdown/pagebreak.lua"
     ],

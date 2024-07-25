@@ -1,5 +1,5 @@
 ---
-title: Continent populations
+title: "Continent populations"
 fig-asp: 0.4
 fig-width: 8
 ---

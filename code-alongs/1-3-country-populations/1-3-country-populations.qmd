@@ -1,5 +1,5 @@
 ---
-title: Country populations over time
+title: "Country populations over time"
 fig-asp: 0.4
 fig-width: 8
 ---
