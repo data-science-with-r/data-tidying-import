@@ -1,0 +1,55 @@
+>>> So far we've imported nively organized, rectangular data that was already organized in rows and columns into R. Sometimes, though, data come in an unstructured format, for example, on a web page. In this video, we're going to do a tools and techniques for scraping data off the web!
+
+>>> So, what do we mean by scraping the web?
+
+>>> Let's start with the what and why?
+> There is an increasing amount of data available on the web,
+> and these data are usually provided in an unstructured format. You can always copy and paste these data, but this can be quite time-consuming, especially if you have to do it across multiple pages, and it can also be prone to errors.
+> Web scraping is the process of extracting this information automatically and transforming it into a structured data set.
+> There are two different scenarios, and we're going to focus on the first, but I want to say a few things about the second as well.
+> The first scenario is screen scraping. We're extracting data from the source code of the website with an HTML parser; which is what we're going to use. Another option would be using regular expressions and  manually extracting pieces of the website source code that contain the data that we need from it. While this might sound tedious, there's actually no avoiding tedious text parsing when working with any text data, and particularly website source code.
+> The second scenario is getting data from Web APIs (API standing for Application Programming Interface). This is when a website offers a set of structured HTTP requests that return to us files in, generally, JSON or XML format. In this scenario you don't directly deal with the source code of a website, but you make requests to the website and get real-time data back.
+Let's give an example -- Suppose that we want to scrape some data from a static web page, like a Wikipedia page. It changes a little bit from time to time, but for the most part, the text there is static. You can do this with the help of an HTML parser, using an R package that will help you do that and get the data out of there. Versus think about getting data out of a social media platform, like TikTok or Bluesky. The timeline is constantly changing in such platforms and so if you want to get data from a particular person's timeline or at a particular time, instead of trying to scrape what's on the screen that you're seeing with your human eyes, you might prefer to make requests through the their API directly to their database, saying, "I want posts from this particular person at this particular time." Many websites offer an API service to make such data available -- some offer it for free and others charge for it.
+You can imagine that many of the apps you use that use data from other websites use these APIs to get the data -- like the weather app on your phone, for example. For the purposes of this course, we're going to focus on screen scraping,
+
+>>> and we're going to do this using an R package called rvest, but before we get into what rvest is, I want to say a little bit about what a web page looks like.
+
+>>> If you have ever made a web page, even a very, very simple one, you are probably familiar with the letters HTML, which is short for Hypertext Markup Language.
+> Most of the data on the web is largely available in HTML format.
+> HTML is structured -- or you can say it's hierarchical or tree based, but it’s often not available in a form useful for analysis -- a tidy format.
+> This is usually what a web page in HTML format looks like.
+> It starts with and ends with a tag called html. Note that end-html is denoted with a forward slash.
+> Within these, there's an element called head -- which is usually the title of your web page.
+> And there's an element called body -- which contains the rest of the content. In the body of this page we have a paragraph, identified by the p tag, where text is center-aligned and says "Hello World!" with an exclamation point at the end.
+If we wanted to bring the information on this page into R as a tidy data frame, we could place the head contents into the header row and the body contents into a cell. So we need some tools that will make that translation for us.
+
+>>> Enter rvest! rvest is a package that makes basic processing and manipulation of HTML data quite straightforward. So, you yourself don't have to understand very well how the HTML works. You want to have an idea of it, just enough to be able to extract things out of it, but that's generally it, rvest functions will read in the page and then extract pieces out of it. And they're designed to work with pipelines built with the pipe operator, so it's very tidyverse-friendly.
+
+>>> There are a handful of core rvest functions that you will use regularly once you start web scraping with it. The goal of this slide is not to give you a list to memorize, but instead so you ca get a sense of the package functionality.
+> `read_html` is what we're often going to start with, and it looks just like `read_csv` or `read_excel` that we've seen. It's the first step in reading the data -- website source code -- in from a URL. Since your data, in this case, is not in rectangular format, the rest of the rvest functions are going to allow you to take the website source code and extract pieces of it that you're interested in. `read_html` simply grabs the source code of the website and stores it as an object in R that's accessible by the other rvest functions.
+>The rest of the functions: `html_element` selects a specified element from an HTML document,
+>`html_elements` selects multiples specified elementsat once.
+>`html_table` is for grabbing a table as a whole.
+>`html_text` is for extracting out the text from any node that you have grabbed.
+>`html_name` extracts the tag's names.
+>`html_attr` and `html_attrs` extract each of the tag's attributes or their value of those by name.
+
+Now, I've read these function names to you, and there is a good chance not many of them made sense just yet. But the thing I would like you to keep in mind is that all of these functions start with `html_` and that some of the functions are just the plural versions of another one, like `element` versus `elements`. So, if you want to extract one thing, you use `element`, versus if you want to extract many things, you use `elements`.
+
+>>>Another tool we'll use to facilitate scraping data off the web is the SelectorGadget. While webscraping doesn't require knowing how HTML, you need to be able to identify the pieces of information you're interested in by their tags in the source code of a website written in HTML.
+>The SelectorGadget is an interactive tool that facilitates discovery and selection of tags for elements on a page, and it's an open source tool that's free to use.
+>You can add it to your browser as an extension
+>And the rvest package vignette on the using the SelectorGadget walks you through everything you need to know to succesfully use it
+
+>>>Here is how it all works... Suppose you want to get data from HackerNews. HackerNews actually has an API, so you might prefer to use that, but for now we'll exemplify using the SelectorGadget on the HackerNews homepage as of today. Note that if you try this out while watching the video, the posts you encounter will be different, as these posts change over time.
+
+>Once you install the SelectorGadget extension on Chrome, you should be able to see right next to your search bar an icon for the app, which looks kind of like a plug.
+>When you first click on it, it says "No valid path found" because you have not selected anything just yet.
+>Then, when you click on an element on the page, such as the title of a post, what you clicked on turns green and other elements with the same tag turn yellow. The SelectorGadget also generates a minimal CSS selector for that element. CSS stands for Cascading Style Sheets, a style sheet language for specifying the styling of a web page, like saying every element with a given tag will be bolded, or left aligned, etc.
+In that bar at the bottom of the screen that it says `a` and the number 224 is shown in parantheses, meaning 224 elements with the same tag were selected. That's everything in yellow plus the one you actually clicked on in green.
+
+>>> If you then click on a highlighted element to remove it from the selector, the selection will turn red. Then you click and unclick until you find the right selector for the items you want. And if you can't find a single selector for exactly the things you want, you can extract more than you need, and then clean the data using other data cleaning tools we've learned so far and some new ones we'll introduce for working with text data.
+
+>>>This is the general process of working with the SelectorGadget, which helps you come up with the appropriate tags for the elements you're interested in, without having to dive into the website source code. When working with the SelectorGadget, you shouldn't expect to get things right on the first try; you should expect to click around a few times before landing on the selector that gives you all the elements you want from a page. And if this fails, you might need to dive into the website source code
+
+

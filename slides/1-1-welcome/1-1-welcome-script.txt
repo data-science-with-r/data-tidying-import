@@ -1,6 +1,0 @@
-Hello, and welcome! My name is Mine Çetinkaya-Rundel, and I will be your instructor for the specialization titled Data Science with R. This is the second course in the specialization -- Data tidying and import. Let's dive in!
-
-
->>
-
-...

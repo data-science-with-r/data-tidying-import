@@ -1,5 +1,5 @@
 ---
-title: "Halving CO2 emissions"
+title: "Halving CO2 emissions (Complete)"
 fig-width: 6
 fig-asp: 0.618
 ---

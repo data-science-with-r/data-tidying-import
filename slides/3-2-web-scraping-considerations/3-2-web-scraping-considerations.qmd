@@ -1,0 +1,48 @@
+---
+title: "Web scraping considerations"
+format: revealjs
+---
+
+# Ethics
+
+## "Can you?" vs "Should you?"
+
+![](images/ok-cupid-1.png){fig-align="center" width="800"}
+
+::: aside
+Source: Brian Resnick, [Researchers just released profile data on 70,000 OkCupid users without permission](https://www.vox.com/2016/5/12/11666116/70000-okcupid-users-data-release), Vox.
+:::
+
+## "Can you?" vs "Should you?"
+
+![](images/ok-cupid-2.png){fig-align="center" width="699"}
+
+# Challenges
+
+## Unreliable formatting
+
+![](images/unreliable-formatting.png){fig-align="center" width="1000"}
+
+::: aside
+[alumni.duke.edu/news/notable-alumni](https://alumni.duke.edu/news/notable-alumni)
+:::
+
+## Data broken into many pages
+
+![](images/many-pages.png){fig-align="center"}
+
+# Workflow
+
+## A new R workflow
+
+::: incremental
+-   When working in a Quarto document, your analysis is re-run each time you render
+
+-   If web scraping in a Quarto document, you'd be re-scraping the data each time you knit, which is undesirable (and not *nice*)!
+
+-   An alternative workflow:
+
+    -   Use an R script to save your code
+    -   Saving interim data scraped using the code in the script as CSV or RDS files
+    -   Use the saved data in your analysis in your Quarto document
+:::

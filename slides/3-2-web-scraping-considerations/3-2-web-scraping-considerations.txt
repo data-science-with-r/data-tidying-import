@@ -1,0 +1,27 @@
+In this brief video, we're going to talk about web scraping considerations.
+
+>>> The first consideration is about data ethics. Can you scrape the data and should you scrape the data are not the same! For some data sources they might be, but for others, definitely not, particularly if we're talking about private, personal data.
+
+>>> This is an article from Vox.com titled "Researchers Just Released Profile Data on 70,000 OKCupid Users Without Permission." This is a case from 2016, describing how a group of researchers scraped data from OKCupid, a then very popular online dating site. The article says the data dump breaks the cardinal rule of social science research ethics: it took identifiable personal data without permission.
+
+>>> In defense, the researchers said that the data is already public; that they did not do anything wrong. But if you read through this article, what you're going to find out is that while the real names of the users are not available in the data set that they released, the usernames are, and some people use their real names as their username. Some people might also use the same username in other contexts where it would be associated with their real name as well.
+
+Sure, these users have chosen to give their personally identifiable information to to OKCupid, but for a particular purpose—to, you know, to be in the dating pool—not necessarily so their information can be released as a data set to the public in a much more searchable manner. At the time, what these researchers did was not legal, but ethically it was wrong. There are many instances of cases like this where we're thinking about data ethics versus the legality of things. Given that the law tends to lag behind technology, which is something we're experiencing right now in the face of all the AI development, it's especially important for a data scientist to act with good ethics, and not just based on what's legal and not legal.
+
+Ethics of data science, machine learning, and artificial intelligence are growing research and policy areas, and we'll talk more about them later in the specialization. But we can't talk about web scraping, and teach you the tools of web scraping, without highlighting these important ethical considerations.
+
+>>> The other challenges that we might talk about are more on the technical side.
+
+>>> First of all, we might be dealing with unreliable formatting at the source of the data. Here's a screenshot from the notable alumni page of Duke University. You can see that some alumni have photos and some don't. So, with the same selector, we get different pieces of information about each entry. We probably can write some additional logic around this issue, but this sort of thing makes web scraping challenging when you have unreliable formatting at the source.
+
+>>> Another potential issue is data broken into many pages. Here, I've gone to Yelp and looked for vegetarian food in Durham, North Carolina, for example, and Yelp produces the search results to show you only 10 listings at a time, 10 results at a time, and then the results are spread across many pages. In order to scrape from these, you need to learn about writing functions and iterating them across many pages. This is a solvable problem, but it is yet another challenge. Websites like this also tend to have dynamic content, which comes with its own challenges and new set of tools you need to learn to interact with them.
+
+>>> Let's make a final comment about workflow before we wrap up.
+>So far, we've been working in Quarto documents. When working in a Quarto document, your analysis is rerun each time you render.
+> If web scraping in a Quarto document, you'd be re-scraping the data each time you render, which is unreliable and also not nice. You're constantly hitting the servers of the website provider, and also, importantly, that data might change as you do that, and you might not want that.
+> So, we're going to present an alternative workflow,
+> using an R script to fetch the data from the web
+> and then save it as either a CSV file or an RDS -- R data storage -- file.
+> Then, you can use the saved data in your analysis in your Quarto document.
+
+So far in this course you've had data files provided to you and you learned about tools and techniques for analyzing these data. With web scraping, you get to be the one who "collects" the data and organizes it into a tabular format. And then your workflow is the same as before: read it in at the top of your Quarto document and go through the analysis. What we don't want to repeat each time we render is the scraping part, but we do certainly want the rest of our analysis to be reproducible via the Quarto document.
