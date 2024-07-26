@@ -1,5 +1,5 @@
 ---
-title: "Web scraping basics"
+title: "Web scraping"
 format: revealjs
 ---
 
@@ -70,9 +70,11 @@ format: revealjs
 
 ::: columns
 ::: {.column width="30%"}
+::: incremental
 -   Open source tool that facilitates discovery and selection of tags for elements on a page
 -   Add to your browser as an extension, e.g., [Chrome Extension](https://chrome.google.com/webstore/detail/selectorgadget/mhjhnkcfbdhnjickkkdbjoemdmbfginb)
 -   Find out more on the [SelectorGadget vignette](https://rvest.tidyverse.org/articles/selectorgadget.html)
+:::
 :::
 
 ::: {.column width="40%"}

@@ -697,14 +697,14 @@
     "href": "index.html",
     "title": " Data tidying and importing",
     "section": "",
-    "text": "Title\n\n\n\n\n\n\nTidy data\n\n\n\n\nTidying data\n\n\n\n\nJoining data\n\n\n\n\nData types\n\n\n\n\nData classes\n\n\n\n\nImporting data\n\n\n\n\nWeb scraping basics\n\n\n\n\nWeb scraping considerations\n\n\n\n\n\nNo matching items"
+    "text": "Title\n\n\n\n\n\n\nTidy data\n\n\n\n\nTidying data\n\n\n\n\nJoining data\n\n\n\n\nData types\n\n\n\n\nData classes\n\n\n\n\nImporting data\n\n\n\n\nWeb scraping\n\n\n\n\nWeb scraping considerations\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html#slides",
     "href": "index.html#slides",
     "title": " Data tidying and importing",
     "section": "",
-    "text": "Title\n\n\n\n\n\n\nTidy data\n\n\n\n\nTidying data\n\n\n\n\nJoining data\n\n\n\n\nData types\n\n\n\n\nData classes\n\n\n\n\nImporting data\n\n\n\n\nWeb scraping basics\n\n\n\n\nWeb scraping considerations\n\n\n\n\n\nNo matching items"
+    "text": "Title\n\n\n\n\n\n\nTidy data\n\n\n\n\nTidying data\n\n\n\n\nJoining data\n\n\n\n\nData types\n\n\n\n\nData classes\n\n\n\n\nImporting data\n\n\n\n\nWeb scraping\n\n\n\n\nWeb scraping considerations\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html#code-alongs",
@@ -926,49 +926,49 @@
   {
     "objectID": "slides/3-1-web-scraping/3-1-web-scraping.html#scraping-the-web-what-why",
     "href": "slides/3-1-web-scraping/3-1-web-scraping.html#scraping-the-web-what-why",
-    "title": "Web scraping basics",
+    "title": "Web scraping",
     "section": "Scraping the web: what? why?",
     "text": "Scraping the web: what? why?\n\n\nIncreasing amount of data is available on the web\nThese data are provided in an unstructured format: you can always copy&paste, but it’s time-consuming and prone to errors\nWeb scraping is the process of extracting this information automatically and transform it into a structured dataset\nTwo different scenarios:\n\nScreen scraping: extract data from source code of website, with html parser (easy) or regular expression matching (less easy).\nWeb APIs (application programming interface): website offers a set of structured http requests that return JSON or XML files."
   },
   {
     "objectID": "slides/3-1-web-scraping/3-1-web-scraping.html#hypertext-markup-language",
     "href": "slides/3-1-web-scraping/3-1-web-scraping.html#hypertext-markup-language",
-    "title": "Web scraping basics",
+    "title": "Web scraping",
     "section": "Hypertext Markup Language",
     "text": "Hypertext Markup Language\n\n\nMost of the data on the web is still largely available as HTML\nIt is structured (hierarchical / tree based), but it’s often not available in a form useful for analysis (flat / tidy).\n\n\n\n&lt;html&gt;\n  &lt;head&gt;\n    &lt;title&gt;This is a title&lt;/title&gt;\n  &lt;/head&gt;\n  &lt;body&gt;\n    &lt;p align=\"center\"&gt;Hello world!&lt;/p&gt;\n  &lt;/body&gt;\n&lt;/html&gt;"
   },
   {
     "objectID": "slides/3-1-web-scraping/3-1-web-scraping.html#rvest",
     "href": "slides/3-1-web-scraping/3-1-web-scraping.html#rvest",
-    "title": "Web scraping basics",
+    "title": "Web scraping",
     "section": "rvest",
     "text": "rvest\n\n\n\nThe rvest package makes basic processing and manipulation of HTML data straight forward\nIt’s designed to work with pipelines built with |&gt;"
   },
   {
     "objectID": "slides/3-1-web-scraping/3-1-web-scraping.html#core-rvest-functions",
     "href": "slides/3-1-web-scraping/3-1-web-scraping.html#core-rvest-functions",
-    "title": "Web scraping basics",
+    "title": "Web scraping",
     "section": "Core rvest functions",
     "text": "Core rvest functions\n\nread_html(): Read HTML data from a url or character string\nhtml_element(): Select a specified HTML element\nhtml_elements(): Select specified HTML elements\nhtml_table(): Parse an HTML table into a data frame\nhtml_text(): Extract text from an HTML element\nhtml_name(): Extract the name of an HTML element\nhtml_attr(): Extract all HTML element attributes by name\nhtml_attr(): Extract a single HTML element attribute by name"
   },
   {
     "objectID": "slides/3-1-web-scraping/3-1-web-scraping.html#selectorgadget",
     "href": "slides/3-1-web-scraping/3-1-web-scraping.html#selectorgadget",
-    "title": "Web scraping basics",
+    "title": "Web scraping",
     "section": "SelectorGadget",
-    "text": "SelectorGadget\n\n\n\nOpen source tool that facilitates discovery and selection of tags for elements on a page\nAdd to your browser as an extension, e.g., Chrome Extension\nFind out more on the SelectorGadget vignette"
+    "text": "SelectorGadget\n\n\n\n\nOpen source tool that facilitates discovery and selection of tags for elements on a page\nAdd to your browser as an extension, e.g., Chrome Extension\nFind out more on the SelectorGadget vignette"
   },
   {
     "objectID": "slides/3-1-web-scraping/3-1-web-scraping.html#using-the-selectorgadget",
     "href": "slides/3-1-web-scraping/3-1-web-scraping.html#using-the-selectorgadget",
-    "title": "Web scraping basics",
+    "title": "Web scraping",
     "section": "Using the SelectorGadget",
     "text": "Using the SelectorGadget"
   },
   {
     "objectID": "slides/3-1-web-scraping/3-1-web-scraping.html#using-the-selectorgadget-1",
     "href": "slides/3-1-web-scraping/3-1-web-scraping.html#using-the-selectorgadget-1",
-    "title": "Web scraping basics",
+    "title": "Web scraping",
     "section": "Using the SelectorGadget",
     "text": "Using the SelectorGadget\nThrough this process of selection and rejection, SelectorGadget facilitates discovering the appropriate CSS selector for your needs."
   },
