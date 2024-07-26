@@ -315,235 +315,179 @@
     "text": "Come for the functionality\n\n\n… stay for the logo\n\n\n\n\nThe forcats package provides a suite of useful tools that solve common problems with factors\nFactors are useful when you have true categorical data and you want to override the ordering of character vectors to improve display\nThey are also useful in modeling scenarios"
   },
   {
-    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#task-goal-and-tools",
-    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#task-goal-and-tools",
-    "title": "Tidying data",
+    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#task-goal-and-tools",
+    "href": "slides/1-4-joining-data/1-4-joining-data.html#task-goal-and-tools",
+    "title": "Joining data",
     "section": "Task, goal, and tools",
-    "text": "Task, goal, and tools\n\n\n have data organised in an unideal way for our analysis\n\n\n\n want to reorganize the data for our analysis\n\n\n\n\n using tools from the tidyverse\n\n\nlibrary(tidyverse)"
+    "text": "Task, goal, and tools\n\n\n have multiple data frames\n\n\n\n want to join them together\n\n\n\n\n using tools from the tidyverse\n\n\nlibrary(tidyverse)"
   },
   {
-    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#data-grocery-store-sales",
-    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#data-grocery-store-sales",
-    "title": "Tidying data",
-    "section": "Data: Grocery store sales",
-    "text": "Data: Grocery store sales\n\n\nhave\n\n\n\n# A tibble: 2 × 4\n  customer_id item_1 item_2       item_3\n        &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;        &lt;chr&gt; \n1           1 bread  milk         banana\n2           2 milk   toilet paper &lt;NA&gt;  \n\n\n\n\nwant\n\n\n\n# A tibble: 6 × 3\n  customer_id item_no item        \n        &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;       \n1           1 item_1  bread       \n2           1 item_2  milk        \n3           1 item_3  banana      \n4           2 item_1  milk        \n5           2 item_2  toilet paper\n6           2 item_3  &lt;NA&gt;"
+    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#data-women-in-science",
+    "href": "slides/1-4-joining-data/1-4-joining-data.html#data-women-in-science",
+    "title": "Joining data",
+    "section": "Data: Women in science",
+    "text": "Data: Women in science\nInformation on 10 women in science who changed the world:\n\n\n\n\n\n\nname\n\n\n\nAda Lovelace\n\n\nMarie Curie\n\n\nJanaki Ammal\n\n\nChien-Shiung Wu\n\n\nKatherine Johnson\n\n\nRosalind Franklin\n\n\nVera Rubin\n\n\nGladys West\n\n\nFlossie Wong-Staal\n\n\nJennifer Doudna\n\n\n\n\n\n\n\n\nSource: Discover Magazine"
   },
   {
-    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#grammar-of-data-tidying",
-    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#grammar-of-data-tidying",
-    "title": "Tidying data",
-    "section": "Grammar of data tidying",
-    "text": "Grammar of data tidying\n\n\n\n\nThe goal of tidyr is to help you tidy your data via\n\n\npivoting for going between wide and long data\nsplitting and combining character columns\nnesting and unnesting columns\nclarifying how NAs should be treated"
+    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#input-1-professions",
+    "href": "slides/1-4-joining-data/1-4-joining-data.html#input-1-professions",
+    "title": "Joining data",
+    "section": "Input 1: professions\n",
+    "text": "Input 1: professions\n\n\nprofessions\n\n# A tibble: 10 × 2\n   name               profession                        \n   &lt;chr&gt;              &lt;chr&gt;                             \n 1 Ada Lovelace       Mathematician                     \n 2 Marie Curie        Physicist and Chemist             \n 3 Janaki Ammal       Botanist                          \n 4 Chien-Shiung Wu    Physicist                         \n 5 Katherine Johnson  Mathematician                     \n 6 Rosalind Franklin  Chemist                           \n 7 Vera Rubin         Astronomer                        \n 8 Gladys West        Mathematician                     \n 9 Flossie Wong-Staal Virologist and Molecular Biologist\n10 Jennifer Doudna    Biochemist"
   },
   {
-    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivoting",
-    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivoting",
-    "title": "Tidying data",
-    "section": "Pivoting",
-    "text": "Pivoting\n\n\nNot this…\n\n\nbut this!"
+    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#input-2-dates",
+    "href": "slides/1-4-joining-data/1-4-joining-data.html#input-2-dates",
+    "title": "Joining data",
+    "section": "Input 2: dates\n",
+    "text": "Input 2: dates\n\n\ndates\n\n# A tibble: 8 × 3\n  name               birth_year death_year\n  &lt;chr&gt;                   &lt;dbl&gt;      &lt;dbl&gt;\n1 Janaki Ammal             1897       1984\n2 Chien-Shiung Wu          1912       1997\n3 Katherine Johnson        1918       2020\n4 Rosalind Franklin        1920       1958\n5 Vera Rubin               1928       2016\n6 Gladys West              1930         NA\n7 Flossie Wong-Staal       1947       2020\n8 Jennifer Doudna          1964         NA"
   },
   {
-    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#wider-vs.-longer",
-    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#wider-vs.-longer",
-    "title": "Tidying data",
-    "section": "Wider vs. longer",
-    "text": "Wider vs. longer\n\n\nwider - more columns\n\n\n# A tibble: 2 × 4\n  customer_id item_1 item_2       item_3\n        &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;        &lt;chr&gt; \n1           1 bread  milk         banana\n2           2 milk   toilet paper &lt;NA&gt;  \n\n\n\nlonger - more rows\n\n\n# A tibble: 6 × 3\n  customer_id item_no item        \n        &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;       \n1           1 item_1  bread       \n2           1 item_2  milk        \n3           1 item_3  banana      \n4           2 item_1  milk        \n5           2 item_2  toilet paper\n6           2 item_3  &lt;NA&gt;"
+    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#input-3-works",
+    "href": "slides/1-4-joining-data/1-4-joining-data.html#input-3-works",
+    "title": "Joining data",
+    "section": "Input 3: works\n",
+    "text": "Input 3: works\n\n\nworks\n\n# A tibble: 9 × 2\n  name               known_for                              \n  &lt;chr&gt;              &lt;chr&gt;                                  \n1 Ada Lovelace       first computer algorithm               \n2 Marie Curie        theory of radioactivity,  discovery of…\n3 Janaki Ammal       hybrid species, biodiversity protection\n4 Chien-Shiung Wu    confim and refine theory of radioactiv…\n5 Katherine Johnson  calculations of orbital mechanics crit…\n6 Vera Rubin         existence of dark matter               \n7 Gladys West        mathematical modeling of the shape of …\n8 Flossie Wong-Staal first scientist to clone HIV and creat…\n9 Jennifer Doudna    one of the primary developers of CRISP…"
   },
   {
-    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer",
-    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer",
-    "title": "Tidying data",
-    "section": "pivot_longer()",
-    "text": "pivot_longer()\n\n\n\npivot_longer(\n  data,\n  cols, \n  names_to = \"name\", \n  values_to = \"value\"\n  )"
+    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#desired-output",
+    "href": "slides/1-4-joining-data/1-4-joining-data.html#desired-output",
+    "title": "Joining data",
+    "section": "Desired output",
+    "text": "Desired output\n\n\n# A tibble: 10 × 5\n   name           profession birth_year death_year known_for\n   &lt;chr&gt;          &lt;chr&gt;           &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;    \n 1 Ada Lovelace   Mathemati…         NA         NA first co…\n 2 Marie Curie    Physicist…         NA         NA theory o…\n 3 Janaki Ammal   Botanist         1897       1984 hybrid s…\n 4 Chien-Shiung … Physicist        1912       1997 confim a…\n 5 Katherine Joh… Mathemati…       1918       2020 calculat…\n 6 Rosalind Fran… Chemist          1920       1958 &lt;NA&gt;     \n 7 Vera Rubin     Astronomer       1928       2016 existenc…\n 8 Gladys West    Mathemati…       1930         NA mathemat…\n 9 Flossie Wong-… Virologis…       1947       2020 first sc…\n10 Jennifer Doud… Biochemist       1964         NA one of t…"
   },
   {
-    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-1",
-    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-1",
-    "title": "Tidying data",
-    "section": "pivot_longer()",
-    "text": "pivot_longer()\n\n\n\npivot_longer(\n1  data,\n  cols, \n  names_to = \"name\", \n  values_to = \"value\"\n  )\n\n\n1\n\ndata (as usual)"
+    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#inputs-reminder",
+    "href": "slides/1-4-joining-data/1-4-joining-data.html#inputs-reminder",
+    "title": "Joining data",
+    "section": "Inputs, reminder",
+    "text": "Inputs, reminder\n\nnames(professions)\n\n[1] \"name\"       \"profession\"\n\nnrow(professions)\n\n[1] 10\n\n\n\n\nnames(dates)\n\n[1] \"name\"       \"birth_year\" \"death_year\"\n\nnrow(dates)\n\n[1] 8\n\n\n\n\n\nnames(works)\n\n[1] \"name\"      \"known_for\"\n\nnrow(works)\n\n[1] 9"
   },
   {
-    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-2",
-    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-2",
-    "title": "Tidying data",
-    "section": "pivot_longer()",
-    "text": "pivot_longer()\n\n\n\npivot_longer(\n1  data,\n2  cols,\n  names_to = \"name\", \n  values_to = \"value\"\n  )\n\n\n1\n\ndata (as usual)\n\n2\n\ncols: Columns to pivot into longer format"
+    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#joining-data-frames-1",
+    "href": "slides/1-4-joining-data/1-4-joining-data.html#joining-data-frames-1",
+    "title": "Joining data",
+    "section": "Joining data frames",
+    "text": "Joining data frames\n\nsomething_join(x, y)\n\n\n\nleft_join(): all rows from x\n\nright_join(): all rows from y\n\nfull_join(): all rows from both x and y\n\nsemi_join(): all rows from x where there are matching values in y, keeping just columns from x\n\ninner_join(): all rows from x where there are matching values in y, return all combination of multiple matches in the case of multiple matches\n\nanti_join(): return all rows from x where there are not matching values in y, never duplicate rows of x\n…"
   },
   {
-    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-3",
-    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-3",
-    "title": "Tidying data",
-    "section": "pivot_longer()",
-    "text": "pivot_longer()\n\n\n\npivot_longer(\n1  data,\n2  cols,\n3  names_to = \"name\",\n  values_to = \"value\"\n  )\n\n\n1\n\ndata (as usual)\n\n2\n\ncols: Columns to pivot into longer format\n\n3\n\nnames_to: Name of the column where column names of pivoted variables go (character string)"
+    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#setup-1",
+    "href": "slides/1-4-joining-data/1-4-joining-data.html#setup-1",
+    "title": "Joining data",
+    "section": "Setup",
+    "text": "Setup\nFor the next few slides…\n\n\n\nx &lt;- tibble(\n  id = c(1, 2, 3),\n  value_x = c(\"x1\", \"x2\", \"x3\")\n  )\n\nx\n\n# A tibble: 3 × 2\n     id value_x\n  &lt;dbl&gt; &lt;chr&gt;  \n1     1 x1     \n2     2 x2     \n3     3 x3     \n\n\n\n\ny &lt;- tibble(\n  id = c(1, 2, 4),\n  value_y = c(\"y1\", \"y2\", \"y4\")\n  )\n\ny\n\n# A tibble: 3 × 2\n     id value_y\n  &lt;dbl&gt; &lt;chr&gt;  \n1     1 y1     \n2     2 y2     \n3     4 y4"
   },
   {
-    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-4",
-    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-4",
-    "title": "Tidying data",
-    "section": "pivot_longer()",
-    "text": "pivot_longer()\n\n\n\npivot_longer(\n1  data,\n2  cols,\n3  names_to = \"name\",\n4  values_to = \"value\"\n  )\n\n\n1\n\ndata (as usual)\n\n2\n\ncols: Columns to pivot into longer format\n\n3\n\nnames_to: Name of the column where column names of pivoted variables go (character string)\n\n4\n\nvalues_to: Name of the column where data in pivoted variables go (character string)"
+    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#left_join",
+    "href": "slides/1-4-joining-data/1-4-joining-data.html#left_join",
+    "title": "Joining data",
+    "section": "left_join()",
+    "text": "left_join()\n\n\n\nleft_join(x, y)\n\nJoining with `by = join_by(id)`\n\n\n# A tibble: 3 × 3\n     id value_x value_y\n  &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;  \n1     1 x1      y1     \n2     2 x2      y2     \n3     3 x3      &lt;NA&gt;"
   },
   {
-    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-in-context",
-    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-in-context",
-    "title": "Tidying data",
-    "section": "pivot_longer() in context",
-    "text": "pivot_longer() in context\n\n\n\ncustomers |&gt;\n  pivot_longer(\n    cols = item_1:item_3,\n    names_to = \"item_no\",\n    values_to = \"item\"\n  )\n\n# A tibble: 6 × 3\n  customer_id item_no item        \n        &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;       \n1           1 item_1  bread       \n2           1 item_2  milk        \n3           1 item_3  banana      \n4           2 item_1  milk        \n5           2 item_2  toilet paper\n6           2 item_3  &lt;NA&gt;"
+    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#left_join-1",
+    "href": "slides/1-4-joining-data/1-4-joining-data.html#left_join-1",
+    "title": "Joining data",
+    "section": "left_join()",
+    "text": "left_join()\n\nprofessions |&gt;\n  left_join(dates)\n\nJoining with `by = join_by(name)`\n\n\n# A tibble: 10 × 4\n   name               profession       birth_year death_year\n   &lt;chr&gt;              &lt;chr&gt;                 &lt;dbl&gt;      &lt;dbl&gt;\n 1 Ada Lovelace       Mathematician            NA         NA\n 2 Marie Curie        Physicist and C…         NA         NA\n 3 Janaki Ammal       Botanist               1897       1984\n 4 Chien-Shiung Wu    Physicist              1912       1997\n 5 Katherine Johnson  Mathematician          1918       2020\n 6 Rosalind Franklin  Chemist                1920       1958\n 7 Vera Rubin         Astronomer             1928       2016\n 8 Gladys West        Mathematician          1930         NA\n 9 Flossie Wong-Staal Virologist and …       1947       2020\n10 Jennifer Doudna    Biochemist             1964         NA"
   },
   {
-    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-in-context-1",
-    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-in-context-1",
-    "title": "Tidying data",
-    "section": "pivot_longer() in context",
-    "text": "pivot_longer() in context\n\n\n\ncustomers |&gt;\n  pivot_longer(\n1    cols = item_1:item_3,\n    names_to = \"item_no\",\n    values_to = \"item\"\n  )\n\n\n1\n\ncols to pivot: item_1 to item_3"
+    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#right_join",
+    "href": "slides/1-4-joining-data/1-4-joining-data.html#right_join",
+    "title": "Joining data",
+    "section": "right_join()",
+    "text": "right_join()\n\n\n\nright_join(x, y)\n\nJoining with `by = join_by(id)`\n\n\n# A tibble: 3 × 3\n     id value_x value_y\n  &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;  \n1     1 x1      y1     \n2     2 x2      y2     \n3     4 &lt;NA&gt;    y4"
   },
   {
-    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-in-context-2",
-    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-in-context-2",
-    "title": "Tidying data",
-    "section": "pivot_longer() in context",
-    "text": "pivot_longer() in context\n\n\n\ncustomers |&gt;\n  pivot_longer(\n1    cols = item_1:item_3,\n2    names_to = \"item_no\",\n    values_to = \"item\"\n  )\n\n\n1\n\ncols to pivot: item_1 to item_3\n\n2\n\nColumn names_to new column called item_no"
+    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#left_join-2",
+    "href": "slides/1-4-joining-data/1-4-joining-data.html#left_join-2",
+    "title": "Joining data",
+    "section": "left_join()",
+    "text": "left_join()\n\nprofessions |&gt;\n  right_join(dates)\n\nJoining with `by = join_by(name)`\n\n\n# A tibble: 8 × 4\n  name               profession        birth_year death_year\n  &lt;chr&gt;              &lt;chr&gt;                  &lt;dbl&gt;      &lt;dbl&gt;\n1 Janaki Ammal       Botanist                1897       1984\n2 Chien-Shiung Wu    Physicist               1912       1997\n3 Katherine Johnson  Mathematician           1918       2020\n4 Rosalind Franklin  Chemist                 1920       1958\n5 Vera Rubin         Astronomer              1928       2016\n6 Gladys West        Mathematician           1930         NA\n7 Flossie Wong-Staal Virologist and M…       1947       2020\n8 Jennifer Doudna    Biochemist              1964         NA"
   },
   {
-    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-in-context-3",
-    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-in-context-3",
-    "title": "Tidying data",
-    "section": "pivot_longer() in context",
-    "text": "pivot_longer() in context\n\n\n\ncustomers |&gt;\n  pivot_longer(\n1    cols = item_1:item_3,\n2    names_to = \"item_no\",\n3    values_to = \"item\"\n  )\n\n\n1\n\ncols to pivot: item_1 to item_3\n\n2\n\nColumn names_to new column called item_no\n\n3\n\nvalues_to new column called item"
+    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#full_join",
+    "href": "slides/1-4-joining-data/1-4-joining-data.html#full_join",
+    "title": "Joining data",
+    "section": "full_join()",
+    "text": "full_join()\n\n\n\nfull_join(x, y)\n\nJoining with `by = join_by(id)`\n\n\n# A tibble: 4 × 3\n     id value_x value_y\n  &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;  \n1     1 x1      y1     \n2     2 x2      y2     \n3     3 x3      &lt;NA&gt;   \n4     4 &lt;NA&gt;    y4"
   },
   {
-    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-in-context-4",
-    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-in-context-4",
-    "title": "Tidying data",
-    "section": "pivot_longer() in context",
-    "text": "pivot_longer() in context\n\n\n\ncustomers |&gt;\n  pivot_longer(\n    cols = item_1:item_3,\n    names_to = \"item_no\",\n    values_to = \"item\"\n  )\n\n# A tibble: 6 × 3\n  customer_id item_no item        \n        &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;       \n1           1 item_1  bread       \n2           1 item_2  milk        \n3           1 item_3  banana      \n4           2 item_1  milk        \n5           2 item_2  toilet paper\n6           2 item_3  &lt;NA&gt;"
+    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#left_join-3",
+    "href": "slides/1-4-joining-data/1-4-joining-data.html#left_join-3",
+    "title": "Joining data",
+    "section": "left_join()",
+    "text": "left_join()\n\nprofessions |&gt;\n  full_join(dates)\n\nJoining with `by = join_by(name)`\n\n\n# A tibble: 10 × 4\n   name               profession       birth_year death_year\n   &lt;chr&gt;              &lt;chr&gt;                 &lt;dbl&gt;      &lt;dbl&gt;\n 1 Ada Lovelace       Mathematician            NA         NA\n 2 Marie Curie        Physicist and C…         NA         NA\n 3 Janaki Ammal       Botanist               1897       1984\n 4 Chien-Shiung Wu    Physicist              1912       1997\n 5 Katherine Johnson  Mathematician          1918       2020\n 6 Rosalind Franklin  Chemist                1920       1958\n 7 Vera Rubin         Astronomer             1928       2016\n 8 Gladys West        Mathematician          1930         NA\n 9 Flossie Wong-Staal Virologist and …       1947       2020\n10 Jennifer Doudna    Biochemist             1964         NA"
   },
   {
-    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#dealing-with-nas",
-    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#dealing-with-nas",
-    "title": "Tidying data",
-    "section": "Dealing with NAs",
-    "text": "Dealing with NAs\n\n\n\ncustomers |&gt;\n  pivot_longer(\n1    cols = item_1:item_3,\n2    names_to = \"item_no\",\n3    values_to = \"item\",\n4    values_drop_na = TRUE\n  )\n\n\n1\n\ncols to pivot: item_1 to item_3\n\n2\n\nColumn names_to new column called item_no\n\n3\n\nvalues_to new column called item\n\n4\n\nDrop rows that contain only NAs in the values_to column\n\n\n\n\n# A tibble: 5 × 3\n  customer_id item_no item        \n        &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;       \n1           1 item_1  bread       \n2           1 item_2  milk        \n3           1 item_3  banana      \n4           2 item_1  milk        \n5           2 item_2  toilet paper"
+    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#inner_join",
+    "href": "slides/1-4-joining-data/1-4-joining-data.html#inner_join",
+    "title": "Joining data",
+    "section": "inner_join()",
+    "text": "inner_join()\n\n\n\ninner_join(x, y)\n\nJoining with `by = join_by(id)`\n\n\n# A tibble: 2 × 3\n     id value_x value_y\n  &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;  \n1     1 x1      y1     \n2     2 x2      y2"
   },
   {
-    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#from-customers-to-purchases",
-    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#from-customers-to-purchases",
-    "title": "Tidying data",
-    "section": "From customers to purchases",
-    "text": "From customers to purchases\n\n\n\npurchases &lt;- customers |&gt;\n  pivot_longer(\n    cols = item_1:item_3,\n    names_to = \"item_no\",\n    values_to = \"item\",\n    values_drop_na = TRUE\n  )\n\npurchases\n\n# A tibble: 5 × 3\n  customer_id item_no item        \n        &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;       \n1           1 item_1  bread       \n2           1 item_2  milk        \n3           1 item_3  banana      \n4           2 item_1  milk        \n5           2 item_2  toilet paper"
+    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#inner_join-1",
+    "href": "slides/1-4-joining-data/1-4-joining-data.html#inner_join-1",
+    "title": "Joining data",
+    "section": "inner_join()",
+    "text": "inner_join()\n\nprofessions |&gt;\n  inner_join(dates)\n\nJoining with `by = join_by(name)`\n\n\n# A tibble: 8 × 4\n  name               profession        birth_year death_year\n  &lt;chr&gt;              &lt;chr&gt;                  &lt;dbl&gt;      &lt;dbl&gt;\n1 Janaki Ammal       Botanist                1897       1984\n2 Chien-Shiung Wu    Physicist               1912       1997\n3 Katherine Johnson  Mathematician           1918       2020\n4 Rosalind Franklin  Chemist                 1920       1958\n5 Vera Rubin         Astronomer              1928       2016\n6 Gladys West        Mathematician           1930         NA\n7 Flossie Wong-Staal Virologist and M…       1947       2020\n8 Jennifer Doudna    Biochemist              1964         NA"
   },
   {
-    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#why-pivot",
-    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#why-pivot",
-    "title": "Tidying data",
-    "section": "Why pivot?",
-    "text": "Why pivot?\nMost likely, because the next step of your analysis needs it\n\n\n\n\n\nprices\n\n# A tibble: 5 × 2\n  item         price\n  &lt;chr&gt;        &lt;dbl&gt;\n1 avocado       0.5 \n2 banana        0.15\n3 bread         1   \n4 milk          0.8 \n5 toilet paper  3   \n\n\n\n\npurchases |&gt;\n  left_join(prices)\n\nJoining with `by = join_by(item)`\n\n\n# A tibble: 5 × 4\n  customer_id item_no item         price\n        &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;        &lt;dbl&gt;\n1           1 item_1  bread         1   \n2           1 item_2  milk          0.8 \n3           1 item_3  banana        0.15\n4           2 item_1  milk          0.8 \n5           2 item_2  toilet paper  3"
+    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#semi_join",
+    "href": "slides/1-4-joining-data/1-4-joining-data.html#semi_join",
+    "title": "Joining data",
+    "section": "semi_join()",
+    "text": "semi_join()\n\n\n\nsemi_join(x, y)\n\nJoining with `by = join_by(id)`\n\n\n# A tibble: 2 × 2\n     id value_x\n  &lt;dbl&gt; &lt;chr&gt;  \n1     1 x1     \n2     2 x2"
   },
   {
-    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#from-purchases-to-customers",
-    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#from-purchases-to-customers",
-    "title": "Tidying data",
-    "section": "From purchases to customers",
-    "text": "From purchases to customers\n\n\n\npurchases |&gt;\n  pivot_wider(\n    names_from = item_no,\n    values_from = item\n  )\n\n# A tibble: 2 × 4\n  customer_id item_1 item_2       item_3\n        &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;        &lt;chr&gt; \n1           1 bread  milk         banana\n2           2 milk   toilet paper &lt;NA&gt;"
+    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#semi_join-1",
+    "href": "slides/1-4-joining-data/1-4-joining-data.html#semi_join-1",
+    "title": "Joining data",
+    "section": "semi_join()",
+    "text": "semi_join()\n\nprofessions |&gt;\n  semi_join(dates)\n\nJoining with `by = join_by(name)`\n\n\n# A tibble: 8 × 2\n  name               profession                        \n  &lt;chr&gt;              &lt;chr&gt;                             \n1 Janaki Ammal       Botanist                          \n2 Chien-Shiung Wu    Physicist                         \n3 Katherine Johnson  Mathematician                     \n4 Rosalind Franklin  Chemist                           \n5 Vera Rubin         Astronomer                        \n6 Gladys West        Mathematician                     \n7 Flossie Wong-Staal Virologist and Molecular Biologist\n8 Jennifer Doudna    Biochemist"
   },
   {
-    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_wider",
-    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_wider",
-    "title": "Tidying data",
-    "section": "pivot_wider()",
-    "text": "pivot_wider()\n\n\n\npivot_wider(\n1  data,\n  names_from = name,\n  values_from = value\n  )\n\n\n1\n\ndata (as usual)"
+    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#anti_join",
+    "href": "slides/1-4-joining-data/1-4-joining-data.html#anti_join",
+    "title": "Joining data",
+    "section": "anti_join()",
+    "text": "anti_join()\n\n\n\nanti_join(x, y)\n\nJoining with `by = join_by(id)`\n\n\n# A tibble: 1 × 2\n     id value_x\n  &lt;dbl&gt; &lt;chr&gt;  \n1     3 x3"
   },
   {
-    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_wider-1",
-    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_wider-1",
-    "title": "Tidying data",
-    "section": "pivot_wider()",
-    "text": "pivot_wider()\n\n\n\npivot_wider(\n1  data,\n2  names_from = name,\n  values_from = value\n  )\n\n\n1\n\ndata (as usual)\n\n2\n\nnames_from: Which column(s) in the long format contains what should be column names in the wide format"
+    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#anti_join-1",
+    "href": "slides/1-4-joining-data/1-4-joining-data.html#anti_join-1",
+    "title": "Joining data",
+    "section": "anti_join()",
+    "text": "anti_join()\n\nprofessions |&gt;\n  anti_join(dates)\n\nJoining with `by = join_by(name)`\n\n\n# A tibble: 2 × 2\n  name         profession           \n  &lt;chr&gt;        &lt;chr&gt;                \n1 Ada Lovelace Mathematician        \n2 Marie Curie  Physicist and Chemist"
   },
   {
-    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_wider-2",
-    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_wider-2",
-    "title": "Tidying data",
-    "section": "pivot_wider()",
-    "text": "pivot_wider()\n\n\n\npivot_wider(\n1  data,\n2  names_from = name,\n3  values_from = value\n  )\n\n\n1\n\ndata (as usual)\n\n2\n\nnames_from: Which column(s) in the long format contains what should be column names in the wide format\n\n3\n\nvalues_from: Which column(s) in the long format contains what should be values in the new columns in the wide format"
+    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#putting-it-altogether",
+    "href": "slides/1-4-joining-data/1-4-joining-data.html#putting-it-altogether",
+    "title": "Joining data",
+    "section": "Putting it altogether",
+    "text": "Putting it altogether\n\nprofessions |&gt;\n  left_join(dates) |&gt;\n  left_join(works)\n\nJoining with `by = join_by(name)`\nJoining with `by = join_by(name)`\n\n\n# A tibble: 10 × 5\n   name           profession birth_year death_year known_for\n   &lt;chr&gt;          &lt;chr&gt;           &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;    \n 1 Ada Lovelace   Mathemati…         NA         NA first co…\n 2 Marie Curie    Physicist…         NA         NA theory o…\n 3 Janaki Ammal   Botanist         1897       1984 hybrid s…\n 4 Chien-Shiung … Physicist        1912       1997 confim a…\n 5 Katherine Joh… Mathemati…       1918       2020 calculat…\n 6 Rosalind Fran… Chemist          1920       1958 &lt;NA&gt;     \n 7 Vera Rubin     Astronomer       1928       2016 existenc…\n 8 Gladys West    Mathemati…       1930         NA mathemat…\n 9 Flossie Wong-… Virologis…       1947       2020 first sc…\n10 Jennifer Doud… Biochemist       1964         NA one of t…"
   },
   {
-    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#wider---longer",
-    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#wider---longer",
-    "title": "Tidying data",
-    "section": "Wider <-> longer",
-    "text": "Wider &lt;-&gt; longer"
+    "objectID": "slides/1-1-welcome/1-1-welcome.html#data-science-life-cycle",
+    "href": "slides/1-1-welcome/1-1-welcome.html#data-science-life-cycle",
+    "title": "Welcome",
+    "section": "Data science life cycle",
+    "text": "Data science life cycle"
   },
   {
-    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#additional-arguments",
-    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#additional-arguments",
-    "title": "Tidying data",
-    "section": "Additional arguments",
-    "text": "Additional arguments\n\n\npivot_longer()\n\npivot_longer(\n  data,\n  cols,\n  ...,\n  cols_vary = \"fastest\",\n  names_to = \"name\",\n  names_prefix = NULL,\n  names_sep = NULL,\n  names_pattern = NULL,\n  names_ptypes = NULL,\n  names_transform = NULL,\n  names_repair = \"check_unique\",\n  values_to = \"value\",\n  values_drop_na = FALSE,\n  values_ptypes = NULL,\n  values_transform = NULL\n)\n\n\npivot_wider()\n\npivot_wider(\n  data,\n  ...,\n  id_cols = NULL,\n  id_expand = FALSE,\n  names_from = name,\n  names_prefix = \"\",\n  names_sep = \"_\",\n  names_glue = NULL,\n  names_sort = FALSE,\n  names_vary = \"fastest\",\n  names_expand = FALSE,\n  names_repair = \"check_unique\",\n  values_from = value,\n  values_fill = NULL,\n  values_fn = NULL,\n  unused_fn = NULL\n)"
+    "objectID": "slides/1-1-welcome/1-1-welcome.html#import",
+    "href": "slides/1-1-welcome/1-1-welcome.html#import",
+    "title": "Welcome",
+    "section": "Import",
+    "text": "Import"
   },
   {
-    "objectID": "slides/1-2-tidy-data/1-2-tidy-data.html#tidy-data",
-    "href": "slides/1-2-tidy-data/1-2-tidy-data.html#tidy-data",
-    "title": "Tidy data",
-    "section": "Tidy data",
-    "text": "Tidy data\n\nHappy families are all alike; every unhappy family is unhappy in its own way.\nLeo Tolstoy\n\n\n\nCharacteristics of tidy data:\n\nEach variable forms a column.\nEach observation forms a row.\nEach type of observational unit forms a table.\n\n\nCharacteristics of untidy data:\n!@#$%^&*()"
-  },
-  {
-    "objectID": "slides/1-2-tidy-data/1-2-tidy-data.html#what-makes-this-data-not-tidy",
-    "href": "slides/1-2-tidy-data/1-2-tidy-data.html#what-makes-this-data-not-tidy",
-    "title": "Tidy data",
-    "section": "What makes this data not tidy?",
-    "text": "What makes this data not tidy?\n\n\n\nSource: Army Air Forces Statistical Digest, WW II"
-  },
-  {
-    "objectID": "slides/1-2-tidy-data/1-2-tidy-data.html#what-makes-this-data-not-tidy-1",
-    "href": "slides/1-2-tidy-data/1-2-tidy-data.html#what-makes-this-data-not-tidy-1",
-    "title": "Tidy data",
-    "section": "What makes this data not tidy?",
-    "text": "What makes this data not tidy?\n\n\n\nSource: Gapminder, Estimated HIV prevalence among 15-49 year olds"
-  },
-  {
-    "objectID": "slides/1-2-tidy-data/1-2-tidy-data.html#what-makes-this-data-not-tidy-2",
-    "href": "slides/1-2-tidy-data/1-2-tidy-data.html#what-makes-this-data-not-tidy-2",
-    "title": "Tidy data",
-    "section": "What makes this data not tidy?",
-    "text": "What makes this data not tidy?\n\n\n\nSource: US Census, Selected Economic Characteristics, ACS 2022"
-  },
-  {
-    "objectID": "slides/1-2-tidy-data/1-2-tidy-data.html#displaying-vs.-summarizing-data",
-    "href": "slides/1-2-tidy-data/1-2-tidy-data.html#displaying-vs.-summarizing-data",
-    "title": "Tidy data",
-    "section": "Displaying vs. summarizing data",
-    "text": "Displaying vs. summarizing data\n\n\nDisplay\n\nstarwars |&gt;\n  select(name, height, gender)\n\n# A tibble: 87 × 3\n   name               height gender   \n   &lt;chr&gt;               &lt;int&gt; &lt;chr&gt;    \n 1 Luke Skywalker        172 masculine\n 2 C-3PO                 167 masculine\n 3 R2-D2                  96 masculine\n 4 Darth Vader           202 masculine\n 5 Leia Organa           150 feminine \n 6 Owen Lars             178 masculine\n 7 Beru Whitesun Lars    165 feminine \n 8 R5-D4                  97 masculine\n 9 Biggs Darklighter     183 masculine\n10 Obi-Wan Kenobi        182 masculine\n# ℹ 77 more rows\n\n\n\nSummarize\n\nstarwars |&gt;\n  group_by(gender) |&gt;\n  summarize(\n    n = n(),\n    avg_height = mean(height, na.rm = TRUE)\n  )\n\n# A tibble: 3 × 3\n  gender        n avg_height\n  &lt;chr&gt;     &lt;int&gt;      &lt;dbl&gt;\n1 feminine     17       167.\n2 masculine    66       177.\n3 &lt;NA&gt;          4       175"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": " Data tidying and importing",
-    "section": "",
-    "text": "Title\n\n\n\n\n\n\nWelcome\n\n\n\n\nTidy data\n\n\n\n\nTidying data\n\n\n\n\nJoining data\n\n\n\n\nData types\n\n\n\n\nData classes\n\n\n\n\nImporting data\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "index.html#slides",
-    "href": "index.html#slides",
-    "title": " Data tidying and importing",
-    "section": "",
-    "text": "Title\n\n\n\n\n\n\nWelcome\n\n\n\n\nTidy data\n\n\n\n\nTidying data\n\n\n\n\nJoining data\n\n\n\n\nData types\n\n\n\n\nData classes\n\n\n\n\nImporting data\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "index.html#code-alongs",
-    "href": "index.html#code-alongs",
-    "title": " Data tidying and importing",
-    "section": "Code alongs",
-    "text": "Code alongs\n\n\n\n\n\nTitle\n\n\n\n\n\n\nCountry populations over time (Complete)\n\n\n\n\nCountry populations over time\n\n\n\n\nContinent populations (Complete)\n\n\n\n\nContinent populations\n\n\n\n\nThat’s my type (Complete)\n\n\n\n\nThat’s my type\n\n\n\n\nHalving CO2 emissions\n\n\n\n\nHalving CO2 emissions\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "index.html#exercises",
-    "href": "index.html#exercises",
-    "title": " Data tidying and importing",
-    "section": "Exercises",
-    "text": "Exercises\n\n\n\n\n\nTitle\n\n\n\n\n\n\nNobel Prize winners & sales data\n\n\n\n\nNYC flights + data wrangling\n\n\n\n\nTidy Basketball\n\n\n\n\n\nNo matching items"
+    "objectID": "slides/1-1-welcome/1-1-welcome.html#tidy---transform",
+    "href": "slides/1-1-welcome/1-1-welcome.html#tidy---transform",
+    "title": "Welcome",
+    "section": "Tidy -> transform",
+    "text": "Tidy -&gt; transform"
   },
   {
     "objectID": "slides/2-1-data-types/2-1-data-types.html#example-cat-lovers",
@@ -735,179 +679,284 @@
     "text": "Mental model for NAs\nNA is unknown, so it could be TRUE or FALSE\n\n\n\nTRUE | NA gives TRUE, because the answer is always TRUE whether the unknown NA is actually TRUE or FALSE\n\n\n\nTRUE | TRUE  # if NA was TRUE\n\n[1] TRUE\n\nTRUE | FALSE # if NA was FALSE\n\n[1] TRUE\n\n\n\n\n\n\nFALSE | NA gives FALSE, because the answer changes depending whether the unknown NA is actually TRUE or FALSE\n\n\n\nFALSE | TRUE  # if NA was TRUE\n\n[1] TRUE\n\nFALSE | FALSE # if NA was FALSE\n\n[1] FALSE\n\n\n\n\n\nThis may not make sense for mathematical operations, but it does make sense in the context of missing data"
   },
   {
-    "objectID": "slides/1-1-welcome/1-1-welcome.html#data-science-life-cycle",
-    "href": "slides/1-1-welcome/1-1-welcome.html#data-science-life-cycle",
-    "title": "Welcome",
-    "section": "Data science life cycle",
-    "text": "Data science life cycle"
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": " Data tidying and importing",
+    "section": "",
+    "text": "Title\n\n\n\n\n\n\nWelcome\n\n\n\n\nTidy data\n\n\n\n\nTidying data\n\n\n\n\nJoining data\n\n\n\n\nData types\n\n\n\n\nData classes\n\n\n\n\nImporting data\n\n\n\n\nWeb scraping\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "slides/1-1-welcome/1-1-welcome.html#import",
-    "href": "slides/1-1-welcome/1-1-welcome.html#import",
-    "title": "Welcome",
-    "section": "Import",
-    "text": "Import"
+    "objectID": "index.html#slides",
+    "href": "index.html#slides",
+    "title": " Data tidying and importing",
+    "section": "",
+    "text": "Title\n\n\n\n\n\n\nWelcome\n\n\n\n\nTidy data\n\n\n\n\nTidying data\n\n\n\n\nJoining data\n\n\n\n\nData types\n\n\n\n\nData classes\n\n\n\n\nImporting data\n\n\n\n\nWeb scraping\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "slides/1-1-welcome/1-1-welcome.html#tidy---transform",
-    "href": "slides/1-1-welcome/1-1-welcome.html#tidy---transform",
-    "title": "Welcome",
-    "section": "Tidy -> transform",
-    "text": "Tidy -&gt; transform"
+    "objectID": "index.html#code-alongs",
+    "href": "index.html#code-alongs",
+    "title": " Data tidying and importing",
+    "section": "Code alongs",
+    "text": "Code alongs\n\n\n\n\n\nTitle\n\n\n\n\n\n\nCountry populations over time (Complete)\n\n\n\n\nCountry populations over time\n\n\n\n\nContinent populations (Complete)\n\n\n\n\nContinent populations\n\n\n\n\nThat’s my type (Complete)\n\n\n\n\nThat’s my type\n\n\n\n\nHalving CO2 emissions\n\n\n\n\nHalving CO2 emissions\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#task-goal-and-tools",
-    "href": "slides/1-4-joining-data/1-4-joining-data.html#task-goal-and-tools",
-    "title": "Joining data",
+    "objectID": "index.html#exercises",
+    "href": "index.html#exercises",
+    "title": " Data tidying and importing",
+    "section": "Exercises",
+    "text": "Exercises\n\n\n\n\n\nTitle\n\n\n\n\n\n\nNobel Prize winners & sales data\n\n\n\n\nNYC flights + data wrangling\n\n\n\n\nTidy Basketball\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "slides/1-2-tidy-data/1-2-tidy-data.html#tidy-data",
+    "href": "slides/1-2-tidy-data/1-2-tidy-data.html#tidy-data",
+    "title": "Tidy data",
+    "section": "Tidy data",
+    "text": "Tidy data\n\nHappy families are all alike; every unhappy family is unhappy in its own way.\nLeo Tolstoy\n\n\n\nCharacteristics of tidy data:\n\nEach variable forms a column.\nEach observation forms a row.\nEach type of observational unit forms a table.\n\n\nCharacteristics of untidy data:\n!@#$%^&*()"
+  },
+  {
+    "objectID": "slides/1-2-tidy-data/1-2-tidy-data.html#what-makes-this-data-not-tidy",
+    "href": "slides/1-2-tidy-data/1-2-tidy-data.html#what-makes-this-data-not-tidy",
+    "title": "Tidy data",
+    "section": "What makes this data not tidy?",
+    "text": "What makes this data not tidy?\n\n\n\nSource: Army Air Forces Statistical Digest, WW II"
+  },
+  {
+    "objectID": "slides/1-2-tidy-data/1-2-tidy-data.html#what-makes-this-data-not-tidy-1",
+    "href": "slides/1-2-tidy-data/1-2-tidy-data.html#what-makes-this-data-not-tidy-1",
+    "title": "Tidy data",
+    "section": "What makes this data not tidy?",
+    "text": "What makes this data not tidy?\n\n\n\nSource: Gapminder, Estimated HIV prevalence among 15-49 year olds"
+  },
+  {
+    "objectID": "slides/1-2-tidy-data/1-2-tidy-data.html#what-makes-this-data-not-tidy-2",
+    "href": "slides/1-2-tidy-data/1-2-tidy-data.html#what-makes-this-data-not-tidy-2",
+    "title": "Tidy data",
+    "section": "What makes this data not tidy?",
+    "text": "What makes this data not tidy?\n\n\n\nSource: US Census, Selected Economic Characteristics, ACS 2022"
+  },
+  {
+    "objectID": "slides/1-2-tidy-data/1-2-tidy-data.html#displaying-vs.-summarizing-data",
+    "href": "slides/1-2-tidy-data/1-2-tidy-data.html#displaying-vs.-summarizing-data",
+    "title": "Tidy data",
+    "section": "Displaying vs. summarizing data",
+    "text": "Displaying vs. summarizing data\n\n\nDisplay\n\nstarwars |&gt;\n  select(name, height, gender)\n\n# A tibble: 87 × 3\n   name               height gender   \n   &lt;chr&gt;               &lt;int&gt; &lt;chr&gt;    \n 1 Luke Skywalker        172 masculine\n 2 C-3PO                 167 masculine\n 3 R2-D2                  96 masculine\n 4 Darth Vader           202 masculine\n 5 Leia Organa           150 feminine \n 6 Owen Lars             178 masculine\n 7 Beru Whitesun Lars    165 feminine \n 8 R5-D4                  97 masculine\n 9 Biggs Darklighter     183 masculine\n10 Obi-Wan Kenobi        182 masculine\n# ℹ 77 more rows\n\n\n\nSummarize\n\nstarwars |&gt;\n  group_by(gender) |&gt;\n  summarize(\n    n = n(),\n    avg_height = mean(height, na.rm = TRUE)\n  )\n\n# A tibble: 3 × 3\n  gender        n avg_height\n  &lt;chr&gt;     &lt;int&gt;      &lt;dbl&gt;\n1 feminine     17       167.\n2 masculine    66       177.\n3 &lt;NA&gt;          4       175"
+  },
+  {
+    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#task-goal-and-tools",
+    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#task-goal-and-tools",
+    "title": "Tidying data",
     "section": "Task, goal, and tools",
-    "text": "Task, goal, and tools\n\n\n have multiple data frames\n\n\n\n want to join them together\n\n\n\n\n using tools from the tidyverse\n\n\nlibrary(tidyverse)"
+    "text": "Task, goal, and tools\n\n\n have data organised in an unideal way for our analysis\n\n\n\n want to reorganize the data for our analysis\n\n\n\n\n using tools from the tidyverse\n\n\nlibrary(tidyverse)"
   },
   {
-    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#data-women-in-science",
-    "href": "slides/1-4-joining-data/1-4-joining-data.html#data-women-in-science",
-    "title": "Joining data",
-    "section": "Data: Women in science",
-    "text": "Data: Women in science\nInformation on 10 women in science who changed the world:\n\n\n\n\n\n\nname\n\n\n\nAda Lovelace\n\n\nMarie Curie\n\n\nJanaki Ammal\n\n\nChien-Shiung Wu\n\n\nKatherine Johnson\n\n\nRosalind Franklin\n\n\nVera Rubin\n\n\nGladys West\n\n\nFlossie Wong-Staal\n\n\nJennifer Doudna\n\n\n\n\n\n\n\n\nSource: Discover Magazine"
+    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#data-grocery-store-sales",
+    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#data-grocery-store-sales",
+    "title": "Tidying data",
+    "section": "Data: Grocery store sales",
+    "text": "Data: Grocery store sales\n\n\nhave\n\n\n\n# A tibble: 2 × 4\n  customer_id item_1 item_2       item_3\n        &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;        &lt;chr&gt; \n1           1 bread  milk         banana\n2           2 milk   toilet paper &lt;NA&gt;  \n\n\n\n\nwant\n\n\n\n# A tibble: 6 × 3\n  customer_id item_no item        \n        &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;       \n1           1 item_1  bread       \n2           1 item_2  milk        \n3           1 item_3  banana      \n4           2 item_1  milk        \n5           2 item_2  toilet paper\n6           2 item_3  &lt;NA&gt;"
   },
   {
-    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#input-1-professions",
-    "href": "slides/1-4-joining-data/1-4-joining-data.html#input-1-professions",
-    "title": "Joining data",
-    "section": "Input 1: professions\n",
-    "text": "Input 1: professions\n\n\nprofessions\n\n# A tibble: 10 × 2\n   name               profession                        \n   &lt;chr&gt;              &lt;chr&gt;                             \n 1 Ada Lovelace       Mathematician                     \n 2 Marie Curie        Physicist and Chemist             \n 3 Janaki Ammal       Botanist                          \n 4 Chien-Shiung Wu    Physicist                         \n 5 Katherine Johnson  Mathematician                     \n 6 Rosalind Franklin  Chemist                           \n 7 Vera Rubin         Astronomer                        \n 8 Gladys West        Mathematician                     \n 9 Flossie Wong-Staal Virologist and Molecular Biologist\n10 Jennifer Doudna    Biochemist"
+    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#grammar-of-data-tidying",
+    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#grammar-of-data-tidying",
+    "title": "Tidying data",
+    "section": "Grammar of data tidying",
+    "text": "Grammar of data tidying\n\n\n\n\nThe goal of tidyr is to help you tidy your data via\n\n\npivoting for going between wide and long data\nsplitting and combining character columns\nnesting and unnesting columns\nclarifying how NAs should be treated"
   },
   {
-    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#input-2-dates",
-    "href": "slides/1-4-joining-data/1-4-joining-data.html#input-2-dates",
-    "title": "Joining data",
-    "section": "Input 2: dates\n",
-    "text": "Input 2: dates\n\n\ndates\n\n# A tibble: 8 × 3\n  name               birth_year death_year\n  &lt;chr&gt;                   &lt;dbl&gt;      &lt;dbl&gt;\n1 Janaki Ammal             1897       1984\n2 Chien-Shiung Wu          1912       1997\n3 Katherine Johnson        1918       2020\n4 Rosalind Franklin        1920       1958\n5 Vera Rubin               1928       2016\n6 Gladys West              1930         NA\n7 Flossie Wong-Staal       1947       2020\n8 Jennifer Doudna          1964         NA"
+    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivoting",
+    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivoting",
+    "title": "Tidying data",
+    "section": "Pivoting",
+    "text": "Pivoting\n\n\nNot this…\n\n\nbut this!"
   },
   {
-    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#input-3-works",
-    "href": "slides/1-4-joining-data/1-4-joining-data.html#input-3-works",
-    "title": "Joining data",
-    "section": "Input 3: works\n",
-    "text": "Input 3: works\n\n\nworks\n\n# A tibble: 9 × 2\n  name               known_for                              \n  &lt;chr&gt;              &lt;chr&gt;                                  \n1 Ada Lovelace       first computer algorithm               \n2 Marie Curie        theory of radioactivity,  discovery of…\n3 Janaki Ammal       hybrid species, biodiversity protection\n4 Chien-Shiung Wu    confim and refine theory of radioactiv…\n5 Katherine Johnson  calculations of orbital mechanics crit…\n6 Vera Rubin         existence of dark matter               \n7 Gladys West        mathematical modeling of the shape of …\n8 Flossie Wong-Staal first scientist to clone HIV and creat…\n9 Jennifer Doudna    one of the primary developers of CRISP…"
+    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#wider-vs.-longer",
+    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#wider-vs.-longer",
+    "title": "Tidying data",
+    "section": "Wider vs. longer",
+    "text": "Wider vs. longer\n\n\nwider - more columns\n\n\n# A tibble: 2 × 4\n  customer_id item_1 item_2       item_3\n        &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;        &lt;chr&gt; \n1           1 bread  milk         banana\n2           2 milk   toilet paper &lt;NA&gt;  \n\n\n\nlonger - more rows\n\n\n# A tibble: 6 × 3\n  customer_id item_no item        \n        &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;       \n1           1 item_1  bread       \n2           1 item_2  milk        \n3           1 item_3  banana      \n4           2 item_1  milk        \n5           2 item_2  toilet paper\n6           2 item_3  &lt;NA&gt;"
   },
   {
-    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#desired-output",
-    "href": "slides/1-4-joining-data/1-4-joining-data.html#desired-output",
-    "title": "Joining data",
-    "section": "Desired output",
-    "text": "Desired output\n\n\n# A tibble: 10 × 5\n   name           profession birth_year death_year known_for\n   &lt;chr&gt;          &lt;chr&gt;           &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;    \n 1 Ada Lovelace   Mathemati…         NA         NA first co…\n 2 Marie Curie    Physicist…         NA         NA theory o…\n 3 Janaki Ammal   Botanist         1897       1984 hybrid s…\n 4 Chien-Shiung … Physicist        1912       1997 confim a…\n 5 Katherine Joh… Mathemati…       1918       2020 calculat…\n 6 Rosalind Fran… Chemist          1920       1958 &lt;NA&gt;     \n 7 Vera Rubin     Astronomer       1928       2016 existenc…\n 8 Gladys West    Mathemati…       1930         NA mathemat…\n 9 Flossie Wong-… Virologis…       1947       2020 first sc…\n10 Jennifer Doud… Biochemist       1964         NA one of t…"
+    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer",
+    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer",
+    "title": "Tidying data",
+    "section": "pivot_longer()",
+    "text": "pivot_longer()\n\n\n\npivot_longer(\n  data,\n  cols, \n  names_to = \"name\", \n  values_to = \"value\"\n  )"
   },
   {
-    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#inputs-reminder",
-    "href": "slides/1-4-joining-data/1-4-joining-data.html#inputs-reminder",
-    "title": "Joining data",
-    "section": "Inputs, reminder",
-    "text": "Inputs, reminder\n\nnames(professions)\n\n[1] \"name\"       \"profession\"\n\nnrow(professions)\n\n[1] 10\n\n\n\n\nnames(dates)\n\n[1] \"name\"       \"birth_year\" \"death_year\"\n\nnrow(dates)\n\n[1] 8\n\n\n\n\n\nnames(works)\n\n[1] \"name\"      \"known_for\"\n\nnrow(works)\n\n[1] 9"
+    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-1",
+    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-1",
+    "title": "Tidying data",
+    "section": "pivot_longer()",
+    "text": "pivot_longer()\n\n\n\npivot_longer(\n1  data,\n  cols, \n  names_to = \"name\", \n  values_to = \"value\"\n  )\n\n\n1\n\ndata (as usual)"
   },
   {
-    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#joining-data-frames-1",
-    "href": "slides/1-4-joining-data/1-4-joining-data.html#joining-data-frames-1",
-    "title": "Joining data",
-    "section": "Joining data frames",
-    "text": "Joining data frames\n\nsomething_join(x, y)\n\n\n\nleft_join(): all rows from x\n\nright_join(): all rows from y\n\nfull_join(): all rows from both x and y\n\nsemi_join(): all rows from x where there are matching values in y, keeping just columns from x\n\ninner_join(): all rows from x where there are matching values in y, return all combination of multiple matches in the case of multiple matches\n\nanti_join(): return all rows from x where there are not matching values in y, never duplicate rows of x\n…"
+    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-2",
+    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-2",
+    "title": "Tidying data",
+    "section": "pivot_longer()",
+    "text": "pivot_longer()\n\n\n\npivot_longer(\n1  data,\n2  cols,\n  names_to = \"name\", \n  values_to = \"value\"\n  )\n\n\n1\n\ndata (as usual)\n\n2\n\ncols: Columns to pivot into longer format"
   },
   {
-    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#setup-1",
-    "href": "slides/1-4-joining-data/1-4-joining-data.html#setup-1",
-    "title": "Joining data",
-    "section": "Setup",
-    "text": "Setup\nFor the next few slides…\n\n\n\nx &lt;- tibble(\n  id = c(1, 2, 3),\n  value_x = c(\"x1\", \"x2\", \"x3\")\n  )\n\nx\n\n# A tibble: 3 × 2\n     id value_x\n  &lt;dbl&gt; &lt;chr&gt;  \n1     1 x1     \n2     2 x2     \n3     3 x3     \n\n\n\n\ny &lt;- tibble(\n  id = c(1, 2, 4),\n  value_y = c(\"y1\", \"y2\", \"y4\")\n  )\n\ny\n\n# A tibble: 3 × 2\n     id value_y\n  &lt;dbl&gt; &lt;chr&gt;  \n1     1 y1     \n2     2 y2     \n3     4 y4"
+    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-3",
+    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-3",
+    "title": "Tidying data",
+    "section": "pivot_longer()",
+    "text": "pivot_longer()\n\n\n\npivot_longer(\n1  data,\n2  cols,\n3  names_to = \"name\",\n  values_to = \"value\"\n  )\n\n\n1\n\ndata (as usual)\n\n2\n\ncols: Columns to pivot into longer format\n\n3\n\nnames_to: Name of the column where column names of pivoted variables go (character string)"
   },
   {
-    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#left_join",
-    "href": "slides/1-4-joining-data/1-4-joining-data.html#left_join",
-    "title": "Joining data",
-    "section": "left_join()",
-    "text": "left_join()\n\n\n\nleft_join(x, y)\n\nJoining with `by = join_by(id)`\n\n\n# A tibble: 3 × 3\n     id value_x value_y\n  &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;  \n1     1 x1      y1     \n2     2 x2      y2     \n3     3 x3      &lt;NA&gt;"
+    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-4",
+    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-4",
+    "title": "Tidying data",
+    "section": "pivot_longer()",
+    "text": "pivot_longer()\n\n\n\npivot_longer(\n1  data,\n2  cols,\n3  names_to = \"name\",\n4  values_to = \"value\"\n  )\n\n\n1\n\ndata (as usual)\n\n2\n\ncols: Columns to pivot into longer format\n\n3\n\nnames_to: Name of the column where column names of pivoted variables go (character string)\n\n4\n\nvalues_to: Name of the column where data in pivoted variables go (character string)"
   },
   {
-    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#left_join-1",
-    "href": "slides/1-4-joining-data/1-4-joining-data.html#left_join-1",
-    "title": "Joining data",
-    "section": "left_join()",
-    "text": "left_join()\n\nprofessions |&gt;\n  left_join(dates)\n\nJoining with `by = join_by(name)`\n\n\n# A tibble: 10 × 4\n   name               profession       birth_year death_year\n   &lt;chr&gt;              &lt;chr&gt;                 &lt;dbl&gt;      &lt;dbl&gt;\n 1 Ada Lovelace       Mathematician            NA         NA\n 2 Marie Curie        Physicist and C…         NA         NA\n 3 Janaki Ammal       Botanist               1897       1984\n 4 Chien-Shiung Wu    Physicist              1912       1997\n 5 Katherine Johnson  Mathematician          1918       2020\n 6 Rosalind Franklin  Chemist                1920       1958\n 7 Vera Rubin         Astronomer             1928       2016\n 8 Gladys West        Mathematician          1930         NA\n 9 Flossie Wong-Staal Virologist and …       1947       2020\n10 Jennifer Doudna    Biochemist             1964         NA"
+    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-in-context",
+    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-in-context",
+    "title": "Tidying data",
+    "section": "pivot_longer() in context",
+    "text": "pivot_longer() in context\n\n\n\ncustomers |&gt;\n  pivot_longer(\n    cols = item_1:item_3,\n    names_to = \"item_no\",\n    values_to = \"item\"\n  )\n\n# A tibble: 6 × 3\n  customer_id item_no item        \n        &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;       \n1           1 item_1  bread       \n2           1 item_2  milk        \n3           1 item_3  banana      \n4           2 item_1  milk        \n5           2 item_2  toilet paper\n6           2 item_3  &lt;NA&gt;"
   },
   {
-    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#right_join",
-    "href": "slides/1-4-joining-data/1-4-joining-data.html#right_join",
-    "title": "Joining data",
-    "section": "right_join()",
-    "text": "right_join()\n\n\n\nright_join(x, y)\n\nJoining with `by = join_by(id)`\n\n\n# A tibble: 3 × 3\n     id value_x value_y\n  &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;  \n1     1 x1      y1     \n2     2 x2      y2     \n3     4 &lt;NA&gt;    y4"
+    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-in-context-1",
+    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-in-context-1",
+    "title": "Tidying data",
+    "section": "pivot_longer() in context",
+    "text": "pivot_longer() in context\n\n\n\ncustomers |&gt;\n  pivot_longer(\n1    cols = item_1:item_3,\n    names_to = \"item_no\",\n    values_to = \"item\"\n  )\n\n\n1\n\ncols to pivot: item_1 to item_3"
   },
   {
-    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#left_join-2",
-    "href": "slides/1-4-joining-data/1-4-joining-data.html#left_join-2",
-    "title": "Joining data",
-    "section": "left_join()",
-    "text": "left_join()\n\nprofessions |&gt;\n  right_join(dates)\n\nJoining with `by = join_by(name)`\n\n\n# A tibble: 8 × 4\n  name               profession        birth_year death_year\n  &lt;chr&gt;              &lt;chr&gt;                  &lt;dbl&gt;      &lt;dbl&gt;\n1 Janaki Ammal       Botanist                1897       1984\n2 Chien-Shiung Wu    Physicist               1912       1997\n3 Katherine Johnson  Mathematician           1918       2020\n4 Rosalind Franklin  Chemist                 1920       1958\n5 Vera Rubin         Astronomer              1928       2016\n6 Gladys West        Mathematician           1930         NA\n7 Flossie Wong-Staal Virologist and M…       1947       2020\n8 Jennifer Doudna    Biochemist              1964         NA"
+    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-in-context-2",
+    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-in-context-2",
+    "title": "Tidying data",
+    "section": "pivot_longer() in context",
+    "text": "pivot_longer() in context\n\n\n\ncustomers |&gt;\n  pivot_longer(\n1    cols = item_1:item_3,\n2    names_to = \"item_no\",\n    values_to = \"item\"\n  )\n\n\n1\n\ncols to pivot: item_1 to item_3\n\n2\n\nColumn names_to new column called item_no"
   },
   {
-    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#full_join",
-    "href": "slides/1-4-joining-data/1-4-joining-data.html#full_join",
-    "title": "Joining data",
-    "section": "full_join()",
-    "text": "full_join()\n\n\n\nfull_join(x, y)\n\nJoining with `by = join_by(id)`\n\n\n# A tibble: 4 × 3\n     id value_x value_y\n  &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;  \n1     1 x1      y1     \n2     2 x2      y2     \n3     3 x3      &lt;NA&gt;   \n4     4 &lt;NA&gt;    y4"
+    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-in-context-3",
+    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-in-context-3",
+    "title": "Tidying data",
+    "section": "pivot_longer() in context",
+    "text": "pivot_longer() in context\n\n\n\ncustomers |&gt;\n  pivot_longer(\n1    cols = item_1:item_3,\n2    names_to = \"item_no\",\n3    values_to = \"item\"\n  )\n\n\n1\n\ncols to pivot: item_1 to item_3\n\n2\n\nColumn names_to new column called item_no\n\n3\n\nvalues_to new column called item"
   },
   {
-    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#left_join-3",
-    "href": "slides/1-4-joining-data/1-4-joining-data.html#left_join-3",
-    "title": "Joining data",
-    "section": "left_join()",
-    "text": "left_join()\n\nprofessions |&gt;\n  full_join(dates)\n\nJoining with `by = join_by(name)`\n\n\n# A tibble: 10 × 4\n   name               profession       birth_year death_year\n   &lt;chr&gt;              &lt;chr&gt;                 &lt;dbl&gt;      &lt;dbl&gt;\n 1 Ada Lovelace       Mathematician            NA         NA\n 2 Marie Curie        Physicist and C…         NA         NA\n 3 Janaki Ammal       Botanist               1897       1984\n 4 Chien-Shiung Wu    Physicist              1912       1997\n 5 Katherine Johnson  Mathematician          1918       2020\n 6 Rosalind Franklin  Chemist                1920       1958\n 7 Vera Rubin         Astronomer             1928       2016\n 8 Gladys West        Mathematician          1930         NA\n 9 Flossie Wong-Staal Virologist and …       1947       2020\n10 Jennifer Doudna    Biochemist             1964         NA"
+    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-in-context-4",
+    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-in-context-4",
+    "title": "Tidying data",
+    "section": "pivot_longer() in context",
+    "text": "pivot_longer() in context\n\n\n\ncustomers |&gt;\n  pivot_longer(\n    cols = item_1:item_3,\n    names_to = \"item_no\",\n    values_to = \"item\"\n  )\n\n# A tibble: 6 × 3\n  customer_id item_no item        \n        &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;       \n1           1 item_1  bread       \n2           1 item_2  milk        \n3           1 item_3  banana      \n4           2 item_1  milk        \n5           2 item_2  toilet paper\n6           2 item_3  &lt;NA&gt;"
   },
   {
-    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#inner_join",
-    "href": "slides/1-4-joining-data/1-4-joining-data.html#inner_join",
-    "title": "Joining data",
-    "section": "inner_join()",
-    "text": "inner_join()\n\n\n\ninner_join(x, y)\n\nJoining with `by = join_by(id)`\n\n\n# A tibble: 2 × 3\n     id value_x value_y\n  &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;  \n1     1 x1      y1     \n2     2 x2      y2"
+    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#dealing-with-nas",
+    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#dealing-with-nas",
+    "title": "Tidying data",
+    "section": "Dealing with NAs",
+    "text": "Dealing with NAs\n\n\n\ncustomers |&gt;\n  pivot_longer(\n1    cols = item_1:item_3,\n2    names_to = \"item_no\",\n3    values_to = \"item\",\n4    values_drop_na = TRUE\n  )\n\n\n1\n\ncols to pivot: item_1 to item_3\n\n2\n\nColumn names_to new column called item_no\n\n3\n\nvalues_to new column called item\n\n4\n\nDrop rows that contain only NAs in the values_to column\n\n\n\n\n# A tibble: 5 × 3\n  customer_id item_no item        \n        &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;       \n1           1 item_1  bread       \n2           1 item_2  milk        \n3           1 item_3  banana      \n4           2 item_1  milk        \n5           2 item_2  toilet paper"
   },
   {
-    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#inner_join-1",
-    "href": "slides/1-4-joining-data/1-4-joining-data.html#inner_join-1",
-    "title": "Joining data",
-    "section": "inner_join()",
-    "text": "inner_join()\n\nprofessions |&gt;\n  inner_join(dates)\n\nJoining with `by = join_by(name)`\n\n\n# A tibble: 8 × 4\n  name               profession        birth_year death_year\n  &lt;chr&gt;              &lt;chr&gt;                  &lt;dbl&gt;      &lt;dbl&gt;\n1 Janaki Ammal       Botanist                1897       1984\n2 Chien-Shiung Wu    Physicist               1912       1997\n3 Katherine Johnson  Mathematician           1918       2020\n4 Rosalind Franklin  Chemist                 1920       1958\n5 Vera Rubin         Astronomer              1928       2016\n6 Gladys West        Mathematician           1930         NA\n7 Flossie Wong-Staal Virologist and M…       1947       2020\n8 Jennifer Doudna    Biochemist              1964         NA"
+    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#from-customers-to-purchases",
+    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#from-customers-to-purchases",
+    "title": "Tidying data",
+    "section": "From customers to purchases",
+    "text": "From customers to purchases\n\n\n\npurchases &lt;- customers |&gt;\n  pivot_longer(\n    cols = item_1:item_3,\n    names_to = \"item_no\",\n    values_to = \"item\",\n    values_drop_na = TRUE\n  )\n\npurchases\n\n# A tibble: 5 × 3\n  customer_id item_no item        \n        &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;       \n1           1 item_1  bread       \n2           1 item_2  milk        \n3           1 item_3  banana      \n4           2 item_1  milk        \n5           2 item_2  toilet paper"
   },
   {
-    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#semi_join",
-    "href": "slides/1-4-joining-data/1-4-joining-data.html#semi_join",
-    "title": "Joining data",
-    "section": "semi_join()",
-    "text": "semi_join()\n\n\n\nsemi_join(x, y)\n\nJoining with `by = join_by(id)`\n\n\n# A tibble: 2 × 2\n     id value_x\n  &lt;dbl&gt; &lt;chr&gt;  \n1     1 x1     \n2     2 x2"
+    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#why-pivot",
+    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#why-pivot",
+    "title": "Tidying data",
+    "section": "Why pivot?",
+    "text": "Why pivot?\nMost likely, because the next step of your analysis needs it\n\n\n\n\n\nprices\n\n# A tibble: 5 × 2\n  item         price\n  &lt;chr&gt;        &lt;dbl&gt;\n1 avocado       0.5 \n2 banana        0.15\n3 bread         1   \n4 milk          0.8 \n5 toilet paper  3   \n\n\n\n\npurchases |&gt;\n  left_join(prices)\n\nJoining with `by = join_by(item)`\n\n\n# A tibble: 5 × 4\n  customer_id item_no item         price\n        &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;        &lt;dbl&gt;\n1           1 item_1  bread         1   \n2           1 item_2  milk          0.8 \n3           1 item_3  banana        0.15\n4           2 item_1  milk          0.8 \n5           2 item_2  toilet paper  3"
   },
   {
-    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#semi_join-1",
-    "href": "slides/1-4-joining-data/1-4-joining-data.html#semi_join-1",
-    "title": "Joining data",
-    "section": "semi_join()",
-    "text": "semi_join()\n\nprofessions |&gt;\n  semi_join(dates)\n\nJoining with `by = join_by(name)`\n\n\n# A tibble: 8 × 2\n  name               profession                        \n  &lt;chr&gt;              &lt;chr&gt;                             \n1 Janaki Ammal       Botanist                          \n2 Chien-Shiung Wu    Physicist                         \n3 Katherine Johnson  Mathematician                     \n4 Rosalind Franklin  Chemist                           \n5 Vera Rubin         Astronomer                        \n6 Gladys West        Mathematician                     \n7 Flossie Wong-Staal Virologist and Molecular Biologist\n8 Jennifer Doudna    Biochemist"
+    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#from-purchases-to-customers",
+    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#from-purchases-to-customers",
+    "title": "Tidying data",
+    "section": "From purchases to customers",
+    "text": "From purchases to customers\n\n\n\npurchases |&gt;\n  pivot_wider(\n    names_from = item_no,\n    values_from = item\n  )\n\n# A tibble: 2 × 4\n  customer_id item_1 item_2       item_3\n        &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;        &lt;chr&gt; \n1           1 bread  milk         banana\n2           2 milk   toilet paper &lt;NA&gt;"
   },
   {
-    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#anti_join",
-    "href": "slides/1-4-joining-data/1-4-joining-data.html#anti_join",
-    "title": "Joining data",
-    "section": "anti_join()",
-    "text": "anti_join()\n\n\n\nanti_join(x, y)\n\nJoining with `by = join_by(id)`\n\n\n# A tibble: 1 × 2\n     id value_x\n  &lt;dbl&gt; &lt;chr&gt;  \n1     3 x3"
+    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_wider",
+    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_wider",
+    "title": "Tidying data",
+    "section": "pivot_wider()",
+    "text": "pivot_wider()\n\n\n\npivot_wider(\n1  data,\n  names_from = name,\n  values_from = value\n  )\n\n\n1\n\ndata (as usual)"
   },
   {
-    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#anti_join-1",
-    "href": "slides/1-4-joining-data/1-4-joining-data.html#anti_join-1",
-    "title": "Joining data",
-    "section": "anti_join()",
-    "text": "anti_join()\n\nprofessions |&gt;\n  anti_join(dates)\n\nJoining with `by = join_by(name)`\n\n\n# A tibble: 2 × 2\n  name         profession           \n  &lt;chr&gt;        &lt;chr&gt;                \n1 Ada Lovelace Mathematician        \n2 Marie Curie  Physicist and Chemist"
+    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_wider-1",
+    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_wider-1",
+    "title": "Tidying data",
+    "section": "pivot_wider()",
+    "text": "pivot_wider()\n\n\n\npivot_wider(\n1  data,\n2  names_from = name,\n  values_from = value\n  )\n\n\n1\n\ndata (as usual)\n\n2\n\nnames_from: Which column(s) in the long format contains what should be column names in the wide format"
   },
   {
-    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#putting-it-altogether",
-    "href": "slides/1-4-joining-data/1-4-joining-data.html#putting-it-altogether",
-    "title": "Joining data",
-    "section": "Putting it altogether",
-    "text": "Putting it altogether\n\nprofessions |&gt;\n  left_join(dates) |&gt;\n  left_join(works)\n\nJoining with `by = join_by(name)`\nJoining with `by = join_by(name)`\n\n\n# A tibble: 10 × 5\n   name           profession birth_year death_year known_for\n   &lt;chr&gt;          &lt;chr&gt;           &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;    \n 1 Ada Lovelace   Mathemati…         NA         NA first co…\n 2 Marie Curie    Physicist…         NA         NA theory o…\n 3 Janaki Ammal   Botanist         1897       1984 hybrid s…\n 4 Chien-Shiung … Physicist        1912       1997 confim a…\n 5 Katherine Joh… Mathemati…       1918       2020 calculat…\n 6 Rosalind Fran… Chemist          1920       1958 &lt;NA&gt;     \n 7 Vera Rubin     Astronomer       1928       2016 existenc…\n 8 Gladys West    Mathemati…       1930         NA mathemat…\n 9 Flossie Wong-… Virologis…       1947       2020 first sc…\n10 Jennifer Doud… Biochemist       1964         NA one of t…"
+    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_wider-2",
+    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_wider-2",
+    "title": "Tidying data",
+    "section": "pivot_wider()",
+    "text": "pivot_wider()\n\n\n\npivot_wider(\n1  data,\n2  names_from = name,\n3  values_from = value\n  )\n\n\n1\n\ndata (as usual)\n\n2\n\nnames_from: Which column(s) in the long format contains what should be column names in the wide format\n\n3\n\nvalues_from: Which column(s) in the long format contains what should be values in the new columns in the wide format"
+  },
+  {
+    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#wider---longer",
+    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#wider---longer",
+    "title": "Tidying data",
+    "section": "Wider <-> longer",
+    "text": "Wider &lt;-&gt; longer"
+  },
+  {
+    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#additional-arguments",
+    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#additional-arguments",
+    "title": "Tidying data",
+    "section": "Additional arguments",
+    "text": "Additional arguments\n\n\npivot_longer()\n\npivot_longer(\n  data,\n  cols,\n  ...,\n  cols_vary = \"fastest\",\n  names_to = \"name\",\n  names_prefix = NULL,\n  names_sep = NULL,\n  names_pattern = NULL,\n  names_ptypes = NULL,\n  names_transform = NULL,\n  names_repair = \"check_unique\",\n  values_to = \"value\",\n  values_drop_na = FALSE,\n  values_ptypes = NULL,\n  values_transform = NULL\n)\n\n\npivot_wider()\n\npivot_wider(\n  data,\n  ...,\n  id_cols = NULL,\n  id_expand = FALSE,\n  names_from = name,\n  names_prefix = \"\",\n  names_sep = \"_\",\n  names_glue = NULL,\n  names_sort = FALSE,\n  names_vary = \"fastest\",\n  names_expand = FALSE,\n  names_repair = \"check_unique\",\n  values_from = value,\n  values_fill = NULL,\n  values_fn = NULL,\n  unused_fn = NULL\n)"
+  },
+  {
+    "objectID": "slides/3-1-web-scraping/3-1-web-scraping.html#scraping-the-web-what-why",
+    "href": "slides/3-1-web-scraping/3-1-web-scraping.html#scraping-the-web-what-why",
+    "title": "Web scraping",
+    "section": "Scraping the web: what? why?",
+    "text": "Scraping the web: what? why?\n\n\nIncreasing amount of data is available on the web\nThese data are provided in an unstructured format: you can always copy&paste, but it’s time-consuming and prone to errors\nWeb scraping is the process of extracting this information automatically and transform it into a structured dataset\nTwo different scenarios:\n\nScreen scraping: extract data from source code of website, with html parser (easy) or regular expression matching (less easy).\nWeb APIs (application programming interface): website offers a set of structured http requests that return JSON or XML files."
+  },
+  {
+    "objectID": "slides/3-1-web-scraping/3-1-web-scraping.html#hypertext-markup-language",
+    "href": "slides/3-1-web-scraping/3-1-web-scraping.html#hypertext-markup-language",
+    "title": "Web scraping",
+    "section": "Hypertext Markup Language",
+    "text": "Hypertext Markup Language\n\n\nMost of the data on the web is still largely available as HTML\nIt is structured (hierarchical / tree based), but it’s often not available in a form useful for analysis (flat / tidy).\n\n\n\n&lt;html&gt;\n  &lt;head&gt;\n    &lt;title&gt;This is a title&lt;/title&gt;\n  &lt;/head&gt;\n  &lt;body&gt;\n    &lt;p align=\"center\"&gt;Hello world!&lt;/p&gt;\n  &lt;/body&gt;\n&lt;/html&gt;"
+  },
+  {
+    "objectID": "slides/3-1-web-scraping/3-1-web-scraping.html#rvest",
+    "href": "slides/3-1-web-scraping/3-1-web-scraping.html#rvest",
+    "title": "Web scraping",
+    "section": "rvest",
+    "text": "rvest\n\n\n\nThe rvest package makes basic processing and manipulation of HTML data straight forward\nIt’s designed to work with pipelines built with |&gt;"
+  },
+  {
+    "objectID": "slides/3-1-web-scraping/3-1-web-scraping.html#core-rvest-functions",
+    "href": "slides/3-1-web-scraping/3-1-web-scraping.html#core-rvest-functions",
+    "title": "Web scraping",
+    "section": "Core rvest functions",
+    "text": "Core rvest functions\n\nread_html(): Read HTML data from a url or character string\nhtml_element(): Select a specified HTML element\nhtml_elements(): Select specified HTML elements\nhtml_table(): Parse an HTML table into a data frame\nhtml_text(): Extract text from an HTML element\nhtml_name(): Extract the name of an HTML element\nhtml_attr(): Extract all HTML element attributes by name\nhtml_attr(): Extract a single HTML element attribute by name"
+  },
+  {
+    "objectID": "slides/3-1-web-scraping/3-1-web-scraping.html#selectorgadget",
+    "href": "slides/3-1-web-scraping/3-1-web-scraping.html#selectorgadget",
+    "title": "Web scraping",
+    "section": "SelectorGadget",
+    "text": "SelectorGadget\n\n\n\nOpen source tool that facilitates discovery and selection of tags for elements on a page\nAdd to your browser as an extension, e.g., Chrome Extension\nFind out more on the SelectorGadget vignette"
+  },
+  {
+    "objectID": "slides/3-1-web-scraping/3-1-web-scraping.html#using-the-selectorgadget",
+    "href": "slides/3-1-web-scraping/3-1-web-scraping.html#using-the-selectorgadget",
+    "title": "Web scraping",
+    "section": "Using the SelectorGadget",
+    "text": "Using the SelectorGadget"
+  },
+  {
+    "objectID": "slides/3-1-web-scraping/3-1-web-scraping.html#using-the-selectorgadget-1",
+    "href": "slides/3-1-web-scraping/3-1-web-scraping.html#using-the-selectorgadget-1",
+    "title": "Web scraping",
+    "section": "Using the SelectorGadget",
+    "text": "Using the SelectorGadget\nThrough this process of selection and rejection, SelectorGadget faciliates discovering the appropriate CSS selector for your needs."
   },
   {
     "objectID": "slides/2-3-importing-data/2-3-importing-data.html#reading-delimited-files",

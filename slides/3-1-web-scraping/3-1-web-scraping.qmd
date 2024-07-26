@@ -1,0 +1,111 @@
+---
+title: "Web scraping"
+format: revealjs
+---
+
+# Scraping the web
+
+## Scraping the web: what? why?
+
+::: incremental
+-   Increasing amount of data is available on the web
+
+-   These data are provided in an unstructured format: you can always copy&paste, but it's time-consuming and prone to errors
+
+-   Web scraping is the process of extracting this information automatically and transform it into a structured dataset
+
+-   Two different scenarios:
+
+    -   Screen scraping: extract data from source code of website, with html parser (easy) or regular expression matching (less easy).
+    -   Web APIs (application programming interface): website offers a set of structured http requests that return JSON or XML files.
+:::
+
+# Web Scraping with rvest
+
+## Hypertext Markup Language
+
+::: incremental
+-   Most of the data on the web is still largely available as HTML
+-   It is structured (hierarchical / tree based), but it's often not available in a form useful for analysis (flat / tidy).
+:::
+
+. . .
+
+```{.html code-line-numbers="|1,8|2-4|5-7"}
+<html>
+  <head>
+    <title>This is a title</title>
+  </head>
+  <body>
+    <p align="center">Hello world!</p>
+  </body>
+</html>
+```
+
+## rvest
+
+::: columns
+::: {.column width="35%"}
+-   The **rvest** package makes basic processing and manipulation of HTML data straight forward
+-   It's designed to work with pipelines built with `|>`
+:::
+
+::: {.column width="35%"}
+![](images/rvest.png)
+:::
+:::
+
+## Core rvest functions
+
+-   `read_html()`[: Read HTML data from a url or character string]{.fragment fragment-index=1}
+-   `html_element()`[: Select a specified HTML element]{.fragment fragment-index=2}
+-   `html_elements()`[: Select specified HTML elements]{.fragment fragment-index=3}
+-   `html_table()`[: Parse an HTML table into a data frame]{.fragment fragment-index=4}
+-   `html_text()`[: Extract text from an HTML element]{.fragment fragment-index=5}
+-   `html_name()`[: Extract the name of an HTML element]{.fragment fragment-index=6}
+-   `html_attr()`[: Extract all HTML element attributes by name]{.fragment fragment-index=7}
+-   `html_attr()`[: Extract a single HTML element attribute by name]{.fragment fragment-index=7}
+
+## SelectorGadget
+
+::: columns
+::: {.column width="30%"}
+-   Open source tool that facilitates discovery and selection of tags for elements on a page
+-   Add to your browser as an extension, e.g., [Chrome Extension](https://chrome.google.com/webstore/detail/selectorgadget/mhjhnkcfbdhnjickkkdbjoemdmbfginb)
+-   Find out more on the [SelectorGadget vignette](https://rvest.tidyverse.org/articles/selectorgadget.html)
+:::
+
+::: {.column width="40%"}
+![](images/selector-gadget/selector-gadget.png)
+:::
+:::
+
+## Using the SelectorGadget
+
+![](images/selector-gadget/selector-gadget.gif){width=1000}
+
+## 
+
+![](images/selector-gadget/selector-gadget-1.png)
+
+## 
+
+![](images/selector-gadget/selector-gadget-2.png)
+
+## 
+
+![](images/selector-gadget/selector-gadget-3.png)
+
+## 
+
+![](images/selector-gadget/selector-gadget-4.png)
+
+## 
+
+![](images/selector-gadget/selector-gadget-5.png)
+
+## Using the SelectorGadget
+
+Through this process of selection and rejection, SelectorGadget faciliates discovering the appropriate CSS selector for your needs.
+
+![](images/selector-gadget/selector-gadget.gif){width=1000}
