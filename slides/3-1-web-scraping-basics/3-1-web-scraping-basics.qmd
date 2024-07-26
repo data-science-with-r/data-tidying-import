@@ -1,5 +1,5 @@
 ---
-title: "Web scraping"
+title: "Web scraping basics"
 format: revealjs
 ---
 
@@ -31,7 +31,7 @@ format: revealjs
 
 . . .
 
-```{.html code-line-numbers="|1,8|2-4|5-7"}
+``` {.html code-line-numbers="|1,8|2-4|5-7"}
 <html>
   <head>
     <title>This is a title</title>
@@ -57,14 +57,14 @@ format: revealjs
 
 ## Core rvest functions
 
--   `read_html()`[: Read HTML data from a url or character string]{.fragment fragment-index=1}
--   `html_element()`[: Select a specified HTML element]{.fragment fragment-index=2}
--   `html_elements()`[: Select specified HTML elements]{.fragment fragment-index=3}
--   `html_table()`[: Parse an HTML table into a data frame]{.fragment fragment-index=4}
--   `html_text()`[: Extract text from an HTML element]{.fragment fragment-index=5}
--   `html_name()`[: Extract the name of an HTML element]{.fragment fragment-index=6}
--   `html_attr()`[: Extract all HTML element attributes by name]{.fragment fragment-index=7}
--   `html_attr()`[: Extract a single HTML element attribute by name]{.fragment fragment-index=7}
+-   `read_html()`[: Read HTML data from a url or character string]{.fragment fragment-index="1"}
+-   `html_element()`[: Select a specified HTML element]{.fragment fragment-index="2"}
+-   `html_elements()`[: Select specified HTML elements]{.fragment fragment-index="3"}
+-   `html_table()`[: Parse an HTML table into a data frame]{.fragment fragment-index="4"}
+-   `html_text()`[: Extract text from an HTML element]{.fragment fragment-index="5"}
+-   `html_name()`[: Extract the name of an HTML element]{.fragment fragment-index="6"}
+-   `html_attr()`[: Extract all HTML element attributes by name]{.fragment fragment-index="7"}
+-   `html_attr()`[: Extract a single HTML element attribute by name]{.fragment fragment-index="7"}
 
 ## SelectorGadget
 
@@ -82,7 +82,7 @@ format: revealjs
 
 ## Using the SelectorGadget
 
-![](images/selector-gadget/selector-gadget.gif){width=1000}
+![](images/selector-gadget/selector-gadget.gif){width="1000"}
 
 ## 
 
@@ -108,4 +108,4 @@ format: revealjs
 
 Through this process of selection and rejection, SelectorGadget faciliates discovering the appropriate CSS selector for your needs.
 
-![](images/selector-gadget/selector-gadget.gif){width=1000}
+![](images/selector-gadget/selector-gadget.gif){width="1000"}
