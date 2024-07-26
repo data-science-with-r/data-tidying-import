@@ -1,0 +1,67 @@
+---
+title: "Welcome"
+format: revealjs
+---
+
+# Hello!
+
+## Data science life cycle
+
+![](images/data-science-cycle/data-science-cycle.001.png){fig-align="left" width="1280"}
+
+## Tidy -\> transform
+
+![](images/data-science-cycle/data-science-cycle.003.png){fig-align="left" width="1280"}
+
+## Import
+
+![](images/data-science-cycle/data-science-cycle.002.png){fig-align="left" width="1280"}
+
+# Background
+
+## Toolkit
+
+::: columns
+::: {.column width="30%"}
+![](images/r-logo.png)
+
+![](images/rstudio-logo.png)
+:::
+
+::: {.column width="30%"}
+![](images/quarto-logo.png)
+
+![](images/tidyverse.png)
+:::
+:::
+
+## Concepts
+
+-   Tidyverse functions take a data frame as their first argument
+
+. . .
+
+-   Data transformation can be done in data pipelines with **dplyr**
+
+```{r}
+#| eval: false
+df |>
+  select(...) |>
+  filter(...) |>
+  mutate(...) |>
+  group_by(...) |>
+  summarize(...)
+```
+
+. . .
+
+-   Data visualizations can be built layer-by-layer with **ggplot2**
+
+```{r}
+#| eval: false
+ggplot(df, aes(x = ..., y = ...)) +
+  geom_*(...) +
+  scale_*() +
+  facet_*(...) +
+  labs(...)
+```

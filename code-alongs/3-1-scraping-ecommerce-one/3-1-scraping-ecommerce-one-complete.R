@@ -1,33 +1,33 @@
 # Scraping an eCommerce page (complete)
 
-# load packages ----------------------------------------------------------------
+# load packages ----
 
-library(polite)
-library(rvest)
 library(tidyverse)
+library(rvest)
+library(polite)
 
-# check for scrape-ability -----------------------------------------------------
+# check for scrape-ability ----
 
-bow("https://www.scrapingcourse.com")
+bow("https://www.scrapingcourse.com/")
 
-# read page --------------------------------------------------------------------
+# read page ----
 
 url <- "https://www.scrapingcourse.com/ecommerce/"
 page <- read_html(url)
 
-# extract item names -----------------------------------------------------------
+# titles ----
 
 titles <- page |>
   html_elements(".woocommerce-loop-product__title") |>
   html_text()
 
-# extract item URLs ------------------------------------------------------------
+# urls ----
 
 urls <- page |>
   html_elements(".woocommerce-loop-product__link") |>
   html_attr("href")
 
-# extract item prices ----------------------------------------------------------
+# prices ----
 
 prices <- page |>
   html_elements(".price") |>
@@ -35,14 +35,24 @@ prices <- page |>
   str_remove("\\$") |>
   as.numeric()
 
-# make tibble ------------------------------------------------------------------
+# make tibble ----
 
 items <- tibble(
   title = titles,
-  price = prices,
-  urls = urls
+  url = urls,
+  price = prices
 )
 
-# write csv --------------------------------------------------------------------
+# write items ----
 
-#write_csv(items, "data/items.csv")
+write_csv(items, file = "data/items.csv")
+
+
+
+
+
+
+
+
+
+

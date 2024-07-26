@@ -1,114 +1,18 @@
-In this course and throughout the specialization, we'll use a number of modern data science tools. In this video we'll meet two of them, R and RStudio.
+Hello, and welcome! My name is Mine Çetinkaya-Rundel, and I will be your instructor for the specialization titled Data Science with R. This is the second course in the series -- Data Tidying and Import.
 
->>
+>>> In the first course we introduced the data science cycle with this figure from the book R for Data Science.
 
-Before we meet them, let's review our learning goals
+>>> In this course we're going to continue our foray into data transformation, formally introduce data tidying, which often involves reshaping and joining data, and then
 
->>
+>>> Take one more step back and learn to import datasets and discuss many of the considerations and challenges for getting data into R. We'll start with rectangular data, like CSV files and Excel spreadsheets and then venture on to getting unstructured data off the web with web scraping.
 
-By the end of the course, you will be able to…
+>>> So, given that this is Course 2 in the specialization, what should you know if you haven't (or even if you have) taken Course 1 - data visualization and transformation
 
->> gain insights from data, or to be more specific
+>>> Let's start with the toolkit -- coming in to this course you should have basic familiarity with R and RStudio and with writing simple reproducible documents with Quarto. Additionally, you should have some experience with visualizing and transforming data with tools from the tidyverse, primarily ggplot2 and dplyr.
 
->> gain insights from data, using modern programming tools and techniques, or more specifically
+>>> The tidyverse is vast though, and can be used to tackle many data science tasks, some well beyond this course. So, for now, as long as you know that most tidyverse functions take a data frame as their first argument, that data transformation can be done in data pipelines with dplyr, and data visualizations can be built layer-by-layer with ggplot2, you should be good to go. And if you need an introduction or a refresher for any of these, take Course 1 or complete the recommended readings before jumping in.
 
->> gain insights from data, using modern programming tools and techniques, reproducibly with literate programming, or even more specifically
-
->> gain insights from data, using modern programming tools and techniques, reproducibly with literate programming and version control
-
->>
-
-In this video, though, we'll focus on gaining insights from data, using modern programming tools and techniques 
-
->>
-
-with R and RStudio
-
->>
-
-So, what's R?
-
->> R is an open-source statistical programming language
-
->> It's also an environment for statistical computing and graphics
-
->>
-
-And, RStudio?
-
->> RStudio is a convenient interface for R called an IDE, an integrated development environment. For example, “I write R code in the RStudio IDE”.
-
->> Using RStudio is mot a requirement for programming with R, but it’s very commonly used by R programmers and data scientists
-
->>
-
-A good analogy for R vs. RStudio is
-
->> a car engine
-
->> vs. dashboard
-
-R is like the engine under the hood, RStudio is the dashboard via which you interact with the engine
-
->>
-
-And R packages
-
->> Packages are the fundamental units of reproducible R code – they include reusable R functions, documentation of these functions, and sample data
-
->> They are how the community extends R
-
->> As of April 2024, there are over 20,000 R packages available on CRAN, the Comprehensive R Archive Network
-
->> We’re going to work with a small (but important) subset of these!
-
->>
-
-So, let's take a tour of R and RStudio
-
-...
-
->> As a recap
-
-- we can use the R console as a calculator to do simple arithmetic
-- or for object assignment, which then shows up in the environment tab
-- we can load a package with library
-- we can view datas frames in the data viewer with View
-- we can access variables in a data frame with a question mark
-- R functions, like mean, are followed by parantheses, in which what the object we want to apply them to go
-- when a function gives an unexpected result, like the NA here, or an error, the best first place to go to is the function documentation, which can be accessed in the help pane or by typing question mark followed by name of function
-- further arguments that go into a function are separated by commas
-
->> 
-
-Let's review a short list (for now) of R essentials
-
->> Functions are (most often) verbs, followed by what they will be applied to in parentheses, like do this to that or do this, to this, to that, with those
-
->> Packages are installed with the install.packages() function and loaded with the library function, once per session
-
->>
-
-Columns (variables) in data frames are accessed with $, like dataframe dollar sign var_name
-
->> and object documentation can be accessed with ?, like question mark mean
-
->>
-
-and finally -- the tidyverse
-
->> The tidyverse is an opinionated collection of R packages designed for data science
-
->> All packages share an underlying philosophy and a common grammar
-
-[pause for acknowledgements]
-
-
-
-
-
-
-
+>>> And if you're ready, or just thinking "bring it on!", let's dive in!
 
 
 

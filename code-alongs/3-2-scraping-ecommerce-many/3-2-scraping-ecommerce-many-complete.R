@@ -1,60 +1,66 @@
 # Scraping many eCommerce pages (complete)
 
-# load packages ----------------------------------------------------------------
+# load packages ----
 
-library(polite)
-library(rvest)
 library(tidyverse)
+library(rvest)
+library(polite)
 library(glue)
 
-# check for scrape-ability -----------------------------------------------------
+# check for scrape-ability ----
 
 bow("https://www.scrapingcourse.com")
 
-# read page --------------------------------------------------------------------
+# read pages ----
 
 page_nos <- 1:5
 urls <- glue("https://www.scrapingcourse.com/ecommerce/page/{page_nos}/")
 
-# function to scrape page ------------------------------------------------------
+# function to scrape a page ----
 
 scrape_items <- function(url){
-
+  
+  # read page
   page <- read_html(url)
-
-  # extract item names
+  
+  # titles
   titles <- page |>
     html_elements(".woocommerce-loop-product__title") |>
     html_text()
-
-  # extract item URLs
+  
+  # urls
   urls <- page |>
     html_elements(".woocommerce-loop-product__link") |>
     html_attr("href")
-
-  # extract item prices
+  
+  # prices
   prices <- page |>
     html_elements(".price") |>
     html_text() |>
     str_remove("\\$") |>
     as.numeric()
-
+  
   # make tibble
   tibble(
     title = titles,
-    price = prices,
-    urls = urls
+    url = urls,
+    price = prices
   )
-
+  
 }
 
-# test function ----------------------------------------------------------------
+# test function ----
 
-#scrape_items(urls[1])
-#scrape_items(urls[2])
-#scrape_items(urls[3])
+scrape_items(urls[1])
+scrape_items(urls[2])
+scrape_items(urls[3])
 
-# map function over urls -------------------------------------------------------
+# map function over urls ----
 
-items <- map(urls, scrape_items) |>
+items_80 <- map(urls, scrape_items) |>
   list_rbind()
+
+# write data ----
+
+write_csv(items_80, "data/items-80.csv")
+
