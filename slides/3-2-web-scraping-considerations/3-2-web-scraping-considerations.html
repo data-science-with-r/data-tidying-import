@@ -13,7 +13,7 @@
   <meta name="generator" content="quarto-1.5.55">
 
   <meta name="author" content=" Data Science with R">
-  <title>Data tidying and importing – Welcome</title>
+  <title>Data tidying and importing – Web scraping considerations</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -328,7 +328,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Welcome</h1>
+  <h1 class="title">Web scraping considerations</h1>
   <p class="subtitle"><br><br> <i class="fa-solid fa-book-open" aria-label="book-open"></i> Data tidying and importing</p>
 
 <div class="quarto-title-authors">
@@ -341,52 +341,79 @@
 
 </section>
 <section>
-<section id="hello-tidy-data" class="title-slide slide level1 section-break center">
-<h1>Hello tidy data!</h1>
+<section id="ethics" class="title-slide slide level1 center">
+<h1>Ethics</h1>
 
 </section>
-<section id="data-science-life-cycle" class="slide level2">
-<h2>Data science life cycle</h2>
-<div class="quarto-figure quarto-figure-left">
+<section id="can-you-vs-should-you" class="slide level2">
+<h2>“Can you?” vs “Should you?”</h2>
+<div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/data-science-cycle/data-science-cycle.001.png" class="quarto-figure quarto-figure-left" width="1280"></p>
+<p><img data-src="images/ok-cupid-1.png" class="quarto-figure quarto-figure-center" width="800"></p>
 </figure>
 </div>
-</section>
-<section id="import" class="slide level2">
-<h2>Import</h2>
-<div class="quarto-figure quarto-figure-left">
+
+<aside><div>
+<p>Source: Brian Resnick, <a href="https://www.vox.com/2016/5/12/11666116/70000-okcupid-users-data-release">Researchers just released profile data on 70,000 OkCupid users without permission</a>, Vox.</p>
+</div></aside></section>
+<section id="can-you-vs-should-you-1" class="slide level2">
+<h2>“Can you?” vs “Should you?”</h2>
+<div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/data-science-cycle/data-science-cycle.002.png" class="quarto-figure quarto-figure-left" width="1280"></p>
-</figure>
-</div>
-</section>
-<section id="tidy---transform" class="slide level2">
-<h2>Tidy -&gt; transform</h2>
-<div class="quarto-figure quarto-figure-left">
-<figure>
-<p><img data-src="images/data-science-cycle/data-science-cycle.003.png" class="quarto-figure quarto-figure-left" width="1280"></p>
+<p><img data-src="images/ok-cupid-2.png" class="quarto-figure quarto-figure-center" width="699"></p>
 </figure>
 </div>
 </section></section>
-<section id="background" class="title-slide slide level1 center">
-<h1>Background</h1>
-<p>Something about Course 1 material</p>
-</section>
+<section>
+<section id="challenges" class="title-slide slide level1 center">
+<h1>Challenges</h1>
 
-<section id="outline" class="title-slide slide level1 center">
-<h1>Outline</h1>
-<p>Even though natural order is import then tidy, we’ll first do some joing and tidying</p>
-<p>then step back to importing</p>
-<p>from rectangular data</p>
-<p>then from unstructured data like webscraping</p>
+</section>
+<section id="unreliable-formatting" class="slide level2">
+<h2>Unreliable formatting</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/unreliable-formatting.png" class="quarto-figure quarto-figure-center" width="1000"></p>
+</figure>
+</div>
+
+<aside><div>
+<p><a href="https://alumni.duke.edu/news/notable-alumni">alumni.duke.edu/news/notable-alumni</a></p>
+</div></aside></section>
+<section id="data-broken-into-many-pages" class="slide level2">
+<h2>Data broken into many pages</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/many-pages.png" class="quarto-figure quarto-figure-center"></p>
+</figure>
+</div>
+</section></section>
+<section>
+<section id="workflow" class="title-slide slide level1 center">
+<h1>Workflow</h1>
+
+</section>
+<section id="a-new-r-workflow" class="slide level2">
+<h2>A new R workflow</h2>
+<div>
+<ul>
+<li class="fragment"><p>When working in a Quarto document, your analysis is re-run each time you render</p></li>
+<li class="fragment"><p>If web scraping in a Quarto document, you’d be re-scraping the data each time you knit, which is undesirable (and not <em>nice</em>)!</p></li>
+<li class="fragment"><p>An alternative workflow:</p>
+<ul>
+<li class="fragment">Use an R script to save your code</li>
+<li class="fragment">Saving interim data scraped using the code in the script as CSV or RDS files</li>
+<li class="fragment">Use the saved data in your analysis in your Quarto document</li>
+</ul></li>
+</ul>
+</div>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
 </div>
 </div>
-</section>
+</section></section>
     </div>
   </div>
 
@@ -597,44 +624,6 @@
         ]
       });
     </script>
-    
-    <script>
-      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-      // slide changes (different for each slide format).
-      (function () {
-        // dispatch for htmlwidgets
-        function fireSlideEnter() {
-          const event = window.document.createEvent("Event");
-          event.initEvent("slideenter", true, true);
-          window.document.dispatchEvent(event);
-        }
-
-        function fireSlideChanged(previousSlide, currentSlide) {
-          fireSlideEnter();
-
-          // dispatch for shiny
-          if (window.jQuery) {
-            if (previousSlide) {
-              window.jQuery(previousSlide).trigger("hidden");
-            }
-            if (currentSlide) {
-              window.jQuery(currentSlide).trigger("shown");
-            }
-          }
-        }
-
-        // hookup for slidy
-        if (window.w3c_slidy) {
-          window.w3c_slidy.add_observer(function (slide_num) {
-            // slide_num starts at position 1
-            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-          });
-        }
-
-      })();
-    </script>
-
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {
