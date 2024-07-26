@@ -1,10 +1,10 @@
-Hello, and welcome! My name is Mine Çetinkaya-Rundel, and I will be your instructor for the specialization titled Data Science with R. This is the second course in the series -- Data Tidying and Import.
+Hello, and welcome! My name is Mine Çetinkaya-Rundel, and I will be your instructor for the specialization titled Data Science with R. This is the second course in the series -- Data Tidying and Importing.
 
 >>> In the first course we introduced the data science cycle with this figure from the book R for Data Science.
 
 >>> In this course we're going to continue our foray into data transformation, formally introduce data tidying, which often involves reshaping and joining data, and then
 
->>> Take one more step back and learn to import datasets and discuss many of the considerations and challenges for getting data into R. We'll start with rectangular data, like CSV files and Excel spreadsheets and then venture on to getting unstructured data off the web with web scraping.
+>>> Take one more step back and learn to import datasets and discuss many of the considerations and challenges for getting data into R. We'll start with rectangular data, like CSV files and Excel spreadsheets, and then venture on to getting unstructured data off the web with web scraping.
 
 >>> So, given that this is Course 2 in the specialization, what should you know if you haven't (or even if you have) taken Course 1 - data visualization and transformation
 
