@@ -469,39 +469,102 @@
     "text": "Putting it altogether\n\nprofessions |&gt;\n  left_join(dates) |&gt;\n  left_join(works)\n\nJoining with `by = join_by(name)`\nJoining with `by = join_by(name)`\n\n\n# A tibble: 10 × 5\n   name           profession birth_year death_year known_for\n   &lt;chr&gt;          &lt;chr&gt;           &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;    \n 1 Ada Lovelace   Mathemati…         NA         NA first co…\n 2 Marie Curie    Physicist…         NA         NA theory o…\n 3 Janaki Ammal   Botanist         1897       1984 hybrid s…\n 4 Chien-Shiung … Physicist        1912       1997 confim a…\n 5 Katherine Joh… Mathemati…       1918       2020 calculat…\n 6 Rosalind Fran… Chemist          1920       1958 &lt;NA&gt;     \n 7 Vera Rubin     Astronomer       1928       2016 existenc…\n 8 Gladys West    Mathemati…       1930         NA mathemat…\n 9 Flossie Wong-… Virologis…       1947       2020 first sc…\n10 Jennifer Doud… Biochemist       1964         NA one of t…"
   },
   {
-    "objectID": "slides/1-2-tidy-data/1-2-tidy-data.html#tidy-data",
-    "href": "slides/1-2-tidy-data/1-2-tidy-data.html#tidy-data",
-    "title": "Tidy data",
-    "section": "Tidy data",
-    "text": "Tidy data\n\nHappy families are all alike; every unhappy family is unhappy in its own way.\nLeo Tolstoy\n\n\n\nCharacteristics of tidy data:\n\nEach variable forms a column.\nEach observation forms a row.\nEach type of observational unit forms a table.\n\n\nCharacteristics of untidy data:\n!@#$%^&*()"
+    "objectID": "slides/1-1-welcome/1-1-welcome.html#data-science-life-cycle",
+    "href": "slides/1-1-welcome/1-1-welcome.html#data-science-life-cycle",
+    "title": "Welcome",
+    "section": "Data science life cycle",
+    "text": "Data science life cycle"
   },
   {
-    "objectID": "slides/1-2-tidy-data/1-2-tidy-data.html#what-makes-this-data-not-tidy",
-    "href": "slides/1-2-tidy-data/1-2-tidy-data.html#what-makes-this-data-not-tidy",
-    "title": "Tidy data",
-    "section": "What makes this data not tidy?",
-    "text": "What makes this data not tidy?\n\n\n\nSource: Army Air Forces Statistical Digest, WW II"
+    "objectID": "slides/1-1-welcome/1-1-welcome.html#tidy---transform",
+    "href": "slides/1-1-welcome/1-1-welcome.html#tidy---transform",
+    "title": "Welcome",
+    "section": "Tidy -> transform",
+    "text": "Tidy -&gt; transform"
   },
   {
-    "objectID": "slides/1-2-tidy-data/1-2-tidy-data.html#what-makes-this-data-not-tidy-1",
-    "href": "slides/1-2-tidy-data/1-2-tidy-data.html#what-makes-this-data-not-tidy-1",
-    "title": "Tidy data",
-    "section": "What makes this data not tidy?",
-    "text": "What makes this data not tidy?\n\n\n\nSource: Gapminder, Estimated HIV prevalence among 15-49 year olds"
+    "objectID": "slides/1-1-welcome/1-1-welcome.html#import",
+    "href": "slides/1-1-welcome/1-1-welcome.html#import",
+    "title": "Welcome",
+    "section": "Import",
+    "text": "Import"
   },
   {
-    "objectID": "slides/1-2-tidy-data/1-2-tidy-data.html#what-makes-this-data-not-tidy-2",
-    "href": "slides/1-2-tidy-data/1-2-tidy-data.html#what-makes-this-data-not-tidy-2",
-    "title": "Tidy data",
-    "section": "What makes this data not tidy?",
-    "text": "What makes this data not tidy?\n\n\n\nSource: US Census, Selected Economic Characteristics, ACS 2022"
+    "objectID": "slides/1-1-welcome/1-1-welcome.html#toolkit",
+    "href": "slides/1-1-welcome/1-1-welcome.html#toolkit",
+    "title": "Welcome",
+    "section": "Toolkit",
+    "text": "Toolkit"
   },
   {
-    "objectID": "slides/1-2-tidy-data/1-2-tidy-data.html#displaying-vs.-summarizing-data",
-    "href": "slides/1-2-tidy-data/1-2-tidy-data.html#displaying-vs.-summarizing-data",
-    "title": "Tidy data",
-    "section": "Displaying vs. summarizing data",
-    "text": "Displaying vs. summarizing data\n\n\nDisplay\n\nstarwars |&gt;\n  select(name, height, gender)\n\n# A tibble: 87 × 3\n   name               height gender   \n   &lt;chr&gt;               &lt;int&gt; &lt;chr&gt;    \n 1 Luke Skywalker        172 masculine\n 2 C-3PO                 167 masculine\n 3 R2-D2                  96 masculine\n 4 Darth Vader           202 masculine\n 5 Leia Organa           150 feminine \n 6 Owen Lars             178 masculine\n 7 Beru Whitesun Lars    165 feminine \n 8 R5-D4                  97 masculine\n 9 Biggs Darklighter     183 masculine\n10 Obi-Wan Kenobi        182 masculine\n# ℹ 77 more rows\n\n\n\nSummarize\n\nstarwars |&gt;\n  group_by(gender) |&gt;\n  summarize(\n    n = n(),\n    avg_height = mean(height, na.rm = TRUE)\n  )\n\n# A tibble: 3 × 3\n  gender        n avg_height\n  &lt;chr&gt;     &lt;int&gt;      &lt;dbl&gt;\n1 feminine     17       167.\n2 masculine    66       177.\n3 &lt;NA&gt;          4       175"
+    "objectID": "slides/1-1-welcome/1-1-welcome.html#concepts",
+    "href": "slides/1-1-welcome/1-1-welcome.html#concepts",
+    "title": "Welcome",
+    "section": "Concepts",
+    "text": "Concepts\n\nTidyverse functions take a data frame as their first argument\n\n\n\nData transformation can be done in data pipelines with dplyr\n\n\n\ndf |&gt;\n  select(...) |&gt;\n  filter(...) |&gt;\n  mutate(...) |&gt;\n  group_by(...) |&gt;\n  summarize(...)\n\n\n\n\nData visualizations can be built layer-by-layer with ggplot2\n\n\n\nggplot(df, aes(x = ..., y = ...)) +\n  geom_*(...) +\n  scale_*() +\n  facet_*(...) +\n  labs(...)"
+  },
+  {
+    "objectID": "slides/3-2-web-scraping-considerations/3-2-web-scraping-considerations.html#can-you-vs-should-you",
+    "href": "slides/3-2-web-scraping-considerations/3-2-web-scraping-considerations.html#can-you-vs-should-you",
+    "title": "Web scraping considerations",
+    "section": "“Can you?” vs “Should you?”",
+    "text": "“Can you?” vs “Should you?”\n\n\n\n\n\n\n\nSource: Brian Resnick, Researchers just released profile data on 70,000 OkCupid users without permission, Vox."
+  },
+  {
+    "objectID": "slides/3-2-web-scraping-considerations/3-2-web-scraping-considerations.html#can-you-vs-should-you-1",
+    "href": "slides/3-2-web-scraping-considerations/3-2-web-scraping-considerations.html#can-you-vs-should-you-1",
+    "title": "Web scraping considerations",
+    "section": "“Can you?” vs “Should you?”",
+    "text": "“Can you?” vs “Should you?”"
+  },
+  {
+    "objectID": "slides/3-2-web-scraping-considerations/3-2-web-scraping-considerations.html#unreliable-formatting",
+    "href": "slides/3-2-web-scraping-considerations/3-2-web-scraping-considerations.html#unreliable-formatting",
+    "title": "Web scraping considerations",
+    "section": "Unreliable formatting",
+    "text": "Unreliable formatting\n\n\n\n\n\n\n\nalumni.duke.edu/news/notable-alumni"
+  },
+  {
+    "objectID": "slides/3-2-web-scraping-considerations/3-2-web-scraping-considerations.html#data-broken-into-many-pages",
+    "href": "slides/3-2-web-scraping-considerations/3-2-web-scraping-considerations.html#data-broken-into-many-pages",
+    "title": "Web scraping considerations",
+    "section": "Data broken into many pages",
+    "text": "Data broken into many pages"
+  },
+  {
+    "objectID": "slides/3-2-web-scraping-considerations/3-2-web-scraping-considerations.html#a-new-r-workflow",
+    "href": "slides/3-2-web-scraping-considerations/3-2-web-scraping-considerations.html#a-new-r-workflow",
+    "title": "Web scraping considerations",
+    "section": "A new R workflow",
+    "text": "A new R workflow\n\n\nWhen working in a Quarto document, your analysis is re-run each time you render\nIf web scraping in a Quarto document, you’d be re-scraping the data each time you knit, which is undesirable (and not nice)!\nAn alternative workflow:\n\nUse an R script to save your code\nSaving interim data scraped using the code in the script as CSV or RDS files\nUse the saved data in your analysis in your Quarto document"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": " Data tidying and importing",
+    "section": "",
+    "text": "Title\n\n\n\n\n\n\nWelcome\n\n\n\n\nTidy data\n\n\n\n\nTidying data\n\n\n\n\nJoining data\n\n\n\n\nData types\n\n\n\n\nData classes\n\n\n\n\nImporting data\n\n\n\n\nWeb scraping\n\n\n\n\nWeb scraping considerations\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "index.html#slides",
+    "href": "index.html#slides",
+    "title": " Data tidying and importing",
+    "section": "",
+    "text": "Title\n\n\n\n\n\n\nWelcome\n\n\n\n\nTidy data\n\n\n\n\nTidying data\n\n\n\n\nJoining data\n\n\n\n\nData types\n\n\n\n\nData classes\n\n\n\n\nImporting data\n\n\n\n\nWeb scraping\n\n\n\n\nWeb scraping considerations\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "index.html#code-alongs",
+    "href": "index.html#code-alongs",
+    "title": " Data tidying and importing",
+    "section": "Code alongs",
+    "text": "Code alongs\n\n\n\n\n\nTitle\n\n\n\n\n\n\nCountry populations over time (Complete)\n\n\n\n\nCountry populations over time\n\n\n\n\nContinent populations (Complete)\n\n\n\n\nContinent populations\n\n\n\n\nThat’s my type (Complete)\n\n\n\n\nThat’s my type\n\n\n\n\nHalving CO2 emissions (Complete)\n\n\n\n\nHalving CO2 emissions\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "index.html#exercises",
+    "href": "index.html#exercises",
+    "title": " Data tidying and importing",
+    "section": "Exercises",
+    "text": "Exercises\n\n\n\n\n\nTitle\n\n\n\n\n\n\nNobel Prize winners & sales data\n\n\n\n\nNYC flights + data wrangling\n\n\n\n\nTidy Basketball\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "slides/2-1-data-types/2-1-data-types.html#example-cat-lovers",
@@ -693,67 +756,39 @@
     "text": "Mental model for NAs\nNA is unknown, so it could be TRUE or FALSE\n\n\n\nTRUE | NA gives TRUE, because the answer is always TRUE whether the unknown NA is actually TRUE or FALSE\n\n\n\nTRUE | TRUE  # if NA was TRUE\n\n[1] TRUE\n\nTRUE | FALSE # if NA was FALSE\n\n[1] TRUE\n\n\n\n\n\n\nFALSE | NA gives FALSE, because the answer changes depending whether the unknown NA is actually TRUE or FALSE\n\n\n\nFALSE | TRUE  # if NA was TRUE\n\n[1] TRUE\n\nFALSE | FALSE # if NA was FALSE\n\n[1] FALSE\n\n\n\n\n\nThis may not make sense for mathematical operations, but it does make sense in the context of missing data"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": " Data tidying and importing",
-    "section": "",
-    "text": "Title\n\n\n\n\n\n\nWelcome\n\n\n\n\nTidy data\n\n\n\n\nTidying data\n\n\n\n\nJoining data\n\n\n\n\nData types\n\n\n\n\nData classes\n\n\n\n\nImporting data\n\n\n\n\nWeb scraping\n\n\n\n\nWeb scraping considerations\n\n\n\n\n\nNo matching items"
+    "objectID": "slides/1-2-tidy-data/1-2-tidy-data.html#tidy-data",
+    "href": "slides/1-2-tidy-data/1-2-tidy-data.html#tidy-data",
+    "title": "Tidy data",
+    "section": "Tidy data",
+    "text": "Tidy data\n\nHappy families are all alike; every unhappy family is unhappy in its own way.\nLeo Tolstoy\n\n\n\nCharacteristics of tidy data:\n\nEach variable forms a column.\nEach observation forms a row.\nEach type of observational unit forms a table.\n\n\nCharacteristics of untidy data:\n!@#$%^&*()"
   },
   {
-    "objectID": "index.html#slides",
-    "href": "index.html#slides",
-    "title": " Data tidying and importing",
-    "section": "",
-    "text": "Title\n\n\n\n\n\n\nWelcome\n\n\n\n\nTidy data\n\n\n\n\nTidying data\n\n\n\n\nJoining data\n\n\n\n\nData types\n\n\n\n\nData classes\n\n\n\n\nImporting data\n\n\n\n\nWeb scraping\n\n\n\n\nWeb scraping considerations\n\n\n\n\n\nNo matching items"
+    "objectID": "slides/1-2-tidy-data/1-2-tidy-data.html#what-makes-this-data-not-tidy",
+    "href": "slides/1-2-tidy-data/1-2-tidy-data.html#what-makes-this-data-not-tidy",
+    "title": "Tidy data",
+    "section": "What makes this data not tidy?",
+    "text": "What makes this data not tidy?\n\n\n\nSource: Army Air Forces Statistical Digest, WW II"
   },
   {
-    "objectID": "index.html#code-alongs",
-    "href": "index.html#code-alongs",
-    "title": " Data tidying and importing",
-    "section": "Code alongs",
-    "text": "Code alongs\n\n\n\n\n\nTitle\n\n\n\n\n\n\nCountry populations over time (Complete)\n\n\n\n\nCountry populations over time\n\n\n\n\nContinent populations (Complete)\n\n\n\n\nContinent populations\n\n\n\n\nThat’s my type (Complete)\n\n\n\n\nThat’s my type\n\n\n\n\nHalving CO2 emissions (Complete)\n\n\n\n\nHalving CO2 emissions\n\n\n\n\n\nNo matching items"
+    "objectID": "slides/1-2-tidy-data/1-2-tidy-data.html#what-makes-this-data-not-tidy-1",
+    "href": "slides/1-2-tidy-data/1-2-tidy-data.html#what-makes-this-data-not-tidy-1",
+    "title": "Tidy data",
+    "section": "What makes this data not tidy?",
+    "text": "What makes this data not tidy?\n\n\n\nSource: Gapminder, Estimated HIV prevalence among 15-49 year olds"
   },
   {
-    "objectID": "index.html#exercises",
-    "href": "index.html#exercises",
-    "title": " Data tidying and importing",
-    "section": "Exercises",
-    "text": "Exercises\n\n\n\n\n\nTitle\n\n\n\n\n\n\nNobel Prize winners & sales data\n\n\n\n\nNYC flights + data wrangling\n\n\n\n\nTidy Basketball\n\n\n\n\n\nNo matching items"
+    "objectID": "slides/1-2-tidy-data/1-2-tidy-data.html#what-makes-this-data-not-tidy-2",
+    "href": "slides/1-2-tidy-data/1-2-tidy-data.html#what-makes-this-data-not-tidy-2",
+    "title": "Tidy data",
+    "section": "What makes this data not tidy?",
+    "text": "What makes this data not tidy?\n\n\n\nSource: US Census, Selected Economic Characteristics, ACS 2022"
   },
   {
-    "objectID": "slides/3-2-web-scraping-considerations/3-2-web-scraping-considerations.html#can-you-vs-should-you",
-    "href": "slides/3-2-web-scraping-considerations/3-2-web-scraping-considerations.html#can-you-vs-should-you",
-    "title": "Web scraping considerations",
-    "section": "“Can you?” vs “Should you?”",
-    "text": "“Can you?” vs “Should you?”\n\n\n\n\n\n\n\nSource: Brian Resnick, Researchers just released profile data on 70,000 OkCupid users without permission, Vox."
-  },
-  {
-    "objectID": "slides/3-2-web-scraping-considerations/3-2-web-scraping-considerations.html#can-you-vs-should-you-1",
-    "href": "slides/3-2-web-scraping-considerations/3-2-web-scraping-considerations.html#can-you-vs-should-you-1",
-    "title": "Web scraping considerations",
-    "section": "“Can you?” vs “Should you?”",
-    "text": "“Can you?” vs “Should you?”"
-  },
-  {
-    "objectID": "slides/3-2-web-scraping-considerations/3-2-web-scraping-considerations.html#unreliable-formatting",
-    "href": "slides/3-2-web-scraping-considerations/3-2-web-scraping-considerations.html#unreliable-formatting",
-    "title": "Web scraping considerations",
-    "section": "Unreliable formatting",
-    "text": "Unreliable formatting\n\n\n\n\n\n\n\nalumni.duke.edu/news/notable-alumni"
-  },
-  {
-    "objectID": "slides/3-2-web-scraping-considerations/3-2-web-scraping-considerations.html#data-broken-into-many-pages",
-    "href": "slides/3-2-web-scraping-considerations/3-2-web-scraping-considerations.html#data-broken-into-many-pages",
-    "title": "Web scraping considerations",
-    "section": "Data broken into many pages",
-    "text": "Data broken into many pages"
-  },
-  {
-    "objectID": "slides/3-2-web-scraping-considerations/3-2-web-scraping-considerations.html#a-new-r-workflow",
-    "href": "slides/3-2-web-scraping-considerations/3-2-web-scraping-considerations.html#a-new-r-workflow",
-    "title": "Web scraping considerations",
-    "section": "A new R workflow",
-    "text": "A new R workflow\n\n\nWhen working in a Quarto document, your analysis is re-run each time you render\nIf web scraping in a Quarto document, you’d be re-scraping the data each time you knit, which is undesirable (and not nice)!\nAn alternative workflow:\n\nUse an R script to save your code\nSaving interim data scraped using the code in the script as CSV or RDS files\nUse the saved data in your analysis in your Quarto document"
+    "objectID": "slides/1-2-tidy-data/1-2-tidy-data.html#displaying-vs.-summarizing-data",
+    "href": "slides/1-2-tidy-data/1-2-tidy-data.html#displaying-vs.-summarizing-data",
+    "title": "Tidy data",
+    "section": "Displaying vs. summarizing data",
+    "text": "Displaying vs. summarizing data\n\n\nDisplay\n\nstarwars |&gt;\n  select(name, height, gender)\n\n# A tibble: 87 × 3\n   name               height gender   \n   &lt;chr&gt;               &lt;int&gt; &lt;chr&gt;    \n 1 Luke Skywalker        172 masculine\n 2 C-3PO                 167 masculine\n 3 R2-D2                  96 masculine\n 4 Darth Vader           202 masculine\n 5 Leia Organa           150 feminine \n 6 Owen Lars             178 masculine\n 7 Beru Whitesun Lars    165 feminine \n 8 R5-D4                  97 masculine\n 9 Biggs Darklighter     183 masculine\n10 Obi-Wan Kenobi        182 masculine\n# ℹ 77 more rows\n\n\n\nSummarize\n\nstarwars |&gt;\n  group_by(gender) |&gt;\n  summarize(\n    n = n(),\n    avg_height = mean(height, na.rm = TRUE)\n  )\n\n# A tibble: 3 × 3\n  gender        n avg_height\n  &lt;chr&gt;     &lt;int&gt;      &lt;dbl&gt;\n1 feminine     17       167.\n2 masculine    66       177.\n3 &lt;NA&gt;          4       175"
   },
   {
     "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#task-goal-and-tools",
@@ -1265,40 +1300,5 @@
     "title": "Country populations over time (Complete)",
     "section": "Visualization",
     "text": "Visualization\n\nNow we start making our plot, but let’s not get too fancy right away. Create a line plot of populations of the United States, India, and China over the years. Represent the data with points and lines.\n\n\npopulation_longer |&gt;\n  filter(country_name %in% c(\"United States\", \"India\", \"China\")) |&gt;\n  ggplot(aes(x = year, y = population, color = country_name)) +\n  geom_point() +\n  geom_line()\n\n\n\n\n\n\n\n\n\nWhat aspects of the plot need to be updated to go from the draft you created above to the goal plot at the beginning of this application exercise.\n\nx and y axis scales\nshapes\ntheme\nlabels\nplacement of legend\n\nUse different shapes for each country’s points.\n\n\npopulation_longer |&gt;\n  filter(country_name %in% c(\"United States\", \"India\", \"China\")) |&gt;\n  ggplot(aes(x = year, y = population, color = country_name, shape = country_name)) +\n  geom_point() +\n  geom_line()\n\n\n\n\n\n\n\n\n\nUpdate x-axis scale such that the years displayed go from 2000 to 2024 in increments of 4 years.\n\n\npopulation_longer |&gt;\n  filter(country_name %in% c(\"United States\", \"India\", \"China\")) |&gt;\n  ggplot(aes(x = year, y = population, color = country_name, shape = country_name)) +\n  geom_point() +\n  geom_line() +\n  scale_x_continuous(limits = c(2000, 2024), breaks = seq(2000, 2024, 4))\n\n\n\n\n\n\n\n\n\nUpdate the y-axis so it’s scaled to millions and uses the same breaks as the goal plot.\n\n\npopulation_longer |&gt;\n  filter(country_name %in% c(\"United States\", \"India\", \"China\")) |&gt;\n  ggplot(aes(x = year, y = population, color = country_name, shape = country_name)) +\n  geom_point() +\n  geom_line() +\n  scale_x_continuous(limits = c(2000, 2024), breaks = seq(2000, 2024, 4)) +\n  scale_y_continuous(\n    breaks = seq(250000000, 1250000000, 250000000),\n    labels = label_number(scale = 1/1000000, suffix = \" mil\")\n  )\n\n\n\n\n\n\n\n\n\nUpdate colors for each country using the following level / color assignments.\n\n“United States” = “#0A3161”\n“India” = “#FF671F”\n“China” = “#EE1C25”\n\n\n\npopulation_longer |&gt;\n  filter(country_name %in% c(\"United States\", \"India\", \"China\")) |&gt;\n  ggplot(aes(x = year, y = population, color = country_name, shape = country_name)) +\n  geom_point() +\n  geom_line() +\n  scale_x_continuous(limits = c(2000, 2024), breaks = seq(2000, 2024, 4)) +\n  scale_y_continuous(\n    breaks = seq(250000000, 1250000000, 250000000),\n    labels = label_number(scale = 1/1000000, suffix = \" mil\")\n  ) +\n  scale_color_manual(\n    values = c(\n      \"United States\" = \"#0A3161\",\n      \"India\" = \"#FF671F\",\n      \"China\" = \"#EE1C25\"\n    )\n  )\n\n\n\n\n\n\n\n\n\nUpdate the plot labels (title, subtitle, x, y, and caption) and use theme_minimal().\n\n\npopulation_longer |&gt;\n  filter(country_name %in% c(\"United States\", \"India\", \"China\")) |&gt;\n  ggplot(aes(x = year, y = population, color = country_name, shape = country_name)) +\n  geom_point() +\n  geom_line() +\n  scale_x_continuous(limits = c(2000, 2024), breaks = seq(2000, 2024, 4)) +\n  scale_y_continuous(\n    breaks = seq(250000000, 1250000000, 250000000),\n    labels = label_number(scale = 1/1000000, suffix = \" mil\")\n  ) +\n  scale_color_manual(\n    values = c(\n      \"United States\" = \"#0A3161\",\n      \"India\" = \"#FF671F\",\n      \"China\" = \"#EE1C25\"\n    )\n  ) +\n  theme_minimal() +\n  labs(\n    x = \"Year\",\n    y = \"Population (in millions)\",\n    title = \"Country populations over the years\",\n    subtitle = \"2000 to 2023\",\n    caption = \"Data source: The World Bank\"\n  )\n\n\n\n\n\n\n\n\n\nFinally, move the legend to the top of the plot and remove its label.\n\n\npopulation_longer |&gt;\n  filter(country_name %in% c(\"United States\", \"India\", \"China\")) |&gt;\n  ggplot(aes(x = year, y = population, color = country_name, shape = country_name)) +\n  geom_point() +\n  geom_line() +\n  scale_x_continuous(limits = c(2000, 2024), breaks = seq(2000, 2024, 4)) +\n  scale_y_continuous(\n    breaks = seq(250000000, 1250000000, 250000000),\n    labels = label_number(scale = 1/1000000, suffix = \" mil\")\n  ) +\n  scale_color_manual(\n    values = c(\n      \"United States\" = \"#0A3161\",\n      \"India\" = \"#FF671F\",\n      \"China\" = \"#EE1C25\"\n    )\n  ) +\n  labs(\n    x = \"Year\",\n    y = \"Population (in millions)\",\n    color = NULL,\n    shape = NULL,\n    title = \"Country populations over the years\",\n    subtitle = \"2000 to 2023\",\n    caption = \"Data source: The World Bank\"\n  ) +\n  theme_minimal() +\n  theme(legend.position = \"top\")"
-  },
-  {
-    "objectID": "slides/1-1-welcome/1-1-welcome.html#data-science-life-cycle",
-    "href": "slides/1-1-welcome/1-1-welcome.html#data-science-life-cycle",
-    "title": "Welcome",
-    "section": "Data science life cycle",
-    "text": "Data science life cycle"
-  },
-  {
-    "objectID": "slides/1-1-welcome/1-1-welcome.html#tidy---transform",
-    "href": "slides/1-1-welcome/1-1-welcome.html#tidy---transform",
-    "title": "Welcome",
-    "section": "Tidy -> transform",
-    "text": "Tidy -&gt; transform"
-  },
-  {
-    "objectID": "slides/1-1-welcome/1-1-welcome.html#import",
-    "href": "slides/1-1-welcome/1-1-welcome.html#import",
-    "title": "Welcome",
-    "section": "Import",
-    "text": "Import"
-  },
-  {
-    "objectID": "slides/1-1-welcome/1-1-welcome.html#toolkit",
-    "href": "slides/1-1-welcome/1-1-welcome.html#toolkit",
-    "title": "Welcome",
-    "section": "Toolkit",
-    "text": "Toolkit"
-  },
-  {
-    "objectID": "slides/1-1-welcome/1-1-welcome.html#concepts",
-    "href": "slides/1-1-welcome/1-1-welcome.html#concepts",
-    "title": "Welcome",
-    "section": "Concepts",
-    "text": "Concepts\n\nTidyverse functions take a data frame as their first argument\n\n\n\nData transformation can be done in data pipelines with dplyr\n\n\n\ndf |&gt;\n  select(...) |&gt;\n  filter(...) |&gt;\n  mutate(...) |&gt;\n  group_by(...) |&gt;\n  summarize(...)\n\n\n\n\nData visualizations can be built layer-by-layer with ggplot2\n\n\n\nggplot(df, aes(x = ..., y = ...)) +\n  geom_*(...) +\n  scale_*() +\n  facet_*(...) +\n  labs(...)"
   }
 ]
