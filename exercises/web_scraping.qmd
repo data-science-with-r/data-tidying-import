@@ -1,0 +1,61 @@
+---
+title: "Scraping Star Wars"
+toc: true
+webr:
+  packages: ['tidyverse', 'scales', 'readxl', 'rvest']
+filters:
+  - webr
+---
+
+## Star Wars 
+
+Scraping data is defined as extracting data from one source to another. We are going to use the following [website](https://rvest.tidyverse.org/articles/starwars.html) to practice scraping data; taking data on the website and transporting it into a more workable format with R code.
+
+### Scraping titles
+
+Please visit the [website](https://rvest.tidyverse.org/articles/starwars.html) and identify the movie titles. What are they? 
+
+::: {.callout-tip collapse="true"}
+## Solution
+There are seven movie titles on this page. They include:
+--    The Phantom Menace
+
+--    Attack of the Clones
+
+--    Revenge of the Sith
+
+--    A New Hope
+
+--    The Empire Strikes Back
+
+--    Return of the Jedi
+
+--    The Force Awakens
+:::
+
+The next step is to identify the html element that is associated with each title. To help us, we can use [Selector Gadget](https://selectorgadget.com/). Selector Gadget is an open source Chrome Extension that helps users find elements of an html page easier. This demonstration will use Selector Gadget. To install Selector Gadget, please go to the following [page](https://chromewebstore.google.com/detail/selectorgadget/mhjhnkcfbdhnjickkkdbjoemdmbfginb?hl=en&pli=1). When the Selector Gadget is installed, you should see ![](images/gadget.png) in your task bar.
+
+#### Start by reading a HTML page with read_html()
+
+First, we need to reference the website. We can do this by using `read_html()` from the rvest package. Run the following code below to do so.
+
+```{webr-r}
+starwars <- read_html("https://rvest.tidyverse.org/articles/starwars.html")
+```
+
+#### Find the element 
+
+Next, we need to find the element that is assocciated with the titles of each Star Wars movie. Click the ![](images/gadget.png) icon and click on one of the titles. 
+
+![](images/h2.png)
+
+Both in the bottom right and in the red outline, you will see the element `h2`. We can use this information to pull the titles from the website using the following code:
+
+```{webr-r}
+title <- films |> 
+  html_element("h2") |> 
+  html_text2()
+
+title
+```
+
