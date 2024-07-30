@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Tidy Basketball – Data tidying and importing</title>
+<title>Scraping Star Wars – Data tidying and importing</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,40 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -246,7 +212,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 // Document level settings ----
 
 // Determine if we need to install R packages
-globalThis.qwebrInstallRPackagesList = ['tidyverse', 'scales'];
+globalThis.qwebrInstallRPackagesList = ['tidyverse', 'scales', 'readxl', 'rvest'];
 
 // Specify possible locations to search for the repository
 globalThis.qwebrPackageRepoURLS = ['https://repo.r-wasm.org/'];
@@ -268,7 +234,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"options":{"context":"setup","fig-height":5,"classes":"","warning":"true","comment":"","label":"unnamed-chunk-1","read-only":"false","fig-width":7,"output":"true","dpi":72,"autorun":"true","out-width":"700px","results":"markup","fig-cap":"","out-height":"","message":"true"},"code":"download.file(\n  \"https://raw.githubusercontent.com/ElijahMeyer3/Coursera/main/data/trailblazer21.csv\",\n  \"blazer.csv\"\n)\n\noptions(readr.show_progress = FALSE)","id":1},{"options":{"context":"interactive","comment":"","read-only":"false","output":"true","classes":"","message":"true","fig-height":5,"echo":"false","label":"unnamed-chunk-2","fig-width":7,"dpi":72,"autorun":"false","out-height":"","results":"markup","warning":"true","fig-cap":"","out-width":"700px"},"code":"blazer <- read_csv(\"trailblazer21.csv\")","id":2},{"options":{"context":"interactive","fig-height":5,"classes":"","warning":"true","comment":"","label":"unnamed-chunk-3","read-only":"false","fig-width":7,"output":"true","dpi":72,"autorun":"false","out-width":"700px","results":"markup","fig-cap":"","out-height":"","message":"true"},"code":"# insert code here","id":3},{"options":{"context":"interactive","fig-height":5,"classes":"","warning":"true","comment":"","label":"unnamed-chunk-4","read-only":"false","fig-width":7,"output":"true","dpi":72,"autorun":"false","out-width":"700px","results":"markup","fig-cap":"","out-height":"","message":"true"},"code":"# insert code here","id":4},{"options":{"context":"interactive","fig-height":5,"classes":"","warning":"true","comment":"","label":"unnamed-chunk-5","read-only":"false","fig-width":7,"output":"true","dpi":72,"autorun":"false","out-width":"700px","results":"markup","fig-cap":"","out-height":"","message":"true"},"code":"# insert code here","id":5},{"options":{"context":"interactive","fig-height":5,"classes":"","warning":"true","comment":"","label":"unnamed-chunk-6","read-only":"false","fig-width":7,"output":"true","dpi":72,"autorun":"false","out-width":"700px","results":"markup","fig-cap":"","out-height":"","message":"true"},"code":"# insert code here","id":6},{"options":{"context":"interactive","fig-height":5,"classes":"","warning":"true","comment":"","label":"unnamed-chunk-7","read-only":"false","fig-width":7,"output":"true","dpi":72,"autorun":"false","out-width":"700px","results":"markup","fig-cap":"","out-height":"","message":"true"},"code":"# insert code here","id":7},{"options":{"context":"interactive","fig-height":5,"classes":"","warning":"true","comment":"","label":"unnamed-chunk-8","read-only":"false","fig-width":7,"output":"true","dpi":72,"autorun":"false","out-width":"700px","results":"markup","fig-cap":"","out-height":"","message":"true"},"code":"# insert code here","id":8},{"options":{"context":"interactive","fig-height":5,"classes":"","warning":"true","comment":"","label":"unnamed-chunk-9","read-only":"false","fig-width":7,"output":"true","dpi":72,"autorun":"false","out-width":"700px","results":"markup","fig-cap":"","out-height":"","message":"true"},"code":"# insert code here","id":9},{"options":{"context":"interactive","fig-height":5,"classes":"","warning":"true","comment":"","label":"unnamed-chunk-10","read-only":"false","fig-width":7,"output":"true","dpi":72,"autorun":"false","out-width":"700px","results":"markup","fig-cap":"","out-height":"","message":"true"},"code":"blazer_long |>\n  mutate(game = as.numeric(game)) |>\n  # insert code here","id":10}];
+globalThis.qwebrCellDetails = [{"options":{"results":"markup","context":"interactive","warning":"true","fig-cap":"","message":"true","label":"unnamed-chunk-1","out-width":"700px","out-height":"","comment":"","dpi":72,"fig-width":7,"output":"true","fig-height":5,"read-only":"false","autorun":"false","classes":""},"id":1,"code":"starwars <- read_html(\"https://rvest.tidyverse.org/articles/starwars.html\")"},{"options":{"results":"markup","context":"interactive","warning":"true","fig-cap":"","message":"true","label":"unnamed-chunk-2","out-width":"700px","out-height":"","comment":"","dpi":72,"fig-width":7,"output":"true","fig-height":5,"read-only":"false","autorun":"false","classes":""},"id":2,"code":"title <- films |> \n  html_element(\"h2\") |> \n  html_text2()\n\ntitle"}];
 
 </script>
 <script type="module">
@@ -1028,13 +994,10 @@ globalThis.qwebrExecuteCode = async function (
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#getting-started" id="toc-getting-started" class="nav-link active" data-scroll-target="#getting-started">Getting Started</a>
+  <li><a href="#star-wars" id="toc-star-wars" class="nav-link active" data-scroll-target="#star-wars">Star Wars</a>
   <ul class="collapse">
-  <li><a href="#packages" id="toc-packages" class="nav-link" data-scroll-target="#packages">Packages</a></li>
-  <li><a href="#get-to-know-the-data" id="toc-get-to-know-the-data" class="nav-link" data-scroll-target="#get-to-know-the-data">Get to know the data</a></li>
-  <li><a href="#summary-statistics" id="toc-summary-statistics" class="nav-link" data-scroll-target="#summary-statistics">Summary statistics</a></li>
+  <li><a href="#scraping-titles" id="toc-scraping-titles" class="nav-link" data-scroll-target="#scraping-titles">Scraping titles</a></li>
   </ul></li>
-  <li><a href="#bonus-challange" id="toc-bonus-challange" class="nav-link" data-scroll-target="#bonus-challange">Bonus Challange</a></li>
   </ul>
 </nav>
     </div>
@@ -1217,7 +1180,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Tidy Basketball</h1>
+<h1 class="title">Scraping Star Wars</h1>
 </div>
 
 
@@ -1234,479 +1197,52 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </header>
 
 
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
+<section id="star-wars" class="level2">
+<h2 class="anchored" data-anchor-id="star-wars">Star Wars</h2>
+<p>Scraping data is defined as extracting data from one source to another. We are going to use the following <a href="https://rvest.tidyverse.org/articles/starwars.html">website</a> to practice scraping data; taking data on the website and transporting it into a more workable format with R code.</p>
+<section id="scraping-titles" class="level3">
+<h3 class="anchored" data-anchor-id="scraping-titles">Scraping titles</h3>
+<p>Please visit the <a href="https://rvest.tidyverse.org/articles/starwars.html">website</a> and identify the movie titles. What are they?</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Important
+Solution
 </div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Please reference the <code>Meet the toolkit: Programming exercises</code> in <code>course 1 (or refresher)</code> for information and instructions on how to interact with the programming exercise below.</p>
+<p>There are seven movie titles on this page. They include: – The Phantom Menace</p>
+<p>– Attack of the Clones</p>
+<p>– Revenge of the Sith</p>
+<p>– A New Hope</p>
+<p>– The Empire Strikes Back</p>
+<p>– Return of the Jedi</p>
+<p>– The Force Awakens</p>
 </div>
 </div>
-<section id="getting-started" class="level2">
-<h2 class="anchored" data-anchor-id="getting-started">Getting Started</h2>
+</div>
+<p>The next step is to identify the html element that is associated with each title. To help us, we can use <a href="https://selectorgadget.com/">Selector Gadget</a>. Selector Gadget is an open source Chrome Extension that helps users find elements of an html page easier. This demonstration will use Selector Gadget. To install Selector Gadget, please go to the following <a href="https://chromewebstore.google.com/detail/selectorgadget/mhjhnkcfbdhnjickkkdbjoemdmbfginb?hl=en&amp;pli=1">page</a>. When the Selector Gadget is installed, you should see <img src="images/gadget.png" class="img-fluid"> in your task bar.</p>
+<section id="start-by-reading-a-html-page-with-read_html" class="level4">
+<h4 class="anchored" data-anchor-id="start-by-reading-a-html-page-with-read_html">Start by reading a HTML page with read_html()</h4>
+<p>First, we need to reference the website. We can do this by using <code>read_html()</code> from the rvest package. Run the following code below to do so.</p>
 <div id="qwebr-insertion-location-1"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>The Portland Trailblazers are a National Basketball Association (NBA) sports team. In this mini analysis, we will work with a dataset that has informatino of the points scored by 9 Portland Trailblazers players across the first 10 games of the 2021-2022 NBA season. If you would like to become more familiar with the game of basketball, please click <a href="https://www.britannica.com/sports/basketball">here</a>. If you would like more information on the Portland Trailblazers, please click <a href="https://en.wikipedia.org/wiki/Portland_Trail_Blazers">here</a>.</p>
-<p>A key to these data can be found below:</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>variable name</th>
-<th>description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>player</td>
-<td>name of player</td>
-</tr>
-<tr class="even">
-<td>game1_home</td>
-<td>points scored on game 1 on home court</td>
-</tr>
-<tr class="odd">
-<td>…</td>
-<td>…</td>
-</tr>
-<tr class="even">
-<td>game3_away</td>
-<td>points scored on game 3 on away court</td>
-</tr>
-<tr class="odd">
-<td>…</td>
-<td>…</td>
-</tr>
-<tr class="even">
-<td>game10_home</td>
-<td>points scored on game 10 on home court</td>
-</tr>
-</tbody>
-</table>
-<p>Read in the data below.</p>
+</section>
+<section id="find-the-element" class="level4">
+<h4 class="anchored" data-anchor-id="find-the-element">Find the element</h4>
+<p>Next, we need to find the element that is assocciated with the titles of each Star Wars movie. Click the <img src="images/gadget.png" class="img-fluid"> icon and click on one of the titles.</p>
+<p><img src="images/h2.png" class="img-fluid"></p>
+<p>Both in the bottom right and in the red outline, you will see the element <code>h2</code>. We can use this information to pull the titles from the website using the following code:</p>
 <div id="qwebr-insertion-location-2"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<section id="packages" class="level3">
-<h3 class="anchored" data-anchor-id="packages">Packages</h3>
-<p>We’ll use <strong>tidyverse</strong> for the majority of the analysis and <strong>scales</strong> for pretty plot labels later on.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scales)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="get-to-know-the-data" class="level3">
-<h3 class="anchored" data-anchor-id="get-to-know-the-data">Get to know the data</h3>
-<p>Use <code>glimpse()</code> to get an overview (or “glimpse”) of the data. How many rows and columns are in this dataset? In addition, make note of the types of variables you are working with.</p>
-<div id="qwebr-insertion-location-3"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Warning
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>If you receive the error <span style="color:red;">Error: object ‘blazer’ not found</span>, go back and read in your data above.</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Solution
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(blazer)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Rows: 9
-Columns: 11
-$ player      &lt;chr&gt; "Damian Lillard", "CJ McCollum", "Norman Powell", "Robert …
-$ game1_home  &lt;dbl&gt; 20, 24, 14, 8, 20, 5, 11, 2, 7
-$ game2_home  &lt;dbl&gt; 19, 28, 16, 6, 9, 5, 18, 8, 11
-$ game3_away  &lt;dbl&gt; 12, 20, NA, 0, 4, 8, 12, 5, 5
-$ game4_home  &lt;dbl&gt; 20, 25, NA, 3, 17, 10, 17, 8, 9
-$ game5_home  &lt;dbl&gt; 25, 14, 12, 9, 14, 9, 5, 3, 8
-$ game6_away  &lt;dbl&gt; 14, 25, 14, 6, 13, 6, 19, 8, 8
-$ game7_away  &lt;dbl&gt; 20, 20, 22, 0, 7, 0, 17, 7, 4
-$ game8_away  &lt;dbl&gt; 26, 21, 23, 6, 6, 7, 15, 0, 0
-$ game9_home  &lt;dbl&gt; 4, 27, 25, 19, 10, 0, 16, 2, 7
-$ game10_home &lt;dbl&gt; 25, 7, 13, 12, 15, 6, 10, 4, 8</code></pre>
-</div>
-</div>
-<p>There are 9 rows and 11 columns in blazer dataset.</p>
-<p><code>player</code> is a character variable; the remaining variables are doubles.</p>
-</div>
-</div>
-</div>
-<p>Suppose you are asked to recreate the plot below…</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/blazer_pic.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
-</figure>
-</div>
-<p>Identify the variables you would need to use to recreate this plot. Can this plot be recreated with how your <code>blazer</code> dataset current format?</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Solution
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Variables in the above plot include <code>player</code>, <code>game</code>, <code>location</code>, and <code>points</code>. This plot can not be recreated with how the <code>blazer</code> dataset is currently formatted.</p>
-</div>
-</div>
-</div>
-<p>Now, think critically about how we could transform our <code>blazer</code> dataset to have the variables necessary to make the plot above. What would our new dataset have to look like? What R function(s) could we use to transform our data into what we need?</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Solution
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>We have a <code>player</code> column in the dataset. In order to get a <code>game</code>, <code>location</code>, and <code>points</code>, we can use <code>pivot_longer()</code>, which will take this wide dataset and make it into a longer dataset. That is, we can bring the variable names of <code>game1_home</code>, <code>game2_home</code>, etc. into our dataset as values, which is needed to recreate the plot above.</p>
-</div>
-</div>
-</div>
-<p>See more information about <code>pivot_longer()</code> <a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">here</a>. We are going to create our final dataset in steps. First use <code>pivot_longer()</code> to change our dataset that has 90 rows and 3 columns that are named player, game, and points.</p>
-<div id="qwebr-insertion-location-4"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Solution
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>blazer <span class="sc">|&gt;</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="sc">-</span>player,</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">"game"</span>,</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"points"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 90 × 3
-   player         game        points
-   &lt;chr&gt;          &lt;chr&gt;        &lt;dbl&gt;
- 1 Damian Lillard game1_home      20
- 2 Damian Lillard game2_home      19
- 3 Damian Lillard game3_away      12
- 4 Damian Lillard game4_home      20
- 5 Damian Lillard game5_home      25
- 6 Damian Lillard game6_away      14
- 7 Damian Lillard game7_away      20
- 8 Damian Lillard game8_away      26
- 9 Damian Lillard game9_home       4
-10 Damian Lillard game10_home     25
-# ℹ 80 more rows</code></pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<p>What are the next steps we need to take to change our dataset to recreate the plot above?</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Solution
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-7" class="callout-7-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>We still need to:</p>
-<ul>
-<li>remove “game” text from the <code>game</code> column</li>
-<li>separate the numeric value of game from home/away</li>
-<li>create a location column</li>
-</ul>
-</div>
-</div>
-</div>
-<p>Re-visit the documentation for <code>pivot_longer()</code>. Add the argument <code>names_prefix</code> to your existing code above to remove the text “game” from the <code>game</code> column.</p>
-<div id="qwebr-insertion-location-5"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Solution
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-8" class="callout-8-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>blazer <span class="sc">|&gt;</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="sc">-</span>player,</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">"game"</span>,</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"points"</span>,</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_prefix =</span> <span class="st">"game"</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 90 × 3
-   player         game    points
-   &lt;chr&gt;          &lt;chr&gt;    &lt;dbl&gt;
- 1 Damian Lillard 1_home      20
- 2 Damian Lillard 2_home      19
- 3 Damian Lillard 3_away      12
- 4 Damian Lillard 4_home      20
- 5 Damian Lillard 5_home      25
- 6 Damian Lillard 6_away      14
- 7 Damian Lillard 7_away      20
- 8 Damian Lillard 8_away      26
- 9 Damian Lillard 9_home       4
-10 Damian Lillard 10_home     25
-# ℹ 80 more rows</code></pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<p>We now need to separate the values away from the location in the <code>game</code> column. Please see the documentation on <code>separate_wider_delim</code> <a href="https://tidyr.tidyverse.org/reference/separate_wider_delim.html">here</a>. Add to your existing code to split the game number and game location into two columns. Call the new column <code>location</code>. Save and name this dataset as <code>blazer_long</code> to be used in the next section.</p>
-<div id="qwebr-insertion-location-6"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Solution
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-9" class="callout-9-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>blazer_long <span class="ot">&lt;-</span> blazer <span class="sc">|&gt;</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="sc">-</span>player,</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">"game"</span>,</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"points"</span>,</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_prefix =</span> <span class="st">"game"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">separate_wider_delim</span>(game, <span class="at">delim =</span> <span class="st">"_"</span>, <span class="at">names =</span> <span class="fu">c</span>(<span class="st">"game"</span>, <span class="st">"location"</span>))</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>blazer_long</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 90 × 4
-   player         game  location points
-   &lt;chr&gt;          &lt;chr&gt; &lt;chr&gt;     &lt;dbl&gt;
- 1 Damian Lillard 1     home         20
- 2 Damian Lillard 2     home         19
- 3 Damian Lillard 3     away         12
- 4 Damian Lillard 4     home         20
- 5 Damian Lillard 5     home         25
- 6 Damian Lillard 6     away         14
- 7 Damian Lillard 7     away         20
- 8 Damian Lillard 8     away         26
- 9 Damian Lillard 9     home          4
-10 Damian Lillard 10    home         25
-# ℹ 80 more rows</code></pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="summary-statistics" class="level3">
-<h3 class="anchored" data-anchor-id="summary-statistics">Summary statistics</h3>
-<p>Let’s use the new <code>blazer_long</code> dataset to calculate some summary statistics for the Portland Trailblazers to learn more about their performance for these 10 games!</p>
-<ol type="1">
-<li>Calculate the mean points scored across all players between home and away games.</li>
-</ol>
-<div id="qwebr-insertion-location-7"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Solution
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-10" class="callout-10-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>blazer_long <span class="sc">|&gt;</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(location) <span class="sc">|&gt;</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean_points =</span> <span class="fu">mean</span>(points, <span class="at">na.rm =</span> T))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 2
-  location mean_points
-  &lt;chr&gt;          &lt;dbl&gt;
-1 away            10.9
-2 home            12.2</code></pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<ol start="2" type="1">
-<li>Now, calculate the mean points scored for the player <code>Damian Lillard</code> for both home and away games.</li>
-</ol>
-<div id="qwebr-insertion-location-8"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Solution
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-11" class="callout-11-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>blazer_long <span class="sc">|&gt;</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(player <span class="sc">==</span> <span class="st">"Damian Lillard"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(location) <span class="sc">|&gt;</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean_points =</span> <span class="fu">mean</span>(points, <span class="at">na.rm =</span> T))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 2
-  location mean_points
-  &lt;chr&gt;          &lt;dbl&gt;
-1 away            18  
-2 home            18.8</code></pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<ol start="3" type="1">
-<li>Now, create a table that counts the number of times a player scored 15 points (or more) a game versus the number of times a player scored less than 15 points a game.</li>
-</ol>
-<div id="qwebr-insertion-location-9"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Solution
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-12" class="callout-12-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>blazer_long <span class="sc">|&gt;</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">points_cat =</span> <span class="fu">ifelse</span>(points <span class="sc">&gt;=</span> <span class="dv">15</span>, <span class="st">"yes"</span>, <span class="st">"no"</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(points_cat) <span class="sc">|&gt;</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(points_cat) <span class="sc">|&gt;</span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 3 × 2
-# Groups:   points_cat [3]
-  points_cat     n
-  &lt;chr&gt;      &lt;int&gt;
-1 no            59
-2 yes           29
-3 &lt;NA&gt;           2</code></pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-</section>
-<section id="bonus-challange" class="level2">
-<h2 class="anchored" data-anchor-id="bonus-challange">Bonus Challange</h2>
-<p>Recreate the plot, using the <code>blazer_long</code> dataset!</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/blazer_pic.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
-</figure>
-</div>
-<p>Hints: The code you start with makes sure that game is appropriately treated as a quantitative variable. You will learn more about data types in the following lessons! The plot above uses <code>theme_bw()</code>.</p>
-<div id="qwebr-insertion-location-10"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Solution
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-13" class="callout-13-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>blazer_long <span class="sc">|&gt;</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">game =</span> <span class="fu">as.numeric</span>(game)) <span class="sc">|&gt;</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x =</span> game, <span class="at">y =</span> points, <span class="at">color =</span> location, <span class="at">group =</span> player)</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">shape =</span> <span class="st">"square"</span>) <span class="sc">+</span></span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>player) <span class="sc">+</span></span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)) <span class="sc">+</span></span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Game"</span>,</span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Points Scored"</span>,</span>
-<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Points Scored Across 10 Games"</span>,</span>
-<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Portland Trailblazers (2021-2022 Season)"</span>,</span>
-<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"https://www.basketball-reference.com/teams/POR/2021_games.html"</span></span>
-<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 2 rows containing missing values or values outside the scale range
-(`geom_point()`).</code></pre>
-</div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="tidy_basketball_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
 
 
+</section>
+</section>
 </section>
 
 </main> <!-- /main -->

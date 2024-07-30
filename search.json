@@ -130,7 +130,7 @@
     "href": "index.html#exercises",
     "title": " Data tidying and importing",
     "section": "Exercises",
-    "text": "Exercises\n\n\n\n\n\nTitle\n\n\n\n\n\n\nNobel Prize winners & sales data\n\n\n\n\nNYC flights + data wrangling\n\n\n\n\nTidy Basketball\n\n\n\n\n\nNo matching items"
+    "text": "Exercises\n\n\n\n\n\nTitle\n\n\n\n\n\n\nNobel Prize winners & sales data\n\n\n\n\nNYC flights + data wrangling\n\n\n\n\nTidy Basketball\n\n\n\n\nScraping Star Wars\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "exercises/tidy_basketball.html",
@@ -154,39 +154,739 @@
     "text": "Bonus Challange\nRecreate the plot, using the blazer_long dataset!\n\n\n\n\n\nHints: The code you start with makes sure that game is appropriately treated as a quantitative variable. You will learn more about data types in the following lessons! The plot above uses theme_bw().\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nblazer_long |&gt;\n  mutate(game = as.numeric(game)) |&gt;\n  ggplot(\n    aes(x = game, y = points, color = location, group = player)\n  ) +\n  geom_line() +\n  geom_point(shape = \"square\") +\n  facet_wrap(~player) +\n  scale_x_continuous(breaks = c(1:10)) +\n  theme_bw() +\n  labs(\n    x = \"Game\",\n    y = \"Points Scored\",\n    title = \"Points Scored Across 10 Games\",\n    subtitle = \"Portland Trailblazers (2021-2022 Season)\",\n    caption = \"https://www.basketball-reference.com/teams/POR/2021_games.html\"\n  )\n\nWarning: Removed 2 rows containing missing values or values outside the scale range\n(`geom_point()`)."
   },
   {
-    "objectID": "slides/3-2-web-scraping-considerations/3-2-web-scraping-considerations.html#can-you-vs-should-you",
-    "href": "slides/3-2-web-scraping-considerations/3-2-web-scraping-considerations.html#can-you-vs-should-you",
-    "title": "Web scraping considerations",
-    "section": "“Can you?” vs “Should you?”",
-    "text": "“Can you?” vs “Should you?”\n\n\n\n\n\n\n\nSource: Brian Resnick, Researchers just released profile data on 70,000 OkCupid users without permission, Vox."
+    "objectID": "exercises/noble.html",
+    "href": "exercises/noble.html",
+    "title": "Nobel Prize winners & sales data",
+    "section": "",
+    "text": "We will use the following two packages in this application exercise.\n\ntidyverse: For data import, wrangling, and visualization.\nreadxl: For importing data from Excel."
   },
   {
-    "objectID": "slides/3-2-web-scraping-considerations/3-2-web-scraping-considerations.html#can-you-vs-should-you-1",
-    "href": "slides/3-2-web-scraping-considerations/3-2-web-scraping-considerations.html#can-you-vs-should-you-1",
-    "title": "Web scraping considerations",
-    "section": "“Can you?” vs “Should you?”",
-    "text": "“Can you?” vs “Should you?”"
+    "objectID": "exercises/noble.html#packages",
+    "href": "exercises/noble.html#packages",
+    "title": "Nobel Prize winners & sales data",
+    "section": "",
+    "text": "We will use the following two packages in this application exercise.\n\ntidyverse: For data import, wrangling, and visualization.\nreadxl: For importing data from Excel."
   },
   {
-    "objectID": "slides/3-2-web-scraping-considerations/3-2-web-scraping-considerations.html#unreliable-formatting",
-    "href": "slides/3-2-web-scraping-considerations/3-2-web-scraping-considerations.html#unreliable-formatting",
-    "title": "Web scraping considerations",
-    "section": "Unreliable formatting",
-    "text": "Unreliable formatting\n\n\n\n\n\n\n\nalumni.duke.edu/news/notable-alumni"
+    "objectID": "exercises/noble.html#nobel-prize-winners",
+    "href": "exercises/noble.html#nobel-prize-winners",
+    "title": "Nobel Prize winners & sales data",
+    "section": "Nobel Prize winners",
+    "text": "Nobel Prize winners\nFor this exercise, we are going to work with a Nobel Prize winners dataset from the years 1901 through 2018. Please read in the following data below.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nBased on the tibble output, what are the number of rows and columns of the nobel dataset? What types of variables are you working with?\n\n\n\n\n\n\nSolution\n\n\n\n\n\nThere are 935 rows and 26 columns in nobel dataset.\nThere are 21 character variables, 3 dbl variables, and 2 date variables\n\n\n\nNow, rerun the code above to read in the dataset, but use the argument show_col_types = FALSE to suppress the given dataset information\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nnobel &lt;- read_csv(\"nobel.csv\", show_col_types = FALSE)\n\nNotice that there is no given message when running the code. This code simply loads the dataset."
   },
   {
-    "objectID": "slides/3-2-web-scraping-considerations/3-2-web-scraping-considerations.html#data-broken-into-many-pages",
-    "href": "slides/3-2-web-scraping-considerations/3-2-web-scraping-considerations.html#data-broken-into-many-pages",
-    "title": "Web scraping considerations",
-    "section": "Data broken into many pages",
-    "text": "Data broken into many pages"
+    "objectID": "exercises/noble.html#type-coercion",
+    "href": "exercises/noble.html#type-coercion",
+    "title": "Nobel Prize winners & sales data",
+    "section": "Type coercion",
+    "text": "Type coercion\nWe are going to use the nobel dataset to explore type coercion. Using glimpse(), identify what type of variable gender is in this dataset. Additionally, identify the levels of this variable.\n\n# add response here\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nglimpse(nobel)\n\nRows: 935\nColumns: 26\n$ id                    &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 6, 8, 9, 10, 11, 12, 13, 14, 1…\n$ firstname             &lt;chr&gt; \"Wilhelm Conrad\", \"Hendrik A.\", \"Pieter\", \"Henri…\n$ surname               &lt;chr&gt; \"Röntgen\", \"Lorentz\", \"Zeeman\", \"Becquerel\", \"Cu…\n$ year                  &lt;dbl&gt; 1901, 1902, 1902, 1903, 1903, 1903, 1911, 1904, …\n$ category              &lt;chr&gt; \"Physics\", \"Physics\", \"Physics\", \"Physics\", \"Phy…\n$ affiliation           &lt;chr&gt; \"Munich University\", \"Leiden University\", \"Amste…\n$ city                  &lt;chr&gt; \"Munich\", \"Leiden\", \"Amsterdam\", \"Paris\", \"Paris…\n$ country               &lt;chr&gt; \"Germany\", \"Netherlands\", \"Netherlands\", \"France…\n$ born_date             &lt;date&gt; 1845-03-27, 1853-07-18, 1865-05-25, 1852-12-15,…\n$ died_date             &lt;date&gt; 1923-02-10, 1928-02-04, 1943-10-09, 1908-08-25,…\n$ gender                &lt;chr&gt; \"male\", \"male\", \"male\", \"male\", \"male\", \"female\"…\n$ born_city             &lt;chr&gt; \"Remscheid\", \"Arnhem\", \"Zonnemaire\", \"Paris\", \"P…\n$ born_country          &lt;chr&gt; \"Germany\", \"Netherlands\", \"Netherlands\", \"France…\n$ born_country_code     &lt;chr&gt; \"DE\", \"NL\", \"NL\", \"FR\", \"FR\", \"PL\", \"PL\", \"GB\", …\n$ died_city             &lt;chr&gt; \"Munich\", NA, \"Amsterdam\", NA, \"Paris\", \"Sallanc…\n$ died_country          &lt;chr&gt; \"Germany\", \"Netherlands\", \"Netherlands\", \"France…\n$ died_country_code     &lt;chr&gt; \"DE\", \"NL\", \"NL\", \"FR\", \"FR\", \"FR\", \"FR\", \"GB\", …\n$ overall_motivation    &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …\n$ share                 &lt;dbl&gt; 1, 2, 2, 2, 4, 4, 1, 1, 1, 1, 1, 1, 2, 2, 1, 1, …\n$ motivation            &lt;chr&gt; \"\\\"in recognition of the extraordinary services …\n$ born_country_original &lt;chr&gt; \"Prussia (now Germany)\", \"the Netherlands\", \"the…\n$ born_city_original    &lt;chr&gt; \"Lennep (now Remscheid)\", \"Arnhem\", \"Zonnemaire\"…\n$ died_country_original &lt;chr&gt; \"Germany\", \"the Netherlands\", \"the Netherlands\",…\n$ died_city_original    &lt;chr&gt; \"Munich\", NA, \"Amsterdam\", NA, \"Paris\", \"Sallanc…\n$ city_original         &lt;chr&gt; \"Munich\", \"Leiden\", \"Amsterdam\", \"Paris\", \"Paris…\n$ country_original      &lt;chr&gt; \"Germany\", \"the Netherlands\", \"the Netherlands\",…\n\nnobel |&gt;\n  group_by(gender) |&gt;\n  count(gender)\n\n# A tibble: 3 × 2\n# Groups:   gender [3]\n  gender     n\n  &lt;chr&gt;  &lt;int&gt;\n1 female    52\n2 male     856\n3 org       27\n\n\ngender is a character variable. This variable has three different genders: male, female, and org.\n\n\n\nSuppose we want to turn the three listed genders into numeric values. Run the following code. What happened?\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\nSolution\n\n\n\n\n\nWhen trying to change male, female and org into numbers from characters, each value became an NA.\n\n\n\nIf we want the function as.numeric() to coerce these values into numbers, we need to change them to be a factor first. Run the following code, and compare the results. What values were assigned to which group? How do you think R determined this?\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\nSolution\n\n\n\n\n\nR assigned male = 2; female = 1; and org = 3. These were assigned alpha-numerically.\n\n\n\nNote, that you can also avoid type coercion by manually setting values (see example code below).\n\nnobel |&gt;\n  mutate(gender_num = case_when(\n    gender == \"female\" ~ 1,\n    gender == \"male\" ~ 2,\n    gender == \"org\" ~ 3\n  )) |&gt;\n  select(gender, gender_num) |&gt;\n  unique()\n\n# A tibble: 3 × 2\n  gender gender_num\n  &lt;chr&gt;       &lt;dbl&gt;\n1 male            2\n2 female          1\n3 org             3\n\n\nSuppose you wanted to make this change to the nobel dataset, and export a new csv to your current working directory on your local installment. This can be accomplished using write_csv(). See the help file here."
   },
   {
-    "objectID": "slides/3-2-web-scraping-considerations/3-2-web-scraping-considerations.html#a-new-r-workflow",
-    "href": "slides/3-2-web-scraping-considerations/3-2-web-scraping-considerations.html#a-new-r-workflow",
-    "title": "Web scraping considerations",
-    "section": "A new R workflow",
-    "text": "A new R workflow\n\n\nWhen working in a Quarto document, your analysis is re-run each time you render\nIf web scraping in a Quarto document, you’d be re-scraping the data each time you knit, which is undesirable (and not nice)!\nAn alternative workflow:\n\nUse an R script to save your code\nSaving interim data scraped using the code in the script as CSV or RDS files\nUse the saved data in your analysis in your Quarto document"
+    "objectID": "exercises/noble.html#sales",
+    "href": "exercises/noble.html#sales",
+    "title": "Nobel Prize winners & sales data",
+    "section": "Sales",
+    "text": "Sales\nFor the remaining part of this exercise, we are going to learn how to read in and clean up data that come from excel. The messy data that we are going to work with can be seen in below.\n\n\n\n\n\nWe are going to use read_excel() to read in a xlsx excel file. Read in the file and take a glimpse of these data. Why can we not work with these data in their current form?\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\nSolution\n\n\n\n\n\nThese data are not tidy. These data are read in with the text as a column name, and creates another column name called ...2.\n\n\n\nSee the help file for read_excel() here. Notice that, in the current sales dataset, we want to skip 3 rows (the first row acts as a header for the column names). We can do this using the skip argument. At the same time, we can specify names for each column by giving the argument col_names a character vector. Use these arguments and add to the code below to skip 3 lines and name the columns id and n.\nsales &lt;- read_excel(\n  \"sales.xlsx\", \n# add code here\n)\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nsales &lt;- read_excel(\n  \"sales.xlsx\",\n  skip = 3,\n  col_names = c(\"id\", \"n\")\n)\n\nsales"
+  },
+  {
+    "objectID": "exercises/noble.html#putting-it-all-together",
+    "href": "exercises/noble.html#putting-it-all-together",
+    "title": "Nobel Prize winners & sales data",
+    "section": "Putting it all together",
+    "text": "Putting it all together\nManipulate the sales data such such that it looks like the following using functions you have learned from the tidyverse to transform data.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nsales |&gt;\n  mutate(\n    is_brand_name = str_detect(id, \"Brand\"),\n    brand = if_else(is_brand_name, id, NA)\n  ) |&gt;\n  fill(brand) |&gt;\n  filter(!is_brand_name) |&gt;\n  select(brand, id, n)\n\n# A tibble: 7 × 3\n  brand   id    n    \n  &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;\n1 Brand 1 1234  8    \n2 Brand 1 8721  2    \n3 Brand 1 1822  3    \n4 Brand 2 3333  1    \n5 Brand 2 2156  3    \n6 Brand 2 3987  6    \n7 Brand 2 3216  5    \n\n\n\n\n\nTakeaway We should write code to manipulate data instead of opening Excel and editing the data in there because it allows us to re-use the data multiple times, and leaves a transparent trail of any modifications done while manipulating the data. Changing data in Excel is neither reproducible nor reusable."
+  },
+  {
+    "objectID": "slides/2-2-data-classes/2-2-data-classes.html#data-classes-1",
+    "href": "slides/2-2-data-classes/2-2-data-classes.html#data-classes-1",
+    "title": "Data classes",
+    "section": "Data classes",
+    "text": "Data classes\nWe talked about types so far, next we’ll introduce the concept of classes\n\n\nVectors are like Lego building blocks\nWe stick them together to build more complicated constructs, e.g. representations of data\nThe class attribute relates to the S3 class of an object which determines its behaviour\n\nYou don’t need to worry about what S3 classes really mean, but you can read more about it here if you’re curious\n\nExamples: factors, dates, and data frames"
+  },
+  {
+    "objectID": "slides/2-2-data-classes/2-2-data-classes.html#factors",
+    "href": "slides/2-2-data-classes/2-2-data-classes.html#factors",
+    "title": "Data classes",
+    "section": "Factors",
+    "text": "Factors\nR uses factors to handle categorical variables, variables that have a fixed and known set of possible values\n\nx &lt;- factor(c(\"BS\", \"MS\", \"PhD\", \"MS\"))\nx\n\n[1] BS  MS  PhD MS \nLevels: BS MS PhD\n\n\n\n\n\ntypeof(x)\n\n[1] \"integer\"\n\n\n\n\nclass(x)\n\n[1] \"factor\""
+  },
+  {
+    "objectID": "slides/2-2-data-classes/2-2-data-classes.html#more-on-factors",
+    "href": "slides/2-2-data-classes/2-2-data-classes.html#more-on-factors",
+    "title": "Data classes",
+    "section": "More on factors",
+    "text": "More on factors\nWe can think of factors like character (level labels) and an integer (level numbers) glued together\n\nglimpse(x)\n\n Factor w/ 3 levels \"BS\",\"MS\",\"PhD\": 1 2 3 2\n\nas.integer(x)\n\n[1] 1 2 3 2"
+  },
+  {
+    "objectID": "slides/2-2-data-classes/2-2-data-classes.html#dates",
+    "href": "slides/2-2-data-classes/2-2-data-classes.html#dates",
+    "title": "Data classes",
+    "section": "Dates",
+    "text": "Dates\n\ny &lt;- as.Date(\"2025-01-01\")\ny\n\n[1] \"2025-01-01\"\n\ntypeof(y)\n\n[1] \"double\"\n\nclass(y)\n\n[1] \"Date\""
+  },
+  {
+    "objectID": "slides/2-2-data-classes/2-2-data-classes.html#more-on-dates",
+    "href": "slides/2-2-data-classes/2-2-data-classes.html#more-on-dates",
+    "title": "Data classes",
+    "section": "More on dates",
+    "text": "More on dates\nWe can think of dates like an integer (the number of days since the origin, 1 Jan 1970) and an integer (the origin) glued together\n\nas.integer(y)\n\n[1] 20089\n\nas.integer(y) / 365 # roughly 55 yrs\n\n[1] 55.03836"
+  },
+  {
+    "objectID": "slides/2-2-data-classes/2-2-data-classes.html#data-frames",
+    "href": "slides/2-2-data-classes/2-2-data-classes.html#data-frames",
+    "title": "Data classes",
+    "section": "Data frames",
+    "text": "Data frames\nWe can think of data frames like like vectors of equal length glued together\n\ndf &lt;- data.frame(x = 1:2, y = 3:4)\ndf\n\n  x y\n1 1 3\n2 2 4\n\n\n\n\n\ntypeof(df)\n\n[1] \"list\"\n\n\n\n\nclass(df)\n\n[1] \"data.frame\""
+  },
+  {
+    "objectID": "slides/2-2-data-classes/2-2-data-classes.html#lists",
+    "href": "slides/2-2-data-classes/2-2-data-classes.html#lists",
+    "title": "Data classes",
+    "section": "Lists",
+    "text": "Lists\nLists are a generic vector container; vectors of any type can go in them\n\nl &lt;- list(\n  x = 1:4,\n  y = c(\"hi\", \"hello\", \"jello\"),\n  z = c(TRUE, FALSE)\n)\nl\n\n$x\n[1] 1 2 3 4\n\n$y\n[1] \"hi\"    \"hello\" \"jello\"\n\n$z\n[1]  TRUE FALSE"
+  },
+  {
+    "objectID": "slides/2-2-data-classes/2-2-data-classes.html#lists-and-data-frames",
+    "href": "slides/2-2-data-classes/2-2-data-classes.html#lists-and-data-frames",
+    "title": "Data classes",
+    "section": "Lists and data frames",
+    "text": "Lists and data frames\n\nA data frame is a special list containing vectors of equal length\nWhen we use the pull() function, we extract a vector from the data frame\n\n\ndf\n\n  x y\n1 1 3\n2 2 4\n\ndf |&gt;\n  pull(y)\n\n[1] 3 4"
+  },
+  {
+    "objectID": "slides/2-2-data-classes/2-2-data-classes.html#read-data-in-as-character-strings",
+    "href": "slides/2-2-data-classes/2-2-data-classes.html#read-data-in-as-character-strings",
+    "title": "Data classes",
+    "section": "Read data in as character strings",
+    "text": "Read data in as character strings\n\nhandedness &lt;- read_csv(\"data/handedness.csv\")\nglimpse(handedness)\n\nRows: 60\nColumns: 2\n$ name       &lt;chr&gt; \"Abdiel Camacho\", \"Abram Sanders\", \"Ady…\n$ preference &lt;chr&gt; \"left\", \"ambidextrous\", \"right\", \"right…"
+  },
+  {
+    "objectID": "slides/2-2-data-classes/2-2-data-classes.html#but-coerce-when-plotting",
+    "href": "slides/2-2-data-classes/2-2-data-classes.html#but-coerce-when-plotting",
+    "title": "Data classes",
+    "section": "But coerce when plotting",
+    "text": "But coerce when plotting\n\nggplot(handedness, mapping = aes(x = preference)) +\n  geom_bar()"
+  },
+  {
+    "objectID": "slides/2-2-data-classes/2-2-data-classes.html#use-forcats-to-manipulate-factors",
+    "href": "slides/2-2-data-classes/2-2-data-classes.html#use-forcats-to-manipulate-factors",
+    "title": "Data classes",
+    "section": "Use forcats to manipulate factors",
+    "text": "Use forcats to manipulate factors\n\nhandedness |&gt;\n  mutate(preference = fct_infreq(preference)) |&gt;\n  ggplot(mapping = aes(x = preference)) +\n  geom_bar()"
+  },
+  {
+    "objectID": "slides/2-2-data-classes/2-2-data-classes.html#come-for-the-functionality",
+    "href": "slides/2-2-data-classes/2-2-data-classes.html#come-for-the-functionality",
+    "title": "Data classes",
+    "section": "Come for the functionality",
+    "text": "Come for the functionality\n\n\n… stay for the logo\n\n\n\n\nThe forcats package provides a suite of useful tools that solve common problems with factors\nFactors are useful when you have true categorical data and you want to override the ordering of character vectors to improve display\nThey are also useful in modeling scenarios"
+  },
+  {
+    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#task-goal-and-tools",
+    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#task-goal-and-tools",
+    "title": "Tidying data",
+    "section": "Task, goal, and tools",
+    "text": "Task, goal, and tools\n\n\n have data organised in an unideal way for our analysis\n\n\n\n want to reorganize the data for our analysis\n\n\n\n\n using tools from the tidyverse\n\n\nlibrary(tidyverse)"
+  },
+  {
+    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#data-grocery-store-sales",
+    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#data-grocery-store-sales",
+    "title": "Tidying data",
+    "section": "Data: Grocery store sales",
+    "text": "Data: Grocery store sales\n\n\nhave\n\n\n\n# A tibble: 2 × 4\n  customer_id item_1 item_2       item_3\n        &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;        &lt;chr&gt; \n1           1 bread  milk         banana\n2           2 milk   toilet paper &lt;NA&gt;  \n\n\n\n\nwant\n\n\n\n# A tibble: 6 × 3\n  customer_id item_no item        \n        &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;       \n1           1 item_1  bread       \n2           1 item_2  milk        \n3           1 item_3  banana      \n4           2 item_1  milk        \n5           2 item_2  toilet paper\n6           2 item_3  &lt;NA&gt;"
+  },
+  {
+    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#grammar-of-data-tidying",
+    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#grammar-of-data-tidying",
+    "title": "Tidying data",
+    "section": "Grammar of data tidying",
+    "text": "Grammar of data tidying\n\n\n\n\nThe goal of tidyr is to help you tidy your data via\n\n\npivoting for going between wide and long data\nsplitting and combining character columns\nnesting and unnesting columns\nclarifying how NAs should be treated"
+  },
+  {
+    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivoting",
+    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivoting",
+    "title": "Tidying data",
+    "section": "Pivoting",
+    "text": "Pivoting\n\n\nNot this…\n\n\nbut this!"
+  },
+  {
+    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#wider-vs.-longer",
+    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#wider-vs.-longer",
+    "title": "Tidying data",
+    "section": "Wider vs. longer",
+    "text": "Wider vs. longer\n\n\nwider - more columns\n\n\n# A tibble: 2 × 4\n  customer_id item_1 item_2       item_3\n        &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;        &lt;chr&gt; \n1           1 bread  milk         banana\n2           2 milk   toilet paper &lt;NA&gt;  \n\n\n\nlonger - more rows\n\n\n# A tibble: 6 × 3\n  customer_id item_no item        \n        &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;       \n1           1 item_1  bread       \n2           1 item_2  milk        \n3           1 item_3  banana      \n4           2 item_1  milk        \n5           2 item_2  toilet paper\n6           2 item_3  &lt;NA&gt;"
+  },
+  {
+    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer",
+    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer",
+    "title": "Tidying data",
+    "section": "pivot_longer()",
+    "text": "pivot_longer()\n\n\n\npivot_longer(\n  data,\n  cols, \n  names_to = \"name\", \n  values_to = \"value\"\n  )"
+  },
+  {
+    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-1",
+    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-1",
+    "title": "Tidying data",
+    "section": "pivot_longer()",
+    "text": "pivot_longer()\n\n\n\npivot_longer(\n1  data,\n  cols, \n  names_to = \"name\", \n  values_to = \"value\"\n  )\n\n\n1\n\ndata (as usual)"
+  },
+  {
+    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-2",
+    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-2",
+    "title": "Tidying data",
+    "section": "pivot_longer()",
+    "text": "pivot_longer()\n\n\n\npivot_longer(\n1  data,\n2  cols,\n  names_to = \"name\", \n  values_to = \"value\"\n  )\n\n\n1\n\ndata (as usual)\n\n2\n\ncols: Columns to pivot into longer format"
+  },
+  {
+    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-3",
+    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-3",
+    "title": "Tidying data",
+    "section": "pivot_longer()",
+    "text": "pivot_longer()\n\n\n\npivot_longer(\n1  data,\n2  cols,\n3  names_to = \"name\",\n  values_to = \"value\"\n  )\n\n\n1\n\ndata (as usual)\n\n2\n\ncols: Columns to pivot into longer format\n\n3\n\nnames_to: Name of the column where column names of pivoted variables go (character string)"
+  },
+  {
+    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-4",
+    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-4",
+    "title": "Tidying data",
+    "section": "pivot_longer()",
+    "text": "pivot_longer()\n\n\n\npivot_longer(\n1  data,\n2  cols,\n3  names_to = \"name\",\n4  values_to = \"value\"\n  )\n\n\n1\n\ndata (as usual)\n\n2\n\ncols: Columns to pivot into longer format\n\n3\n\nnames_to: Name of the column where column names of pivoted variables go (character string)\n\n4\n\nvalues_to: Name of the column where data in pivoted variables go (character string)"
+  },
+  {
+    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-in-context",
+    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-in-context",
+    "title": "Tidying data",
+    "section": "pivot_longer() in context",
+    "text": "pivot_longer() in context\n\n\n\ncustomers |&gt;\n  pivot_longer(\n    cols = item_1:item_3,\n    names_to = \"item_no\",\n    values_to = \"item\"\n  )\n\n# A tibble: 6 × 3\n  customer_id item_no item        \n        &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;       \n1           1 item_1  bread       \n2           1 item_2  milk        \n3           1 item_3  banana      \n4           2 item_1  milk        \n5           2 item_2  toilet paper\n6           2 item_3  &lt;NA&gt;"
+  },
+  {
+    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-in-context-1",
+    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-in-context-1",
+    "title": "Tidying data",
+    "section": "pivot_longer() in context",
+    "text": "pivot_longer() in context\n\n\n\ncustomers |&gt;\n  pivot_longer(\n1    cols = item_1:item_3,\n    names_to = \"item_no\",\n    values_to = \"item\"\n  )\n\n\n1\n\ncols to pivot: item_1 to item_3"
+  },
+  {
+    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-in-context-2",
+    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-in-context-2",
+    "title": "Tidying data",
+    "section": "pivot_longer() in context",
+    "text": "pivot_longer() in context\n\n\n\ncustomers |&gt;\n  pivot_longer(\n1    cols = item_1:item_3,\n2    names_to = \"item_no\",\n    values_to = \"item\"\n  )\n\n\n1\n\ncols to pivot: item_1 to item_3\n\n2\n\nColumn names_to new column called item_no"
+  },
+  {
+    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-in-context-3",
+    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-in-context-3",
+    "title": "Tidying data",
+    "section": "pivot_longer() in context",
+    "text": "pivot_longer() in context\n\n\n\ncustomers |&gt;\n  pivot_longer(\n1    cols = item_1:item_3,\n2    names_to = \"item_no\",\n3    values_to = \"item\"\n  )\n\n\n1\n\ncols to pivot: item_1 to item_3\n\n2\n\nColumn names_to new column called item_no\n\n3\n\nvalues_to new column called item"
+  },
+  {
+    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-in-context-4",
+    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-in-context-4",
+    "title": "Tidying data",
+    "section": "pivot_longer() in context",
+    "text": "pivot_longer() in context\n\n\n\ncustomers |&gt;\n  pivot_longer(\n    cols = item_1:item_3,\n    names_to = \"item_no\",\n    values_to = \"item\"\n  )\n\n# A tibble: 6 × 3\n  customer_id item_no item        \n        &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;       \n1           1 item_1  bread       \n2           1 item_2  milk        \n3           1 item_3  banana      \n4           2 item_1  milk        \n5           2 item_2  toilet paper\n6           2 item_3  &lt;NA&gt;"
+  },
+  {
+    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#dealing-with-nas",
+    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#dealing-with-nas",
+    "title": "Tidying data",
+    "section": "Dealing with NAs",
+    "text": "Dealing with NAs\n\n\n\ncustomers |&gt;\n  pivot_longer(\n1    cols = item_1:item_3,\n2    names_to = \"item_no\",\n3    values_to = \"item\",\n4    values_drop_na = TRUE\n  )\n\n\n1\n\ncols to pivot: item_1 to item_3\n\n2\n\nColumn names_to new column called item_no\n\n3\n\nvalues_to new column called item\n\n4\n\nDrop rows that contain only NAs in the values_to column\n\n\n\n\n# A tibble: 5 × 3\n  customer_id item_no item        \n        &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;       \n1           1 item_1  bread       \n2           1 item_2  milk        \n3           1 item_3  banana      \n4           2 item_1  milk        \n5           2 item_2  toilet paper"
+  },
+  {
+    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#from-customers-to-purchases",
+    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#from-customers-to-purchases",
+    "title": "Tidying data",
+    "section": "From customers to purchases",
+    "text": "From customers to purchases\n\n\n\npurchases &lt;- customers |&gt;\n  pivot_longer(\n    cols = item_1:item_3,\n    names_to = \"item_no\",\n    values_to = \"item\",\n    values_drop_na = TRUE\n  )\n\npurchases\n\n# A tibble: 5 × 3\n  customer_id item_no item        \n        &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;       \n1           1 item_1  bread       \n2           1 item_2  milk        \n3           1 item_3  banana      \n4           2 item_1  milk        \n5           2 item_2  toilet paper"
+  },
+  {
+    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#why-pivot",
+    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#why-pivot",
+    "title": "Tidying data",
+    "section": "Why pivot?",
+    "text": "Why pivot?\nMost likely, because the next step of your analysis needs it\n\n\n\n\n\nprices\n\n# A tibble: 5 × 2\n  item         price\n  &lt;chr&gt;        &lt;dbl&gt;\n1 avocado       0.5 \n2 banana        0.15\n3 bread         1   \n4 milk          0.8 \n5 toilet paper  3   \n\n\n\n\npurchases |&gt;\n  left_join(prices)\n\nJoining with `by = join_by(item)`\n\n\n# A tibble: 5 × 4\n  customer_id item_no item         price\n        &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;        &lt;dbl&gt;\n1           1 item_1  bread         1   \n2           1 item_2  milk          0.8 \n3           1 item_3  banana        0.15\n4           2 item_1  milk          0.8 \n5           2 item_2  toilet paper  3"
+  },
+  {
+    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#from-purchases-to-customers",
+    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#from-purchases-to-customers",
+    "title": "Tidying data",
+    "section": "From purchases to customers",
+    "text": "From purchases to customers\n\n\n\npurchases |&gt;\n  pivot_wider(\n    names_from = item_no,\n    values_from = item\n  )\n\n# A tibble: 2 × 4\n  customer_id item_1 item_2       item_3\n        &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;        &lt;chr&gt; \n1           1 bread  milk         banana\n2           2 milk   toilet paper &lt;NA&gt;"
+  },
+  {
+    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_wider",
+    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_wider",
+    "title": "Tidying data",
+    "section": "pivot_wider()",
+    "text": "pivot_wider()\n\n\n\npivot_wider(\n1  data,\n  names_from = name,\n  values_from = value\n  )\n\n\n1\n\ndata (as usual)"
+  },
+  {
+    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_wider-1",
+    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_wider-1",
+    "title": "Tidying data",
+    "section": "pivot_wider()",
+    "text": "pivot_wider()\n\n\n\npivot_wider(\n1  data,\n2  names_from = name,\n  values_from = value\n  )\n\n\n1\n\ndata (as usual)\n\n2\n\nnames_from: Which column(s) in the long format contains what should be column names in the wide format"
+  },
+  {
+    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_wider-2",
+    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_wider-2",
+    "title": "Tidying data",
+    "section": "pivot_wider()",
+    "text": "pivot_wider()\n\n\n\npivot_wider(\n1  data,\n2  names_from = name,\n3  values_from = value\n  )\n\n\n1\n\ndata (as usual)\n\n2\n\nnames_from: Which column(s) in the long format contains what should be column names in the wide format\n\n3\n\nvalues_from: Which column(s) in the long format contains what should be values in the new columns in the wide format"
+  },
+  {
+    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#wider---longer",
+    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#wider---longer",
+    "title": "Tidying data",
+    "section": "Wider <-> longer",
+    "text": "Wider &lt;-&gt; longer"
+  },
+  {
+    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#additional-arguments",
+    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#additional-arguments",
+    "title": "Tidying data",
+    "section": "Additional arguments",
+    "text": "Additional arguments\n\n\npivot_longer()\n\npivot_longer(\n  data,\n  cols,\n  ...,\n  cols_vary = \"fastest\",\n  names_to = \"name\",\n  names_prefix = NULL,\n  names_sep = NULL,\n  names_pattern = NULL,\n  names_ptypes = NULL,\n  names_transform = NULL,\n  names_repair = \"check_unique\",\n  values_to = \"value\",\n  values_drop_na = FALSE,\n  values_ptypes = NULL,\n  values_transform = NULL\n)\n\n\npivot_wider()\n\npivot_wider(\n  data,\n  ...,\n  id_cols = NULL,\n  id_expand = FALSE,\n  names_from = name,\n  names_prefix = \"\",\n  names_sep = \"_\",\n  names_glue = NULL,\n  names_sort = FALSE,\n  names_vary = \"fastest\",\n  names_expand = FALSE,\n  names_repair = \"check_unique\",\n  values_from = value,\n  values_fill = NULL,\n  values_fn = NULL,\n  unused_fn = NULL\n)"
+  },
+  {
+    "objectID": "slides/2-3-importing-data/2-3-importing-data.html#reading-delimited-files",
+    "href": "slides/2-3-importing-data/2-3-importing-data.html#reading-delimited-files",
+    "title": "Importing data",
+    "section": "Reading delimited files",
+    "text": "Reading delimited files\n\n\n\n\n\nlibrary(tidyverse)\n\n\nread_csv() - comma delimited files\nread_csv2() - semicolon separated files (common in countries where , is used as the decimal place)\nread_tsv() - tab delimited files\nread_delim() - reads in files with any delimiter\nread_fwf() - fixed width files\n…"
+  },
+  {
+    "objectID": "slides/2-3-importing-data/2-3-importing-data.html#reading-excel-spreadsheets",
+    "href": "slides/2-3-importing-data/2-3-importing-data.html#reading-excel-spreadsheets",
+    "title": "Importing data",
+    "section": "Reading Excel spreadsheets",
+    "text": "Reading Excel spreadsheets\n\n\n\n\n\nlibrary(readxl)\n\n\nread_excel() - read xls or xlsx files\n…"
+  },
+  {
+    "objectID": "slides/2-3-importing-data/2-3-importing-data.html#reading-data",
+    "href": "slides/2-3-importing-data/2-3-importing-data.html#reading-data",
+    "title": "Importing data",
+    "section": "Reading data",
+    "text": "Reading data\n\nnobel &lt;- read_csv(file = \"data/nobel.csv\")\n\nRows: 1000 Columns: 19\n── Column specification ────────────────────────────────────\nDelimiter: \",\"\nchr (17): first_name, last_name, born, died, born_countr...\ndbl  (2): id, year\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message."
+  },
+  {
+    "objectID": "slides/2-3-importing-data/2-3-importing-data.html#reading-data-1",
+    "href": "slides/2-3-importing-data/2-3-importing-data.html#reading-data-1",
+    "title": "Importing data",
+    "section": "Reading data",
+    "text": "Reading data\n\nnobel\n\n# A tibble: 1,000 × 19\n      id first_name     last_name   born  died  born_country\n   &lt;dbl&gt; &lt;chr&gt;          &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;       \n 1   160 Jacobus H.     van 't Hoff 1852… 3/1/… the Netherl…\n 2   569 Sully          Prudhomme   1839… 9/7/… France      \n 3   293 Emil           von Behring 1854… 3/31… Prussia (no…\n 4   462 Henry          Dunant      1828… 10/3… Switzerland \n 5     1 Wilhelm Conrad Röntgen     1845… 2/10… Prussia (no…\n 6   463 Frédéric       Passy       1822… 6/12… France      \n 7   464 Élie           Ducommun    1833… 12/7… Switzerland \n 8   465 Albert         Gobat       1843… 3/16… Switzerland \n 9   294 Ronald         Ross        1857… 9/16… India       \n10   161 Emil           Fischer     1852… 7/15… Prussia (no…\n# ℹ 990 more rows\n# ℹ 13 more variables: born_country_code &lt;chr&gt;,\n#   born_city &lt;chr&gt;, died_country &lt;chr&gt;,\n#   died_country_code &lt;chr&gt;, died_city &lt;chr&gt;, gender &lt;chr&gt;,\n#   year &lt;dbl&gt;, category &lt;chr&gt;, overall_motivation &lt;chr&gt;,\n#   motivation &lt;chr&gt;, organization_name &lt;chr&gt;,\n#   organization_city &lt;chr&gt;, organization_country &lt;chr&gt;"
+  },
+  {
+    "objectID": "slides/2-3-importing-data/2-3-importing-data.html#writing-data",
+    "href": "slides/2-3-importing-data/2-3-importing-data.html#writing-data",
+    "title": "Importing data",
+    "section": "Writing data",
+    "text": "Writing data\nWrite a file:\n\ndf &lt;- tribble(\n  ~x, ~y,\n  1,  \"a\",\n  2,  \"b\",\n  3,  \"c\"\n)\n\nwrite_csv(df, file = \"data/df.csv\")"
+  },
+  {
+    "objectID": "slides/2-3-importing-data/2-3-importing-data.html#reading-data-back",
+    "href": "slides/2-3-importing-data/2-3-importing-data.html#reading-data-back",
+    "title": "Importing data",
+    "section": "Reading data back",
+    "text": "Reading data back\nRead it back in to inspect:\n\nread_csv(\"data/df.csv\")\n\nRows: 3 Columns: 2\n── Column specification ────────────────────────────────────\nDelimiter: \",\"\nchr (1): y\ndbl (1): x\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\n\n# A tibble: 3 × 2\n      x y    \n  &lt;dbl&gt; &lt;chr&gt;\n1     1 a    \n2     2 b    \n3     3 c"
+  },
+  {
+    "objectID": "slides/2-3-importing-data/2-3-importing-data.html#suppressing-messages",
+    "href": "slides/2-3-importing-data/2-3-importing-data.html#suppressing-messages",
+    "title": "Importing data",
+    "section": "Suppressing messages",
+    "text": "Suppressing messages\n\n```{r}\n#| message: false\nread_csv(\"data/df.csv\")\n```\n\n# A tibble: 3 × 2\n      x y    \n  &lt;dbl&gt; &lt;chr&gt;\n1     1 a    \n2     2 b    \n3     3 c"
+  },
+  {
+    "objectID": "slides/2-3-importing-data/2-3-importing-data.html#data-with-bad-names",
+    "href": "slides/2-3-importing-data/2-3-importing-data.html#data-with-bad-names",
+    "title": "Importing data",
+    "section": "Data with bad names",
+    "text": "Data with bad names\n\nedibnb_bad_names &lt;- read_csv(\"data/edibnb-bad-names.csv\")\nnames(edibnb_bad_names)\n\n [1] \"ID\"                   \"Price\"               \n [3] \"neighbourhood\"        \"accommodates\"        \n [5] \"Number of bathrooms\"  \"Number of Bedrooms\"  \n [7] \"n beds\"               \"Review Scores Rating\"\n [9] \"Number of reviews\"    \"listing_url\"         \n\n\n\n… but R doesn’t allow spaces in variable names\n\nggplot(\n  edibnb_bad_names, \n  aes(x = Number of bathrooms, y = Price)\n  ) +\n  geom_point()\n\nError: &lt;text&gt;:3:18: unexpected symbol\n2:   edibnb_bad_names, \n3:   aes(x = Number of\n                    ^"
+  },
+  {
+    "objectID": "slides/2-3-importing-data/2-3-importing-data.html#option-1---quote-column-names",
+    "href": "slides/2-3-importing-data/2-3-importing-data.html#option-1---quote-column-names",
+    "title": "Importing data",
+    "section": "Option 1 - Quote column names",
+    "text": "Option 1 - Quote column names\n\nggplot(\n  edibnb_bad_names, \n  aes(x = `Number of bathrooms`, y = Price)\n  ) +\n  geom_point()"
+  },
+  {
+    "objectID": "slides/2-3-importing-data/2-3-importing-data.html#option-2---define-column-names",
+    "href": "slides/2-3-importing-data/2-3-importing-data.html#option-2---define-column-names",
+    "title": "Importing data",
+    "section": "Option 2 - Define column names",
+    "text": "Option 2 - Define column names\n\nedibnb_col_names &lt;- read_csv(\n  \"data/edibnb-bad-names.csv\",\n  col_names = c(\n    \"id\", \"price\", \"neighbourhood\", \"accommodates\", \n    \"bathroom\", \"bedroom\", \"bed\", \"review_scores_rating\", \n    \"n_reviews\", \"url\"\n  )\n)\n\n\n\nnames(edibnb_col_names)\n\n [1] \"id\"                   \"price\"               \n [3] \"neighbourhood\"        \"accommodates\"        \n [5] \"bathroom\"             \"bedroom\"             \n [7] \"bed\"                  \"review_scores_rating\"\n [9] \"n_reviews\"            \"url\""
+  },
+  {
+    "objectID": "slides/2-3-importing-data/2-3-importing-data.html#option-3---format-column-names-to-snake_case",
+    "href": "slides/2-3-importing-data/2-3-importing-data.html#option-3---format-column-names-to-snake_case",
+    "title": "Importing data",
+    "section": "Option 3 - Format column names to snake_case",
+    "text": "Option 3 - Format column names to snake_case\n\nlibrary(janitor)\n\nedibnb_clean_names &lt;- read_csv(\"data/edibnb-bad-names.csv\") |&gt;\n  janitor::clean_names()\n\n\n\nnames(edibnb_clean_names)\n\n [1] \"id\"                   \"price\"               \n [3] \"neighbourhood\"        \"accommodates\"        \n [5] \"number_of_bathrooms\"  \"number_of_bedrooms\"  \n [7] \"n_beds\"               \"review_scores_rating\"\n [9] \"number_of_reviews\"    \"listing_url\""
+  },
+  {
+    "objectID": "slides/2-3-importing-data/2-3-importing-data.html#variable-types-1",
+    "href": "slides/2-3-importing-data/2-3-importing-data.html#variable-types-1",
+    "title": "Importing data",
+    "section": "Variable types",
+    "text": "Variable types\n\nWhich type is x? Why?\n\n\n\n\n\n\nread_csv(\"data/df-na.csv\")\n\n# A tibble: 9 × 3\n  x     y              z     \n  &lt;chr&gt; &lt;chr&gt;          &lt;chr&gt; \n1 1     a              hi    \n2 &lt;NA&gt;  b              hello \n3 3     Not applicable 9999  \n4 4     d              ola   \n5 5     e              hola  \n6 .     f              whatup\n7 7     g              wassup\n8 8     h              sup   \n9 9     i              &lt;NA&gt;"
+  },
+  {
+    "objectID": "slides/2-3-importing-data/2-3-importing-data.html#option-1.-explicit-nas",
+    "href": "slides/2-3-importing-data/2-3-importing-data.html#option-1.-explicit-nas",
+    "title": "Importing data",
+    "section": "Option 1. Explicit NAs",
+    "text": "Option 1. Explicit NAs\n\nread_csv(\n  \"data/df-na.csv\", \n  na = c(\"\", \"NA\", \".\", \"9999\", \"Not applicable\")\n)\n\n\n\n\n\n# A tibble: 9 × 3\n      x y     z     \n  &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; \n1     1 a     hi    \n2    NA b     hello \n3     3 &lt;NA&gt;  &lt;NA&gt;  \n4     4 d     ola   \n5     5 e     hola  \n6    NA f     whatup\n7     7 g     wassup\n8     8 h     sup   \n9     9 i     &lt;NA&gt;"
+  },
+  {
+    "objectID": "slides/2-3-importing-data/2-3-importing-data.html#option-2.-specify-column-types",
+    "href": "slides/2-3-importing-data/2-3-importing-data.html#option-2.-specify-column-types",
+    "title": "Importing data",
+    "section": "Option 2. Specify column types",
+    "text": "Option 2. Specify column types\n\nread_csv(\n  \"data/df-na.csv\", \n  col_types = list(col_double(), col_character(), col_character())\n  )\n\n\n\n\n\nWarning: One or more parsing issues, call `problems()` on your data\nframe for details, e.g.:\n  dat &lt;- vroom(...)\n  problems(dat)\n\n\n# A tibble: 9 × 3\n      x y              z     \n  &lt;dbl&gt; &lt;chr&gt;          &lt;chr&gt; \n1     1 a              hi    \n2    NA b              hello \n3     3 Not applicable 9999  \n4     4 d              ola   \n5     5 e              hola  \n6    NA f              whatup\n7     7 g              wassup\n8     8 h              sup   \n9     9 i              &lt;NA&gt;"
+  },
+  {
+    "objectID": "slides/2-3-importing-data/2-3-importing-data.html#column-types-for-read_csv",
+    "href": "slides/2-3-importing-data/2-3-importing-data.html#column-types-for-read_csv",
+    "title": "Importing data",
+    "section": "Column types for read_csv()",
+    "text": "Column types for read_csv()\n\n\n\ntype function\ndata type\n\n\n\n\ncol_character()\ncharacter\n\n\ncol_date()\ndate\n\n\ncol_datetime()\nPOSIXct (date-time)\n\n\ncol_double()\ndouble (numeric)\n\n\ncol_factor()\nfactor\n\n\ncol_guess()\nlet readr guess (default)\n\n\ncol_integer()\ninteger\n\n\ncol_logical()\nlogical\n\n\ncol_number()\nnumbers mixed with non-number characters\n\n\ncol_numeric()\ndouble or integer\n\n\ncol_skip()\ndo not read\n\n\ncol_time()\ntime"
+  },
+  {
+    "objectID": "slides/2-3-importing-data/2-3-importing-data.html#reading-data-2",
+    "href": "slides/2-3-importing-data/2-3-importing-data.html#reading-data-2",
+    "title": "Importing data",
+    "section": "Reading data",
+    "text": "Reading data\n\nnobel &lt;- read_excel(path = \"data/nobel.xlsx\")\n\n\n\nnobel\n\n# A tibble: 1,000 × 19\n      id first_name     last_name  born  died               \n   &lt;dbl&gt; &lt;chr&gt;          &lt;chr&gt;      &lt;chr&gt; &lt;dttm&gt;             \n 1   160 Jacobus H.     van 't Ho… 1852… 1911-03-01 00:00:00\n 2   569 Sully          Prudhomme  1839… 1907-09-07 00:00:00\n 3   293 Emil           von Behri… 1854… 1917-03-31 00:00:00\n 4   462 Henry          Dunant     1828… 1910-10-30 00:00:00\n 5     1 Wilhelm Conrad Röntgen    1845… 1923-02-10 00:00:00\n 6   463 Frédéric       Passy      1822… 1912-06-12 00:00:00\n 7   464 Élie           Ducommun   1833… 1906-12-07 00:00:00\n 8   465 Albert         Gobat      1843… 1914-03-16 00:00:00\n 9   294 Ronald         Ross       1857… 1932-09-16 00:00:00\n10   161 Emil           Fischer    1852… 1919-07-15 00:00:00\n# ℹ 990 more rows\n# ℹ 14 more variables: born_country &lt;chr&gt;,\n#   born_country_code &lt;chr&gt;, born_city &lt;chr&gt;,\n#   died_country &lt;chr&gt;, died_country_code &lt;chr&gt;,\n#   died_city &lt;chr&gt;, gender &lt;chr&gt;, year &lt;dbl&gt;,\n#   category &lt;chr&gt;, overall_motivation &lt;chr&gt;,\n#   motivation &lt;chr&gt;, organization_name &lt;chr&gt;, …"
+  },
+  {
+    "objectID": "slides/2-3-importing-data/2-3-importing-data.html#spreadsheets-with-bad-names",
+    "href": "slides/2-3-importing-data/2-3-importing-data.html#spreadsheets-with-bad-names",
+    "title": "Importing data",
+    "section": "Spreadsheets with “bad” names",
+    "text": "Spreadsheets with “bad” names\n\nedibnb_bad_names &lt;- read_excel(\"data/edibnb-bad-names.xlsx\")\n\nnames(edibnb_bad_names)\n\n [1] \"ID\"                   \"Price\"               \n [3] \"neighbourhood\"        \"accommodates\"        \n [5] \"Number of bathrooms\"  \"Number of Bedrooms\"  \n [7] \"n beds\"               \"Review Scores Rating\"\n [9] \"Number of reviews\"    \"listing_url\""
+  },
+  {
+    "objectID": "slides/2-3-importing-data/2-3-importing-data.html#option-1.-define-column-names",
+    "href": "slides/2-3-importing-data/2-3-importing-data.html#option-1.-define-column-names",
+    "title": "Importing data",
+    "section": "Option 1. Define column names",
+    "text": "Option 1. Define column names\n\nedibnb_col_names &lt;- read_excel(\n  \"data/edibnb-bad-names.xlsx\",\n  col_names = c(\n    \"id\", \"price\", \"neighbourhood\", \"accommodates\", \"bathroom\", \n    \"bedroom\", \"bed\", \"review_scores_rating\", \"n_reviews\", \"url\"\n  )\n)\n\nnames(edibnb_col_names)\n\n [1] \"id\"                   \"price\"               \n [3] \"neighbourhood\"        \"accommodates\"        \n [5] \"bathroom\"             \"bedroom\"             \n [7] \"bed\"                  \"review_scores_rating\"\n [9] \"n_reviews\"            \"url\""
+  },
+  {
+    "objectID": "slides/2-3-importing-data/2-3-importing-data.html#option-2.-format-column-names-to-snake_case",
+    "href": "slides/2-3-importing-data/2-3-importing-data.html#option-2.-format-column-names-to-snake_case",
+    "title": "Importing data",
+    "section": "Option 2. Format column names to snake_case",
+    "text": "Option 2. Format column names to snake_case\n\nedibnb_clean_names &lt;- read_excel(\"data/edibnb-bad-names.xlsx\") |&gt;\n  janitor::clean_names()\n\nnames(edibnb_clean_names)\n\n [1] \"id\"                   \"price\"               \n [3] \"neighbourhood\"        \"accommodates\"        \n [5] \"number_of_bathrooms\"  \"number_of_bedrooms\"  \n [7] \"n_beds\"               \"review_scores_rating\"\n [9] \"number_of_reviews\"    \"listing_url\""
+  },
+  {
+    "objectID": "slides/2-3-importing-data/2-3-importing-data.html#spreadsheets-with-nas",
+    "href": "slides/2-3-importing-data/2-3-importing-data.html#spreadsheets-with-nas",
+    "title": "Importing data",
+    "section": "Spreadsheets with NAs",
+    "text": "Spreadsheets with NAs\n\nread_excel(\"data/df-na.xlsx\")\n\n# A tibble: 9 × 3\n  x     y              z     \n  &lt;chr&gt; &lt;chr&gt;          &lt;chr&gt; \n1 1     a              hi    \n2 NA    b              hello \n3 3     Not applicable 9999  \n4 4     d              ola   \n5 5     e              hola  \n6 .     f              whatup\n7 7     g              wassup\n8 8     h              sup   \n9 9     i              &lt;NA&gt;"
+  },
+  {
+    "objectID": "slides/2-3-importing-data/2-3-importing-data.html#option-1.-explicit-nas-1",
+    "href": "slides/2-3-importing-data/2-3-importing-data.html#option-1.-explicit-nas-1",
+    "title": "Importing data",
+    "section": "Option 1. Explicit NAs",
+    "text": "Option 1. Explicit NAs\n\nread_excel(\n  \"data/df-na.xlsx\", \n  na = c(\"\", \"NA\", \".\", \"9999\", \"Not applicable\")\n)\n\n# A tibble: 9 × 3\n      x y     z     \n  &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; \n1     1 a     hi    \n2    NA b     hello \n3     3 &lt;NA&gt;  &lt;NA&gt;  \n4     4 d     ola   \n5     5 e     hola  \n6    NA f     whatup\n7     7 g     wassup\n8     8 h     sup   \n9     9 i     &lt;NA&gt;"
+  },
+  {
+    "objectID": "slides/2-3-importing-data/2-3-importing-data.html#option-2.-specify-column-types-1",
+    "href": "slides/2-3-importing-data/2-3-importing-data.html#option-2.-specify-column-types-1",
+    "title": "Importing data",
+    "section": "Option 2. Specify column types",
+    "text": "Option 2. Specify column types\n\nread_excel(\n  \"data/df-na.xlsx\", \n  col_types = c(\"numeric\", \"text\", \"text\")\n  )\n\nWarning: Expecting numeric in A3 / R3C1: got 'NA'\n\n\nWarning: Expecting numeric in A7 / R7C1: got '.'\n\n\n# A tibble: 9 × 3\n      x y              z     \n  &lt;dbl&gt; &lt;chr&gt;          &lt;chr&gt; \n1     1 a              hi    \n2    NA b              hello \n3     3 Not applicable 9999  \n4     4 d              ola   \n5     5 e              hola  \n6    NA f              whatup\n7     7 g              wassup\n8     8 h              sup   \n9     9 i              &lt;NA&gt;"
+  },
+  {
+    "objectID": "slides/2-3-importing-data/2-3-importing-data.html#column-types-for-read_excel",
+    "href": "slides/2-3-importing-data/2-3-importing-data.html#column-types-for-read_excel",
+    "title": "Importing data",
+    "section": "Column types for read_excel()",
+    "text": "Column types for read_excel()\n\n\n\ntype function\ndata type\n\n\n\n\n\"skip\"\ndo not read\n\n\n\"guess\"\nlet readxl guess (default)\n\n\n\"logical\"\nlogical\n\n\n\"numeric\"\nnumeric\n\n\n\"date\"\nPOSIXct (date-time)\n\n\n\"text\"\ncharacter\n\n\n\"list\"\na list of length 1 vectors"
+  },
+  {
+    "objectID": "slides/2-3-importing-data/2-3-importing-data.html#other-types-of-data-1",
+    "href": "slides/2-3-importing-data/2-3-importing-data.html#other-types-of-data-1",
+    "title": "Importing data",
+    "section": "Other types of data",
+    "text": "Other types of data\n\ngooglesheets4: Google Sheets\narrow: parquet files\nDBI, along with a database specific backend (e.g. RMySQL, RSQLite, RPostgreSQL etc): allows you to run SQL queries against a database and return a data frame\nrvest: web scraping\nhaven: SPSS, Stata, and SAS files\njsonline: JSON\nxml2: xml\nhttr: web APIs\nsparklyr: data loaded into spark"
+  },
+  {
+    "objectID": "slides/3-1-web-scraping/3-1-web-scraping.html#scraping-the-web-what-why",
+    "href": "slides/3-1-web-scraping/3-1-web-scraping.html#scraping-the-web-what-why",
+    "title": "Web scraping",
+    "section": "Scraping the web: what? why?",
+    "text": "Scraping the web: what? why?\n\n\nIncreasing amount of data is available on the web\nThese data are provided in an unstructured format: you can always copy&paste, but it’s time-consuming and prone to errors\nWeb scraping is the process of extracting this information automatically and transform it into a structured dataset\nTwo different scenarios:\n\nScreen scraping: extract data from source code of website, with html parser (easy) or regular expression matching (less easy).\nWeb APIs (application programming interface): website offers a set of structured http requests that return JSON or XML files."
+  },
+  {
+    "objectID": "slides/3-1-web-scraping/3-1-web-scraping.html#hypertext-markup-language",
+    "href": "slides/3-1-web-scraping/3-1-web-scraping.html#hypertext-markup-language",
+    "title": "Web scraping",
+    "section": "Hypertext Markup Language",
+    "text": "Hypertext Markup Language\n\n\nMost of the data on the web is still largely available as HTML\nIt is structured (hierarchical / tree based), but it’s often not available in a form useful for analysis (flat / tidy).\n\n\n\n&lt;html&gt;\n  &lt;head&gt;\n    &lt;title&gt;This is a title&lt;/title&gt;\n  &lt;/head&gt;\n  &lt;body&gt;\n    &lt;p align=\"center\"&gt;Hello world!&lt;/p&gt;\n  &lt;/body&gt;\n&lt;/html&gt;"
+  },
+  {
+    "objectID": "slides/3-1-web-scraping/3-1-web-scraping.html#rvest",
+    "href": "slides/3-1-web-scraping/3-1-web-scraping.html#rvest",
+    "title": "Web scraping",
+    "section": "rvest",
+    "text": "rvest\n\n\n\nThe rvest package makes basic processing and manipulation of HTML data straight forward\nIt’s designed to work with pipelines built with |&gt;"
+  },
+  {
+    "objectID": "slides/3-1-web-scraping/3-1-web-scraping.html#core-rvest-functions",
+    "href": "slides/3-1-web-scraping/3-1-web-scraping.html#core-rvest-functions",
+    "title": "Web scraping",
+    "section": "Core rvest functions",
+    "text": "Core rvest functions\n\nread_html(): Read HTML data from a url or character string\nhtml_element(): Select a specified HTML element\nhtml_elements(): Select specified HTML elements\nhtml_table(): Parse an HTML table into a data frame\nhtml_text(): Extract text from an HTML element\nhtml_name(): Extract the name of an HTML element\nhtml_attr(): Extract all HTML element attributes by name\nhtml_attr(): Extract a single HTML element attribute by name"
+  },
+  {
+    "objectID": "slides/3-1-web-scraping/3-1-web-scraping.html#selectorgadget",
+    "href": "slides/3-1-web-scraping/3-1-web-scraping.html#selectorgadget",
+    "title": "Web scraping",
+    "section": "SelectorGadget",
+    "text": "SelectorGadget\n\n\n\n\nOpen source tool that facilitates discovery and selection of tags for elements on a page\nAdd to your browser as an extension, e.g., Chrome Extension\nFind out more on the SelectorGadget vignette"
+  },
+  {
+    "objectID": "slides/3-1-web-scraping/3-1-web-scraping.html#using-the-selectorgadget",
+    "href": "slides/3-1-web-scraping/3-1-web-scraping.html#using-the-selectorgadget",
+    "title": "Web scraping",
+    "section": "Using the SelectorGadget",
+    "text": "Using the SelectorGadget"
+  },
+  {
+    "objectID": "slides/3-1-web-scraping/3-1-web-scraping.html#using-the-selectorgadget-1",
+    "href": "slides/3-1-web-scraping/3-1-web-scraping.html#using-the-selectorgadget-1",
+    "title": "Web scraping",
+    "section": "Using the SelectorGadget",
+    "text": "Using the SelectorGadget\nThrough this process of selection and rejection, SelectorGadget facilitates discovering the appropriate CSS selector for your needs."
+  },
+  {
+    "objectID": "slides/1-1-welcome/1-1-welcome.html#data-science-life-cycle",
+    "href": "slides/1-1-welcome/1-1-welcome.html#data-science-life-cycle",
+    "title": "Welcome",
+    "section": "Data science life cycle",
+    "text": "Data science life cycle"
+  },
+  {
+    "objectID": "slides/1-1-welcome/1-1-welcome.html#tidy---transform",
+    "href": "slides/1-1-welcome/1-1-welcome.html#tidy---transform",
+    "title": "Welcome",
+    "section": "Tidy -> transform",
+    "text": "Tidy -&gt; transform"
+  },
+  {
+    "objectID": "slides/1-1-welcome/1-1-welcome.html#import",
+    "href": "slides/1-1-welcome/1-1-welcome.html#import",
+    "title": "Welcome",
+    "section": "Import",
+    "text": "Import"
+  },
+  {
+    "objectID": "slides/1-1-welcome/1-1-welcome.html#toolkit",
+    "href": "slides/1-1-welcome/1-1-welcome.html#toolkit",
+    "title": "Welcome",
+    "section": "Toolkit",
+    "text": "Toolkit"
+  },
+  {
+    "objectID": "slides/1-1-welcome/1-1-welcome.html#concepts",
+    "href": "slides/1-1-welcome/1-1-welcome.html#concepts",
+    "title": "Welcome",
+    "section": "Concepts",
+    "text": "Concepts\n\nTidyverse functions take a data frame as their first argument\n\n\n\nData transformation can be done in data pipelines with dplyr\n\n\ndf |&gt;\n  select(...) |&gt;\n  filter(...) |&gt;\n  mutate(...) |&gt;\n  group_by(...) |&gt;\n  summarize(...)\n\n\n\n\nData visualizations can be built layer-by-layer with ggplot2\n\n\nggplot(df, aes(x = ..., y = ...)) +\n  geom_*(...) +\n  scale_*() +\n  facet_*(...) +\n  labs(...)"
+  },
+  {
+    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#task-goal-and-tools",
+    "href": "slides/1-4-joining-data/1-4-joining-data.html#task-goal-and-tools",
+    "title": "Joining data",
+    "section": "Task, goal, and tools",
+    "text": "Task, goal, and tools\n\n\n have multiple data frames\n\n\n\n want to join them together\n\n\n\n\n using tools from the tidyverse\n\n\nlibrary(tidyverse)"
+  },
+  {
+    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#data-women-in-science",
+    "href": "slides/1-4-joining-data/1-4-joining-data.html#data-women-in-science",
+    "title": "Joining data",
+    "section": "Data: Women in science",
+    "text": "Data: Women in science\nInformation on 10 women in science who changed the world:\n\n\n\n\n\n\n\n\nname\n\n\n\n\nAda Lovelace\n\n\nMarie Curie\n\n\nJanaki Ammal\n\n\nChien-Shiung Wu\n\n\nKatherine Johnson\n\n\nRosalind Franklin\n\n\nVera Rubin\n\n\nGladys West\n\n\nFlossie Wong-Staal\n\n\nJennifer Doudna\n\n\n\n\n\n\n\n\n\nSource: Discover Magazine"
+  },
+  {
+    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#input-1-professions",
+    "href": "slides/1-4-joining-data/1-4-joining-data.html#input-1-professions",
+    "title": "Joining data",
+    "section": "Input 1: professions",
+    "text": "Input 1: professions\n\nprofessions\n\n# A tibble: 10 × 2\n   name               profession                        \n   &lt;chr&gt;              &lt;chr&gt;                             \n 1 Ada Lovelace       Mathematician                     \n 2 Marie Curie        Physicist and Chemist             \n 3 Janaki Ammal       Botanist                          \n 4 Chien-Shiung Wu    Physicist                         \n 5 Katherine Johnson  Mathematician                     \n 6 Rosalind Franklin  Chemist                           \n 7 Vera Rubin         Astronomer                        \n 8 Gladys West        Mathematician                     \n 9 Flossie Wong-Staal Virologist and Molecular Biologist\n10 Jennifer Doudna    Biochemist"
+  },
+  {
+    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#input-2-dates",
+    "href": "slides/1-4-joining-data/1-4-joining-data.html#input-2-dates",
+    "title": "Joining data",
+    "section": "Input 2: dates",
+    "text": "Input 2: dates\n\ndates\n\n# A tibble: 8 × 3\n  name               birth_year death_year\n  &lt;chr&gt;                   &lt;dbl&gt;      &lt;dbl&gt;\n1 Janaki Ammal             1897       1984\n2 Chien-Shiung Wu          1912       1997\n3 Katherine Johnson        1918       2020\n4 Rosalind Franklin        1920       1958\n5 Vera Rubin               1928       2016\n6 Gladys West              1930         NA\n7 Flossie Wong-Staal       1947       2020\n8 Jennifer Doudna          1964         NA"
+  },
+  {
+    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#input-3-works",
+    "href": "slides/1-4-joining-data/1-4-joining-data.html#input-3-works",
+    "title": "Joining data",
+    "section": "Input 3: works",
+    "text": "Input 3: works\n\nworks\n\n# A tibble: 9 × 2\n  name               known_for                              \n  &lt;chr&gt;              &lt;chr&gt;                                  \n1 Ada Lovelace       first computer algorithm               \n2 Marie Curie        theory of radioactivity,  discovery of…\n3 Janaki Ammal       hybrid species, biodiversity protection\n4 Chien-Shiung Wu    confim and refine theory of radioactiv…\n5 Katherine Johnson  calculations of orbital mechanics crit…\n6 Vera Rubin         existence of dark matter               \n7 Gladys West        mathematical modeling of the shape of …\n8 Flossie Wong-Staal first scientist to clone HIV and creat…\n9 Jennifer Doudna    one of the primary developers of CRISP…"
+  },
+  {
+    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#desired-output",
+    "href": "slides/1-4-joining-data/1-4-joining-data.html#desired-output",
+    "title": "Joining data",
+    "section": "Desired output",
+    "text": "Desired output\n\n\n# A tibble: 10 × 5\n   name           profession birth_year death_year known_for\n   &lt;chr&gt;          &lt;chr&gt;           &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;    \n 1 Ada Lovelace   Mathemati…         NA         NA first co…\n 2 Marie Curie    Physicist…         NA         NA theory o…\n 3 Janaki Ammal   Botanist         1897       1984 hybrid s…\n 4 Chien-Shiung … Physicist        1912       1997 confim a…\n 5 Katherine Joh… Mathemati…       1918       2020 calculat…\n 6 Rosalind Fran… Chemist          1920       1958 &lt;NA&gt;     \n 7 Vera Rubin     Astronomer       1928       2016 existenc…\n 8 Gladys West    Mathemati…       1930         NA mathemat…\n 9 Flossie Wong-… Virologis…       1947       2020 first sc…\n10 Jennifer Doud… Biochemist       1964         NA one of t…"
+  },
+  {
+    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#inputs-reminder",
+    "href": "slides/1-4-joining-data/1-4-joining-data.html#inputs-reminder",
+    "title": "Joining data",
+    "section": "Inputs, reminder",
+    "text": "Inputs, reminder\n\nnames(professions)\n\n[1] \"name\"       \"profession\"\n\nnrow(professions)\n\n[1] 10\n\n\n\n\nnames(dates)\n\n[1] \"name\"       \"birth_year\" \"death_year\"\n\nnrow(dates)\n\n[1] 8\n\n\n\n\n\nnames(works)\n\n[1] \"name\"      \"known_for\"\n\nnrow(works)\n\n[1] 9"
+  },
+  {
+    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#joining-data-frames-1",
+    "href": "slides/1-4-joining-data/1-4-joining-data.html#joining-data-frames-1",
+    "title": "Joining data",
+    "section": "Joining data frames",
+    "text": "Joining data frames\n\nsomething_join(x, y)\n\n\nleft_join(): all rows from x\nright_join(): all rows from y\nfull_join(): all rows from both x and y\nsemi_join(): all rows from x where there are matching values in y, keeping just columns from x\ninner_join(): all rows from x where there are matching values in y, return all combination of multiple matches in the case of multiple matches\nanti_join(): return all rows from x where there are not matching values in y, never duplicate rows of x\n…"
+  },
+  {
+    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#setup-1",
+    "href": "slides/1-4-joining-data/1-4-joining-data.html#setup-1",
+    "title": "Joining data",
+    "section": "Setup",
+    "text": "Setup\nFor the next few slides…\n\n\n\nx &lt;- tibble(\n  id = c(1, 2, 3),\n  value_x = c(\"x1\", \"x2\", \"x3\")\n  )\n\nx\n\n# A tibble: 3 × 2\n     id value_x\n  &lt;dbl&gt; &lt;chr&gt;  \n1     1 x1     \n2     2 x2     \n3     3 x3     \n\n\n\n\ny &lt;- tibble(\n  id = c(1, 2, 4),\n  value_y = c(\"y1\", \"y2\", \"y4\")\n  )\n\ny\n\n# A tibble: 3 × 2\n     id value_y\n  &lt;dbl&gt; &lt;chr&gt;  \n1     1 y1     \n2     2 y2     \n3     4 y4"
+  },
+  {
+    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#left_join",
+    "href": "slides/1-4-joining-data/1-4-joining-data.html#left_join",
+    "title": "Joining data",
+    "section": "left_join()",
+    "text": "left_join()\n\n\n\nleft_join(x, y)\n\nJoining with `by = join_by(id)`\n\n\n# A tibble: 3 × 3\n     id value_x value_y\n  &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;  \n1     1 x1      y1     \n2     2 x2      y2     \n3     3 x3      &lt;NA&gt;"
+  },
+  {
+    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#left_join-1",
+    "href": "slides/1-4-joining-data/1-4-joining-data.html#left_join-1",
+    "title": "Joining data",
+    "section": "left_join()",
+    "text": "left_join()\n\nprofessions |&gt;\n  left_join(dates)\n\nJoining with `by = join_by(name)`\n\n\n# A tibble: 10 × 4\n   name               profession       birth_year death_year\n   &lt;chr&gt;              &lt;chr&gt;                 &lt;dbl&gt;      &lt;dbl&gt;\n 1 Ada Lovelace       Mathematician            NA         NA\n 2 Marie Curie        Physicist and C…         NA         NA\n 3 Janaki Ammal       Botanist               1897       1984\n 4 Chien-Shiung Wu    Physicist              1912       1997\n 5 Katherine Johnson  Mathematician          1918       2020\n 6 Rosalind Franklin  Chemist                1920       1958\n 7 Vera Rubin         Astronomer             1928       2016\n 8 Gladys West        Mathematician          1930         NA\n 9 Flossie Wong-Staal Virologist and …       1947       2020\n10 Jennifer Doudna    Biochemist             1964         NA"
+  },
+  {
+    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#right_join",
+    "href": "slides/1-4-joining-data/1-4-joining-data.html#right_join",
+    "title": "Joining data",
+    "section": "right_join()",
+    "text": "right_join()\n\n\n\nright_join(x, y)\n\nJoining with `by = join_by(id)`\n\n\n# A tibble: 3 × 3\n     id value_x value_y\n  &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;  \n1     1 x1      y1     \n2     2 x2      y2     \n3     4 &lt;NA&gt;    y4"
+  },
+  {
+    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#left_join-2",
+    "href": "slides/1-4-joining-data/1-4-joining-data.html#left_join-2",
+    "title": "Joining data",
+    "section": "left_join()",
+    "text": "left_join()\n\nprofessions |&gt;\n  right_join(dates)\n\nJoining with `by = join_by(name)`\n\n\n# A tibble: 8 × 4\n  name               profession        birth_year death_year\n  &lt;chr&gt;              &lt;chr&gt;                  &lt;dbl&gt;      &lt;dbl&gt;\n1 Janaki Ammal       Botanist                1897       1984\n2 Chien-Shiung Wu    Physicist               1912       1997\n3 Katherine Johnson  Mathematician           1918       2020\n4 Rosalind Franklin  Chemist                 1920       1958\n5 Vera Rubin         Astronomer              1928       2016\n6 Gladys West        Mathematician           1930         NA\n7 Flossie Wong-Staal Virologist and M…       1947       2020\n8 Jennifer Doudna    Biochemist              1964         NA"
+  },
+  {
+    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#full_join",
+    "href": "slides/1-4-joining-data/1-4-joining-data.html#full_join",
+    "title": "Joining data",
+    "section": "full_join()",
+    "text": "full_join()\n\n\n\nfull_join(x, y)\n\nJoining with `by = join_by(id)`\n\n\n# A tibble: 4 × 3\n     id value_x value_y\n  &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;  \n1     1 x1      y1     \n2     2 x2      y2     \n3     3 x3      &lt;NA&gt;   \n4     4 &lt;NA&gt;    y4"
+  },
+  {
+    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#left_join-3",
+    "href": "slides/1-4-joining-data/1-4-joining-data.html#left_join-3",
+    "title": "Joining data",
+    "section": "left_join()",
+    "text": "left_join()\n\nprofessions |&gt;\n  full_join(dates)\n\nJoining with `by = join_by(name)`\n\n\n# A tibble: 10 × 4\n   name               profession       birth_year death_year\n   &lt;chr&gt;              &lt;chr&gt;                 &lt;dbl&gt;      &lt;dbl&gt;\n 1 Ada Lovelace       Mathematician            NA         NA\n 2 Marie Curie        Physicist and C…         NA         NA\n 3 Janaki Ammal       Botanist               1897       1984\n 4 Chien-Shiung Wu    Physicist              1912       1997\n 5 Katherine Johnson  Mathematician          1918       2020\n 6 Rosalind Franklin  Chemist                1920       1958\n 7 Vera Rubin         Astronomer             1928       2016\n 8 Gladys West        Mathematician          1930         NA\n 9 Flossie Wong-Staal Virologist and …       1947       2020\n10 Jennifer Doudna    Biochemist             1964         NA"
+  },
+  {
+    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#inner_join",
+    "href": "slides/1-4-joining-data/1-4-joining-data.html#inner_join",
+    "title": "Joining data",
+    "section": "inner_join()",
+    "text": "inner_join()\n\n\n\ninner_join(x, y)\n\nJoining with `by = join_by(id)`\n\n\n# A tibble: 2 × 3\n     id value_x value_y\n  &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;  \n1     1 x1      y1     \n2     2 x2      y2"
+  },
+  {
+    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#inner_join-1",
+    "href": "slides/1-4-joining-data/1-4-joining-data.html#inner_join-1",
+    "title": "Joining data",
+    "section": "inner_join()",
+    "text": "inner_join()\n\nprofessions |&gt;\n  inner_join(dates)\n\nJoining with `by = join_by(name)`\n\n\n# A tibble: 8 × 4\n  name               profession        birth_year death_year\n  &lt;chr&gt;              &lt;chr&gt;                  &lt;dbl&gt;      &lt;dbl&gt;\n1 Janaki Ammal       Botanist                1897       1984\n2 Chien-Shiung Wu    Physicist               1912       1997\n3 Katherine Johnson  Mathematician           1918       2020\n4 Rosalind Franklin  Chemist                 1920       1958\n5 Vera Rubin         Astronomer              1928       2016\n6 Gladys West        Mathematician           1930         NA\n7 Flossie Wong-Staal Virologist and M…       1947       2020\n8 Jennifer Doudna    Biochemist              1964         NA"
+  },
+  {
+    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#semi_join",
+    "href": "slides/1-4-joining-data/1-4-joining-data.html#semi_join",
+    "title": "Joining data",
+    "section": "semi_join()",
+    "text": "semi_join()\n\n\n\nsemi_join(x, y)\n\nJoining with `by = join_by(id)`\n\n\n# A tibble: 2 × 2\n     id value_x\n  &lt;dbl&gt; &lt;chr&gt;  \n1     1 x1     \n2     2 x2"
+  },
+  {
+    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#semi_join-1",
+    "href": "slides/1-4-joining-data/1-4-joining-data.html#semi_join-1",
+    "title": "Joining data",
+    "section": "semi_join()",
+    "text": "semi_join()\n\nprofessions |&gt;\n  semi_join(dates)\n\nJoining with `by = join_by(name)`\n\n\n# A tibble: 8 × 2\n  name               profession                        \n  &lt;chr&gt;              &lt;chr&gt;                             \n1 Janaki Ammal       Botanist                          \n2 Chien-Shiung Wu    Physicist                         \n3 Katherine Johnson  Mathematician                     \n4 Rosalind Franklin  Chemist                           \n5 Vera Rubin         Astronomer                        \n6 Gladys West        Mathematician                     \n7 Flossie Wong-Staal Virologist and Molecular Biologist\n8 Jennifer Doudna    Biochemist"
+  },
+  {
+    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#anti_join",
+    "href": "slides/1-4-joining-data/1-4-joining-data.html#anti_join",
+    "title": "Joining data",
+    "section": "anti_join()",
+    "text": "anti_join()\n\n\n\nanti_join(x, y)\n\nJoining with `by = join_by(id)`\n\n\n# A tibble: 1 × 2\n     id value_x\n  &lt;dbl&gt; &lt;chr&gt;  \n1     3 x3"
+  },
+  {
+    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#anti_join-1",
+    "href": "slides/1-4-joining-data/1-4-joining-data.html#anti_join-1",
+    "title": "Joining data",
+    "section": "anti_join()",
+    "text": "anti_join()\n\nprofessions |&gt;\n  anti_join(dates)\n\nJoining with `by = join_by(name)`\n\n\n# A tibble: 2 × 2\n  name         profession           \n  &lt;chr&gt;        &lt;chr&gt;                \n1 Ada Lovelace Mathematician        \n2 Marie Curie  Physicist and Chemist"
+  },
+  {
+    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#putting-it-altogether",
+    "href": "slides/1-4-joining-data/1-4-joining-data.html#putting-it-altogether",
+    "title": "Joining data",
+    "section": "Putting it altogether",
+    "text": "Putting it altogether\n\nprofessions |&gt;\n  left_join(dates) |&gt;\n  left_join(works)\n\nJoining with `by = join_by(name)`\nJoining with `by = join_by(name)`\n\n\n# A tibble: 10 × 5\n   name           profession birth_year death_year known_for\n   &lt;chr&gt;          &lt;chr&gt;           &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;    \n 1 Ada Lovelace   Mathemati…         NA         NA first co…\n 2 Marie Curie    Physicist…         NA         NA theory o…\n 3 Janaki Ammal   Botanist         1897       1984 hybrid s…\n 4 Chien-Shiung … Physicist        1912       1997 confim a…\n 5 Katherine Joh… Mathemati…       1918       2020 calculat…\n 6 Rosalind Fran… Chemist          1920       1958 &lt;NA&gt;     \n 7 Vera Rubin     Astronomer       1928       2016 existenc…\n 8 Gladys West    Mathemati…       1930         NA mathemat…\n 9 Flossie Wong-… Virologis…       1947       2020 first sc…\n10 Jennifer Doud… Biochemist       1964         NA one of t…"
+  },
+  {
+    "objectID": "slides/1-2-tidy-data/1-2-tidy-data.html#tidy-data",
+    "href": "slides/1-2-tidy-data/1-2-tidy-data.html#tidy-data",
+    "title": "Tidy data",
+    "section": "Tidy data",
+    "text": "Tidy data\n\nHappy families are all alike; every unhappy family is unhappy in its own way.\nLeo Tolstoy\n\n\n\nCharacteristics of tidy data:\n\nEach variable forms a column.\nEach observation forms a row.\nEach type of observational unit forms a table.\n\n\nCharacteristics of untidy data:\n!@#$%^&*()"
+  },
+  {
+    "objectID": "slides/1-2-tidy-data/1-2-tidy-data.html#what-makes-this-data-not-tidy",
+    "href": "slides/1-2-tidy-data/1-2-tidy-data.html#what-makes-this-data-not-tidy",
+    "title": "Tidy data",
+    "section": "What makes this data not tidy?",
+    "text": "What makes this data not tidy?\n\n\n\nSource: Army Air Forces Statistical Digest, WW II"
+  },
+  {
+    "objectID": "slides/1-2-tidy-data/1-2-tidy-data.html#what-makes-this-data-not-tidy-1",
+    "href": "slides/1-2-tidy-data/1-2-tidy-data.html#what-makes-this-data-not-tidy-1",
+    "title": "Tidy data",
+    "section": "What makes this data not tidy?",
+    "text": "What makes this data not tidy?\n\n\n\nSource: Gapminder, Estimated HIV prevalence among 15-49 year olds"
+  },
+  {
+    "objectID": "slides/1-2-tidy-data/1-2-tidy-data.html#what-makes-this-data-not-tidy-2",
+    "href": "slides/1-2-tidy-data/1-2-tidy-data.html#what-makes-this-data-not-tidy-2",
+    "title": "Tidy data",
+    "section": "What makes this data not tidy?",
+    "text": "What makes this data not tidy?\n\n\n\nSource: US Census, Selected Economic Characteristics, ACS 2022"
+  },
+  {
+    "objectID": "slides/1-2-tidy-data/1-2-tidy-data.html#displaying-vs.-summarizing-data",
+    "href": "slides/1-2-tidy-data/1-2-tidy-data.html#displaying-vs.-summarizing-data",
+    "title": "Tidy data",
+    "section": "Displaying vs. summarizing data",
+    "text": "Displaying vs. summarizing data\n\n\nDisplay\n\nstarwars |&gt;\n  select(name, height, gender)\n\n# A tibble: 87 × 3\n   name               height gender   \n   &lt;chr&gt;               &lt;int&gt; &lt;chr&gt;    \n 1 Luke Skywalker        172 masculine\n 2 C-3PO                 167 masculine\n 3 R2-D2                  96 masculine\n 4 Darth Vader           202 masculine\n 5 Leia Organa           150 feminine \n 6 Owen Lars             178 masculine\n 7 Beru Whitesun Lars    165 feminine \n 8 R5-D4                  97 masculine\n 9 Biggs Darklighter     183 masculine\n10 Obi-Wan Kenobi        182 masculine\n# ℹ 77 more rows\n\n\n\nSummarize\n\nstarwars |&gt;\n  group_by(gender) |&gt;\n  summarize(\n    n = n(),\n    avg_height = mean(height, na.rm = TRUE)\n  )\n\n# A tibble: 3 × 3\n  gender        n avg_height\n  &lt;chr&gt;     &lt;int&gt;      &lt;dbl&gt;\n1 feminine     17       167.\n2 masculine    66       177.\n3 &lt;NA&gt;          4       175"
   },
   {
     "objectID": "slides/2-1-data-types/2-1-data-types.html#example-cat-lovers",
@@ -378,739 +1078,53 @@
     "text": "Mental model for NAs\nNA is unknown, so it could be TRUE or FALSE\n\n\nTRUE | NA gives TRUE, because the answer is always TRUE whether the unknown NA is actually TRUE or FALSE\n\n\nTRUE | TRUE  # if NA was TRUE\n\n[1] TRUE\n\nTRUE | FALSE # if NA was FALSE\n\n[1] TRUE\n\n\n\n\n\nFALSE | NA gives FALSE, because the answer changes depending whether the unknown NA is actually TRUE or FALSE\n\n\nFALSE | TRUE  # if NA was TRUE\n\n[1] TRUE\n\nFALSE | FALSE # if NA was FALSE\n\n[1] FALSE\n\n\n\n\n\nThis may not make sense for mathematical operations, but it does make sense in the context of missing data"
   },
   {
-    "objectID": "slides/1-2-tidy-data/1-2-tidy-data.html#tidy-data",
-    "href": "slides/1-2-tidy-data/1-2-tidy-data.html#tidy-data",
-    "title": "Tidy data",
-    "section": "Tidy data",
-    "text": "Tidy data\n\nHappy families are all alike; every unhappy family is unhappy in its own way.\nLeo Tolstoy\n\n\n\nCharacteristics of tidy data:\n\nEach variable forms a column.\nEach observation forms a row.\nEach type of observational unit forms a table.\n\n\nCharacteristics of untidy data:\n!@#$%^&*()"
+    "objectID": "slides/3-2-web-scraping-considerations/3-2-web-scraping-considerations.html#can-you-vs-should-you",
+    "href": "slides/3-2-web-scraping-considerations/3-2-web-scraping-considerations.html#can-you-vs-should-you",
+    "title": "Web scraping considerations",
+    "section": "“Can you?” vs “Should you?”",
+    "text": "“Can you?” vs “Should you?”\n\n\n\n\n\n\n\nSource: Brian Resnick, Researchers just released profile data on 70,000 OkCupid users without permission, Vox."
   },
   {
-    "objectID": "slides/1-2-tidy-data/1-2-tidy-data.html#what-makes-this-data-not-tidy",
-    "href": "slides/1-2-tidy-data/1-2-tidy-data.html#what-makes-this-data-not-tidy",
-    "title": "Tidy data",
-    "section": "What makes this data not tidy?",
-    "text": "What makes this data not tidy?\n\n\n\nSource: Army Air Forces Statistical Digest, WW II"
+    "objectID": "slides/3-2-web-scraping-considerations/3-2-web-scraping-considerations.html#can-you-vs-should-you-1",
+    "href": "slides/3-2-web-scraping-considerations/3-2-web-scraping-considerations.html#can-you-vs-should-you-1",
+    "title": "Web scraping considerations",
+    "section": "“Can you?” vs “Should you?”",
+    "text": "“Can you?” vs “Should you?”"
   },
   {
-    "objectID": "slides/1-2-tidy-data/1-2-tidy-data.html#what-makes-this-data-not-tidy-1",
-    "href": "slides/1-2-tidy-data/1-2-tidy-data.html#what-makes-this-data-not-tidy-1",
-    "title": "Tidy data",
-    "section": "What makes this data not tidy?",
-    "text": "What makes this data not tidy?\n\n\n\nSource: Gapminder, Estimated HIV prevalence among 15-49 year olds"
+    "objectID": "slides/3-2-web-scraping-considerations/3-2-web-scraping-considerations.html#unreliable-formatting",
+    "href": "slides/3-2-web-scraping-considerations/3-2-web-scraping-considerations.html#unreliable-formatting",
+    "title": "Web scraping considerations",
+    "section": "Unreliable formatting",
+    "text": "Unreliable formatting\n\n\n\n\n\n\n\nalumni.duke.edu/news/notable-alumni"
   },
   {
-    "objectID": "slides/1-2-tidy-data/1-2-tidy-data.html#what-makes-this-data-not-tidy-2",
-    "href": "slides/1-2-tidy-data/1-2-tidy-data.html#what-makes-this-data-not-tidy-2",
-    "title": "Tidy data",
-    "section": "What makes this data not tidy?",
-    "text": "What makes this data not tidy?\n\n\n\nSource: US Census, Selected Economic Characteristics, ACS 2022"
+    "objectID": "slides/3-2-web-scraping-considerations/3-2-web-scraping-considerations.html#data-broken-into-many-pages",
+    "href": "slides/3-2-web-scraping-considerations/3-2-web-scraping-considerations.html#data-broken-into-many-pages",
+    "title": "Web scraping considerations",
+    "section": "Data broken into many pages",
+    "text": "Data broken into many pages"
   },
   {
-    "objectID": "slides/1-2-tidy-data/1-2-tidy-data.html#displaying-vs.-summarizing-data",
-    "href": "slides/1-2-tidy-data/1-2-tidy-data.html#displaying-vs.-summarizing-data",
-    "title": "Tidy data",
-    "section": "Displaying vs. summarizing data",
-    "text": "Displaying vs. summarizing data\n\n\nDisplay\n\nstarwars |&gt;\n  select(name, height, gender)\n\n# A tibble: 87 × 3\n   name               height gender   \n   &lt;chr&gt;               &lt;int&gt; &lt;chr&gt;    \n 1 Luke Skywalker        172 masculine\n 2 C-3PO                 167 masculine\n 3 R2-D2                  96 masculine\n 4 Darth Vader           202 masculine\n 5 Leia Organa           150 feminine \n 6 Owen Lars             178 masculine\n 7 Beru Whitesun Lars    165 feminine \n 8 R5-D4                  97 masculine\n 9 Biggs Darklighter     183 masculine\n10 Obi-Wan Kenobi        182 masculine\n# ℹ 77 more rows\n\n\n\nSummarize\n\nstarwars |&gt;\n  group_by(gender) |&gt;\n  summarize(\n    n = n(),\n    avg_height = mean(height, na.rm = TRUE)\n  )\n\n# A tibble: 3 × 3\n  gender        n avg_height\n  &lt;chr&gt;     &lt;int&gt;      &lt;dbl&gt;\n1 feminine     17       167.\n2 masculine    66       177.\n3 &lt;NA&gt;          4       175"
+    "objectID": "slides/3-2-web-scraping-considerations/3-2-web-scraping-considerations.html#a-new-r-workflow",
+    "href": "slides/3-2-web-scraping-considerations/3-2-web-scraping-considerations.html#a-new-r-workflow",
+    "title": "Web scraping considerations",
+    "section": "A new R workflow",
+    "text": "A new R workflow\n\n\nWhen working in a Quarto document, your analysis is re-run each time you render\nIf web scraping in a Quarto document, you’d be re-scraping the data each time you knit, which is undesirable (and not nice)!\nAn alternative workflow:\n\nUse an R script to save your code\nSaving interim data scraped using the code in the script as CSV or RDS files\nUse the saved data in your analysis in your Quarto document"
   },
   {
-    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#task-goal-and-tools",
-    "href": "slides/1-4-joining-data/1-4-joining-data.html#task-goal-and-tools",
-    "title": "Joining data",
-    "section": "Task, goal, and tools",
-    "text": "Task, goal, and tools\n\n\n have multiple data frames\n\n\n\n want to join them together\n\n\n\n\n using tools from the tidyverse\n\n\nlibrary(tidyverse)"
-  },
-  {
-    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#data-women-in-science",
-    "href": "slides/1-4-joining-data/1-4-joining-data.html#data-women-in-science",
-    "title": "Joining data",
-    "section": "Data: Women in science",
-    "text": "Data: Women in science\nInformation on 10 women in science who changed the world:\n\n\n\n\n\n\n\n\nname\n\n\n\n\nAda Lovelace\n\n\nMarie Curie\n\n\nJanaki Ammal\n\n\nChien-Shiung Wu\n\n\nKatherine Johnson\n\n\nRosalind Franklin\n\n\nVera Rubin\n\n\nGladys West\n\n\nFlossie Wong-Staal\n\n\nJennifer Doudna\n\n\n\n\n\n\n\n\n\nSource: Discover Magazine"
-  },
-  {
-    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#input-1-professions",
-    "href": "slides/1-4-joining-data/1-4-joining-data.html#input-1-professions",
-    "title": "Joining data",
-    "section": "Input 1: professions",
-    "text": "Input 1: professions\n\nprofessions\n\n# A tibble: 10 × 2\n   name               profession                        \n   &lt;chr&gt;              &lt;chr&gt;                             \n 1 Ada Lovelace       Mathematician                     \n 2 Marie Curie        Physicist and Chemist             \n 3 Janaki Ammal       Botanist                          \n 4 Chien-Shiung Wu    Physicist                         \n 5 Katherine Johnson  Mathematician                     \n 6 Rosalind Franklin  Chemist                           \n 7 Vera Rubin         Astronomer                        \n 8 Gladys West        Mathematician                     \n 9 Flossie Wong-Staal Virologist and Molecular Biologist\n10 Jennifer Doudna    Biochemist"
-  },
-  {
-    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#input-2-dates",
-    "href": "slides/1-4-joining-data/1-4-joining-data.html#input-2-dates",
-    "title": "Joining data",
-    "section": "Input 2: dates",
-    "text": "Input 2: dates\n\ndates\n\n# A tibble: 8 × 3\n  name               birth_year death_year\n  &lt;chr&gt;                   &lt;dbl&gt;      &lt;dbl&gt;\n1 Janaki Ammal             1897       1984\n2 Chien-Shiung Wu          1912       1997\n3 Katherine Johnson        1918       2020\n4 Rosalind Franklin        1920       1958\n5 Vera Rubin               1928       2016\n6 Gladys West              1930         NA\n7 Flossie Wong-Staal       1947       2020\n8 Jennifer Doudna          1964         NA"
-  },
-  {
-    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#input-3-works",
-    "href": "slides/1-4-joining-data/1-4-joining-data.html#input-3-works",
-    "title": "Joining data",
-    "section": "Input 3: works",
-    "text": "Input 3: works\n\nworks\n\n# A tibble: 9 × 2\n  name               known_for                              \n  &lt;chr&gt;              &lt;chr&gt;                                  \n1 Ada Lovelace       first computer algorithm               \n2 Marie Curie        theory of radioactivity,  discovery of…\n3 Janaki Ammal       hybrid species, biodiversity protection\n4 Chien-Shiung Wu    confim and refine theory of radioactiv…\n5 Katherine Johnson  calculations of orbital mechanics crit…\n6 Vera Rubin         existence of dark matter               \n7 Gladys West        mathematical modeling of the shape of …\n8 Flossie Wong-Staal first scientist to clone HIV and creat…\n9 Jennifer Doudna    one of the primary developers of CRISP…"
-  },
-  {
-    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#desired-output",
-    "href": "slides/1-4-joining-data/1-4-joining-data.html#desired-output",
-    "title": "Joining data",
-    "section": "Desired output",
-    "text": "Desired output\n\n\n# A tibble: 10 × 5\n   name           profession birth_year death_year known_for\n   &lt;chr&gt;          &lt;chr&gt;           &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;    \n 1 Ada Lovelace   Mathemati…         NA         NA first co…\n 2 Marie Curie    Physicist…         NA         NA theory o…\n 3 Janaki Ammal   Botanist         1897       1984 hybrid s…\n 4 Chien-Shiung … Physicist        1912       1997 confim a…\n 5 Katherine Joh… Mathemati…       1918       2020 calculat…\n 6 Rosalind Fran… Chemist          1920       1958 &lt;NA&gt;     \n 7 Vera Rubin     Astronomer       1928       2016 existenc…\n 8 Gladys West    Mathemati…       1930         NA mathemat…\n 9 Flossie Wong-… Virologis…       1947       2020 first sc…\n10 Jennifer Doud… Biochemist       1964         NA one of t…"
-  },
-  {
-    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#inputs-reminder",
-    "href": "slides/1-4-joining-data/1-4-joining-data.html#inputs-reminder",
-    "title": "Joining data",
-    "section": "Inputs, reminder",
-    "text": "Inputs, reminder\n\nnames(professions)\n\n[1] \"name\"       \"profession\"\n\nnrow(professions)\n\n[1] 10\n\n\n\n\nnames(dates)\n\n[1] \"name\"       \"birth_year\" \"death_year\"\n\nnrow(dates)\n\n[1] 8\n\n\n\n\n\nnames(works)\n\n[1] \"name\"      \"known_for\"\n\nnrow(works)\n\n[1] 9"
-  },
-  {
-    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#joining-data-frames-1",
-    "href": "slides/1-4-joining-data/1-4-joining-data.html#joining-data-frames-1",
-    "title": "Joining data",
-    "section": "Joining data frames",
-    "text": "Joining data frames\n\nsomething_join(x, y)\n\n\nleft_join(): all rows from x\nright_join(): all rows from y\nfull_join(): all rows from both x and y\nsemi_join(): all rows from x where there are matching values in y, keeping just columns from x\ninner_join(): all rows from x where there are matching values in y, return all combination of multiple matches in the case of multiple matches\nanti_join(): return all rows from x where there are not matching values in y, never duplicate rows of x\n…"
-  },
-  {
-    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#setup-1",
-    "href": "slides/1-4-joining-data/1-4-joining-data.html#setup-1",
-    "title": "Joining data",
-    "section": "Setup",
-    "text": "Setup\nFor the next few slides…\n\n\n\nx &lt;- tibble(\n  id = c(1, 2, 3),\n  value_x = c(\"x1\", \"x2\", \"x3\")\n  )\n\nx\n\n# A tibble: 3 × 2\n     id value_x\n  &lt;dbl&gt; &lt;chr&gt;  \n1     1 x1     \n2     2 x2     \n3     3 x3     \n\n\n\n\ny &lt;- tibble(\n  id = c(1, 2, 4),\n  value_y = c(\"y1\", \"y2\", \"y4\")\n  )\n\ny\n\n# A tibble: 3 × 2\n     id value_y\n  &lt;dbl&gt; &lt;chr&gt;  \n1     1 y1     \n2     2 y2     \n3     4 y4"
-  },
-  {
-    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#left_join",
-    "href": "slides/1-4-joining-data/1-4-joining-data.html#left_join",
-    "title": "Joining data",
-    "section": "left_join()",
-    "text": "left_join()\n\n\n\nleft_join(x, y)\n\nJoining with `by = join_by(id)`\n\n\n# A tibble: 3 × 3\n     id value_x value_y\n  &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;  \n1     1 x1      y1     \n2     2 x2      y2     \n3     3 x3      &lt;NA&gt;"
-  },
-  {
-    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#left_join-1",
-    "href": "slides/1-4-joining-data/1-4-joining-data.html#left_join-1",
-    "title": "Joining data",
-    "section": "left_join()",
-    "text": "left_join()\n\nprofessions |&gt;\n  left_join(dates)\n\nJoining with `by = join_by(name)`\n\n\n# A tibble: 10 × 4\n   name               profession       birth_year death_year\n   &lt;chr&gt;              &lt;chr&gt;                 &lt;dbl&gt;      &lt;dbl&gt;\n 1 Ada Lovelace       Mathematician            NA         NA\n 2 Marie Curie        Physicist and C…         NA         NA\n 3 Janaki Ammal       Botanist               1897       1984\n 4 Chien-Shiung Wu    Physicist              1912       1997\n 5 Katherine Johnson  Mathematician          1918       2020\n 6 Rosalind Franklin  Chemist                1920       1958\n 7 Vera Rubin         Astronomer             1928       2016\n 8 Gladys West        Mathematician          1930         NA\n 9 Flossie Wong-Staal Virologist and …       1947       2020\n10 Jennifer Doudna    Biochemist             1964         NA"
-  },
-  {
-    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#right_join",
-    "href": "slides/1-4-joining-data/1-4-joining-data.html#right_join",
-    "title": "Joining data",
-    "section": "right_join()",
-    "text": "right_join()\n\n\n\nright_join(x, y)\n\nJoining with `by = join_by(id)`\n\n\n# A tibble: 3 × 3\n     id value_x value_y\n  &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;  \n1     1 x1      y1     \n2     2 x2      y2     \n3     4 &lt;NA&gt;    y4"
-  },
-  {
-    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#left_join-2",
-    "href": "slides/1-4-joining-data/1-4-joining-data.html#left_join-2",
-    "title": "Joining data",
-    "section": "left_join()",
-    "text": "left_join()\n\nprofessions |&gt;\n  right_join(dates)\n\nJoining with `by = join_by(name)`\n\n\n# A tibble: 8 × 4\n  name               profession        birth_year death_year\n  &lt;chr&gt;              &lt;chr&gt;                  &lt;dbl&gt;      &lt;dbl&gt;\n1 Janaki Ammal       Botanist                1897       1984\n2 Chien-Shiung Wu    Physicist               1912       1997\n3 Katherine Johnson  Mathematician           1918       2020\n4 Rosalind Franklin  Chemist                 1920       1958\n5 Vera Rubin         Astronomer              1928       2016\n6 Gladys West        Mathematician           1930         NA\n7 Flossie Wong-Staal Virologist and M…       1947       2020\n8 Jennifer Doudna    Biochemist              1964         NA"
-  },
-  {
-    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#full_join",
-    "href": "slides/1-4-joining-data/1-4-joining-data.html#full_join",
-    "title": "Joining data",
-    "section": "full_join()",
-    "text": "full_join()\n\n\n\nfull_join(x, y)\n\nJoining with `by = join_by(id)`\n\n\n# A tibble: 4 × 3\n     id value_x value_y\n  &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;  \n1     1 x1      y1     \n2     2 x2      y2     \n3     3 x3      &lt;NA&gt;   \n4     4 &lt;NA&gt;    y4"
-  },
-  {
-    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#left_join-3",
-    "href": "slides/1-4-joining-data/1-4-joining-data.html#left_join-3",
-    "title": "Joining data",
-    "section": "left_join()",
-    "text": "left_join()\n\nprofessions |&gt;\n  full_join(dates)\n\nJoining with `by = join_by(name)`\n\n\n# A tibble: 10 × 4\n   name               profession       birth_year death_year\n   &lt;chr&gt;              &lt;chr&gt;                 &lt;dbl&gt;      &lt;dbl&gt;\n 1 Ada Lovelace       Mathematician            NA         NA\n 2 Marie Curie        Physicist and C…         NA         NA\n 3 Janaki Ammal       Botanist               1897       1984\n 4 Chien-Shiung Wu    Physicist              1912       1997\n 5 Katherine Johnson  Mathematician          1918       2020\n 6 Rosalind Franklin  Chemist                1920       1958\n 7 Vera Rubin         Astronomer             1928       2016\n 8 Gladys West        Mathematician          1930         NA\n 9 Flossie Wong-Staal Virologist and …       1947       2020\n10 Jennifer Doudna    Biochemist             1964         NA"
-  },
-  {
-    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#inner_join",
-    "href": "slides/1-4-joining-data/1-4-joining-data.html#inner_join",
-    "title": "Joining data",
-    "section": "inner_join()",
-    "text": "inner_join()\n\n\n\ninner_join(x, y)\n\nJoining with `by = join_by(id)`\n\n\n# A tibble: 2 × 3\n     id value_x value_y\n  &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;  \n1     1 x1      y1     \n2     2 x2      y2"
-  },
-  {
-    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#inner_join-1",
-    "href": "slides/1-4-joining-data/1-4-joining-data.html#inner_join-1",
-    "title": "Joining data",
-    "section": "inner_join()",
-    "text": "inner_join()\n\nprofessions |&gt;\n  inner_join(dates)\n\nJoining with `by = join_by(name)`\n\n\n# A tibble: 8 × 4\n  name               profession        birth_year death_year\n  &lt;chr&gt;              &lt;chr&gt;                  &lt;dbl&gt;      &lt;dbl&gt;\n1 Janaki Ammal       Botanist                1897       1984\n2 Chien-Shiung Wu    Physicist               1912       1997\n3 Katherine Johnson  Mathematician           1918       2020\n4 Rosalind Franklin  Chemist                 1920       1958\n5 Vera Rubin         Astronomer              1928       2016\n6 Gladys West        Mathematician           1930         NA\n7 Flossie Wong-Staal Virologist and M…       1947       2020\n8 Jennifer Doudna    Biochemist              1964         NA"
-  },
-  {
-    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#semi_join",
-    "href": "slides/1-4-joining-data/1-4-joining-data.html#semi_join",
-    "title": "Joining data",
-    "section": "semi_join()",
-    "text": "semi_join()\n\n\n\nsemi_join(x, y)\n\nJoining with `by = join_by(id)`\n\n\n# A tibble: 2 × 2\n     id value_x\n  &lt;dbl&gt; &lt;chr&gt;  \n1     1 x1     \n2     2 x2"
-  },
-  {
-    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#semi_join-1",
-    "href": "slides/1-4-joining-data/1-4-joining-data.html#semi_join-1",
-    "title": "Joining data",
-    "section": "semi_join()",
-    "text": "semi_join()\n\nprofessions |&gt;\n  semi_join(dates)\n\nJoining with `by = join_by(name)`\n\n\n# A tibble: 8 × 2\n  name               profession                        \n  &lt;chr&gt;              &lt;chr&gt;                             \n1 Janaki Ammal       Botanist                          \n2 Chien-Shiung Wu    Physicist                         \n3 Katherine Johnson  Mathematician                     \n4 Rosalind Franklin  Chemist                           \n5 Vera Rubin         Astronomer                        \n6 Gladys West        Mathematician                     \n7 Flossie Wong-Staal Virologist and Molecular Biologist\n8 Jennifer Doudna    Biochemist"
-  },
-  {
-    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#anti_join",
-    "href": "slides/1-4-joining-data/1-4-joining-data.html#anti_join",
-    "title": "Joining data",
-    "section": "anti_join()",
-    "text": "anti_join()\n\n\n\nanti_join(x, y)\n\nJoining with `by = join_by(id)`\n\n\n# A tibble: 1 × 2\n     id value_x\n  &lt;dbl&gt; &lt;chr&gt;  \n1     3 x3"
-  },
-  {
-    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#anti_join-1",
-    "href": "slides/1-4-joining-data/1-4-joining-data.html#anti_join-1",
-    "title": "Joining data",
-    "section": "anti_join()",
-    "text": "anti_join()\n\nprofessions |&gt;\n  anti_join(dates)\n\nJoining with `by = join_by(name)`\n\n\n# A tibble: 2 × 2\n  name         profession           \n  &lt;chr&gt;        &lt;chr&gt;                \n1 Ada Lovelace Mathematician        \n2 Marie Curie  Physicist and Chemist"
-  },
-  {
-    "objectID": "slides/1-4-joining-data/1-4-joining-data.html#putting-it-altogether",
-    "href": "slides/1-4-joining-data/1-4-joining-data.html#putting-it-altogether",
-    "title": "Joining data",
-    "section": "Putting it altogether",
-    "text": "Putting it altogether\n\nprofessions |&gt;\n  left_join(dates) |&gt;\n  left_join(works)\n\nJoining with `by = join_by(name)`\nJoining with `by = join_by(name)`\n\n\n# A tibble: 10 × 5\n   name           profession birth_year death_year known_for\n   &lt;chr&gt;          &lt;chr&gt;           &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;    \n 1 Ada Lovelace   Mathemati…         NA         NA first co…\n 2 Marie Curie    Physicist…         NA         NA theory o…\n 3 Janaki Ammal   Botanist         1897       1984 hybrid s…\n 4 Chien-Shiung … Physicist        1912       1997 confim a…\n 5 Katherine Joh… Mathemati…       1918       2020 calculat…\n 6 Rosalind Fran… Chemist          1920       1958 &lt;NA&gt;     \n 7 Vera Rubin     Astronomer       1928       2016 existenc…\n 8 Gladys West    Mathemati…       1930         NA mathemat…\n 9 Flossie Wong-… Virologis…       1947       2020 first sc…\n10 Jennifer Doud… Biochemist       1964         NA one of t…"
-  },
-  {
-    "objectID": "slides/1-1-welcome/1-1-welcome.html#data-science-life-cycle",
-    "href": "slides/1-1-welcome/1-1-welcome.html#data-science-life-cycle",
-    "title": "Welcome",
-    "section": "Data science life cycle",
-    "text": "Data science life cycle"
-  },
-  {
-    "objectID": "slides/1-1-welcome/1-1-welcome.html#tidy---transform",
-    "href": "slides/1-1-welcome/1-1-welcome.html#tidy---transform",
-    "title": "Welcome",
-    "section": "Tidy -> transform",
-    "text": "Tidy -&gt; transform"
-  },
-  {
-    "objectID": "slides/1-1-welcome/1-1-welcome.html#import",
-    "href": "slides/1-1-welcome/1-1-welcome.html#import",
-    "title": "Welcome",
-    "section": "Import",
-    "text": "Import"
-  },
-  {
-    "objectID": "slides/1-1-welcome/1-1-welcome.html#toolkit",
-    "href": "slides/1-1-welcome/1-1-welcome.html#toolkit",
-    "title": "Welcome",
-    "section": "Toolkit",
-    "text": "Toolkit"
-  },
-  {
-    "objectID": "slides/1-1-welcome/1-1-welcome.html#concepts",
-    "href": "slides/1-1-welcome/1-1-welcome.html#concepts",
-    "title": "Welcome",
-    "section": "Concepts",
-    "text": "Concepts\n\nTidyverse functions take a data frame as their first argument\n\n\n\nData transformation can be done in data pipelines with dplyr\n\n\ndf |&gt;\n  select(...) |&gt;\n  filter(...) |&gt;\n  mutate(...) |&gt;\n  group_by(...) |&gt;\n  summarize(...)\n\n\n\n\nData visualizations can be built layer-by-layer with ggplot2\n\n\nggplot(df, aes(x = ..., y = ...)) +\n  geom_*(...) +\n  scale_*() +\n  facet_*(...) +\n  labs(...)"
-  },
-  {
-    "objectID": "slides/3-1-web-scraping/3-1-web-scraping.html#scraping-the-web-what-why",
-    "href": "slides/3-1-web-scraping/3-1-web-scraping.html#scraping-the-web-what-why",
-    "title": "Web scraping",
-    "section": "Scraping the web: what? why?",
-    "text": "Scraping the web: what? why?\n\n\nIncreasing amount of data is available on the web\nThese data are provided in an unstructured format: you can always copy&paste, but it’s time-consuming and prone to errors\nWeb scraping is the process of extracting this information automatically and transform it into a structured dataset\nTwo different scenarios:\n\nScreen scraping: extract data from source code of website, with html parser (easy) or regular expression matching (less easy).\nWeb APIs (application programming interface): website offers a set of structured http requests that return JSON or XML files."
-  },
-  {
-    "objectID": "slides/3-1-web-scraping/3-1-web-scraping.html#hypertext-markup-language",
-    "href": "slides/3-1-web-scraping/3-1-web-scraping.html#hypertext-markup-language",
-    "title": "Web scraping",
-    "section": "Hypertext Markup Language",
-    "text": "Hypertext Markup Language\n\n\nMost of the data on the web is still largely available as HTML\nIt is structured (hierarchical / tree based), but it’s often not available in a form useful for analysis (flat / tidy).\n\n\n\n&lt;html&gt;\n  &lt;head&gt;\n    &lt;title&gt;This is a title&lt;/title&gt;\n  &lt;/head&gt;\n  &lt;body&gt;\n    &lt;p align=\"center\"&gt;Hello world!&lt;/p&gt;\n  &lt;/body&gt;\n&lt;/html&gt;"
-  },
-  {
-    "objectID": "slides/3-1-web-scraping/3-1-web-scraping.html#rvest",
-    "href": "slides/3-1-web-scraping/3-1-web-scraping.html#rvest",
-    "title": "Web scraping",
-    "section": "rvest",
-    "text": "rvest\n\n\n\nThe rvest package makes basic processing and manipulation of HTML data straight forward\nIt’s designed to work with pipelines built with |&gt;"
-  },
-  {
-    "objectID": "slides/3-1-web-scraping/3-1-web-scraping.html#core-rvest-functions",
-    "href": "slides/3-1-web-scraping/3-1-web-scraping.html#core-rvest-functions",
-    "title": "Web scraping",
-    "section": "Core rvest functions",
-    "text": "Core rvest functions\n\nread_html(): Read HTML data from a url or character string\nhtml_element(): Select a specified HTML element\nhtml_elements(): Select specified HTML elements\nhtml_table(): Parse an HTML table into a data frame\nhtml_text(): Extract text from an HTML element\nhtml_name(): Extract the name of an HTML element\nhtml_attr(): Extract all HTML element attributes by name\nhtml_attr(): Extract a single HTML element attribute by name"
-  },
-  {
-    "objectID": "slides/3-1-web-scraping/3-1-web-scraping.html#selectorgadget",
-    "href": "slides/3-1-web-scraping/3-1-web-scraping.html#selectorgadget",
-    "title": "Web scraping",
-    "section": "SelectorGadget",
-    "text": "SelectorGadget\n\n\n\n\nOpen source tool that facilitates discovery and selection of tags for elements on a page\nAdd to your browser as an extension, e.g., Chrome Extension\nFind out more on the SelectorGadget vignette"
-  },
-  {
-    "objectID": "slides/3-1-web-scraping/3-1-web-scraping.html#using-the-selectorgadget",
-    "href": "slides/3-1-web-scraping/3-1-web-scraping.html#using-the-selectorgadget",
-    "title": "Web scraping",
-    "section": "Using the SelectorGadget",
-    "text": "Using the SelectorGadget"
-  },
-  {
-    "objectID": "slides/3-1-web-scraping/3-1-web-scraping.html#using-the-selectorgadget-1",
-    "href": "slides/3-1-web-scraping/3-1-web-scraping.html#using-the-selectorgadget-1",
-    "title": "Web scraping",
-    "section": "Using the SelectorGadget",
-    "text": "Using the SelectorGadget\nThrough this process of selection and rejection, SelectorGadget facilitates discovering the appropriate CSS selector for your needs."
-  },
-  {
-    "objectID": "slides/2-3-importing-data/2-3-importing-data.html#reading-delimited-files",
-    "href": "slides/2-3-importing-data/2-3-importing-data.html#reading-delimited-files",
-    "title": "Importing data",
-    "section": "Reading delimited files",
-    "text": "Reading delimited files\n\n\n\n\n\nlibrary(tidyverse)\n\n\nread_csv() - comma delimited files\nread_csv2() - semicolon separated files (common in countries where , is used as the decimal place)\nread_tsv() - tab delimited files\nread_delim() - reads in files with any delimiter\nread_fwf() - fixed width files\n…"
-  },
-  {
-    "objectID": "slides/2-3-importing-data/2-3-importing-data.html#reading-excel-spreadsheets",
-    "href": "slides/2-3-importing-data/2-3-importing-data.html#reading-excel-spreadsheets",
-    "title": "Importing data",
-    "section": "Reading Excel spreadsheets",
-    "text": "Reading Excel spreadsheets\n\n\n\n\n\nlibrary(readxl)\n\n\nread_excel() - read xls or xlsx files\n…"
-  },
-  {
-    "objectID": "slides/2-3-importing-data/2-3-importing-data.html#reading-data",
-    "href": "slides/2-3-importing-data/2-3-importing-data.html#reading-data",
-    "title": "Importing data",
-    "section": "Reading data",
-    "text": "Reading data\n\nnobel &lt;- read_csv(file = \"data/nobel.csv\")\n\nRows: 1000 Columns: 19\n── Column specification ────────────────────────────────────\nDelimiter: \",\"\nchr (17): first_name, last_name, born, died, born_countr...\ndbl  (2): id, year\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message."
-  },
-  {
-    "objectID": "slides/2-3-importing-data/2-3-importing-data.html#reading-data-1",
-    "href": "slides/2-3-importing-data/2-3-importing-data.html#reading-data-1",
-    "title": "Importing data",
-    "section": "Reading data",
-    "text": "Reading data\n\nnobel\n\n# A tibble: 1,000 × 19\n      id first_name     last_name   born  died  born_country\n   &lt;dbl&gt; &lt;chr&gt;          &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;       \n 1   160 Jacobus H.     van 't Hoff 1852… 3/1/… the Netherl…\n 2   569 Sully          Prudhomme   1839… 9/7/… France      \n 3   293 Emil           von Behring 1854… 3/31… Prussia (no…\n 4   462 Henry          Dunant      1828… 10/3… Switzerland \n 5     1 Wilhelm Conrad Röntgen     1845… 2/10… Prussia (no…\n 6   463 Frédéric       Passy       1822… 6/12… France      \n 7   464 Élie           Ducommun    1833… 12/7… Switzerland \n 8   465 Albert         Gobat       1843… 3/16… Switzerland \n 9   294 Ronald         Ross        1857… 9/16… India       \n10   161 Emil           Fischer     1852… 7/15… Prussia (no…\n# ℹ 990 more rows\n# ℹ 13 more variables: born_country_code &lt;chr&gt;,\n#   born_city &lt;chr&gt;, died_country &lt;chr&gt;,\n#   died_country_code &lt;chr&gt;, died_city &lt;chr&gt;, gender &lt;chr&gt;,\n#   year &lt;dbl&gt;, category &lt;chr&gt;, overall_motivation &lt;chr&gt;,\n#   motivation &lt;chr&gt;, organization_name &lt;chr&gt;,\n#   organization_city &lt;chr&gt;, organization_country &lt;chr&gt;"
-  },
-  {
-    "objectID": "slides/2-3-importing-data/2-3-importing-data.html#writing-data",
-    "href": "slides/2-3-importing-data/2-3-importing-data.html#writing-data",
-    "title": "Importing data",
-    "section": "Writing data",
-    "text": "Writing data\nWrite a file:\n\ndf &lt;- tribble(\n  ~x, ~y,\n  1,  \"a\",\n  2,  \"b\",\n  3,  \"c\"\n)\n\nwrite_csv(df, file = \"data/df.csv\")"
-  },
-  {
-    "objectID": "slides/2-3-importing-data/2-3-importing-data.html#reading-data-back",
-    "href": "slides/2-3-importing-data/2-3-importing-data.html#reading-data-back",
-    "title": "Importing data",
-    "section": "Reading data back",
-    "text": "Reading data back\nRead it back in to inspect:\n\nread_csv(\"data/df.csv\")\n\nRows: 3 Columns: 2\n── Column specification ────────────────────────────────────\nDelimiter: \",\"\nchr (1): y\ndbl (1): x\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\n\n# A tibble: 3 × 2\n      x y    \n  &lt;dbl&gt; &lt;chr&gt;\n1     1 a    \n2     2 b    \n3     3 c"
-  },
-  {
-    "objectID": "slides/2-3-importing-data/2-3-importing-data.html#suppressing-messages",
-    "href": "slides/2-3-importing-data/2-3-importing-data.html#suppressing-messages",
-    "title": "Importing data",
-    "section": "Suppressing messages",
-    "text": "Suppressing messages\n\n```{r}\n#| message: false\nread_csv(\"data/df.csv\")\n```\n\n# A tibble: 3 × 2\n      x y    \n  &lt;dbl&gt; &lt;chr&gt;\n1     1 a    \n2     2 b    \n3     3 c"
-  },
-  {
-    "objectID": "slides/2-3-importing-data/2-3-importing-data.html#data-with-bad-names",
-    "href": "slides/2-3-importing-data/2-3-importing-data.html#data-with-bad-names",
-    "title": "Importing data",
-    "section": "Data with bad names",
-    "text": "Data with bad names\n\nedibnb_bad_names &lt;- read_csv(\"data/edibnb-bad-names.csv\")\nnames(edibnb_bad_names)\n\n [1] \"ID\"                   \"Price\"               \n [3] \"neighbourhood\"        \"accommodates\"        \n [5] \"Number of bathrooms\"  \"Number of Bedrooms\"  \n [7] \"n beds\"               \"Review Scores Rating\"\n [9] \"Number of reviews\"    \"listing_url\"         \n\n\n\n… but R doesn’t allow spaces in variable names\n\nggplot(\n  edibnb_bad_names, \n  aes(x = Number of bathrooms, y = Price)\n  ) +\n  geom_point()\n\nError: &lt;text&gt;:3:18: unexpected symbol\n2:   edibnb_bad_names, \n3:   aes(x = Number of\n                    ^"
-  },
-  {
-    "objectID": "slides/2-3-importing-data/2-3-importing-data.html#option-1---quote-column-names",
-    "href": "slides/2-3-importing-data/2-3-importing-data.html#option-1---quote-column-names",
-    "title": "Importing data",
-    "section": "Option 1 - Quote column names",
-    "text": "Option 1 - Quote column names\n\nggplot(\n  edibnb_bad_names, \n  aes(x = `Number of bathrooms`, y = Price)\n  ) +\n  geom_point()"
-  },
-  {
-    "objectID": "slides/2-3-importing-data/2-3-importing-data.html#option-2---define-column-names",
-    "href": "slides/2-3-importing-data/2-3-importing-data.html#option-2---define-column-names",
-    "title": "Importing data",
-    "section": "Option 2 - Define column names",
-    "text": "Option 2 - Define column names\n\nedibnb_col_names &lt;- read_csv(\n  \"data/edibnb-bad-names.csv\",\n  col_names = c(\n    \"id\", \"price\", \"neighbourhood\", \"accommodates\", \n    \"bathroom\", \"bedroom\", \"bed\", \"review_scores_rating\", \n    \"n_reviews\", \"url\"\n  )\n)\n\n\n\nnames(edibnb_col_names)\n\n [1] \"id\"                   \"price\"               \n [3] \"neighbourhood\"        \"accommodates\"        \n [5] \"bathroom\"             \"bedroom\"             \n [7] \"bed\"                  \"review_scores_rating\"\n [9] \"n_reviews\"            \"url\""
-  },
-  {
-    "objectID": "slides/2-3-importing-data/2-3-importing-data.html#option-3---format-column-names-to-snake_case",
-    "href": "slides/2-3-importing-data/2-3-importing-data.html#option-3---format-column-names-to-snake_case",
-    "title": "Importing data",
-    "section": "Option 3 - Format column names to snake_case",
-    "text": "Option 3 - Format column names to snake_case\n\nlibrary(janitor)\n\nedibnb_clean_names &lt;- read_csv(\"data/edibnb-bad-names.csv\") |&gt;\n  janitor::clean_names()\n\n\n\nnames(edibnb_clean_names)\n\n [1] \"id\"                   \"price\"               \n [3] \"neighbourhood\"        \"accommodates\"        \n [5] \"number_of_bathrooms\"  \"number_of_bedrooms\"  \n [7] \"n_beds\"               \"review_scores_rating\"\n [9] \"number_of_reviews\"    \"listing_url\""
-  },
-  {
-    "objectID": "slides/2-3-importing-data/2-3-importing-data.html#variable-types-1",
-    "href": "slides/2-3-importing-data/2-3-importing-data.html#variable-types-1",
-    "title": "Importing data",
-    "section": "Variable types",
-    "text": "Variable types\n\nWhich type is x? Why?\n\n\n\n\n\n\nread_csv(\"data/df-na.csv\")\n\n# A tibble: 9 × 3\n  x     y              z     \n  &lt;chr&gt; &lt;chr&gt;          &lt;chr&gt; \n1 1     a              hi    \n2 &lt;NA&gt;  b              hello \n3 3     Not applicable 9999  \n4 4     d              ola   \n5 5     e              hola  \n6 .     f              whatup\n7 7     g              wassup\n8 8     h              sup   \n9 9     i              &lt;NA&gt;"
-  },
-  {
-    "objectID": "slides/2-3-importing-data/2-3-importing-data.html#option-1.-explicit-nas",
-    "href": "slides/2-3-importing-data/2-3-importing-data.html#option-1.-explicit-nas",
-    "title": "Importing data",
-    "section": "Option 1. Explicit NAs",
-    "text": "Option 1. Explicit NAs\n\nread_csv(\n  \"data/df-na.csv\", \n  na = c(\"\", \"NA\", \".\", \"9999\", \"Not applicable\")\n)\n\n\n\n\n\n# A tibble: 9 × 3\n      x y     z     \n  &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; \n1     1 a     hi    \n2    NA b     hello \n3     3 &lt;NA&gt;  &lt;NA&gt;  \n4     4 d     ola   \n5     5 e     hola  \n6    NA f     whatup\n7     7 g     wassup\n8     8 h     sup   \n9     9 i     &lt;NA&gt;"
-  },
-  {
-    "objectID": "slides/2-3-importing-data/2-3-importing-data.html#option-2.-specify-column-types",
-    "href": "slides/2-3-importing-data/2-3-importing-data.html#option-2.-specify-column-types",
-    "title": "Importing data",
-    "section": "Option 2. Specify column types",
-    "text": "Option 2. Specify column types\n\nread_csv(\n  \"data/df-na.csv\", \n  col_types = list(col_double(), col_character(), col_character())\n  )\n\n\n\n\n\nWarning: One or more parsing issues, call `problems()` on your data\nframe for details, e.g.:\n  dat &lt;- vroom(...)\n  problems(dat)\n\n\n# A tibble: 9 × 3\n      x y              z     \n  &lt;dbl&gt; &lt;chr&gt;          &lt;chr&gt; \n1     1 a              hi    \n2    NA b              hello \n3     3 Not applicable 9999  \n4     4 d              ola   \n5     5 e              hola  \n6    NA f              whatup\n7     7 g              wassup\n8     8 h              sup   \n9     9 i              &lt;NA&gt;"
-  },
-  {
-    "objectID": "slides/2-3-importing-data/2-3-importing-data.html#column-types-for-read_csv",
-    "href": "slides/2-3-importing-data/2-3-importing-data.html#column-types-for-read_csv",
-    "title": "Importing data",
-    "section": "Column types for read_csv()",
-    "text": "Column types for read_csv()\n\n\n\ntype function\ndata type\n\n\n\n\ncol_character()\ncharacter\n\n\ncol_date()\ndate\n\n\ncol_datetime()\nPOSIXct (date-time)\n\n\ncol_double()\ndouble (numeric)\n\n\ncol_factor()\nfactor\n\n\ncol_guess()\nlet readr guess (default)\n\n\ncol_integer()\ninteger\n\n\ncol_logical()\nlogical\n\n\ncol_number()\nnumbers mixed with non-number characters\n\n\ncol_numeric()\ndouble or integer\n\n\ncol_skip()\ndo not read\n\n\ncol_time()\ntime"
-  },
-  {
-    "objectID": "slides/2-3-importing-data/2-3-importing-data.html#reading-data-2",
-    "href": "slides/2-3-importing-data/2-3-importing-data.html#reading-data-2",
-    "title": "Importing data",
-    "section": "Reading data",
-    "text": "Reading data\n\nnobel &lt;- read_excel(path = \"data/nobel.xlsx\")\n\n\n\nnobel\n\n# A tibble: 1,000 × 19\n      id first_name     last_name  born  died               \n   &lt;dbl&gt; &lt;chr&gt;          &lt;chr&gt;      &lt;chr&gt; &lt;dttm&gt;             \n 1   160 Jacobus H.     van 't Ho… 1852… 1911-03-01 00:00:00\n 2   569 Sully          Prudhomme  1839… 1907-09-07 00:00:00\n 3   293 Emil           von Behri… 1854… 1917-03-31 00:00:00\n 4   462 Henry          Dunant     1828… 1910-10-30 00:00:00\n 5     1 Wilhelm Conrad Röntgen    1845… 1923-02-10 00:00:00\n 6   463 Frédéric       Passy      1822… 1912-06-12 00:00:00\n 7   464 Élie           Ducommun   1833… 1906-12-07 00:00:00\n 8   465 Albert         Gobat      1843… 1914-03-16 00:00:00\n 9   294 Ronald         Ross       1857… 1932-09-16 00:00:00\n10   161 Emil           Fischer    1852… 1919-07-15 00:00:00\n# ℹ 990 more rows\n# ℹ 14 more variables: born_country &lt;chr&gt;,\n#   born_country_code &lt;chr&gt;, born_city &lt;chr&gt;,\n#   died_country &lt;chr&gt;, died_country_code &lt;chr&gt;,\n#   died_city &lt;chr&gt;, gender &lt;chr&gt;, year &lt;dbl&gt;,\n#   category &lt;chr&gt;, overall_motivation &lt;chr&gt;,\n#   motivation &lt;chr&gt;, organization_name &lt;chr&gt;, …"
-  },
-  {
-    "objectID": "slides/2-3-importing-data/2-3-importing-data.html#spreadsheets-with-bad-names",
-    "href": "slides/2-3-importing-data/2-3-importing-data.html#spreadsheets-with-bad-names",
-    "title": "Importing data",
-    "section": "Spreadsheets with “bad” names",
-    "text": "Spreadsheets with “bad” names\n\nedibnb_bad_names &lt;- read_excel(\"data/edibnb-bad-names.xlsx\")\n\nnames(edibnb_bad_names)\n\n [1] \"ID\"                   \"Price\"               \n [3] \"neighbourhood\"        \"accommodates\"        \n [5] \"Number of bathrooms\"  \"Number of Bedrooms\"  \n [7] \"n beds\"               \"Review Scores Rating\"\n [9] \"Number of reviews\"    \"listing_url\""
-  },
-  {
-    "objectID": "slides/2-3-importing-data/2-3-importing-data.html#option-1.-define-column-names",
-    "href": "slides/2-3-importing-data/2-3-importing-data.html#option-1.-define-column-names",
-    "title": "Importing data",
-    "section": "Option 1. Define column names",
-    "text": "Option 1. Define column names\n\nedibnb_col_names &lt;- read_excel(\n  \"data/edibnb-bad-names.xlsx\",\n  col_names = c(\n    \"id\", \"price\", \"neighbourhood\", \"accommodates\", \"bathroom\", \n    \"bedroom\", \"bed\", \"review_scores_rating\", \"n_reviews\", \"url\"\n  )\n)\n\nnames(edibnb_col_names)\n\n [1] \"id\"                   \"price\"               \n [3] \"neighbourhood\"        \"accommodates\"        \n [5] \"bathroom\"             \"bedroom\"             \n [7] \"bed\"                  \"review_scores_rating\"\n [9] \"n_reviews\"            \"url\""
-  },
-  {
-    "objectID": "slides/2-3-importing-data/2-3-importing-data.html#option-2.-format-column-names-to-snake_case",
-    "href": "slides/2-3-importing-data/2-3-importing-data.html#option-2.-format-column-names-to-snake_case",
-    "title": "Importing data",
-    "section": "Option 2. Format column names to snake_case",
-    "text": "Option 2. Format column names to snake_case\n\nedibnb_clean_names &lt;- read_excel(\"data/edibnb-bad-names.xlsx\") |&gt;\n  janitor::clean_names()\n\nnames(edibnb_clean_names)\n\n [1] \"id\"                   \"price\"               \n [3] \"neighbourhood\"        \"accommodates\"        \n [5] \"number_of_bathrooms\"  \"number_of_bedrooms\"  \n [7] \"n_beds\"               \"review_scores_rating\"\n [9] \"number_of_reviews\"    \"listing_url\""
-  },
-  {
-    "objectID": "slides/2-3-importing-data/2-3-importing-data.html#spreadsheets-with-nas",
-    "href": "slides/2-3-importing-data/2-3-importing-data.html#spreadsheets-with-nas",
-    "title": "Importing data",
-    "section": "Spreadsheets with NAs",
-    "text": "Spreadsheets with NAs\n\nread_excel(\"data/df-na.xlsx\")\n\n# A tibble: 9 × 3\n  x     y              z     \n  &lt;chr&gt; &lt;chr&gt;          &lt;chr&gt; \n1 1     a              hi    \n2 NA    b              hello \n3 3     Not applicable 9999  \n4 4     d              ola   \n5 5     e              hola  \n6 .     f              whatup\n7 7     g              wassup\n8 8     h              sup   \n9 9     i              &lt;NA&gt;"
-  },
-  {
-    "objectID": "slides/2-3-importing-data/2-3-importing-data.html#option-1.-explicit-nas-1",
-    "href": "slides/2-3-importing-data/2-3-importing-data.html#option-1.-explicit-nas-1",
-    "title": "Importing data",
-    "section": "Option 1. Explicit NAs",
-    "text": "Option 1. Explicit NAs\n\nread_excel(\n  \"data/df-na.xlsx\", \n  na = c(\"\", \"NA\", \".\", \"9999\", \"Not applicable\")\n)\n\n# A tibble: 9 × 3\n      x y     z     \n  &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; \n1     1 a     hi    \n2    NA b     hello \n3     3 &lt;NA&gt;  &lt;NA&gt;  \n4     4 d     ola   \n5     5 e     hola  \n6    NA f     whatup\n7     7 g     wassup\n8     8 h     sup   \n9     9 i     &lt;NA&gt;"
-  },
-  {
-    "objectID": "slides/2-3-importing-data/2-3-importing-data.html#option-2.-specify-column-types-1",
-    "href": "slides/2-3-importing-data/2-3-importing-data.html#option-2.-specify-column-types-1",
-    "title": "Importing data",
-    "section": "Option 2. Specify column types",
-    "text": "Option 2. Specify column types\n\nread_excel(\n  \"data/df-na.xlsx\", \n  col_types = c(\"numeric\", \"text\", \"text\")\n  )\n\nWarning: Expecting numeric in A3 / R3C1: got 'NA'\n\n\nWarning: Expecting numeric in A7 / R7C1: got '.'\n\n\n# A tibble: 9 × 3\n      x y              z     \n  &lt;dbl&gt; &lt;chr&gt;          &lt;chr&gt; \n1     1 a              hi    \n2    NA b              hello \n3     3 Not applicable 9999  \n4     4 d              ola   \n5     5 e              hola  \n6    NA f              whatup\n7     7 g              wassup\n8     8 h              sup   \n9     9 i              &lt;NA&gt;"
-  },
-  {
-    "objectID": "slides/2-3-importing-data/2-3-importing-data.html#column-types-for-read_excel",
-    "href": "slides/2-3-importing-data/2-3-importing-data.html#column-types-for-read_excel",
-    "title": "Importing data",
-    "section": "Column types for read_excel()",
-    "text": "Column types for read_excel()\n\n\n\ntype function\ndata type\n\n\n\n\n\"skip\"\ndo not read\n\n\n\"guess\"\nlet readxl guess (default)\n\n\n\"logical\"\nlogical\n\n\n\"numeric\"\nnumeric\n\n\n\"date\"\nPOSIXct (date-time)\n\n\n\"text\"\ncharacter\n\n\n\"list\"\na list of length 1 vectors"
-  },
-  {
-    "objectID": "slides/2-3-importing-data/2-3-importing-data.html#other-types-of-data-1",
-    "href": "slides/2-3-importing-data/2-3-importing-data.html#other-types-of-data-1",
-    "title": "Importing data",
-    "section": "Other types of data",
-    "text": "Other types of data\n\ngooglesheets4: Google Sheets\narrow: parquet files\nDBI, along with a database specific backend (e.g. RMySQL, RSQLite, RPostgreSQL etc): allows you to run SQL queries against a database and return a data frame\nrvest: web scraping\nhaven: SPSS, Stata, and SAS files\njsonline: JSON\nxml2: xml\nhttr: web APIs\nsparklyr: data loaded into spark"
-  },
-  {
-    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#task-goal-and-tools",
-    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#task-goal-and-tools",
-    "title": "Tidying data",
-    "section": "Task, goal, and tools",
-    "text": "Task, goal, and tools\n\n\n have data organised in an unideal way for our analysis\n\n\n\n want to reorganize the data for our analysis\n\n\n\n\n using tools from the tidyverse\n\n\nlibrary(tidyverse)"
-  },
-  {
-    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#data-grocery-store-sales",
-    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#data-grocery-store-sales",
-    "title": "Tidying data",
-    "section": "Data: Grocery store sales",
-    "text": "Data: Grocery store sales\n\n\nhave\n\n\n\n# A tibble: 2 × 4\n  customer_id item_1 item_2       item_3\n        &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;        &lt;chr&gt; \n1           1 bread  milk         banana\n2           2 milk   toilet paper &lt;NA&gt;  \n\n\n\n\nwant\n\n\n\n# A tibble: 6 × 3\n  customer_id item_no item        \n        &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;       \n1           1 item_1  bread       \n2           1 item_2  milk        \n3           1 item_3  banana      \n4           2 item_1  milk        \n5           2 item_2  toilet paper\n6           2 item_3  &lt;NA&gt;"
-  },
-  {
-    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#grammar-of-data-tidying",
-    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#grammar-of-data-tidying",
-    "title": "Tidying data",
-    "section": "Grammar of data tidying",
-    "text": "Grammar of data tidying\n\n\n\n\nThe goal of tidyr is to help you tidy your data via\n\n\npivoting for going between wide and long data\nsplitting and combining character columns\nnesting and unnesting columns\nclarifying how NAs should be treated"
-  },
-  {
-    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivoting",
-    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivoting",
-    "title": "Tidying data",
-    "section": "Pivoting",
-    "text": "Pivoting\n\n\nNot this…\n\n\nbut this!"
-  },
-  {
-    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#wider-vs.-longer",
-    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#wider-vs.-longer",
-    "title": "Tidying data",
-    "section": "Wider vs. longer",
-    "text": "Wider vs. longer\n\n\nwider - more columns\n\n\n# A tibble: 2 × 4\n  customer_id item_1 item_2       item_3\n        &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;        &lt;chr&gt; \n1           1 bread  milk         banana\n2           2 milk   toilet paper &lt;NA&gt;  \n\n\n\nlonger - more rows\n\n\n# A tibble: 6 × 3\n  customer_id item_no item        \n        &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;       \n1           1 item_1  bread       \n2           1 item_2  milk        \n3           1 item_3  banana      \n4           2 item_1  milk        \n5           2 item_2  toilet paper\n6           2 item_3  &lt;NA&gt;"
-  },
-  {
-    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer",
-    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer",
-    "title": "Tidying data",
-    "section": "pivot_longer()",
-    "text": "pivot_longer()\n\n\n\npivot_longer(\n  data,\n  cols, \n  names_to = \"name\", \n  values_to = \"value\"\n  )"
-  },
-  {
-    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-1",
-    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-1",
-    "title": "Tidying data",
-    "section": "pivot_longer()",
-    "text": "pivot_longer()\n\n\n\npivot_longer(\n1  data,\n  cols, \n  names_to = \"name\", \n  values_to = \"value\"\n  )\n\n\n1\n\ndata (as usual)"
-  },
-  {
-    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-2",
-    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-2",
-    "title": "Tidying data",
-    "section": "pivot_longer()",
-    "text": "pivot_longer()\n\n\n\npivot_longer(\n1  data,\n2  cols,\n  names_to = \"name\", \n  values_to = \"value\"\n  )\n\n\n1\n\ndata (as usual)\n\n2\n\ncols: Columns to pivot into longer format"
-  },
-  {
-    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-3",
-    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-3",
-    "title": "Tidying data",
-    "section": "pivot_longer()",
-    "text": "pivot_longer()\n\n\n\npivot_longer(\n1  data,\n2  cols,\n3  names_to = \"name\",\n  values_to = \"value\"\n  )\n\n\n1\n\ndata (as usual)\n\n2\n\ncols: Columns to pivot into longer format\n\n3\n\nnames_to: Name of the column where column names of pivoted variables go (character string)"
-  },
-  {
-    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-4",
-    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-4",
-    "title": "Tidying data",
-    "section": "pivot_longer()",
-    "text": "pivot_longer()\n\n\n\npivot_longer(\n1  data,\n2  cols,\n3  names_to = \"name\",\n4  values_to = \"value\"\n  )\n\n\n1\n\ndata (as usual)\n\n2\n\ncols: Columns to pivot into longer format\n\n3\n\nnames_to: Name of the column where column names of pivoted variables go (character string)\n\n4\n\nvalues_to: Name of the column where data in pivoted variables go (character string)"
-  },
-  {
-    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-in-context",
-    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-in-context",
-    "title": "Tidying data",
-    "section": "pivot_longer() in context",
-    "text": "pivot_longer() in context\n\n\n\ncustomers |&gt;\n  pivot_longer(\n    cols = item_1:item_3,\n    names_to = \"item_no\",\n    values_to = \"item\"\n  )\n\n# A tibble: 6 × 3\n  customer_id item_no item        \n        &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;       \n1           1 item_1  bread       \n2           1 item_2  milk        \n3           1 item_3  banana      \n4           2 item_1  milk        \n5           2 item_2  toilet paper\n6           2 item_3  &lt;NA&gt;"
-  },
-  {
-    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-in-context-1",
-    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-in-context-1",
-    "title": "Tidying data",
-    "section": "pivot_longer() in context",
-    "text": "pivot_longer() in context\n\n\n\ncustomers |&gt;\n  pivot_longer(\n1    cols = item_1:item_3,\n    names_to = \"item_no\",\n    values_to = \"item\"\n  )\n\n\n1\n\ncols to pivot: item_1 to item_3"
-  },
-  {
-    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-in-context-2",
-    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-in-context-2",
-    "title": "Tidying data",
-    "section": "pivot_longer() in context",
-    "text": "pivot_longer() in context\n\n\n\ncustomers |&gt;\n  pivot_longer(\n1    cols = item_1:item_3,\n2    names_to = \"item_no\",\n    values_to = \"item\"\n  )\n\n\n1\n\ncols to pivot: item_1 to item_3\n\n2\n\nColumn names_to new column called item_no"
-  },
-  {
-    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-in-context-3",
-    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-in-context-3",
-    "title": "Tidying data",
-    "section": "pivot_longer() in context",
-    "text": "pivot_longer() in context\n\n\n\ncustomers |&gt;\n  pivot_longer(\n1    cols = item_1:item_3,\n2    names_to = \"item_no\",\n3    values_to = \"item\"\n  )\n\n\n1\n\ncols to pivot: item_1 to item_3\n\n2\n\nColumn names_to new column called item_no\n\n3\n\nvalues_to new column called item"
-  },
-  {
-    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-in-context-4",
-    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-in-context-4",
-    "title": "Tidying data",
-    "section": "pivot_longer() in context",
-    "text": "pivot_longer() in context\n\n\n\ncustomers |&gt;\n  pivot_longer(\n    cols = item_1:item_3,\n    names_to = \"item_no\",\n    values_to = \"item\"\n  )\n\n# A tibble: 6 × 3\n  customer_id item_no item        \n        &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;       \n1           1 item_1  bread       \n2           1 item_2  milk        \n3           1 item_3  banana      \n4           2 item_1  milk        \n5           2 item_2  toilet paper\n6           2 item_3  &lt;NA&gt;"
-  },
-  {
-    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#dealing-with-nas",
-    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#dealing-with-nas",
-    "title": "Tidying data",
-    "section": "Dealing with NAs",
-    "text": "Dealing with NAs\n\n\n\ncustomers |&gt;\n  pivot_longer(\n1    cols = item_1:item_3,\n2    names_to = \"item_no\",\n3    values_to = \"item\",\n4    values_drop_na = TRUE\n  )\n\n\n1\n\ncols to pivot: item_1 to item_3\n\n2\n\nColumn names_to new column called item_no\n\n3\n\nvalues_to new column called item\n\n4\n\nDrop rows that contain only NAs in the values_to column\n\n\n\n\n# A tibble: 5 × 3\n  customer_id item_no item        \n        &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;       \n1           1 item_1  bread       \n2           1 item_2  milk        \n3           1 item_3  banana      \n4           2 item_1  milk        \n5           2 item_2  toilet paper"
-  },
-  {
-    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#from-customers-to-purchases",
-    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#from-customers-to-purchases",
-    "title": "Tidying data",
-    "section": "From customers to purchases",
-    "text": "From customers to purchases\n\n\n\npurchases &lt;- customers |&gt;\n  pivot_longer(\n    cols = item_1:item_3,\n    names_to = \"item_no\",\n    values_to = \"item\",\n    values_drop_na = TRUE\n  )\n\npurchases\n\n# A tibble: 5 × 3\n  customer_id item_no item        \n        &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;       \n1           1 item_1  bread       \n2           1 item_2  milk        \n3           1 item_3  banana      \n4           2 item_1  milk        \n5           2 item_2  toilet paper"
-  },
-  {
-    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#why-pivot",
-    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#why-pivot",
-    "title": "Tidying data",
-    "section": "Why pivot?",
-    "text": "Why pivot?\nMost likely, because the next step of your analysis needs it\n\n\n\n\n\nprices\n\n# A tibble: 5 × 2\n  item         price\n  &lt;chr&gt;        &lt;dbl&gt;\n1 avocado       0.5 \n2 banana        0.15\n3 bread         1   \n4 milk          0.8 \n5 toilet paper  3   \n\n\n\n\npurchases |&gt;\n  left_join(prices)\n\nJoining with `by = join_by(item)`\n\n\n# A tibble: 5 × 4\n  customer_id item_no item         price\n        &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;        &lt;dbl&gt;\n1           1 item_1  bread         1   \n2           1 item_2  milk          0.8 \n3           1 item_3  banana        0.15\n4           2 item_1  milk          0.8 \n5           2 item_2  toilet paper  3"
-  },
-  {
-    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#from-purchases-to-customers",
-    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#from-purchases-to-customers",
-    "title": "Tidying data",
-    "section": "From purchases to customers",
-    "text": "From purchases to customers\n\n\n\npurchases |&gt;\n  pivot_wider(\n    names_from = item_no,\n    values_from = item\n  )\n\n# A tibble: 2 × 4\n  customer_id item_1 item_2       item_3\n        &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;        &lt;chr&gt; \n1           1 bread  milk         banana\n2           2 milk   toilet paper &lt;NA&gt;"
-  },
-  {
-    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_wider",
-    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_wider",
-    "title": "Tidying data",
-    "section": "pivot_wider()",
-    "text": "pivot_wider()\n\n\n\npivot_wider(\n1  data,\n  names_from = name,\n  values_from = value\n  )\n\n\n1\n\ndata (as usual)"
-  },
-  {
-    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_wider-1",
-    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_wider-1",
-    "title": "Tidying data",
-    "section": "pivot_wider()",
-    "text": "pivot_wider()\n\n\n\npivot_wider(\n1  data,\n2  names_from = name,\n  values_from = value\n  )\n\n\n1\n\ndata (as usual)\n\n2\n\nnames_from: Which column(s) in the long format contains what should be column names in the wide format"
-  },
-  {
-    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_wider-2",
-    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_wider-2",
-    "title": "Tidying data",
-    "section": "pivot_wider()",
-    "text": "pivot_wider()\n\n\n\npivot_wider(\n1  data,\n2  names_from = name,\n3  values_from = value\n  )\n\n\n1\n\ndata (as usual)\n\n2\n\nnames_from: Which column(s) in the long format contains what should be column names in the wide format\n\n3\n\nvalues_from: Which column(s) in the long format contains what should be values in the new columns in the wide format"
-  },
-  {
-    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#wider---longer",
-    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#wider---longer",
-    "title": "Tidying data",
-    "section": "Wider <-> longer",
-    "text": "Wider &lt;-&gt; longer"
-  },
-  {
-    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#additional-arguments",
-    "href": "slides/1-3-tidying-data/1-3-tidying-data.html#additional-arguments",
-    "title": "Tidying data",
-    "section": "Additional arguments",
-    "text": "Additional arguments\n\n\npivot_longer()\n\npivot_longer(\n  data,\n  cols,\n  ...,\n  cols_vary = \"fastest\",\n  names_to = \"name\",\n  names_prefix = NULL,\n  names_sep = NULL,\n  names_pattern = NULL,\n  names_ptypes = NULL,\n  names_transform = NULL,\n  names_repair = \"check_unique\",\n  values_to = \"value\",\n  values_drop_na = FALSE,\n  values_ptypes = NULL,\n  values_transform = NULL\n)\n\n\npivot_wider()\n\npivot_wider(\n  data,\n  ...,\n  id_cols = NULL,\n  id_expand = FALSE,\n  names_from = name,\n  names_prefix = \"\",\n  names_sep = \"_\",\n  names_glue = NULL,\n  names_sort = FALSE,\n  names_vary = \"fastest\",\n  names_expand = FALSE,\n  names_repair = \"check_unique\",\n  values_from = value,\n  values_fill = NULL,\n  values_fn = NULL,\n  unused_fn = NULL\n)"
-  },
-  {
-    "objectID": "slides/2-2-data-classes/2-2-data-classes.html#data-classes-1",
-    "href": "slides/2-2-data-classes/2-2-data-classes.html#data-classes-1",
-    "title": "Data classes",
-    "section": "Data classes",
-    "text": "Data classes\nWe talked about types so far, next we’ll introduce the concept of classes\n\n\nVectors are like Lego building blocks\nWe stick them together to build more complicated constructs, e.g. representations of data\nThe class attribute relates to the S3 class of an object which determines its behaviour\n\nYou don’t need to worry about what S3 classes really mean, but you can read more about it here if you’re curious\n\nExamples: factors, dates, and data frames"
-  },
-  {
-    "objectID": "slides/2-2-data-classes/2-2-data-classes.html#factors",
-    "href": "slides/2-2-data-classes/2-2-data-classes.html#factors",
-    "title": "Data classes",
-    "section": "Factors",
-    "text": "Factors\nR uses factors to handle categorical variables, variables that have a fixed and known set of possible values\n\nx &lt;- factor(c(\"BS\", \"MS\", \"PhD\", \"MS\"))\nx\n\n[1] BS  MS  PhD MS \nLevels: BS MS PhD\n\n\n\n\n\ntypeof(x)\n\n[1] \"integer\"\n\n\n\n\nclass(x)\n\n[1] \"factor\""
-  },
-  {
-    "objectID": "slides/2-2-data-classes/2-2-data-classes.html#more-on-factors",
-    "href": "slides/2-2-data-classes/2-2-data-classes.html#more-on-factors",
-    "title": "Data classes",
-    "section": "More on factors",
-    "text": "More on factors\nWe can think of factors like character (level labels) and an integer (level numbers) glued together\n\nglimpse(x)\n\n Factor w/ 3 levels \"BS\",\"MS\",\"PhD\": 1 2 3 2\n\nas.integer(x)\n\n[1] 1 2 3 2"
-  },
-  {
-    "objectID": "slides/2-2-data-classes/2-2-data-classes.html#dates",
-    "href": "slides/2-2-data-classes/2-2-data-classes.html#dates",
-    "title": "Data classes",
-    "section": "Dates",
-    "text": "Dates\n\ny &lt;- as.Date(\"2025-01-01\")\ny\n\n[1] \"2025-01-01\"\n\ntypeof(y)\n\n[1] \"double\"\n\nclass(y)\n\n[1] \"Date\""
-  },
-  {
-    "objectID": "slides/2-2-data-classes/2-2-data-classes.html#more-on-dates",
-    "href": "slides/2-2-data-classes/2-2-data-classes.html#more-on-dates",
-    "title": "Data classes",
-    "section": "More on dates",
-    "text": "More on dates\nWe can think of dates like an integer (the number of days since the origin, 1 Jan 1970) and an integer (the origin) glued together\n\nas.integer(y)\n\n[1] 20089\n\nas.integer(y) / 365 # roughly 55 yrs\n\n[1] 55.03836"
-  },
-  {
-    "objectID": "slides/2-2-data-classes/2-2-data-classes.html#data-frames",
-    "href": "slides/2-2-data-classes/2-2-data-classes.html#data-frames",
-    "title": "Data classes",
-    "section": "Data frames",
-    "text": "Data frames\nWe can think of data frames like like vectors of equal length glued together\n\ndf &lt;- data.frame(x = 1:2, y = 3:4)\ndf\n\n  x y\n1 1 3\n2 2 4\n\n\n\n\n\ntypeof(df)\n\n[1] \"list\"\n\n\n\n\nclass(df)\n\n[1] \"data.frame\""
-  },
-  {
-    "objectID": "slides/2-2-data-classes/2-2-data-classes.html#lists",
-    "href": "slides/2-2-data-classes/2-2-data-classes.html#lists",
-    "title": "Data classes",
-    "section": "Lists",
-    "text": "Lists\nLists are a generic vector container; vectors of any type can go in them\n\nl &lt;- list(\n  x = 1:4,\n  y = c(\"hi\", \"hello\", \"jello\"),\n  z = c(TRUE, FALSE)\n)\nl\n\n$x\n[1] 1 2 3 4\n\n$y\n[1] \"hi\"    \"hello\" \"jello\"\n\n$z\n[1]  TRUE FALSE"
-  },
-  {
-    "objectID": "slides/2-2-data-classes/2-2-data-classes.html#lists-and-data-frames",
-    "href": "slides/2-2-data-classes/2-2-data-classes.html#lists-and-data-frames",
-    "title": "Data classes",
-    "section": "Lists and data frames",
-    "text": "Lists and data frames\n\nA data frame is a special list containing vectors of equal length\nWhen we use the pull() function, we extract a vector from the data frame\n\n\ndf\n\n  x y\n1 1 3\n2 2 4\n\ndf |&gt;\n  pull(y)\n\n[1] 3 4"
-  },
-  {
-    "objectID": "slides/2-2-data-classes/2-2-data-classes.html#read-data-in-as-character-strings",
-    "href": "slides/2-2-data-classes/2-2-data-classes.html#read-data-in-as-character-strings",
-    "title": "Data classes",
-    "section": "Read data in as character strings",
-    "text": "Read data in as character strings\n\nhandedness &lt;- read_csv(\"data/handedness.csv\")\nglimpse(handedness)\n\nRows: 60\nColumns: 2\n$ name       &lt;chr&gt; \"Abdiel Camacho\", \"Abram Sanders\", \"Ady…\n$ preference &lt;chr&gt; \"left\", \"ambidextrous\", \"right\", \"right…"
-  },
-  {
-    "objectID": "slides/2-2-data-classes/2-2-data-classes.html#but-coerce-when-plotting",
-    "href": "slides/2-2-data-classes/2-2-data-classes.html#but-coerce-when-plotting",
-    "title": "Data classes",
-    "section": "But coerce when plotting",
-    "text": "But coerce when plotting\n\nggplot(handedness, mapping = aes(x = preference)) +\n  geom_bar()"
-  },
-  {
-    "objectID": "slides/2-2-data-classes/2-2-data-classes.html#use-forcats-to-manipulate-factors",
-    "href": "slides/2-2-data-classes/2-2-data-classes.html#use-forcats-to-manipulate-factors",
-    "title": "Data classes",
-    "section": "Use forcats to manipulate factors",
-    "text": "Use forcats to manipulate factors\n\nhandedness |&gt;\n  mutate(preference = fct_infreq(preference)) |&gt;\n  ggplot(mapping = aes(x = preference)) +\n  geom_bar()"
-  },
-  {
-    "objectID": "slides/2-2-data-classes/2-2-data-classes.html#come-for-the-functionality",
-    "href": "slides/2-2-data-classes/2-2-data-classes.html#come-for-the-functionality",
-    "title": "Data classes",
-    "section": "Come for the functionality",
-    "text": "Come for the functionality\n\n\n… stay for the logo\n\n\n\n\nThe forcats package provides a suite of useful tools that solve common problems with factors\nFactors are useful when you have true categorical data and you want to override the ordering of character vectors to improve display\nThey are also useful in modeling scenarios"
-  },
-  {
-    "objectID": "exercises/noble.html",
-    "href": "exercises/noble.html",
-    "title": "Nobel Prize winners & sales data",
+    "objectID": "exercises/web_scraping.html",
+    "href": "exercises/web_scraping.html",
+    "title": "Scraping Star Wars",
     "section": "",
-    "text": "We will use the following two packages in this application exercise.\n\ntidyverse: For data import, wrangling, and visualization.\nreadxl: For importing data from Excel."
+    "text": "Scraping data is defined as extracting data from one source to another. We are going to use the following website to practice scraping data; taking data on the website and transporting it into a more workable format with R code.\n\n\nPlease visit the website and identify the movie titles. What are they?\n\n\n\n\n\n\nSolution\n\n\n\n\n\nThere are seven movie titles on this page. They include: – The Phantom Menace\n– Attack of the Clones\n– Revenge of the Sith\n– A New Hope\n– The Empire Strikes Back\n– Return of the Jedi\n– The Force Awakens\n\n\n\nThe next step is to identify the html element that is associated with each title. To help us, we can use Selector Gadget. Selector Gadget is an open source Chrome Extension that helps users find elements of an html page easier. This demonstration will use Selector Gadget. To install Selector Gadget, please go to the following page. When the Selector Gadget is installed, you should see  in your task bar.\n\n\nFirst, we need to reference the website. We can do this by using read_html() from the rvest package. Run the following code below to do so.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\nNext, we need to find the element that is assocciated with the titles of each Star Wars movie. Click the  icon and click on one of the titles.\n\nBoth in the bottom right and in the red outline, you will see the element h2. We can use this information to pull the titles from the website using the following code:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
   },
   {
-    "objectID": "exercises/noble.html#packages",
-    "href": "exercises/noble.html#packages",
-    "title": "Nobel Prize winners & sales data",
+    "objectID": "exercises/web_scraping.html#star-wars",
+    "href": "exercises/web_scraping.html#star-wars",
+    "title": "Scraping Star Wars",
     "section": "",
-    "text": "We will use the following two packages in this application exercise.\n\ntidyverse: For data import, wrangling, and visualization.\nreadxl: For importing data from Excel."
-  },
-  {
-    "objectID": "exercises/noble.html#nobel-prize-winners",
-    "href": "exercises/noble.html#nobel-prize-winners",
-    "title": "Nobel Prize winners & sales data",
-    "section": "Nobel Prize winners",
-    "text": "Nobel Prize winners\nFor this exercise, we are going to work with a Nobel Prize winners dataset from the years 1901 through 2018. Please read in the following data below.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nBased on the tibble output, what are the number of rows and columns of the nobel dataset? What types of variables are you working with?\n\n\n\n\n\n\nSolution\n\n\n\n\n\nThere are 935 rows and 26 columns in nobel dataset.\nThere are 21 character variables, 3 dbl variables, and 2 date variables\n\n\n\nNow, rerun the code above to read in the dataset, but use the argument show_col_types = FALSE to suppress the given dataset information\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nnobel &lt;- read_csv(\"nobel.csv\", show_col_types = FALSE)\n\nNotice that there is no given message when running the code. This code simply loads the dataset."
-  },
-  {
-    "objectID": "exercises/noble.html#type-coercion",
-    "href": "exercises/noble.html#type-coercion",
-    "title": "Nobel Prize winners & sales data",
-    "section": "Type coercion",
-    "text": "Type coercion\nWe are going to use the nobel dataset to explore type coercion. Using glimpse(), identify what type of variable gender is in this dataset. Additionally, identify the levels of this variable.\n\n# add response here\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nglimpse(nobel)\n\nRows: 935\nColumns: 26\n$ id                    &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 6, 8, 9, 10, 11, 12, 13, 14, 1…\n$ firstname             &lt;chr&gt; \"Wilhelm Conrad\", \"Hendrik A.\", \"Pieter\", \"Henri…\n$ surname               &lt;chr&gt; \"Röntgen\", \"Lorentz\", \"Zeeman\", \"Becquerel\", \"Cu…\n$ year                  &lt;dbl&gt; 1901, 1902, 1902, 1903, 1903, 1903, 1911, 1904, …\n$ category              &lt;chr&gt; \"Physics\", \"Physics\", \"Physics\", \"Physics\", \"Phy…\n$ affiliation           &lt;chr&gt; \"Munich University\", \"Leiden University\", \"Amste…\n$ city                  &lt;chr&gt; \"Munich\", \"Leiden\", \"Amsterdam\", \"Paris\", \"Paris…\n$ country               &lt;chr&gt; \"Germany\", \"Netherlands\", \"Netherlands\", \"France…\n$ born_date             &lt;date&gt; 1845-03-27, 1853-07-18, 1865-05-25, 1852-12-15,…\n$ died_date             &lt;date&gt; 1923-02-10, 1928-02-04, 1943-10-09, 1908-08-25,…\n$ gender                &lt;chr&gt; \"male\", \"male\", \"male\", \"male\", \"male\", \"female\"…\n$ born_city             &lt;chr&gt; \"Remscheid\", \"Arnhem\", \"Zonnemaire\", \"Paris\", \"P…\n$ born_country          &lt;chr&gt; \"Germany\", \"Netherlands\", \"Netherlands\", \"France…\n$ born_country_code     &lt;chr&gt; \"DE\", \"NL\", \"NL\", \"FR\", \"FR\", \"PL\", \"PL\", \"GB\", …\n$ died_city             &lt;chr&gt; \"Munich\", NA, \"Amsterdam\", NA, \"Paris\", \"Sallanc…\n$ died_country          &lt;chr&gt; \"Germany\", \"Netherlands\", \"Netherlands\", \"France…\n$ died_country_code     &lt;chr&gt; \"DE\", \"NL\", \"NL\", \"FR\", \"FR\", \"FR\", \"FR\", \"GB\", …\n$ overall_motivation    &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …\n$ share                 &lt;dbl&gt; 1, 2, 2, 2, 4, 4, 1, 1, 1, 1, 1, 1, 2, 2, 1, 1, …\n$ motivation            &lt;chr&gt; \"\\\"in recognition of the extraordinary services …\n$ born_country_original &lt;chr&gt; \"Prussia (now Germany)\", \"the Netherlands\", \"the…\n$ born_city_original    &lt;chr&gt; \"Lennep (now Remscheid)\", \"Arnhem\", \"Zonnemaire\"…\n$ died_country_original &lt;chr&gt; \"Germany\", \"the Netherlands\", \"the Netherlands\",…\n$ died_city_original    &lt;chr&gt; \"Munich\", NA, \"Amsterdam\", NA, \"Paris\", \"Sallanc…\n$ city_original         &lt;chr&gt; \"Munich\", \"Leiden\", \"Amsterdam\", \"Paris\", \"Paris…\n$ country_original      &lt;chr&gt; \"Germany\", \"the Netherlands\", \"the Netherlands\",…\n\nnobel |&gt;\n  group_by(gender) |&gt;\n  count(gender)\n\n# A tibble: 3 × 2\n# Groups:   gender [3]\n  gender     n\n  &lt;chr&gt;  &lt;int&gt;\n1 female    52\n2 male     856\n3 org       27\n\n\ngender is a character variable. This variable has three different genders: male, female, and org.\n\n\n\nSuppose we want to turn the three listed genders into numeric values. Run the following code. What happened?\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\nSolution\n\n\n\n\n\nWhen trying to change male, female and org into numbers from characters, each value became an NA.\n\n\n\nIf we want the function as.numeric() to coerce these values into numbers, we need to change them to be a factor first. Run the following code, and compare the results. What values were assigned to which group? How do you think R determined this?\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\nSolution\n\n\n\n\n\nR assigned male = 2; female = 1; and org = 3. These were assigned alpha-numerically.\n\n\n\nNote, that you can also avoid type coercion by manually setting values (see example code below).\n\nnobel |&gt;\n  mutate(gender_num = case_when(\n    gender == \"female\" ~ 1,\n    gender == \"male\" ~ 2,\n    gender == \"org\" ~ 3\n  )) |&gt;\n  select(gender, gender_num) |&gt;\n  unique()\n\n# A tibble: 3 × 2\n  gender gender_num\n  &lt;chr&gt;       &lt;dbl&gt;\n1 male            2\n2 female          1\n3 org             3\n\n\nSuppose you wanted to make this change to the nobel dataset, and export a new csv to your current working directory on your local installment. This can be accomplished using write_csv(). See the help file here."
-  },
-  {
-    "objectID": "exercises/noble.html#sales",
-    "href": "exercises/noble.html#sales",
-    "title": "Nobel Prize winners & sales data",
-    "section": "Sales",
-    "text": "Sales\nFor the remaining part of this exercise, we are going to learn how to read in and clean up data that come from excel. The messy data that we are going to work with can be seen in below.\n\n\n\n\n\nWe are going to use read_excel() to read in a xlsx excel file. Read in the file and take a glimpse of these data. Why can we not work with these data in their current form?\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\nSolution\n\n\n\n\n\nThese data are not tidy. These data are read in with the text as a column name, and creates another column name called ...2.\n\n\n\nSee the help file for read_excel() here. Notice that, in the current sales dataset, we want to skip 3 rows (the first row acts as a header for the column names). We can do this using the skip argument. At the same time, we can specify names for each column by giving the argument col_names a character vector. Use these arguments and add to the code below to skip 3 lines and name the columns id and n.\nsales &lt;- read_excel(\n  \"sales.xlsx\", \n# add code here\n)\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nsales &lt;- read_excel(\n  \"sales.xlsx\",\n  skip = 3,\n  col_names = c(\"id\", \"n\")\n)\n\nsales"
-  },
-  {
-    "objectID": "exercises/noble.html#putting-it-all-together",
-    "href": "exercises/noble.html#putting-it-all-together",
-    "title": "Nobel Prize winners & sales data",
-    "section": "Putting it all together",
-    "text": "Putting it all together\nManipulate the sales data such such that it looks like the following using functions you have learned from the tidyverse to transform data.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nsales |&gt;\n  mutate(\n    is_brand_name = str_detect(id, \"Brand\"),\n    brand = if_else(is_brand_name, id, NA)\n  ) |&gt;\n  fill(brand) |&gt;\n  filter(!is_brand_name) |&gt;\n  select(brand, id, n)\n\n# A tibble: 7 × 3\n  brand   id    n    \n  &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;\n1 Brand 1 1234  8    \n2 Brand 1 8721  2    \n3 Brand 1 1822  3    \n4 Brand 2 3333  1    \n5 Brand 2 2156  3    \n6 Brand 2 3987  6    \n7 Brand 2 3216  5    \n\n\n\n\n\nTakeaway We should write code to manipulate data instead of opening Excel and editing the data in there because it allows us to re-use the data multiple times, and leaves a transparent trail of any modifications done while manipulating the data. Changing data in Excel is neither reproducible nor reusable."
+    "text": "Scraping data is defined as extracting data from one source to another. We are going to use the following website to practice scraping data; taking data on the website and transporting it into a more workable format with R code.\n\n\nPlease visit the website and identify the movie titles. What are they?\n\n\n\n\n\n\nSolution\n\n\n\n\n\nThere are seven movie titles on this page. They include: – The Phantom Menace\n– Attack of the Clones\n– Revenge of the Sith\n– A New Hope\n– The Empire Strikes Back\n– Return of the Jedi\n– The Force Awakens\n\n\n\nThe next step is to identify the html element that is associated with each title. To help us, we can use Selector Gadget. Selector Gadget is an open source Chrome Extension that helps users find elements of an html page easier. This demonstration will use Selector Gadget. To install Selector Gadget, please go to the following page. When the Selector Gadget is installed, you should see  in your task bar.\n\n\nFirst, we need to reference the website. We can do this by using read_html() from the rvest package. Run the following code below to do so.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\nNext, we need to find the element that is assocciated with the titles of each Star Wars movie. Click the  icon and click on one of the titles.\n\nBoth in the bottom right and in the red outline, you will see the element h2. We can use this information to pull the titles from the website using the following code:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
   },
   {
     "objectID": "exercises/nyc_flights.html",
