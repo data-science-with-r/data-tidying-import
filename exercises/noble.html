@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.55">
+<meta name="generator" content="quarto-1.5.56">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -268,7 +268,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"options":{"autorun":"true","fig-width":7,"classes":"","comment":"","fig-cap":"","label":"unnamed-chunk-1","results":"markup","output":"true","warning":"true","out-height":"","out-width":"700px","context":"setup","message":"true","fig-height":5,"dpi":72,"read-only":"false"},"code":"download.file(\n  \"https://raw.githubusercontent.com/ElijahMeyer3/Coursera/main/data/nobel.csv\",\n  \"nobel.csv\"\n)\n\ndownload.file(\n  \"https://raw.githubusercontent.com/ElijahMeyer3/Coursera/main/data/sales.xlsx\",\n  \"sales.xlsx\"\n)\n\noptions(readr.show_progress = FALSE)","id":1},{"options":{"autorun":"false","fig-width":7,"classes":"","comment":"","fig-cap":"","label":"unnamed-chunk-2","results":"markup","output":"true","warning":"true","out-height":"","out-width":"700px","context":"interactive","message":"true","fig-height":5,"dpi":72,"read-only":"false"},"code":"nobel <- read_csv(\"nobel.csv\")","id":2},{"options":{"autorun":"false","fig-width":7,"classes":"","comment":"","fig-cap":"","label":"unnamed-chunk-3","results":"markup","output":"true","warning":"true","out-height":"","out-width":"700px","context":"interactive","message":"true","fig-height":5,"dpi":72,"read-only":"false"},"code":"nobel <- read_csv(\"nobel.csv\", # add code here)","id":3},{"options":{"autorun":"false","fig-width":7,"classes":"","comment":"","fig-cap":"","label":"unnamed-chunk-4","results":"markup","output":"true","warning":"true","out-height":"","out-width":"700px","context":"interactive","message":"true","fig-height":5,"dpi":72,"read-only":"false"},"code":"nobel |>\n  mutate(gender = as.numeric(gender)) |>\n  select(gender)","id":4},{"options":{"autorun":"false","fig-width":7,"classes":"","comment":"","fig-cap":"","label":"unnamed-chunk-5","results":"markup","output":"true","warning":"true","out-height":"","out-width":"700px","context":"interactive","message":"true","fig-height":5,"dpi":72,"read-only":"false"},"code":"nobel |>\n  mutate(gender_num = as.numeric(as.factor(gender))) |>\n  select(gender, gender_num) |>\n  unique()","id":5},{"options":{"autorun":"false","fig-width":7,"classes":"","comment":"","fig-cap":"","label":"sales-import","results":"markup","output":"true","warning":"true","out-height":"","out-width":"700px","context":"interactive","message":"true","fig-height":5,"dpi":72,"read-only":"false"},"code":"sales <- read_excel(\n  \"sales.xlsx\"\n)\n\nglimpse(sales)","id":6},{"options":{"autorun":"false","fig-width":7,"classes":"","comment":"","fig-cap":"","label":"unnamed-chunk-7","results":"markup","output":"true","warning":"true","out-height":"","out-width":"700px","context":"interactive","message":"true","fig-height":5,"dpi":72,"read-only":"false"},"code":"read_excel(\n  \"sales.xlsx\", \n  skip = 3,\n  col_names = c(\"id\", \"n\")\n) |>\n# add code here","id":7}];
+globalThis.qwebrCellDetails = [{"id":1,"options":{"output":"true","context":"setup","results":"markup","dpi":72,"autorun":"true","message":"true","fig-width":7,"warning":"true","label":"unnamed-chunk-1","fig-height":5,"out-width":"700px","comment":"","classes":"","read-only":"false","out-height":"","fig-cap":""},"code":"download.file(\n  \"https://raw.githubusercontent.com/ElijahMeyer3/Coursera/main/data/nobel.csv\",\n  \"nobel.csv\"\n)\n\ndownload.file(\n  \"https://raw.githubusercontent.com/ElijahMeyer3/Coursera/main/data/sales.xlsx\",\n  \"sales.xlsx\"\n)\n\noptions(readr.show_progress = FALSE)"},{"id":2,"options":{"output":"true","context":"interactive","results":"markup","dpi":72,"autorun":"false","message":"true","fig-width":7,"warning":"true","label":"unnamed-chunk-2","fig-height":5,"out-width":"700px","comment":"","classes":"","read-only":"false","out-height":"","fig-cap":""},"code":"nobel <- read_csv(\"nobel.csv\")"},{"id":3,"options":{"output":"true","context":"interactive","results":"markup","dpi":72,"autorun":"false","message":"true","fig-width":7,"warning":"true","label":"unnamed-chunk-3","fig-height":5,"out-width":"700px","comment":"","classes":"","read-only":"false","out-height":"","fig-cap":""},"code":"nobel <- read_csv(\"nobel.csv\", # add code here)"},{"id":4,"options":{"output":"true","context":"interactive","results":"markup","dpi":72,"autorun":"false","message":"true","fig-width":7,"warning":"true","label":"unnamed-chunk-4","fig-height":5,"out-width":"700px","comment":"","classes":"","read-only":"false","out-height":"","fig-cap":""},"code":"nobel |>\n  mutate(gender = as.numeric(gender)) |>\n  select(gender)"},{"id":5,"options":{"output":"true","context":"interactive","results":"markup","dpi":72,"autorun":"false","message":"true","fig-width":7,"warning":"true","label":"unnamed-chunk-5","fig-height":5,"out-width":"700px","comment":"","classes":"","read-only":"false","out-height":"","fig-cap":""},"code":"nobel |>\n  mutate(gender_num = as.numeric(as.factor(gender))) |>\n  select(gender, gender_num) |>\n  unique()"},{"id":6,"options":{"output":"true","context":"interactive","results":"markup","dpi":72,"autorun":"false","message":"true","fig-width":7,"warning":"true","label":"sales-import","fig-height":5,"out-width":"700px","comment":"","classes":"","read-only":"false","out-height":"","fig-cap":""},"code":"sales <- read_excel(\n  \"sales.xlsx\"\n)\n\nglimpse(sales)"},{"id":7,"options":{"output":"true","context":"interactive","results":"markup","dpi":72,"autorun":"false","message":"true","fig-width":7,"warning":"true","label":"unnamed-chunk-7","fig-height":5,"out-width":"700px","comment":"","classes":"","read-only":"false","out-height":"","fig-cap":""},"code":"sales <- read_excel(\n  \"sales.xlsx\", \n# add code here\n)"},{"id":8,"options":{"output":"true","context":"interactive","results":"markup","dpi":72,"autorun":"false","message":"true","fig-width":7,"warning":"true","label":"unnamed-chunk-8","fig-height":5,"out-width":"700px","comment":"","classes":"","read-only":"false","out-height":"","fig-cap":""},"code":"read_excel(\n  \"sales.xlsx\", \n  skip = 3,\n  col_names = c(\"id\", \"n\")\n) |>\n# add code here"}];
 
 </script>
 <script type="module">
@@ -1247,7 +1247,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <div id="qwebr-insertion-location-2"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>Based on the tibble output, what are the number of rows and columns of the nobel dataset? What types of variables are you working with?</p>
+<p>Based on the tibble output, what are the number of rows and columns of the <code>nobel</code> dataset? What types of variables are you working with?</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -1265,7 +1265,7 @@ Solution
 </div>
 </div>
 </div>
-<p>Now, rerun the code above to read in the dataset, but use the argument <code>show_col_types = FALSE</code> to suppress the given dataset information</p>
+<p>Now, rerun the code above to read in the dataset, but use the argument <code>show_col_types = FALSE</code> to suppress the given dataset information. Note that, if done correctly, you won’t see any output.</p>
 <div id="qwebr-insertion-location-3"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -1416,13 +1416,13 @@ Solution
 </section>
 <section id="sales" class="level2">
 <h2 class="anchored" data-anchor-id="sales">Sales</h2>
-<p>For the remaining part of this exercise, we are going to learn how to read in and clean up data that come from excel. The messy data that we are going to work with can be seen in below.</p>
+<p>For the remaining part of this exercise, we are going to learn how to read in and clean up data that come from Excel. The messy data that we are going to work with can be seen in below.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/salex-excel.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="801"></p>
 </figure>
 </div>
-<p>We are going to use <code>read_excel()</code> to read in a xlsx excel file. Read in the file and take a glimpse of these data. Why can we not work with these data in their current form?</p>
+<p>We are going to use <code>read_excel()</code> to read in a xlsx Excel file. Read in the file and take a glimpse of these data. Why can we not work with these data in their current form?</p>
 <div id="qwebr-insertion-location-6"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -1442,10 +1442,8 @@ Solution
 </div>
 </div>
 <p>See the help file for <code>read_excel()</code> <a href="https://www.rdocumentation.org/packages/readxl/versions/0.1.1/topics/read_excel">here</a>. Notice that, in the current <code>sales</code> dataset, we want to skip 3 rows (the first row acts as a header for the column names). We can do this using the <code>skip</code> argument. At the same time, we can specify names for each column by giving the argument <code>col_names</code> a character vector. Use these arguments and add to the code below to skip 3 lines and name the columns <code>id</code> and <code>n</code>.</p>
-<pre class="{web-r}"><code>sales &lt;- read_excel(
-  "sales.xlsx", 
-# add code here
-)</code></pre>
+<div id="qwebr-insertion-location-7"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -1459,13 +1457,13 @@ Solution
 <div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>sales <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"sales.xlsx"</span>,</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">skip =</span> <span class="dv">3</span>,</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">col_names =</span> <span class="fu">c</span>(<span class="st">"id"</span>, <span class="st">"n"</span>)</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>sales</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>sales <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"sales.xlsx"</span>,</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">skip =</span> <span class="dv">3</span>,</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">col_names =</span> <span class="fu">c</span>(<span class="st">"id"</span>, <span class="st">"n"</span>)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>sales</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1475,7 +1473,7 @@ Solution
 <h2 class="anchored" data-anchor-id="putting-it-all-together">Putting it all together</h2>
 <p>Manipulate the sales data such such that it looks like the following using functions you have learned from the <code>tidyverse</code> to transform data.</p>
 <p><img src="images/sales-2.png" class="img-fluid" width="300"></p>
-<div id="qwebr-insertion-location-7"></div>
+<div id="qwebr-insertion-location-8"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
@@ -1490,14 +1488,14 @@ Solution
 <div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>sales <span class="sc">|&gt;</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">is_brand_name =</span> <span class="fu">str_detect</span>(id, <span class="st">"Brand"</span>),</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">brand =</span> <span class="fu">if_else</span>(is_brand_name, id, <span class="cn">NA</span>)</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fill</span>(brand) <span class="sc">|&gt;</span></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>is_brand_name) <span class="sc">|&gt;</span></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(brand, id, n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>sales <span class="sc">|&gt;</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">is_brand_name =</span> <span class="fu">str_detect</span>(id, <span class="st">"Brand"</span>),</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">brand =</span> <span class="fu">if_else</span>(is_brand_name, id, <span class="cn">NA</span>)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fill</span>(brand) <span class="sc">|&gt;</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>is_brand_name) <span class="sc">|&gt;</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(brand, id, n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 7 × 3
   brand   id    n    
