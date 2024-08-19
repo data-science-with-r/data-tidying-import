@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -212,7 +246,7 @@ ul.task-list li input[type="checkbox"] {
 // Document level settings ----
 
 // Determine if we need to install R packages
-globalThis.qwebrInstallRPackagesList = ['tidyverse', 'scales', 'readxl', 'rvest'];
+globalThis.qwebrInstallRPackagesList = ['tidyverse', 'scales', 'rvest', 'polite'];
 
 // Specify possible locations to search for the repository
 globalThis.qwebrPackageRepoURLS = ['https://repo.r-wasm.org/'];
@@ -234,7 +268,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"starwars <- read_html(\"https://rvest.tidyverse.org/articles/starwars.html\")","options":{"out-height":"","output":"true","out-width":"700px","context":"interactive","read-only":"false","comment":"","fig-width":7,"fig-height":5,"autorun":"false","label":"unnamed-chunk-1","fig-cap":"","results":"markup","classes":"","warning":"true","dpi":72,"message":"true"},"id":1},{"code":"title <- films |> \n  html_element(\"h2\") |> \n  html_text2()\n\ntitle","options":{"out-height":"","output":"true","out-width":"700px","context":"interactive","read-only":"false","comment":"","fig-width":7,"fig-height":5,"autorun":"false","label":"unnamed-chunk-2","fig-cap":"","results":"markup","classes":"","warning":"true","dpi":72,"message":"true"},"id":2}];
+globalThis.qwebrCellDetails = [{"options":{"context":"interactive","out-width":"700px","autorun":"false","classes":"","fig-cap":"","fig-height":5,"read-only":"false","comment":"","warning":"true","label":"unnamed-chunk-1","dpi":72,"message":"true","fig-width":7,"out-height":"","results":"markup","output":"true"},"code":"starwars <- read_html(\"https://rvest.tidyverse.org/articles/starwars.html\")","id":1},{"options":{"context":"interactive","out-width":"700px","autorun":"false","classes":"","fig-cap":"","fig-height":5,"read-only":"false","comment":"","warning":"true","label":"unnamed-chunk-2","dpi":72,"message":"true","fig-width":7,"out-height":"","results":"markup","output":"true"},"code":"films <- starwars |>\n  html_elements(\"section\")\n\nfilms","id":2},{"options":{"context":"interactive","out-width":"700px","autorun":"false","classes":"","fig-cap":"","fig-height":5,"read-only":"false","comment":"","warning":"true","label":"unnamed-chunk-3","dpi":72,"message":"true","fig-width":7,"out-height":"","results":"markup","output":"true"},"code":"\ntitle <- films |> \n  html_element(\"h2\") |> \n  html_text2()\n\ntitle","id":3},{"options":{"context":"interactive","out-width":"700px","autorun":"false","classes":"","fig-cap":"","fig-height":5,"read-only":"false","comment":"","warning":"true","label":"unnamed-chunk-4","dpi":72,"message":"true","fig-width":7,"out-height":"","results":"markup","output":"true"},"code":"starwars |>\n  html_elements(\"h2\")","id":4},{"options":{"context":"interactive","out-width":"700px","autorun":"false","classes":"","fig-cap":"","fig-height":5,"read-only":"false","comment":"","warning":"true","label":"unnamed-chunk-5","dpi":72,"message":"true","fig-width":7,"out-height":"","results":"markup","output":"true"},"code":"host <- \"https://rvest.tidyverse.org/articles/starwars.html\"\n\nbow(host)","id":5}];
 
 </script>
 <script type="module">
@@ -997,7 +1031,9 @@ globalThis.qwebrExecuteCode = async function (
   <li><a href="#star-wars" id="toc-star-wars" class="nav-link active" data-scroll-target="#star-wars">Star Wars</a>
   <ul class="collapse">
   <li><a href="#scraping-titles" id="toc-scraping-titles" class="nav-link" data-scroll-target="#scraping-titles">Scraping titles</a></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a></li>
   </ul></li>
+  <li><a href="#asking-permission" id="toc-asking-permission" class="nav-link" data-scroll-target="#asking-permission">Asking Permission</a></li>
   </ul>
 </nav>
     </div>
@@ -1234,15 +1270,95 @@ Solution
 </section>
 <section id="find-the-element" class="level4">
 <h4 class="anchored" data-anchor-id="find-the-element">Find the element</h4>
-<p>Next, we need to find the element that is assocciated with the titles of each Star Wars movie. Click the <img src="images/gadget.png" class="img-fluid"> icon and click on one of the titles.</p>
+<p>Next, we need to find the element that is associated with the titles of each Star Wars movie. Click the <img src="images/gadget.png" class="img-fluid"> icon and click on one of the titles.</p>
 <p><img src="images/h2.png" class="img-fluid"></p>
-<p>Both in the bottom right and in the red outline, you will see the element <code>h2</code>. We can use this information to pull the titles from the website using the following code:</p>
+<p>Both in the bottom right and in the red outline, you will see the element <code>section</code>. Click on a different title. You will again see the element <code>section</code>. We can use this information to pull the titles from the website using the following code:</p>
 <div id="qwebr-insertion-location-2"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-
-
+<p>Notice how seven nodes (titles) had the same element <code>section</code>. You can see the title of the movie, along with other data, in each row. Among this output, you can see that each data-id has an <code>h2</code> element. We also saw h2 when using the selector gadget on the title. Now, let’s pull just the information associated with the <code>h2</code> element.</p>
+<div id="qwebr-insertion-location-3"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p>Another way to get title information is to take them directly from the <code>starwars</code> html using <code>html_elements("h2")</code>. See the following code below.</p>
+<div id="qwebr-insertion-location-4"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p>Notice that this has 8 nodes, instead of 7, as the data “On this page” does not have the element <code>section</code> tag.</p>
 </section>
 </section>
+<section id="section" class="level3">
+<h3 class="anchored" data-anchor-id="section"></h3>
+</section>
+</section>
+<section id="asking-permission" class="level2">
+<h2 class="anchored" data-anchor-id="asking-permission">Asking Permission</h2>
+<p>Just because you can use rvest tools to scrape data doesn’t mean you should or have permission to do so. We will use the <code>bow()</code> function from the polite package in R to introduce the client to the host and ask for permission to scrape. Use the following code to ensure that we had permission to scrape Star Wars! Note that the input for <code>bow()</code> is a character URL.</p>
+<div id="qwebr-insertion-location-5"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p>Indeed, we had permission to scrape that website!</p>
+<p>Let’s check out four more websites:</p>
+<ul>
+<li>https://espn.com</li>
+<li>https://x.com/home</li>
+<li>https://www.bettycrocker.com</li>
+<li>https://www.zillow.com</li>
+</ul>
+<p>Save each of these websites as a character, and use <code>bow()</code> to check for permission. What websites are you allowed to scrape? Which are you not allowed to scrape?</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>host1 <span class="ot">&lt;-</span> <span class="st">"https://espn.com"</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>host2 <span class="ot">&lt;-</span> <span class="st">"https://x.com/home"</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>host3 <span class="ot">&lt;-</span> <span class="st">"https://www.bettycrocker.com"</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>host4 <span class="ot">&lt;-</span> <span class="st">"https://www.zillow.com"</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">bow</span>(host1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;polite session&gt; https://espn.com
+    User-agent: polite R package
+    robots.txt: 114 rules are defined for 11 bots
+   Crawl delay: 5 sec
+  The path is not scrapable for this user-agent</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bow</span>(host2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;polite session&gt; https://x.com/home
+    User-agent: polite R package
+    robots.txt: 24 rules are defined for 7 bots
+   Crawl delay: 5 sec
+  The path is not scrapable for this user-agent</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bow</span>(host3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;polite session&gt; https://www.bettycrocker.com
+    User-agent: polite R package
+    robots.txt: 15 rules are defined for 1 bots
+   Crawl delay: 5 sec
+  The path is scrapable for this user-agent</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bow</span>(host4)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;polite session&gt; https://www.zillow.com
+    User-agent: polite R package
+    robots.txt: 244 rules are defined for 8 bots
+   Crawl delay: 5 sec
+  The path is scrapable for this user-agent</code></pre>
+</div>
+</div>
+<p>We do not have permission to scrape espn.com or x.com. We do have permission to scrape bettycrocker.com and zillow.com.</p>
+</div>
+</div>
+</div>
+
+
 </section>
 
 </main> <!-- /main -->
