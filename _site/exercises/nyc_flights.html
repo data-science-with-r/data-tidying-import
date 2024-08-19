@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.55">
+<meta name="generator" content="quarto-1.4.555">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>nyc_flights – Data tidying and importing</title>
+<title>Data tidying and importing - NYC flights + data wrangling</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -268,7 +268,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"options":{"out-width":"700px","classes":"","output":"true","dpi":72,"read-only":"false","message":"true","results":"markup","warning":"true","comment":"","out-height":"","fig-cap":"","fig-width":7,"fig-height":5,"context":"interactive","label":"unnamed-chunk-1","autorun":"false"},"id":1,"code":"# add code here"},{"options":{"out-width":"700px","classes":"","output":"true","dpi":72,"read-only":"false","message":"true","results":"markup","warning":"true","comment":"","out-height":"","fig-cap":"","fig-width":7,"fig-height":5,"context":"interactive","label":"unnamed-chunk-2","autorun":"false"},"id":2,"code":"# add code here"},{"options":{"out-width":"700px","classes":"","output":"true","dpi":72,"read-only":"false","message":"true","results":"markup","warning":"true","comment":"","out-height":"","fig-cap":"","fig-width":7,"fig-height":5,"context":"interactive","label":"unnamed-chunk-3","autorun":"false"},"id":3,"code":"# add code here"},{"options":{"out-width":"700px","classes":"","output":"true","dpi":72,"read-only":"false","message":"true","results":"markup","warning":"true","comment":"","out-height":"","fig-cap":"","fig-width":7,"fig-height":5,"context":"interactive","label":"unnamed-chunk-4","autorun":"false"},"id":4,"code":"# add code here"},{"options":{"out-width":"700px","classes":"","output":"true","dpi":72,"read-only":"false","message":"true","results":"markup","warning":"true","comment":"","out-height":"","fig-cap":"","fig-width":7,"fig-height":5,"context":"interactive","label":"unnamed-chunk-5","autorun":"false"},"id":5,"code":"# add code here"},{"options":{"out-width":"700px","classes":"","output":"true","dpi":72,"read-only":"false","message":"true","results":"markup","warning":"true","comment":"","out-height":"","fig-cap":"","fig-width":7,"fig-height":5,"context":"interactive","label":"unnamed-chunk-6","autorun":"false"},"id":6,"code":"# add code here"},{"options":{"out-width":"700px","classes":"","output":"true","dpi":72,"read-only":"false","message":"true","results":"markup","warning":"true","comment":"","out-height":"","fig-cap":"","fig-width":7,"fig-height":5,"context":"interactive","label":"unnamed-chunk-7","autorun":"false"},"id":7,"code":"# add code here"},{"options":{"out-width":"700px","classes":"","output":"true","dpi":72,"read-only":"false","message":"true","results":"markup","warning":"true","comment":"","out-height":"","fig-cap":"","fig-width":7,"fig-height":5,"context":"interactive","label":"unnamed-chunk-8","autorun":"false"},"id":8,"code":"# add code here"},{"options":{"out-width":"700px","classes":"","output":"true","dpi":72,"read-only":"false","message":"true","results":"markup","warning":"true","comment":"","out-height":"","fig-cap":"","fig-width":7,"fig-height":5,"context":"interactive","label":"unnamed-chunk-9","autorun":"false"},"id":9,"code":"# add code here"},{"options":{"out-width":"700px","classes":"","output":"true","dpi":72,"read-only":"false","message":"true","results":"markup","warning":"true","comment":"","out-height":"","fig-cap":"","fig-width":7,"fig-height":5,"context":"interactive","label":"unnamed-chunk-10","autorun":"false"},"id":10,"code":"# add code here"},{"options":{"out-width":"700px","classes":"","output":"true","dpi":72,"read-only":"false","message":"true","results":"markup","warning":"true","comment":"","out-height":"","fig-cap":"","fig-width":7,"fig-height":5,"context":"interactive","label":"unnamed-chunk-11","autorun":"false"},"id":11,"code":"# add code here"},{"options":{"out-width":"700px","classes":"","output":"true","dpi":72,"read-only":"false","message":"true","results":"markup","warning":"true","comment":"","out-height":"","fig-cap":"","fig-width":7,"fig-height":5,"context":"interactive","label":"unnamed-chunk-12","autorun":"false"},"id":12,"code":"flights |>\n  filter(\n    dest %in% c(\"RDU\", \"GSO\"),\n    arr_delay < 0 | dep_delay < 0\n    )"},{"options":{"out-width":"700px","classes":"","output":"true","dpi":72,"read-only":"false","message":"true","results":"markup","warning":"true","comment":"","out-height":"","fig-cap":"","fig-width":7,"fig-height":5,"context":"interactive","label":"unnamed-chunk-13","autorun":"false"},"id":13,"code":"# add code here"},{"options":{"out-width":"700px","classes":"","output":"true","dpi":72,"read-only":"false","message":"true","results":"markup","warning":"true","comment":"","out-height":"","fig-cap":"","fig-width":7,"fig-height":5,"context":"interactive","label":"unnamed-chunk-14","autorun":"false"},"id":14,"code":"# add code here"},{"options":{"out-width":"700px","classes":"","output":"true","dpi":72,"read-only":"false","message":"true","results":"markup","warning":"true","comment":"","out-height":"","fig-cap":"","fig-width":7,"fig-height":5,"context":"interactive","label":"unnamed-chunk-15","autorun":"false"},"id":15,"code":"# add code here"},{"options":{"out-width":"700px","classes":"","output":"true","dpi":72,"read-only":"false","message":"true","results":"markup","warning":"true","comment":"","out-height":"","fig-cap":"","fig-width":7,"fig-height":5,"context":"interactive","label":"unnamed-chunk-16","autorun":"false"},"id":16,"code":"# add code here"},{"options":{"out-width":"700px","classes":"","output":"true","dpi":72,"read-only":"false","message":"true","results":"markup","warning":"true","comment":"","out-height":"","fig-cap":"","fig-width":7,"fig-height":5,"context":"interactive","label":"unnamed-chunk-17","autorun":"false"},"id":17,"code":"# add code here"},{"options":{"out-width":"700px","classes":"","output":"true","dpi":72,"read-only":"false","message":"true","results":"markup","warning":"true","comment":"","out-height":"","fig-cap":"","fig-width":7,"fig-height":5,"context":"interactive","label":"unnamed-chunk-18","autorun":"false"},"id":18,"code":"# add code here"},{"options":{"out-width":"700px","classes":"","output":"true","dpi":72,"read-only":"false","message":"true","results":"markup","warning":"true","comment":"","out-height":"","fig-cap":"","fig-width":7,"fig-height":5,"context":"interactive","label":"unnamed-chunk-19","autorun":"false"},"id":19,"code":"# add code here"},{"options":{"out-width":"700px","classes":"","output":"true","dpi":72,"read-only":"false","message":"true","results":"markup","warning":"true","comment":"","out-height":"","fig-cap":"","fig-width":7,"fig-height":5,"context":"interactive","label":"unnamed-chunk-20","autorun":"false"},"id":20,"code":"# add code here"},{"options":{"out-width":"700px","classes":"","output":"true","dpi":72,"read-only":"false","message":"true","results":"markup","warning":"true","comment":"","out-height":"","fig-cap":"","fig-width":7,"fig-height":5,"context":"interactive","label":"unnamed-chunk-21","autorun":"false"},"id":21,"code":"# add code here"},{"options":{"out-width":"700px","classes":"","output":"true","dpi":72,"read-only":"false","message":"true","results":"markup","warning":"true","comment":"","out-height":"","fig-cap":"","fig-width":7,"fig-height":5,"context":"interactive","label":"unnamed-chunk-22","autorun":"false"},"id":22,"code":"# add code here"},{"options":{"out-width":"700px","classes":"","output":"true","dpi":72,"read-only":"false","message":"true","results":"markup","warning":"true","comment":"","out-height":"","fig-cap":"","fig-width":7,"fig-height":5,"context":"interactive","label":"unnamed-chunk-23","autorun":"false"},"id":23,"code":"# add code here"},{"options":{"out-width":"700px","classes":"","output":"true","dpi":72,"read-only":"false","message":"true","results":"markup","warning":"true","comment":"","out-height":"","fig-cap":"","fig-width":7,"fig-height":5,"context":"interactive","label":"unnamed-chunk-24","autorun":"false"},"id":24,"code":""}];
+globalThis.qwebrCellDetails = [{"id":1,"code":"# add code here","options":{"warning":"true","classes":"","fig-height":5,"label":"unnamed-chunk-1","message":"true","autorun":"false","dpi":72,"results":"markup","fig-cap":"","output":"true","out-width":"700px","fig-width":7,"comment":"","read-only":"false","context":"interactive","out-height":""}},{"id":2,"code":"# add code here","options":{"warning":"true","classes":"","fig-height":5,"label":"unnamed-chunk-2","message":"true","autorun":"false","dpi":72,"results":"markup","fig-cap":"","output":"true","out-width":"700px","fig-width":7,"comment":"","read-only":"false","context":"interactive","out-height":""}},{"id":3,"code":"# add code here","options":{"warning":"true","classes":"","fig-height":5,"label":"unnamed-chunk-3","message":"true","autorun":"false","dpi":72,"results":"markup","fig-cap":"","output":"true","out-width":"700px","fig-width":7,"comment":"","read-only":"false","context":"interactive","out-height":""}},{"id":4,"code":"# add code here","options":{"warning":"true","classes":"","fig-height":5,"label":"unnamed-chunk-4","message":"true","autorun":"false","dpi":72,"results":"markup","fig-cap":"","output":"true","out-width":"700px","fig-width":7,"comment":"","read-only":"false","context":"interactive","out-height":""}},{"id":5,"code":"# add code here","options":{"warning":"true","classes":"","fig-height":5,"label":"unnamed-chunk-5","message":"true","autorun":"false","dpi":72,"results":"markup","fig-cap":"","output":"true","out-width":"700px","fig-width":7,"comment":"","read-only":"false","context":"interactive","out-height":""}},{"id":6,"code":"# add code here","options":{"warning":"true","classes":"","fig-height":5,"label":"unnamed-chunk-6","message":"true","autorun":"false","dpi":72,"results":"markup","fig-cap":"","output":"true","out-width":"700px","fig-width":7,"comment":"","read-only":"false","context":"interactive","out-height":""}},{"id":7,"code":"# add code here","options":{"warning":"true","classes":"","fig-height":5,"label":"unnamed-chunk-7","message":"true","autorun":"false","dpi":72,"results":"markup","fig-cap":"","output":"true","out-width":"700px","fig-width":7,"comment":"","read-only":"false","context":"interactive","out-height":""}},{"id":8,"code":"# add code here","options":{"warning":"true","classes":"","fig-height":5,"label":"unnamed-chunk-8","message":"true","autorun":"false","dpi":72,"results":"markup","fig-cap":"","output":"true","out-width":"700px","fig-width":7,"comment":"","read-only":"false","context":"interactive","out-height":""}},{"id":9,"code":"# add code here","options":{"warning":"true","classes":"","fig-height":5,"label":"unnamed-chunk-9","message":"true","autorun":"false","dpi":72,"results":"markup","fig-cap":"","output":"true","out-width":"700px","fig-width":7,"comment":"","read-only":"false","context":"interactive","out-height":""}},{"id":10,"code":"# add code here","options":{"warning":"true","classes":"","fig-height":5,"label":"unnamed-chunk-10","message":"true","autorun":"false","dpi":72,"results":"markup","fig-cap":"","output":"true","out-width":"700px","fig-width":7,"comment":"","read-only":"false","context":"interactive","out-height":""}},{"id":11,"code":"# add code here","options":{"warning":"true","classes":"","fig-height":5,"label":"unnamed-chunk-11","message":"true","autorun":"false","dpi":72,"results":"markup","fig-cap":"","output":"true","out-width":"700px","fig-width":7,"comment":"","read-only":"false","context":"interactive","out-height":""}},{"id":12,"code":"flights |>\n  filter(\n    dest %in% c(\"RDU\", \"GSO\"),\n    arr_delay < 0 | dep_delay < 0\n    )","options":{"warning":"true","classes":"","fig-height":5,"label":"unnamed-chunk-12","message":"true","autorun":"false","dpi":72,"results":"markup","fig-cap":"","output":"true","out-width":"700px","fig-width":7,"comment":"","read-only":"false","context":"interactive","out-height":""}},{"id":13,"code":"# add code here","options":{"warning":"true","classes":"","fig-height":5,"label":"unnamed-chunk-13","message":"true","autorun":"false","dpi":72,"results":"markup","fig-cap":"","output":"true","out-width":"700px","fig-width":7,"comment":"","read-only":"false","context":"interactive","out-height":""}},{"id":14,"code":"# add code here","options":{"warning":"true","classes":"","fig-height":5,"label":"unnamed-chunk-14","message":"true","autorun":"false","dpi":72,"results":"markup","fig-cap":"","output":"true","out-width":"700px","fig-width":7,"comment":"","read-only":"false","context":"interactive","out-height":""}},{"id":15,"code":"# add code here","options":{"warning":"true","classes":"","fig-height":5,"label":"unnamed-chunk-15","message":"true","autorun":"false","dpi":72,"results":"markup","fig-cap":"","output":"true","out-width":"700px","fig-width":7,"comment":"","read-only":"false","context":"interactive","out-height":""}},{"id":16,"code":"# add code here","options":{"warning":"true","classes":"","fig-height":5,"label":"unnamed-chunk-16","message":"true","autorun":"false","dpi":72,"results":"markup","fig-cap":"","output":"true","out-width":"700px","fig-width":7,"comment":"","read-only":"false","context":"interactive","out-height":""}},{"id":17,"code":"# add code here","options":{"warning":"true","classes":"","fig-height":5,"label":"unnamed-chunk-17","message":"true","autorun":"false","dpi":72,"results":"markup","fig-cap":"","output":"true","out-width":"700px","fig-width":7,"comment":"","read-only":"false","context":"interactive","out-height":""}},{"id":18,"code":"# add code here","options":{"warning":"true","classes":"","fig-height":5,"label":"unnamed-chunk-18","message":"true","autorun":"false","dpi":72,"results":"markup","fig-cap":"","output":"true","out-width":"700px","fig-width":7,"comment":"","read-only":"false","context":"interactive","out-height":""}},{"id":19,"code":"# add code here","options":{"warning":"true","classes":"","fig-height":5,"label":"unnamed-chunk-19","message":"true","autorun":"false","dpi":72,"results":"markup","fig-cap":"","output":"true","out-width":"700px","fig-width":7,"comment":"","read-only":"false","context":"interactive","out-height":""}},{"id":20,"code":"# add code here","options":{"warning":"true","classes":"","fig-height":5,"label":"unnamed-chunk-20","message":"true","autorun":"false","dpi":72,"results":"markup","fig-cap":"","output":"true","out-width":"700px","fig-width":7,"comment":"","read-only":"false","context":"interactive","out-height":""}},{"id":21,"code":"# add code here","options":{"warning":"true","classes":"","fig-height":5,"label":"unnamed-chunk-21","message":"true","autorun":"false","dpi":72,"results":"markup","fig-cap":"","output":"true","out-width":"700px","fig-width":7,"comment":"","read-only":"false","context":"interactive","out-height":""}},{"id":22,"code":"# add code here","options":{"warning":"true","classes":"","fig-height":5,"label":"unnamed-chunk-22","message":"true","autorun":"false","dpi":72,"results":"markup","fig-cap":"","output":"true","out-width":"700px","fig-width":7,"comment":"","read-only":"false","context":"interactive","out-height":""}},{"id":23,"code":"# add code here","options":{"warning":"true","classes":"","fig-height":5,"label":"unnamed-chunk-23","message":"true","autorun":"false","dpi":72,"results":"markup","fig-cap":"","output":"true","out-width":"700px","fig-width":7,"comment":"","read-only":"false","context":"interactive","out-height":""}},{"id":24,"code":"","options":{"warning":"true","classes":"","fig-height":5,"label":"unnamed-chunk-24","message":"true","autorun":"false","dpi":72,"results":"markup","fig-cap":"","output":"true","out-width":"700px","fig-width":7,"comment":"","read-only":"false","context":"interactive","out-height":""}}];
 
 </script>
 <script type="module">
@@ -1001,7 +1001,7 @@ globalThis.qwebrExecuteCode = async function (
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -1012,7 +1012,7 @@ globalThis.qwebrExecuteCode = async function (
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
-            <div class="quarto-navbar-tools">
+          <div class="quarto-navbar-tools">
     <a href="https://github.com/data-science-with-r" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
@@ -1240,7 +1240,7 @@ Important
 </div>
 <section id="getting-started" class="level2">
 <h2 class="anchored" data-anchor-id="getting-started">Getting started</h2>
-<p>In this exercise, we will be exploring the <code>flights</code> data set, containing information about all flights that departed from NYC to destinations in the United States, Puerto Rico, and the American Virgin Island in 2013. A data key can be found below:</p>
+<p>In this exercise, we will be exploring the <code>flights</code> data set, which contains information about all flights that departed from NYC to destinations in the United States, Puerto Rico, and the American Virgin Islands in 2013. A data key can be found below:</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -1402,7 +1402,7 @@ $ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-
 </section>
 <section id="select" class="level2">
 <h2 class="anchored" data-anchor-id="select"><a href="https://dplyr.tidyverse.org/reference/select.html"><code>select()</code></a></h2>
-<p>The function <code>select()</code> makes it easy to select variable(s) in your data set based on their name or position.</p>
+<p>The <code>select()</code> function makes it easy to select variable(s) in your data set based on their name or position.</p>
 <p>Using <code>select()</code>, make a data frame that only contains the variables <code>dep_delay</code> and <code>arr_delay</code>.</p>
 <div id="qwebr-insertion-location-2"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
@@ -1561,7 +1561,7 @@ Solution
 </section>
 <section id="slice" class="level2">
 <h2 class="anchored" data-anchor-id="slice"><a href="https://dplyr.tidyverse.org/reference/slice.html"><code>slice()</code></a></h2>
-<p>The function <a href="https://dplyr.tidyverse.org/reference/slice.html"><code>slice()</code></a> lets you index rows by their name or (integer) locations. Other common uses of <code>slice()</code> include selecting and removing rows.</p>
+<p>The [<code>slice()</code>] function lets you index rows by their name or (integer) locations. Other common uses of <code>slice()</code> include selecting and removing rows.</p>
 <p>Display the first five rows of the <code>flights</code> data frame.</p>
 <div id="qwebr-insertion-location-6"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
@@ -1907,7 +1907,7 @@ more operators
 </section>
 <section id="count" class="level2">
 <h2 class="anchored" data-anchor-id="count"><a href="https://dplyr.tidyverse.org/reference/count.html"><code>count()</code></a></h2>
-<p>We can use the function <code>count()</code> to create frequency tables of selected variables.</p>
+<p>We can use the <code>count()</code> function to create frequency tables of selected variables.</p>
 <p>Create a frequency table of the destination locations for flights from New York.</p>
 <div id="qwebr-insertion-location-13"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
@@ -2007,8 +2007,8 @@ Solution
 </section>
 <section id="mutate" class="level2">
 <h2 class="anchored" data-anchor-id="mutate"><a href="https://dplyr.tidyverse.org/reference/mutate.html"><code>mutate()</code></a></h2>
-<p>We can use the function <code>mutate()</code> to create new columns or modify existing columns in your data set.</p>
-<p>Convert air_time (minutes in the air) to hours and then create a new variable, mph, the miles per hour of the flight</p>
+<p>We can use the <code>mutate()</code> function to create new columns or modify existing columns in your data set.</p>
+<p>Convert air_time (minutes in the air) to hours and then create a new variable, <code>mph</code>, the miles per hour of the flight</p>
 <div id="qwebr-insertion-location-16"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -2088,8 +2088,8 @@ Solution
 </section>
 <section id="summarize-group_by" class="level2">
 <h2 class="anchored" data-anchor-id="summarize-group_by"><a href="https://dplyr.tidyverse.org/reference/summarise.html"><code>summarize()</code></a> &amp; <a href="https://dplyr.tidyverse.org/reference/group_by.html"><code>group_by()</code></a></h2>
-<p>We can use the function <code>summarize()</code> to calculate summary statistics for a selected column. <code>summarize()</code> is often accompanied with <code>group_by()</code>, which converts a data frame into a grouped tbl where operations (like <code>summarize()</code>) are performed for each group.</p>
-<p>Find mean arrival delay for all flights.</p>
+<p>We can use the function <code>summarize()</code> to calculate summary statistics for a selected column. <code>summarize()</code> is often accompanied by <code>group_by()</code>, which converts a data frame into a grouped tibble where operations (like <code>summarize()</code>) are performed for each group.</p>
+<p>Find the mean arrival delay for all flights.</p>
 <div id="qwebr-insertion-location-18"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -2117,7 +2117,7 @@ Solution
 </div>
 </div>
 </div>
-<p>Find mean arrival delay for for each month.</p>
+<p>Find the mean arrival delay for for each month.</p>
 <div id="qwebr-insertion-location-19"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -2219,7 +2219,7 @@ Solution
 </div>
 </div>
 </div>
-<p>Create a new variable to calculate the percentage of flights in each month. What percentage of flights take place in July?</p>
+<p>Create a new variable to calculate the percentage of flights in each month. What percentage of flights were in July?</p>
 <div id="qwebr-insertion-location-22"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -2535,7 +2535,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const onCopySuccess = function(e) {
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -2567,29 +2578,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
   });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
-    });
-    clipboardModal.on('success', onCopySuccess);
-  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -2597,7 +2586,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {

@@ -116,7 +116,7 @@
     "href": "exercises/nyc_flights.html#getting-started",
     "title": "Data tidying and importing",
     "section": "Getting started",
-    "text": "Getting started\nIn this exercise, we will be exploring the flights data set, containing information about all flights that departed from NYC to destinations in the United States, Puerto Rico, and the American Virgin Island in 2013. A data key can be found below:\n\n\n\n\n\n\ndata key\n\n\n\n\n\n\n\n\n\n\n\n\nVariable\nDescription\n\n\n\n\nyear\nyear of departure\n\n\nmonth\nmonth of departure\n\n\nday\nday of departure\n\n\ndep_time\ndeparture time\n\n\narr_time\narrival time\n\n\nsched_dep_time\nscheduled departure time\n\n\nsched_arr_time\nscheduled arrival time\n\n\ndep_delay\ndeparture delays in minutes. Negative times represent early departures in minutes\n\n\narr_delay\narrival delays in minutes. Negative times represent early arrivals in minutes\n\n\ncarrier\ntwo letter carrier abbreviation\n\n\ntailnum\nplane tail number\n\n\norgin\norigin\n\n\ndest\ndestination\n\n\nair_time\namount of time spent in the air in minutes\n\n\ndistance\ndistance between airports in miles\n\n\nhour\nthe hour of time scheduled departure\n\n\nminutes\nthe minutes of time of scheduled departure\n\n\ntime_hour\nscheduled date and hour of the flight as a POSIXct date.\n\n\n\n\n\n\n\nPackages\nWe’ll use: tidyverse for majority of the exploration. Section headers of this exercise refer to the function we will be practicing with. Each header is hyperlinked to their associated help file if you would like to further explore each function.\nThese data we are using are in the nycflights13 package. These are ready to use for you in this programming exercise!"
+    "text": "Getting started\nIn this exercise, we will be exploring the flights data set, which contains information about all flights that departed from NYC to destinations in the United States, Puerto Rico, and the American Virgin Islands in 2013. A data key can be found below:\n\n\n\n\n\n\ndata key\n\n\n\n\n\n\n\n\n\n\n\n\nVariable\nDescription\n\n\n\n\nyear\nyear of departure\n\n\nmonth\nmonth of departure\n\n\nday\nday of departure\n\n\ndep_time\ndeparture time\n\n\narr_time\narrival time\n\n\nsched_dep_time\nscheduled departure time\n\n\nsched_arr_time\nscheduled arrival time\n\n\ndep_delay\ndeparture delays in minutes. Negative times represent early departures in minutes\n\n\narr_delay\narrival delays in minutes. Negative times represent early arrivals in minutes\n\n\ncarrier\ntwo letter carrier abbreviation\n\n\ntailnum\nplane tail number\n\n\norgin\norigin\n\n\ndest\ndestination\n\n\nair_time\namount of time spent in the air in minutes\n\n\ndistance\ndistance between airports in miles\n\n\nhour\nthe hour of time scheduled departure\n\n\nminutes\nthe minutes of time of scheduled departure\n\n\ntime_hour\nscheduled date and hour of the flight as a POSIXct date.\n\n\n\n\n\n\n\nPackages\nWe’ll use: tidyverse for majority of the exploration. Section headers of this exercise refer to the function we will be practicing with. Each header is hyperlinked to their associated help file if you would like to further explore each function.\nThese data we are using are in the nycflights13 package. These are ready to use for you in this programming exercise!"
   },
   {
     "objectID": "exercises/nyc_flights.html#data-wrangling",
@@ -130,14 +130,14 @@
     "href": "exercises/nyc_flights.html#select",
     "title": "Data tidying and importing",
     "section": "select()",
-    "text": "select()\nThe function select() makes it easy to select variable(s) in your data set based on their name or position.\nUsing select(), make a data frame that only contains the variables dep_delay and arr_delay.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nflights |&gt;\n  select(dep_delay, arr_delay)\n\n# A tibble: 336,776 × 2\n   dep_delay arr_delay\n       &lt;dbl&gt;     &lt;dbl&gt;\n 1         2        11\n 2         4        20\n 3         2        33\n 4        -1       -18\n 5        -6       -25\n 6        -4        12\n 7        -5        19\n 8        -3       -14\n 9        -3        -8\n10        -2         8\n# ℹ 336,766 more rows\n\n\n\n\n\nMake a data frame that keeps every variable except dep_delay.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nflights |&gt;\n  select(-dep_delay)\n\n# A tibble: 336,776 × 18\n    year month   day dep_time sched_dep_time arr_time sched_arr_time arr_delay\n   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;\n 1  2013     1     1      517            515      830            819        11\n 2  2013     1     1      533            529      850            830        20\n 3  2013     1     1      542            540      923            850        33\n 4  2013     1     1      544            545     1004           1022       -18\n 5  2013     1     1      554            600      812            837       -25\n 6  2013     1     1      554            558      740            728        12\n 7  2013     1     1      555            600      913            854        19\n 8  2013     1     1      557            600      709            723       -14\n 9  2013     1     1      557            600      838            846        -8\n10  2013     1     1      558            600      753            745         8\n# ℹ 336,766 more rows\n# ℹ 10 more variables: carrier &lt;chr&gt;, flight &lt;int&gt;, tailnum &lt;chr&gt;,\n#   origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;, hour &lt;dbl&gt;,\n#   minute &lt;dbl&gt;, time_hour &lt;dttm&gt;\n\n\n\n\n\nMake a data frame that includes all variables between year through dep_delay (inclusive). These are all variables that provide information about the departure of each flight.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nflights |&gt;\n  select(year:dep_delay)\n\n# A tibble: 336,776 × 6\n    year month   day dep_time sched_dep_time dep_delay\n   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;\n 1  2013     1     1      517            515         2\n 2  2013     1     1      533            529         4\n 3  2013     1     1      542            540         2\n 4  2013     1     1      544            545        -1\n 5  2013     1     1      554            600        -6\n 6  2013     1     1      554            558        -4\n 7  2013     1     1      555            600        -5\n 8  2013     1     1      557            600        -3\n 9  2013     1     1      557            600        -3\n10  2013     1     1      558            600        -2\n# ℹ 336,766 more rows\n\n\n\n\n\nUse the select helper contains() to make a data frame that includes the variables associated with the arrival, i.e., contains the string arr_ in the name.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nflights |&gt;\n  select(contains(\"arr_\"))\n\n# A tibble: 336,776 × 3\n   arr_time sched_arr_time arr_delay\n      &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;\n 1      830            819        11\n 2      850            830        20\n 3      923            850        33\n 4     1004           1022       -18\n 5      812            837       -25\n 6      740            728        12\n 7      913            854        19\n 8      709            723       -14\n 9      838            846        -8\n10      753            745         8\n# ℹ 336,766 more rows"
+    "text": "select()\nThe select() function makes it easy to select variable(s) in your data set based on their name or position.\nUsing select(), make a data frame that only contains the variables dep_delay and arr_delay.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nflights |&gt;\n  select(dep_delay, arr_delay)\n\n# A tibble: 336,776 × 2\n   dep_delay arr_delay\n       &lt;dbl&gt;     &lt;dbl&gt;\n 1         2        11\n 2         4        20\n 3         2        33\n 4        -1       -18\n 5        -6       -25\n 6        -4        12\n 7        -5        19\n 8        -3       -14\n 9        -3        -8\n10        -2         8\n# ℹ 336,766 more rows\n\n\n\n\n\nMake a data frame that keeps every variable except dep_delay.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nflights |&gt;\n  select(-dep_delay)\n\n# A tibble: 336,776 × 18\n    year month   day dep_time sched_dep_time arr_time sched_arr_time arr_delay\n   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;\n 1  2013     1     1      517            515      830            819        11\n 2  2013     1     1      533            529      850            830        20\n 3  2013     1     1      542            540      923            850        33\n 4  2013     1     1      544            545     1004           1022       -18\n 5  2013     1     1      554            600      812            837       -25\n 6  2013     1     1      554            558      740            728        12\n 7  2013     1     1      555            600      913            854        19\n 8  2013     1     1      557            600      709            723       -14\n 9  2013     1     1      557            600      838            846        -8\n10  2013     1     1      558            600      753            745         8\n# ℹ 336,766 more rows\n# ℹ 10 more variables: carrier &lt;chr&gt;, flight &lt;int&gt;, tailnum &lt;chr&gt;,\n#   origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;, hour &lt;dbl&gt;,\n#   minute &lt;dbl&gt;, time_hour &lt;dttm&gt;\n\n\n\n\n\nMake a data frame that includes all variables between year through dep_delay (inclusive). These are all variables that provide information about the departure of each flight.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nflights |&gt;\n  select(year:dep_delay)\n\n# A tibble: 336,776 × 6\n    year month   day dep_time sched_dep_time dep_delay\n   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;\n 1  2013     1     1      517            515         2\n 2  2013     1     1      533            529         4\n 3  2013     1     1      542            540         2\n 4  2013     1     1      544            545        -1\n 5  2013     1     1      554            600        -6\n 6  2013     1     1      554            558        -4\n 7  2013     1     1      555            600        -5\n 8  2013     1     1      557            600        -3\n 9  2013     1     1      557            600        -3\n10  2013     1     1      558            600        -2\n# ℹ 336,766 more rows\n\n\n\n\n\nUse the select helper contains() to make a data frame that includes the variables associated with the arrival, i.e., contains the string arr_ in the name.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nflights |&gt;\n  select(contains(\"arr_\"))\n\n# A tibble: 336,776 × 3\n   arr_time sched_arr_time arr_delay\n      &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;\n 1      830            819        11\n 2      850            830        20\n 3      923            850        33\n 4     1004           1022       -18\n 5      812            837       -25\n 6      740            728        12\n 7      913            854        19\n 8      709            723       -14\n 9      838            846        -8\n10      753            745         8\n# ℹ 336,766 more rows"
   },
   {
     "objectID": "exercises/nyc_flights.html#slice",
     "href": "exercises/nyc_flights.html#slice",
     "title": "Data tidying and importing",
     "section": "slice()",
-    "text": "slice()\nThe function slice() lets you index rows by their name or (integer) locations. Other common uses of slice() include selecting and removing rows.\nDisplay the first five rows of the flights data frame.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nflights |&gt;\n  slice(1:5)\n\n# A tibble: 5 × 19\n   year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time\n  &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;\n1  2013     1     1      517            515         2      830            819\n2  2013     1     1      533            529         4      850            830\n3  2013     1     1      542            540         2      923            850\n4  2013     1     1      544            545        -1     1004           1022\n5  2013     1     1      554            600        -6      812            837\n# ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,\n#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,\n#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;\n\n\n\n\n\nWe can use the function n()to reference the total number of rows in a data frame. Using this with slice, display the last two rows of the flights data frame.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nflights |&gt;\n  slice((n()-1):n())\n\n# A tibble: 2 × 19\n   year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time\n  &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;\n1  2013     9    30       NA           1159        NA       NA           1344\n2  2013     9    30       NA            840        NA       NA           1020\n# ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,\n#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,\n#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;"
+    "text": "slice()\nThe [slice()] function lets you index rows by their name or (integer) locations. Other common uses of slice() include selecting and removing rows.\nDisplay the first five rows of the flights data frame.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nflights |&gt;\n  slice(1:5)\n\n# A tibble: 5 × 19\n   year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time\n  &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;\n1  2013     1     1      517            515         2      830            819\n2  2013     1     1      533            529         4      850            830\n3  2013     1     1      542            540         2      923            850\n4  2013     1     1      544            545        -1     1004           1022\n5  2013     1     1      554            600        -6      812            837\n# ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,\n#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,\n#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;\n\n\n\n\n\nWe can use the function n()to reference the total number of rows in a data frame. Using this with slice, display the last two rows of the flights data frame.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nflights |&gt;\n  slice((n()-1):n())\n\n# A tibble: 2 × 19\n   year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time\n  &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;\n1  2013     9    30       NA           1159        NA       NA           1344\n2  2013     9    30       NA            840        NA       NA           1020\n# ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,\n#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,\n#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;"
   },
   {
     "objectID": "exercises/nyc_flights.html#arrange",
@@ -158,28 +158,28 @@
     "href": "exercises/nyc_flights.html#count",
     "title": "Data tidying and importing",
     "section": "count()",
-    "text": "count()\nWe can use the function count() to create frequency tables of selected variables.\nCreate a frequency table of the destination locations for flights from New York.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nflights |&gt;\n  count(dest)\n\n# A tibble: 105 × 2\n   dest      n\n   &lt;chr&gt; &lt;int&gt;\n 1 ABQ     254\n 2 ACK     265\n 3 ALB     439\n 4 ANC       8\n 5 ATL   17215\n 6 AUS    2439\n 7 AVL     275\n 8 BDL     443\n 9 BGR     375\n10 BHM     297\n# ℹ 95 more rows\n\n\n\n\n\nIn which month was there the fewest number of flights? How many flights were there in that month?\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nflights |&gt;\n  count(month) |&gt;\n  filter(n == min(n))\n\n# A tibble: 1 × 2\n  month     n\n  &lt;int&gt; &lt;int&gt;\n1     2 24951\n\n\n\n\n\nOn which date (month + day) was there the largest number of flights? How many flights were there on that day?\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nflights |&gt;\n  count(month, day) |&gt;\n  filter(n == max(n))\n\n# A tibble: 1 × 3\n  month   day     n\n  &lt;int&gt; &lt;int&gt; &lt;int&gt;\n1    11    27  1014"
+    "text": "count()\nWe can use the count() function to create frequency tables of selected variables.\nCreate a frequency table of the destination locations for flights from New York.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nflights |&gt;\n  count(dest)\n\n# A tibble: 105 × 2\n   dest      n\n   &lt;chr&gt; &lt;int&gt;\n 1 ABQ     254\n 2 ACK     265\n 3 ALB     439\n 4 ANC       8\n 5 ATL   17215\n 6 AUS    2439\n 7 AVL     275\n 8 BDL     443\n 9 BGR     375\n10 BHM     297\n# ℹ 95 more rows\n\n\n\n\n\nIn which month was there the fewest number of flights? How many flights were there in that month?\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nflights |&gt;\n  count(month) |&gt;\n  filter(n == min(n))\n\n# A tibble: 1 × 2\n  month     n\n  &lt;int&gt; &lt;int&gt;\n1     2 24951\n\n\n\n\n\nOn which date (month + day) was there the largest number of flights? How many flights were there on that day?\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nflights |&gt;\n  count(month, day) |&gt;\n  filter(n == max(n))\n\n# A tibble: 1 × 3\n  month   day     n\n  &lt;int&gt; &lt;int&gt; &lt;int&gt;\n1    11    27  1014"
   },
   {
     "objectID": "exercises/nyc_flights.html#mutate",
     "href": "exercises/nyc_flights.html#mutate",
     "title": "Data tidying and importing",
     "section": "mutate()",
-    "text": "mutate()\nWe can use the function mutate() to create new columns or modify existing columns in your data set.\nConvert air_time (minutes in the air) to hours and then create a new variable, mph, the miles per hour of the flight\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nflights |&gt;\n  mutate(\n    hours = air_time / 60,\n    mph = distance / hours\n    ) |&gt;\n  select(air_time, distance, hours, mph)\n\n# A tibble: 336,776 × 4\n   air_time distance hours   mph\n      &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n 1      227     1400 3.78   370.\n 2      227     1416 3.78   374.\n 3      160     1089 2.67   408.\n 4      183     1576 3.05   517.\n 5      116      762 1.93   394.\n 6      150      719 2.5    288.\n 7      158     1065 2.63   404.\n 8       53      229 0.883  259.\n 9      140      944 2.33   405.\n10      138      733 2.3    319.\n# ℹ 336,766 more rows\n\n\n\n\n\nCreate a new variable, rdu_bound, which indicates whether the flight is to RDU or not. Then, for each departure airport (origin), calculate what proportion of flights originating from that airport are to RDU.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nflights |&gt;\n  mutate(rdu_bound = if_else(dest == \"RDU\", \"Yes\", \"No\")) |&gt;\n  count(origin, rdu_bound) |&gt;\n  group_by(origin) |&gt;\n  mutate(prop = n / sum(n)) |&gt;\n  filter(rdu_bound == \"Yes\")\n\n# A tibble: 3 × 4\n# Groups:   origin [3]\n  origin rdu_bound     n   prop\n  &lt;chr&gt;  &lt;chr&gt;     &lt;int&gt;  &lt;dbl&gt;\n1 EWR    Yes        1482 0.0123\n2 JFK    Yes        3100 0.0279\n3 LGA    Yes        3581 0.0342"
+    "text": "mutate()\nWe can use the mutate() function to create new columns or modify existing columns in your data set.\nConvert air_time (minutes in the air) to hours and then create a new variable, mph, the miles per hour of the flight\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nflights |&gt;\n  mutate(\n    hours = air_time / 60,\n    mph = distance / hours\n    ) |&gt;\n  select(air_time, distance, hours, mph)\n\n# A tibble: 336,776 × 4\n   air_time distance hours   mph\n      &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n 1      227     1400 3.78   370.\n 2      227     1416 3.78   374.\n 3      160     1089 2.67   408.\n 4      183     1576 3.05   517.\n 5      116      762 1.93   394.\n 6      150      719 2.5    288.\n 7      158     1065 2.63   404.\n 8       53      229 0.883  259.\n 9      140      944 2.33   405.\n10      138      733 2.3    319.\n# ℹ 336,766 more rows\n\n\n\n\n\nCreate a new variable, rdu_bound, which indicates whether the flight is to RDU or not. Then, for each departure airport (origin), calculate what proportion of flights originating from that airport are to RDU.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nflights |&gt;\n  mutate(rdu_bound = if_else(dest == \"RDU\", \"Yes\", \"No\")) |&gt;\n  count(origin, rdu_bound) |&gt;\n  group_by(origin) |&gt;\n  mutate(prop = n / sum(n)) |&gt;\n  filter(rdu_bound == \"Yes\")\n\n# A tibble: 3 × 4\n# Groups:   origin [3]\n  origin rdu_bound     n   prop\n  &lt;chr&gt;  &lt;chr&gt;     &lt;int&gt;  &lt;dbl&gt;\n1 EWR    Yes        1482 0.0123\n2 JFK    Yes        3100 0.0279\n3 LGA    Yes        3581 0.0342"
   },
   {
     "objectID": "exercises/nyc_flights.html#summarize-group_by",
     "href": "exercises/nyc_flights.html#summarize-group_by",
     "title": "Data tidying and importing",
     "section": "summarize() & group_by()",
-    "text": "summarize() & group_by()\nWe can use the function summarize() to calculate summary statistics for a selected column. summarize() is often accompanied with group_by(), which converts a data frame into a grouped tbl where operations (like summarize()) are performed for each group.\nFind mean arrival delay for all flights.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nflights |&gt;\n  summarize(mean_dep_delay = mean(dep_delay))\n\n# A tibble: 1 × 1\n  mean_dep_delay\n           &lt;dbl&gt;\n1             NA\n\n\n\n\n\nFind mean arrival delay for for each month.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nflights |&gt;\n  group_by(month) |&gt;\n  summarize(mean_arr_delay = mean(arr_delay, na.rm = TRUE))\n\n# A tibble: 12 × 2\n   month mean_arr_delay\n   &lt;int&gt;          &lt;dbl&gt;\n 1     1          6.13 \n 2     2          5.61 \n 3     3          5.81 \n 4     4         11.2  \n 5     5          3.52 \n 6     6         16.5  \n 7     7         16.7  \n 8     8          6.04 \n 9     9         -4.02 \n10    10         -0.167\n11    11          0.461\n12    12         14.9"
+    "text": "summarize() & group_by()\nWe can use the function summarize() to calculate summary statistics for a selected column. summarize() is often accompanied by group_by(), which converts a data frame into a grouped tibble where operations (like summarize()) are performed for each group.\nFind the mean arrival delay for all flights.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nflights |&gt;\n  summarize(mean_dep_delay = mean(dep_delay))\n\n# A tibble: 1 × 1\n  mean_dep_delay\n           &lt;dbl&gt;\n1             NA\n\n\n\n\n\nFind the mean arrival delay for for each month.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nflights |&gt;\n  group_by(month) |&gt;\n  summarize(mean_arr_delay = mean(arr_delay, na.rm = TRUE))\n\n# A tibble: 12 × 2\n   month mean_arr_delay\n   &lt;int&gt;          &lt;dbl&gt;\n 1     1          6.13 \n 2     2          5.61 \n 3     3          5.81 \n 4     4         11.2  \n 5     5          3.52 \n 6     6         16.5  \n 7     7         16.7  \n 8     8          6.04 \n 9     9         -4.02 \n10    10         -0.167\n11    11          0.461\n12    12         14.9"
   },
   {
     "objectID": "exercises/nyc_flights.html#additional-practice",
     "href": "exercises/nyc_flights.html#additional-practice",
     "title": "Data tidying and importing",
     "section": "Additional Practice",
-    "text": "Additional Practice\nCreate a data frame that only includes the plane tail number (tailnum), carrier (carrier), and departure delay for the flight with the longest departure delay. What is the plane tail number (tailnum) for this flight?\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nflights |&gt;\n  select(tailnum, carrier, dep_delay) %&gt;%\n  arrange(dep_delay) |&gt;\n  slice(1)\n\n# A tibble: 1 × 3\n  tailnum carrier dep_delay\n  &lt;chr&gt;   &lt;chr&gt;       &lt;dbl&gt;\n1 N592JB  B6            -43\n\n\n\n\n\nOn which date (month + day) was there the largest number of flights? How many flights were there on that day?\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nflights |&gt;\n  count(month, day) |&gt;\n  filter(n == max(n))\n\n# A tibble: 1 × 3\n  month   day     n\n  &lt;int&gt; &lt;int&gt; &lt;int&gt;\n1    11    27  1014\n\n\n\n\n\nCreate a new variable to calculate the percentage of flights in each month. What percentage of flights take place in July?\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nflights |&gt;\n  count(month) |&gt;\n  mutate(perc = n / sum(n) * 100)\n\n# A tibble: 12 × 3\n   month     n  perc\n   &lt;int&gt; &lt;int&gt; &lt;dbl&gt;\n 1     1 27004  8.02\n 2     2 24951  7.41\n 3     3 28834  8.56\n 4     4 28330  8.41\n 5     5 28796  8.55\n 6     6 28243  8.39\n 7     7 29425  8.74\n 8     8 29327  8.71\n 9     9 27574  8.19\n10    10 28889  8.58\n11    11 27268  8.10\n12    12 28135  8.35\n\n\n\n\n\nWhat is the median departure delay for each airports around NYC (origin)? Which airport has the shortest median departure delay?\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nflights |&gt;\n  group_by(origin) |&gt;\n  summarize(med_dep_delay = median(dep_delay, na.rm = TRUE))\n\n# A tibble: 3 × 2\n  origin med_dep_delay\n  &lt;chr&gt;          &lt;dbl&gt;\n1 EWR               -1\n2 JFK               -1\n3 LGA               -3\n\n\n\n\n\nCreate a new dataset that only contains flights that do not have a missing departure time. Include the columns year, month, day, dep_time, dep_delay, and dep_delay_hours (the departure delay in hours). Hint: Note you may need to use mutate() to make one or more of these variables.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nflights |&gt;\n  filter(!is.na(dep_time)) |&gt;\n  select(year, month, day, dep_time, dep_delay) |&gt;\n  mutate(dep_delay_hours = dep_delay / 60)\n\n# A tibble: 328,521 × 6\n    year month   day dep_time dep_delay dep_delay_hours\n   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;     &lt;dbl&gt;           &lt;dbl&gt;\n 1  2013     1     1      517         2          0.0333\n 2  2013     1     1      533         4          0.0667\n 3  2013     1     1      542         2          0.0333\n 4  2013     1     1      544        -1         -0.0167\n 5  2013     1     1      554        -6         -0.1   \n 6  2013     1     1      554        -4         -0.0667\n 7  2013     1     1      555        -5         -0.0833\n 8  2013     1     1      557        -3         -0.05  \n 9  2013     1     1      557        -3         -0.05  \n10  2013     1     1      558        -2         -0.0333\n# ℹ 328,511 more rows"
+    "text": "Additional Practice\nCreate a data frame that only includes the plane tail number (tailnum), carrier (carrier), and departure delay for the flight with the longest departure delay. What is the plane tail number (tailnum) for this flight?\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nflights |&gt;\n  select(tailnum, carrier, dep_delay) %&gt;%\n  arrange(dep_delay) |&gt;\n  slice(1)\n\n# A tibble: 1 × 3\n  tailnum carrier dep_delay\n  &lt;chr&gt;   &lt;chr&gt;       &lt;dbl&gt;\n1 N592JB  B6            -43\n\n\n\n\n\nOn which date (month + day) was there the largest number of flights? How many flights were there on that day?\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nflights |&gt;\n  count(month, day) |&gt;\n  filter(n == max(n))\n\n# A tibble: 1 × 3\n  month   day     n\n  &lt;int&gt; &lt;int&gt; &lt;int&gt;\n1    11    27  1014\n\n\n\n\n\nCreate a new variable to calculate the percentage of flights in each month. What percentage of flights were in July?\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nflights |&gt;\n  count(month) |&gt;\n  mutate(perc = n / sum(n) * 100)\n\n# A tibble: 12 × 3\n   month     n  perc\n   &lt;int&gt; &lt;int&gt; &lt;dbl&gt;\n 1     1 27004  8.02\n 2     2 24951  7.41\n 3     3 28834  8.56\n 4     4 28330  8.41\n 5     5 28796  8.55\n 6     6 28243  8.39\n 7     7 29425  8.74\n 8     8 29327  8.71\n 9     9 27574  8.19\n10    10 28889  8.58\n11    11 27268  8.10\n12    12 28135  8.35\n\n\n\n\n\nWhat is the median departure delay for each airports around NYC (origin)? Which airport has the shortest median departure delay?\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nflights |&gt;\n  group_by(origin) |&gt;\n  summarize(med_dep_delay = median(dep_delay, na.rm = TRUE))\n\n# A tibble: 3 × 2\n  origin med_dep_delay\n  &lt;chr&gt;          &lt;dbl&gt;\n1 EWR               -1\n2 JFK               -1\n3 LGA               -3\n\n\n\n\n\nCreate a new dataset that only contains flights that do not have a missing departure time. Include the columns year, month, day, dep_time, dep_delay, and dep_delay_hours (the departure delay in hours). Hint: Note you may need to use mutate() to make one or more of these variables.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nflights |&gt;\n  filter(!is.na(dep_time)) |&gt;\n  select(year, month, day, dep_time, dep_delay) |&gt;\n  mutate(dep_delay_hours = dep_delay / 60)\n\n# A tibble: 328,521 × 6\n    year month   day dep_time dep_delay dep_delay_hours\n   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;     &lt;dbl&gt;           &lt;dbl&gt;\n 1  2013     1     1      517         2          0.0333\n 2  2013     1     1      533         4          0.0667\n 3  2013     1     1      542         2          0.0333\n 4  2013     1     1      544        -1         -0.0167\n 5  2013     1     1      554        -6         -0.1   \n 6  2013     1     1      554        -4         -0.0667\n 7  2013     1     1      555        -5         -0.0833\n 8  2013     1     1      557        -3         -0.05  \n 9  2013     1     1      557        -3         -0.05  \n10  2013     1     1      558        -2         -0.0333\n# ℹ 328,511 more rows"
   },
   {
     "objectID": "exercises/nyc_flights.html#reflection-questions",
@@ -234,57 +234,57 @@
     "objectID": "slides/2-2-data-classes/2-2-data-classes.html#data-classes-1",
     "href": "slides/2-2-data-classes/2-2-data-classes.html#data-classes-1",
     "title": "Data classes",
-    "section": "Data classes",
-    "text": "Data classes\nWe talked about types so far, next we’ll introduce the concept of classes\n\n\nVectors are like Lego building blocks\nWe stick them together to build more complicated constructs, e.g. representations of data\n\nThe class attribute relates to the S3 class of an object which determines its behaviour\n\nYou don’t need to worry about what S3 classes really mean, but you can read more about it here if you’re curious\n\n\nExamples: factors, dates, and data frames"
+    "section": "",
+    "text": "We talked about types so far, next we’ll introduce the concept of classes\n\n\nVectors are like Lego building blocks\nWe stick them together to build more complicated constructs, e.g. representations of data\nThe class attribute relates to the S3 class of an object which determines its behaviour\n\nYou don’t need to worry about what S3 classes really mean, but you can read more about it here if you’re curious\n\nExamples: factors, dates, and data frames"
   },
   {
     "objectID": "slides/2-2-data-classes/2-2-data-classes.html#factors",
     "href": "slides/2-2-data-classes/2-2-data-classes.html#factors",
     "title": "Data classes",
-    "section": "Factors",
-    "text": "Factors\nR uses factors to handle categorical variables, variables that have a fixed and known set of possible values\n\nx &lt;- factor(c(\"BS\", \"MS\", \"PhD\", \"MS\"))\nx\n\n[1] BS  MS  PhD MS \nLevels: BS MS PhD\n\n\n\n\n\ntypeof(x)\n\n[1] \"integer\"\n\n\n\n\nclass(x)\n\n[1] \"factor\""
+    "section": "",
+    "text": "R uses factors to handle categorical variables, variables that have a fixed and known set of possible values\n\nx &lt;- factor(c(\"BS\", \"MS\", \"PhD\", \"MS\"))\nx\n\n[1] BS  MS  PhD MS \nLevels: BS MS PhD\n\n\n\n\n\ntypeof(x)\n\n[1] \"integer\"\n\n\n\n\nclass(x)\n\n[1] \"factor\""
   },
   {
     "objectID": "slides/2-2-data-classes/2-2-data-classes.html#more-on-factors",
     "href": "slides/2-2-data-classes/2-2-data-classes.html#more-on-factors",
     "title": "Data classes",
-    "section": "More on factors",
-    "text": "More on factors\nWe can think of factors like character (level labels) and an integer (level numbers) glued together\n\nglimpse(x)\n\n Factor w/ 3 levels \"BS\",\"MS\",\"PhD\": 1 2 3 2\n\nas.integer(x)\n\n[1] 1 2 3 2"
+    "section": "",
+    "text": "We can think of factors like character (level labels) and an integer (level numbers) glued together\n\nglimpse(x)\n\n Factor w/ 3 levels \"BS\",\"MS\",\"PhD\": 1 2 3 2\n\nas.integer(x)\n\n[1] 1 2 3 2"
   },
   {
     "objectID": "slides/2-2-data-classes/2-2-data-classes.html#dates",
     "href": "slides/2-2-data-classes/2-2-data-classes.html#dates",
     "title": "Data classes",
-    "section": "Dates",
-    "text": "Dates\n\ny &lt;- as.Date(\"2025-01-01\")\ny\n\n[1] \"2025-01-01\"\n\ntypeof(y)\n\n[1] \"double\"\n\nclass(y)\n\n[1] \"Date\""
+    "section": "",
+    "text": "y &lt;- as.Date(\"2025-01-01\")\ny\n\n[1] \"2025-01-01\"\n\ntypeof(y)\n\n[1] \"double\"\n\nclass(y)\n\n[1] \"Date\""
   },
   {
     "objectID": "slides/2-2-data-classes/2-2-data-classes.html#more-on-dates",
     "href": "slides/2-2-data-classes/2-2-data-classes.html#more-on-dates",
     "title": "Data classes",
-    "section": "More on dates",
-    "text": "More on dates\nWe can think of dates like an integer (the number of days since the origin, 1 Jan 1970) and an integer (the origin) glued together\n\nas.integer(y)\n\n[1] 20089\n\nas.integer(y) / 365 # roughly 55 yrs\n\n[1] 55.03836"
+    "section": "",
+    "text": "We can think of dates like an integer (the number of days since the origin, 1 Jan 1970) and an integer (the origin) glued together\n\nas.integer(y)\n\n[1] 20089\n\nas.integer(y) / 365 # roughly 55 yrs\n\n[1] 55.03836"
   },
   {
     "objectID": "slides/2-2-data-classes/2-2-data-classes.html#data-frames",
     "href": "slides/2-2-data-classes/2-2-data-classes.html#data-frames",
     "title": "Data classes",
-    "section": "Data frames",
-    "text": "Data frames\nWe can think of data frames like like vectors of equal length glued together\n\ndf &lt;- data.frame(x = 1:2, y = 3:4)\ndf\n\n  x y\n1 1 3\n2 2 4\n\n\n\n\n\ntypeof(df)\n\n[1] \"list\"\n\n\n\n\nclass(df)\n\n[1] \"data.frame\""
+    "section": "",
+    "text": "We can think of data frames like like vectors of equal length glued together\n\ndf &lt;- data.frame(x = 1:2, y = 3:4)\ndf\n\n  x y\n1 1 3\n2 2 4\n\n\n\n\n\ntypeof(df)\n\n[1] \"list\"\n\n\n\n\nclass(df)\n\n[1] \"data.frame\""
   },
   {
     "objectID": "slides/2-2-data-classes/2-2-data-classes.html#lists",
     "href": "slides/2-2-data-classes/2-2-data-classes.html#lists",
     "title": "Data classes",
-    "section": "Lists",
-    "text": "Lists\nLists are a generic vector container; vectors of any type can go in them\n\nl &lt;- list(\n  x = 1:4,\n  y = c(\"hi\", \"hello\", \"jello\"),\n  z = c(TRUE, FALSE)\n)\nl\n\n$x\n[1] 1 2 3 4\n\n$y\n[1] \"hi\"    \"hello\" \"jello\"\n\n$z\n[1]  TRUE FALSE"
+    "section": "",
+    "text": "Lists are a generic vector container; vectors of any type can go in them\n\nl &lt;- list(\n  x = 1:4,\n  y = c(\"hi\", \"hello\", \"jello\"),\n  z = c(TRUE, FALSE)\n)\nl\n\n$x\n[1] 1 2 3 4\n\n$y\n[1] \"hi\"    \"hello\" \"jello\"\n\n$z\n[1]  TRUE FALSE"
   },
   {
     "objectID": "slides/2-2-data-classes/2-2-data-classes.html#lists-and-data-frames",
     "href": "slides/2-2-data-classes/2-2-data-classes.html#lists-and-data-frames",
     "title": "Data classes",
-    "section": "Lists and data frames",
-    "text": "Lists and data frames\n\nA data frame is a special list containing vectors of equal length\nWhen we use the pull() function, we extract a vector from the data frame\n\n\ndf\n\n  x y\n1 1 3\n2 2 4\n\ndf |&gt;\n  pull(y)\n\n[1] 3 4"
+    "section": "",
+    "text": "A data frame is a special list containing vectors of equal length\nWhen we use the pull() function, we extract a vector from the data frame\n\n\ndf\n\n  x y\n1 1 3\n2 2 4\n\ndf |&gt;\n  pull(y)\n\n[1] 3 4"
   },
   {
     "objectID": "slides/2-2-data-classes/2-2-data-classes.html#read-data-in-as-character-strings",
@@ -312,63 +312,63 @@
     "href": "slides/2-2-data-classes/2-2-data-classes.html#come-for-the-functionality",
     "title": "Data classes",
     "section": "Come for the functionality",
-    "text": "Come for the functionality\n\n\n… stay for the logo\n\n\n\n\nThe forcats package provides a suite of useful tools that solve common problems with factors\nFactors are useful when you have true categorical data and you want to override the ordering of character vectors to improve display\nThey are also useful in modeling scenarios"
+    "text": "Come for the functionality\n\n\n… stay for the logo\n\n\n\n\n\nThe forcats package provides a suite of useful tools that solve common problems with factors\nFactors are useful when you have true categorical data and you want to override the ordering of character vectors to improve display\nThey are also useful in modeling scenarios"
   },
   {
     "objectID": "slides/1-4-joining-data/1-4-joining-data.html#task-goal-and-tools",
     "href": "slides/1-4-joining-data/1-4-joining-data.html#task-goal-and-tools",
     "title": "Joining data",
-    "section": "Task, goal, and tools",
-    "text": "Task, goal, and tools\n\n\n have multiple data frames\n\n\n\n want to join them together\n\n\n\n\n using tools from the tidyverse\n\n\nlibrary(tidyverse)"
+    "section": "",
+    "text": "have multiple data frames\n\n. . .\n\n want to join them together\n\n. . .\n\n using tools from the tidyverse\n\n\nlibrary(tidyverse)"
   },
   {
     "objectID": "slides/1-4-joining-data/1-4-joining-data.html#data-women-in-science",
     "href": "slides/1-4-joining-data/1-4-joining-data.html#data-women-in-science",
     "title": "Joining data",
-    "section": "Data: Women in science",
-    "text": "Data: Women in science\nInformation on 10 women in science who changed the world:\n\n\n\n\n\n\nname\n\n\n\nAda Lovelace\n\n\nMarie Curie\n\n\nJanaki Ammal\n\n\nChien-Shiung Wu\n\n\nKatherine Johnson\n\n\nRosalind Franklin\n\n\nVera Rubin\n\n\nGladys West\n\n\nFlossie Wong-Staal\n\n\nJennifer Doudna\n\n\n\n\n\n\n\n\nSource: Discover Magazine"
+    "section": "",
+    "text": "Information on 10 women in science who changed the world:\n\n\n\n\n\n\n\n\nname\n\n\n\n\nAda Lovelace\n\n\nMarie Curie\n\n\nJanaki Ammal\n\n\nChien-Shiung Wu\n\n\nKatherine Johnson\n\n\nRosalind Franklin\n\n\nVera Rubin\n\n\nGladys West\n\n\nFlossie Wong-Staal\n\n\nJennifer Doudna\n\n\n\n\n\n\n\n\n\nSource: Discover Magazine"
   },
   {
     "objectID": "slides/1-4-joining-data/1-4-joining-data.html#input-1-professions",
     "href": "slides/1-4-joining-data/1-4-joining-data.html#input-1-professions",
     "title": "Joining data",
-    "section": "Input 1: professions\n",
-    "text": "Input 1: professions\n\n\nprofessions\n\n# A tibble: 10 × 2\n   name               profession                        \n   &lt;chr&gt;              &lt;chr&gt;                             \n 1 Ada Lovelace       Mathematician                     \n 2 Marie Curie        Physicist and Chemist             \n 3 Janaki Ammal       Botanist                          \n 4 Chien-Shiung Wu    Physicist                         \n 5 Katherine Johnson  Mathematician                     \n 6 Rosalind Franklin  Chemist                           \n 7 Vera Rubin         Astronomer                        \n 8 Gladys West        Mathematician                     \n 9 Flossie Wong-Staal Virologist and Molecular Biologist\n10 Jennifer Doudna    Biochemist"
+    "section": "",
+    "text": "professions\n\n# A tibble: 10 × 2\n   name               profession                        \n   &lt;chr&gt;              &lt;chr&gt;                             \n 1 Ada Lovelace       Mathematician                     \n 2 Marie Curie        Physicist and Chemist             \n 3 Janaki Ammal       Botanist                          \n 4 Chien-Shiung Wu    Physicist                         \n 5 Katherine Johnson  Mathematician                     \n 6 Rosalind Franklin  Chemist                           \n 7 Vera Rubin         Astronomer                        \n 8 Gladys West        Mathematician                     \n 9 Flossie Wong-Staal Virologist and Molecular Biologist\n10 Jennifer Doudna    Biochemist"
   },
   {
     "objectID": "slides/1-4-joining-data/1-4-joining-data.html#input-2-dates",
     "href": "slides/1-4-joining-data/1-4-joining-data.html#input-2-dates",
     "title": "Joining data",
-    "section": "Input 2: dates\n",
-    "text": "Input 2: dates\n\n\ndates\n\n# A tibble: 8 × 3\n  name               birth_year death_year\n  &lt;chr&gt;                   &lt;dbl&gt;      &lt;dbl&gt;\n1 Janaki Ammal             1897       1984\n2 Chien-Shiung Wu          1912       1997\n3 Katherine Johnson        1918       2020\n4 Rosalind Franklin        1920       1958\n5 Vera Rubin               1928       2016\n6 Gladys West              1930         NA\n7 Flossie Wong-Staal       1947       2020\n8 Jennifer Doudna          1964         NA"
+    "section": "",
+    "text": "dates\n\n# A tibble: 8 × 3\n  name               birth_year death_year\n  &lt;chr&gt;                   &lt;dbl&gt;      &lt;dbl&gt;\n1 Janaki Ammal             1897       1984\n2 Chien-Shiung Wu          1912       1997\n3 Katherine Johnson        1918       2020\n4 Rosalind Franklin        1920       1958\n5 Vera Rubin               1928       2016\n6 Gladys West              1930         NA\n7 Flossie Wong-Staal       1947       2020\n8 Jennifer Doudna          1964         NA"
   },
   {
     "objectID": "slides/1-4-joining-data/1-4-joining-data.html#input-3-works",
     "href": "slides/1-4-joining-data/1-4-joining-data.html#input-3-works",
     "title": "Joining data",
-    "section": "Input 3: works\n",
-    "text": "Input 3: works\n\n\nworks\n\n# A tibble: 9 × 2\n  name               known_for                              \n  &lt;chr&gt;              &lt;chr&gt;                                  \n1 Ada Lovelace       first computer algorithm               \n2 Marie Curie        theory of radioactivity,  discovery of…\n3 Janaki Ammal       hybrid species, biodiversity protection\n4 Chien-Shiung Wu    confim and refine theory of radioactiv…\n5 Katherine Johnson  calculations of orbital mechanics crit…\n6 Vera Rubin         existence of dark matter               \n7 Gladys West        mathematical modeling of the shape of …\n8 Flossie Wong-Staal first scientist to clone HIV and creat…\n9 Jennifer Doudna    one of the primary developers of CRISP…"
+    "section": "",
+    "text": "works\n\n# A tibble: 9 × 2\n  name               known_for                              \n  &lt;chr&gt;              &lt;chr&gt;                                  \n1 Ada Lovelace       first computer algorithm               \n2 Marie Curie        theory of radioactivity,  discovery of…\n3 Janaki Ammal       hybrid species, biodiversity protection\n4 Chien-Shiung Wu    confim and refine theory of radioactiv…\n5 Katherine Johnson  calculations of orbital mechanics crit…\n6 Vera Rubin         existence of dark matter               \n7 Gladys West        mathematical modeling of the shape of …\n8 Flossie Wong-Staal first scientist to clone HIV and creat…\n9 Jennifer Doudna    one of the primary developers of CRISP…"
   },
   {
     "objectID": "slides/1-4-joining-data/1-4-joining-data.html#desired-output",
     "href": "slides/1-4-joining-data/1-4-joining-data.html#desired-output",
     "title": "Joining data",
-    "section": "Desired output",
-    "text": "Desired output\n\n\n# A tibble: 10 × 5\n   name           profession birth_year death_year known_for\n   &lt;chr&gt;          &lt;chr&gt;           &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;    \n 1 Ada Lovelace   Mathemati…         NA         NA first co…\n 2 Marie Curie    Physicist…         NA         NA theory o…\n 3 Janaki Ammal   Botanist         1897       1984 hybrid s…\n 4 Chien-Shiung … Physicist        1912       1997 confim a…\n 5 Katherine Joh… Mathemati…       1918       2020 calculat…\n 6 Rosalind Fran… Chemist          1920       1958 &lt;NA&gt;     \n 7 Vera Rubin     Astronomer       1928       2016 existenc…\n 8 Gladys West    Mathemati…       1930         NA mathemat…\n 9 Flossie Wong-… Virologis…       1947       2020 first sc…\n10 Jennifer Doud… Biochemist       1964         NA one of t…"
+    "section": "",
+    "text": "# A tibble: 10 × 5\n   name           profession birth_year death_year known_for\n   &lt;chr&gt;          &lt;chr&gt;           &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;    \n 1 Ada Lovelace   Mathemati…         NA         NA first co…\n 2 Marie Curie    Physicist…         NA         NA theory o…\n 3 Janaki Ammal   Botanist         1897       1984 hybrid s…\n 4 Chien-Shiung … Physicist        1912       1997 confim a…\n 5 Katherine Joh… Mathemati…       1918       2020 calculat…\n 6 Rosalind Fran… Chemist          1920       1958 &lt;NA&gt;     \n 7 Vera Rubin     Astronomer       1928       2016 existenc…\n 8 Gladys West    Mathemati…       1930         NA mathemat…\n 9 Flossie Wong-… Virologis…       1947       2020 first sc…\n10 Jennifer Doud… Biochemist       1964         NA one of t…"
   },
   {
     "objectID": "slides/1-4-joining-data/1-4-joining-data.html#inputs-reminder",
     "href": "slides/1-4-joining-data/1-4-joining-data.html#inputs-reminder",
     "title": "Joining data",
-    "section": "Inputs, reminder",
-    "text": "Inputs, reminder\n\nnames(professions)\n\n[1] \"name\"       \"profession\"\n\nnrow(professions)\n\n[1] 10\n\n\n\n\nnames(dates)\n\n[1] \"name\"       \"birth_year\" \"death_year\"\n\nnrow(dates)\n\n[1] 8\n\n\n\n\n\nnames(works)\n\n[1] \"name\"      \"known_for\"\n\nnrow(works)\n\n[1] 9"
+    "section": "",
+    "text": "names(professions)\n\n[1] \"name\"       \"profession\"\n\nnrow(professions)\n\n[1] 10\n\n\n. . .\n\nnames(dates)\n\n[1] \"name\"       \"birth_year\" \"death_year\"\n\nnrow(dates)\n\n[1] 8\n\n\n. . .\n\nnames(works)\n\n[1] \"name\"      \"known_for\"\n\nnrow(works)\n\n[1] 9"
   },
   {
     "objectID": "slides/1-4-joining-data/1-4-joining-data.html#joining-data-frames-1",
     "href": "slides/1-4-joining-data/1-4-joining-data.html#joining-data-frames-1",
     "title": "Joining data",
     "section": "Joining data frames",
-    "text": "Joining data frames\n\nsomething_join(x, y)\n\n\n\nleft_join(): all rows from x\n\nright_join(): all rows from y\n\nfull_join(): all rows from both x and y\n\nsemi_join(): all rows from x where there are matching values in y, keeping just columns from x\n\ninner_join(): all rows from x where there are matching values in y, return all combination of multiple matches in the case of multiple matches\n\nanti_join(): return all rows from x where there are not matching values in y, never duplicate rows of x\n…"
+    "text": "Joining data frames\n\nsomething_join(x, y)\n\n\nleft_join(): all rows from x\nright_join(): all rows from y\nfull_join(): all rows from both x and y\nsemi_join(): all rows from x where there are matching values in y, keeping just columns from x\ninner_join(): all rows from x where there are matching values in y, return all combination of multiple matches in the case of multiple matches\nanti_join(): return all rows from x where there are not matching values in y, never duplicate rows of x\n…"
   },
   {
     "objectID": "slides/1-4-joining-data/1-4-joining-data.html#setup-1",
@@ -501,14 +501,14 @@
     "href": "slides/1-1-welcome/1-1-welcome.html#concepts",
     "title": "Welcome",
     "section": "Concepts",
-    "text": "Concepts\n\nTidyverse functions take a data frame as their first argument\n\n\n\nData transformation can be done in data pipelines with dplyr\n\n\n\ndf |&gt;\n  select(...) |&gt;\n  filter(...) |&gt;\n  mutate(...) |&gt;\n  group_by(...) |&gt;\n  summarize(...)\n\n\n\n\nData visualizations can be built layer-by-layer with ggplot2\n\n\n\nggplot(df, aes(x = ..., y = ...)) +\n  geom_*(...) +\n  scale_*() +\n  facet_*(...) +\n  labs(...)"
+    "text": "Concepts\n\nTidyverse functions take a data frame as their first argument\n\n. . .\n\nData transformation can be done in data pipelines with dplyr\n\n\ndf |&gt;\n  select(...) |&gt;\n  filter(...) |&gt;\n  mutate(...) |&gt;\n  group_by(...) |&gt;\n  summarize(...)\n\n. . .\n\nData visualizations can be built layer-by-layer with ggplot2\n\n\nggplot(df, aes(x = ..., y = ...)) +\n  geom_*(...) +\n  scale_*() +\n  facet_*(...) +\n  labs(...)"
   },
   {
     "objectID": "slides/3-2-web-scraping-considerations/3-2-web-scraping-considerations.html#can-you-vs-should-you",
     "href": "slides/3-2-web-scraping-considerations/3-2-web-scraping-considerations.html#can-you-vs-should-you",
     "title": "Web scraping considerations",
-    "section": "“Can you?” vs “Should you?”",
-    "text": "“Can you?” vs “Should you?”\n\n\n\n\n\n\n\nSource: Brian Resnick, Researchers just released profile data on 70,000 OkCupid users without permission, Vox."
+    "section": "",
+    "text": "Source: Brian Resnick, Researchers just released profile data on 70,000 OkCupid users without permission, Vox."
   },
   {
     "objectID": "slides/3-2-web-scraping-considerations/3-2-web-scraping-considerations.html#can-you-vs-should-you-1",
@@ -570,99 +570,99 @@
     "objectID": "slides/2-1-data-types/2-1-data-types.html#example-cat-lovers",
     "href": "slides/2-1-data-types/2-1-data-types.html#example-cat-lovers",
     "title": "Data types",
-    "section": "Example: Cat lovers",
-    "text": "Example: Cat lovers\nA survey asked respondents their name and number of cats. The instructions said to enter the number of cats as a numerical value.\n\ncat_lovers &lt;- read_csv(\"data/cat-lovers.csv\")\ncat_lovers\n\n# A tibble: 60 × 2\n   name           number_of_cats\n   &lt;chr&gt;          &lt;chr&gt;         \n 1 Bernice Warren 0             \n 2 Woodrow Stone  0             \n 3 Willie Bass    1             \n 4 Tyrone Estrada 3             \n 5 Alex Daniels   3             \n 6 Jane Bates     2             \n 7 Latoya Simpson 1             \n 8 Darin Woods    1             \n 9 Agnes Cobb     0             \n10 Tabitha Grant  0             \n# ℹ 50 more rows"
+    "section": "",
+    "text": "A survey asked respondents their name and number of cats. The instructions said to enter the number of cats as a numerical value.\n\ncat_lovers &lt;- read_csv(\"data/cat-lovers.csv\")\ncat_lovers\n\n# A tibble: 60 × 2\n   name           number_of_cats\n   &lt;chr&gt;          &lt;chr&gt;         \n 1 Bernice Warren 0             \n 2 Woodrow Stone  0             \n 3 Willie Bass    1             \n 4 Tyrone Estrada 3             \n 5 Alex Daniels   3             \n 6 Jane Bates     2             \n 7 Latoya Simpson 1             \n 8 Darin Woods    1             \n 9 Agnes Cobb     0             \n10 Tabitha Grant  0             \n# ℹ 50 more rows"
   },
   {
     "objectID": "slides/2-1-data-types/2-1-data-types.html#oh-why-wont-you-work",
     "href": "slides/2-1-data-types/2-1-data-types.html#oh-why-wont-you-work",
     "title": "Data types",
-    "section": "Oh why won’t you work?!",
-    "text": "Oh why won’t you work?!\n\ncat_lovers |&gt;\n  summarize(mean_cats = mean(number_of_cats))\n\nWarning: There was 1 warning in `summarize()`.\nℹ In argument: `mean_cats = mean(number_of_cats)`.\nCaused by warning in `mean.default()`:\n! argument is not numeric or logical: returning NA\n\n\n# A tibble: 1 × 1\n  mean_cats\n      &lt;dbl&gt;\n1        NA"
+    "section": "",
+    "text": "cat_lovers |&gt;\n  summarize(mean_cats = mean(number_of_cats))\n\nWarning: There was 1 warning in `summarize()`.\nℹ In argument: `mean_cats = mean(number_of_cats)`.\nCaused by warning in `mean.default()`:\n! argument is not numeric or logical: returning NA\n\n\n# A tibble: 1 × 1\n  mean_cats\n      &lt;dbl&gt;\n1        NA"
   },
   {
     "objectID": "slides/2-1-data-types/2-1-data-types.html#lets-read-the-docs",
     "href": "slides/2-1-data-types/2-1-data-types.html#lets-read-the-docs",
     "title": "Data types",
-    "section": "Let’s read the docs!",
-    "text": "Let’s read the docs!\n\n?mean"
+    "section": "",
+    "text": "?mean"
   },
   {
     "objectID": "slides/2-1-data-types/2-1-data-types.html#oh-why-wont-you-still-work",
     "href": "slides/2-1-data-types/2-1-data-types.html#oh-why-wont-you-still-work",
     "title": "Data types",
-    "section": "Oh why won’t you still work??!!",
-    "text": "Oh why won’t you still work??!!\n\ncat_lovers |&gt;\n  summarize(mean_cats = mean(number_of_cats, na.rm = TRUE))\n\n\n\nWarning: There was 1 warning in `summarize()`.\nℹ In argument: `mean_cats = mean(number_of_cats, na.rm =\n  TRUE)`.\nCaused by warning in `mean.default()`:\n! argument is not numeric or logical: returning NA\n\n\n# A tibble: 1 × 1\n  mean_cats\n      &lt;dbl&gt;\n1        NA"
+    "section": "",
+    "text": "cat_lovers |&gt;\n  summarize(mean_cats = mean(number_of_cats, na.rm = TRUE))\n\nWarning: There was 1 warning in `summarize()`.\nℹ In argument: `mean_cats = mean(number_of_cats, na.rm =\n  TRUE)`.\nCaused by warning in `mean.default()`:\n! argument is not numeric or logical: returning NA\n\n\n# A tibble: 1 × 1\n  mean_cats\n      &lt;dbl&gt;\n1        NA"
   },
   {
     "objectID": "slides/2-1-data-types/2-1-data-types.html#take-a-breath-and-look-at-your-data",
     "href": "slides/2-1-data-types/2-1-data-types.html#take-a-breath-and-look-at-your-data",
     "title": "Data types",
-    "section": "Take a breath and look at your data",
-    "text": "Take a breath and look at your data\n\nWhat is the type of the number_of_cats variable?\n\n\nglimpse(cat_lovers)\n\nRows: 60\nColumns: 2\n$ name           &lt;chr&gt; \"Bernice Warren\", \"Woodrow Stone\", …\n$ number_of_cats &lt;chr&gt; \"0\", \"0\", \"1\", \"3\", \"3\", \"2\", \"1\", …"
+    "section": "",
+    "text": "What is the type of the number_of_cats variable?\n\n\nglimpse(cat_lovers)\n\nRows: 60\nColumns: 2\n$ name           &lt;chr&gt; \"Bernice Warren\", \"Woodrow Stone\", …\n$ number_of_cats &lt;chr&gt; \"0\", \"0\", \"1\", \"3\", \"3\", \"2\", \"1\", …"
   },
   {
     "objectID": "slides/2-1-data-types/2-1-data-types.html#lets-take-another-look",
     "href": "slides/2-1-data-types/2-1-data-types.html#lets-take-another-look",
     "title": "Data types",
-    "section": "Let’s take another look",
-    "text": "Let’s take another look\n\n\n\n\n\n\nname\nnumber_of_cats\n\n\n\nBernice Warren\n0\n\n\nWoodrow Stone\n0\n\n\nWillie Bass\n1\n\n\nTyrone Estrada\n3\n\n\nAlex Daniels\n3\n\n\nJane Bates\n2\n\n\nLatoya Simpson\n1\n\n\nDarin Woods\n1\n\n\nAgnes Cobb\n0\n\n\nTabitha Grant\n0\n\n\nPerry Cross\n0\n\n\nWanda Silva\n0\n\n\nAlicia Sims\n1\n\n\nEmily Logan\n3\n\n\nWoodrow Elliott\n3\n\n\nBrent Copeland\n2\n\n\nPedro Carlson\n1\n\n\nPatsy Luna\n1\n\n\nBrett Robbins\n0\n\n\nOliver George\n0"
+    "section": "",
+    "text": "name\nnumber_of_cats\n\n\n\n\nBernice Warren\n0\n\n\nWoodrow Stone\n0\n\n\nWillie Bass\n1\n\n\nTyrone Estrada\n3\n\n\nAlex Daniels\n3\n\n\nJane Bates\n2\n\n\nLatoya Simpson\n1\n\n\nDarin Woods\n1\n\n\nAgnes Cobb\n0\n\n\nTabitha Grant\n0\n\n\nPerry Cross\n0\n\n\nWanda Silva\n0\n\n\nAlicia Sims\n1\n\n\nEmily Logan\n3\n\n\nWoodrow Elliott\n3\n\n\nBrent Copeland\n2\n\n\nPedro Carlson\n1\n\n\nPatsy Luna\n1\n\n\nBrett Robbins\n0\n\n\nOliver George\n0"
   },
   {
     "objectID": "slides/2-1-data-types/2-1-data-types.html#lets-take-another-look-1",
     "href": "slides/2-1-data-types/2-1-data-types.html#lets-take-another-look-1",
     "title": "Data types",
-    "section": "Let’s take another look",
-    "text": "Let’s take another look\n\n\n\n\n\n\nname\nnumber_of_cats\n\n\n\nCalvin Perry\n1\n\n\nLora Gutierrez\n1\n\n\nCharlotte Sparks\n0\n\n\nEarl Mack\n0\n\n\nLeslie Wade\n4\n\n\nSantiago Barker\n0\n\n\nJose Bell\n0\n\n\nLynda Smith\n0\n\n\nBradford Marshall\n0\n\n\nIrving Miller\n0\n\n\nCaroline Simpson\n0\n\n\nFrances Welch\n0\n\n\nMelba Jenkins\n0\n\n\nVeronica Morales\n0\n\n\nJuanita Cunningham\n0\n\n\nMaurice Howard\n0\n\n\nTeri Pierce\n0\n\n\nPhil Franklin\n0\n\n\nJan Zimmerman\n0\n\n\nLeslie Price\n0"
+    "section": "",
+    "text": "name\nnumber_of_cats\n\n\n\n\nCalvin Perry\n1\n\n\nLora Gutierrez\n1\n\n\nCharlotte Sparks\n0\n\n\nEarl Mack\n0\n\n\nLeslie Wade\n4\n\n\nSantiago Barker\n0\n\n\nJose Bell\n0\n\n\nLynda Smith\n0\n\n\nBradford Marshall\n0\n\n\nIrving Miller\n0\n\n\nCaroline Simpson\n0\n\n\nFrances Welch\n0\n\n\nMelba Jenkins\n0\n\n\nVeronica Morales\n0\n\n\nJuanita Cunningham\n0\n\n\nMaurice Howard\n0\n\n\nTeri Pierce\n0\n\n\nPhil Franklin\n0\n\n\nJan Zimmerman\n0\n\n\nLeslie Price\n0"
   },
   {
     "objectID": "slides/2-1-data-types/2-1-data-types.html#lets-take-another-look-2",
     "href": "slides/2-1-data-types/2-1-data-types.html#lets-take-another-look-2",
     "title": "Data types",
-    "section": "Let’s take another look",
-    "text": "Let’s take another look\n\n\n\n\n\n\nname\nnumber_of_cats\n\n\n\nBessie Patterson\n0\n\n\nEthel Wolfe\n0\n\n\nNaomi Wright\n1\n\n\nSadie Frank\n3\n\n\nLonnie Cannon\n3\n\n\nTony Garcia\n2\n\n\nDarla Newton\n1\n\n\nGinger Clark\n1.5 - honestly I think one of my cats is half human\n\n\nLionel Campbell\n0\n\n\nFlorence Klein\n0\n\n\nHarriet Leonard\n1\n\n\nTerrence Harrington\n0\n\n\nTravis Garner\n1\n\n\nDoug Bass\nthree\n\n\nPat Norris\n1\n\n\nDawn Young\n1\n\n\nShari Alvarez\n1\n\n\nTamara Robinson\n0\n\n\nMegan Morgan\n0\n\n\nKara Obrien\n2"
+    "section": "",
+    "text": "name\nnumber_of_cats\n\n\n\n\nBessie Patterson\n0\n\n\nEthel Wolfe\n0\n\n\nNaomi Wright\n1\n\n\nSadie Frank\n3\n\n\nLonnie Cannon\n3\n\n\nTony Garcia\n2\n\n\nDarla Newton\n1\n\n\nGinger Clark\n1.5 - honestly I think one of my cats is half human\n\n\nLionel Campbell\n0\n\n\nFlorence Klein\n0\n\n\nHarriet Leonard\n1\n\n\nTerrence Harrington\n0\n\n\nTravis Garner\n1\n\n\nDoug Bass\nthree\n\n\nPat Norris\n1\n\n\nDawn Young\n1\n\n\nShari Alvarez\n1\n\n\nTamara Robinson\n0\n\n\nMegan Morgan\n0\n\n\nKara Obrien\n2"
   },
   {
     "objectID": "slides/2-1-data-types/2-1-data-types.html#lets-take-another-look-3",
     "href": "slides/2-1-data-types/2-1-data-types.html#lets-take-another-look-3",
     "title": "Data types",
-    "section": "Let’s take another look",
-    "text": "Let’s take another look\n\n\n\n\n\n\nname\nnumber_of_cats\n\n\n\nBessie Patterson\n0\n\n\nEthel Wolfe\n0\n\n\nNaomi Wright\n1\n\n\nSadie Frank\n3\n\n\nLonnie Cannon\n3\n\n\nTony Garcia\n2\n\n\nDarla Newton\n1\n\n\nGinger Clark\n1.5 - honestly I think one of my cats is half human\n\n\nLionel Campbell\n0\n\n\nFlorence Klein\n0\n\n\nHarriet Leonard\n1\n\n\nTerrence Harrington\n0\n\n\nTravis Garner\n1\n\n\nDoug Bass\nthree\n\n\nPat Norris\n1\n\n\nDawn Young\n1\n\n\nShari Alvarez\n1\n\n\nTamara Robinson\n0\n\n\nMegan Morgan\n0\n\n\nKara Obrien\n2"
+    "section": "",
+    "text": "name\nnumber_of_cats\n\n\n\n\nBessie Patterson\n0\n\n\nEthel Wolfe\n0\n\n\nNaomi Wright\n1\n\n\nSadie Frank\n3\n\n\nLonnie Cannon\n3\n\n\nTony Garcia\n2\n\n\nDarla Newton\n1\n\n\nGinger Clark\n1.5 - honestly I think one of my cats is half human\n\n\nLionel Campbell\n0\n\n\nFlorence Klein\n0\n\n\nHarriet Leonard\n1\n\n\nTerrence Harrington\n0\n\n\nTravis Garner\n1\n\n\nDoug Bass\nthree\n\n\nPat Norris\n1\n\n\nDawn Young\n1\n\n\nShari Alvarez\n1\n\n\nTamara Robinson\n0\n\n\nMegan Morgan\n0\n\n\nKara Obrien\n2"
   },
   {
     "objectID": "slides/2-1-data-types/2-1-data-types.html#lets-take-another-look-4",
     "href": "slides/2-1-data-types/2-1-data-types.html#lets-take-another-look-4",
     "title": "Data types",
-    "section": "Let’s take another look",
-    "text": "Let’s take another look\n\n\n\n\n\n\nname\nnumber_of_cats\n\n\n\nBessie Patterson\n0\n\n\nEthel Wolfe\n0\n\n\nNaomi Wright\n1\n\n\nSadie Frank\n3\n\n\nLonnie Cannon\n3\n\n\nTony Garcia\n2\n\n\nDarla Newton\n1\n\n\nGinger Clark\n1.5 - honestly I think one of my cats is half human\n\n\nLionel Campbell\n0\n\n\nFlorence Klein\n0\n\n\nHarriet Leonard\n1\n\n\nTerrence Harrington\n0\n\n\nTravis Garner\n1\n\n\nDoug Bass\nthree\n\n\nPat Norris\n1\n\n\nDawn Young\n1\n\n\nShari Alvarez\n1\n\n\nTamara Robinson\n0\n\n\nMegan Morgan\n0\n\n\nKara Obrien\n2"
+    "section": "",
+    "text": "name\nnumber_of_cats\n\n\n\n\nBessie Patterson\n0\n\n\nEthel Wolfe\n0\n\n\nNaomi Wright\n1\n\n\nSadie Frank\n3\n\n\nLonnie Cannon\n3\n\n\nTony Garcia\n2\n\n\nDarla Newton\n1\n\n\nGinger Clark\n1.5 - honestly I think one of my cats is half human\n\n\nLionel Campbell\n0\n\n\nFlorence Klein\n0\n\n\nHarriet Leonard\n1\n\n\nTerrence Harrington\n0\n\n\nTravis Garner\n1\n\n\nDoug Bass\nthree\n\n\nPat Norris\n1\n\n\nDawn Young\n1\n\n\nShari Alvarez\n1\n\n\nTamara Robinson\n0\n\n\nMegan Morgan\n0\n\n\nKara Obrien\n2"
   },
   {
     "objectID": "slides/2-1-data-types/2-1-data-types.html#lets-take-another-look-5",
     "href": "slides/2-1-data-types/2-1-data-types.html#lets-take-another-look-5",
     "title": "Data types",
-    "section": "Let’s take another look",
-    "text": "Let’s take another look\n\n\n\n\n\n\nname\nnumber_of_cats\n\n\n\nBessie Patterson\n0\n\n\nEthel Wolfe\n0\n\n\nNaomi Wright\n1\n\n\nSadie Frank\n3\n\n\nLonnie Cannon\n3\n\n\nTony Garcia\n2\n\n\nDarla Newton\n1\n\n\nGinger Clark\n1.5 - honestly I think one of my cats is half human\n\n\nLionel Campbell\n0\n\n\nFlorence Klein\n0\n\n\nHarriet Leonard\n1\n\n\nTerrence Harrington\n0\n\n\nTravis Garner\n1\n\n\nDoug Bass\nthree\n\n\nPat Norris\n1\n\n\nDawn Young\n1\n\n\nShari Alvarez\n1\n\n\nTamara Robinson\n0\n\n\nMegan Morgan\n0\n\n\nKara Obrien\n2"
+    "section": "",
+    "text": "name\nnumber_of_cats\n\n\n\n\nBessie Patterson\n0\n\n\nEthel Wolfe\n0\n\n\nNaomi Wright\n1\n\n\nSadie Frank\n3\n\n\nLonnie Cannon\n3\n\n\nTony Garcia\n2\n\n\nDarla Newton\n1\n\n\nGinger Clark\n1.5 - honestly I think one of my cats is half human\n\n\nLionel Campbell\n0\n\n\nFlorence Klein\n0\n\n\nHarriet Leonard\n1\n\n\nTerrence Harrington\n0\n\n\nTravis Garner\n1\n\n\nDoug Bass\nthree\n\n\nPat Norris\n1\n\n\nDawn Young\n1\n\n\nShari Alvarez\n1\n\n\nTamara Robinson\n0\n\n\nMegan Morgan\n0\n\n\nKara Obrien\n2"
   },
   {
     "objectID": "slides/2-1-data-types/2-1-data-types.html#sometimes-you-might-need-to-babysit-your-respondents",
     "href": "slides/2-1-data-types/2-1-data-types.html#sometimes-you-might-need-to-babysit-your-respondents",
     "title": "Data types",
-    "section": "Sometimes you might need to babysit your respondents",
-    "text": "Sometimes you might need to babysit your respondents\n\ncat_lovers |&gt;\n  mutate(\n    number_of_cats = case_when(\n      name == \"Ginger Clark\" ~ 2,\n      name == \"Doug Bass\"    ~ 3,\n      .default = as.numeric(number_of_cats)\n      )\n    ) |&gt;\n  summarize(mean_cats = mean(number_of_cats))\n\n\n\nWarning: There was 1 warning in `mutate()`.\nℹ In argument: `number_of_cats = case_when(...)`.\nCaused by warning in `vec_case_when()`:\n! NAs introduced by coercion\n\n\n# A tibble: 1 × 1\n  mean_cats\n      &lt;dbl&gt;\n1     0.833"
+    "section": "",
+    "text": "cat_lovers |&gt;\n  mutate(\n    number_of_cats = case_when(\n      name == \"Ginger Clark\" ~ 2,\n      name == \"Doug Bass\"    ~ 3,\n      .default = as.numeric(number_of_cats)\n      )\n    ) |&gt;\n  summarize(mean_cats = mean(number_of_cats))\n\nWarning: There was 1 warning in `mutate()`.\nℹ In argument: `number_of_cats = case_when(...)`.\nCaused by warning in `vec_case_when()`:\n! NAs introduced by coercion\n\n\n# A tibble: 1 × 1\n  mean_cats\n      &lt;dbl&gt;\n1     0.833"
   },
   {
     "objectID": "slides/2-1-data-types/2-1-data-types.html#always-you-need-to-respect-data-types",
     "href": "slides/2-1-data-types/2-1-data-types.html#always-you-need-to-respect-data-types",
     "title": "Data types",
-    "section": "Always you need to respect data types",
-    "text": "Always you need to respect data types\n\ncat_lovers |&gt;#| \n  mutate(\n    number_of_cats = case_when(\n      name == \"Ginger Clark\" ~ \"2\",\n      name == \"Doug Bass\"    ~ \"3\",\n      .default = number_of_cats\n      ),\n    number_of_cats = as.numeric(number_of_cats)\n    ) |&gt;\n  summarize(mean_cats = mean(number_of_cats))\n\n\n\n# A tibble: 1 × 1\n  mean_cats\n      &lt;dbl&gt;\n1     0.833"
+    "section": "",
+    "text": "cat_lovers |&gt;#| \n  mutate(\n    number_of_cats = case_when(\n      name == \"Ginger Clark\" ~ \"2\",\n      name == \"Doug Bass\"    ~ \"3\",\n      .default = number_of_cats\n      ),\n    number_of_cats = as.numeric(number_of_cats)\n    ) |&gt;\n  summarize(mean_cats = mean(number_of_cats))\n\n# A tibble: 1 × 1\n  mean_cats\n      &lt;dbl&gt;\n1     0.833"
   },
   {
     "objectID": "slides/2-1-data-types/2-1-data-types.html#moral-of-the-story",
     "href": "slides/2-1-data-types/2-1-data-types.html#moral-of-the-story",
     "title": "Data types",
-    "section": "Moral of the story",
-    "text": "Moral of the story\n\nIf your data does not behave how you expect it to, type coercion upon reading in the data might be the reason.\nGo in and investigate your data, apply the fix, save your data, live happily ever after."
+    "section": "",
+    "text": "If your data does not behave how you expect it to, type coercion upon reading in the data might be the reason.\nGo in and investigate your data, apply the fix, save your data, live happily ever after."
   },
   {
     "objectID": "slides/2-1-data-types/2-1-data-types.html#data-types-in-r",
@@ -676,7 +676,7 @@
     "href": "slides/2-1-data-types/2-1-data-types.html#logical-character",
     "title": "Data types",
     "section": "Logical & character",
-    "text": "Logical & character\n\n\nlogical - boolean values TRUE and FALSE\n\n\ntypeof(TRUE)\n\n[1] \"logical\"\n\n\n\ncharacter - character strings\n\n\ntypeof(\"hello\")\n\n[1] \"character\""
+    "text": "Logical & character\n\n\nlogical - boolean values TRUE and FALSE\n\n\ntypeof(TRUE)\n\n[1] \"logical\"\n\n\n\ncharacter - character strings\n \n\ntypeof(\"hello\")\n\n[1] \"character\""
   },
   {
     "objectID": "slides/2-1-data-types/2-1-data-types.html#double-integer",
@@ -690,7 +690,7 @@
     "href": "slides/2-1-data-types/2-1-data-types.html#concatenation",
     "title": "Data types",
     "section": "Concatenation",
-    "text": "Concatenation\nVectors can be constructed using the c() function.\n\nc(1, 2, 3)\n\n[1] 1 2 3\n\n\n\n\nc(\"Hello\", \"World!\")\n\n[1] \"Hello\"  \"World!\"\n\n\n\n\n\nc(c(\"hi\", \"hello\"), c(\"bye\", \"jello\"))\n\n[1] \"hi\"    \"hello\" \"bye\"   \"jello\""
+    "text": "Concatenation\nVectors can be constructed using the c() function.\n\nc(1, 2, 3)\n\n[1] 1 2 3\n\n\n. . .\n\nc(\"Hello\", \"World!\")\n\n[1] \"Hello\"  \"World!\"\n\n\n. . .\n\nc(c(\"hi\", \"hello\"), c(\"bye\", \"jello\"))\n\n[1] \"hi\"    \"hello\" \"bye\"   \"jello\""
   },
   {
     "objectID": "slides/2-1-data-types/2-1-data-types.html#converting-between-types",
@@ -711,7 +711,7 @@
     "href": "slides/2-1-data-types/2-1-data-types.html#converting-between-types-2",
     "title": "Data types",
     "section": "Converting between types",
-    "text": "Converting between types\n\nwithout intention…\n\n\nc(1, \"Hello\")\n\n[1] \"1\"     \"Hello\"\n\n\n\nR will happily convert between various types without complaint when different types of data are concatenated in a vector, and that’s not always a great thing!\n\n\n\nc(FALSE, 3L)\n\n[1] 0 3\n\n\n\n\n\nc(1.2, 3L)\n\n[1] 1.2 3.0\n\n\n\n\n\nc(2L, \"two\")\n\n[1] \"2\"   \"two\""
+    "text": "Converting between types\n\nwithout intention…\n\n\nc(1, \"Hello\")\n\n[1] \"1\"     \"Hello\"\n\n\n. . .\nR will happily convert between various types without complaint when different types of data are concatenated in a vector, and that’s not always a great thing!\n. . .\n\nc(FALSE, 3L)\n\n[1] 0 3\n\n\n. . .\n\nc(1.2, 3L)\n\n[1] 1.2 3.0\n\n\n. . .\n\nc(2L, \"two\")\n\n[1] \"2\"   \"two\""
   },
   {
     "objectID": "slides/2-1-data-types/2-1-data-types.html#explicit-vs.-implicit-coercion",
@@ -725,20 +725,20 @@
     "href": "slides/2-1-data-types/2-1-data-types.html#special-values-1",
     "title": "Data types",
     "section": "Special values",
-    "text": "Special values\n\n\nNA: Not available\n\n\n\n\nNaN: Not a number\n\n\n0 / 0\n\n[1] NaN\n\n\n\n\n\n\nInf: Positive infinity\n\n\npi / 0\n\n[1] Inf\n\n\n\n\n\n\n-Inf: Negative infinity\n\n\n-1 * (pi / 0)\n\n[1] -Inf"
+    "text": "Special values\n\nNA: Not available\n\n. . .\n\nNaN: Not a number\n\n\n0 / 0\n\n[1] NaN\n\n\n. . .\n\nInf: Positive infinity\n\n\npi / 0\n\n[1] Inf\n\n\n. . .\n\n-Inf: Negative infinity\n\n\n-1 * (pi / 0)\n\n[1] -Inf"
   },
   {
     "objectID": "slides/2-1-data-types/2-1-data-types.html#nas-are-special-s",
     "href": "slides/2-1-data-types/2-1-data-types.html#nas-are-special-s",
     "title": "Data types",
-    "section": "\nNAs are special ❄️s",
-    "text": "NAs are special ❄️s\n\nx &lt;- c(1, 2, 3, 4, NA)\n\n\nmean(x)\n\n[1] NA\n\n\n\n\nmean(x, na.rm = TRUE)\n\n[1] 2.5\n\n\n\n\n\nsummary(x)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's \n   1.00    1.75    2.50    2.50    3.25    4.00       1"
+    "section": "NAs are special ❄️s",
+    "text": "NAs are special ❄️s\n\nx &lt;- c(1, 2, 3, 4, NA)\n\n\nmean(x)\n\n[1] NA\n\n\n. . .\n\nmean(x, na.rm = TRUE)\n\n[1] 2.5\n\n\n. . .\n\nsummary(x)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's \n   1.00    1.75    2.50    2.50    3.25    4.00       1"
   },
   {
     "objectID": "slides/2-1-data-types/2-1-data-types.html#nas-are-logical",
     "href": "slides/2-1-data-types/2-1-data-types.html#nas-are-logical",
     "title": "Data types",
-    "section": "\nNAs are logical",
+    "section": "NAs are logical",
     "text": "NAs are logical\nR uses NA to represent missing values in its data structures.\n\ntypeof(NA)\n\n[1] \"logical\""
   },
   {
@@ -746,21 +746,21 @@
     "href": "slides/2-1-data-types/2-1-data-types.html#mental-model-for-nas",
     "title": "Data types",
     "section": "Mental model for NAs",
-    "text": "Mental model for NAs\n\nUnlike NaN, NAs are genuinely unknown values\nBut that doesn’t mean they can’t function in a logical way\nLet’s think about why NAs are logical…\n\n\n\nWhy do the following give different answers?\n\n\n\n\n# TRUE or NA\nTRUE | NA\n\n[1] TRUE\n\n\n\n\n# FALSE or NA\nFALSE | NA\n\n[1] NA"
+    "text": "Mental model for NAs\n\nUnlike NaN, NAs are genuinely unknown values\nBut that doesn’t mean they can’t function in a logical way\nLet’s think about why NAs are logical…\n\n. . .\n\nWhy do the following give different answers?\n\n\n\n\n# TRUE or NA\nTRUE | NA\n\n[1] TRUE\n\n\n\n\n# FALSE or NA\nFALSE | NA\n\n[1] NA"
   },
   {
     "objectID": "slides/2-1-data-types/2-1-data-types.html#mental-model-for-nas-1",
     "href": "slides/2-1-data-types/2-1-data-types.html#mental-model-for-nas-1",
     "title": "Data types",
     "section": "Mental model for NAs",
-    "text": "Mental model for NAs\nNA is unknown, so it could be TRUE or FALSE\n\n\n\nTRUE | NA gives TRUE, because the answer is always TRUE whether the unknown NA is actually TRUE or FALSE\n\n\n\nTRUE | TRUE  # if NA was TRUE\n\n[1] TRUE\n\nTRUE | FALSE # if NA was FALSE\n\n[1] TRUE\n\n\n\n\n\n\nFALSE | NA gives FALSE, because the answer changes depending whether the unknown NA is actually TRUE or FALSE\n\n\n\nFALSE | TRUE  # if NA was TRUE\n\n[1] TRUE\n\nFALSE | FALSE # if NA was FALSE\n\n[1] FALSE\n\n\n\n\n\nThis may not make sense for mathematical operations, but it does make sense in the context of missing data"
+    "text": "Mental model for NAs\nNA is unknown, so it could be TRUE or FALSE\n. . .\n\nTRUE | NA gives TRUE, because the answer is always TRUE whether the unknown NA is actually TRUE or FALSE\n\n\nTRUE | TRUE  # if NA was TRUE\n\n[1] TRUE\n\nTRUE | FALSE # if NA was FALSE\n\n[1] TRUE\n\n\n. . .\n\nFALSE | NA gives FALSE, because the answer changes depending whether the unknown NA is actually TRUE or FALSE\n\n\nFALSE | TRUE  # if NA was TRUE\n\n[1] TRUE\n\nFALSE | FALSE # if NA was FALSE\n\n[1] FALSE\n\n\n. . .\n\nThis may not make sense for mathematical operations, but it does make sense in the context of missing data"
   },
   {
     "objectID": "slides/1-2-tidy-data/1-2-tidy-data.html#tidy-data",
     "href": "slides/1-2-tidy-data/1-2-tidy-data.html#tidy-data",
     "title": "Tidy data",
-    "section": "Tidy data",
-    "text": "Tidy data\n\nHappy families are all alike; every unhappy family is unhappy in its own way.\nLeo Tolstoy\n\n\n\nCharacteristics of tidy data:\n\nEach variable forms a column.\nEach observation forms a row.\nEach type of observational unit forms a table.\n\n\nCharacteristics of untidy data:\n!@#$%^&*()"
+    "section": "",
+    "text": "Happy families are all alike; every unhappy family is unhappy in its own way.\nLeo Tolstoy\n\n\n\nCharacteristics of tidy data:\n\nEach variable forms a column.\nEach observation forms a row.\nEach type of observational unit forms a table.\n\n\nCharacteristics of untidy data:\n!@#$%^&*()"
   },
   {
     "objectID": "slides/1-2-tidy-data/1-2-tidy-data.html#what-makes-this-data-not-tidy",
@@ -794,22 +794,22 @@
     "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#task-goal-and-tools",
     "href": "slides/1-3-tidying-data/1-3-tidying-data.html#task-goal-and-tools",
     "title": "Tidying data",
-    "section": "Task, goal, and tools",
-    "text": "Task, goal, and tools\n\n\n have data organised in an unideal way for our analysis\n\n\n\n want to reorganize the data for our analysis\n\n\n\n\n using tools from the tidyverse\n\n\nlibrary(tidyverse)"
+    "section": "",
+    "text": "have data organised in an unideal way for our analysis\n\n. . .\n\n want to reorganize the data for our analysis\n\n. . .\n\n using tools from the tidyverse\n\n\nlibrary(tidyverse)"
   },
   {
     "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#data-grocery-store-sales",
     "href": "slides/1-3-tidying-data/1-3-tidying-data.html#data-grocery-store-sales",
     "title": "Tidying data",
-    "section": "Data: Grocery store sales",
-    "text": "Data: Grocery store sales\n\n\nhave\n\n\n\n# A tibble: 2 × 4\n  customer_id item_1 item_2       item_3\n        &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;        &lt;chr&gt; \n1           1 bread  milk         banana\n2           2 milk   toilet paper &lt;NA&gt;  \n\n\n\n\nwant\n\n\n\n# A tibble: 6 × 3\n  customer_id item_no item        \n        &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;       \n1           1 item_1  bread       \n2           1 item_2  milk        \n3           1 item_3  banana      \n4           2 item_1  milk        \n5           2 item_2  toilet paper\n6           2 item_3  &lt;NA&gt;"
+    "section": "",
+    "text": "have\n\n\n\n# A tibble: 2 × 4\n  customer_id item_1 item_2       item_3\n        &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;        &lt;chr&gt; \n1           1 bread  milk         banana\n2           2 milk   toilet paper &lt;NA&gt;  \n\n\n\n\nwant\n\n\n\n# A tibble: 6 × 3\n  customer_id item_no item        \n        &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;       \n1           1 item_1  bread       \n2           1 item_2  milk        \n3           1 item_3  banana      \n4           2 item_1  milk        \n5           2 item_2  toilet paper\n6           2 item_3  &lt;NA&gt;"
   },
   {
     "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#grammar-of-data-tidying",
     "href": "slides/1-3-tidying-data/1-3-tidying-data.html#grammar-of-data-tidying",
     "title": "Tidying data",
-    "section": "Grammar of data tidying",
-    "text": "Grammar of data tidying\n\n\n\n\nThe goal of tidyr is to help you tidy your data via\n\n\npivoting for going between wide and long data\nsplitting and combining character columns\nnesting and unnesting columns\nclarifying how NAs should be treated"
+    "section": "",
+    "text": "The goal of tidyr is to help you tidy your data via\n\n\npivoting for going between wide and long data\nsplitting and combining character columns\nnesting and unnesting columns\nclarifying how NAs should be treated"
   },
   {
     "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivoting",
@@ -914,7 +914,7 @@
     "href": "slides/1-3-tidying-data/1-3-tidying-data.html#why-pivot",
     "title": "Tidying data",
     "section": "Why pivot?",
-    "text": "Why pivot?\nMost likely, because the next step of your analysis needs it\n\n\n\n\n\nprices\n\n# A tibble: 5 × 2\n  item         price\n  &lt;chr&gt;        &lt;dbl&gt;\n1 avocado       0.5 \n2 banana        0.15\n3 bread         1   \n4 milk          0.8 \n5 toilet paper  3   \n\n\n\n\npurchases |&gt;\n  left_join(prices)\n\nJoining with `by = join_by(item)`\n\n\n# A tibble: 5 × 4\n  customer_id item_no item         price\n        &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;        &lt;dbl&gt;\n1           1 item_1  bread         1   \n2           1 item_2  milk          0.8 \n3           1 item_3  banana        0.15\n4           2 item_1  milk          0.8 \n5           2 item_2  toilet paper  3"
+    "text": "Why pivot?\nMost likely, because the next step of your analysis needs it\n. . .\n\n\n\n\nprices\n\n# A tibble: 5 × 2\n  item         price\n  &lt;chr&gt;        &lt;dbl&gt;\n1 avocado       0.5 \n2 banana        0.15\n3 bread         1   \n4 milk          0.8 \n5 toilet paper  3   \n\n\n\n\npurchases |&gt;\n  left_join(prices)\n\nJoining with `by = join_by(item)`\n\n\n# A tibble: 5 × 4\n  customer_id item_no item         price\n        &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;        &lt;dbl&gt;\n1           1 item_1  bread         1   \n2           1 item_2  milk          0.8 \n3           1 item_3  banana        0.15\n4           2 item_1  milk          0.8 \n5           2 item_2  toilet paper  3"
   },
   {
     "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#from-purchases-to-customers",
@@ -962,15 +962,15 @@
     "objectID": "slides/3-1-web-scraping/3-1-web-scraping.html#scraping-the-web-what-why",
     "href": "slides/3-1-web-scraping/3-1-web-scraping.html#scraping-the-web-what-why",
     "title": "Web scraping",
-    "section": "Scraping the web: what? why?",
-    "text": "Scraping the web: what? why?\n\n\nIncreasing amount of data is available on the web\nThese data are provided in an unstructured format: you can always copy&paste, but it’s time-consuming and prone to errors\nWeb scraping is the process of extracting this information automatically and transform it into a structured dataset\nTwo different scenarios:\n\nScreen scraping: extract data from source code of website, with html parser (easy) or regular expression matching (less easy).\nWeb APIs (application programming interface): website offers a set of structured http requests that return JSON or XML files."
+    "section": "",
+    "text": "Increasing amount of data is available on the web\nThese data are provided in an unstructured format: you can always copy&paste, but it’s time-consuming and prone to errors\nWeb scraping is the process of extracting this information automatically and transform it into a structured dataset\nTwo different scenarios:\n\nScreen scraping: extract data from source code of website, with html parser (easy) or regular expression matching (less easy).\nWeb APIs (application programming interface): website offers a set of structured http requests that return JSON or XML files."
   },
   {
     "objectID": "slides/3-1-web-scraping/3-1-web-scraping.html#hypertext-markup-language",
     "href": "slides/3-1-web-scraping/3-1-web-scraping.html#hypertext-markup-language",
     "title": "Web scraping",
     "section": "Hypertext Markup Language",
-    "text": "Hypertext Markup Language\n\n\nMost of the data on the web is still largely available as HTML\nIt is structured (hierarchical / tree based), but it’s often not available in a form useful for analysis (flat / tidy).\n\n\n\n&lt;html&gt;\n  &lt;head&gt;\n    &lt;title&gt;This is a title&lt;/title&gt;\n  &lt;/head&gt;\n  &lt;body&gt;\n    &lt;p align=\"center\"&gt;Hello world!&lt;/p&gt;\n  &lt;/body&gt;\n&lt;/html&gt;"
+    "text": "Hypertext Markup Language\n\n\nMost of the data on the web is still largely available as HTML\nIt is structured (hierarchical / tree based), but it’s often not available in a form useful for analysis (flat / tidy).\n\n\n. . .\n&lt;html&gt;\n  &lt;head&gt;\n    &lt;title&gt;This is a title&lt;/title&gt;\n  &lt;/head&gt;\n  &lt;body&gt;\n    &lt;p align=\"center\"&gt;Hello world!&lt;/p&gt;\n  &lt;/body&gt;\n&lt;/html&gt;"
   },
   {
     "objectID": "slides/3-1-web-scraping/3-1-web-scraping.html#rvest",
@@ -1011,15 +1011,15 @@
     "objectID": "slides/2-3-importing-data/2-3-importing-data.html#reading-delimited-files",
     "href": "slides/2-3-importing-data/2-3-importing-data.html#reading-delimited-files",
     "title": "Importing data",
-    "section": "Reading delimited files",
-    "text": "Reading delimited files\n\n\n\n\n\nlibrary(tidyverse)\n\n\n\nread_csv() - comma delimited files\n\nread_csv2() - semicolon separated files (common in countries where , is used as the decimal place)\n\nread_tsv() - tab delimited files\n\nread_delim() - reads in files with any delimiter\n\nread_fwf() - fixed width files\n…"
+    "section": "",
+    "text": "library(tidyverse)\n\n\nread_csv() - comma delimited files\nread_csv2() - semicolon separated files (common in countries where , is used as the decimal place)\nread_tsv() - tab delimited files\nread_delim() - reads in files with any delimiter\nread_fwf() - fixed width files\n…"
   },
   {
     "objectID": "slides/2-3-importing-data/2-3-importing-data.html#reading-excel-spreadsheets",
     "href": "slides/2-3-importing-data/2-3-importing-data.html#reading-excel-spreadsheets",
     "title": "Importing data",
-    "section": "Reading Excel spreadsheets",
-    "text": "Reading Excel spreadsheets\n\n\n\n\n\nlibrary(readxl)\n\n\n\nread_excel() - read xls or xlsx files\n…"
+    "section": "",
+    "text": "library(readxl)\n\n\nread_excel() - read xls or xlsx files\n…"
   },
   {
     "objectID": "slides/2-3-importing-data/2-3-importing-data.html#reading-data",
@@ -1061,7 +1061,7 @@
     "href": "slides/2-3-importing-data/2-3-importing-data.html#data-with-bad-names",
     "title": "Importing data",
     "section": "Data with bad names",
-    "text": "Data with bad names\n\nedibnb_bad_names &lt;- read_csv(\"data/edibnb-bad-names.csv\")\nnames(edibnb_bad_names)\n\n [1] \"ID\"                   \"Price\"               \n [3] \"neighbourhood\"        \"accommodates\"        \n [5] \"Number of bathrooms\"  \"Number of Bedrooms\"  \n [7] \"n beds\"               \"Review Scores Rating\"\n [9] \"Number of reviews\"    \"listing_url\"         \n\n\n\n… but R doesn’t allow spaces in variable names\n\nggplot(\n  edibnb_bad_names, \n  aes(x = Number of bathrooms, y = Price)\n  ) +\n  geom_point()\n\nError: &lt;text&gt;:3:18: unexpected symbol\n2:   edibnb_bad_names, \n3:   aes(x = Number of\n                    ^"
+    "text": "Data with bad names\n\nedibnb_bad_names &lt;- read_csv(\"data/edibnb-bad-names.csv\")\nnames(edibnb_bad_names)\n\n [1] \"ID\"                   \"Price\"               \n [3] \"neighbourhood\"        \"accommodates\"        \n [5] \"Number of bathrooms\"  \"Number of Bedrooms\"  \n [7] \"n beds\"               \"Review Scores Rating\"\n [9] \"Number of reviews\"    \"listing_url\"         \n\n\n. . .\n… but R doesn’t allow spaces in variable names\n\nggplot(\n  edibnb_bad_names, \n  aes(x = Number of bathrooms, y = Price)\n  ) +\n  geom_point()\n\nError: &lt;text&gt;:3:18: unexpected symbol\n2:   edibnb_bad_names, \n3:   aes(x = Number of\n                    ^"
   },
   {
     "objectID": "slides/2-3-importing-data/2-3-importing-data.html#option-1---quote-column-names",
@@ -1075,14 +1075,14 @@
     "href": "slides/2-3-importing-data/2-3-importing-data.html#option-2---define-column-names",
     "title": "Importing data",
     "section": "Option 2 - Define column names",
-    "text": "Option 2 - Define column names\n\nedibnb_col_names &lt;- read_csv(\n  \"data/edibnb-bad-names.csv\",\n  col_names = c(\n    \"id\", \"price\", \"neighbourhood\", \"accommodates\", \n    \"bathroom\", \"bedroom\", \"bed\", \"review_scores_rating\", \n    \"n_reviews\", \"url\"\n  )\n)\n\n\n\nnames(edibnb_col_names)\n\n [1] \"id\"                   \"price\"               \n [3] \"neighbourhood\"        \"accommodates\"        \n [5] \"bathroom\"             \"bedroom\"             \n [7] \"bed\"                  \"review_scores_rating\"\n [9] \"n_reviews\"            \"url\""
+    "text": "Option 2 - Define column names\n\nedibnb_col_names &lt;- read_csv(\n  \"data/edibnb-bad-names.csv\",\n  col_names = c(\n    \"id\", \"price\", \"neighbourhood\", \"accommodates\", \n    \"bathroom\", \"bedroom\", \"bed\", \"review_scores_rating\", \n    \"n_reviews\", \"url\"\n  )\n)\n\n. . .\n\nnames(edibnb_col_names)\n\n [1] \"id\"                   \"price\"               \n [3] \"neighbourhood\"        \"accommodates\"        \n [5] \"bathroom\"             \"bedroom\"             \n [7] \"bed\"                  \"review_scores_rating\"\n [9] \"n_reviews\"            \"url\""
   },
   {
     "objectID": "slides/2-3-importing-data/2-3-importing-data.html#option-3---format-column-names-to-snake_case",
     "href": "slides/2-3-importing-data/2-3-importing-data.html#option-3---format-column-names-to-snake_case",
     "title": "Importing data",
     "section": "Option 3 - Format column names to snake_case",
-    "text": "Option 3 - Format column names to snake_case\n\nlibrary(janitor)\n\nedibnb_clean_names &lt;- read_csv(\"data/edibnb-bad-names.csv\") |&gt;\n  janitor::clean_names()\n\n\n\nnames(edibnb_clean_names)\n\n [1] \"id\"                   \"price\"               \n [3] \"neighbourhood\"        \"accommodates\"        \n [5] \"number_of_bathrooms\"  \"number_of_bedrooms\"  \n [7] \"n_beds\"               \"review_scores_rating\"\n [9] \"number_of_reviews\"    \"listing_url\""
+    "text": "Option 3 - Format column names to snake_case\n\nlibrary(janitor)\n\nedibnb_clean_names &lt;- read_csv(\"data/edibnb-bad-names.csv\") |&gt;\n  janitor::clean_names()\n\n. . .\n\nnames(edibnb_clean_names)\n\n [1] \"id\"                   \"price\"               \n [3] \"neighbourhood\"        \"accommodates\"        \n [5] \"number_of_bathrooms\"  \"number_of_bedrooms\"  \n [7] \"n_beds\"               \"review_scores_rating\"\n [9] \"number_of_reviews\"    \"listing_url\""
   },
   {
     "objectID": "slides/2-3-importing-data/2-3-importing-data.html#variable-types-1",
@@ -1109,15 +1109,15 @@
     "objectID": "slides/2-3-importing-data/2-3-importing-data.html#column-types-for-read_csv",
     "href": "slides/2-3-importing-data/2-3-importing-data.html#column-types-for-read_csv",
     "title": "Importing data",
-    "section": "Column types for read_csv()\n",
-    "text": "Column types for read_csv()\n\n\n\ntype function\ndata type\n\n\n\ncol_character()\ncharacter\n\n\ncol_date()\ndate\n\n\ncol_datetime()\nPOSIXct (date-time)\n\n\ncol_double()\ndouble (numeric)\n\n\ncol_factor()\nfactor\n\n\ncol_guess()\nlet readr guess (default)\n\n\ncol_integer()\ninteger\n\n\ncol_logical()\nlogical\n\n\ncol_number()\nnumbers mixed with non-number characters\n\n\ncol_numeric()\ndouble or integer\n\n\ncol_skip()\ndo not read\n\n\ncol_time()\ntime"
+    "section": "Column types for read_csv()",
+    "text": "Column types for read_csv()\n\n\n\ntype function\ndata type\n\n\n\n\ncol_character()\ncharacter\n\n\ncol_date()\ndate\n\n\ncol_datetime()\nPOSIXct (date-time)\n\n\ncol_double()\ndouble (numeric)\n\n\ncol_factor()\nfactor\n\n\ncol_guess()\nlet readr guess (default)\n\n\ncol_integer()\ninteger\n\n\ncol_logical()\nlogical\n\n\ncol_number()\nnumbers mixed with non-number characters\n\n\ncol_numeric()\ndouble or integer\n\n\ncol_skip()\ndo not read\n\n\ncol_time()\ntime"
   },
   {
     "objectID": "slides/2-3-importing-data/2-3-importing-data.html#reading-data-2",
     "href": "slides/2-3-importing-data/2-3-importing-data.html#reading-data-2",
     "title": "Importing data",
     "section": "Reading data",
-    "text": "Reading data\n\nnobel &lt;- read_excel(path = \"data/nobel.xlsx\")\n\n\n\nnobel\n\n# A tibble: 1,000 × 19\n      id first_name     last_name  born  died               \n   &lt;dbl&gt; &lt;chr&gt;          &lt;chr&gt;      &lt;chr&gt; &lt;dttm&gt;             \n 1   160 Jacobus H.     van 't Ho… 1852… 1911-03-01 00:00:00\n 2   569 Sully          Prudhomme  1839… 1907-09-07 00:00:00\n 3   293 Emil           von Behri… 1854… 1917-03-31 00:00:00\n 4   462 Henry          Dunant     1828… 1910-10-30 00:00:00\n 5     1 Wilhelm Conrad Röntgen    1845… 1923-02-10 00:00:00\n 6   463 Frédéric       Passy      1822… 1912-06-12 00:00:00\n 7   464 Élie           Ducommun   1833… 1906-12-07 00:00:00\n 8   465 Albert         Gobat      1843… 1914-03-16 00:00:00\n 9   294 Ronald         Ross       1857… 1932-09-16 00:00:00\n10   161 Emil           Fischer    1852… 1919-07-15 00:00:00\n# ℹ 990 more rows\n# ℹ 14 more variables: born_country &lt;chr&gt;,\n#   born_country_code &lt;chr&gt;, born_city &lt;chr&gt;,\n#   died_country &lt;chr&gt;, died_country_code &lt;chr&gt;,\n#   died_city &lt;chr&gt;, gender &lt;chr&gt;, year &lt;dbl&gt;,\n#   category &lt;chr&gt;, overall_motivation &lt;chr&gt;,\n#   motivation &lt;chr&gt;, organization_name &lt;chr&gt;, …"
+    "text": "Reading data\n\nnobel &lt;- read_excel(path = \"data/nobel.xlsx\")\n\n. . .\n\nnobel\n\n# A tibble: 1,000 × 19\n      id first_name     last_name  born  died               \n   &lt;dbl&gt; &lt;chr&gt;          &lt;chr&gt;      &lt;chr&gt; &lt;dttm&gt;             \n 1   160 Jacobus H.     van 't Ho… 1852… 1911-03-01 00:00:00\n 2   569 Sully          Prudhomme  1839… 1907-09-07 00:00:00\n 3   293 Emil           von Behri… 1854… 1917-03-31 00:00:00\n 4   462 Henry          Dunant     1828… 1910-10-30 00:00:00\n 5     1 Wilhelm Conrad Röntgen    1845… 1923-02-10 00:00:00\n 6   463 Frédéric       Passy      1822… 1912-06-12 00:00:00\n 7   464 Élie           Ducommun   1833… 1906-12-07 00:00:00\n 8   465 Albert         Gobat      1843… 1914-03-16 00:00:00\n 9   294 Ronald         Ross       1857… 1932-09-16 00:00:00\n10   161 Emil           Fischer    1852… 1919-07-15 00:00:00\n# ℹ 990 more rows\n# ℹ 14 more variables: born_country &lt;chr&gt;,\n#   born_country_code &lt;chr&gt;, born_city &lt;chr&gt;,\n#   died_country &lt;chr&gt;, died_country_code &lt;chr&gt;,\n#   died_city &lt;chr&gt;, gender &lt;chr&gt;, year &lt;dbl&gt;,\n#   category &lt;chr&gt;, overall_motivation &lt;chr&gt;,\n#   motivation &lt;chr&gt;, organization_name &lt;chr&gt;, …"
   },
   {
     "objectID": "slides/2-3-importing-data/2-3-importing-data.html#spreadsheets-with-bad-names",
@@ -1165,15 +1165,15 @@
     "objectID": "slides/2-3-importing-data/2-3-importing-data.html#column-types-for-read_excel",
     "href": "slides/2-3-importing-data/2-3-importing-data.html#column-types-for-read_excel",
     "title": "Importing data",
-    "section": "Column types for read_excel()\n",
-    "text": "Column types for read_excel()\n\n\n\ntype function\ndata type\n\n\n\n\"skip\"\ndo not read\n\n\n\"guess\"\nlet readxl guess (default)\n\n\n\"logical\"\nlogical\n\n\n\"numeric\"\nnumeric\n\n\n\"date\"\nPOSIXct (date-time)\n\n\n\"text\"\ncharacter\n\n\n\"list\"\na list of length 1 vectors"
+    "section": "Column types for read_excel()",
+    "text": "Column types for read_excel()\n\n\n\ntype function\ndata type\n\n\n\n\n\"skip\"\ndo not read\n\n\n\"guess\"\nlet readxl guess (default)\n\n\n\"logical\"\nlogical\n\n\n\"numeric\"\nnumeric\n\n\n\"date\"\nPOSIXct (date-time)\n\n\n\"text\"\ncharacter\n\n\n\"list\"\na list of length 1 vectors"
   },
   {
     "objectID": "slides/2-3-importing-data/2-3-importing-data.html#other-types-of-data-1",
     "href": "slides/2-3-importing-data/2-3-importing-data.html#other-types-of-data-1",
     "title": "Importing data",
     "section": "Other types of data",
-    "text": "Other types of data\n\n\ngooglesheets4: Google Sheets\n\narrow: parquet files\n\nDBI, along with a database specific backend (e.g. RMySQL, RSQLite, RPostgreSQL etc): allows you to run SQL queries against a database and return a data frame\n\nrvest: web scraping\n\nhaven: SPSS, Stata, and SAS files\n\njsonline: JSON\n\nxml2: xml\n\nhttr: web APIs\n\nsparklyr: data loaded into spark"
+    "text": "Other types of data\n\ngooglesheets4: Google Sheets\narrow: parquet files\nDBI, along with a database specific backend (e.g. RMySQL, RSQLite, RPostgreSQL etc): allows you to run SQL queries against a database and return a data frame\nrvest: web scraping\nhaven: SPSS, Stata, and SAS files\njsonline: JSON\nxml2: xml\nhttr: web APIs\nsparklyr: data loaded into spark"
   },
   {
     "objectID": "exercises/tidy_basketball.html",
@@ -1300,5 +1300,82 @@
     "title": "Country populations over time (Complete)",
     "section": "Visualization",
     "text": "Visualization\n\nNow we start making our plot, but let’s not get too fancy right away. Create a line plot of populations of the United States, India, and China over the years. Represent the data with points and lines.\n\n\npopulation_longer |&gt;\n  filter(country_name %in% c(\"United States\", \"India\", \"China\")) |&gt;\n  ggplot(aes(x = year, y = population, color = country_name)) +\n  geom_point() +\n  geom_line()\n\n\n\n\n\n\n\n\n\nWhat aspects of the plot need to be updated to go from the draft you created above to the goal plot at the beginning of this application exercise.\n\nx and y axis scales\nshapes\ntheme\nlabels\nplacement of legend\n\nUse different shapes for each country’s points.\n\n\npopulation_longer |&gt;\n  filter(country_name %in% c(\"United States\", \"India\", \"China\")) |&gt;\n  ggplot(aes(x = year, y = population, color = country_name, shape = country_name)) +\n  geom_point() +\n  geom_line()\n\n\n\n\n\n\n\n\n\nUpdate x-axis scale such that the years displayed go from 2000 to 2024 in increments of 4 years.\n\n\npopulation_longer |&gt;\n  filter(country_name %in% c(\"United States\", \"India\", \"China\")) |&gt;\n  ggplot(aes(x = year, y = population, color = country_name, shape = country_name)) +\n  geom_point() +\n  geom_line() +\n  scale_x_continuous(limits = c(2000, 2024), breaks = seq(2000, 2024, 4))\n\n\n\n\n\n\n\n\n\nUpdate the y-axis so it’s scaled to millions and uses the same breaks as the goal plot.\n\n\npopulation_longer |&gt;\n  filter(country_name %in% c(\"United States\", \"India\", \"China\")) |&gt;\n  ggplot(aes(x = year, y = population, color = country_name, shape = country_name)) +\n  geom_point() +\n  geom_line() +\n  scale_x_continuous(limits = c(2000, 2024), breaks = seq(2000, 2024, 4)) +\n  scale_y_continuous(\n    breaks = seq(250000000, 1250000000, 250000000),\n    labels = label_number(scale = 1/1000000, suffix = \" mil\")\n  )\n\n\n\n\n\n\n\n\n\nUpdate colors for each country using the following level / color assignments.\n\n“United States” = “#0A3161”\n“India” = “#FF671F”\n“China” = “#EE1C25”\n\n\n\npopulation_longer |&gt;\n  filter(country_name %in% c(\"United States\", \"India\", \"China\")) |&gt;\n  ggplot(aes(x = year, y = population, color = country_name, shape = country_name)) +\n  geom_point() +\n  geom_line() +\n  scale_x_continuous(limits = c(2000, 2024), breaks = seq(2000, 2024, 4)) +\n  scale_y_continuous(\n    breaks = seq(250000000, 1250000000, 250000000),\n    labels = label_number(scale = 1/1000000, suffix = \" mil\")\n  ) +\n  scale_color_manual(\n    values = c(\n      \"United States\" = \"#0A3161\",\n      \"India\" = \"#FF671F\",\n      \"China\" = \"#EE1C25\"\n    )\n  )\n\n\n\n\n\n\n\n\n\nUpdate the plot labels (title, subtitle, x, y, and caption) and use theme_minimal().\n\n\npopulation_longer |&gt;\n  filter(country_name %in% c(\"United States\", \"India\", \"China\")) |&gt;\n  ggplot(aes(x = year, y = population, color = country_name, shape = country_name)) +\n  geom_point() +\n  geom_line() +\n  scale_x_continuous(limits = c(2000, 2024), breaks = seq(2000, 2024, 4)) +\n  scale_y_continuous(\n    breaks = seq(250000000, 1250000000, 250000000),\n    labels = label_number(scale = 1/1000000, suffix = \" mil\")\n  ) +\n  scale_color_manual(\n    values = c(\n      \"United States\" = \"#0A3161\",\n      \"India\" = \"#FF671F\",\n      \"China\" = \"#EE1C25\"\n    )\n  ) +\n  theme_minimal() +\n  labs(\n    x = \"Year\",\n    y = \"Population (in millions)\",\n    title = \"Country populations over the years\",\n    subtitle = \"2000 to 2023\",\n    caption = \"Data source: The World Bank\"\n  )\n\n\n\n\n\n\n\n\n\nFinally, move the legend to the top of the plot and remove its label.\n\n\npopulation_longer |&gt;\n  filter(country_name %in% c(\"United States\", \"India\", \"China\")) |&gt;\n  ggplot(aes(x = year, y = population, color = country_name, shape = country_name)) +\n  geom_point() +\n  geom_line() +\n  scale_x_continuous(limits = c(2000, 2024), breaks = seq(2000, 2024, 4)) +\n  scale_y_continuous(\n    breaks = seq(250000000, 1250000000, 250000000),\n    labels = label_number(scale = 1/1000000, suffix = \" mil\")\n  ) +\n  scale_color_manual(\n    values = c(\n      \"United States\" = \"#0A3161\",\n      \"India\" = \"#FF671F\",\n      \"China\" = \"#EE1C25\"\n    )\n  ) +\n  labs(\n    x = \"Year\",\n    y = \"Population (in millions)\",\n    color = NULL,\n    shape = NULL,\n    title = \"Country populations over the years\",\n    subtitle = \"2000 to 2023\",\n    caption = \"Data source: The World Bank\"\n  ) +\n  theme_minimal() +\n  theme(legend.position = \"top\")"
+  },
+  {
+    "objectID": "exercises/web_scraping.html",
+    "href": "exercises/web_scraping.html",
+    "title": "Scraping Star Wars",
+    "section": "",
+    "text": "Scraping data is defined as extracting data from one source to another. We are going to use the following website to practice scraping data; taking data on the website and transporting it into a more workable format with R code.\n\n\nPlease visit the website and identify the movie titles. What are they?\n\n\n\n\n\n\nSolution\n\n\n\n\n\nThere are seven movie titles on this page. They include: – The Phantom Menace\n– Attack of the Clones\n– Revenge of the Sith\n– A New Hope\n– The Empire Strikes Back\n– Return of the Jedi\n– The Force Awakens\n\n\n\nThe next step is to identify the html element that is associated with each title. To help us, we can use Selector Gadget. Selector Gadget is an open source Chrome Extension that helps users find elements of an html page easier. This demonstration will use Selector Gadget. To install Selector Gadget, please go to the following page. When the Selector Gadget is installed, you should see  in your task bar.\n\n\nFirst, we need to reference the website. We can do this by using read_html() from the rvest package. Run the following code below to do so.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\nNext, we need to find the element that is associated with the titles of each Star Wars movie. Click the  icon and click on one of the titles.\n\nIn the red outline, you will see the element section. Click on a different title. You will again see the element section. We can use this information to pull the titles from the website using the following code:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nNotice how seven nodes (titles) had the same element section. You can see the title of the movie, along with other data, in each row. Among this output, you can see that each data-id has an h2 element. We also saw h2 when using the selector gadget on the title. Now, let’s pull just the information associated with the h2 element.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nAnother way to get title information is to take them directly from the starwars html using html_elements(\"h2\"). See the following code below.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nNotice that this has 8 nodes, instead of 7, as the data “On this page” does not have the element section tag."
+  },
+  {
+    "objectID": "exercises/web_scraping.html#star-wars",
+    "href": "exercises/web_scraping.html#star-wars",
+    "title": "Scraping Star Wars",
+    "section": "",
+    "text": "Scraping data is defined as extracting data from one source to another. We are going to use the following website to practice scraping data; taking data on the website and transporting it into a more workable format with R code.\n\n\nPlease visit the website and identify the movie titles. What are they?\n\n\n\n\n\n\nSolution\n\n\n\n\n\nThere are seven movie titles on this page. They include: – The Phantom Menace\n– Attack of the Clones\n– Revenge of the Sith\n– A New Hope\n– The Empire Strikes Back\n– Return of the Jedi\n– The Force Awakens\n\n\n\nThe next step is to identify the html element that is associated with each title. To help us, we can use Selector Gadget. Selector Gadget is an open source Chrome Extension that helps users find elements of an html page easier. This demonstration will use Selector Gadget. To install Selector Gadget, please go to the following page. When the Selector Gadget is installed, you should see  in your task bar.\n\n\nFirst, we need to reference the website. We can do this by using read_html() from the rvest package. Run the following code below to do so.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\nNext, we need to find the element that is associated with the titles of each Star Wars movie. Click the  icon and click on one of the titles.\n\nIn the red outline, you will see the element section. Click on a different title. You will again see the element section. We can use this information to pull the titles from the website using the following code:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nNotice how seven nodes (titles) had the same element section. You can see the title of the movie, along with other data, in each row. Among this output, you can see that each data-id has an h2 element. We also saw h2 when using the selector gadget on the title. Now, let’s pull just the information associated with the h2 element.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nAnother way to get title information is to take them directly from the starwars html using html_elements(\"h2\"). See the following code below.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nNotice that this has 8 nodes, instead of 7, as the data “On this page” does not have the element section tag."
+  },
+  {
+    "objectID": "exercises/web_scraping.html#asking-permission",
+    "href": "exercises/web_scraping.html#asking-permission",
+    "title": "Scraping Star Wars",
+    "section": "Asking Permission",
+    "text": "Asking Permission\nJust because you can use rvest tools to scrape data doesn’t mean you should or have permission to do so. We will use the bow() function from the polite package in R to introduce the client to the host and ask for permission to scrape. Use the following code to ensure that we had permission to scrape Star Wars! Note that the input for bow() is a character URL.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nIndeed, we had permission to scrape that website!\nLet’s check out four more websites:\n\nhttps://espn.com\nhttps://x.com/home\nhttps://www.bettycrocker.com\nhttps://www.zillow.com\n\nSave each of these websites as a character, and use bow() to check for permission. What websites are you allowed to scrape? Which are you not allowed to scrape?\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nhost1 &lt;- \"https://espn.com\"\nhost2 &lt;- \"https://x.com/home\"\nhost3 &lt;- \"https://www.bettycrocker.com\"\nhost4 &lt;- \"https://www.zillow.com\"\n\nbow(host1)\n\n&lt;polite session&gt; https://espn.com\n    User-agent: polite R package\n    robots.txt: 114 rules are defined for 11 bots\n   Crawl delay: 5 sec\n  The path is not scrapable for this user-agent\n\nbow(host2)\n\n&lt;polite session&gt; https://x.com/home\n    User-agent: polite R package\n    robots.txt: 24 rules are defined for 7 bots\n   Crawl delay: 5 sec\n  The path is not scrapable for this user-agent\n\nbow(host3)\n\n&lt;polite session&gt; https://www.bettycrocker.com\n    User-agent: polite R package\n    robots.txt: 15 rules are defined for 1 bots\n   Crawl delay: 5 sec\n  The path is scrapable for this user-agent\n\nbow(host4)\n\n&lt;polite session&gt; https://www.zillow.com\n    User-agent: polite R package\n    robots.txt: 244 rules are defined for 8 bots\n   Crawl delay: 5 sec\n  The path is scrapable for this user-agent\n\n\nWe do not have permission to scrape espn.com or x.com. We do have permission to scrape bettycrocker.com and zillow.com."
+  },
+  {
+    "objectID": "slides/3-2-web-scraping-considerations/3-2-web-scraping-considerations.html",
+    "href": "slides/3-2-web-scraping-considerations/3-2-web-scraping-considerations.html",
+    "title": "Web scraping considerations",
+    "section": "",
+    "text": "Source: Brian Resnick, Researchers just released profile data on 70,000 OkCupid users without permission, Vox."
+  },
+  {
+    "objectID": "slides/2-3-importing-data/2-3-importing-data.html",
+    "href": "slides/2-3-importing-data/2-3-importing-data.html",
+    "title": "Importing data",
+    "section": "",
+    "text": "library(tidyverse)\n\n\nread_csv() - comma delimited files\nread_csv2() - semicolon separated files (common in countries where , is used as the decimal place)\nread_tsv() - tab delimited files\nread_delim() - reads in files with any delimiter\nread_fwf() - fixed width files\n…\n\n\n\n\n\n\n\n\n\n\n\nlibrary(readxl)\n\n\nread_excel() - read xls or xlsx files\n…"
+  },
+  {
+    "objectID": "slides/2-1-data-types/2-1-data-types.html",
+    "href": "slides/2-1-data-types/2-1-data-types.html",
+    "title": "Data types",
+    "section": "",
+    "text": "A survey asked respondents their name and number of cats. The instructions said to enter the number of cats as a numerical value.\n\ncat_lovers &lt;- read_csv(\"data/cat-lovers.csv\")\ncat_lovers\n\n# A tibble: 60 × 2\n   name           number_of_cats\n   &lt;chr&gt;          &lt;chr&gt;         \n 1 Bernice Warren 0             \n 2 Woodrow Stone  0             \n 3 Willie Bass    1             \n 4 Tyrone Estrada 3             \n 5 Alex Daniels   3             \n 6 Jane Bates     2             \n 7 Latoya Simpson 1             \n 8 Darin Woods    1             \n 9 Agnes Cobb     0             \n10 Tabitha Grant  0             \n# ℹ 50 more rows\n\n\n\n\n\n\ncat_lovers |&gt;\n  summarize(mean_cats = mean(number_of_cats))\n\nWarning: There was 1 warning in `summarize()`.\nℹ In argument: `mean_cats = mean(number_of_cats)`.\nCaused by warning in `mean.default()`:\n! argument is not numeric or logical: returning NA\n\n\n# A tibble: 1 × 1\n  mean_cats\n      &lt;dbl&gt;\n1        NA\n\n\n\n\n\n\n?mean\n\n\n\n\n\n\ncat_lovers |&gt;\n  summarize(mean_cats = mean(number_of_cats, na.rm = TRUE))\n\nWarning: There was 1 warning in `summarize()`.\nℹ In argument: `mean_cats = mean(number_of_cats, na.rm =\n  TRUE)`.\nCaused by warning in `mean.default()`:\n! argument is not numeric or logical: returning NA\n\n\n# A tibble: 1 × 1\n  mean_cats\n      &lt;dbl&gt;\n1        NA\n\n\n\n\n\n\nWhat is the type of the number_of_cats variable?\n\n\nglimpse(cat_lovers)\n\nRows: 60\nColumns: 2\n$ name           &lt;chr&gt; \"Bernice Warren\", \"Woodrow Stone\", …\n$ number_of_cats &lt;chr&gt; \"0\", \"0\", \"1\", \"3\", \"3\", \"2\", \"1\", …\n\n\n\n\n\n\n\n\n\n\n\n\n\nname\nnumber_of_cats\n\n\n\n\nBernice Warren\n0\n\n\nWoodrow Stone\n0\n\n\nWillie Bass\n1\n\n\nTyrone Estrada\n3\n\n\nAlex Daniels\n3\n\n\nJane Bates\n2\n\n\nLatoya Simpson\n1\n\n\nDarin Woods\n1\n\n\nAgnes Cobb\n0\n\n\nTabitha Grant\n0\n\n\nPerry Cross\n0\n\n\nWanda Silva\n0\n\n\nAlicia Sims\n1\n\n\nEmily Logan\n3\n\n\nWoodrow Elliott\n3\n\n\nBrent Copeland\n2\n\n\nPedro Carlson\n1\n\n\nPatsy Luna\n1\n\n\nBrett Robbins\n0\n\n\nOliver George\n0\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nname\nnumber_of_cats\n\n\n\n\nCalvin Perry\n1\n\n\nLora Gutierrez\n1\n\n\nCharlotte Sparks\n0\n\n\nEarl Mack\n0\n\n\nLeslie Wade\n4\n\n\nSantiago Barker\n0\n\n\nJose Bell\n0\n\n\nLynda Smith\n0\n\n\nBradford Marshall\n0\n\n\nIrving Miller\n0\n\n\nCaroline Simpson\n0\n\n\nFrances Welch\n0\n\n\nMelba Jenkins\n0\n\n\nVeronica Morales\n0\n\n\nJuanita Cunningham\n0\n\n\nMaurice Howard\n0\n\n\nTeri Pierce\n0\n\n\nPhil Franklin\n0\n\n\nJan Zimmerman\n0\n\n\nLeslie Price\n0\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nname\nnumber_of_cats\n\n\n\n\nBessie Patterson\n0\n\n\nEthel Wolfe\n0\n\n\nNaomi Wright\n1\n\n\nSadie Frank\n3\n\n\nLonnie Cannon\n3\n\n\nTony Garcia\n2\n\n\nDarla Newton\n1\n\n\nGinger Clark\n1.5 - honestly I think one of my cats is half human\n\n\nLionel Campbell\n0\n\n\nFlorence Klein\n0\n\n\nHarriet Leonard\n1\n\n\nTerrence Harrington\n0\n\n\nTravis Garner\n1\n\n\nDoug Bass\nthree\n\n\nPat Norris\n1\n\n\nDawn Young\n1\n\n\nShari Alvarez\n1\n\n\nTamara Robinson\n0\n\n\nMegan Morgan\n0\n\n\nKara Obrien\n2\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nname\nnumber_of_cats\n\n\n\n\nBessie Patterson\n0\n\n\nEthel Wolfe\n0\n\n\nNaomi Wright\n1\n\n\nSadie Frank\n3\n\n\nLonnie Cannon\n3\n\n\nTony Garcia\n2\n\n\nDarla Newton\n1\n\n\nGinger Clark\n1.5 - honestly I think one of my cats is half human\n\n\nLionel Campbell\n0\n\n\nFlorence Klein\n0\n\n\nHarriet Leonard\n1\n\n\nTerrence Harrington\n0\n\n\nTravis Garner\n1\n\n\nDoug Bass\nthree\n\n\nPat Norris\n1\n\n\nDawn Young\n1\n\n\nShari Alvarez\n1\n\n\nTamara Robinson\n0\n\n\nMegan Morgan\n0\n\n\nKara Obrien\n2\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nname\nnumber_of_cats\n\n\n\n\nBessie Patterson\n0\n\n\nEthel Wolfe\n0\n\n\nNaomi Wright\n1\n\n\nSadie Frank\n3\n\n\nLonnie Cannon\n3\n\n\nTony Garcia\n2\n\n\nDarla Newton\n1\n\n\nGinger Clark\n1.5 - honestly I think one of my cats is half human\n\n\nLionel Campbell\n0\n\n\nFlorence Klein\n0\n\n\nHarriet Leonard\n1\n\n\nTerrence Harrington\n0\n\n\nTravis Garner\n1\n\n\nDoug Bass\nthree\n\n\nPat Norris\n1\n\n\nDawn Young\n1\n\n\nShari Alvarez\n1\n\n\nTamara Robinson\n0\n\n\nMegan Morgan\n0\n\n\nKara Obrien\n2\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nname\nnumber_of_cats\n\n\n\n\nBessie Patterson\n0\n\n\nEthel Wolfe\n0\n\n\nNaomi Wright\n1\n\n\nSadie Frank\n3\n\n\nLonnie Cannon\n3\n\n\nTony Garcia\n2\n\n\nDarla Newton\n1\n\n\nGinger Clark\n1.5 - honestly I think one of my cats is half human\n\n\nLionel Campbell\n0\n\n\nFlorence Klein\n0\n\n\nHarriet Leonard\n1\n\n\nTerrence Harrington\n0\n\n\nTravis Garner\n1\n\n\nDoug Bass\nthree\n\n\nPat Norris\n1\n\n\nDawn Young\n1\n\n\nShari Alvarez\n1\n\n\nTamara Robinson\n0\n\n\nMegan Morgan\n0\n\n\nKara Obrien\n2\n\n\n\n\n\n\n\n\n\n\n\ncat_lovers |&gt;\n  mutate(\n    number_of_cats = case_when(\n      name == \"Ginger Clark\" ~ 2,\n      name == \"Doug Bass\"    ~ 3,\n      .default = as.numeric(number_of_cats)\n      )\n    ) |&gt;\n  summarize(mean_cats = mean(number_of_cats))\n\nWarning: There was 1 warning in `mutate()`.\nℹ In argument: `number_of_cats = case_when(...)`.\nCaused by warning in `vec_case_when()`:\n! NAs introduced by coercion\n\n\n# A tibble: 1 × 1\n  mean_cats\n      &lt;dbl&gt;\n1     0.833\n\n\n\n\n\n\ncat_lovers |&gt;#| \n  mutate(\n    number_of_cats = case_when(\n      name == \"Ginger Clark\" ~ \"2\",\n      name == \"Doug Bass\"    ~ \"3\",\n      .default = number_of_cats\n      ),\n    number_of_cats = as.numeric(number_of_cats)\n    ) |&gt;\n  summarize(mean_cats = mean(number_of_cats))\n\n# A tibble: 1 × 1\n  mean_cats\n      &lt;dbl&gt;\n1     0.833\n\n\n\n\n\n\nIf your data does not behave how you expect it to, type coercion upon reading in the data might be the reason.\nGo in and investigate your data, apply the fix, save your data, live happily ever after."
+  },
+  {
+    "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html",
+    "href": "slides/1-3-tidying-data/1-3-tidying-data.html",
+    "title": "Tidying data",
+    "section": "",
+    "text": "have data organised in an unideal way for our analysis\n\n. . .\n\n want to reorganize the data for our analysis\n\n. . .\n\n using tools from the tidyverse\n\n\nlibrary(tidyverse)\n\n\n\n\n\n\nhave\n\n\n\n# A tibble: 2 × 4\n  customer_id item_1 item_2       item_3\n        &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;        &lt;chr&gt; \n1           1 bread  milk         banana\n2           2 milk   toilet paper &lt;NA&gt;  \n\n\n\n\nwant\n\n\n\n# A tibble: 6 × 3\n  customer_id item_no item        \n        &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;       \n1           1 item_1  bread       \n2           1 item_2  milk        \n3           1 item_3  banana      \n4           2 item_1  milk        \n5           2 item_2  toilet paper\n6           2 item_3  &lt;NA&gt;        \n\n\n\n\n\n\n\n\n\n\n\n\nThe goal of tidyr is to help you tidy your data via\n\n\npivoting for going between wide and long data\nsplitting and combining character columns\nnesting and unnesting columns\nclarifying how NAs should be treated"
+  },
+  {
+    "objectID": "slides/1-2-tidy-data/1-2-tidy-data.html",
+    "href": "slides/1-2-tidy-data/1-2-tidy-data.html",
+    "title": "Tidy data",
+    "section": "",
+    "text": "Happy families are all alike; every unhappy family is unhappy in its own way.\nLeo Tolstoy\n\n\n\nCharacteristics of tidy data:\n\nEach variable forms a column.\nEach observation forms a row.\nEach type of observational unit forms a table.\n\n\nCharacteristics of untidy data:\n!@#$%^&*()"
+  },
+  {
+    "objectID": "slides/1-4-joining-data/1-4-joining-data.html",
+    "href": "slides/1-4-joining-data/1-4-joining-data.html",
+    "title": "Joining data",
+    "section": "",
+    "text": "have multiple data frames\n\n. . .\n\n want to join them together\n\n. . .\n\n using tools from the tidyverse\n\n\nlibrary(tidyverse)\n\n\n\n\nInformation on 10 women in science who changed the world:\n\n\n\n\n\n\n\n\nname\n\n\n\n\nAda Lovelace\n\n\nMarie Curie\n\n\nJanaki Ammal\n\n\nChien-Shiung Wu\n\n\nKatherine Johnson\n\n\nRosalind Franklin\n\n\nVera Rubin\n\n\nGladys West\n\n\nFlossie Wong-Staal\n\n\nJennifer Doudna\n\n\n\n\n\n\n\n\n\nSource: Discover Magazine\n\n\n\n\nprofessions\n\n# A tibble: 10 × 2\n   name               profession                        \n   &lt;chr&gt;              &lt;chr&gt;                             \n 1 Ada Lovelace       Mathematician                     \n 2 Marie Curie        Physicist and Chemist             \n 3 Janaki Ammal       Botanist                          \n 4 Chien-Shiung Wu    Physicist                         \n 5 Katherine Johnson  Mathematician                     \n 6 Rosalind Franklin  Chemist                           \n 7 Vera Rubin         Astronomer                        \n 8 Gladys West        Mathematician                     \n 9 Flossie Wong-Staal Virologist and Molecular Biologist\n10 Jennifer Doudna    Biochemist                        \n\n\n\n\n\n\ndates\n\n# A tibble: 8 × 3\n  name               birth_year death_year\n  &lt;chr&gt;                   &lt;dbl&gt;      &lt;dbl&gt;\n1 Janaki Ammal             1897       1984\n2 Chien-Shiung Wu          1912       1997\n3 Katherine Johnson        1918       2020\n4 Rosalind Franklin        1920       1958\n5 Vera Rubin               1928       2016\n6 Gladys West              1930         NA\n7 Flossie Wong-Staal       1947       2020\n8 Jennifer Doudna          1964         NA\n\n\n\n\n\n\nworks\n\n# A tibble: 9 × 2\n  name               known_for                              \n  &lt;chr&gt;              &lt;chr&gt;                                  \n1 Ada Lovelace       first computer algorithm               \n2 Marie Curie        theory of radioactivity,  discovery of…\n3 Janaki Ammal       hybrid species, biodiversity protection\n4 Chien-Shiung Wu    confim and refine theory of radioactiv…\n5 Katherine Johnson  calculations of orbital mechanics crit…\n6 Vera Rubin         existence of dark matter               \n7 Gladys West        mathematical modeling of the shape of …\n8 Flossie Wong-Staal first scientist to clone HIV and creat…\n9 Jennifer Doudna    one of the primary developers of CRISP…\n\n\n\n\n\n\n\n# A tibble: 10 × 5\n   name           profession birth_year death_year known_for\n   &lt;chr&gt;          &lt;chr&gt;           &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;    \n 1 Ada Lovelace   Mathemati…         NA         NA first co…\n 2 Marie Curie    Physicist…         NA         NA theory o…\n 3 Janaki Ammal   Botanist         1897       1984 hybrid s…\n 4 Chien-Shiung … Physicist        1912       1997 confim a…\n 5 Katherine Joh… Mathemati…       1918       2020 calculat…\n 6 Rosalind Fran… Chemist          1920       1958 &lt;NA&gt;     \n 7 Vera Rubin     Astronomer       1928       2016 existenc…\n 8 Gladys West    Mathemati…       1930         NA mathemat…\n 9 Flossie Wong-… Virologis…       1947       2020 first sc…\n10 Jennifer Doud… Biochemist       1964         NA one of t…\n\n\n\n\n\n\nnames(professions)\n\n[1] \"name\"       \"profession\"\n\nnrow(professions)\n\n[1] 10\n\n\n. . .\n\nnames(dates)\n\n[1] \"name\"       \"birth_year\" \"death_year\"\n\nnrow(dates)\n\n[1] 8\n\n\n. . .\n\nnames(works)\n\n[1] \"name\"      \"known_for\"\n\nnrow(works)\n\n[1] 9"
+  },
+  {
+    "objectID": "slides/2-2-data-classes/2-2-data-classes.html",
+    "href": "slides/2-2-data-classes/2-2-data-classes.html",
+    "title": "Data classes",
+    "section": "",
+    "text": "We talked about types so far, next we’ll introduce the concept of classes\n\n\nVectors are like Lego building blocks\nWe stick them together to build more complicated constructs, e.g. representations of data\nThe class attribute relates to the S3 class of an object which determines its behaviour\n\nYou don’t need to worry about what S3 classes really mean, but you can read more about it here if you’re curious\n\nExamples: factors, dates, and data frames\n\n\n\n\n\nR uses factors to handle categorical variables, variables that have a fixed and known set of possible values\n\nx &lt;- factor(c(\"BS\", \"MS\", \"PhD\", \"MS\"))\nx\n\n[1] BS  MS  PhD MS \nLevels: BS MS PhD\n\n\n\n\n\ntypeof(x)\n\n[1] \"integer\"\n\n\n\n\nclass(x)\n\n[1] \"factor\"\n\n\n\n\n\n\n\nWe can think of factors like character (level labels) and an integer (level numbers) glued together\n\nglimpse(x)\n\n Factor w/ 3 levels \"BS\",\"MS\",\"PhD\": 1 2 3 2\n\nas.integer(x)\n\n[1] 1 2 3 2\n\n\n\n\n\n\ny &lt;- as.Date(\"2025-01-01\")\ny\n\n[1] \"2025-01-01\"\n\ntypeof(y)\n\n[1] \"double\"\n\nclass(y)\n\n[1] \"Date\"\n\n\n\n\n\nWe can think of dates like an integer (the number of days since the origin, 1 Jan 1970) and an integer (the origin) glued together\n\nas.integer(y)\n\n[1] 20089\n\nas.integer(y) / 365 # roughly 55 yrs\n\n[1] 55.03836\n\n\n\n\n\nWe can think of data frames like like vectors of equal length glued together\n\ndf &lt;- data.frame(x = 1:2, y = 3:4)\ndf\n\n  x y\n1 1 3\n2 2 4\n\n\n\n\n\ntypeof(df)\n\n[1] \"list\"\n\n\n\n\nclass(df)\n\n[1] \"data.frame\"\n\n\n\n\n\n\n\nLists are a generic vector container; vectors of any type can go in them\n\nl &lt;- list(\n  x = 1:4,\n  y = c(\"hi\", \"hello\", \"jello\"),\n  z = c(TRUE, FALSE)\n)\nl\n\n$x\n[1] 1 2 3 4\n\n$y\n[1] \"hi\"    \"hello\" \"jello\"\n\n$z\n[1]  TRUE FALSE\n\n\n\n\n\n\nA data frame is a special list containing vectors of equal length\nWhen we use the pull() function, we extract a vector from the data frame\n\n\ndf\n\n  x y\n1 1 3\n2 2 4\n\ndf |&gt;\n  pull(y)\n\n[1] 3 4"
+  },
+  {
+    "objectID": "slides/3-1-web-scraping/3-1-web-scraping.html",
+    "href": "slides/3-1-web-scraping/3-1-web-scraping.html",
+    "title": "Web scraping",
+    "section": "",
+    "text": "Increasing amount of data is available on the web\nThese data are provided in an unstructured format: you can always copy&paste, but it’s time-consuming and prone to errors\nWeb scraping is the process of extracting this information automatically and transform it into a structured dataset\nTwo different scenarios:\n\nScreen scraping: extract data from source code of website, with html parser (easy) or regular expression matching (less easy).\nWeb APIs (application programming interface): website offers a set of structured http requests that return JSON or XML files."
   }
 ]

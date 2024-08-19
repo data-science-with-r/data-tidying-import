@@ -2,7 +2,7 @@
 title: "Scraping Star Wars"
 toc: true
 webr:
-  packages: ['tidyverse', 'scales', 'rvest', 'polite']
+  packages: ['tidyverse', 'scales', 'rvest', 'polite', 'curl']
 filters:
   - webr
 ---
@@ -18,6 +18,8 @@ library(tidyverse)
 library(rvest)
 library(polite)
 library(scales)
+library(polite)
+library(curl)
 
 ```
 
@@ -62,7 +64,7 @@ Next, we need to find the element that is associated with the titles of each Sta
 
 ![](images/h2.png)
 
-Both in the bottom right and in the red outline, you will see the element `section`. Click on a different title. You will again see the element `section`. We can use this information to pull the titles from the website using the following code:
+In the red outline, you will see the element `section`. Click on a different title. You will again see the element `section`. We can use this information to pull the titles from the website using the following code:
 
 ```{webr-r}
 films <- starwars |>
@@ -90,7 +92,7 @@ starwars |>
 
 Notice that this has 8 nodes, instead of 7, as the data "On this page" does not have the element `section` tag. 
 
-###
+### Working with scraped eCommerce pages
 
 
 
