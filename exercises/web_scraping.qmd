@@ -2,35 +2,48 @@
 title: "Scraping Star Wars"
 toc: true
 webr:
-  packages: ['tidyverse', 'scales', 'readxl', 'rvest']
+  packages: ['tidyverse', 'scales', 'rvest', 'polite']
 filters:
   - webr
 ---
 
-## Star Wars 
+## Star Wars
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+library(tidyverse)
+library(rvest)
+library(polite)
+library(scales)
+
+```
+
 
 Scraping data is defined as extracting data from one source to another. We are going to use the following [website](https://rvest.tidyverse.org/articles/starwars.html) to practice scraping data; taking data on the website and transporting it into a more workable format with R code.
 
 ### Scraping titles
 
-Please visit the [website](https://rvest.tidyverse.org/articles/starwars.html) and identify the movie titles. What are they? 
+Please visit the [website](https://rvest.tidyverse.org/articles/starwars.html) and identify the movie titles. What are they?
 
 ::: {.callout-tip collapse="true"}
 ## Solution
-There are seven movie titles on this page. They include:
---    The Phantom Menace
 
---    Attack of the Clones
+There are seven movie titles on this page. They include: -- The Phantom Menace
 
---    Revenge of the Sith
+-- Attack of the Clones
 
---    A New Hope
+-- Revenge of the Sith
 
---    The Empire Strikes Back
+-- A New Hope
 
---    Return of the Jedi
+-- The Empire Strikes Back
 
---    The Force Awakens
+-- Return of the Jedi
+
+-- The Force Awakens
 :::
 
 The next step is to identify the html element that is associated with each title. To help us, we can use [Selector Gadget](https://selectorgadget.com/). Selector Gadget is an open source Chrome Extension that helps users find elements of an html page easier. This demonstration will use Selector Gadget. To install Selector Gadget, please go to the following [page](https://chromewebstore.google.com/detail/selectorgadget/mhjhnkcfbdhnjickkkdbjoemdmbfginb?hl=en&pli=1). When the Selector Gadget is installed, you should see ![](images/gadget.png) in your task bar.
@@ -43,15 +56,24 @@ First, we need to reference the website. We can do this by using `read_html()` f
 starwars <- read_html("https://rvest.tidyverse.org/articles/starwars.html")
 ```
 
-#### Find the element 
+#### Find the element
 
-Next, we need to find the element that is assocciated with the titles of each Star Wars movie. Click the ![](images/gadget.png) icon and click on one of the titles. 
+Next, we need to find the element that is associated with the titles of each Star Wars movie. Click the ![](images/gadget.png) icon and click on one of the titles.
 
 ![](images/h2.png)
 
-Both in the bottom right and in the red outline, you will see the element `h2`. We can use this information to pull the titles from the website using the following code:
+Both in the bottom right and in the red outline, you will see the element `section`. Click on a different title. You will again see the element `section`. We can use this information to pull the titles from the website using the following code:
 
 ```{webr-r}
+films <- starwars |>
+  html_elements("section")
+
+films
+```
+
+Notice how seven nodes (titles) had the same element `section`. You can see the title of the movie, along with other data, in each row. Among this output, you can see that each data-id has an `h2` element. We also saw h2 when using the selector gadget on the title. Now, let's pull just the information associated with the `h2` element.
+```{webr-r}
+
 title <- films |> 
   html_element("h2") |> 
   html_text2()
@@ -59,3 +81,58 @@ title <- films |>
 title
 ```
 
+Another way to get title information is to take them directly from the `starwars` html using `html_elements("h2")`. See the following code below.
+
+```{webr-r}
+starwars |>
+  html_elements("h2")
+```
+
+Notice that this has 8 nodes, instead of 7, as the data "On this page" does not have the element `section` tag. 
+
+###
+
+
+
+
+## Asking Permission 
+
+Just because you can use rvest tools to scrape data doesn't mean you should or have permission to do so. We will use the `bow()` function from the polite package in R to introduce the client to the host and ask for permission to scrape. Use the following code to ensure that we had permission to scrape Star Wars! Note that the input for `bow()` is a character URL. 
+
+```{webr-r}
+host <- "https://rvest.tidyverse.org/articles/starwars.html"
+
+bow(host)
+```
+
+Indeed, we had permission to scrape that website! 
+
+Let's check out four more websites: 
+
+-   https://espn.com 
+-   https://x.com/home
+-   https://www.bettycrocker.com
+-   https://www.zillow.com
+
+Save each of these websites as a character, and use `bow()` to check for permission. What websites are you allowed to scrape? Which are you not allowed to scrape? 
+
+::: {.callout-tip collapse="true"}
+## Solution
+
+```{r}
+host1 <- "https://espn.com"
+host2 <- "https://x.com/home"
+host3 <- "https://www.bettycrocker.com"
+host4 <- "https://www.zillow.com"
+
+bow(host1)
+
+bow(host2)
+
+bow(host3)
+
+bow(host4)
+```
+
+We do not have permission to scrape espn.com or x.com. We do have permission to scrape bettycrocker.com and zillow.com.
+:::
