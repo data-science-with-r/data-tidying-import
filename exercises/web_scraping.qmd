@@ -20,9 +20,20 @@ library(polite)
 library(scales)
 library(polite)
 library(stringr)
-
 ```
 
+
+```{webr-r}
+#| echo: false
+ecomm <- read_csv("data/items-80.csv")
+```
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+ecomm <- read_csv("data/items-80.csv")
+```
 
 Scraping data is defined as extracting data from one source to another. We are going to use the following [website](https://rvest.tidyverse.org/articles/starwars.html) to practice scraping data; taking data on the website and transporting it into a more workable format with R code.
 
@@ -33,7 +44,9 @@ Please visit the [website](https://rvest.tidyverse.org/articles/starwars.html) a
 ::: {.callout-tip collapse="true"}
 ## Solution
 
-There are seven movie titles on this page. They include: -- The Phantom Menace
+There are seven movie titles on this page. They include: 
+
+-- The Phantom Menace
 
 -- Attack of the Clones
 
@@ -161,30 +174,39 @@ This code is using `mutate()` to create a new dummy variable called `dummy`. It 
 We just made a dummy (or indicator) variable! This is going to help us see if eCommerce businesses that sell shorts are, on average, more or less expensive than others. Use this variable, along with the `dplyr` functions of [`group_by()`](https://dplyr.tidyverse.org/reference/group_by.html) and [`summarise()`](https://dplyr.tidyverse.org/reference/summarise.html). Then, answer the question of if shorts are, on average, cheaper than other businesses for these data.
 
 ```{webr-r}
-ecomm |>
-  group_by(dummy) |>
-  summarise(mean_price = mean(price))
+#insert code here
 ```
 
-It appears that an eCommerce business that sells shorts was, on average, 8 dollars cheaper than other stores for these data.
 ::: {.callout-tip collapse="true"}
 ## Solution
 
 ```{r}
-ecomm |>
-  
+#| echo: false
+ecomm <- ecomm |>
+  mutate(dummy = ifelse(
+    str_detect(
+      title, "Short"), "short", "else"))
 ```
+
+
+```{r}
+ecomm |>
+  group_by(dummy) |>
+  summarise(mean_price = mean(price))
+```
+It appears that an eCommerce business that sells shorts was, on average, 8 dollars cheaper than other stores for these data.
 
 :::
 ## Asking Permission 
 
 Just because you can use rvest tools to scrape data doesn't mean you should or have permission to do so. We will use the `bow()` function from the polite package in R to introduce the client to the host and ask for permission to scrape. Use the following code to ensure that we had permission to scrape Star Wars! Note that the input for `bow()` is a character URL. 
 
-```{webr-r}
+```{r}
 host <- "https://rvest.tidyverse.org/articles/starwars.html"
 
 bow(host)
 ```
+
 
 Indeed, we had permission to scrape that website! 
 
@@ -194,11 +216,6 @@ Let's check out four more websites:
 -   https://x.com/home
 -   https://www.bettycrocker.com
 -   https://www.zillow.com
-
-Save each of these websites as a character, and use `bow()` to check for permission. What websites are you allowed to scrape? Which are you not allowed to scrape? 
-
-::: {.callout-tip collapse="true"}
-## Solution
 
 ```{r}
 host1 <- "https://espn.com"
@@ -216,4 +233,5 @@ bow(host4)
 ```
 
 We do not have permission to scrape espn.com or x.com. We do have permission to scrape bettycrocker.com and zillow.com.
-:::
+
+The takeaway is that, just because you can doesn't mean you are allowed to scrape data!

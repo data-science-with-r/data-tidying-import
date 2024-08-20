@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.55">
+<meta name="generator" content="quarto-1.4.555">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Tidy Basketball – Data tidying and importing</title>
+<title>Data tidying and importing - Tidy Basketball</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -268,7 +268,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"download.file(\n  \"https://raw.githubusercontent.com/ElijahMeyer3/Coursera/main/data/trailblazer21.csv\",\n  \"blazer.csv\"\n)\n\noptions(readr.show_progress = FALSE)","options":{"label":"unnamed-chunk-1","warning":"true","fig-width":7,"message":"true","context":"setup","out-width":"700px","fig-cap":"","output":"true","fig-height":5,"dpi":72,"results":"markup","classes":"","comment":"","read-only":"false","out-height":"","autorun":"true"},"id":1},{"code":"blazer <- read_csv(\"trailblazer21.csv\")","options":{"context":"interactive","fig-cap":"","results":"markup","classes":"","output":"true","read-only":"false","warning":"true","label":"unnamed-chunk-2","fig-width":7,"fig-height":5,"out-width":"700px","echo":"false","out-height":"","comment":"","dpi":72,"message":"true","autorun":"false"},"id":2},{"code":"# insert code here","options":{"label":"unnamed-chunk-3","warning":"true","fig-width":7,"message":"true","context":"interactive","out-width":"700px","fig-cap":"","output":"true","fig-height":5,"dpi":72,"results":"markup","classes":"","comment":"","read-only":"false","out-height":"","autorun":"false"},"id":3},{"code":"# insert code here","options":{"label":"unnamed-chunk-4","warning":"true","fig-width":7,"message":"true","context":"interactive","out-width":"700px","fig-cap":"","output":"true","fig-height":5,"dpi":72,"results":"markup","classes":"","comment":"","read-only":"false","out-height":"","autorun":"false"},"id":4},{"code":"# insert code here","options":{"label":"unnamed-chunk-5","warning":"true","fig-width":7,"message":"true","context":"interactive","out-width":"700px","fig-cap":"","output":"true","fig-height":5,"dpi":72,"results":"markup","classes":"","comment":"","read-only":"false","out-height":"","autorun":"false"},"id":5},{"code":"# insert code here","options":{"label":"unnamed-chunk-6","warning":"true","fig-width":7,"message":"true","context":"interactive","out-width":"700px","fig-cap":"","output":"true","fig-height":5,"dpi":72,"results":"markup","classes":"","comment":"","read-only":"false","out-height":"","autorun":"false"},"id":6},{"code":"# insert code here","options":{"label":"unnamed-chunk-7","warning":"true","fig-width":7,"message":"true","context":"interactive","out-width":"700px","fig-cap":"","output":"true","fig-height":5,"dpi":72,"results":"markup","classes":"","comment":"","read-only":"false","out-height":"","autorun":"false"},"id":7},{"code":"# insert code here","options":{"label":"unnamed-chunk-8","warning":"true","fig-width":7,"message":"true","context":"interactive","out-width":"700px","fig-cap":"","output":"true","fig-height":5,"dpi":72,"results":"markup","classes":"","comment":"","read-only":"false","out-height":"","autorun":"false"},"id":8},{"code":"# insert code here","options":{"label":"unnamed-chunk-9","warning":"true","fig-width":7,"message":"true","context":"interactive","out-width":"700px","fig-cap":"","output":"true","fig-height":5,"dpi":72,"results":"markup","classes":"","comment":"","read-only":"false","out-height":"","autorun":"false"},"id":9},{"code":"blazer_long |>\n  mutate(game = as.numeric(game)) |>\n  # insert code here","options":{"label":"unnamed-chunk-10","warning":"true","fig-width":7,"message":"true","context":"interactive","out-width":"700px","fig-cap":"","output":"true","fig-height":5,"dpi":72,"results":"markup","classes":"","comment":"","read-only":"false","out-height":"","autorun":"false"},"id":10}];
+globalThis.qwebrCellDetails = [{"id":1,"options":{"fig-height":5,"read-only":"false","classes":"","out-height":"","comment":"","autorun":"true","context":"setup","warning":"true","fig-width":7,"dpi":72,"out-width":"700px","output":"true","label":"unnamed-chunk-1","fig-cap":"","message":"true","results":"markup"},"code":"download.file(\n  \"https://raw.githubusercontent.com/ElijahMeyer3/Coursera/main/data/trailblazer21.csv\",\n  \"blazer.csv\"\n)\n\noptions(readr.show_progress = FALSE)"},{"id":2,"options":{"out-height":"","output":"true","fig-width":7,"echo":"false","out-width":"700px","label":"unnamed-chunk-2","message":"true","fig-height":5,"classes":"","comment":"","warning":"true","autorun":"false","dpi":72,"read-only":"false","fig-cap":"","context":"interactive","results":"markup"},"code":"blazer <- read_csv(\"trailblazer21.csv\")"},{"id":3,"options":{"fig-height":5,"read-only":"false","classes":"","out-height":"","comment":"","autorun":"false","context":"interactive","warning":"true","fig-width":7,"dpi":72,"out-width":"700px","output":"true","label":"unnamed-chunk-3","fig-cap":"","message":"true","results":"markup"},"code":"# insert code here"},{"id":4,"options":{"fig-height":5,"read-only":"false","classes":"","out-height":"","comment":"","autorun":"false","context":"interactive","warning":"true","fig-width":7,"dpi":72,"out-width":"700px","output":"true","label":"unnamed-chunk-4","fig-cap":"","message":"true","results":"markup"},"code":"# insert code here"},{"id":5,"options":{"fig-height":5,"read-only":"false","classes":"","out-height":"","comment":"","autorun":"false","context":"interactive","warning":"true","fig-width":7,"dpi":72,"out-width":"700px","output":"true","label":"unnamed-chunk-5","fig-cap":"","message":"true","results":"markup"},"code":"# insert code here"},{"id":6,"options":{"fig-height":5,"read-only":"false","classes":"","out-height":"","comment":"","autorun":"false","context":"interactive","warning":"true","fig-width":7,"dpi":72,"out-width":"700px","output":"true","label":"unnamed-chunk-6","fig-cap":"","message":"true","results":"markup"},"code":"# insert code here"},{"id":7,"options":{"fig-height":5,"read-only":"false","classes":"","out-height":"","comment":"","autorun":"false","context":"interactive","warning":"true","fig-width":7,"dpi":72,"out-width":"700px","output":"true","label":"unnamed-chunk-7","fig-cap":"","message":"true","results":"markup"},"code":"# insert code here"},{"id":8,"options":{"fig-height":5,"read-only":"false","classes":"","out-height":"","comment":"","autorun":"false","context":"interactive","warning":"true","fig-width":7,"dpi":72,"out-width":"700px","output":"true","label":"unnamed-chunk-8","fig-cap":"","message":"true","results":"markup"},"code":"# insert code here"},{"id":9,"options":{"fig-height":5,"read-only":"false","classes":"","out-height":"","comment":"","autorun":"false","context":"interactive","warning":"true","fig-width":7,"dpi":72,"out-width":"700px","output":"true","label":"unnamed-chunk-9","fig-cap":"","message":"true","results":"markup"},"code":"# insert code here"},{"id":10,"options":{"fig-height":5,"read-only":"false","classes":"","out-height":"","comment":"","autorun":"false","context":"interactive","warning":"true","fig-width":7,"dpi":72,"out-width":"700px","output":"true","label":"unnamed-chunk-10","fig-cap":"","message":"true","results":"markup"},"code":"blazer_long |>\n  mutate(game = as.numeric(game)) |>\n  # insert code here"}];
 
 </script>
 <script type="module">
@@ -1001,7 +1001,7 @@ globalThis.qwebrExecuteCode = async function (
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -1012,7 +1012,7 @@ globalThis.qwebrExecuteCode = async function (
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
-            <div class="quarto-navbar-tools">
+          <div class="quarto-navbar-tools">
     <a href="https://github.com/data-science-with-r" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
@@ -1251,7 +1251,7 @@ Important
 <h2 class="anchored" data-anchor-id="getting-started">Getting Started</h2>
 <div id="qwebr-insertion-location-1"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>The Portland Trailblazers are a National Basketball Association (NBA) sports team. In this mini analysis, we will work with a dataset that has informatino of the points scored by 9 Portland Trailblazers players across the first 10 games of the 2021-2022 NBA season. If you would like to become more familiar with the game of basketball, please click <a href="https://www.britannica.com/sports/basketball">here</a>. If you would like more information on the Portland Trailblazers, please click <a href="https://en.wikipedia.org/wiki/Portland_Trail_Blazers">here</a>.</p>
+<p>The Portland Trailblazers are a National Basketball Association (NBA) sports team. In this mini analysis, we will work with a dataset that has information on the points scored by 9 Portland Trailblazers players across the first 10 games of the 2021-2022 NBA season. If you would like to become more familiar with the game of basketball, please click <a href="https://www.britannica.com/sports/basketball">here</a>. If you would like more information on the Portland Trailblazers, please click <a href="https://en.wikipedia.org/wiki/Portland_Trail_Blazers">here</a>.</p>
 <p>A key to these data can be found below:</p>
 <table class="caption-top table">
 <thead>
@@ -1357,7 +1357,7 @@ $ game10_home &lt;dbl&gt; 25, 7, 13, 12, 15, 6, 10, 4, 8</code></pre>
 <p><img src="images/blazer_pic.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
 </figure>
 </div>
-<p>Identify the variables you would need to use to recreate this plot. Can this plot be recreated with how your <code>blazer</code> dataset current format?</p>
+<p>Identify the variables you would need to use to recreate this plot. Can this plot be recreated with how the <code>blazer</code> dataset is currently formatted?</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -1454,7 +1454,7 @@ Solution
 </div>
 </div>
 </div>
-<p>Re-visit the documentation for <code>pivot_longer()</code>. Add the argument <code>names_prefix</code> to your existing code above to remove the text “game” from the <code>game</code> column.</p>
+<p>Revisit the documentation for <code>pivot_longer()</code>. Add the argument <code>names_prefix</code> to your existing code above to remove the text “game” from the <code>game</code> column.</p>
 <div id="qwebr-insertion-location-5"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -1497,7 +1497,7 @@ Solution
 </div>
 </div>
 </div>
-<p>We now need to separate the values away from the location in the <code>game</code> column. Please see the documentation on <code>separate_wider_delim</code> <a href="https://tidyr.tidyverse.org/reference/separate_wider_delim.html">here</a>. Add to your existing code to split the game number and game location into two columns. Call the new column <code>location</code>. Save and name this dataset as <code>blazer_long</code> to be used in the next section.</p>
+<p>We now need to separate the values away from the location in the <code>game</code> column. Please see the documentation on <code>separate_wider_delim</code> <a href="https://tidyr.tidyverse.org/reference/separate_wider_delim.html">here</a>. Add to your existing code to split the game number and game location into two columns. Call the new column <code>location</code>. Save and name this dataset as <code>blazer_long</code> to use in the next section.</p>
 <div id="qwebr-insertion-location-6"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -1889,7 +1889,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const onCopySuccess = function(e) {
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1921,29 +1932,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
   });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
-    });
-    clipboardModal.on('success', onCopySuccess);
-  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -1951,7 +1940,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {

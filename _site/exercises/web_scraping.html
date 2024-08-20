@@ -246,7 +246,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 // Document level settings ----
 
 // Determine if we need to install R packages
-globalThis.qwebrInstallRPackagesList = ['tidyverse', 'scales', 'rvest', 'polite', 'curl'];
+globalThis.qwebrInstallRPackagesList = ['tidyverse', 'scales', 'rvest', 'polite', 'curl', 'stringr'];
 
 // Specify possible locations to search for the repository
 globalThis.qwebrPackageRepoURLS = ['https://repo.r-wasm.org/'];
@@ -268,7 +268,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"options":{"message":"true","comment":"","context":"interactive","read-only":"false","fig-height":5,"fig-width":7,"out-width":"700px","output":"true","warning":"true","results":"markup","label":"unnamed-chunk-1","classes":"","autorun":"false","fig-cap":"","dpi":72,"out-height":""},"id":1,"code":"starwars <- read_html(\"https://rvest.tidyverse.org/articles/starwars.html\")"},{"options":{"message":"true","comment":"","context":"interactive","read-only":"false","fig-height":5,"fig-width":7,"out-width":"700px","output":"true","warning":"true","results":"markup","label":"unnamed-chunk-2","classes":"","autorun":"false","fig-cap":"","dpi":72,"out-height":""},"id":2,"code":"films <- starwars |>\n  html_elements(\"section\")\n\nfilms"},{"options":{"message":"true","comment":"","context":"interactive","read-only":"false","fig-height":5,"fig-width":7,"out-width":"700px","output":"true","warning":"true","results":"markup","label":"unnamed-chunk-3","classes":"","autorun":"false","fig-cap":"","dpi":72,"out-height":""},"id":3,"code":"\ntitle <- films |> \n  html_element(\"h2\") |> \n  html_text2()\n\ntitle"},{"options":{"message":"true","comment":"","context":"interactive","read-only":"false","fig-height":5,"fig-width":7,"out-width":"700px","output":"true","warning":"true","results":"markup","label":"unnamed-chunk-4","classes":"","autorun":"false","fig-cap":"","dpi":72,"out-height":""},"id":4,"code":"starwars |>\n  html_elements(\"h2\")"},{"options":{"message":"true","comment":"","context":"interactive","read-only":"false","fig-height":5,"fig-width":7,"out-width":"700px","output":"true","warning":"true","results":"markup","label":"unnamed-chunk-5","classes":"","autorun":"false","fig-cap":"","dpi":72,"out-height":""},"id":5,"code":"host <- \"https://rvest.tidyverse.org/articles/starwars.html\"\n\nbow(host)"}];
+globalThis.qwebrCellDetails = [{"id":1,"code":"ecomm <- read_csv(\"data/items-80.csv\")","options":{"output":"true","fig-height":5,"message":"true","autorun":"false","label":"unnamed-chunk-1","out-height":"","dpi":72,"read-only":"false","out-width":"700px","echo":"false","fig-cap":"","fig-width":7,"context":"interactive","results":"markup","warning":"true","comment":"","classes":""}},{"id":2,"code":"starwars <- read_html(\"https://rvest.tidyverse.org/articles/starwars.html\")","options":{"out-height":"","output":"true","dpi":72,"message":"true","label":"unnamed-chunk-2","comment":"","classes":"","out-width":"700px","autorun":"false","fig-cap":"","read-only":"false","context":"interactive","warning":"true","results":"markup","fig-width":7,"fig-height":5}},{"id":3,"code":"films <- starwars |>\n  html_elements(\"section\")\n\nfilms","options":{"out-height":"","output":"true","dpi":72,"message":"true","label":"unnamed-chunk-3","comment":"","classes":"","out-width":"700px","autorun":"false","fig-cap":"","read-only":"false","context":"interactive","warning":"true","results":"markup","fig-width":7,"fig-height":5}},{"id":4,"code":"\ntitle <- films |> \n  html_element(\"h2\") |> \n  html_text2()\n\ntitle","options":{"out-height":"","output":"true","dpi":72,"message":"true","label":"unnamed-chunk-4","comment":"","classes":"","out-width":"700px","autorun":"false","fig-cap":"","read-only":"false","context":"interactive","warning":"true","results":"markup","fig-width":7,"fig-height":5}},{"id":5,"code":"starwars |>\n  html_elements(\"h2\")","options":{"out-height":"","output":"true","dpi":72,"message":"true","label":"unnamed-chunk-5","comment":"","classes":"","out-width":"700px","autorun":"false","fig-cap":"","read-only":"false","context":"interactive","warning":"true","results":"markup","fig-width":7,"fig-height":5}},{"id":6,"code":"download.file(\n  \"https://raw.githubusercontent.com/ElijahMeyer3/Coursera/main/data/items-80.csv\",\n  \"ecomm.csv\"\n)\n\noptions(readr.show_progress = FALSE)","options":{"out-height":"","output":"true","dpi":72,"message":"true","label":"unnamed-chunk-6","comment":"","classes":"","out-width":"700px","autorun":"true","fig-cap":"","read-only":"false","context":"setup","warning":"true","results":"markup","fig-width":7,"fig-height":5}},{"id":7,"code":"","options":{"out-height":"","output":"true","dpi":72,"message":"true","label":"unnamed-chunk-7","comment":"","classes":"","out-width":"700px","autorun":"false","fig-cap":"","read-only":"false","context":"interactive","warning":"true","results":"markup","fig-width":7,"fig-height":5}},{"id":8,"code":"","options":{"out-height":"","output":"true","dpi":72,"message":"true","label":"unnamed-chunk-8","comment":"","classes":"","out-width":"700px","autorun":"false","fig-cap":"","read-only":"false","context":"interactive","warning":"true","results":"markup","fig-width":7,"fig-height":5}},{"id":9,"code":"ecomm <- ecomm |>\n  mutate(dummy = ifelse(\n    str_detect(\n      title, \"Short\"), \"short\", \"else\"))\n\necomm","options":{"out-height":"","output":"true","dpi":72,"message":"true","label":"unnamed-chunk-9","comment":"","classes":"","out-width":"700px","autorun":"false","fig-cap":"","read-only":"false","context":"interactive","warning":"true","results":"markup","fig-width":7,"fig-height":5}},{"id":10,"code":"#insert code here","options":{"out-height":"","output":"true","dpi":72,"message":"true","label":"unnamed-chunk-10","comment":"","classes":"","out-width":"700px","autorun":"false","fig-cap":"","read-only":"false","context":"interactive","warning":"true","results":"markup","fig-width":7,"fig-height":5}}];
 
 </script>
 <script type="module">
@@ -1031,8 +1031,8 @@ globalThis.qwebrExecuteCode = async function (
   <li><a href="#star-wars" id="toc-star-wars" class="nav-link active" data-scroll-target="#star-wars">Star Wars</a>
   <ul class="collapse">
   <li><a href="#scraping-titles" id="toc-scraping-titles" class="nav-link" data-scroll-target="#scraping-titles">Scraping titles</a></li>
-  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a></li>
   </ul></li>
+  <li><a href="#working-with-scraped-ecommerce-pages" id="toc-working-with-scraped-ecommerce-pages" class="nav-link" data-scroll-target="#working-with-scraped-ecommerce-pages">Working with scraped eCommerce pages</a></li>
   <li><a href="#asking-permission" id="toc-asking-permission" class="nav-link" data-scroll-target="#asking-permission">Asking Permission</a></li>
   </ul>
 </nav>
@@ -1235,6 +1235,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
 <section id="star-wars" class="level2">
 <h2 class="anchored" data-anchor-id="star-wars">Star Wars</h2>
+<div id="qwebr-insertion-location-1"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p>Scraping data is defined as extracting data from one source to another. We are going to use the following <a href="https://rvest.tidyverse.org/articles/starwars.html">website</a> to practice scraping data; taking data on the website and transporting it into a more workable format with R code.</p>
 <section id="scraping-titles" class="level3">
 <h3 class="anchored" data-anchor-id="scraping-titles">Scraping titles</h3>
@@ -1251,7 +1253,8 @@ Solution
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>There are seven movie titles on this page. They include: – The Phantom Menace</p>
+<p>There are seven movie titles on this page. They include:</p>
+<p>– The Phantom Menace</p>
 <p>– Attack of the Clones</p>
 <p>– Revenge of the Sith</p>
 <p>– A New Hope</p>
@@ -1265,7 +1268,7 @@ Solution
 <section id="start-by-reading-a-html-page-with-read_html" class="level4">
 <h4 class="anchored" data-anchor-id="start-by-reading-a-html-page-with-read_html">Start by reading a HTML page with read_html()</h4>
 <p>First, we need to reference the website. We can do this by using <code>read_html()</code> from the rvest package. Run the following code below to do so.</p>
-<div id="qwebr-insertion-location-1"></div>
+<div id="qwebr-insertion-location-2"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
 <section id="find-the-element" class="level4">
@@ -1273,35 +1276,26 @@ Solution
 <p>Next, we need to find the element that is associated with the titles of each Star Wars movie. Click the <img src="images/gadget.png" class="img-fluid"> icon and click on one of the titles.</p>
 <p><img src="images/h2.png" class="img-fluid"></p>
 <p>In the red outline, you will see the element <code>section</code>. Click on a different title. You will again see the element <code>section</code>. We can use this information to pull the titles from the website using the following code:</p>
-<div id="qwebr-insertion-location-2"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>Notice how seven nodes (titles) had the same element <code>section</code>. You can see the title of the movie, along with other data, in each row. Among this output, you can see that each data-id has an <code>h2</code> element. We also saw h2 when using the selector gadget on the title. Now, let’s pull just the information associated with the <code>h2</code> element.</p>
 <div id="qwebr-insertion-location-3"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>Another way to get title information is to take them directly from the <code>starwars</code> html using <code>html_elements("h2")</code>. See the following code below.</p>
+<p>Notice how seven nodes (titles) had the same element <code>section</code>. You can see the title of the movie, along with other data, in each row. Among this output, you can see that each data-id has an <code>h2</code> element. We also saw h2 when using the selector gadget on the title. Now, let’s pull just the information associated with the <code>h2</code> element.</p>
 <div id="qwebr-insertion-location-4"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p>Another way to get title information is to take them directly from the <code>starwars</code> html using <code>html_elements("h2")</code>. See the following code below.</p>
+<div id="qwebr-insertion-location-5"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p>Notice that this has 8 nodes, instead of 7, as the data “On this page” does not have the element <code>section</code> tag.</p>
 </section>
 </section>
-<section id="section" class="level3">
-<h3 class="anchored" data-anchor-id="section"></h3>
 </section>
-</section>
-<section id="asking-permission" class="level2">
-<h2 class="anchored" data-anchor-id="asking-permission">Asking Permission</h2>
-<p>Just because you can use rvest tools to scrape data doesn’t mean you should or have permission to do so. We will use the <code>bow()</code> function from the polite package in R to introduce the client to the host and ask for permission to scrape. Use the following code to ensure that we had permission to scrape Star Wars! Note that the input for <code>bow()</code> is a character URL.</p>
-<div id="qwebr-insertion-location-5"></div>
+<section id="working-with-scraped-ecommerce-pages" class="level2">
+<h2 class="anchored" data-anchor-id="working-with-scraped-ecommerce-pages">Working with scraped eCommerce pages</h2>
+<p>In the last code along activity, you wrote a function to scrape eCommerce data from multiple pages. Here, we are going to practice working with numerical and text data. The data set name is called <code>ecomm</code>.</p>
+<div id="qwebr-insertion-location-6"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>Indeed, we had permission to scrape that website!</p>
-<p>Let’s check out four more websites:</p>
-<ul>
-<li>https://espn.com</li>
-<li>https://x.com/home</li>
-<li>https://www.bettycrocker.com</li>
-<li>https://www.zillow.com</li>
-</ul>
-<p>Save each of these websites as a character, and use <code>bow()</code> to check for permission. What websites are you allowed to scrape? Which are you not allowed to scrape?</p>
+<p>Take a glimpse of the <code>ecomm</code> data set below to familiarize yourself with the variables. What are they?</p>
+<div id="qwebr-insertion-location-7"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -1315,12 +1309,136 @@ Solution
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>host1 <span class="ot">&lt;-</span> <span class="st">"https://espn.com"</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>host2 <span class="ot">&lt;-</span> <span class="st">"https://x.com/home"</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>host3 <span class="ot">&lt;-</span> <span class="st">"https://www.bettycrocker.com"</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>host4 <span class="ot">&lt;-</span> <span class="st">"https://www.zillow.com"</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">bow</span>(host1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(ecomm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 80
+Columns: 3
+$ title &lt;chr&gt; "Abominable Hoodie", "Adrienne Trek Jacket", "Aeon Capri", "Aero…
+$ url   &lt;chr&gt; "https://www.scrapingcourse.com/ecommerce/product/abominable-hoo…
+$ price &lt;dbl&gt; 69.0, 57.0, 48.0, 24.0, 74.0, 7.0, 45.0, 69.0, 40.0, 42.0, 34.0,…</code></pre>
+</div>
+</div>
+<p>There is a <code>title</code>, <code>url</code> and <code>price</code> variable.</p>
+</div>
+</div>
+</div>
+<p>Now, let’s start by making a histogram of price using tools from the <code>ggplot</code> package in the <code>tidyverse</code>. Hint: Use the functions <a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a> and <a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram()</a> to make your visualization below. Note: Play around with the binwidth, and add appropriate labels if able!</p>
+<div id="qwebr-insertion-location-8"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>ecomm <span class="sc">|&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">ggplot</span>(</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">aes</span>(<span class="at">x =</span> price)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a> ) <span class="sc">+</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">5</span>) <span class="sc">+</span> </span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Price of eCommerse scraped data"</span>,</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Price"</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="web_scraping_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Now, let’s work with some of the text data to discover more patterns. Suppose you wonder if an eCommerce business that sells shorts are cheaper than others. First, we need to find how many listings contain the word “short”. We can do this using <a href="https://stringr.tidyverse.org/reference/str_detect.html"><code>str_detect()</code></a> for the <code>stringR</code> package. Run the following code. What is it doing?</p>
+<div id="qwebr-insertion-location-9"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>This code is using <code>mutate()</code> to create a new dummy variable called <code>dummy</code>. It is using a combination of <code>ifelse()</code> and <code>str_detect()</code> to look into the title column, and see if the string “Short” was detected or not. If yes, the new variable <code>dummy</code> will contain “short” for that row. If no, the new variable will contain “else”.</p>
+</div>
+</div>
+</div>
+<p>We just made a dummy (or indicator) variable! This is going to help us see if eCommerce businesses that sell shorts are, on average, more or less expensive than others. Use this variable, along with the <code>dplyr</code> functions of <a href="https://dplyr.tidyverse.org/reference/group_by.html"><code>group_by()</code></a> and <a href="https://dplyr.tidyverse.org/reference/summarise.html"><code>summarise()</code></a>. Then, answer the question of if shorts are, on average, cheaper than other businesses for these data.</p>
+<div id="qwebr-insertion-location-10"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>ecomm <span class="sc">|&gt;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(dummy) <span class="sc">|&gt;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_price =</span> <span class="fu">mean</span>(price))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 2
+  dummy mean_price
+  &lt;chr&gt;      &lt;dbl&gt;
+1 else        43.7
+2 short       35.7</code></pre>
+</div>
+</div>
+<p>It appears that an eCommerce business that sells shorts was, on average, 8 dollars cheaper than other stores for these data.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="asking-permission" class="level2">
+<h2 class="anchored" data-anchor-id="asking-permission">Asking Permission</h2>
+<p>Just because you can use rvest tools to scrape data doesn’t mean you should or have permission to do so. We will use the <code>bow()</code> function from the polite package in R to introduce the client to the host and ask for permission to scrape. Use the following code to ensure that we had permission to scrape Star Wars! Note that the input for <code>bow()</code> is a character URL.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>host <span class="ot">&lt;-</span> <span class="st">"https://rvest.tidyverse.org/articles/starwars.html"</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">bow</span>(host)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;polite session&gt; https://rvest.tidyverse.org/articles/starwars.html
+    User-agent: polite R package
+    robots.txt: 1 rules are defined for 1 bots
+   Crawl delay: 5 sec
+  The path is scrapable for this user-agent</code></pre>
+</div>
+</div>
+<p>Indeed, we had permission to scrape that website!</p>
+<p>Let’s check out four more websites:</p>
+<ul>
+<li>https://espn.com</li>
+<li>https://x.com/home</li>
+<li>https://www.bettycrocker.com</li>
+<li>https://www.zillow.com</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>host1 <span class="ot">&lt;-</span> <span class="st">"https://espn.com"</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>host2 <span class="ot">&lt;-</span> <span class="st">"https://x.com/home"</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>host3 <span class="ot">&lt;-</span> <span class="st">"https://www.bettycrocker.com"</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>host4 <span class="ot">&lt;-</span> <span class="st">"https://www.zillow.com"</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="fu">bow</span>(host1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;polite session&gt; https://espn.com
     User-agent: polite R package
@@ -1328,7 +1446,7 @@ Solution
    Crawl delay: 5 sec
   The path is not scrapable for this user-agent</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bow</span>(host2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bow</span>(host2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;polite session&gt; https://x.com/home
     User-agent: polite R package
@@ -1336,7 +1454,7 @@ Solution
    Crawl delay: 5 sec
   The path is not scrapable for this user-agent</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bow</span>(host3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bow</span>(host3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;polite session&gt; https://www.bettycrocker.com
     User-agent: polite R package
@@ -1344,7 +1462,7 @@ Solution
    Crawl delay: 5 sec
   The path is scrapable for this user-agent</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bow</span>(host4)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bow</span>(host4)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;polite session&gt; https://www.zillow.com
     User-agent: polite R package
@@ -1354,9 +1472,7 @@ Solution
 </div>
 </div>
 <p>We do not have permission to scrape espn.com or x.com. We do have permission to scrape bettycrocker.com and zillow.com.</p>
-</div>
-</div>
-</div>
+<p>The takeaway is that, just because you can doesn’t mean you are allowed to scrape data!</p>
 
 
 </section>
