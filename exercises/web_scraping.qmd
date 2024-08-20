@@ -2,7 +2,7 @@
 title: "Scraping Star Wars"
 toc: true
 webr:
-  packages: ['tidyverse', 'scales', 'rvest', 'polite', 'curl', 'stringr']
+  packages: ['tidyverse', 'scales', 'rvest', 'polite', 'stringr']
 filters:
   - webr
 ---
@@ -23,16 +23,11 @@ library(stringr)
 ```
 
 
-```{webr-r}
-#| echo: false
-ecomm <- read_csv("data/items-80.csv")
-```
-
 ```{r}
 #| echo: false
 #| warning: false
 #| message: false
-ecomm <- read_csv("data/items-80.csv")
+ecomm <- read_csv("items-80.csv")
 ```
 
 Scraping data is defined as extracting data from one source to another. We are going to use the following [website](https://rvest.tidyverse.org/articles/starwars.html) to practice scraping data; taking data on the website and transporting it into a more workable format with R code.
@@ -88,7 +83,6 @@ films
 
 Notice how seven nodes (titles) had the same element `section`. You can see the title of the movie, along with other data, in each row. Among this output, you can see that each data-id has an `h2` element. We also saw h2 when using the selector gadget on the title. Now, let's pull just the information associated with the `h2` element.
 ```{webr-r}
-
 title <- films |> 
   html_element("h2") |> 
   html_text2()
@@ -122,7 +116,9 @@ options(readr.show_progress = FALSE)
 Take a glimpse of the `ecomm` data set below to familiarize yourself with the variables. What are they?
 
 ```{webr-r}
+ecomm <- read_csv("ecomm.csv")
 
+#insert code here
 ```
 
 ::: {.callout-tip collapse="true"}

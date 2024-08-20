@@ -36,15 +36,14 @@ The Portland Trailblazers are a National Basketball Association (NBA) sports tea
 
 A key to these data can be found below:
 
-| variable name | description                           |
-|---------------|---------------------------------------|
-| player        | name of player                        |
-| game1_home    | points scored on game 1 on home court |
-| ...           | ...                                   |
-| game3_away    | points scored on game 3 on away court |
-| ...           | ...                                   |
-| game10_home   | points scored on game 10 on home court|
-
+| variable name | description                            |
+|---------------|----------------------------------------|
+| player        | name of player                         |
+| game1_home    | points scored on game 1 on home court  |
+| ...           | ...                                    |
+| game3_away    | points scored on game 3 on away court  |
+| ...           | ...                                    |
+| game10_home   | points scored on game 10 on home court |
 
 Read in the data below.
 
@@ -63,7 +62,6 @@ blazer <- read_csv("data/trailblazer21.csv") # put in R file to r chunks have da
 ### Packages
 
 We'll use **tidyverse** for the majority of the analysis and **scales** for pretty plot labels later on.
-
 
 ```{r}
 #| label: load-packages
@@ -97,22 +95,24 @@ There are 9 rows and 11 columns in blazer dataset.
 `player` is a character variable; the remaining variables are doubles.
 :::
 
-Suppose you are asked to recreate the plot below... 
+Suppose you are asked to recreate the plot below...
 
 ![](images/blazer_pic.png){fig-align="center"}
 
-Identify the variables you would need to use to recreate this plot. Can this plot be recreated with how the `blazer` dataset is currently formatted? 
+Identify the variables you would need to use to recreate this plot. Can this plot be recreated with how the `blazer` dataset is currently formatted?
 
 ::: {.callout-tip collapse="true"}
 ## Solution
-Variables in the above plot include `player`, `game`, `location`, and `points`. This plot can not be recreated with how the `blazer` dataset is currently formatted. 
+
+Variables in the above plot include `player`, `game`, `location`, and `points`. This plot can not be recreated with how the `blazer` dataset is currently formatted.
 :::
 
 Now, think critically about how we could transform our `blazer` dataset to have the variables necessary to make the plot above. What would our new dataset have to look like? What R function(s) could we use to transform our data into what we need?
 
 ::: {.callout-tip collapse="true"}
 ## Solution
-We have a `player` column in the dataset. In order to get a  `game`, `location`, and `points`, we can use `pivot_longer()`, which will take this wide dataset and make it into a longer dataset. That is, we can bring the variable names of `game1_home`, `game2_home`, etc. into our dataset as values, which is needed to recreate the plot above.
+
+We have a `player` column in the dataset. In order to get a `game`, `location`, and `points`, we can use `pivot_longer()`, which will take this wide dataset and make it into a longer dataset. That is, we can bring the variable names of `game1_home`, `game2_home`, etc. into our dataset as values, which is needed to recreate the plot above.
 :::
 
 See more information about `pivot_longer()` [here](https://tidyr.tidyverse.org/reference/pivot_longer.html). We are going to create our final dataset in steps. First use `pivot_longer()` to change our dataset that has 90 rows and 3 columns that are named player, game, and points.
@@ -123,6 +123,7 @@ See more information about `pivot_longer()` [here](https://tidyr.tidyverse.org/r
 
 ::: {.callout-tip collapse="true"}
 ## Solution
+
 ```{r}
 blazer |>
   pivot_longer(
@@ -132,18 +133,19 @@ blazer |>
 ```
 :::
 
-What are the next steps we need to take to change our dataset to recreate the plot above? 
+What are the next steps we need to take to change our dataset to recreate the plot above?
 
 ::: {.callout-tip collapse="true"}
 ## Solution
-We still need to: 
 
--   remove "game" text from the `game` column 
--   separate the numeric value of game from home/away 
+We still need to:
+
+-   remove "game" text from the `game` column
+-   separate the numeric value of game from home/away
 -   create a location column
 :::
 
-Revisit the documentation for `pivot_longer()`. Add the argument `names_prefix` to your existing code above to remove the text "game" from the `game` column. 
+Revisit the documentation for `pivot_longer()`. Add the argument `names_prefix` to your existing code above to remove the text "game" from the `game` column.
 
 ```{webr-r}
 # insert code here
@@ -151,6 +153,7 @@ Revisit the documentation for `pivot_longer()`. Add the argument `names_prefix` 
 
 ::: {.callout-tip collapse="true"}
 ## Solution
+
 ```{r}
 blazer |>
   pivot_longer(
@@ -162,7 +165,7 @@ blazer |>
 ```
 :::
 
-We now need to separate the values away from the location in the `game` column. Please see the documentation on `separate_wider_delim` [here](https://tidyr.tidyverse.org/reference/separate_wider_delim.html). Add to your existing code to split the game number and game location into two columns. Call the new column `location`. Save and name this dataset as `blazer_long` to use in the next section. 
+We now need to separate the values away from the location in the `game` column. Please see the documentation on `separate_wider_delim` [here](https://tidyr.tidyverse.org/reference/separate_wider_delim.html). Add to your existing code to split the game number and game location into two columns. Call the new column `location`. Save and name this dataset as `blazer_long` to use in the next section.
 
 ```{webr-r}
 # insert code here
@@ -170,6 +173,7 @@ We now need to separate the values away from the location in the `game` column. 
 
 ::: {.callout-tip collapse="true"}
 ## Solution
+
 ```{r}
 blazer_long <- blazer |>
   pivot_longer(
@@ -183,11 +187,11 @@ blazer_long
 ```
 :::
 
-### Summary statistics 
+### Summary statistics
 
-Let's use the new `blazer_long` dataset to calculate some summary statistics for the Portland Trailblazers to learn more about their performance for these 10 games! 
+Let's use the new `blazer_long` dataset to calculate some summary statistics for the Portland Trailblazers to learn more about their performance for these 10 games!
 
-1. Calculate the mean points scored across all players between home and away games. 
+1.  Calculate the mean points scored across all players between home and away games.
 
 ```{webr-r}
 # insert code here
@@ -195,6 +199,7 @@ Let's use the new `blazer_long` dataset to calculate some summary statistics for
 
 ::: {.callout-tip collapse="true"}
 ## Solution
+
 ```{r}
 blazer_long |>
   group_by(location) |>
@@ -202,15 +207,15 @@ blazer_long |>
 ```
 :::
 
-2. Now, calculate the mean points scored for the player `Damian Lillard` for both home and away games.
+2.  Now, calculate the mean points scored for the player `Damian Lillard` for both home and away games.
 
 ```{webr-r}
 # insert code here
 ```
 
-
 ::: {.callout-tip collapse="true"}
 ## Solution
+
 ```{r}
 blazer_long |>
   filter(player == "Damian Lillard") |>
@@ -219,15 +224,15 @@ blazer_long |>
 ```
 :::
 
-3. Now, create a table that counts the number of times a player scored 15 points (or more) a game versus the number of times a player scored less than 15 points a game. 
+3.  Now, create a table that counts the number of times a player scored 15 points (or more) a game versus the number of times a player scored less than 15 points a game.
 
 ```{webr-r}
 # insert code here
 ```
 
-
 ::: {.callout-tip collapse="true"}
 ## Solution
+
 ```{r}
 blazer_long |>
   mutate(points_cat = ifelse(points >= 15, "yes", "no")) |>
@@ -236,13 +241,15 @@ blazer_long |>
   count()
 ```
 :::
-## Bonus Challange 
 
-Recreate the plot, using the `blazer_long` dataset! 
+## Bonus Challange
+
+Recreate the plot, using the `blazer_long` dataset!
 
 ![](images/blazer_pic.png){fig-align="center"}
 
-Hints: The code you start with makes sure that game is appropriately treated as a quantitative variable. You will learn more about data types in the following lessons! The plot above uses `theme_bw()`. 
+Hints: The code you start with makes sure that game is appropriately treated as a quantitative variable. You will learn more about data types in the following lessons! The plot above uses `theme_bw()`.
+
 ```{webr-r}
 blazer_long |>
   mutate(game = as.numeric(game)) |>
@@ -251,6 +258,7 @@ blazer_long |>
 
 ::: {.callout-tip collapse="true"}
 ## Solution
+
 ```{r}
 blazer_long |>
   mutate(game = as.numeric(game)) |>
@@ -271,4 +279,3 @@ blazer_long |>
   )
 ```
 :::
-
