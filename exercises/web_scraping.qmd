@@ -2,7 +2,7 @@
 title: "Scraping Star Wars"
 toc: true
 webr:
-  packages: ['tidyverse', 'scales', 'rvest', 'polite', 'curl']
+  packages: ['tidyverse', 'scales', 'rvest', 'polite', 'curl', 'stringr']
 filters:
   - webr
 ---
@@ -19,7 +19,7 @@ library(rvest)
 library(polite)
 library(scales)
 library(polite)
-library(curl)
+library(stringr)
 
 ```
 
@@ -92,11 +92,90 @@ starwars |>
 
 Notice that this has 8 nodes, instead of 7, as the data "On this page" does not have the element `section` tag. 
 
-### Working with scraped eCommerce pages
+## Working with scraped eCommerce pages
 
+In the last code along activity, you wrote a function to scrape eCommerce data from multiple pages. Here, we are going to practice working with numerical and text data. The data set name is called `ecomm`. 
 
+```{webr-r}
+#| context: setup
+download.file(
+  "https://raw.githubusercontent.com/ElijahMeyer3/Coursera/main/data/items-80.csv",
+  "ecomm.csv"
+)
 
+options(readr.show_progress = FALSE)
+```
 
+Take a glimpse of the `ecomm` data set below to familiarize yourself with the variables. What are they?
+
+```{webr-r}
+
+```
+
+::: {.callout-tip collapse="true"}
+## Solution
+```{r}
+glimpse(ecomm)
+```
+
+There is a `title`, `url` and `price` variable.
+:::
+
+Now, let's start by making a histogram of price using tools from the `ggplot` package in the `tidyverse`. Hint: Use the functions [ggplot()](https://ggplot2.tidyverse.org/reference/ggplot.html) and [geom_histogram()](https://ggplot2.tidyverse.org/reference/geom_histogram.html) to make your visualization below. Note: Play around with the binwidth, and add appropriate labels if able!
+
+```{webr-r}
+
+```
+
+::: {.callout-tip collapse="true"}
+## Solution
+```{r}
+ecomm |>
+ ggplot(
+   aes(x = price)
+ ) +
+  geom_histogram(binwidth = 5) + 
+  labs(
+    title = "Price of eCommerse scraped data",
+    x = "Price"
+  )
+```
+:::
+
+Now, let's work with some of the text data to discover more patterns. Suppose you wonder if an eCommerce business that sells shorts are cheaper than others. First, we need to find how many listings contain the word "short". We can do this using [`str_detect()`](https://stringr.tidyverse.org/reference/str_detect.html) for the `stringR` package. Run the following code. What is it doing? 
+
+```{webr-r}
+ecomm <- ecomm |>
+  mutate(dummy = ifelse(
+    str_detect(
+      title, "Short"), "short", "else"))
+
+ecomm
+```
+
+::: {.callout-tip collapse="true"}
+## Solution
+This code is using `mutate()` to create a new dummy variable called `dummy`. It is using a combination of `ifelse()` and `str_detect()` to look into the title column, and see if the string "Short" was detected or not. If yes, the new variable `dummy` will contain "short" for that row. If no, the new variable will contain "else".
+:::
+
+We just made a dummy (or indicator) variable! This is going to help us see if eCommerce businesses that sell shorts are, on average, more or less expensive than others. Use this variable, along with the `dplyr` functions of [`group_by()`](https://dplyr.tidyverse.org/reference/group_by.html) and [`summarise()`](https://dplyr.tidyverse.org/reference/summarise.html). Then, answer the question of if shorts are, on average, cheaper than other businesses for these data.
+
+```{webr-r}
+ecomm |>
+  group_by(dummy) |>
+  summarise(mean_price = mean(price))
+```
+
+It appears that an eCommerce business that sells shorts was, on average, 8 dollars cheaper than other stores for these data.
+::: {.callout-tip collapse="true"}
+## Solution
+
+```{r}
+ecomm |>
+  
+```
+
+:::
 ## Asking Permission 
 
 Just because you can use rvest tools to scrape data doesn't mean you should or have permission to do so. We will use the `bow()` function from the polite package in R to introduce the client to the host and ask for permission to scrape. Use the following code to ensure that we had permission to scrape Star Wars! Note that the input for `bow()` is a character URL. 
