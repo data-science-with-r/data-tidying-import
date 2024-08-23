@@ -151,7 +151,7 @@ ecomm |>
 ```
 :::
 
-Now, let's work with some of the text data to discover more patterns. Suppose you wonder if an eCommerce business that sells shorts are cheaper than others. First, we need to find how many listings contain the word "short". We can do this using [`str_detect()`](https://stringr.tidyverse.org/reference/str_detect.html) for the `stringR` package. Run the following code. What is it doing? 
+Now, let's work with some of the text data to discover more patterns. Suppose you wonder if an eCommerce business that sells shorts is cheaper than others. First, we need to find how many listings contain the word "short". We can do this using [`str_detect()`](https://stringr.tidyverse.org/reference/str_detect.html) from the `stringR` package. Run the following code. What is it doing? 
 
 ```{webr-r}
 ecomm <- ecomm |>
