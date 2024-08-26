@@ -7,8 +7,7 @@ format: revealjs
 
 ## Reading delimited files
 
-:::: {.columns}
-
+::: columns
 ::: {.column width="35%"}
 ![](images/readr-part-of-tidyverse.png)
 :::
@@ -19,36 +18,32 @@ format: revealjs
 library(tidyverse)
 ```
 
-- `read_csv()` - comma delimited files
-- `read_csv2()` - semicolon separated files (common in countries where , is used as the decimal place)
-- `read_tsv()` - tab delimited files
-- `read_delim()` - reads in files with any delimiter
-- `read_fwf()` - fixed width files
-- ...
+-   `read_csv()` - comma delimited files
+-   `read_csv2()` - semicolon separated files (common in countries where , is used as the decimal place)
+-   `read_tsv()` - tab delimited files
+-   `read_delim()` - reads in files with any delimiter
+-   `read_fwf()` - fixed width files
+-   ...
 :::
-
-::::
+:::
 
 ## Reading Excel spreadsheets
 
-:::: {.columns}
-
+::: columns
 ::: {.column width="35%"}
 ![](images/readxl.png)
 :::
 
 ::: {.column width="35%"}
-
 ```{r}
 #| message: false
 library(readxl)
 ```
 
-- `read_excel()` - read xls or xlsx files
-- ...
+-   `read_excel()` - read xls or xlsx files
+-   ...
 :::
-
-::::
+:::
 
 # Reading and writing CSV files
 
@@ -109,7 +104,8 @@ names(edibnb_bad_names)
 
 . . .
 
-... but R doesn't allow spaces in variable names
+...
+but R doesn't allow spaces in variable names
 
 ```{r}
 #| error: true
@@ -175,26 +171,24 @@ names(edibnb_clean_names)
 ## Variable types
 
 ::: task
-Which type is `x`? Why?
+Which type is `x`?
+Why?
 :::
 
-:::: {.columns}
-
+::: columns
 ::: {.column width="30%"}
 ![](images/df-na.png)
 :::
 
-::: {.column width="40%" .fragment}
-
+::: {.column .fragment width="40%"}
 ```{r}
 #| message: false
 read_csv("data/df-na.csv")
 ```
 :::
+:::
 
-::::
-
-## Option 1. Explicit NAs
+## Option 1. Explicit `NA`s
 
 ```{r}
 #| label: explicit-nas
@@ -205,22 +199,19 @@ read_csv(
 )
 ```
 
-:::: {.columns}
-
-::: {.column width="40%" .fragment}
+::: columns
+::: {.column .fragment width="40%"}
 ```{r}
 #| ref-label: explicit-nas
 #| echo: false
 #| message: false
 ```
-
 :::
 
 ::: {.column width="30%"}
 ![](images/df-na.png)
 :::
-
-::::
+:::
 
 ## Option 2. Specify column types
 
@@ -233,39 +224,36 @@ read_csv(
   )
 ```
 
-:::: {.columns}
-
-::: {.column width="40%" .fragment}
+::: columns
+::: {.column .fragment width="40%"}
 ```{r}
 #| ref-label: specify-col-types
 #| echo: false
 #| message: false
 ```
-
 :::
 
 ::: {.column width="30%"}
 ![](images/df-na.png)
 :::
-
-::::
+:::
 
 ## Column types for `read_csv()` {.smaller}
 
-**type function**  | **data type**
------------------- | -------------
-`col_character()`  | character
-`col_date()`       | date
-`col_datetime()`   | POSIXct (date-time)
-`col_double()`     | double (numeric)
-`col_factor()`     | factor
-`col_guess()`      | let readr guess (default)
-`col_integer()`    | integer
-`col_logical()`    | logical
-`col_number()`     | numbers mixed with non-number characters
-`col_numeric()`    | double or integer
-`col_skip()`       | do not read
-`col_time()`       | time
+| **type function** | **data type**                            |
+|-------------------|------------------------------------------|
+| `col_character()` | character                                |
+| `col_date()`      | date                                     |
+| `col_datetime()`  | POSIXct (date-time)                      |
+| `col_double()`    | double (numeric)                         |
+| `col_factor()`    | factor                                   |
+| `col_guess()`     | let readr guess (default)                |
+| `col_integer()`   | integer                                  |
+| `col_logical()`   | logical                                  |
+| `col_number()`    | numbers mixed with non-number characters |
+| `col_numeric()`   | double or integer                        |
+| `col_skip()`      | do not read                              |
+| `col_time()`      | time                                     |
 
 # Reading Excel spreadsheets
 
@@ -320,7 +308,7 @@ names(edibnb_clean_names)
 read_excel("data/df-na.xlsx")
 ```
 
-## Option 1. Explicit NAs
+## Option 1. Explicit `NA`s
 
 ```{r}
 #| code-line-numbers: "|3"
@@ -342,26 +330,26 @@ read_excel(
 
 ## Column types for `read_excel()` {.smaller}
 
-**type function**  | **data type**
------------------- | -------------
-`"skip"`           | do not read
-`"guess"`          | let readxl guess (default)
-`"logical"`        | logical
-`"numeric"`        | numeric
-`"date"`           | POSIXct (date-time)
-`"text"`           | character
-`"list"`           | a list of length 1 vectors
+| **type function** | **data type**              |
+|-------------------|----------------------------|
+| `"skip"`          | do not read                |
+| `"guess"`         | let readxl guess (default) |
+| `"logical"`       | logical                    |
+| `"numeric"`       | numeric                    |
+| `"date"`          | POSIXct (date-time)        |
+| `"text"`          | character                  |
+| `"list"`          | a list of length 1 vectors |
 
 # Other types of data
 
 ## Other types of data
 
-- **googlesheets4:** Google Sheets
-- **arrow:** parquet files
-- **DBI**, along with a database specific backend (e.g. RMySQL, RSQLite, RPostgreSQL etc): allows you to run SQL queries against a database and return a data frame
-- **rvest**: web scraping
-- **haven**: SPSS, Stata, and SAS files
-- **jsonline**: JSON
-- **xml2**: xml
-- **httr**: web APIs
-- **sparklyr**: data loaded into spark
+-   **googlesheets4:** Google Sheets
+-   **arrow:** parquet files
+-   **DBI**, along with a database specific backend (e.g. RMySQL, RSQLite, RPostgreSQL etc): allows you to run SQL queries against a database and return a data frame
+-   **rvest**: web scraping
+-   **haven**: SPSS, Stata, and SAS files
+-   **jsonline**: JSON
+-   **xml2**: xml
+-   **httr**: web APIs
+-   **sparklyr**: data loaded into spark
