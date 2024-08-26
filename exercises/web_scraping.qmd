@@ -1,0 +1,233 @@
+---
+title: "Scraping Star Wars"
+toc: true
+webr:
+  packages: ['tidyverse', 'scales', 'rvest', 'polite', 'stringr']
+filters:
+  - webr
+---
+
+## Star Wars
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+library(tidyverse)
+library(rvest)
+library(polite)
+library(scales)
+library(polite)
+library(stringr)
+```
+
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+ecomm <- read_csv("items-80.csv")
+```
+
+Scraping data is defined as extracting data from one source to another. We are going to use the following [website](https://rvest.tidyverse.org/articles/starwars.html) to practice scraping data; taking data on the website and transporting it into a more workable format with R code.
+
+### Scraping titles
+
+Please visit the [website](https://rvest.tidyverse.org/articles/starwars.html) and identify the movie titles. What are they?
+
+::: {.callout-tip collapse="true"}
+## Solution
+
+There are seven movie titles on this page. They include: 
+
+-- The Phantom Menace
+
+-- Attack of the Clones
+
+-- Revenge of the Sith
+
+-- A New Hope
+
+-- The Empire Strikes Back
+
+-- Return of the Jedi
+
+-- The Force Awakens
+:::
+
+The next step is to identify the html element that is associated with each title. To help us, we can use [Selector Gadget](https://selectorgadget.com/). Selector Gadget is an open source Chrome Extension that helps users find elements of an html page easier. This demonstration will use Selector Gadget. To install Selector Gadget, please go to the following [page](https://chromewebstore.google.com/detail/selectorgadget/mhjhnkcfbdhnjickkkdbjoemdmbfginb?hl=en&pli=1). When the Selector Gadget is installed, you should see ![](images/gadget.png) in your task bar.
+
+#### Start by reading a HTML page with read_html()
+
+First, we need to reference the website. We can do this by using `read_html()` from the rvest package. Run the following code below to do so.
+
+```{webr-r}
+starwars <- read_html("https://rvest.tidyverse.org/articles/starwars.html")
+```
+
+#### Find the element
+
+Next, we need to find the element that is associated with the titles of each Star Wars movie. Click the ![](images/gadget.png) icon and click on one of the titles.
+
+![](images/h2.png)
+
+In the red outline, you will see the element `section`. Click on a different title. You will again see the element `section`. We can use this information to pull the titles from the website using the following code:
+
+```{webr-r}
+films <- starwars |>
+  html_elements("section")
+
+films
+```
+
+Notice how seven nodes (titles) had the same element `section`. You can see the title of the movie, along with other data, in each row. Among this output, you can see that each data-id has an `h2` element. We also saw h2 when using the selector gadget on the title. Now, let's pull just the information associated with the `h2` element.
+```{webr-r}
+title <- films |> 
+  html_element("h2") |> 
+  html_text2()
+
+title
+```
+
+Another way to get title information is to take them directly from the `starwars` html using `html_elements("h2")`. See the following code below.
+
+```{webr-r}
+starwars |>
+  html_elements("h2")
+```
+
+Notice that this has 8 nodes, instead of 7, as the data "On this page" does not have the element `section` tag. 
+
+## Working with scraped eCommerce pages
+
+In the last code along activity, you wrote a function to scrape eCommerce data from multiple pages. Here, we are going to practice working with numerical and text data. The data set name is called `ecomm`. 
+
+```{webr-r}
+#| context: setup
+download.file(
+  "https://raw.githubusercontent.com/ElijahMeyer3/Coursera/main/data/items-80.csv",
+  "ecomm.csv"
+)
+
+options(readr.show_progress = FALSE)
+```
+
+Take a glimpse of the `ecomm` data set below to familiarize yourself with the variables. What are they?
+
+```{webr-r}
+ecomm <- read_csv("ecomm.csv")
+
+#insert code here
+```
+
+::: {.callout-tip collapse="true"}
+## Solution
+```{r}
+glimpse(ecomm)
+```
+
+There is a `title`, `url` and `price` variable.
+:::
+
+Now, let's start by making a histogram of price using tools from the `ggplot` package in the `tidyverse`. Hint: Use the functions [ggplot()](https://ggplot2.tidyverse.org/reference/ggplot.html) and [geom_histogram()](https://ggplot2.tidyverse.org/reference/geom_histogram.html) to make your visualization below. Note: Play around with the binwidth, and add appropriate labels if able!
+
+```{webr-r}
+
+```
+
+::: {.callout-tip collapse="true"}
+## Solution
+```{r}
+ecomm |>
+ ggplot(
+   aes(x = price)
+ ) +
+  geom_histogram(binwidth = 5) + 
+  labs(
+    title = "Price of eCommerse scraped data",
+    x = "Price"
+  )
+```
+:::
+
+Now, let's work with some of the text data to discover more patterns. Suppose you wonder if an eCommerce business that sells shorts is cheaper than others. First, we need to find how many listings contain the word "short". We can do this using [`str_detect()`](https://stringr.tidyverse.org/reference/str_detect.html) from the `stringR` package. Run the following code. What is it doing? 
+
+```{webr-r}
+ecomm <- ecomm |>
+  mutate(dummy = ifelse(
+    str_detect(
+      title, "Short"), "short", "else"))
+
+ecomm
+```
+
+::: {.callout-tip collapse="true"}
+## Solution
+This code is using `mutate()` to create a new dummy variable called `dummy`. It is using a combination of `ifelse()` and `str_detect()` to look into the title column, and see if the string "Short" was detected or not. If yes, the new variable `dummy` will contain "short" for that row. If no, the new variable will contain "else".
+:::
+
+We just made a dummy (or indicator) variable! This is going to help us see if eCommerce businesses that sell shorts are, on average, more or less expensive than others. Use this variable, along with the `dplyr` functions of [`group_by()`](https://dplyr.tidyverse.org/reference/group_by.html) and [`summarise()`](https://dplyr.tidyverse.org/reference/summarise.html). Then, answer the question of if shorts are, on average, cheaper than other businesses for these data.
+
+```{webr-r}
+#insert code here
+```
+
+::: {.callout-tip collapse="true"}
+## Solution
+
+```{r}
+#| echo: false
+ecomm <- ecomm |>
+  mutate(dummy = ifelse(
+    str_detect(
+      title, "Short"), "short", "else"))
+```
+
+
+```{r}
+ecomm |>
+  group_by(dummy) |>
+  summarise(mean_price = mean(price))
+```
+It appears that an eCommerce business that sells shorts was, on average, 8 dollars cheaper than other stores for these data.
+
+:::
+## Asking Permission 
+
+Just because you can use rvest tools to scrape data doesn't mean you should or have permission to do so. We will use the `bow()` function from the polite package in R to introduce the client to the host and ask for permission to scrape. Use the following code to ensure that we had permission to scrape Star Wars! Note that the input for `bow()` is a character URL. 
+
+```{r}
+host <- "https://rvest.tidyverse.org/articles/starwars.html"
+
+bow(host)
+```
+
+
+Indeed, we had permission to scrape that website! 
+
+Let's check out four more websites: 
+
+-   https://espn.com 
+-   https://x.com/home
+-   https://www.bettycrocker.com
+-   https://www.zillow.com
+
+```{r}
+host1 <- "https://espn.com"
+host2 <- "https://x.com/home"
+host3 <- "https://www.bettycrocker.com"
+host4 <- "https://www.zillow.com"
+
+bow(host1)
+
+bow(host2)
+
+bow(host3)
+
+bow(host4)
+```
+
+We do not have permission to scrape espn.com or x.com. We do have permission to scrape bettycrocker.com and zillow.com.
+
+The takeaway is that, just because you can doesn't mean you are allowed to scrape data!

@@ -58,7 +58,7 @@ sales <- read_excel(
 nobel <- read_csv("nobel.csv")
 ```
 
-Based on the tibble output, what are the number of rows and columns of the nobel dataset? What types of variables are you working with?
+Based on the tibble output, what are the number of rows and columns of the `nobel` dataset? What types of variables are you working with?
 
 
 ::: {.callout-tip collapse="true"}
@@ -69,7 +69,7 @@ There are 935 rows and 26 columns in nobel dataset.
 There are 21 character variables, 3 dbl variables, and 2 date variables
 :::
 
-Now, rerun the code above to read in the dataset, but use the argument `show_col_types = FALSE` to suppress the given dataset information
+Now, rerun the code above to read in the dataset, but use the argument `show_col_types = FALSE` to suppress the given dataset information. Note that, if done correctly, you won't see any output.
 
 ```{webr-r}
 nobel <- read_csv("nobel.csv", # add code here)
@@ -152,11 +152,11 @@ Suppose you wanted to make this change to the `nobel` dataset, and export a new 
 
 ## Sales
 
-For the remaining part of this exercise, we are going to learn how to read in and clean up data that come from excel. The messy data that we are going to work with can be seen in below.
+For the remaining part of this exercise, we are going to learn how to read in and clean up data that come from Excel. The messy data that we are going to work with can be seen in below.
 
 ![](images/salex-excel.png){fig-align="center" width="801"}
 
-We are going to use `read_excel()` to read in a xlsx excel file. Read in the file and take a glimpse of these data. Why can we not work with these data in their current form?
+We are going to use `read_excel()` to read in a xlsx Excel file. Read in the file and take a glimpse of these data. Why can we not work with these data in their current form?
 
 ```{webr-r}
 #| label: sales-import
@@ -174,7 +174,7 @@ These data are not tidy. These data are read in with the text as a column name, 
 
 See the help file for `read_excel()` [here](https://www.rdocumentation.org/packages/readxl/versions/0.1.1/topics/read_excel). Notice that, in the current `sales` dataset, we want to skip 3 rows (the first row acts as a header for the column names). We can do this using the `skip` argument. At the same time, we can specify names for each column by giving the argument `col_names` a character vector. Use these arguments and add to the code below to skip 3 lines and name the columns `id` and `n`.
 
-```{web-r}
+```{webr-r}
 sales <- read_excel(
   "sales.xlsx", 
 # add code here

@@ -13,7 +13,7 @@ Please reference the `webR-intro` programming exercise for information and instr
 
 ## Getting started
 
-In this exercise, we will be exploring the `flights` data set, containing information about all flights that departed from NYC to destinations in the United States, Puerto Rico, and the American Virgin Island in 2013. A data key can be found below:
+In this exercise, we will be exploring the `flights` data set, which contains information about all flights that departed from NYC to destinations in the United States, Puerto Rico, and the American Virgin Islands in 2013. A data key can be found below:
 
 ::: {.callout-note collapse="true"}
 ## data key
@@ -85,7 +85,7 @@ There are 336,776 rows in the `flights` data set. Each observation represents a 
 
 ## [`select()`](https://dplyr.tidyverse.org/reference/select.html)
 
-The function `select()` makes it easy to select variable(s) in your data set based on their name or position. 
+The `select()` function makes it easy to select variable(s) in your data set based on their name or position. 
 
 Using `select()`, make a data frame that only contains the variables `dep_delay` and `arr_delay`.
 
@@ -154,7 +154,7 @@ flights |>
 
 ## [`slice()`](https://dplyr.tidyverse.org/reference/slice.html)
 
-The function [`slice()`](https://dplyr.tidyverse.org/reference/slice.html) lets you index rows by their name or (integer) locations. Other common uses of `slice()` include selecting and removing rows.
+The [`slice()`] function lets you index rows by their name or (integer) locations. Other common uses of `slice()` include selecting and removing rows.
 
 Display the first five rows of the `flights` data frame.
 
@@ -304,7 +304,7 @@ We are piping the flights data set into the function filter, where we want to ke
 
 ## [`count()`](https://dplyr.tidyverse.org/reference/count.html)
 
-We can use the function `count()` to create frequency tables of selected variables.
+We can use the `count()` function to create frequency tables of selected variables.
 
 Create a frequency table of the destination locations for flights from New York.
 
@@ -354,9 +354,9 @@ flights |>
 
 ## [`mutate()`](https://dplyr.tidyverse.org/reference/mutate.html)
 
-We can use the function `mutate()` to create new columns or modify existing columns in your data set.
+We can use the `mutate()` function to create new columns or modify existing columns in your data set.
 
-Convert air_time (minutes in the air) to hours and then create a new variable, mph, the miles per hour of the flight
+Convert air_time (minutes in the air) to hours and then create a new variable, `mph`, the miles per hour of the flight
 
 ```{webr-r}
 # add code here
@@ -396,9 +396,9 @@ flights |>
 
 ## [`summarize()`](https://dplyr.tidyverse.org/reference/summarise.html) & [`group_by()`](https://dplyr.tidyverse.org/reference/group_by.html)
 
-We can use the function `summarize()` to calculate summary statistics for a selected column. `summarize()` is often accompanied with `group_by()`, which converts a data frame into a grouped tbl where operations (like `summarize()`) are performed for each group.
+We can use the function `summarize()` to calculate summary statistics for a selected column. `summarize()` is often accompanied by `group_by()`, which converts a data frame into a grouped tibble where operations (like `summarize()`) are performed for each group.
 
-Find mean arrival delay for all flights.
+Find the mean arrival delay for all flights.
 
 ```{webr-r}
 # add code here
@@ -413,7 +413,7 @@ flights |>
 ```
 :::
 
-Find mean arrival delay for for each month.
+Find the mean arrival delay for for each month.
 
 ```{webr-r}
 # add code here
@@ -465,7 +465,7 @@ flights |>
 ```
 :::
 
-Create a new variable to calculate the percentage of flights in each month. What percentage of flights take place in July?
+Create a new variable to calculate the percentage of flights in each month. What percentage of flights were in July?
 
 ```{webr-r}
 # add code here

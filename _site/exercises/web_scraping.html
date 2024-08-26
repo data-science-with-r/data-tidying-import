@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Nobel Prize winners &amp; sales data – Data tidying and importing</title>
+<title>Scraping Star Wars – Data tidying and importing</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -246,7 +246,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 // Document level settings ----
 
 // Determine if we need to install R packages
-globalThis.qwebrInstallRPackagesList = ['tidyverse', 'scales', 'readxl'];
+globalThis.qwebrInstallRPackagesList = ['tidyverse', 'scales', 'rvest', 'polite', 'stringr'];
 
 // Specify possible locations to search for the repository
 globalThis.qwebrPackageRepoURLS = ['https://repo.r-wasm.org/'];
@@ -268,7 +268,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"options":{"fig-height":5,"comment":"","context":"setup","autorun":"true","fig-cap":"","message":"true","warning":"true","output":"true","dpi":72,"results":"markup","out-width":"700px","read-only":"false","label":"unnamed-chunk-1","out-height":"","fig-width":7,"classes":""},"id":1,"code":"download.file(\n  \"https://raw.githubusercontent.com/ElijahMeyer3/Coursera/main/data/nobel.csv\",\n  \"nobel.csv\"\n)\n\ndownload.file(\n  \"https://raw.githubusercontent.com/ElijahMeyer3/Coursera/main/data/sales.xlsx\",\n  \"sales.xlsx\"\n)\n\noptions(readr.show_progress = FALSE)"},{"options":{"fig-height":5,"comment":"","context":"interactive","autorun":"false","fig-cap":"","message":"true","warning":"true","output":"true","dpi":72,"results":"markup","out-width":"700px","read-only":"false","label":"unnamed-chunk-2","out-height":"","fig-width":7,"classes":""},"id":2,"code":"nobel <- read_csv(\"nobel.csv\")"},{"options":{"fig-height":5,"comment":"","context":"interactive","autorun":"false","fig-cap":"","message":"true","warning":"true","output":"true","dpi":72,"results":"markup","out-width":"700px","read-only":"false","label":"unnamed-chunk-3","out-height":"","fig-width":7,"classes":""},"id":3,"code":"nobel <- read_csv(\"nobel.csv\", # add code here)"},{"options":{"fig-height":5,"comment":"","context":"interactive","autorun":"false","fig-cap":"","message":"true","warning":"true","output":"true","dpi":72,"results":"markup","out-width":"700px","read-only":"false","label":"unnamed-chunk-4","out-height":"","fig-width":7,"classes":""},"id":4,"code":"nobel |>\n  mutate(gender = as.numeric(gender)) |>\n  select(gender)"},{"options":{"fig-height":5,"comment":"","context":"interactive","autorun":"false","fig-cap":"","message":"true","warning":"true","output":"true","dpi":72,"results":"markup","out-width":"700px","read-only":"false","label":"unnamed-chunk-5","out-height":"","fig-width":7,"classes":""},"id":5,"code":"nobel |>\n  mutate(gender_num = as.numeric(as.factor(gender))) |>\n  select(gender, gender_num) |>\n  unique()"},{"options":{"fig-height":5,"comment":"","context":"interactive","autorun":"false","fig-cap":"","message":"true","warning":"true","output":"true","dpi":72,"results":"markup","out-width":"700px","read-only":"false","label":"sales-import","out-height":"","fig-width":7,"classes":""},"id":6,"code":"sales <- read_excel(\n  \"sales.xlsx\"\n)\n\nglimpse(sales)"},{"options":{"fig-height":5,"comment":"","context":"interactive","autorun":"false","fig-cap":"","message":"true","warning":"true","output":"true","dpi":72,"results":"markup","out-width":"700px","read-only":"false","label":"unnamed-chunk-7","out-height":"","fig-width":7,"classes":""},"id":7,"code":"sales <- read_excel(\n  \"sales.xlsx\", \n# add code here\n)"},{"options":{"fig-height":5,"comment":"","context":"interactive","autorun":"false","fig-cap":"","message":"true","warning":"true","output":"true","dpi":72,"results":"markup","out-width":"700px","read-only":"false","label":"unnamed-chunk-8","out-height":"","fig-width":7,"classes":""},"id":8,"code":"read_excel(\n  \"sales.xlsx\", \n  skip = 3,\n  col_names = c(\"id\", \"n\")\n) |>\n# add code here"}];
+globalThis.qwebrCellDetails = [{"code":"starwars <- read_html(\"https://rvest.tidyverse.org/articles/starwars.html\")","id":1,"options":{"results":"markup","output":"true","read-only":"false","fig-width":7,"out-width":"700px","fig-height":5,"fig-cap":"","comment":"","context":"interactive","warning":"true","dpi":72,"classes":"","out-height":"","message":"true","label":"unnamed-chunk-1","autorun":"false"}},{"code":"films <- starwars |>\n  html_elements(\"section\")\n\nfilms","id":2,"options":{"results":"markup","output":"true","read-only":"false","fig-width":7,"out-width":"700px","fig-height":5,"fig-cap":"","comment":"","context":"interactive","warning":"true","dpi":72,"classes":"","out-height":"","message":"true","label":"unnamed-chunk-2","autorun":"false"}},{"code":"title <- films |> \n  html_element(\"h2\") |> \n  html_text2()\n\ntitle","id":3,"options":{"results":"markup","output":"true","read-only":"false","fig-width":7,"out-width":"700px","fig-height":5,"fig-cap":"","comment":"","context":"interactive","warning":"true","dpi":72,"classes":"","out-height":"","message":"true","label":"unnamed-chunk-3","autorun":"false"}},{"code":"starwars |>\n  html_elements(\"h2\")","id":4,"options":{"results":"markup","output":"true","read-only":"false","fig-width":7,"out-width":"700px","fig-height":5,"fig-cap":"","comment":"","context":"interactive","warning":"true","dpi":72,"classes":"","out-height":"","message":"true","label":"unnamed-chunk-4","autorun":"false"}},{"code":"download.file(\n  \"https://raw.githubusercontent.com/ElijahMeyer3/Coursera/main/data/items-80.csv\",\n  \"ecomm.csv\"\n)\n\noptions(readr.show_progress = FALSE)","id":5,"options":{"results":"markup","output":"true","read-only":"false","fig-width":7,"out-width":"700px","fig-height":5,"fig-cap":"","comment":"","context":"setup","warning":"true","dpi":72,"classes":"","out-height":"","message":"true","label":"unnamed-chunk-5","autorun":"true"}},{"code":"ecomm <- read_csv(\"ecomm.csv\")\n\n#insert code here","id":6,"options":{"results":"markup","output":"true","read-only":"false","fig-width":7,"out-width":"700px","fig-height":5,"fig-cap":"","comment":"","context":"interactive","warning":"true","dpi":72,"classes":"","out-height":"","message":"true","label":"unnamed-chunk-6","autorun":"false"}},{"code":"","id":7,"options":{"results":"markup","output":"true","read-only":"false","fig-width":7,"out-width":"700px","fig-height":5,"fig-cap":"","comment":"","context":"interactive","warning":"true","dpi":72,"classes":"","out-height":"","message":"true","label":"unnamed-chunk-7","autorun":"false"}},{"code":"ecomm <- ecomm |>\n  mutate(dummy = ifelse(\n    str_detect(\n      title, \"Short\"), \"short\", \"else\"))\n\necomm","id":8,"options":{"results":"markup","output":"true","read-only":"false","fig-width":7,"out-width":"700px","fig-height":5,"fig-cap":"","comment":"","context":"interactive","warning":"true","dpi":72,"classes":"","out-height":"","message":"true","label":"unnamed-chunk-8","autorun":"false"}},{"code":"#insert code here","id":9,"options":{"results":"markup","output":"true","read-only":"false","fig-width":7,"out-width":"700px","fig-height":5,"fig-cap":"","comment":"","context":"interactive","warning":"true","dpi":72,"classes":"","out-height":"","message":"true","label":"unnamed-chunk-9","autorun":"false"}}];
 
 </script>
 <script type="module">
@@ -1028,11 +1028,12 @@ globalThis.qwebrExecuteCode = async function (
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#packages" id="toc-packages" class="nav-link active" data-scroll-target="#packages">Packages</a></li>
-  <li><a href="#nobel-prize-winners" id="toc-nobel-prize-winners" class="nav-link" data-scroll-target="#nobel-prize-winners">Nobel Prize winners</a></li>
-  <li><a href="#type-coercion" id="toc-type-coercion" class="nav-link" data-scroll-target="#type-coercion">Type coercion</a></li>
-  <li><a href="#sales" id="toc-sales" class="nav-link" data-scroll-target="#sales">Sales</a></li>
-  <li><a href="#putting-it-all-together" id="toc-putting-it-all-together" class="nav-link" data-scroll-target="#putting-it-all-together">Putting it all together</a></li>
+  <li><a href="#star-wars" id="toc-star-wars" class="nav-link active" data-scroll-target="#star-wars">Star Wars</a>
+  <ul class="collapse">
+  <li><a href="#scraping-titles" id="toc-scraping-titles" class="nav-link" data-scroll-target="#scraping-titles">Scraping titles</a></li>
+  </ul></li>
+  <li><a href="#working-with-scraped-ecommerce-pages" id="toc-working-with-scraped-ecommerce-pages" class="nav-link" data-scroll-target="#working-with-scraped-ecommerce-pages">Working with scraped eCommerce pages</a></li>
+  <li><a href="#asking-permission" id="toc-asking-permission" class="nav-link" data-scroll-target="#asking-permission">Asking Permission</a></li>
   </ul>
 </nav>
     </div>
@@ -1215,7 +1216,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Nobel Prize winners &amp; sales data</h1>
+<h1 class="title">Scraping Star Wars</h1>
 </div>
 
 
@@ -1232,22 +1233,12 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </header>
 
 
-<section id="packages" class="level2">
-<h2 class="anchored" data-anchor-id="packages">Packages</h2>
-<p>We will use the following two packages in this application exercise.</p>
-<ul>
-<li><strong>tidyverse</strong>: For data import, wrangling, and visualization.</li>
-<li><strong>readxl:</strong> For importing data from Excel.</li>
-</ul>
-</section>
-<section id="nobel-prize-winners" class="level2">
-<h2 class="anchored" data-anchor-id="nobel-prize-winners">Nobel Prize winners</h2>
-<p>For this exercise, we are going to work with a Nobel Prize winners dataset from the years 1901 through 2018. Please read in the following data below.</p>
-<div id="qwebr-insertion-location-1"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<div id="qwebr-insertion-location-2"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>Based on the tibble output, what are the number of rows and columns of the <code>nobel</code> dataset? What types of variables are you working with?</p>
+<section id="star-wars" class="level2">
+<h2 class="anchored" data-anchor-id="star-wars">Star Wars</h2>
+<p>Scraping data is defined as extracting data from one source to another. We are going to use the following <a href="https://rvest.tidyverse.org/articles/starwars.html">website</a> to practice scraping data; taking data on the website and transporting it into a more workable format with R code.</p>
+<section id="scraping-titles" class="level3">
+<h3 class="anchored" data-anchor-id="scraping-titles">Scraping titles</h3>
+<p>Please visit the <a href="https://rvest.tidyverse.org/articles/starwars.html">website</a> and identify the movie titles. What are they?</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -1260,13 +1251,48 @@ Solution
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>There are 935 rows and 26 columns in nobel dataset.</p>
-<p>There are 21 character variables, 3 dbl variables, and 2 date variables</p>
+<p>There are seven movie titles on this page. They include:</p>
+<p>– The Phantom Menace</p>
+<p>– Attack of the Clones</p>
+<p>– Revenge of the Sith</p>
+<p>– A New Hope</p>
+<p>– The Empire Strikes Back</p>
+<p>– Return of the Jedi</p>
+<p>– The Force Awakens</p>
 </div>
 </div>
 </div>
-<p>Now, rerun the code above to read in the dataset, but use the argument <code>show_col_types = FALSE</code> to suppress the given dataset information. Note that, if done correctly, you won’t see any output.</p>
+<p>The next step is to identify the html element that is associated with each title. To help us, we can use <a href="https://selectorgadget.com/">Selector Gadget</a>. Selector Gadget is an open source Chrome Extension that helps users find elements of an html page easier. This demonstration will use Selector Gadget. To install Selector Gadget, please go to the following <a href="https://chromewebstore.google.com/detail/selectorgadget/mhjhnkcfbdhnjickkkdbjoemdmbfginb?hl=en&amp;pli=1">page</a>. When the Selector Gadget is installed, you should see <img src="images/gadget.png" class="img-fluid"> in your task bar.</p>
+<section id="start-by-reading-a-html-page-with-read_html" class="level4">
+<h4 class="anchored" data-anchor-id="start-by-reading-a-html-page-with-read_html">Start by reading a HTML page with read_html()</h4>
+<p>First, we need to reference the website. We can do this by using <code>read_html()</code> from the rvest package. Run the following code below to do so.</p>
+<div id="qwebr-insertion-location-1"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section>
+<section id="find-the-element" class="level4">
+<h4 class="anchored" data-anchor-id="find-the-element">Find the element</h4>
+<p>Next, we need to find the element that is associated with the titles of each Star Wars movie. Click the <img src="images/gadget.png" class="img-fluid"> icon and click on one of the titles.</p>
+<p><img src="images/h2.png" class="img-fluid"></p>
+<p>In the red outline, you will see the element <code>section</code>. Click on a different title. You will again see the element <code>section</code>. We can use this information to pull the titles from the website using the following code:</p>
+<div id="qwebr-insertion-location-2"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p>Notice how seven nodes (titles) had the same element <code>section</code>. You can see the title of the movie, along with other data, in each row. Among this output, you can see that each data-id has an <code>h2</code> element. We also saw h2 when using the selector gadget on the title. Now, let’s pull just the information associated with the <code>h2</code> element.</p>
 <div id="qwebr-insertion-location-3"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p>Another way to get title information is to take them directly from the <code>starwars</code> html using <code>html_elements("h2")</code>. See the following code below.</p>
+<div id="qwebr-insertion-location-4"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p>Notice that this has 8 nodes, instead of 7, as the data “On this page” does not have the element <code>section</code> tag.</p>
+</section>
+</section>
+</section>
+<section id="working-with-scraped-ecommerce-pages" class="level2">
+<h2 class="anchored" data-anchor-id="working-with-scraped-ecommerce-pages">Working with scraped eCommerce pages</h2>
+<p>In the last code along activity, you wrote a function to scrape eCommerce data from multiple pages. Here, we are going to practice working with numerical and text data. The data set name is called <code>ecomm</code>.</p>
+<div id="qwebr-insertion-location-5"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p>Take a glimpse of the <code>ecomm</code> data set below to familiarize yourself with the variables. What are they?</p>
+<div id="qwebr-insertion-location-6"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
@@ -1281,19 +1307,22 @@ Solution
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>nobel <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"nobel.csv"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(ecomm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 80
+Columns: 3
+$ title &lt;chr&gt; "Abominable Hoodie", "Adrienne Trek Jacket", "Aeon Capri", "Aero…
+$ url   &lt;chr&gt; "https://www.scrapingcourse.com/ecommerce/product/abominable-hoo…
+$ price &lt;dbl&gt; 69.0, 57.0, 48.0, 24.0, 74.0, 7.0, 45.0, 69.0, 40.0, 42.0, 34.0,…</code></pre>
 </div>
-<p>Notice that there is no given message when running the code. This code simply loads the dataset.</p>
+</div>
+<p>There is a <code>title</code>, <code>url</code> and <code>price</code> variable.</p>
 </div>
 </div>
 </div>
-</section>
-<section id="type-coercion" class="level2">
-<h2 class="anchored" data-anchor-id="type-coercion">Type coercion</h2>
-<p>We are going to use the <code>nobel</code> dataset to explore type coercion. Using <code>glimpse()</code>, identify what type of variable <code>gender</code> is in this dataset. Additionally, identify the levels of this variable.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># add response here</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<p>Now, let’s start by making a histogram of price using tools from the <code>ggplot</code> package in the <code>tidyverse</code>. Hint: Use the functions <a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a> and <a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram()</a> to make your visualization below. Note: Play around with the binwidth, and add appropriate labels if able!</p>
+<div id="qwebr-insertion-location-7"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -1307,56 +1336,28 @@ Solution
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(nobel)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Rows: 935
-Columns: 26
-$ id                    &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 6, 8, 9, 10, 11, 12, 13, 14, 1…
-$ firstname             &lt;chr&gt; "Wilhelm Conrad", "Hendrik A.", "Pieter", "Henri…
-$ surname               &lt;chr&gt; "Röntgen", "Lorentz", "Zeeman", "Becquerel", "Cu…
-$ year                  &lt;dbl&gt; 1901, 1902, 1902, 1903, 1903, 1903, 1911, 1904, …
-$ category              &lt;chr&gt; "Physics", "Physics", "Physics", "Physics", "Phy…
-$ affiliation           &lt;chr&gt; "Munich University", "Leiden University", "Amste…
-$ city                  &lt;chr&gt; "Munich", "Leiden", "Amsterdam", "Paris", "Paris…
-$ country               &lt;chr&gt; "Germany", "Netherlands", "Netherlands", "France…
-$ born_date             &lt;date&gt; 1845-03-27, 1853-07-18, 1865-05-25, 1852-12-15,…
-$ died_date             &lt;date&gt; 1923-02-10, 1928-02-04, 1943-10-09, 1908-08-25,…
-$ gender                &lt;chr&gt; "male", "male", "male", "male", "male", "female"…
-$ born_city             &lt;chr&gt; "Remscheid", "Arnhem", "Zonnemaire", "Paris", "P…
-$ born_country          &lt;chr&gt; "Germany", "Netherlands", "Netherlands", "France…
-$ born_country_code     &lt;chr&gt; "DE", "NL", "NL", "FR", "FR", "PL", "PL", "GB", …
-$ died_city             &lt;chr&gt; "Munich", NA, "Amsterdam", NA, "Paris", "Sallanc…
-$ died_country          &lt;chr&gt; "Germany", "Netherlands", "Netherlands", "France…
-$ died_country_code     &lt;chr&gt; "DE", "NL", "NL", "FR", "FR", "FR", "FR", "GB", …
-$ overall_motivation    &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
-$ share                 &lt;dbl&gt; 1, 2, 2, 2, 4, 4, 1, 1, 1, 1, 1, 1, 2, 2, 1, 1, …
-$ motivation            &lt;chr&gt; "\"in recognition of the extraordinary services …
-$ born_country_original &lt;chr&gt; "Prussia (now Germany)", "the Netherlands", "the…
-$ born_city_original    &lt;chr&gt; "Lennep (now Remscheid)", "Arnhem", "Zonnemaire"…
-$ died_country_original &lt;chr&gt; "Germany", "the Netherlands", "the Netherlands",…
-$ died_city_original    &lt;chr&gt; "Munich", NA, "Amsterdam", NA, "Paris", "Sallanc…
-$ city_original         &lt;chr&gt; "Munich", "Leiden", "Amsterdam", "Paris", "Paris…
-$ country_original      &lt;chr&gt; "Germany", "the Netherlands", "the Netherlands",…</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>nobel <span class="sc">|&gt;</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(gender) <span class="sc">|&gt;</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 3 × 2
-# Groups:   gender [3]
-  gender     n
-  &lt;chr&gt;  &lt;int&gt;
-1 female    52
-2 male     856
-3 org       27</code></pre>
-</div>
-</div>
-<p><code>gender</code> is a character variable. This variable has three different genders: <code>male</code>, <code>female</code>, and <code>org</code>.</p>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>ecomm <span class="sc">|&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a> <span class="fu">ggplot</span>(</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">aes</span>(<span class="at">x =</span> price)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a> ) <span class="sc">+</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">5</span>) <span class="sc">+</span> </span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Price of eCommerse scraped data"</span>,</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Price"</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="web_scraping_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
 </div>
 </div>
-<p>Suppose we want to turn the three listed genders into numeric values. Run the following code. What happened?</p>
-<div id="qwebr-insertion-location-4"></div>
+</div>
+</div>
+</div>
+<p>Now, let’s work with some of the text data to discover more patterns. Suppose you wonder if an eCommerce business that sells shorts is cheaper than others. First, we need to find how many listings contain the word “short”. We can do this using <a href="https://stringr.tidyverse.org/reference/str_detect.html"><code>str_detect()</code></a> from the <code>stringR</code> package. Run the following code. What is it doing?</p>
+<div id="qwebr-insertion-location-8"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
@@ -1370,12 +1371,12 @@ Solution
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>When trying to change <code>male</code>, <code>female</code> and <code>org</code> into numbers from characters, each value became an NA.</p>
+<p>This code is using <code>mutate()</code> to create a new dummy variable called <code>dummy</code>. It is using a combination of <code>ifelse()</code> and <code>str_detect()</code> to look into the title column, and see if the string “Short” was detected or not. If yes, the new variable <code>dummy</code> will contain “short” for that row. If no, the new variable will contain “else”.</p>
 </div>
 </div>
 </div>
-<p>If we want the function <code>as.numeric()</code> to coerce these values into numbers, we need to change them to be a factor first. Run the following code, and compare the results. What values were assigned to which group? How do you think R determined this?</p>
-<div id="qwebr-insertion-location-5"></div>
+<p>We just made a dummy (or indicator) variable! This is going to help us see if eCommerce businesses that sell shorts are, on average, more or less expensive than others. Use this variable, along with the <code>dplyr</code> functions of <a href="https://dplyr.tidyverse.org/reference/group_by.html"><code>group_by()</code></a> and <a href="https://dplyr.tidyverse.org/reference/summarise.html"><code>summarise()</code></a>. Then, answer the question of if shorts are, on average, cheaper than other businesses for these data.</p>
+<div id="qwebr-insertion-location-9"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
@@ -1389,130 +1390,87 @@ Solution
 </div>
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>R assigned male = 2; female = 1; and org = 3. These were assigned alpha-numerically.</p>
-</div>
-</div>
-</div>
-<p>Note, that you can also avoid type coercion by manually setting values (see example code below).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>nobel <span class="sc">|&gt;</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">gender_num =</span> <span class="fu">case_when</span>(</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    gender <span class="sc">==</span> <span class="st">"female"</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    gender <span class="sc">==</span> <span class="st">"male"</span> <span class="sc">~</span> <span class="dv">2</span>,</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    gender <span class="sc">==</span> <span class="st">"org"</span> <span class="sc">~</span> <span class="dv">3</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  )) <span class="sc">|&gt;</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(gender, gender_num) <span class="sc">|&gt;</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unique</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>ecomm <span class="sc">|&gt;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(dummy) <span class="sc">|&gt;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">mean_price =</span> <span class="fu">mean</span>(price))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 3 × 2
-  gender gender_num
-  &lt;chr&gt;       &lt;dbl&gt;
-1 male            2
-2 female          1
-3 org             3</code></pre>
+<pre><code># A tibble: 2 × 2
+  dummy mean_price
+  &lt;chr&gt;      &lt;dbl&gt;
+1 else        43.7
+2 short       35.7</code></pre>
 </div>
 </div>
-<p>Suppose you wanted to make this change to the <code>nobel</code> dataset, and export a new csv to your current working directory on your local installment. This can be accomplished using <code>write_csv()</code>. See the help file <a href="https://www.rdocumentation.org/packages/readr/versions/0.1.0/topics/write_csv">here</a>.</p>
-</section>
-<section id="sales" class="level2">
-<h2 class="anchored" data-anchor-id="sales">Sales</h2>
-<p>For the remaining part of this exercise, we are going to learn how to read in and clean up data that come from Excel. The messy data that we are going to work with can be seen in below.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/salex-excel.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="801"></p>
-</figure>
-</div>
-<p>We are going to use <code>read_excel()</code> to read in a xlsx Excel file. Read in the file and take a glimpse of these data. Why can we not work with these data in their current form?</p>
-<div id="qwebr-insertion-location-6"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Solution
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>These data are not tidy. These data are read in with the text as a column name, and creates another column name called <code>...2</code>.</p>
-</div>
-</div>
-</div>
-<p>See the help file for <code>read_excel()</code> <a href="https://www.rdocumentation.org/packages/readxl/versions/0.1.1/topics/read_excel">here</a>. Notice that, in the current <code>sales</code> dataset, we want to skip 3 rows (the first row acts as a header for the column names). We can do this using the <code>skip</code> argument. At the same time, we can specify names for each column by giving the argument <code>col_names</code> a character vector. Use these arguments and add to the code below to skip 3 lines and name the columns <code>id</code> and <code>n</code>.</p>
-<div id="qwebr-insertion-location-7"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Solution
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-7" class="callout-7-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>sales <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"sales.xlsx"</span>,</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">skip =</span> <span class="dv">3</span>,</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">col_names =</span> <span class="fu">c</span>(<span class="st">"id"</span>, <span class="st">"n"</span>)</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>sales</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<p>It appears that an eCommerce business that sells shorts was, on average, 8 dollars cheaper than other stores for these data.</p>
 </div>
 </div>
 </div>
 </section>
-<section id="putting-it-all-together" class="level2">
-<h2 class="anchored" data-anchor-id="putting-it-all-together">Putting it all together</h2>
-<p>Manipulate the sales data such such that it looks like the following using functions you have learned from the <code>tidyverse</code> to transform data.</p>
-<p><img src="images/sales-2.png" class="img-fluid" width="300"></p>
-<div id="qwebr-insertion-location-8"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Solution
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-8" class="callout-8-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
+<section id="asking-permission" class="level2">
+<h2 class="anchored" data-anchor-id="asking-permission">Asking Permission</h2>
+<p>Just because you can use rvest tools to scrape data doesn’t mean you should or have permission to do so. We will use the <code>bow()</code> function from the polite package in R to introduce the client to the host and ask for permission to scrape. Use the following code to ensure that we had permission to scrape Star Wars! Note that the input for <code>bow()</code> is a character URL.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>sales <span class="sc">|&gt;</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">is_brand_name =</span> <span class="fu">str_detect</span>(id, <span class="st">"Brand"</span>),</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">brand =</span> <span class="fu">if_else</span>(is_brand_name, id, <span class="cn">NA</span>)</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fill</span>(brand) <span class="sc">|&gt;</span></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>is_brand_name) <span class="sc">|&gt;</span></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(brand, id, n)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>host <span class="ot">&lt;-</span> <span class="st">"https://rvest.tidyverse.org/articles/starwars.html"</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">bow</span>(host)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 7 × 3
-  brand   id    n    
-  &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;
-1 Brand 1 1234  8    
-2 Brand 1 8721  2    
-3 Brand 1 1822  3    
-4 Brand 2 3333  1    
-5 Brand 2 2156  3    
-6 Brand 2 3987  6    
-7 Brand 2 3216  5    </code></pre>
+<pre><code>&lt;polite session&gt; https://rvest.tidyverse.org/articles/starwars.html
+    User-agent: polite R package
+    robots.txt: 1 rules are defined for 1 bots
+   Crawl delay: 5 sec
+  The path is scrapable for this user-agent</code></pre>
 </div>
 </div>
+<p>Indeed, we had permission to scrape that website!</p>
+<p>Let’s check out four more websites:</p>
+<ul>
+<li>https://espn.com</li>
+<li>https://x.com/home</li>
+<li>https://www.bettycrocker.com</li>
+<li>https://www.zillow.com</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>host1 <span class="ot">&lt;-</span> <span class="st">"https://espn.com"</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>host2 <span class="ot">&lt;-</span> <span class="st">"https://x.com/home"</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>host3 <span class="ot">&lt;-</span> <span class="st">"https://www.bettycrocker.com"</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>host4 <span class="ot">&lt;-</span> <span class="st">"https://www.zillow.com"</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="fu">bow</span>(host1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;polite session&gt; https://espn.com
+    User-agent: polite R package
+    robots.txt: 114 rules are defined for 11 bots
+   Crawl delay: 5 sec
+  The path is not scrapable for this user-agent</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bow</span>(host2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;polite session&gt; https://x.com/home
+    User-agent: polite R package
+    robots.txt: 24 rules are defined for 7 bots
+   Crawl delay: 5 sec
+  The path is not scrapable for this user-agent</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bow</span>(host3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;polite session&gt; https://www.bettycrocker.com
+    User-agent: polite R package
+    robots.txt: 15 rules are defined for 1 bots
+   Crawl delay: 5 sec
+  The path is scrapable for this user-agent</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bow</span>(host4)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;polite session&gt; https://www.zillow.com
+    User-agent: polite R package
+    robots.txt: 244 rules are defined for 8 bots
+   Crawl delay: 5 sec
+  The path is scrapable for this user-agent</code></pre>
 </div>
 </div>
-</div>
-<p><strong>Takeaway</strong> We should write code to manipulate data instead of opening Excel and editing the data in there because it allows us to re-use the data multiple times, and leaves a transparent trail of any modifications done while manipulating the data. Changing data in Excel is neither reproducible nor reusable.</p>
+<p>We do not have permission to scrape espn.com or x.com. We do have permission to scrape bettycrocker.com and zillow.com.</p>
+<p>The takeaway is that, just because you can doesn’t mean you are allowed to scrape data!</p>
 
 
 </section>
