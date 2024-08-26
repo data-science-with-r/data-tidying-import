@@ -410,7 +410,7 @@
     "href": "slides/3-1-web-scraping/3-1-web-scraping.html#scraping-the-web-what-why",
     "title": "Web scraping",
     "section": "Scraping the web: what? why?",
-    "text": "Scraping the web: what? why?\n\n\nIncreasing amount of data is available on the web\nThese data are provided in an unstructured format: you can always copy&paste, but it’s time-consuming and prone to errors\nWeb scraping is the process of extracting this information automatically and transform it into a structured dataset\nTwo different scenarios:\n\nScreen scraping: extract data from source code of website, with html parser (easy) or regular expression matching (less easy).\nWeb APIs (application programming interface): website offers a set of structured http requests that return JSON or XML files."
+    "text": "Scraping the web: what? why?\n\n\nIncreasing amount of data is available on the web\nThese data are provided in an unstructured format: you can always copy & paste, but it’s time-consuming and prone to errors\nWeb scraping is the process of extracting this information automatically and transform it into a structured dataset\nTwo different scenarios:\n\nScreen scraping: extract data from source code of website, with html parser (easy) or regular expression matching (less easy).\nWeb APIs (application programming interface): website offers a set of structured http requests that return JSON or XML files."
   },
   {
     "objectID": "slides/3-1-web-scraping/3-1-web-scraping.html#hypertext-markup-language",

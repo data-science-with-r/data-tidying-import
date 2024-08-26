@@ -10,7 +10,7 @@ format: revealjs
 ::: incremental
 -   Increasing amount of data is available on the web
 
--   These data are provided in an unstructured format: you can always copy&paste, but it's time-consuming and prone to errors
+-   These data are provided in an unstructured format: you can always copy & paste, but it's time-consuming and prone to errors
 
 -   Web scraping is the process of extracting this information automatically and transform it into a structured dataset
 
