@@ -37,6 +37,8 @@ format: revealjs
 
 ## Concepts
 
+. . .
+
 -   Tidyverse functions take a data frame as their first argument
 
 . . .
