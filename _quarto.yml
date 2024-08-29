@@ -17,7 +17,6 @@ format:
       light: flatly
       dark: darkly
     toc: true
-    highlight-style: a11y-dark
 
 execute:
   freeze: auto

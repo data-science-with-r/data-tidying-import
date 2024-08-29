@@ -3,7 +3,6 @@ title: "Scraping Star Wars movies and an E-Commerce website"
 format: 
   live-html:
     toc: true
-    highlight-style: github
 engine: knitr
 webr:
   packages: 
@@ -125,7 +124,6 @@ starwars |>
 ```
 
 ### Scraping directors
-
 
 ## Working with scraped eCommerce pages
 
