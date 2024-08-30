@@ -35,6 +35,7 @@ library(tidyverse)
 library(rvest)
 library(polite)
 ecomm <- read_csv("data/items-80.csv")
+starwars <- read_html("https://rvest.tidyverse.org/articles/starwars.html")
 ```
 
 We'll use the following packages for this programming exercise:
@@ -98,32 +99,57 @@ starwars <- read_html("https://rvest.tidyverse.org/articles/starwars.html")
 #### Find the element
 
 Next, we need to find the element that is associated with the titles of each Star Wars movie.
-Click the ![](images/gadget.png) icon and click on one of the titles.
+Click the ![](images/gadget.png) icon and click on one of the titles. Click on another one.
 
-![](images/h2.png)
+![](images/element1.png)
 
-In the red outline, you will see the element `section`.
-Click on a different title.
-You will again see the element `section`.
-We can use this information to pull the titles from the website using the following code:
+Notice that the next you click on (that you wish to scrape) is highlighted in green. Text in yellow show what else has the same element tag as the text you are clicking on.
 
-```{webr}
-titles <- starwars |>
-  html_elements("#main h2") |>
-  html_text2()
+We can see that the text in green/yellow include the seven titles, and the "ON THIS PAGE" text. If we don't want to scrape certain text (e.g., the menu title), we can click it, changing the yellow box to red.
 
-titles
-```
+![](images/element2.png)
 
-### Scraping release dates
+Now, we have our seven titles in green/yellow that we want to scrape. In the bottom right corner, we can see the element associated with just these seven titles. We will use this element information to scrape the titles below.
 
 ```{webr}
 starwars |>
-  html_elements("p:nth-child(2)") |>
+  html_elements("#main h2") |>
   html_text2()
 ```
 
-### Scraping directors
+Change the above code from `html_text2()` to `html_text()` to best understand the difference between these two functions. 
+
+::: {.callout-tip collapse="true"}
+## Solution
+
+See the help file for each function [here](https://rvest.tidyverse.org/reference/html_text.html).
+
+html_text() returns raw underlying text, including white pace and other symbols. html_text2() tries to simulate how the text is displayed.
+:::
+
+### Scraping release dates
+
+Suppose now we want to scrape release dates instead. We can follow the same process as above. 
+
+Click on a released date that you hope to scrape. Click on any yellow text you wish to exclude that has the same element tag. Click on a second released date. Again, click on any yellow text you wish to exclude.
+
+Once you completed this process, you should see an element tag for just the released dates of *section > p:nth-child(2)*. Use this information to scrape the seven released dates below.
+
+![](images/element-released.png)
+
+```{webr}
+#insert code here
+```
+
+
+::: {.callout-tip collapse="true"}
+## Solution
+```{r}
+starwars |>
+  html_elements("section > p:nth-child(2)") |>
+  html_text2()
+```
+:::
 
 ## Working with scraped eCommerce pages
 
