@@ -60,7 +60,6 @@ nobel <- read_csv("nobel.csv")
 
 Based on the tibble output, what are the number of rows and columns of the `nobel` dataset? What types of variables are you working with?
 
-
 ::: {.callout-tip collapse="true"}
 ## Solution
 
@@ -132,6 +131,7 @@ nobel |>
 
 ::: {.callout-tip collapse="true"}
 ## Solution
+
 R assigned male = 2; female = 1; and org = 3. These were assigned alpha-numerically.
 :::
 
@@ -169,6 +169,7 @@ glimpse(sales)
 
 ::: {.callout-tip collapse="true"}
 ## Solution
+
 These data are not tidy. These data are read in with the text as a column name, and creates another column name called `...2`.
 :::
 
