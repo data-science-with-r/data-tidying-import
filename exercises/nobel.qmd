@@ -1,0 +1,511 @@
+---
+title: "Nobel Prize winners & sales data"
+format: 
+  live-html:
+    toc: true
+engine: knitr
+webr:
+  packages: 
+    - tidyverse
+    - readxl
+  resources:
+    - https://raw.githubusercontent.com/data-science-with-r/data-tidying-import/main/exercises/data/nobel.csv
+    - https://raw.githubusercontent.com/data-science-with-r/data-tidying-import/main/exercises/data/sales.xlsx
+---
+
+<!-- begin: webr fodder -->
+
+{{< include ../_extensions/r-wasm/live/_knitr.qmd >}}
+
+```{webr}
+#| edit: false
+#| echo: false
+#| output: false
+options("readr.edition" = 1)
+```
+
+<!-- end: webr fodder -->
+
+## Packages
+
+We will use the following two packages in this application exercise.
+
+-   **tidyverse**: For data import, wrangling, and visualization.
+-   **readxl:** For importing data from MS Excel.
+
+Let's first load the packages.
+
+```{webr}
+#| label: load-packages
+library(tidyverse)
+library(readxl)
+```
+
+## Reading CSV files
+
+For this programming exercise, we are going to work with a data on Nobel Prize winners from the years 1901 through 2018, called `nobel.csv`.
+
+Load the dataset with `read_csv()` and save it as a data frame (a `tibble`) called `nobel`.
+How many rows are there in `nobel` and what does each row represent?
+How many columns are there in `nobel`?
+
+```{webr}
+#| exercise: ex_1
+___ <- ___("___")
+```
+
+::: { .hint exercise="ex_1"}
+::: { .callout-note collapse="false"}
+## Hint 1
+
+Read in the data with `read_csv()` and pass the name of the data file, `"nobel.csv"` as the argument of this funtion.
+
+```r
+___ <- read_csv("nobel.csv")
+```
+:::
+:::
+
+::: { .hint exercise="ex_1"}
+::: { .callout-note collapse="false"}
+## Hint 2
+
+Assign the result of `read_csv("nobel.csv")` to `nobel`.
+
+```r
+nobel <- read_csv("nobel.csv")
+```
+:::
+:::
+
+::: { .solution exercise="ex_1"}
+::: { .callout-tip collapse="false"}
+## Solution
+
+```r
+nobel <- read_csv("nobel.csv")
+```
+
+There are 935 rows and 26 columns in `nobel` data frame.
+Each row represents a Nobel prize winner.
+:::
+:::
+
+Now, read the data in again, but this time add the argument `show_col_types` to the `read_csv()` function and set it to `FALSE.
+This will suppress the information on column specifications (what type each column is).
+
+```{webr}
+#| exercise: ex_2
+nobel <- read_csv("nobel.csv", ___)
+```
+
+::: { .solution exercise="ex_2"}
+::: { .callout-tip collapse="false"}
+## Solution
+
+```r
+nobel <- read_csv("nobel.csv", show_col_types = FALSE)
+```
+
+Notice that the column specification is no longer printed.
+:::
+:::
+
+## Variable types and classes
+
+We are going to use the `nobel` dataset to explore how to change types of variables and what can go wrong along the way.
+
+Using `glimpse()`, identify what type of variable `category` is in the `nobel` data frame.
+Additionally, identify the values this variable takes.
+
+```{webr}
+#| setup: true
+#| exercise: ex_3
+nobel <- read_csv("nobel.csv")
+```
+
+```{webr}
+#| exercise: ex_3
+___
+```
+
+::: { .hint exercise="ex_3"}
+::: { .callout-note collapse="false"}
+## Hint 1
+
+```r
+glimpse(nobel)
+```
+:::
+:::
+
+::: { .hint exercise="ex_3"}
+::: { .callout-note collapse="false"}
+## Hint 2
+
+```r
+glimpse(nobel)
+
+nobel |>
+  distinct(category)
+```
+:::
+:::
+
+::: { .solution exercise="ex_3"}
+::: { .callout-tip collapse="false"}
+## Solution
+
+```r
+glimpse(nobel)
+
+nobel |>
+  distinct(category)
+```
+
+`category` is a character variable.
+This variable takes on the following values: Physics, Chemistry, Peace, Medicine, Literature, and Economics.
+:::
+:::
+
+Suppose we want to convert the the levels of `category` into numeric values.
+Run the following code.
+What happens?
+
+```{webr}
+#| setup: true
+#| exercise: ex_4
+nobel <- read_csv("nobel.csv")
+```
+
+```{webr}
+#| exercise: ex_4
+nobel |>
+  mutate(category = as.numeric(category)) |>
+  select(category)
+```
+
+::: { .solution exercise="ex_4"}
+::: { .callout-tip collapse="false"}
+## Solution
+
+When trying to convert the values of `caegory` from characters into numbers, each value became an `NA`.
+And we got a warning that says `NAs introduced by coercion`.
+:::
+:::
+
+It makes sense that R can't just represent character strings as numbers.
+Instead of converting a character variable to a numeric, we might consider converting it to a factor variable instead -- how R represents categorical data.
+
+Convert `category` to factor and save it in the `nobel` data frame.
+Then, report its levels.
+
+```{webr}
+#| setup: true
+#| exercise: ex_5
+nobel <- read_csv("nobel.csv")
+```
+
+```{webr}
+#| exercise: ex_5
+___
+```
+
+::: { .hint exercise="ex_5"}
+::: { .callout-note collapse="false"}
+## Hint 1
+
+```r
+nobel <- nobel |>
+  ___(___)
+```
+:::
+:::
+
+::: { .hint exercise="ex_5"}
+::: { .callout-note collapse="false"}
+## Hint 2
+
+```r
+nobel <- nobel |>
+  mutate(___ = as.factor(___))
+```
+:::
+:::
+
+::: { .hint exercise="ex_5"}
+::: { .callout-note collapse="false"}
+## Hint 3
+
+```r
+nobel <- nobel |>
+  mutate(category = as.factor(category))
+```
+:::
+:::
+
+::: { .solution exercise="ex_5"}
+::: { .callout-tip collapse="false"}
+## Solution
+
+```r
+nobel <- nobel |>
+  mutate(category = as.factor(category))
+  
+levels(nobel$category)
+```
+
+The levels are Physics, Chemistry, Peace, Medicine, Literature, and Economics.
+:::
+:::
+
+## Reading Excel files
+
+For the remainder of this programming exercise, we are going read in data from an Excel file and then clean it up.
+
+![](images/sales-excel.png){fig-align="center" width="801"}
+
+First, read the data in with `read_excel` from the Excel file called `"sales.xlsx"` and print the data to screen.
+Is this a tidy data frame?
+
+```{webr}
+#| exercise: ex_6
+___
+```
+
+::: { .hint exercise="ex_6"}
+::: { .callout-note collapse="false"}
+## Hint 1
+
+```r
+___ <- read_excel("___")
+```
+:::
+:::
+
+::: { .hint exercise="ex_6"}
+::: { .callout-note collapse="false"}
+## Hint 2
+
+```r
+sales <- read_excel("sales.xlsx")
+```
+:::
+:::
+
+::: { .hint exercise="ex_6"}
+::: { .callout-note collapse="false"}
+## Hint 3
+
+```r
+sales <- read_excel("sales.xlsx")
+sales
+```
+:::
+:::
+
+::: { .solution exercise="ex_6"}
+::: { .callout-tip collapse="false"}
+## Solution
+
+```r
+sales <- read_excel("sales.xlsx")
+sales
+```
+
+No, this is not a tidy data frame.
+These data are read in with the text as a column name, and creates another column name called `...2`.
+:::
+:::
+
+See the help file for `read_excel()` [here](https://www.rdocumentation.org/packages/readxl/versions/0.1.1/topics/read_excel).
+Notice that, in the current `sales` dataset, we want to skip 3 rows (the first row acts as a header for the column names).
+We can do this using the `skip` argument.
+At the same time, we can specify names for each column by giving the argument `col_names` a character vector.
+Use these arguments and add to the code below to skip 3 lines and name the columns `id` and `n`.
+
+```{webr}
+#| exercise: ex_7
+___
+```
+
+::: { .hint exercise="ex_7"}
+::: { .callout-note collapse="false"}
+## Hint 1
+
+```r
+___ <- read_excel(
+  "sales.xlsx",
+  ___,
+  ___
+)
+```
+:::
+:::
+
+::: { .hint exercise="ex_7"}
+::: { .callout-note collapse="false"}
+## Hint 2
+
+```r
+___ <- read_excel(
+  "sales.xlsx",
+  skip = 3,
+  ___
+)
+```
+:::
+:::
+
+::: { .hint exercise="ex_7"}
+::: { .callout-note collapse="false"}
+## Hint 3
+
+```r
+___ <- read_excel(
+  "sales.xlsx",
+  skip = 3,
+  col_names = c("id", "n")
+)
+```
+:::
+:::
+
+::: { .solution exercise="ex_7"}
+::: { .callout-tip collapse="false"}
+## Solution
+
+```r
+sales <- read_excel(
+  "sales.xlsx",
+  skip = 3,
+  col_names = c("id", "n")
+)
+
+sales
+```
+:::
+:::
+
+## Putting it all together
+
+Manipulate the sales data such such that it looks like the following using functions you have learned from the `tidyverse` to transform data.
+
+![](images/sales-2.png){width="300"}
+
+```{webr}
+#| exercise: ex_8
+read_excel(
+  "sales.xlsx", 
+  skip = 3,
+  col_names = c("id", "n")
+  ) |>
+  ___
+```
+
+::: { .hint exercise="ex_8"}
+::: { .callout-note collapse="false"}
+## Hint 1
+
+```r
+sales |>
+  mutate(
+    ___,
+    ___
+  ) |>
+  ___
+  ___
+  ___
+```
+:::
+:::
+
+::: { .hint exercise="ex_8"}
+::: { .callout-note collapse="false"}
+## Hint 2
+
+```r
+sales |>
+  mutate(
+    is_brand_name = str_detect(id, "Brand"),
+    ___
+  ) |>
+  ___
+  ___
+  ___
+```
+:::
+:::
+
+::: { .hint exercise="ex_8"}
+::: { .callout-note collapse="false"}
+## Hint 3
+
+```r
+sales |>
+  mutate(
+    is_brand_name = str_detect(id, "Brand"),
+    brand = if_else(is_brand_name, id, NA)
+  ) |>
+  ___
+  ___
+  ___
+```
+:::
+:::
+
+::: { .hint exercise="ex_8"}
+::: { .callout-note collapse="false"}
+## Hint 4
+
+```r
+sales |>
+  mutate(
+    is_brand_name = str_detect(id, "Brand"),
+    brand = if_else(is_brand_name, id, NA)
+  ) |>
+  fill(brand) |>
+  ___
+  ___
+```
+:::
+:::
+
+::: { .hint exercise="ex_8"}
+::: { .callout-note collapse="false"}
+## Hint 5
+
+```r
+sales |>
+  mutate(
+    is_brand_name = str_detect(id, "Brand"),
+    brand = if_else(is_brand_name, id, NA)
+  ) |>
+  fill(brand) |>
+  filter(!is_brand_name) |>
+  ___
+```
+:::
+:::
+
+::: { .solution exercise="ex_8"}
+::: { .callout-tip collapse="false"}
+## Solution
+
+```r
+sales |>
+  mutate(
+    is_brand_name = str_detect(id, "Brand"),
+    brand = if_else(is_brand_name, id, NA)
+  ) |>
+  fill(brand) |>
+  filter(!is_brand_name) |>
+  select(brand, id, n)
+
+sales
+```
+:::
+:::
+
+**Takeaway:** We should write code to manipulate data instead of opening Excel and editing the data in there because it leaves a transparent trail of any modifications done while manipulating the data.
+Changing data in Excel is neither reproducible nor reusable.
