@@ -18,6 +18,8 @@ theme:
   light: [flatly, style.scss]
   dark: [darkly, style.scss]
 toc: true
+code-link: true
+highlight-style: github
 
 execute:
   freeze: auto
