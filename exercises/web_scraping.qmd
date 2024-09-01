@@ -29,19 +29,9 @@ options("readr.edition" = 1)
 
 <!-- end: webr fodder -->
 
-```{r}
-#| include: false
-library(tidyverse)
-library(rvest)
-library(polite)
-ecomm <- read_csv("data/items-80.csv")
-starwars <- read_html("https://rvest.tidyverse.org/articles/starwars.html")
-```
-
 We'll use the following packages for this programming exercise:
 
 ```{webr}
-#| message: false
 #| warning: false
 library(tidyverse)
 library(rvest)
@@ -50,13 +40,43 @@ library(polite)
 
 ## Star Wars
 
-Scraping data is defined as extracting data from one source to another.
-We are going to use the following [website](https://rvest.tidyverse.org/articles/starwars.html) to practice scraping data; taking data on the website and transporting it into a more workable format with R code.
+For this part of the programming exercise we'll scrape information on some Star Wars movies from <https://rvest.tidyverse.org/articles/starwars.html> and save it as a tidy data frame in R.
 
-### Scraping titles
+First, though, we'll read the source code of the page and store it as an object we can access and parse in R.
 
-Please visit the [website](https://rvest.tidyverse.org/articles/starwars.html) and identify the movie titles.
-What are they?
+Read the source code of the page and store it as `star_wars_html`.
+
+```{webr}
+#| exercise: ex_1
+___ <- ___("___")
+```
+
+::: {.hint exercise="ex_1"}
+::: {.callout-note collapse="false"}
+## Hint 1
+
+Read in the page source code with `read_html()` and pass the URL of the page, `https://rvest.tidyverse.org/articles/starwars.html` as the argument of this funtion.
+
+``` r
+___ <- read_html("https://rvest.tidyverse.org/articles/starwars.html")
+```
+:::
+:::
+
+::: {.solution exercise="ex_1"}
+::: {.callout-tip collapse="false"}
+## Solution
+
+``` r
+star_wars_html <- read_html("https://rvest.tidyverse.org/articles/starwars.html")
+```
+:::
+:::
+
+### Titles
+
+Before we get started, let's first take a note of the movie titles.
+Scroll through the website and list the titles of the movies.
 
 ::: {.callout-tip collapse="true"}
 ## Solution
@@ -64,78 +84,95 @@ What are they?
 There are seven movie titles on this page.
 They include:
 
--- The Phantom Menace
-
--- Attack of the Clones
-
--- Revenge of the Sith
-
--- A New Hope
-
--- The Empire Strikes Back
-
--- Return of the Jedi
-
--- The Force Awakens
+-   The Phantom Menace
+-   Attack of the Clones
+-   Revenge of the Sith
+-   A New Hope
+-   The Empire Strikes Back
+-   Return of the Jedi
+-   The Force Awakens
 :::
 
-The next step is to identify the html element that is associated with each title.
-To help us, we can use [Selector Gadget](https://selectorgadget.com/).
-Selector Gadget is an open source Chrome Extension that helps users find elements of an html page easier.
-This demonstration will use Selector Gadget.
-To install Selector Gadget, please go to the following [page](https://chromewebstore.google.com/detail/selectorgadget/mhjhnkcfbdhnjickkkdbjoemdmbfginb?hl=en&pli=1).
-When the Selector Gadget is installed, you should see ![](images/gadget.png) in your task bar.
+The next step is to identify the CSS selector that is associated with each title.
+We'll use the [Selector Gadget](https://selectorgadget.com/) to help identify the CSS selectors associated with the items we're interested in scraping.
+Selector Gadget is an open source extension for the Chrome browser that helps users find elements of an webpage easier.
+Go to [this page](https://chromewebstore.google.com/detail/selectorgadget/mhjhnkcfbdhnjickkkdbjoemdmbfginb?hl=en) to install the extension.
+When the Selector Gadget is installed, you should see its icon, ![](images/gadget.png), in your task bar.
 
-#### Start by reading a HTML page with read_html()
-
-First, we need to reference the website.
-We can do this by using `read_html()` from the rvest package.
-Run the following code below to do so.
-
-```{webr}
-starwars <- read_html("https://rvest.tidyverse.org/articles/starwars.html")
-```
-
-#### Find the element
-
-Next, we need to find the element that is associated with the titles of each Star Wars movie.
+Next, we need to find the CSS selector that is associated with the titles of each Star Wars movie.
 Click the ![](images/gadget.png) icon and click on one of the titles.
 Click on another one.
 
-![](images/element1.png)
+![](images/css-selector-1.png)
 
-Notice that the next you click on (that you wish to scrape) is highlighted in green.
-Text in yellow show what else has the same element tag as the text you are clicking on.
+Notice that the text you clicked on (that you wish to scrape) is highlighted in green.
+Other pieces of text with the same CSS selector are highlighted in yellow.
 
-We can see that the text in green/yellow include the seven titles, and the "ON THIS PAGE" text.
-If we don't want to scrape certain text (e.g., the menu title), we can click it, changing the yellow box to red.
+We can see that the text in green/yellow include the seven titles, and an additional element, the text that reads "ON THIS PAGE".
+This last piece of text is not something we want, therefore we unselect it by clicking on it, which changes the highlight to red.
 
-![](images/element2.png)
+![](images/css-selector-2.png)
 
 Now, we have our seven titles in green/yellow that we want to scrape.
-In the bottom right corner, we can see the element associated with just these seven titles.
-We will use this element information to scrape the titles below.
+In the bottom right corner, we can see the CSS selector associated with just these seven titles.
+
+We will use this information to extract the titles from the page source code we saved earlier.
+First, run the code below and inspect the result.
+Then, re-run with `html_text2()` instead of `html_text()` in the last step of the pipe.
+What is the difference between these functions?
+Which is preferable, and why?
 
 ```{webr}
-starwars |>
-  html_elements("#main h2") |>
-  html_text2()
+#| setup: true
+#| exercise: ex_2
+star_wars_html <- read_html("https://rvest.tidyverse.org/articles/starwars.html")
 ```
 
-Change the above code from `html_text2()` to `html_text()` to best understand the difference between these two functions.
+```{webr}
+#| exercise: ex_2
+titles <- star_wars_html |>
+  html_elements("#main h2") |>
+  html_text()
 
+titles
+```
+
+::: {.hint exercise="ex_2"}
+::: {.callout-note collapse="false"}
+## Hint 1
+
+``` r
+titles <- star_wars_html |>
+  html_elements("#main h2") |>
+  html_text2()
+  
+titles
+```
+:::
+:::
+
+::: {.solution exercise="ex_2"}
 ::: {.callout-tip collapse="true"}
 ## Solution
 
-See the help file for each function [here](https://rvest.tidyverse.org/reference/html_text.html).
+``` r
+titles <- star_wars_html |>
+  html_elements("#main h2") |>
+  html_text2()
 
-html_text() returns raw underlying text, including white pace and other symbols.
-html_text2() tries to simulate how the text is displayed.
+titles
+```
+
+`html_text()` returns the raw underlying text, including any white spaces, HTML code, etc.
+`html_text2()` tries to simulate how the text is displayed in the browser, i.e., cleans up the text.
+You can find out more about these functions in the [function documentation](https://rvest.tidyverse.org/reference/html_text.html).
+In this case, `html_text2()` is preferable.
+:::
 :::
 
-### Scraping release dates
+### Release dates
 
-Suppose now we want to scrape release dates instead.
+Next, let's extract the release dates.
 We can follow the same process as above.
 
 Click on a released date that you hope to scrape.
@@ -144,120 +181,336 @@ Click on a second released date.
 Again, click on any yellow text you wish to exclude.
 
 Once you completed this process, you should see an element tag for just the released dates of *section \> p:nth-child(2)*.
-Use this information to scrape the seven released dates below.
 
 ![](images/element-released.png)
 
+Use this information to extract the seven released dates and save them as an object called `release_dates`.
+
 ```{webr}
-#insert code here
+#| setup: true
+#| exercise: ex_3
+star_wars_html <- read_html("https://rvest.tidyverse.org/articles/starwars.html")
 ```
 
+```{webr}
+#| exercise: ex_3
+___ <- star_wars_html |>
+  ___
+
+release_dates
+```
+
+::: {.hint exercise="ex_3"}
+::: {.callout-note collapse="true"}
+## Hint 1
+
+```r
+___ <- star_wars_html |>
+  html_elements("section > p:nth-child(2)") |>
+  ___
+
+release_dates
+```
+:::
+:::
+
+::: {.hint exercise="ex_3"}
+::: {.callout-note collapse="true"}
+## Hint 2
+
+```r
+___ <- star_wars_html |>
+  html_elements("section > p:nth-child(2)") |>
+  html_text2()
+
+release_dates
+```
+:::
+:::
+
+::: {.solution exercise="ex_3"}
 ::: {.callout-tip collapse="true"}
 ## Solution
 
-```{r}
-starwars |>
+```r
+release_dates <- star_wars_html |>
+  html_elements("section > p:nth-child(2)") |>
+  html_text2()
+
+release_dates
+```
+:::
+:::
+
+### Data frame of titles and release dates
+
+Create a tibble called `star_wars` with two columns: `title` and `release_date`. 
+This tibble should have seven rows, one for each movie scraped, and contain information from the `titles` and `release_dates` vectors you previously created.
+Confirm that you have correctly created the tibble by printing it out.
+
+```{webr}
+#| setup: true
+#| exercise: ex_4
+star_wars_html <- read_html("https://rvest.tidyverse.org/articles/starwars.html")
+titles <- star_wars_html |>
+  html_elements("#main h2") |>
+  html_text2()
+release_dates <- star_wars_html |>
   html_elements("section > p:nth-child(2)") |>
   html_text2()
 ```
+
+```{webr}
+#| exercise: ex_4
+___
+```
+
+::: {.hint exercise="ex_4"}
+::: {.callout-note collapse="true"}
+## Hint 1
+```r
+star_wars <- tibble(
+  ___ = ___,
+  ___ = ___
+)
+```
+:::
+:::
+
+::: {.hint exercise="ex_4"}
+::: {.callout-note collapse="true"}
+## Hint 2
+
+```r
+star_wars <- tibble(
+  title = ___,
+  release_date = ___
+)
+```
+:::
+:::
+
+::: {.solution exercise="ex_4"}
+::: {.callout-tip collapse="true"}
+## Solution
+
+```r
+star_wars <- tibble(
+  title = titles,
+  release_date = release_dates
+)
+
+star_wars
+```
+:::
 :::
 
 ## Working with scraped eCommerce pages
+
+In the last Code Along activity, you wrote a function to scrape eCommerce data from multiple pages.
+In this part of the programming exercise, we are going to practice working with numerical and text data that you scraped from this website.
+
+Run the following code to load these data from a CSV file called `items-80.csv`, and save it as `ecomm`.
 
 ```{webr}
 ecomm <- read_csv("items-80.csv")
 ```
 
-In the last code along activity, you wrote a function to scrape eCommerce data from multiple pages.
-Here, we are going to practice working with numerical and text data.
-The data set name is called `ecomm`.
-
-Take a glimpse at the `ecomm` data set below to familiarize yourself with the variables.
+Take a glimpse at the `ecomm` data frame.
+How many observations does the data frame have?
+What does each observation represent?
+How many variables does the data frame have?
 What are they?
 
 ```{webr}
-# insert code here
+#| setup: true
+#| exercise: ex_5
+ecomm <- read_csv("items-80.csv")
 ```
 
+```{webr}
+#| exercise: ex_5
+___
+```
+
+::: {.solution exercise="ex_5"}
 ::: {.callout-tip collapse="true"}
 ## Solution
 
-```{r}
+```r
 glimpse(ecomm)
 ```
 
-There is a `title`, `url` and `price` variable.
+`ecomm` has 80 observations, each observation is an item being sold on the eCommerce website.
+And `ecomm` has 3 variables, these are `title`, `url` and `price`.
+:::
 :::
 
-Now, let's start by making a histogram of price using tools from the `ggplot` package in the `tidyverse`.
-Hint: Use the functions [ggplot()](https://ggplot2.tidyverse.org/reference/ggplot.html) and [geom_histogram()](https://ggplot2.tidyverse.org/reference/geom_histogram.html) to make your visualization below.
-Note: Play around with the binwidth, and add appropriate labels if able!
+Start by making a histogram of price using tools from the **ggplot2** package in the **tidyverse**.
 
 ```{webr}
-# insert code here
+#| setup: true
+#| exercise: ex_6
+ecomm <- read_csv("items-80.csv")
 ```
 
-::: {.callout-tip collapse="true"}
-## Solution
+```{webr}
+#| exercise: ex_6
+___
+```
 
-```{r}
-ggplot(ecomm, aes(x = price)) +
-  geom_histogram(binwidth = 5) + 
+::: {.solution exercise="ex_6"}
+::: {.callout-tip collapse="true"}
+Use the functions `ggplot()` and `geom_histogram()` to make your plot.
+Play around with the binwidth, and add appropriate labels.
+:::
+:::
+
+::: {.solution exercise="ex_6"}
+::: {.callout-tip collapse="true"}
+## Hint
+
+``` r
+ggplot(___, aes(x = ___)) +
+  geom_histogram(binwidth = ___) + 
   labs(
-    title = "Price of eCommerse scraped data",
-    x = "Price"
+    title = "___",
+    x = "___",
+    y = "___"
   )
 ```
 :::
-
-Now, let's work with some of the text data to discover more patterns.
-Suppose you wonder if an eCommerce business that sells shorts is cheaper than others.
-First, we need to find how many listings contain the word "short".
-We can do this using [`str_detect()`](https://stringr.tidyverse.org/reference/str_detect.html) from the `stringR` package.
-Run the following code.
-What is it doing?
-
-```{webr}
-ecomm <- ecomm |>
-  mutate(dummy = ifelse(str_detect(title, "Short"), "short", "else"))
-
-ecomm
-```
-
-::: {.callout-tip collapse="true"}
-## Solution
-
-This code is using `mutate()` to create a new dummy variable called `dummy`.
-It is using a combination of `ifelse()` and `str_detect()` to look into the title column, and see if the string "Short" was detected or not.
-If yes, the new variable `dummy` will contain "short" for that row.
-If no, the new variable will contain "else".
 :::
 
-We just made a dummy (or indicator) variable!
-This is going to help us see if eCommerce businesses that sell shorts are, on average, more or less expensive than others.
-Use this variable, along with the `dplyr` functions of [`group_by()`](https://dplyr.tidyverse.org/reference/group_by.html) and [`summarize()`](https://dplyr.tidyverse.org/reference/summarise.html).
-Then, answer the question of if shorts are, on average, cheaper than other businesses for these data.
-
-```{webr}
-# insert code here
-```
-
+::: {.solution exercise="ex_6"}
 ::: {.callout-tip collapse="true"}
 ## Solution
 
-```{r}
-#| echo: false
+```r
+ggplot(ecomm, aes(x = price)) +
+  geom_histogram(binwidth = 5) + 
+  labs(
+    title = "Price of eCommerce data",
+    x = "Price",
+    y = "Count"
+  )
+```
+:::
+:::
+
+Next, you'll work with text data to discover more patterns.
+Suppose you're interested in prices of shorts on this eCommerce site, but the titles of items that would be consideted "shorts" can be all over te place.
+
+Create a new variable, `shorts`, that takes the value `TRUE` if the `title` of an item contains the word `short` or `Short`, and `FALSE` otherwise.
+Save the data frame with this new variable.
+
+```{webr}
+#| setup: true
+#| exercise: ex_7
+ecomm <- read_csv("items-80.csv")
+```
+
+```{webr}
+#| exercise: ex_7
 ecomm <- ecomm |>
-  mutate(dummy = if_else(str_detect(title, "Short"), "short", "else"))
+  ___(___ = ___)
 ```
 
-```{r}
+::: {.hint exercise="ex_7"}
+::: {.callout-note collapse="true"}
+## Hint 1
+
+Use the `mutate()` function to create the new variable:
+
+```r
+ecomm <- ecomm |>
+  mutate(___ = ___)
+```
+:::
+:::
+
+::: {.hint exercise="ex_7"}
+::: {.callout-note collapse="true"}
+## Hint 2
+
+Use the `if_else()` function to check that the `title` contains the specified text strings, and set the value of the new variable `shorts` to `TRUE` if yes, and `FALSE` if no.
+
+```r
+ecomm <- ecomm |>
+  mutate(shorts = if_else(___, TRUE, FALSE))
+```
+:::
+:::
+
+::: {.hint exercise="ex_7"}
+::: {.callout-note collapse="true"}
+## Hint 3
+
+Use the `str_detect()` function to determine whether `title` contains the text string `short` or `Short`, where "or" is denoted with `|`.
+
+```r
+str_detect(title, "short|Short")
+```
+:::
+:::
+
+::: {.solution exercise="ex_7"}
+::: {.callout-tip collapse="true"}
+## Solution
+
+```r
+ecomm <- ecomm |>
+  mutate(shorts = if_else(str_detect(title, "short|Short"), TRUE, FALSE))
+```
+:::
+:::
+
+You just created an indicator variable!
+
+Using this variable, evaluate how the average price of shorts compare to the average price of other items.
+How do the standard deviations of the prices of these two groups of items compare?
+
+```{webr}
+#| setup: true
+#| exercise: ex_8
+ecomm <- read_csv("items-80.csv")
+ecomm <- ecomm |>
+  mutate(shorts = if_else(str_detect(title, "short|Short"), TRUE, FALSE))
+```
+
+```{webr}
+#| exercise: ex_8
+___
+```
+
+::: {.hint exercise="ex_8"}
+::: {.callout-note collapse="true"}
+## Hint
+
+```r
 ecomm |>
-  group_by(dummy) |>
-  summarize(mean_price = mean(price))
+  group_by(___) |>
+  summarize(___)
 ```
+:::
+:::
 
-It appears that an eCommerce business that sells shorts was, on average, 8 dollars cheaper than other stores for these data.
+::: {.solution exercise="ex_8"}
+::: {.callout-tip collapse="true"}
+## Solution
+
+Shorts, on average, sell for $8 lower than other items.
+The prices of shorts are less variable (lower standard deviation) than other items.
+
+```r
+ecomm |>
+  group_by(shorts) |>
+  summarize(
+    mean = mean(price),
+    sd = sd(price)
+  )
+```
+:::
 :::
 
 ## Asking Permission
@@ -269,6 +522,8 @@ Note that the input for `bow()` is a character URL.
 
 ```{r}
 #| warning: false
+library(polite)
+
 host <- "https://rvest.tidyverse.org/articles/starwars.html"
 
 bow(host)
@@ -301,4 +556,4 @@ bow(host4)
 We do not have permission to scrape [espn.com](https://www.espn.com) or [x.com](https://x.com/).
 We do have permission to scrape [bettycrocker.com](https://www.bettycrocker.com/) and [zillow.com](https://www.zillow.com/).
 
-The takeaway is that, just because you can doesn't mean you should scrape the data!
+The takeaway is that -- just because you can doesn't mean you should scrape the data!

@@ -54,35 +54,35 @@ How many columns are there in `nobel`?
 ___ <- ___("___")
 ```
 
-::: { .hint exercise="ex_1"}
-::: { .callout-note collapse="false"}
+::: {.hint exercise="ex_1"}
+::: {.callout-note collapse="false"}
 ## Hint 1
 
 Read in the data with `read_csv()` and pass the name of the data file, `"nobel.csv"` as the argument of this funtion.
 
-```r
+``` r
 ___ <- read_csv("nobel.csv")
 ```
 :::
 :::
 
-::: { .hint exercise="ex_1"}
-::: { .callout-note collapse="false"}
+::: {.hint exercise="ex_1"}
+::: {.callout-note collapse="false"}
 ## Hint 2
 
 Assign the result of `read_csv("nobel.csv")` to `nobel`.
 
-```r
+``` r
 nobel <- read_csv("nobel.csv")
 ```
 :::
 :::
 
-::: { .solution exercise="ex_1"}
-::: { .callout-tip collapse="false"}
+::: {.solution exercise="ex_1"}
+::: {.callout-tip collapse="false"}
 ## Solution
 
-```r
+``` r
 nobel <- read_csv("nobel.csv")
 ```
 
@@ -91,7 +91,7 @@ Each row represents a Nobel prize winner.
 :::
 :::
 
-Now, read the data in again, but this time add the argument `show_col_types` to the `read_csv()` function and set it to `FALSE.
+Now, read the data in again, but this time add the argument `show_col_types` to the `read_csv()` function and set it to \`FALSE.
 This will suppress the information on column specifications (what type each column is).
 
 ```{webr}
@@ -99,11 +99,11 @@ This will suppress the information on column specifications (what type each colu
 nobel <- read_csv("nobel.csv", ___)
 ```
 
-::: { .solution exercise="ex_2"}
-::: { .callout-tip collapse="false"}
+::: {.solution exercise="ex_2"}
+::: {.callout-tip collapse="false"}
 ## Solution
 
-```r
+``` r
 nobel <- read_csv("nobel.csv", show_col_types = FALSE)
 ```
 
@@ -129,21 +129,21 @@ nobel <- read_csv("nobel.csv")
 ___
 ```
 
-::: { .hint exercise="ex_3"}
-::: { .callout-note collapse="false"}
+::: {.hint exercise="ex_3"}
+::: {.callout-note collapse="false"}
 ## Hint 1
 
-```r
+``` r
 glimpse(nobel)
 ```
 :::
 :::
 
-::: { .hint exercise="ex_3"}
-::: { .callout-note collapse="false"}
+::: {.hint exercise="ex_3"}
+::: {.callout-note collapse="false"}
 ## Hint 2
 
-```r
+``` r
 glimpse(nobel)
 
 nobel |>
@@ -152,11 +152,11 @@ nobel |>
 :::
 :::
 
-::: { .solution exercise="ex_3"}
-::: { .callout-tip collapse="false"}
+::: {.solution exercise="ex_3"}
+::: {.callout-tip collapse="false"}
 ## Solution
 
-```r
+``` r
 glimpse(nobel)
 
 nobel |>
@@ -185,8 +185,8 @@ nobel |>
   select(category)
 ```
 
-::: { .solution exercise="ex_4"}
-::: { .callout-tip collapse="false"}
+::: {.solution exercise="ex_4"}
+::: {.callout-tip collapse="false"}
 ## Solution
 
 When trying to convert the values of `caegory` from characters into numbers, each value became an `NA`.
@@ -211,44 +211,44 @@ nobel <- read_csv("nobel.csv")
 ___
 ```
 
-::: { .hint exercise="ex_5"}
-::: { .callout-note collapse="false"}
+::: {.hint exercise="ex_5"}
+::: {.callout-note collapse="false"}
 ## Hint 1
 
-```r
+``` r
 nobel <- nobel |>
   ___(___)
 ```
 :::
 :::
 
-::: { .hint exercise="ex_5"}
-::: { .callout-note collapse="false"}
+::: {.hint exercise="ex_5"}
+::: {.callout-note collapse="false"}
 ## Hint 2
 
-```r
+``` r
 nobel <- nobel |>
   mutate(___ = as.factor(___))
 ```
 :::
 :::
 
-::: { .hint exercise="ex_5"}
-::: { .callout-note collapse="false"}
+::: {.hint exercise="ex_5"}
+::: {.callout-note collapse="false"}
 ## Hint 3
 
-```r
+``` r
 nobel <- nobel |>
   mutate(category = as.factor(category))
 ```
 :::
 :::
 
-::: { .solution exercise="ex_5"}
-::: { .callout-tip collapse="false"}
+::: {.solution exercise="ex_5"}
+::: {.callout-tip collapse="false"}
 ## Solution
 
-```r
+``` r
 nobel <- nobel |>
   mutate(category = as.factor(category))
   
@@ -273,42 +273,42 @@ Is this a tidy data frame?
 ___
 ```
 
-::: { .hint exercise="ex_6"}
-::: { .callout-note collapse="false"}
+::: {.hint exercise="ex_6"}
+::: {.callout-note collapse="false"}
 ## Hint 1
 
-```r
+``` r
 ___ <- read_excel("___")
 ```
 :::
 :::
 
-::: { .hint exercise="ex_6"}
-::: { .callout-note collapse="false"}
+::: {.hint exercise="ex_6"}
+::: {.callout-note collapse="false"}
 ## Hint 2
 
-```r
+``` r
 sales <- read_excel("sales.xlsx")
 ```
 :::
 :::
 
-::: { .hint exercise="ex_6"}
-::: { .callout-note collapse="false"}
+::: {.hint exercise="ex_6"}
+::: {.callout-note collapse="false"}
 ## Hint 3
 
-```r
+``` r
 sales <- read_excel("sales.xlsx")
 sales
 ```
 :::
 :::
 
-::: { .solution exercise="ex_6"}
-::: { .callout-tip collapse="false"}
+::: {.solution exercise="ex_6"}
+::: {.callout-tip collapse="false"}
 ## Solution
 
-```r
+``` r
 sales <- read_excel("sales.xlsx")
 sales
 ```
@@ -329,11 +329,11 @@ Use these arguments and add to the code below to skip 3 lines and name the colum
 ___
 ```
 
-::: { .hint exercise="ex_7"}
-::: { .callout-note collapse="false"}
+::: {.hint exercise="ex_7"}
+::: {.callout-note collapse="false"}
 ## Hint 1
 
-```r
+``` r
 ___ <- read_excel(
   "sales.xlsx",
   ___,
@@ -343,11 +343,11 @@ ___ <- read_excel(
 :::
 :::
 
-::: { .hint exercise="ex_7"}
-::: { .callout-note collapse="false"}
+::: {.hint exercise="ex_7"}
+::: {.callout-note collapse="false"}
 ## Hint 2
 
-```r
+``` r
 ___ <- read_excel(
   "sales.xlsx",
   skip = 3,
@@ -357,11 +357,11 @@ ___ <- read_excel(
 :::
 :::
 
-::: { .hint exercise="ex_7"}
-::: { .callout-note collapse="false"}
+::: {.hint exercise="ex_7"}
+::: {.callout-note collapse="false"}
 ## Hint 3
 
-```r
+``` r
 ___ <- read_excel(
   "sales.xlsx",
   skip = 3,
@@ -371,11 +371,11 @@ ___ <- read_excel(
 :::
 :::
 
-::: { .solution exercise="ex_7"}
-::: { .callout-tip collapse="false"}
+::: {.solution exercise="ex_7"}
+::: {.callout-tip collapse="false"}
 ## Solution
 
-```r
+``` r
 sales <- read_excel(
   "sales.xlsx",
   skip = 3,
@@ -403,11 +403,11 @@ read_excel(
   ___
 ```
 
-::: { .hint exercise="ex_8"}
-::: { .callout-note collapse="false"}
+::: {.hint exercise="ex_8"}
+::: {.callout-note collapse="false"}
 ## Hint 1
 
-```r
+``` r
 sales |>
   mutate(
     ___,
@@ -420,11 +420,11 @@ sales |>
 :::
 :::
 
-::: { .hint exercise="ex_8"}
-::: { .callout-note collapse="false"}
+::: {.hint exercise="ex_8"}
+::: {.callout-note collapse="false"}
 ## Hint 2
 
-```r
+``` r
 sales |>
   mutate(
     is_brand_name = str_detect(id, "Brand"),
@@ -437,11 +437,11 @@ sales |>
 :::
 :::
 
-::: { .hint exercise="ex_8"}
-::: { .callout-note collapse="false"}
+::: {.hint exercise="ex_8"}
+::: {.callout-note collapse="false"}
 ## Hint 3
 
-```r
+``` r
 sales |>
   mutate(
     is_brand_name = str_detect(id, "Brand"),
@@ -454,11 +454,11 @@ sales |>
 :::
 :::
 
-::: { .hint exercise="ex_8"}
-::: { .callout-note collapse="false"}
+::: {.hint exercise="ex_8"}
+::: {.callout-note collapse="false"}
 ## Hint 4
 
-```r
+``` r
 sales |>
   mutate(
     is_brand_name = str_detect(id, "Brand"),
@@ -471,11 +471,11 @@ sales |>
 :::
 :::
 
-::: { .hint exercise="ex_8"}
-::: { .callout-note collapse="false"}
+::: {.hint exercise="ex_8"}
+::: {.callout-note collapse="false"}
 ## Hint 5
 
-```r
+``` r
 sales |>
   mutate(
     is_brand_name = str_detect(id, "Brand"),
@@ -488,11 +488,11 @@ sales |>
 :::
 :::
 
-::: { .solution exercise="ex_8"}
-::: { .callout-tip collapse="false"}
+::: {.solution exercise="ex_8"}
+::: {.callout-tip collapse="false"}
 ## Solution
 
-```r
+``` r
 sales |>
   mutate(
     is_brand_name = str_detect(id, "Brand"),
