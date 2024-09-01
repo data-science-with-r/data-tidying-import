@@ -1,5 +1,5 @@
 ---
-title: "Scraping Star Wars movies and an eCommerce website"
+title: Scraping Star Wars movies and an eCommerce website
 format: 
   live-html:
     toc: true

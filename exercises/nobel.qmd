@@ -1,5 +1,5 @@
 ---
-title: "Nobel Prize winners & sales data"
+title: Nobel Prize winners and sales
 format: 
   live-html:
     toc: true
@@ -426,7 +426,7 @@ sales
 
 Manipulate the sales data such such that it looks like the following using functions you have learned from the `tidyverse` to transform data.
 
-![](images/sales-2.png){width="300"}
+![](images/sales-result.png){width="300"}
 
 ```{webr}
 #| exercise: ex_8
