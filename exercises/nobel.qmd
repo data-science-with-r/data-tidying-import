@@ -46,7 +46,6 @@ library(readxl)
 For this programming exercise, we are going to work with a data on Nobel Prize winners from the years 1901 through 2018, called `nobel.csv`.
 
 ::: exercise
-
 Load the dataset with `read_csv()` and save it as a data frame (a `tibble`) called `nobel`.
 How many rows are there in `nobel` and what does each row represent?
 How many columns are there in `nobel`?
@@ -81,7 +80,7 @@ nobel <- read_csv("nobel.csv")
 :::
 
 ::: {.solution exercise="ex_1"}
-::: {.callout-tip collapse="false"}
+::: {.callout-tip collapse="true"}
 ## Solution
 
 There are 935 rows and 26 columns in `nobel` data frame.
@@ -92,14 +91,11 @@ nobel <- read_csv("nobel.csv")
 
 nobel
 ```
-
 :::
 :::
-
 :::
 
 ::: exercise
-
 Now, read the data in again, but this time add the argument `show_col_types` to the `read_csv()` function and set it to \`FALSE.
 This will suppress the information on column specifications (what type each column is).
 
@@ -109,7 +105,7 @@ nobel <- read_csv("nobel.csv", ___)
 ```
 
 ::: {.solution exercise="ex_2"}
-::: {.callout-tip collapse="false"}
+::: {.callout-tip collapse="true"}
 ## Solution
 
 ``` r
@@ -119,7 +115,6 @@ nobel <- read_csv("nobel.csv", show_col_types = FALSE)
 Notice that the column specification is no longer printed.
 :::
 :::
-
 :::
 
 ## Variable types and classes
@@ -127,7 +122,6 @@ Notice that the column specification is no longer printed.
 We are going to use the `nobel` dataset to explore how to change types of variables and what can go wrong along the way.
 
 ::: exercise
-
 Using `glimpse()`, identify what type of variable `category` is in the `nobel` data frame.
 Additionally, identify the values this variable takes.
 
@@ -166,7 +160,7 @@ nobel |>
 :::
 
 ::: {.solution exercise="ex_3"}
-::: {.callout-tip collapse="false"}
+::: {.callout-tip collapse="true"}
 ## Solution
 
 `category` is a character variable.
@@ -178,16 +172,13 @@ glimpse(nobel)
 nobel |>
   distinct(category)
 ```
-
 :::
 :::
-
 :::
 
 Suppose we want to convert the the levels of `category` into numeric values.
 
 ::: exercise
-
 Run the following code.
 What happens?
 
@@ -205,21 +196,19 @@ nobel |>
 ```
 
 ::: {.solution exercise="ex_4"}
-::: {.callout-tip collapse="false"}
+::: {.callout-tip collapse="true"}
 ## Solution
 
 When trying to convert the values of `caegory` from characters into numbers, each value became an `NA`.
 And we got a warning that says `NAs introduced by coercion`.
 :::
 :::
-
 :::
 
 It makes sense that R can't just represent character strings as numbers.
 Instead of converting a character variable to a numeric, we might consider converting it to a factor variable instead -- how R represents categorical data.
 
 ::: exercise
-
 Convert `category` to factor and save it in the `nobel` data frame.
 Then, report its levels.
 
@@ -268,7 +257,7 @@ nobel <- nobel |>
 :::
 
 ::: {.solution exercise="ex_5"}
-::: {.callout-tip collapse="false"}
+::: {.callout-tip collapse="true"}
 ## Solution
 
 The levels are Physics, Chemistry, Peace, Medicine, Literature, and Economics.
@@ -281,7 +270,6 @@ levels(nobel$category)
 ```
 :::
 :::
-
 :::
 
 ## Reading Excel files
@@ -291,7 +279,6 @@ For the remainder of this programming exercise, we are going read in data from a
 ![](images/sales-excel.png){fig-align="center" width="801"}
 
 ::: exercise
-
 First, read the data in with `read_excel` from the Excel file called `"sales.xlsx"` and print the data to screen.
 Is this a tidy data frame?
 
@@ -332,7 +319,7 @@ sales
 :::
 
 ::: {.solution exercise="ex_6"}
-::: {.callout-tip collapse="false"}
+::: {.callout-tip collapse="true"}
 ## Solution
 
 ``` r
@@ -344,7 +331,6 @@ No, this is not a tidy data frame.
 These data are read in with the text as a column name, and creates another column name called `...2`.
 :::
 :::
-
 :::
 
 See the help file for `read_excel()` [here](https://www.rdocumentation.org/packages/readxl/versions/0.1.1/topics/read_excel).
@@ -403,7 +389,7 @@ ___ <- read_excel(
 :::
 
 ::: {.solution exercise="ex_7"}
-::: {.callout-tip collapse="false"}
+::: {.callout-tip collapse="true"}
 ## Solution
 
 ``` r
@@ -417,13 +403,11 @@ sales
 ```
 :::
 :::
-
 :::
 
 ## Putting it all together
 
 ::: exercise
-
 Manipulate the sales data such such that it looks like the following using functions you have learned from the `tidyverse` to transform data.
 
 ![](images/sales-result.png){width="300"}
@@ -534,7 +518,7 @@ sales |>
 :::
 
 ::: {.solution exercise="ex_8"}
-::: {.callout-tip collapse="false"}
+::: {.callout-tip collapse="true"}
 ## Solution
 
 Select the columns `brand`, `id`, and `n`.
@@ -553,7 +537,6 @@ sales
 ```
 :::
 :::
-
 :::
 
 ## Takeaway

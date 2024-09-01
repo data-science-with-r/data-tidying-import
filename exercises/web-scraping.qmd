@@ -1,11 +1,6 @@
 ---
 title: Scraping Star Wars movies and an eCommerce website
-format: 
-  live-html:
-    toc: true
-    mainfont: "Atkinson Hyperlegible"
-    highlight-style: github
-    theme: exercises.scss
+format: live-html
 engine: knitr
 webr:
   packages: 
@@ -186,7 +181,7 @@ Click on any yellow text you wish to exclude that has the same element tag.
 Click on a second released date.
 Again, click on any yellow text you wish to exclude.
 
-Once you completed this process, you should see an element tag for just the released dates of *section \> p:nth-child(2)*.
+Once you completed this process, you should see an element tag for just the released dates of `section \> p:nth-child(2)`.
 
 ![](images/element-released.png)
 
@@ -208,7 +203,7 @@ release_dates
 ```
 
 ::: {.hint exercise="ex_3"}
-::: {.callout-note collapse="true"}
+::: {.callout-note collapse="false"}
 ## Hint 1
 
 Extract HTML elements with the CSS selector `"section > p:nth-child(2)`".
@@ -225,7 +220,7 @@ release_dates
 :::
 
 ::: {.hint exercise="ex_3"}
-::: {.callout-note collapse="true"}
+::: {.callout-note collapse="false"}
 ## Hint 2
 
 Then, clean up the text with `html_text2()`.
@@ -284,7 +279,7 @@ ___
 ```
 
 ::: {.hint exercise="ex_4"}
-::: {.callout-note collapse="true"}
+::: {.callout-note collapse="false"}
 ## Hint 1
 
 Create a tibble with `tibble()` and call it `star_wars`.
@@ -300,7 +295,7 @@ star_wars <- tibble(
 :::
 
 ::: {.hint exercise="ex_4"}
-::: {.callout-note collapse="true"}
+::: {.callout-note collapse="false"}
 ## Hint 2
 
 The variables will be called `tibble` and `release_date`.
@@ -391,14 +386,16 @@ ___
 ```
 
 ::: {.hint exercise="ex_6"}
-::: {.callout-tip collapse="true"}
+::: {.callout-note collapse="false"}
+## Hint
+
 Use the functions `ggplot()` and `geom_histogram()` to make your plot.
 Play around with the binwidth, and add appropriate labels.
 :::
 :::
 
-::: {.solution exercise="ex_6"}
-::: {.callout-tip collapse="true"}
+::: {.hint exercise="ex_6"}
+::: {.callout-note collapse="false"}
 ## Hint
 
 Below is the general structure you can use to create this plot.
@@ -455,7 +452,7 @@ ecomm <- ecomm |>
 ```
 
 ::: {.hint exercise="ex_7"}
-::: {.callout-note collapse="true"}
+::: {.callout-note collapse="false"}
 ## Hint 1
 
 Use the `mutate()` function to create the new variable.
@@ -468,7 +465,7 @@ ecomm <- ecomm |>
 :::
 
 ::: {.hint exercise="ex_7"}
-::: {.callout-note collapse="true"}
+::: {.callout-note collapse="false"}
 ## Hint 2
 
 Use the `if_else()` function to check that the `title` contains the specified text strings, and set the value of the new variable `shorts` to `TRUE` if yes, and `FALSE` if no.
@@ -481,7 +478,7 @@ ecomm <- ecomm |>
 :::
 
 ::: {.hint exercise="ex_7"}
-::: {.callout-note collapse="true"}
+::: {.callout-note collapse="false"}
 ## Hint 3
 
 Use the `str_detect()` function to determine whether `title` contains the text string `short` or `Short`, where "or" is denoted with `|`.
@@ -526,7 +523,7 @@ ___
 ```
 
 ::: {.hint exercise="ex_8"}
-::: {.callout-note collapse="true"}
+::: {.callout-note collapse="false"}
 ## Hint
 
 Use `group_by()` and `summarize()` for this task.
