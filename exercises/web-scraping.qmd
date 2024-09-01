@@ -578,7 +578,7 @@ bow("https://rvest.tidyverse.org/articles/starwars.html")
 Indeed, we had permission to scrape that website!
 
 ::: exercise
-Determine whether you can scrape data from the following websites based on the outpu shown below.
+Determine whether you can scrape data from the following websites based on the output shown below.
 
 -   [espn.com](https://www.espn.com)
 -   [x.com](https://x.com/)
@@ -599,6 +599,8 @@ We do not have permission to scrape [espn.com](https://www.espn.com) or [x.com](
 We do have permission to scrape [bettycrocker.com](https://www.bettycrocker.com/) and [zillow.com](https://www.zillow.com/).
 :::
 :::
+
+## Takeaway
 
 The takeaway is that -- just because you can doesn't mean you should scrape the data!
 
