@@ -45,6 +45,8 @@ library(readxl)
 
 For this programming exercise, we are going to work with a data on Nobel Prize winners from the years 1901 through 2018, called `nobel.csv`.
 
+::: exercise
+
 Load the dataset with `read_csv()` and save it as a data frame (a `tibble`) called `nobel`.
 How many rows are there in `nobel` and what does each row represent?
 How many columns are there in `nobel`?
@@ -82,14 +84,21 @@ nobel <- read_csv("nobel.csv")
 ::: {.callout-tip collapse="false"}
 ## Solution
 
-``` r
-nobel <- read_csv("nobel.csv")
-```
-
 There are 935 rows and 26 columns in `nobel` data frame.
 Each row represents a Nobel prize winner.
+
+``` r
+nobel <- read_csv("nobel.csv")
+
+nobel
+```
+
 :::
 :::
+
+:::
+
+::: exercise
 
 Now, read the data in again, but this time add the argument `show_col_types` to the `read_csv()` function and set it to \`FALSE.
 This will suppress the information on column specifications (what type each column is).
@@ -111,9 +120,13 @@ Notice that the column specification is no longer printed.
 :::
 :::
 
+:::
+
 ## Variable types and classes
 
 We are going to use the `nobel` dataset to explore how to change types of variables and what can go wrong along the way.
+
+::: exercise
 
 Using `glimpse()`, identify what type of variable `category` is in the `nobel` data frame.
 Additionally, identify the values this variable takes.
@@ -156,6 +169,9 @@ nobel |>
 ::: {.callout-tip collapse="false"}
 ## Solution
 
+`category` is a character variable.
+This variable takes on the following values: Physics, Chemistry, Peace, Medicine, Literature, and Economics.
+
 ``` r
 glimpse(nobel)
 
@@ -163,12 +179,15 @@ nobel |>
   distinct(category)
 ```
 
-`category` is a character variable.
-This variable takes on the following values: Physics, Chemistry, Peace, Medicine, Literature, and Economics.
 :::
 :::
 
+:::
+
 Suppose we want to convert the the levels of `category` into numeric values.
+
+::: exercise
+
 Run the following code.
 What happens?
 
@@ -194,8 +213,12 @@ And we got a warning that says `NAs introduced by coercion`.
 :::
 :::
 
+:::
+
 It makes sense that R can't just represent character strings as numbers.
 Instead of converting a character variable to a numeric, we might consider converting it to a factor variable instead -- how R represents categorical data.
+
+::: exercise
 
 Convert `category` to factor and save it in the `nobel` data frame.
 Then, report its levels.
@@ -248,15 +271,17 @@ nobel <- nobel |>
 ::: {.callout-tip collapse="false"}
 ## Solution
 
+The levels are Physics, Chemistry, Peace, Medicine, Literature, and Economics.
+
 ``` r
 nobel <- nobel |>
   mutate(category = as.factor(category))
   
 levels(nobel$category)
 ```
-
-The levels are Physics, Chemistry, Peace, Medicine, Literature, and Economics.
 :::
+:::
+
 :::
 
 ## Reading Excel files
@@ -264,6 +289,8 @@ The levels are Physics, Chemistry, Peace, Medicine, Literature, and Economics.
 For the remainder of this programming exercise, we are going read in data from an Excel file and then clean it up.
 
 ![](images/sales-excel.png){fig-align="center" width="801"}
+
+::: exercise
 
 First, read the data in with `read_excel` from the Excel file called `"sales.xlsx"` and print the data to screen.
 Is this a tidy data frame?
@@ -318,11 +345,15 @@ These data are read in with the text as a column name, and creates another colum
 :::
 :::
 
+:::
+
 See the help file for `read_excel()` [here](https://www.rdocumentation.org/packages/readxl/versions/0.1.1/topics/read_excel).
 Notice that, in the current `sales` dataset, we want to skip 3 rows (the first row acts as a header for the column names).
 We can do this using the `skip` argument.
 At the same time, we can specify names for each column by giving the argument `col_names` a character vector.
-Use these arguments and add to the code below to skip 3 lines and name the columns `id` and `n`.
+
+::: exercise
+Read in the file called `"sales.xlsx"`, experimenting with `skip` and `col_names` arguments to skip 3 lines and name the columns `id` and `n`.
 
 ```{webr}
 #| exercise: ex_7
@@ -387,7 +418,11 @@ sales
 :::
 :::
 
+:::
+
 ## Putting it all together
+
+::: exercise
 
 Manipulate the sales data such such that it looks like the following using functions you have learned from the `tidyverse` to transform data.
 
@@ -407,6 +442,8 @@ read_excel(
 ::: {.callout-note collapse="false"}
 ## Hint 1
 
+Use `mutate()` to create a new column.
+
 ``` r
 sales |>
   mutate(
@@ -423,6 +460,8 @@ sales |>
 ::: {.hint exercise="ex_8"}
 ::: {.callout-note collapse="false"}
 ## Hint 2
+
+Use `str_detect()` to identify rows with the text `"Brand"`.
 
 ``` r
 sales |>
@@ -441,6 +480,8 @@ sales |>
 ::: {.callout-note collapse="false"}
 ## Hint 3
 
+If a row has the text `"Brand"`, leave the value of `id`, otherwise name it `NA`.
+
 ``` r
 sales |>
   mutate(
@@ -457,6 +498,8 @@ sales |>
 ::: {.hint exercise="ex_8"}
 ::: {.callout-note collapse="false"}
 ## Hint 4
+
+Fill in empty rows in the `brand` column.
 
 ``` r
 sales |>
@@ -475,6 +518,8 @@ sales |>
 ::: {.callout-note collapse="false"}
 ## Hint 5
 
+Filter out any rows with `NA` in the `is_brand_name` column.
+
 ``` r
 sales |>
   mutate(
@@ -492,6 +537,8 @@ sales |>
 ::: {.callout-tip collapse="false"}
 ## Solution
 
+Select the columns `brand`, `id`, and `n`.
+
 ``` r
 sales |>
   mutate(
@@ -507,5 +554,11 @@ sales
 :::
 :::
 
-**Takeaway:** We should write code to manipulate data instead of opening Excel and editing the data in there because it leaves a transparent trail of any modifications done while manipulating the data.
-Changing data in Excel is neither reproducible nor reusable.
+:::
+
+## Takeaway
+
+We should write code to manipulate data instead of opening Excel and editing the data in there because it leaves a transparent trail of any modifications done while manipulating the data.
+Making changes directly to an Excel file to reshape and clean data is neither reproducible nor reusable.
+
+{{< include _reflection-questions.qmd >}}
