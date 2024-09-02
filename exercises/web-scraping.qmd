@@ -29,8 +29,9 @@ options("readr.edition" = 1)
 
 We'll use the following packages for this programming exercise:
 
-```{webr}
+```{r}
 #| warning: false
+#| message: false
 library(tidyverse)
 library(rvest)
 library(polite)
@@ -561,11 +562,6 @@ Just because you have the tools to scrape data doesn't mean you should or have p
 We will use the `bow()` function from the polite package in R to introduce the client to the host and ask for permission to scrape.
 Use the following code to ensure that we had permission to scrape Star Wars!
 Note that the input for `bow()` is a URL, provided as a character string.
-
-```{r}
-#| include: false
-library(polite)
-```
 
 ```{r}
 #| warning: false

@@ -35,8 +35,9 @@ We will use the following two packages in this application exercise.
 
 Let's first load the packages.
 
-```{webr}
+```{r}
 #| label: load-packages
+#| message: false
 library(tidyverse)
 library(readxl)
 ```
