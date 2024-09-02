@@ -15,8 +15,8 @@ format: html
 
 mainfont: Atkinson Hyperlegible
 theme:
-  light: [flatly, style.scss]
-  dark: [darkly, style.scss]
+  light: [flatly, style/dsr.scss]
+  dark: [darkly, style/dsr-dark.scss]
 toc: true
 code-link: true
 highlight-style: github
