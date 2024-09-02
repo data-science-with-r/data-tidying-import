@@ -1,108 +1,105 @@
 ---
 title: Tidy basketball
-format: 
-  live-html:
-    toc: true
+format: live-html
 engine: knitr
 webr:
   packages: 
     - tidyverse
     - scales
+  cell-options:
+    autorun: false
   resources:
-    - https://raw.githubusercontent.com/data-science-with-r/data-tidying-import/main/exercises/data/blazer.csv
+    - https://raw.githubusercontent.com/data-science-with-r/data-tidying-import/main/exercises/data/trailblazer21.csv
 ---
 
-::: callout-important
-Please reference the `Meet the toolkit: Programming exercises` in `course 1 (or refresher)` for information and instructions on how to interact with the programming exercise below.
-:::
+<!-- begin: webr fodder -->
 
----
-
-## Getting Started
-
-```{r}
-#| echo: false
-#| include: false
-library(tidyverse) # put in r file to r chunks have packages to use
-library(scales)
-library(ggridges)
-library(gridExtra)
-```
-
-The Portland Trailblazers are a National Basketball Association (NBA) sports team.
-In this mini analysis, we will work with a dataset that has information on the points scored by 9 Portland Trailblazers players across the first 10 games of the 2021-2022 NBA season.
-If you would like to become more familiar with the game of basketball, please click [here](https://www.britannica.com/sports/basketball).
-If you would like more information on the Portland Trailblazers, please click [here](https://en.wikipedia.org/wiki/Portland_Trail_Blazers).
-
-A key to these data can be found below:
-
-| variable name | description                            |
-|---------------|----------------------------------------|
-| player        | name of player                         |
-| game1_home    | points scored on game 1 on home court  |
-| ...           | ...                                    |
-| game3_away    | points scored on game 3 on away court  |
-| ...           | ...                                    |
-| game10_home   | points scored on game 10 on home court |
-
-Read in the data below.
+{{< include ../_extensions/r-wasm/live/_knitr.qmd >}}
 
 ```{webr}
+#| edit: false
 #| echo: false
-blazer <- read_csv("blazer.csv")
+#| output: false
+options("readr.edition" = 1)
 ```
 
-```{r}
-#| echo: false
-#| warning: false
-#| message: false
-blazer <- read_csv("data/trailblazer21.csv") # put in R file to r chunks have data to use
-```
+<!-- end: webr fodder -->
 
-### Packages
+## Packages
 
-We'll use **tidyverse** for the majority of the analysis and **scales** for pretty plot labels later on.
+We will use the following the **tidyverse** package for data import, wrangling, and visualization in this programming exercise.
+
+Let's first load the package.
 
 ```{r}
 #| label: load-packages
 #| message: false
-#| warning: false
 library(tidyverse)
-library(scales)
 ```
 
-### Get to know the data
+## Data
 
+The Portland Trailblazers are a National Basketball Association (NBA) sports team.
+In this mini analysis, we will work with a dataset that has information on the points scored by 9 Portland Trailblazers players across the first 10 games of the 2021-2022 NBA season.
+If you would like to become more familiar with the game of basketball, you can read [this Wikipedia article](https://en.wikipedia.org/wiki/Basketball).
+If you would like more information on the Portland Trailblazers, you can find out more about them [on Wikipedia](https://en.wikipedia.org/wiki/Portland_Trail_Blazers) as well.
+
+A partial data dictionary is provided below.
+
+| variable name | description                            |
+|---------------|----------------------------------------|
+| `player`      | Name of player                         |
+| `game1_home`  | Points scored on game 1 on home court  |
+| ...           | ...                                    |
+| `game3_away`  | Points scored on game 3 on away court  |
+| ...           | ...                                    |
+| `game10_home` | Points scored on game 10 on home court |
+
+Read in the data by running the code below.
+
+```{webr}
+#| label: load-data
+blazer <- read_csv("trailblazer21.csv")
+```
+
+::: exercise
 Use `glimpse()` to get an overview (or "glimpse") of the data.
 How many rows and columns are in this dataset?
 In addition, make note of the types of variables you are working with.
 
 ```{webr}
-# insert code here
+#| setup: true
+#| exercise: ex_1
+blazer <- read_csv("trailblazer21.csv")
 ```
 
-::: callout-warning
-If you receive the error [Error: object 'blazer' not found]{style="color:red;"}, go back and read in your data above.
-:::
+```{webr}
+#| exercise: ex_1
+___
+```
 
+::: {.solution exercise="ex_1"}
 ::: {.callout-tip collapse="true"}
 ## Solution
 
-```{r}
+There are 9 rows and 11 columns in blazer dataset.
+`player` is a character variable; the remaining variables are doubles.
+
+```r
 glimpse(blazer)
 ```
-
-There are 9 rows and 11 columns in blazer dataset.
-
-`player` is a character variable; the remaining variables are doubles.
+:::
 :::
 
-Suppose you are asked to recreate the plot below...
+:::
 
-![](images/blazer-pic.png){fig-align="center"}
+Suppose you are asked to recreate the plot below.
 
-Identify the variables you would need to use to recreate this plot.
-Can this plot be recreated with how the `blazer` dataset is currently formatted?
+![](images/blazer-points.png){fig-align="center"}
+
+::: exercise
+Identify the variables you would need to use to recreate the above plot.
+Can this plot be recreated with the `blazer` dataset as it's currently formatted?
 
 ::: {.callout-tip collapse="true"}
 ## Solution
@@ -111,7 +108,13 @@ Variables in the above plot include `player`, `game`, `location`, and `points`.
 This plot can not be recreated with how the `blazer` dataset is currently formatted.
 :::
 
-Now, think critically about how we could transform our `blazer` dataset to have the variables necessary to make the plot above.
+:::
+
+## Reshaping data
+
+::: exercise
+
+Now, think critically about how we could transform our `blazer` dataset to include the variables necessary to make the plot above.
 What would our new dataset have to look like?
 What R function(s) could we use to transform our data into what we need?
 
@@ -123,49 +126,123 @@ In order to get a `game`, `location`, and `points`, we can use `pivot_longer()`,
 That is, we can bring the variable names of `game1_home`, `game2_home`, etc. into our dataset as values, which is needed to recreate the plot above.
 :::
 
-See more information about `pivot_longer()` [here](https://tidyr.tidyverse.org/reference/pivot_longer.html).
-We are going to create our final dataset in steps.
-First use `pivot_longer()` to change our dataset that has 90 rows and 3 columns that are named player, game, and points.
+:::
+
+To accomplish this task, we'll use `pivot_longer()`.
+
+::: exercise
+Use `pivot_longer()` to reshape `blazer` into a longer data frame with three columns (`player`, `game`, and `points`) and 90 rows.
 
 ```{webr}
-# insert code here
+#| setup: true
+#| exercise: ex_2
+blazer <- read_csv("trailblazer21.csv")
 ```
 
+```{webr}
+#| exercise: ex_2
+blazer |>
+  pivot_longer(
+    ___
+  )
+```
+
+::: {.hint exercise="ex_2"}
+::: {.callout-note collapse="false"}
+## Hint 1
+
+Pivot all columns except for `player`.
+
+```r
+blazer |>
+  pivot_longer(
+    cols = !player,
+    ___,
+    ___
+  )
+```
+:::
+:::
+
+::: {.hint exercise="ex_2"}
+::: {.callout-note collapse="false"}
+## Hint 2
+
+The variable names from `blazer` should go to a new column called `game`.
+We quote this text because it's not a column that yet exists in our dataset.
+
+```r
+blazer |>
+  pivot_longer(
+    cols = !player,
+    names_to = "game",
+    ___
+  )
+```
+:::
+:::
+
+::: {.solution exercise="ex_2"}
 ::: {.callout-tip collapse="true"}
 ## Solution
 
-```{r}
+The values from `blazer` should go to a new column called `points`.
+We quote this text as well because it's not a column that yet exists in our dataset.
+
+```r
 blazer |>
   pivot_longer(
     cols = -player,
     names_to = "game",
-    values_to = "points")
+    values_to = "points"
+  )
 ```
 :::
+:::
 
-What are the next steps we need to take to change our dataset to recreate the plot above?
+:::
+
+::: exercise
+What are the next steps we need to take to transform our dataset further to recreate the plot above?
 
 ::: {.callout-tip collapse="true"}
 ## Solution
 
 We still need to:
 
--   remove "game" text from the `game` column
--   separate the numeric value of game from home/away
--   create a location column
+-   Remove the text string `"game"` from the `game` column.
+-   Separate the numeric value of game from location (home or away) and store these pieces of information in two separate columns.
+:::
 :::
 
+::: exercise
 Revisit the documentation for `pivot_longer()`.
 Add the argument `names_prefix` to your existing code above to remove the text "game" from the `game` column.
 
 ```{webr}
-# insert code here
+#| setup: true
+#| exercise: ex_3
+blazer <- read_csv("trailblazer21.csv")
 ```
 
+```{webr}
+#| exercise: ex_3
+blazer |>
+  pivot_longer(
+    cols = -player,
+    names_to = "game",
+    values_to = "points",
+    ___
+  )
+```
+
+::: {.solution exercise="ex_3"}
 ::: {.callout-tip collapse="true"}
 ## Solution
 
-```{r}
+Set `names_prefix` to `"game"` to remove this text from the variable names when pivoting the data frame.
+
+```r
 blazer |>
   pivot_longer(
     cols = -player,
@@ -175,112 +252,288 @@ blazer |>
   )
 ```
 :::
+:::
 
-We now need to separate the values away from the location in the `game` column.
-Please see the documentation on `separate_wider_delim` [here](https://tidyr.tidyverse.org/reference/separate_wider_delim.html).
-Add to your existing code to split the game number and game location into two columns.
-Call the new column `location`.
-Save and name this dataset as `blazer_long` to use in the next section.
+:::
+
+Next, we need to separate the values away from the location in the `game` column.
+A handy function for accomplishing this task is `separate_wider_delim()`.
+
+::: exercise
+Continue building up your data transformation pipeline to add a new step using `separate_wider_delim()` to separate the game number and game location into two columns.
+Call these new columns `game_number` and `game_location`.
+Save the resulting data frame as `blazer_longer`.
 
 ```{webr}
-# insert code here
+#| setup: true
+#| exercise: ex_4
+blazer <- read_csv("trailblazer21.csv")
 ```
 
-::: {.callout-tip collapse="true"}
-## Solution
-
-```{r}
-blazer_long <- blazer |>
+```{webr}
+#| exercise: ex_4
+___ <- blazer |>
   pivot_longer(
     cols = -player,
     names_to = "game",
     values_to = "points",
-    names_prefix = "game") |>
-    separate_wider_delim(game, delim = "_", names = c("game", "location"))
+    names_prefix = "game"
+  ) |>
+  ___
 
-blazer_long
-```
-:::
-
-### Summary statistics
-
-Let's use the new `blazer_long` dataset to calculate some summary statistics for the Portland Trailblazers to learn more about their performance for these 10 games!
-
-1.  Calculate the mean points scored across all players between home and away games.
-
-```{webr}
-# insert code here
+blazer_longer
 ```
 
+::: {.solution exercise="ex_4"}
 ::: {.callout-tip collapse="true"}
 ## Solution
 
-```{r}
-blazer_long |>
-  group_by(location) |>
+```r
+blazer_longer <- blazer |>
+  pivot_longer(
+    cols = -player,
+    names_to = "game",
+    values_to = "points",
+    names_prefix = "game"
+  ) |>
+  separate_wider_delim(game, delim = "_", names = c("game_number", "game_location"))
+
+blazer_longer
+```
+:::
+:::
+:::
+
+## Summarizing data
+
+Let's use the newly created `blazer_longer` dataset to calculate some summary statistics for the Portland Trailblazers to learn more about their performance for these 10 games!
+
+::: exercise
+Calculate the mean points scored across all players between home and away games.
+
+```{webr}
+#| setup: true
+#| exercise: ex_5
+blazer <- read_csv("trailblazer21.csv")
+
+blazer_longer <- blazer |>
+  pivot_longer(
+    cols = -player,
+    names_to = "game",
+    values_to = "points",
+    names_prefix = "game"
+  ) |>
+  separate_wider_delim(game, delim = "_", names = c("game_number", "game_location"))
+```
+
+```{webr}
+#| exercise: ex_5
+blazer_longer |>
+  ___
+```
+
+::: {.hint exercise="ex_5"}
+::: {.callout-note collapse="false"}
+## Hint
+
+This sounds like a `group_by()` |> `summarize()` task!
+:::
+:::
+
+::: {.solution exercise="ex_5"}
+::: {.callout-tip collapse="true"}
+## Solution
+
+`group_by(game_location)` and then `summarize()` to find the mean number of points for each type of game location (home and away).
+
+```r
+blazer_longer |>
+  group_by(game_location) |>
   summarize(mean_points = mean(points, na.rm = T))
 ```
 :::
+:::
+:::
 
-2.  Now, calculate the mean points scored for the player `Damian Lillard` for both home and away games.
+::: exercise
+Next, calculate the mean points scored by the player `Damian Lillard` for both home and away games.
 
 ```{webr}
-# insert code here
+#| setup: true
+#| exercise: ex_6
+blazer <- read_csv("trailblazer21.csv")
+
+blazer_longer <- blazer |>
+  pivot_longer(
+    cols = -player,
+    names_to = "game",
+    values_to = "points",
+    names_prefix = "game"
+  ) |>
+  separate_wider_delim(game, delim = "_", names = c("game_number", "game_location"))
 ```
 
+```{webr}
+#| exercise: ex_6
+blazer_longer |>
+  ___
+```
+
+::: {.hint exercise="ex_6"}
+::: {.callout-note collapse="false"}
+## Hint
+
+Filter for the player first!
+:::
+:::
+
+::: {.solution exercise="ex_6"}
 ::: {.callout-tip collapse="true"}
 ## Solution
 
-```{r}
-blazer_long |>
+Filter for the player first, and then use the same `group_by()` and `summarize()` steps from the previous exercise.
+
+```r
+blazer_longer |>
   filter(player == "Damian Lillard") |>
   group_by(location) |>
   summarize(mean_points = mean(points, na.rm = T))
 ```
 :::
-
-3.  Now, create a table that counts the number of times a player scored 15 points (or more) a game versus the number of times a player scored less than 15 points a game.
-
-```{webr}
-# insert code here
-```
-
-::: {.callout-tip collapse="true"}
-## Solution
-
-```{r}
-blazer_long |>
-  mutate(points_cat = ifelse(points >= 15, "yes", "no")) |>
-  select(points_cat) |>
-  group_by(points_cat) |>
-  count()
-```
 :::
 
-## Bonus Challange
+:::
 
-Recreate the plot, using the `blazer_long` dataset!
 
-![](images/blazer_pic.png){fig-align="center"}
-
-Hints: The code you start with makes sure that game is appropriately treated as a quantitative variable.
-You will learn more about data types in the following lessons!
-The plot above uses `theme_bw()`.
+::: exercise
+For each player, calculate how many times they scored 15 points or more per game and how many times they scored fewer than 15 points per game.
 
 ```{webr}
-blazer_long |>
-  mutate(game = as.numeric(game)) |>
-  # insert code here
+#| setup: true
+#| exercise: ex_7
+blazer <- read_csv("trailblazer21.csv")
+
+blazer_longer <- blazer |>
+  pivot_longer(
+    cols = -player,
+    names_to = "game",
+    values_to = "points",
+    names_prefix = "game"
+  ) |>
+  separate_wider_delim(game, delim = "_", names = c("game_number", "game_location"))
 ```
 
+```{webr}
+#| exercise: ex_7
+blazer_longer |>
+  ___
+```
+
+::: {.solution exercise="ex_7"}
 ::: {.callout-tip collapse="true"}
 ## Solution
 
-```{r}
-blazer_long |>
+```r
+blazer_longer |>
+  mutate(points_15 = ifelse(points >= 15, "15 or more", "Fewer than 15")) |>
+  count(player, points_15)
+```
+:::
+:::
+
+:::
+
+## Visualizing data
+
+::: exercise
+Recreate the following plot using the `blazer_longer` dataset!
+
+![](images/blazer-points.png){fig-align="center"}
+
+```{webr}
+#| setup: true
+#| exercise: ex_8
+blazer <- read_csv("trailblazer21.csv")
+
+blazer_longer <- blazer |>
+  pivot_longer(
+    cols = -player,
+    names_to = "game",
+    values_to = "points",
+    names_prefix = "game"
+  ) |>
+  separate_wider_delim(game, delim = "_", names = c("game_number", "game_location"))
+```
+
+```{webr}
+#| exercise: ex_8
+blazer_longer |>
+  ___
+```
+
+::: {.hint exercise="ex_8"}
+::: {.callout-note collapse="false"}
+## Hint 1
+
+`game` needs to be a numerical variable, so start by fixing that first!
+
+```r
+blazer_longer |>
   mutate(game = as.numeric(game)) |>
+  ___
+```
+:::
+:::
+
+::: {.hint exercise="ex_8"}
+::: {.callout-note collapse="false"}
+## Hint 2
+
+The plot is `facet_wrap`ped by player.
+
+```r
+blazer_longer |>
+  mutate(game = as.numeric(game)) |>
+  ggplot(___) |>
+  ___ |>
+  facet_wrap(~player) |>
+  ___
+```
+:::
+:::
+
+::: {.hint exercise="ex_8"}
+::: {.callout-note collapse="false"}
+## Hint 3
+
+The plot uses `theme_bw()`.
+
+```r
+blazer_longer |>
+  mutate(game = as.numeric(game)) |>
+  ggplot(___) |>
+  ___ |>
+  facet_wrap(~player) |>
+  ___ |>
+  theme_bw()
+```
+:::
+:::
+
+::: {.solution exercise="ex_8"}
+::: {.callout-tip collapse="true"}
+## Solution
+
+Instead of running the entire solution at once, run it one line at a time to see how the plot develops!
+
+```r
+blazer_longer |>
+  mutate(game_number = as.numeric(game_number)) |>
   ggplot(
-    aes(x = game, y = points, color = location, group = player)
+    aes(
+      x = game_number, y = points, 
+      color = game_location, group = player
+    )
   ) +
   geom_line() +
   geom_point(shape = "square") +
@@ -289,10 +542,15 @@ blazer_long |>
   theme_bw() +
   labs(
     x = "Game",
-    y = "Points Scored",
-    title = "Points Scored Across 10 Games",
+    y = "Points scored",
+    color = "Location",
+    title = "Points scored across 10 games",
     subtitle = "Portland Trailblazers (2021-2022 Season)",
     caption = "https://www.basketball-reference.com/teams/POR/2021_games.html"
   )
 ```
 :::
+:::
+
+:::
+
