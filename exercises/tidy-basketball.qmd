@@ -554,3 +554,5 @@ blazer_longer |>
 
 :::
 
+{{< include _reflection-questions.qmd >}}
+
