@@ -63,6 +63,13 @@
     "text": "Visualizing data\n\nRecreate the following plot using the blazer_longer dataset!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHint 1\n\n\n\n\n\ngame needs to be a numerical variable, so start by fixing that first!\nblazer_longer |&gt;\n  mutate(game = as.numeric(game)) |&gt;\n  ___\n\n\n\n\n\n\n\n\n\n\n\nHint 2\n\n\n\n\n\nThe plot is facet_wrapped by player.\nblazer_longer |&gt;\n  mutate(game = as.numeric(game)) |&gt;\n  ggplot(___) |&gt;\n  ___ |&gt;\n  facet_wrap(~player) |&gt;\n  ___\n\n\n\n\n\n\n\n\n\n\n\nHint 3\n\n\n\n\n\nThe plot uses theme_bw().\nblazer_longer |&gt;\n  mutate(game = as.numeric(game)) |&gt;\n  ggplot(___) |&gt;\n  ___ |&gt;\n  facet_wrap(~player) |&gt;\n  ___ |&gt;\n  theme_bw()\n\n\n\n\n\n\n\n\n\n\n\nSolution\n\n\n\n\n\nInstead of running the entire solution at once, run it one line at a time to see how the plot develops!\nblazer_longer |&gt;\n  mutate(game_number = as.numeric(game_number)) |&gt;\n  ggplot(\n    aes(\n      x = game_number, y = points, \n      color = game_location, group = player\n    )\n  ) +\n  geom_line() +\n  geom_point(shape = \"square\") +\n  facet_wrap(~player) +\n  scale_x_continuous(breaks = c(1:10)) +\n  theme_bw() +\n  labs(\n    x = \"Game\",\n    y = \"Points scored\",\n    color = \"Location\",\n    title = \"Points scored across 10 games\",\n    subtitle = \"Portland Trailblazers (2021-2022 Season)\",\n    caption = \"https://www.basketball-reference.com/teams/POR/2021_games.html\"\n  )"
   },
   {
+    "objectID": "exercises/tidy-basketball.html#reflection-questions",
+    "href": "exercises/tidy-basketball.html#reflection-questions",
+    "title": "Tidy basketball",
+    "section": "Reflection questions",
+    "text": "Reflection questions\n\nWhy do you believe we are studying the content above?\n\n\n\nList three topics that you feel from the content above.\n\n\n\nList three topics that you feel could use more practice (or you are more curious about) from the content above."
+  },
+  {
     "objectID": "code-alongs/2-1-thats-my-type/2-1-thats-my-type.html",
     "href": "code-alongs/2-1-thats-my-type/2-1-thats-my-type.html",
     "title": "That’s my type",
