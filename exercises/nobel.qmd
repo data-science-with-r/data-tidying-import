@@ -544,5 +544,3 @@ sales
 
 We should write code to manipulate data instead of opening Excel and editing the data in there because it leaves a transparent trail of any modifications done while manipulating the data.
 Making changes directly to an Excel file to reshape and clean data is neither reproducible nor reusable.
-
-{{< include _reflection-questions.qmd >}}

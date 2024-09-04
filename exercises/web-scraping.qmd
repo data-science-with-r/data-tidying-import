@@ -596,5 +596,3 @@ We do have permission to scrape [bettycrocker.com](https://www.bettycrocker.com/
 ## Takeaway
 
 The takeaway is that -- just because you can doesn't mean you should scrape the data!
-
-{{< include _reflection-questions.qmd >}}

@@ -85,12 +85,11 @@ ___
 There are 9 rows and 11 columns in blazer dataset.
 `player` is a character variable; the remaining variables are doubles.
 
-```r
+``` r
 glimpse(blazer)
 ```
 :::
 :::
-
 :::
 
 Suppose you are asked to recreate the plot below.
@@ -107,13 +106,11 @@ Can this plot be recreated with the `blazer` dataset as it's currently formatted
 Variables in the above plot include `player`, `game`, `location`, and `points`.
 This plot can not be recreated with how the `blazer` dataset is currently formatted.
 :::
-
 :::
 
 ## Reshaping data
 
 ::: exercise
-
 Now, think critically about how we could transform our `blazer` dataset to include the variables necessary to make the plot above.
 What would our new dataset have to look like?
 What R function(s) could we use to transform our data into what we need?
@@ -125,7 +122,6 @@ We have a `player` column in the dataset.
 In order to get a `game`, `location`, and `points`, we can use `pivot_longer()`, which will take this wide dataset and make it into a longer dataset.
 That is, we can bring the variable names of `game1_home`, `game2_home`, etc. into our dataset as values, which is needed to recreate the plot above.
 :::
-
 :::
 
 To accomplish this task, we'll use `pivot_longer()`.
@@ -153,7 +149,7 @@ blazer |>
 
 Pivot all columns except for `player`.
 
-```r
+``` r
 blazer |>
   pivot_longer(
     cols = !player,
@@ -171,7 +167,7 @@ blazer |>
 The variable names from `blazer` should go to a new column called `game`.
 We quote this text because it's not a column that yet exists in our dataset.
 
-```r
+``` r
 blazer |>
   pivot_longer(
     cols = !player,
@@ -189,7 +185,7 @@ blazer |>
 The values from `blazer` should go to a new column called `points`.
 We quote this text as well because it's not a column that yet exists in our dataset.
 
-```r
+``` r
 blazer |>
   pivot_longer(
     cols = -player,
@@ -199,7 +195,6 @@ blazer |>
 ```
 :::
 :::
-
 :::
 
 ::: exercise
@@ -242,7 +237,7 @@ blazer |>
 
 Set `names_prefix` to `"game"` to remove this text from the variable names when pivoting the data frame.
 
-```r
+``` r
 blazer |>
   pivot_longer(
     cols = -player,
@@ -253,7 +248,6 @@ blazer |>
 ```
 :::
 :::
-
 :::
 
 Next, we need to separate the values away from the location in the `game` column.
@@ -288,7 +282,7 @@ blazer_longer
 ::: {.callout-tip collapse="true"}
 ## Solution
 
-```r
+``` r
 blazer_longer <- blazer |>
   pivot_longer(
     cols = -player,
@@ -336,7 +330,7 @@ blazer_longer |>
 ::: {.callout-note collapse="false"}
 ## Hint
 
-This sounds like a `group_by()` |> `summarize()` task!
+This sounds like a `group_by()` \|\> `summarize()` task!
 :::
 :::
 
@@ -346,7 +340,7 @@ This sounds like a `group_by()` |> `summarize()` task!
 
 `group_by(game_location)` and then `summarize()` to find the mean number of points for each type of game location (home and away).
 
-```r
+``` r
 blazer_longer |>
   group_by(game_location) |>
   summarize(mean_points = mean(points, na.rm = T))
@@ -393,7 +387,7 @@ Filter for the player first!
 
 Filter for the player first, and then use the same `group_by()` and `summarize()` steps from the previous exercise.
 
-```r
+``` r
 blazer_longer |>
   filter(player == "Damian Lillard") |>
   group_by(location) |>
@@ -401,9 +395,7 @@ blazer_longer |>
 ```
 :::
 :::
-
 :::
-
 
 ::: exercise
 For each player, calculate how many times they scored 15 points or more per game and how many times they scored fewer than 15 points per game.
@@ -433,14 +425,13 @@ blazer_longer |>
 ::: {.callout-tip collapse="true"}
 ## Solution
 
-```r
+``` r
 blazer_longer |>
   mutate(points_15 = ifelse(points >= 15, "15 or more", "Fewer than 15")) |>
   count(player, points_15)
 ```
 :::
 :::
-
 :::
 
 ## Visualizing data
@@ -477,7 +468,7 @@ blazer_longer |>
 
 `game` needs to be a numerical variable, so start by fixing that first!
 
-```r
+``` r
 blazer_longer |>
   mutate(game = as.numeric(game)) |>
   ___
@@ -491,7 +482,7 @@ blazer_longer |>
 
 The plot is `facet_wrap`ped by player.
 
-```r
+``` r
 blazer_longer |>
   mutate(game = as.numeric(game)) |>
   ggplot(___) |>
@@ -508,7 +499,7 @@ blazer_longer |>
 
 The plot uses `theme_bw()`.
 
-```r
+``` r
 blazer_longer |>
   mutate(game = as.numeric(game)) |>
   ggplot(___) |>
@@ -526,7 +517,7 @@ blazer_longer |>
 
 Instead of running the entire solution at once, run it one line at a time to see how the plot develops!
 
-```r
+``` r
 blazer_longer |>
   mutate(game_number = as.numeric(game_number)) |>
   ggplot(
@@ -551,8 +542,4 @@ blazer_longer |>
 ```
 :::
 :::
-
 :::
-
-{{< include _reflection-questions.qmd >}}
-
