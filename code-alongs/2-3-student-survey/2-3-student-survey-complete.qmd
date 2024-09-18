@@ -1,7 +1,5 @@
 ---
-title: "Student survey"
-editor_options: 
-  chunk_output_type: console
+title: "Student survey (Complete)"
 ---
 
 # Introduction
