@@ -907,35 +907,35 @@
     "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer",
     "title": "Tidying data",
     "section": "pivot_longer()",
-    "text": "pivot_longer()\n\n\n\npivot_longer(\n  data,\n  cols, \n  names_to = \"name\", \n  values_to = \"value\"\n  )"
+    "text": "pivot_longer()\n\n\n\npivot_longer(\n  data,\n  cols, \n  names_to = \"name\", \n  values_to = \"value\"\n)"
   },
   {
     "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-1",
     "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-1",
     "title": "Tidying data",
     "section": "pivot_longer()",
-    "text": "pivot_longer()\n\n\n\npivot_longer(\n1  data,\n  cols, \n  names_to = \"name\", \n  values_to = \"value\"\n  )\n\n\n1\n\ndata (as usual)"
+    "text": "pivot_longer()\n\n\n\npivot_longer(\n1  data,\n  cols, \n  names_to = \"name\", \n  values_to = \"value\"\n)\n\n\n1\n\ndata (as usual)"
   },
   {
     "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-2",
     "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-2",
     "title": "Tidying data",
     "section": "pivot_longer()",
-    "text": "pivot_longer()\n\n\n\npivot_longer(\n1  data,\n2  cols,\n  names_to = \"name\", \n  values_to = \"value\"\n  )\n\n\n1\n\ndata (as usual)\n\n2\n\ncols: Columns to pivot into longer format"
+    "text": "pivot_longer()\n\n\n\npivot_longer(\n1  data,\n2  cols,\n  names_to = \"name\", \n  values_to = \"value\"\n)\n\n\n1\n\ndata (as usual)\n\n2\n\ncols: Columns to pivot into longer format"
   },
   {
     "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-3",
     "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-3",
     "title": "Tidying data",
     "section": "pivot_longer()",
-    "text": "pivot_longer()\n\n\n\npivot_longer(\n1  data,\n2  cols,\n3  names_to = \"name\",\n  values_to = \"value\"\n  )\n\n\n1\n\ndata (as usual)\n\n2\n\ncols: Columns to pivot into longer format\n\n3\n\nnames_to: Name of the column where column names of pivoted variables go (character string)"
+    "text": "pivot_longer()\n\n\n\npivot_longer(\n1  data,\n2  cols,\n3  names_to = \"name\",\n  values_to = \"value\"\n)\n\n\n1\n\ndata (as usual)\n\n2\n\ncols: Columns to pivot into longer format\n\n3\n\nnames_to: Name of the column where column names of pivoted variables go (character string)"
   },
   {
     "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-4",
     "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-4",
     "title": "Tidying data",
     "section": "pivot_longer()",
-    "text": "pivot_longer()\n\n\n\npivot_longer(\n1  data,\n2  cols,\n3  names_to = \"name\",\n4  values_to = \"value\"\n  )\n\n\n1\n\ndata (as usual)\n\n2\n\ncols: Columns to pivot into longer format\n\n3\n\nnames_to: Name of the column where column names of pivoted variables go (character string)\n\n4\n\nvalues_to: Name of the column where data in pivoted variables go (character string)"
+    "text": "pivot_longer()\n\n\n\npivot_longer(\n1  data,\n2  cols,\n3  names_to = \"name\",\n4  values_to = \"value\"\n)\n\n\n1\n\ndata (as usual)\n\n2\n\ncols: Columns to pivot into longer format\n\n3\n\nnames_to: Name of the column where column names of pivoted variables go (character string)\n\n4\n\nvalues_to: Name of the column where data in pivoted variables go (character string)"
   },
   {
     "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_longer-in-context",
@@ -1005,21 +1005,21 @@
     "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_wider",
     "title": "Tidying data",
     "section": "pivot_wider()",
-    "text": "pivot_wider()\n\n\n\npivot_wider(\n1  data,\n  names_from = name,\n  values_from = value\n  )\n\n\n1\n\ndata (as usual)"
+    "text": "pivot_wider()\n\n\n\npivot_wider(\n1  data,\n  names_from = name,\n  values_from = value\n)\n\n\n1\n\ndata (as usual)"
   },
   {
     "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_wider-1",
     "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_wider-1",
     "title": "Tidying data",
     "section": "pivot_wider()",
-    "text": "pivot_wider()\n\n\n\npivot_wider(\n1  data,\n2  names_from = name,\n  values_from = value\n  )\n\n\n1\n\ndata (as usual)\n\n2\n\nnames_from: Which column(s) in the long format contains what should be column names in the wide format"
+    "text": "pivot_wider()\n\n\n\npivot_wider(\n1  data,\n2  names_from = name,\n  values_from = value\n)\n\n\n1\n\ndata (as usual)\n\n2\n\nnames_from: Which column(s) in the long format contains what should be column names in the wide format"
   },
   {
     "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_wider-2",
     "href": "slides/1-3-tidying-data/1-3-tidying-data.html#pivot_wider-2",
     "title": "Tidying data",
     "section": "pivot_wider()",
-    "text": "pivot_wider()\n\n\n\npivot_wider(\n1  data,\n2  names_from = name,\n3  values_from = value\n  )\n\n\n1\n\ndata (as usual)\n\n2\n\nnames_from: Which column(s) in the long format contains what should be column names in the wide format\n\n3\n\nvalues_from: Which column(s) in the long format contains what should be values in the new columns in the wide format"
+    "text": "pivot_wider()\n\n\n\npivot_wider(\n1  data,\n2  names_from = name,\n3  values_from = value\n)\n\n\n1\n\ndata (as usual)\n\n2\n\nnames_from: Which column(s) in the long format contains what should be column names in the wide format\n\n3\n\nvalues_from: Which column(s) in the long format contains what should be values in the new columns in the wide format"
   },
   {
     "objectID": "slides/1-3-tidying-data/1-3-tidying-data.html#wider---longer",
