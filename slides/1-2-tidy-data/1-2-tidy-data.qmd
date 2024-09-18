@@ -3,7 +3,6 @@ title: "Tidy data"
 format: revealjs
 ---
 
-
 ```{r}
 #| include: false
 library(tidyverse)
@@ -11,26 +10,24 @@ library(tidyverse)
 
 ## Tidy data
 
->Happy families are all alike; every unhappy family is unhappy in its own way. 
+> Happy families are all alike; every unhappy family is unhappy in its own way.
 >
->Leo Tolstoy
+> Leo Tolstoy
 
-::: {.columns}
-
-::: {.column width="40%" .fragment}
+::: columns
+::: {.column .fragment width="40%"}
 **Characteristics of tidy data:**
 
-- Each variable forms a column.
-- Each observation forms a row.
-- Each type of observational unit forms a table.
+-   Each variable forms a column.
+-   Each observation forms a row.
+-   Each type of observational unit forms a table.
 :::
 
-::: {.column width="40%" .fragment}
+::: {.column .fragment width="40%"}
 **Characteristics of untidy data:**
 
-!@#$%^&*()
+!\@#\$%\^&\*()
 :::
-
 :::
 
 ## What makes this data not tidy?
@@ -59,9 +56,8 @@ Source: [US Census, Selected Economic Characteristics, ACS 2022](https://data.ce
 
 ## Displaying vs. summarizing data
 
-::: {.columns}
-
-::: {.column}
+::: columns
+::: column
 **Display**
 
 ```{r}
@@ -85,5 +81,4 @@ starwars |>
   )
 ```
 :::
-
 :::

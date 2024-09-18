@@ -13,7 +13,8 @@ library(gt)
 
 ## Example: Cat lovers
 
-A survey asked respondents their name and number of cats. The instructions said to enter the number of cats as a numerical value.
+A survey asked respondents their name and number of cats.
+The instructions said to enter the number of cats as a numerical value.
 
 ```{r}
 #| message: false
@@ -220,23 +221,22 @@ cat_lovers |>#|
 
 ## Moral of the story
 
-- If your data does not behave how you expect it to, type coercion upon reading in the data might be the reason.
-- Go in and investigate your data, apply the fix, *save your data*, live happily ever after.
+-   If your data does not behave how you expect it to, type coercion upon reading in the data might be the reason.
+-   Go in and investigate your data, apply the fix, *save your data*, live happily ever after.
 
 # Data types
 
 ## Data types in R
 
-- **logical**
-- **double**
-- **integer**
-- **character**
-- and some more, but we won't be focusing on those
+-   **logical**
+-   **double**
+-   **integer**
+-   **character**
+-   and some more, but we won't be focusing on those
 
 ## Logical & character
 
-:::: {.columns}
-
+::: columns
 ::: {.column width="35%"}
 **logical** - boolean values `TRUE` and `FALSE`
 
@@ -247,23 +247,20 @@ typeof(TRUE)
 ```
 :::
 
-::: {.column width="35%" .fragment}
+::: {.column .fragment width="35%"}
 **character** - character strings
 
-<br>
-<br>
+<br> <br>
 
 ```{r}
 typeof("hello")
 ```
 :::
-
-::::
+:::
 
 ## Double & integer
 
-:::: {.columns}
-
+::: columns
 ::: {.column width="35%"}
 **double** - floating point numerical values (default numerical type)
 
@@ -275,7 +272,7 @@ typeof(7)
 ```
 :::
 
-::: {.column width="35%" .fragment}
+::: {.column .fragment width="35%"}
 **integer** - integer numerical values (indicated with an `L`)
 
 <br>
@@ -285,8 +282,7 @@ typeof(7L)
 typeof(1:3)
 ```
 :::
-
-::::
+:::
 
 ## Concatenation
 
@@ -297,6 +293,7 @@ c(1, 2, 3)
 ```
 
 . . .
+
 ```{r}
 c("Hello", "World!")
 ```
@@ -313,8 +310,7 @@ c(c("hi", "hello"), c("bye", "jello"))
 with intention...
 :::
 
-:::: {.columns}
-
+::: columns
 ::: {.column width="35%"}
 ```{r}
 x <- 1:3
@@ -323,15 +319,14 @@ typeof(x)
 ```
 :::
 
-::: {.column width="35%" .fragment}
+::: {.column .fragment width="35%"}
 ```{r}
 y <- as.character(x)
 y
 typeof(y)
 ```
 :::
-
-::::
+:::
 
 ## Converting between types
 
@@ -339,8 +334,7 @@ typeof(y)
 with intention...
 :::
 
-:::: {.columns}
-
+::: columns
 ::: {.column width="35%"}
 ```{r}
 x <- c(TRUE, FALSE)
@@ -349,15 +343,14 @@ typeof(x)
 ```
 :::
 
-::: {.column width="35%" .fragment}
+::: {.column .fragment width="35%"}
 ```{r}
 y <- as.numeric(x)
 y
 typeof(y)
 ```
 :::
-
-::::
+:::
 
 ## Converting between types
 
@@ -378,6 +371,7 @@ R will happily convert between various types without complaint when different ty
 ```{r}
 c(FALSE, 3L)
 ```
+
 . . .
 
 ```{r}
@@ -395,20 +389,20 @@ c(2L, "two")
 Let's give formal names to what we've seen so far:
 
 ::: incremental
-- **Explicit coercion** is when you call a function like `as.logical()`, `as.numeric()`, `as.integer()`, `as.double()`, or `as.character()`
+-   **Explicit coercion** is when you call a function like `as.logical()`, `as.numeric()`, `as.integer()`, `as.double()`, or `as.character()`
 
-- **Implicit coercion** happens when you use a vector in a specific context that expects a certain type of vector
+-   **Implicit coercion** happens when you use a vector in a specific context that expects a certain type of vector
 :::
 
 # Special values
 
 ## Special values
 
-- `NA`: Not available
+-   `NA`: Not available
 
 . . .
 
-- `NaN`: Not a number
+-   `NaN`: Not a number
 
 ```{r}
 0 / 0
@@ -416,7 +410,7 @@ Let's give formal names to what we've seen so far:
 
 . . .
 
-- `Inf`: Positive infinity
+-   `Inf`: Positive infinity
 
 ```{r}
 pi / 0
@@ -424,7 +418,7 @@ pi / 0
 
 . . .
 
-- `-Inf`: Negative infinity
+-   `-Inf`: Negative infinity
 
 ```{r}
 -1 * (pi / 0)
@@ -462,9 +456,9 @@ typeof(NA)
 
 ## Mental model for `NA`s
 
-- Unlike `NaN`, `NA`s are genuinely unknown values
-- But that doesn't mean they can't function in a logical way
-- Let's think about why `NA`s are logical...
+-   Unlike `NaN`, `NA`s are genuinely unknown values
+-   But that doesn't mean they can't function in a logical way
+-   Let's think about why `NA`s are logical...
 
 . . .
 
@@ -472,8 +466,7 @@ typeof(NA)
 Why do the following give different answers?
 :::
 
-:::: {.columns}
-
+::: columns
 ::: {.column width="35%"}
 ```{r}
 # TRUE or NA
@@ -487,8 +480,7 @@ TRUE | NA
 FALSE | NA
 ```
 :::
-
-::::
+:::
 
 ## Mental model for `NA`s {.smaller}
 
@@ -496,7 +488,7 @@ FALSE | NA
 
 . . .
 
-- `TRUE | NA` gives `TRUE`, because the answer is always `TRUE` whether the unknown `NA` is actually `TRUE` or `FALSE`
+-   `TRUE | NA` gives `TRUE`, because the answer is always `TRUE` whether the unknown `NA` is actually `TRUE` or `FALSE`
 
 ```{r}
 TRUE | TRUE  # if NA was TRUE
@@ -505,7 +497,7 @@ TRUE | FALSE # if NA was FALSE
 
 . . .
 
-- `FALSE | NA` gives `FALSE`, because the answer changes depending whether the unknown `NA` is actually `TRUE` or `FALSE`
+-   `FALSE | NA` gives `FALSE`, because the answer changes depending whether the unknown `NA` is actually `TRUE` or `FALSE`
 
 ```{r}
 FALSE | TRUE  # if NA was TRUE
@@ -514,4 +506,4 @@ FALSE | FALSE # if NA was FALSE
 
 . . .
 
-- This may not make sense for mathematical operations, but it does make sense in the context of missing data
+-   This may not make sense for mathematical operations, but it does make sense in the context of missing data

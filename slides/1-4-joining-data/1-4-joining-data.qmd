@@ -30,7 +30,7 @@ format: revealjs
 library(tidyverse)
 ```
 
-## Data: Women in science 
+## Data: Women in science
 
 Information on 10 women in science who changed the world:
 
@@ -98,7 +98,6 @@ nrow(professions)
 
 . . .
 
-
 ```{r}
 names(dates)
 nrow(dates)
@@ -120,22 +119,20 @@ nrow(works)
 something_join(x, y)
 ```
 
-- `left_join()`: all rows from x
-- `right_join()`: all rows from y
-- `full_join()`: all rows from both x and y
-- `semi_join()`: all rows from x where there are matching values in y, keeping just columns from x
-- `inner_join()`: all rows from x where there are matching values in y, return 
-all combination of multiple matches in the case of multiple matches
-- `anti_join()`: return all rows from x where there are not matching values in y, never duplicate rows of x
-- ...
+-   `left_join()`: all rows from x
+-   `right_join()`: all rows from y
+-   `full_join()`: all rows from both x and y
+-   `semi_join()`: all rows from x where there are matching values in y, keeping just columns from x
+-   `inner_join()`: all rows from x where there are matching values in y, return all combination of multiple matches in the case of multiple matches
+-   `anti_join()`: return all rows from x where there are not matching values in y, never duplicate rows of x
+-   ...
 
 ## Setup
 
 For the next few slides...
 
-:::: {.columns}
-
-::: {.column width="35%" .fragment}
+::: columns
+::: {.column .fragment width="35%"}
 ```{r}
 x <- tibble(
   id = c(1, 2, 3),
@@ -146,7 +143,7 @@ x
 ```
 :::
 
-::: {.column width="35%" .fragment}
+::: {.column .fragment width="35%"}
 ```{r}
 y <- tibble(
   id = c(1, 2, 4),
@@ -156,13 +153,11 @@ y <- tibble(
 y
 ```
 :::
-
-::::
+:::
 
 ## `left_join()`
 
-:::: {.columns}
-
+::: columns
 ::: {.column width="35%"}
 ```{r}
 left_join(x, y)
@@ -172,8 +167,7 @@ left_join(x, y)
 ::: {.column width="35%"}
 ![](images/left-join.gif)
 :::
-
-::::
+:::
 
 ## `left_join()`
 
@@ -184,8 +178,7 @@ professions |>
 
 ## `right_join()`
 
-:::: {.columns}
-
+::: columns
 ::: {.column width="35%"}
 ```{r}
 right_join(x, y)
@@ -195,8 +188,7 @@ right_join(x, y)
 ::: {.column width="35%"}
 ![](images/right-join.gif)
 :::
-
-::::
+:::
 
 ## `left_join()`
 
@@ -207,8 +199,7 @@ professions |>
 
 ## `full_join()`
 
-:::: {.columns}
-
+::: columns
 ::: {.column width="35%"}
 ```{r}
 full_join(x, y)
@@ -218,8 +209,7 @@ full_join(x, y)
 ::: {.column width="35%"}
 ![](images/full-join.gif)
 :::
-
-::::
+:::
 
 ## `left_join()`
 
@@ -228,11 +218,9 @@ professions |>
   full_join(dates)
 ```
 
-
 ## `inner_join()`
 
-:::: {.columns}
-
+::: columns
 ::: {.column width="35%"}
 ```{r}
 inner_join(x, y)
@@ -242,8 +230,7 @@ inner_join(x, y)
 ::: {.column width="35%"}
 ![](images/inner-join.gif)
 :::
-
-::::
+:::
 
 ## `inner_join()`
 
@@ -252,11 +239,9 @@ professions |>
   inner_join(dates)
 ```
 
-
 ## `semi_join()`
 
-:::: {.columns}
-
+::: columns
 ::: {.column width="35%"}
 ```{r}
 semi_join(x, y)
@@ -266,8 +251,7 @@ semi_join(x, y)
 ::: {.column width="35%"}
 ![](images/semi-join.gif)
 :::
-
-::::
+:::
 
 ## `semi_join()`
 
@@ -278,8 +262,7 @@ professions |>
 
 ## `anti_join()`
 
-:::: {.columns}
-
+::: columns
 ::: {.column width="35%"}
 ```{r}
 anti_join(x, y)
@@ -289,8 +272,7 @@ anti_join(x, y)
 ::: {.column width="35%"}
 ![](images/anti-join.gif)
 :::
-
-::::
+:::
 
 ## `anti_join()`
 
