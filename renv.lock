@@ -56,7 +56,7 @@
       "Package": "R6",
       "Version": "2.5.1",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "R"
       ],
@@ -66,7 +66,7 @@
       "Package": "RColorBrewer",
       "Version": "1.1-3",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "R"
       ],
@@ -87,7 +87,7 @@
       "Package": "V8",
       "Version": "4.4.2",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "RSPM",
       "Requirements": [
         "Rcpp",
         "curl",
@@ -100,7 +100,7 @@
       "Package": "askpass",
       "Version": "1.2.0",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "sys"
       ],
@@ -110,7 +110,7 @@
       "Package": "assertthat",
       "Version": "0.2.1",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "tools"
       ],
@@ -120,7 +120,7 @@
       "Package": "backports",
       "Version": "1.5.0",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "R"
       ],
@@ -130,7 +130,7 @@
       "Package": "base64enc",
       "Version": "0.1-3",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "R"
       ],
@@ -140,7 +140,7 @@
       "Package": "bigD",
       "Version": "0.2.0",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "RSPM",
       "Requirements": [
         "R"
       ],
@@ -150,7 +150,7 @@
       "Package": "bit",
       "Version": "4.0.5",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "R"
       ],
@@ -160,7 +160,7 @@
       "Package": "bit64",
       "Version": "4.0.5",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "R",
         "bit",
@@ -174,14 +174,14 @@
       "Package": "bitops",
       "Version": "1.0-7",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "RSPM",
       "Hash": "b7d8d8ee39869c18d8846a184dd8a1af"
     },
     "blob": {
       "Package": "blob",
       "Version": "1.2.4",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "methods",
         "rlang",
@@ -213,7 +213,7 @@
       "Package": "bslib",
       "Version": "0.7.0",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "R",
         "base64enc",
@@ -235,7 +235,7 @@
       "Package": "cachem",
       "Version": "1.1.0",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "fastmap",
         "rlang"
@@ -246,7 +246,7 @@
       "Package": "callr",
       "Version": "3.7.6",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "R",
         "R6",
@@ -259,7 +259,7 @@
       "Package": "cellranger",
       "Version": "1.1.0",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "R",
         "rematch",
@@ -282,7 +282,7 @@
       "Package": "clipr",
       "Version": "0.8.0",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "utils"
       ],
@@ -302,7 +302,7 @@
       "Package": "colorspace",
       "Version": "2.1-0",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "R",
         "grDevices",
@@ -316,7 +316,7 @@
       "Package": "commonmark",
       "Version": "1.9.1",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "RSPM",
       "Hash": "5d8225445acb167abf7797de48b2ee3c"
     },
     "conflicted": {
@@ -336,7 +336,7 @@
       "Package": "cpp11",
       "Version": "0.4.7",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "R"
       ],
@@ -358,7 +358,7 @@
       "Package": "credentials",
       "Version": "2.0.1",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "askpass",
         "curl",
@@ -372,7 +372,7 @@
       "Package": "curl",
       "Version": "5.2.1",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "R"
       ],
@@ -382,7 +382,7 @@
       "Package": "data.table",
       "Version": "1.15.4",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "R",
         "methods"
@@ -393,7 +393,7 @@
       "Package": "dbplyr",
       "Version": "2.5.0",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "DBI",
         "R",
@@ -421,7 +421,7 @@
       "Package": "desc",
       "Version": "1.4.3",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "R",
         "R6",
@@ -445,7 +445,7 @@
       "Package": "dplyr",
       "Version": "1.1.4",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "R",
         "R6",
@@ -498,7 +498,7 @@
       "Package": "fansi",
       "Version": "1.0.6",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "R",
         "grDevices",
@@ -510,21 +510,21 @@
       "Package": "farver",
       "Version": "2.1.2",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Hash": "680887028577f3fa2a81e410ed0d6e42"
     },
     "fastmap": {
       "Package": "fastmap",
       "Version": "1.2.0",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Hash": "aa5e1cd11c2d15497494c5292d7ffcc8"
     },
     "fontawesome": {
       "Package": "fontawesome",
       "Version": "0.5.2",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "R",
         "htmltools",
@@ -536,7 +536,7 @@
       "Package": "forcats",
       "Version": "1.0.0",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "R",
         "cli",
@@ -552,7 +552,7 @@
       "Package": "fs",
       "Version": "1.6.4",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "R",
         "methods"
@@ -563,7 +563,7 @@
       "Package": "future",
       "Version": "1.33.2",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "RSPM",
       "Requirements": [
         "digest",
         "globals",
@@ -592,7 +592,7 @@
       "Package": "gargle",
       "Version": "1.5.2",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "R",
         "cli",
@@ -614,7 +614,7 @@
       "Package": "generics",
       "Version": "0.1.3",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "R",
         "methods"
@@ -640,7 +640,7 @@
       "Package": "ggplot2",
       "Version": "3.5.1",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "MASS",
         "R",
@@ -665,7 +665,7 @@
       "Package": "gh",
       "Version": "1.4.1",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "R",
         "cli",
@@ -683,7 +683,7 @@
       "Package": "gitcreds",
       "Version": "0.1.2",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "R"
       ],
@@ -693,7 +693,7 @@
       "Package": "globals",
       "Version": "0.16.3",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "R",
         "codetools"
@@ -704,7 +704,7 @@
       "Package": "glue",
       "Version": "1.7.0",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "R",
         "methods"
@@ -715,7 +715,7 @@
       "Package": "googledrive",
       "Version": "2.1.1",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "R",
         "cli",
@@ -740,7 +740,7 @@
       "Package": "googlesheets4",
       "Version": "1.1.1",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "R",
         "cellranger",
@@ -798,7 +798,7 @@
       "Package": "gtable",
       "Version": "0.3.5",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "R",
         "cli",
@@ -834,7 +834,7 @@
       "Package": "highr",
       "Version": "0.11",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "R",
         "xfun"
@@ -845,7 +845,7 @@
       "Package": "hms",
       "Version": "1.1.3",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "lifecycle",
         "methods",
@@ -859,7 +859,7 @@
       "Package": "htmltools",
       "Version": "0.5.8.1",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "R",
         "base64enc",
@@ -875,7 +875,7 @@
       "Package": "htmlwidgets",
       "Version": "1.6.4",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "RSPM",
       "Requirements": [
         "grDevices",
         "htmltools",
@@ -890,7 +890,7 @@
       "Package": "httr",
       "Version": "1.4.7",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "R",
         "R6",
@@ -926,7 +926,7 @@
       "Package": "ids",
       "Version": "1.0.1",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "openssl",
         "uuid"
@@ -937,14 +937,14 @@
       "Package": "ini",
       "Version": "0.3.1",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Hash": "6154ec2223172bce8162d4153cda21f7"
     },
     "isoband": {
       "Package": "isoband",
       "Version": "0.2.7",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "grid",
         "utils"
@@ -977,7 +977,7 @@
       "Package": "jquerylib",
       "Version": "0.1.4",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "htmltools"
       ],
@@ -987,7 +987,7 @@
       "Package": "jsonlite",
       "Version": "1.8.8",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "methods"
       ],
@@ -997,7 +997,7 @@
       "Package": "juicyjuice",
       "Version": "0.1.0",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "RSPM",
       "Requirements": [
         "V8"
       ],
@@ -1023,7 +1023,7 @@
       "Package": "labeling",
       "Version": "0.4.3",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "graphics",
         "stats"
@@ -1049,7 +1049,7 @@
       "Package": "lifecycle",
       "Version": "1.0.4",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "R",
         "cli",
@@ -1062,7 +1062,7 @@
       "Package": "listenv",
       "Version": "0.9.1",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "R"
       ],
@@ -1072,7 +1072,7 @@
       "Package": "lubridate",
       "Version": "1.9.3",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "R",
         "generics",
@@ -1108,7 +1108,7 @@
       "Package": "memoise",
       "Version": "2.0.1",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "cachem",
         "rlang"
@@ -1136,7 +1136,7 @@
       "Package": "mime",
       "Version": "0.12",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "tools"
       ],
@@ -1164,7 +1164,7 @@
       "Package": "munsell",
       "Version": "0.5.1",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "colorspace",
         "methods"
@@ -1189,7 +1189,7 @@
       "Package": "openssl",
       "Version": "2.2.0",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "askpass"
       ],
@@ -1199,7 +1199,7 @@
       "Package": "parallelly",
       "Version": "1.37.1",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "RSPM",
       "Requirements": [
         "parallel",
         "tools",
@@ -1211,7 +1211,7 @@
       "Package": "pillar",
       "Version": "1.9.0",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "cli",
         "fansi",
@@ -1228,7 +1228,7 @@
       "Package": "pkgconfig",
       "Version": "2.0.3",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "utils"
       ],
@@ -1255,7 +1255,7 @@
       "Package": "prettyunits",
       "Version": "1.2.0",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "R"
       ],
@@ -1265,7 +1265,7 @@
       "Package": "processx",
       "Version": "3.8.4",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "R",
         "R6",
@@ -1278,7 +1278,7 @@
       "Package": "progress",
       "Version": "1.2.3",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "R",
         "R6",
@@ -1292,7 +1292,7 @@
       "Package": "ps",
       "Version": "1.7.6",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "RSPM",
       "Requirements": [
         "R",
         "utils"
@@ -1303,7 +1303,7 @@
       "Package": "purrr",
       "Version": "1.0.2",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "R",
         "cli",
@@ -1318,7 +1318,7 @@
       "Package": "ragg",
       "Version": "1.3.2",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "systemfonts",
         "textshaping"
@@ -1329,7 +1329,7 @@
       "Package": "rappdirs",
       "Version": "0.3.3",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "R"
       ],
@@ -1359,7 +1359,7 @@
       "Package": "reactable",
       "Version": "0.4.4",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "RSPM",
       "Requirements": [
         "R",
         "digest",
@@ -1374,7 +1374,7 @@
       "Package": "readr",
       "Version": "2.1.5",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "R",
         "R6",
@@ -1397,7 +1397,7 @@
       "Package": "readxl",
       "Version": "1.4.3",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "R",
         "cellranger",
@@ -1412,14 +1412,14 @@
       "Package": "rematch",
       "Version": "2.0.0",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Hash": "cbff1b666c6fa6d21202f07e2318d4f1"
     },
     "rematch2": {
       "Package": "rematch2",
       "Version": "2.1.2",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "tibble"
       ],
@@ -1429,7 +1429,7 @@
       "Package": "renv",
       "Version": "1.0.7",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "RSPM",
       "Requirements": [
         "utils"
       ],
@@ -1439,7 +1439,7 @@
       "Package": "reprex",
       "Version": "2.1.0",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "RSPM",
       "Requirements": [
         "R",
         "callr",
@@ -1472,7 +1472,7 @@
       "Package": "rmarkdown",
       "Version": "2.27",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "R",
         "bslib",
@@ -1512,7 +1512,7 @@
       "Package": "rprojroot",
       "Version": "2.0.4",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "R"
       ],
@@ -1522,7 +1522,7 @@
       "Package": "rstudioapi",
       "Version": "0.16.0",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Hash": "96710351d642b70e8f02ddeb237c46a7"
     },
     "rvest": {
@@ -1548,7 +1548,7 @@
       "Package": "sass",
       "Version": "0.4.9",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "R6",
         "fs",
@@ -1562,7 +1562,7 @@
       "Package": "scales",
       "Version": "1.3.0",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "R",
         "R6",
@@ -1618,7 +1618,7 @@
       "Package": "stringi",
       "Version": "1.8.4",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "R",
         "stats",
@@ -1631,7 +1631,7 @@
       "Package": "stringr",
       "Version": "1.5.1",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "R",
         "cli",
@@ -1648,14 +1648,14 @@
       "Package": "sys",
       "Version": "3.4.2",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Hash": "3a1be13d68d47a8cd0bfd74739ca1555"
     },
     "systemfonts": {
       "Package": "systemfonts",
       "Version": "1.1.0",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "R",
         "cpp11",
@@ -1667,7 +1667,7 @@
       "Package": "textshaping",
       "Version": "0.4.0",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "R",
         "cpp11",
@@ -1680,7 +1680,7 @@
       "Package": "tibble",
       "Version": "3.2.1",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "R",
         "fansi",
@@ -1699,7 +1699,7 @@
       "Package": "tidyr",
       "Version": "1.3.1",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "R",
         "cli",
@@ -1722,7 +1722,7 @@
       "Package": "tidyselect",
       "Version": "1.2.1",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "R",
         "cli",
@@ -1778,7 +1778,7 @@
       "Package": "timechange",
       "Version": "0.3.0",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "R",
         "cpp11"
@@ -1789,7 +1789,7 @@
       "Package": "tinytex",
       "Version": "0.51",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "xfun"
       ],
@@ -1799,7 +1799,7 @@
       "Package": "tzdb",
       "Version": "0.4.0",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "R",
         "cpp11"
@@ -1810,7 +1810,7 @@
       "Package": "usethis",
       "Version": "2.2.3",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "RSPM",
       "Requirements": [
         "R",
         "cli",
@@ -1841,7 +1841,7 @@
       "Package": "utf8",
       "Version": "1.2.4",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "R"
       ],
@@ -1851,7 +1851,7 @@
       "Package": "uuid",
       "Version": "1.2-0",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "R"
       ],
@@ -1861,7 +1861,7 @@
       "Package": "vctrs",
       "Version": "0.6.5",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "R",
         "cli",
@@ -1875,7 +1875,7 @@
       "Package": "viridisLite",
       "Version": "0.4.2",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "R"
       ],
@@ -1885,7 +1885,7 @@
       "Package": "vroom",
       "Version": "1.6.5",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "R",
         "bit64",
@@ -1911,14 +1911,14 @@
       "Package": "whisker",
       "Version": "0.4.1",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Hash": "c6abfa47a46d281a7d5159d0a8891e88"
     },
     "withr": {
       "Package": "withr",
       "Version": "3.0.0",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "R",
         "grDevices",
@@ -1942,7 +1942,7 @@
       "Package": "xml2",
       "Version": "1.3.6",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Requirements": [
         "R",
         "cli",
@@ -1962,7 +1962,7 @@
       "Package": "zip",
       "Version": "2.3.1",
       "Source": "Repository",
-      "Repository": "https://packagemanager.rstudio.com/all/latest",
+      "Repository": "CRAN",
       "Hash": "fcc4bd8e6da2d2011eb64a5e5cc685ab"
     }
   }
