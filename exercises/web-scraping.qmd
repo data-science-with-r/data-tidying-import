@@ -80,9 +80,7 @@ star_wars_html <- read_html("https://rvest.tidyverse.org/articles/starwars.html"
 
 Before we get started, let's first take a note of the movie titles.
 
-Scroll through the website and list the titles of the movies.
-There are seven movie titles on this page.
-They include:
+Scroll through the website and list the titles of the movies. There are seven movie titles on this page. They include:
 
 -   The Phantom Menace
 -   Attack of the Clones
@@ -92,35 +90,22 @@ They include:
 -   Return of the Jedi
 -   The Force Awakens
 
-The next step is to identify the CSS selector that is associated with each title.
-We'll use the [Selector Gadget](https://selectorgadget.com/) to help identify the CSS selectors associated with the items we're interested in scraping.
-Selector Gadget is an open source extension for the Chrome browser that helps users find elements of an webpage easier.
-Go to [this page](https://chromewebstore.google.com/detail/selectorgadget/mhjhnkcfbdhnjickkkdbjoemdmbfginb?hl=en) to install the extension.
-When the Selector Gadget is installed, you should see its icon, ![](images/gadget.png), in your task bar.
+The next step is to identify the CSS selector that is associated with each title. We'll use the [Selector Gadget](https://selectorgadget.com/) to help identify the CSS selectors associated with the items we're interested in scraping. Selector Gadget is an open source extension for the Chrome browser that helps users find elements of an webpage easier. Go to [this page](https://chromewebstore.google.com/detail/selectorgadget/mhjhnkcfbdhnjickkkdbjoemdmbfginb?hl=en) to install the extension. When the Selector Gadget is installed, you should see its icon, ![](images/gadget.png), in your task bar.
 
-Next, we need to find the CSS selector that is associated with the titles of each Star Wars movie.
-Click the ![](images/gadget.png) icon and click on one of the titles.
-Click on another one.
+Next, we need to find the CSS selector that is associated with the titles of each Star Wars movie. Click the ![](images/gadget.png) icon and click on one of the titles. Click on another one.
 
 ![](images/css-selector-1.png)
 
-Notice that the text you clicked on (that you wish to scrape) is highlighted in green.
-Other pieces of text with the same CSS selector are highlighted in yellow.
+Notice that the text you clicked on (that you wish to scrape) is highlighted in green. Other pieces of text with the same CSS selector are highlighted in yellow.
 
-We can see that the text in green/yellow include the seven titles, and an additional element, the text that reads "ON THIS PAGE".
-This last piece of text is not something we want, therefore we unselect it by clicking on it, which changes the highlight to red.
+We can see that the text in green/yellow include the seven titles, and an additional element, the text that reads "ON THIS PAGE". This last piece of text is not something we want, therefore we unselect it by clicking on it, which changes the highlight to red.
 
 ![](images/css-selector-2.png)
 
-Now, we have our seven titles in green/yellow that we want to scrape.
-In the bottom right corner, we can see the CSS selector associated with just these seven titles.
-We will use this information to extract the titles from the page source code we saved earlier.
+Now, we have our seven titles in green/yellow that we want to scrape. In the bottom right corner, we can see the CSS selector associated with just these seven titles. We will use this information to extract the titles from the page source code we saved earlier.
 
 ::: exercise
-First, run the code below and inspect the result.
-Then, re-run with `html_text2()` instead of `html_text()` in the last step of the pipe.
-What is the difference between these functions?
-Which is preferable, and why?
+First, run the code below and inspect the result. Then, re-run with `html_text2()` instead of `html_text()` in the last step of the pipe. What is the difference between these functions? Which is preferable, and why?
 
 ```{webr}
 #| setup: true
@@ -157,9 +142,7 @@ titles
 ::: {.callout-tip collapse="true"}
 ## Solution
 
-`html_text()` returns the raw underlying text, including any white spaces, HTML code, etc. `html_text2()` tries to simulate how the text is displayed in the browser, i.e., cleans up the text.
-You can find out more about these functions in the [function documentation](https://rvest.tidyverse.org/reference/html_text.html).
-In this case, `html_text2()` is preferable.
+`html_text()` returns the raw underlying text, including any white spaces, HTML code, etc. `html_text2()` tries to simulate how the text is displayed in the browser, i.e., cleans up the text. You can find out more about these functions in the [function documentation](https://rvest.tidyverse.org/reference/html_text.html). In this case, `html_text2()` is preferable.
 
 ``` r
 titles <- star_wars_html |>
@@ -174,13 +157,9 @@ titles
 
 ### Release dates
 
-Next, let's extract the release dates.
-We can follow the same process as above.
+Next, let's extract the release dates. We can follow the same process as above.
 
-Click on a released date that you hope to scrape.
-Click on any yellow text you wish to exclude that has the same element tag.
-Click on a second released date.
-Again, click on any yellow text you wish to exclude.
+Click on a released date that you hope to scrape. Click on any yellow text you wish to exclude that has the same element tag. Click on a second released date. Again, click on any yellow text you wish to exclude.
 
 Once you completed this process, you should see an element tag for just the released dates of `section \> p:nth-child(2)`.
 
@@ -207,8 +186,7 @@ release_dates
 ::: {.callout-note collapse="false"}
 ## Hint 1
 
-Extract HTML elements with the CSS selector `"section > p:nth-child(2)`".
-We use `html_elements()` and not `html_element()` since there are multiple release dates we want to extract.
+Extract HTML elements with the CSS selector `"section > p:nth-child(2)`". We use `html_elements()` and not `html_element()` since there are multiple release dates we want to extract.
 
 ``` r
 ___ <- star_wars_html |>
@@ -258,9 +236,7 @@ release_dates
 Now we're ready to put everything we scraped together in a data frame, thus converting unstructured data from the web into a tidy data frame in R.
 
 ::: exercise
-Create a tibble called `star_wars` with two columns: `title` and `release_date`.
-This tibble should have seven rows, one for each movie scraped, and contain information from the `titles` and `release_dates` vectors you previously created.
-Confirm that you have correctly created the tibble by printing it out.
+Create a tibble called `star_wars` with two columns: `title` and `release_date`. This tibble should have seven rows, one for each movie scraped, and contain information from the `titles` and `release_dates` vectors you previously created. Confirm that you have correctly created the tibble by printing it out.
 
 ```{webr}
 #| setup: true
@@ -283,8 +259,7 @@ ___
 ::: {.callout-note collapse="false"}
 ## Hint 1
 
-Create a tibble with `tibble()` and call it `star_wars`.
-This tibble will have two columns (variables), we define these separated by a comma in the `tibble()` call.
+Create a tibble with `tibble()` and call it `star_wars`. This tibble will have two columns (variables), we define these separated by a comma in the `tibble()` call.
 
 ``` r
 star_wars <- tibble(
@@ -314,8 +289,7 @@ star_wars <- tibble(
 ::: {.callout-tip collapse="true"}
 ## Solution
 
-We assign the vectors `titles` and `release_dates` that we had previous extracted and stored to these variables.
-And we finally view the contents of the new data frame we created, `star_wars`.
+We assign the vectors `titles` and `release_dates` that we had previous extracted and stored to these variables. And we finally view the contents of the new data frame we created, `star_wars`.
 
 ``` r
 star_wars <- tibble(
@@ -331,8 +305,7 @@ star_wars
 
 ## Working with scraped eCommerce pages
 
-In the last Code Along activity, you wrote a function to scrape eCommerce data from multiple pages.
-In this part of the programming exercise, we are going to practice working with numerical and text data that you scraped from this website.
+In the last Code Along activity, you wrote a function to scrape eCommerce data from multiple pages. In this part of the programming exercise, we are going to practice working with numerical and text data that you scraped from this website.
 
 Run the following code to load these data from a CSV file called `items-80.csv`, and save it as `ecomm`.
 
@@ -341,11 +314,7 @@ ecomm <- read_csv("items-80.csv")
 ```
 
 ::: exercise
-Take a glimpse at the `ecomm` data frame.
-How many observations does the data frame have?
-What does each observation represent?
-How many variables does the data frame have?
-What are they?
+Take a glimpse at the `ecomm` data frame. How many observations does the data frame have? What does each observation represent? How many variables does the data frame have? What are they?
 
 ```{webr}
 #| setup: true
@@ -362,8 +331,7 @@ ___
 ::: {.callout-tip collapse="true"}
 ## Solution
 
-`ecomm` has 80 observations, each observation is an item being sold on the eCommerce website.
-And `ecomm` has 3 variables, these are `title`, `url` and `price`.
+`ecomm` has 80 observations, each observation is an item being sold on the eCommerce website. And `ecomm` has 3 variables, these are `title`, `url` and `price`.
 
 ``` r
 glimpse(ecomm)
@@ -390,8 +358,7 @@ ___
 ::: {.callout-note collapse="false"}
 ## Hint
 
-Use the functions `ggplot()` and `geom_histogram()` to make your plot.
-Play around with the binwidth, and add appropriate labels.
+Use the functions `ggplot()` and `geom_histogram()` to make your plot. Play around with the binwidth, and add appropriate labels.
 :::
 :::
 
@@ -417,8 +384,7 @@ ggplot(___, aes(x = ___)) +
 ::: {.callout-tip collapse="true"}
 ## Solution
 
-A binwidth of 5 seems reasonable.
-You can try other values as well.
+A binwidth of 5 seems reasonable. You can try other values as well.
 
 ``` r
 ggplot(ecomm, aes(x = price)) +
@@ -433,12 +399,10 @@ ggplot(ecomm, aes(x = price)) +
 :::
 :::
 
-Next, you'll work with text data to discover more patterns.
-Suppose you're interested in prices of shorts on this eCommerce site, but the titles of items that would be consideted "shorts" can be all over te place.
+Next, you'll work with text data to discover more patterns. Suppose you're interested in prices of shorts on this eCommerce site, but the titles of items that would be consideted "shorts" can be all over te place.
 
 ::: exercise
-Create a new variable, `shorts`, that takes the value `TRUE` if the `title` of an item contains the word `short` or `Short`, and `FALSE` otherwise.
-Save the data frame with this new variable.
+Create a new variable, `shorts`, that takes the value `TRUE` if the `title` of an item contains the word `short` or `Short`, and `FALSE` otherwise. Save the data frame with this new variable.
 
 ```{webr}
 #| setup: true
@@ -507,8 +471,7 @@ ecomm <- ecomm |>
 You just created an indicator variable!
 
 ::: exercise
-Using this variable, evaluate how the average price of shorts compare to the average price of other items.
-How do the standard deviations of the prices of these two groups of items compare?
+Using this variable, evaluate how the average price of shorts compare to the average price of other items. How do the standard deviations of the prices of these two groups of items compare?
 
 ```{webr}
 #| setup: true
@@ -541,8 +504,7 @@ ecomm |>
 ::: {.callout-tip collapse="true"}
 ## Solution
 
-Shorts, on average, sell for \$8 lower than other items.
-The prices of shorts are less variable (lower standard deviation) than other items.
+Shorts, on average, sell for \$8 lower than other items. The prices of shorts are less variable (lower standard deviation) than other items.
 
 ``` r
 ecomm |>
@@ -558,10 +520,7 @@ ecomm |>
 
 ## Asking for permission
 
-Just because you have the tools to scrape data doesn't mean you should or have permission to do so.
-We will use the `bow()` function from the polite package in R to introduce the client to the host and ask for permission to scrape.
-Use the following code to ensure that we had permission to scrape Star Wars!
-Note that the input for `bow()` is a URL, provided as a character string.
+Just because you have the tools to scrape data doesn't mean you should or have permission to do so. We will use the `bow()` function from the polite package in R to introduce the client to the host and ask for permission to scrape. Use the following code to ensure that we had permission to scrape Star Wars! Note that the input for `bow()` is a URL, provided as a character string.
 
 ```{r}
 #| warning: false
@@ -588,8 +547,7 @@ bow("https://www.zillow.com")
 ::: {.callout-tip collapse="true"}
 ## Solution
 
-We do not have permission to scrape [espn.com](https://www.espn.com) or [x.com](https://x.com/).
-We do have permission to scrape [bettycrocker.com](https://www.bettycrocker.com/) and [zillow.com](https://www.zillow.com/).
+We do not have permission to scrape [espn.com](https://www.espn.com) or [x.com](https://x.com/). We do have permission to scrape [bettycrocker.com](https://www.bettycrocker.com/) and [zillow.com](https://www.zillow.com/).
 :::
 :::
 
