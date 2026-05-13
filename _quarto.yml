@@ -23,6 +23,6 @@ code-link: true
 highlight-style: github
 
 execute:
-  freeze: auto
+  freeze: false
 
 editor: visual
