@@ -65,6 +65,7 @@
       "Package": "R6",
       "Version": "2.6.1",
       "Source": "Repository",
+<<<<<<< HEAD
       "Title": "Encapsulated Classes with Reference Semantics",
       "Authors@R": "c( person(\"Winston\", \"Chang\", , \"winston@posit.co\", role = c(\"aut\", \"cre\")), person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\")) )",
       "Description": "Creates classes with reference semantics, similar to R's built-in reference classes. Compared to reference classes, R6 classes are simpler and lighter-weight, and they are not built on S4 classes so they do not require the methods package. These classes allow public and private members, and they support inheritance, even when the classes are defined in different packages.",
@@ -73,6 +74,11 @@
       "BugReports": "https://github.com/r-lib/R6/issues",
       "Depends": [
         "R (>= 3.6)"
+=======
+      "Repository": "CRAN",
+      "Requirements": [
+        "R"
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
       ],
       "Suggests": [
         "lobstr",
@@ -91,6 +97,7 @@
       "Package": "RColorBrewer",
       "Version": "1.1-3",
       "Source": "Repository",
+<<<<<<< HEAD
       "Date": "2022-04-03",
       "Title": "ColorBrewer Palettes",
       "Authors@R": "c(person(given = \"Erich\", family = \"Neuwirth\", role = c(\"aut\", \"cre\"), email = \"erich.neuwirth@univie.ac.at\"))",
@@ -98,6 +105,11 @@
       "Maintainer": "Erich Neuwirth <erich.neuwirth@univie.ac.at>",
       "Depends": [
         "R (>= 2.0.0)"
+=======
+      "Repository": "CRAN",
+      "Requirements": [
+        "R"
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
       ],
       "Description": "Provides color schemes for maps (and other graphics) designed by Cynthia Brewer as described at http://colorbrewer2.org.",
       "License": "Apache License 2.0",
@@ -180,6 +192,7 @@
       "Package": "V8",
       "Version": "8.2.0",
       "Source": "Repository",
+<<<<<<< HEAD
       "Type": "Package",
       "Title": "Embedded JavaScript and WebAssembly Engine for R",
       "Authors@R": "c( person(\"Jeroen\", \"Ooms\", role = c(\"aut\", \"cre\"), email = \"jeroenooms@gmail.com\", comment = c(ORCID = \"0000-0002-4035-0289\")), person(\"George\", \"Stagg\", role = \"ctb\", comment = c(ORCID = \"0009-0006-3173-9846\")), person(\"Jan Marvin\", \"Garbuszus\", role = \"ctb\"))",
@@ -194,6 +207,13 @@
         "Rcpp (>= 0.12.12)",
         "jsonlite (>= 1.0)",
         "curl (>= 1.0)",
+=======
+      "Repository": "RSPM",
+      "Requirements": [
+        "Rcpp",
+        "curl",
+        "jsonlite",
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
         "utils"
       ],
       "LinkingTo": [
@@ -216,6 +236,7 @@
       "Package": "askpass",
       "Version": "1.2.1",
       "Source": "Repository",
+<<<<<<< HEAD
       "Type": "Package",
       "Title": "Password Entry Utilities for R, Git, and SSH",
       "Authors@R": "person(\"Jeroen\", \"Ooms\", role = c(\"aut\", \"cre\"),  email = \"jeroenooms@gmail.com\", comment = c(ORCID = \"0000-0002-4035-0289\"))",
@@ -226,6 +247,11 @@
       "Encoding": "UTF-8",
       "Imports": [
         "sys (>= 2.1)"
+=======
+      "Repository": "CRAN",
+      "Requirements": [
+        "sys"
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
       ],
       "RoxygenNote": "7.2.3",
       "Suggests": [
@@ -241,11 +267,16 @@
       "Package": "assertthat",
       "Version": "0.2.1",
       "Source": "Repository",
+<<<<<<< HEAD
       "Title": "Easy Pre and Post Assertions",
       "Authors@R": "person(\"Hadley\", \"Wickham\", , \"hadley@rstudio.com\", c(\"aut\", \"cre\"))",
       "Description": "An extension to stopifnot() that makes it easy to declare  the pre and post conditions that you code should satisfy, while also  producing friendly error messages so that your users know what's gone wrong.",
       "License": "GPL-3",
       "Imports": [
+=======
+      "Repository": "CRAN",
+      "Requirements": [
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
         "tools"
       ],
       "Suggests": [
@@ -263,6 +294,7 @@
       "Package": "backports",
       "Version": "1.5.1",
       "Source": "Repository",
+<<<<<<< HEAD
       "Type": "Package",
       "Title": "Reimplementations of Functions Introduced Since R-3.0.0",
       "Authors@R": "c( person(\"Michel\", \"Lang\", NULL, \"michellang@gmail.com\", role = c(\"cre\", \"aut\"), comment = c(ORCID = \"0000-0001-9754-0393\")), person(\"Duncan\", \"Murdoch\", NULL, \"murdoch.duncan@gmail.com\", role = c(\"aut\")), person(\"R Core Team\", role = \"aut\"))",
@@ -275,6 +307,11 @@
       "ByteCompile": "yes",
       "Depends": [
         "R (>= 3.0.0)"
+=======
+      "Repository": "CRAN",
+      "Requirements": [
+        "R"
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
       ],
       "Encoding": "UTF-8",
       "RoxygenNote": "7.3.3",
@@ -285,12 +322,18 @@
       "Package": "base64enc",
       "Version": "0.1-6",
       "Source": "Repository",
+<<<<<<< HEAD
       "Title": "Tools for 'base64' Encoding",
       "Author": "Simon Urbanek [aut, cre, cph] (https://urbanek.nz, ORCID: <https://orcid.org/0000-0003-2297-1732>)",
       "Authors@R": "person(\"Simon\", \"Urbanek\", role=c(\"aut\",\"cre\",\"cph\"), email=\"Simon.Urbanek@r-project.org\", comment=c(\"https://urbanek.nz\", ORCID=\"0000-0003-2297-1732\"))",
       "Maintainer": "Simon Urbanek <Simon.Urbanek@r-project.org>",
       "Depends": [
         "R (>= 2.9.0)"
+=======
+      "Repository": "CRAN",
+      "Requirements": [
+        "R"
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
       ],
       "Enhances": [
         "png"
@@ -306,6 +349,7 @@
       "Package": "bigD",
       "Version": "0.3.1",
       "Source": "Repository",
+<<<<<<< HEAD
       "Type": "Package",
       "Title": "Flexibly Format Dates and Times to a Given Locale",
       "Description": "Format dates and times flexibly and to whichever locales make sense. Parses dates, times, and date-times in various formats (including string-based ISO 8601 constructions). The formatting syntax gives the user many options for formatting the date and time output in a precise manner. Time zones in the input can be expressed in multiple ways and there are many options for formatting time zones in the output as well. Several of the provided helper functions allow for automatic generation of locale-aware formatting patterns based on date/time skeleton formats and standardized date/time formats with varying specificity.",
@@ -317,6 +361,11 @@
       "RoxygenNote": "7.3.2",
       "Depends": [
         "R (>= 3.6.0)"
+=======
+      "Repository": "RSPM",
+      "Requirements": [
+        "R"
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
       ],
       "Suggests": [
         "testthat (>= 3.0.0)",
@@ -333,10 +382,16 @@
       "Package": "bit",
       "Version": "4.6.0",
       "Source": "Repository",
+<<<<<<< HEAD
       "Title": "Classes and Methods for Fast Memory-Efficient Boolean Selections",
       "Authors@R": "c( person(\"Michael\", \"Chirico\", email = \"MichaelChirico4@gmail.com\", role = c(\"aut\", \"cre\")), person(\"Jens\", \"Oehlschlägel\", role = \"aut\"), person(\"Brian\", \"Ripley\", role = \"ctb\") )",
       "Depends": [
         "R (>= 3.4.0)"
+=======
+      "Repository": "CRAN",
+      "Requirements": [
+        "R"
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
       ],
       "Suggests": [
         "testthat (>= 3.0.0)",
@@ -366,6 +421,7 @@
       "Package": "bit64",
       "Version": "4.8.2",
       "Source": "Repository",
+<<<<<<< HEAD
       "Title": "A S3 Class for Vectors of 64bit Integers",
       "Authors@R": "c( person(\"Michael\", \"Chirico\", email=\"michaelchirico4@gmail.com\", role=c(\"aut\", \"cre\")), person(\"Jens\", \"Oehlschlägel\", role=\"aut\"), person(\"Leonardo\", \"Silvestri\", role=\"ctb\"), person(\"Ofek\", \"Shilon\", role=\"ctb\"), person(\"Christian\", \"Ullerich\", role=\"ctb\") )",
       "Depends": [
@@ -380,6 +436,12 @@
       "Imports": [
         "bit (>= 4.0.0)",
         "graphics",
+=======
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "bit",
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
         "methods",
         "stats",
         "utils"
@@ -402,6 +464,7 @@
       "Package": "bitops",
       "Version": "1.0-9",
       "Source": "Repository",
+<<<<<<< HEAD
       "Date": "2024-10-03",
       "Authors@R": "c( person(\"Steve\", \"Dutky\", role = \"aut\", email = \"sdutky@terpalum.umd.edu\", comment = \"S original; then (after MM's port) revised and modified\"), person(\"Martin\", \"Maechler\", role = c(\"cre\", \"aut\"), email = \"maechler@stat.math.ethz.ch\", comment = c(\"Initial R port; tweaks\", ORCID = \"0000-0002-8685-9910\")))",
       "Title": "Bitwise Operations",
@@ -413,11 +476,16 @@
       "Author": "Steve Dutky [aut] (S original; then (after MM's port) revised and modified), Martin Maechler [cre, aut] (Initial R port; tweaks, <https://orcid.org/0000-0002-8685-9910>)",
       "Maintainer": "Martin Maechler <maechler@stat.math.ethz.ch>",
       "Repository": "CRAN"
+=======
+      "Repository": "RSPM",
+      "Hash": "b7d8d8ee39869c18d8846a184dd8a1af"
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
     },
     "blob": {
       "Package": "blob",
       "Version": "1.3.0",
       "Source": "Repository",
+<<<<<<< HEAD
       "Title": "A Simple S3 Class for Representing Vectors of Binary Data ('BLOBS')",
       "Authors@R": "c( person(\"Hadley\", \"Wickham\", role = \"aut\"), person(\"Kirill\", \"Müller\", , \"kirill@cynkra.com\", role = \"cre\"), person(\"RStudio\", role = c(\"cph\", \"fnd\")) )",
       "Description": "R's raw vector is useful for storing a single binary object. What if you want to put a vector of them in a data frame? The 'blob' package provides the blob object, a list of raw vectors, suitable for use as a column in data frame.",
@@ -425,6 +493,10 @@
       "URL": "https://blob.tidyverse.org, https://github.com/tidyverse/blob",
       "BugReports": "https://github.com/tidyverse/blob/issues",
       "Imports": [
+=======
+      "Repository": "CRAN",
+      "Requirements": [
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
         "methods",
         "rlang",
         "vctrs (>= 0.2.1)"
@@ -573,6 +645,7 @@
       "Package": "bslib",
       "Version": "0.11.0",
       "Source": "Repository",
+<<<<<<< HEAD
       "Title": "Custom 'Bootstrap' 'Sass' Themes for 'shiny' and 'rmarkdown'",
       "Authors@R": "c( person(\"Carson\", \"Sievert\", , \"carson@posit.co\", role = c(\"aut\", \"cre\"), comment = c(ORCID = \"0000-0002-4958-2844\")), person(\"Joe\", \"Cheng\", , \"joe@posit.co\", role = \"aut\"), person(\"Garrick\", \"Aden-Buie\", , \"garrick@posit.co\", role = \"aut\", comment = c(ORCID = \"0000-0002-7111-0077\")), person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\")), person(, \"Bootstrap contributors\", role = \"ctb\", comment = \"Bootstrap library\"), person(, \"Twitter, Inc\", role = \"cph\", comment = \"Bootstrap library\"), person(\"Javi\", \"Aguilar\", role = c(\"ctb\", \"cph\"), comment = \"Bootstrap colorpicker library\"), person(\"Thomas\", \"Park\", role = c(\"ctb\", \"cph\"), comment = \"Bootswatch library\"), person(, \"PayPal\", role = c(\"ctb\", \"cph\"), comment = \"Bootstrap accessibility plugin\") )",
       "Description": "Simplifies custom 'CSS' styling of both 'shiny' and 'rmarkdown' via 'Bootstrap' 'Sass'. Supports 'Bootstrap' 3, 4 and 5 as well as their various 'Bootswatch' themes. An interactive widget is also provided for previewing themes in real time.",
@@ -583,6 +656,11 @@
         "R (>= 2.10)"
       ],
       "Imports": [
+=======
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
         "base64enc",
         "cachem",
         "fastmap (>= 1.1.1)",
@@ -634,6 +712,7 @@
       "Package": "cachem",
       "Version": "1.1.0",
       "Source": "Repository",
+<<<<<<< HEAD
       "Title": "Cache R Objects with Automatic Pruning",
       "Description": "Key-value stores with automatic pruning. Caches can limit either their total size or the age of the oldest object (or both), automatically pruning objects to maintain the constraints.",
       "Authors@R": "c( person(\"Winston\", \"Chang\", , \"winston@posit.co\", c(\"aut\", \"cre\")), person(family = \"Posit Software, PBC\", role = c(\"cph\", \"fnd\")))",
@@ -644,6 +723,12 @@
       "Imports": [
         "rlang",
         "fastmap (>= 1.2.0)"
+=======
+      "Repository": "CRAN",
+      "Requirements": [
+        "fastmap",
+        "rlang"
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
       ],
       "Suggests": [
         "testthat"
@@ -660,6 +745,7 @@
       "Package": "callr",
       "Version": "3.7.6",
       "Source": "Repository",
+<<<<<<< HEAD
       "Title": "Call R from R",
       "Authors@R": "c( person(\"Gábor\", \"Csárdi\", , \"csardi.gabor@gmail.com\", role = c(\"aut\", \"cre\", \"cph\"), comment = c(ORCID = \"0000-0001-7098-9676\")), person(\"Winston\", \"Chang\", role = \"aut\"), person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\")), person(\"Ascent Digital Services\", role = c(\"cph\", \"fnd\")) )",
       "Description": "It is sometimes useful to perform a computation in a separate R process, without affecting the current R process at all.  This packages does exactly that.",
@@ -671,6 +757,11 @@
       ],
       "Imports": [
         "processx (>= 3.6.1)",
+=======
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
         "R6",
         "utils"
       ],
@@ -698,6 +789,7 @@
       "Package": "cellranger",
       "Version": "1.1.0",
       "Source": "Repository",
+<<<<<<< HEAD
       "Title": "Translate Spreadsheet Cell Ranges to Rows and Columns",
       "Authors@R": "c( person(\"Jennifer\", \"Bryan\", , \"jenny@stat.ubc.ca\", c(\"cre\", \"aut\")), person(\"Hadley\", \"Wickham\", , \"hadley@rstudio.com\", \"ctb\") )",
       "Description": "Helper functions to work with spreadsheets and the \"A1:D10\" style of cell range specification.",
@@ -717,6 +809,11 @@
       "RoxygenNote": "5.0.1.9000",
       "VignetteBuilder": "knitr",
       "Imports": [
+=======
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
         "rematch",
         "tibble"
       ],
@@ -777,6 +874,7 @@
       "Package": "clipr",
       "Version": "0.8.1",
       "Source": "Repository",
+<<<<<<< HEAD
       "Type": "Package",
       "Title": "Read and Write from the System Clipboard",
       "Authors@R": "c( person(\"Matthew\", \"Lincoln\", , \"matthew.d.lincoln@gmail.com\", role = c(\"aut\", \"cre\"), comment = c(ORCID = \"0000-0002-4387-3384\")), person(\"Louis\", \"Maddox\", role = \"ctb\"), person(\"Steve\", \"Simpson\", role = \"ctb\"), person(\"Jennifer\", \"Bryan\", role = \"ctb\") )",
@@ -785,6 +883,10 @@
       "URL": "https://github.com/mdlincoln/clipr, http://matthewlincoln.net/clipr/",
       "BugReports": "https://github.com/mdlincoln/clipr/issues",
       "Imports": [
+=======
+      "Repository": "CRAN",
+      "Requirements": [
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
         "utils"
       ],
       "Suggests": [
@@ -815,16 +917,35 @@
       "Depends": [
         "R (>= 2.1)"
       ],
+<<<<<<< HEAD
       "Maintainer": "Luke Tierney <luke-tierney@uiowa.edu>",
       "URL": "https://gitlab.com/luke-tierney/codetools",
       "License": "GPL",
       "NeedsCompilation": "no",
       "Repository": "CRAN"
+=======
+      "Hash": "61e097f35917d342622f21cdc79c256e"
+    },
+    "colorspace": {
+      "Package": "colorspace",
+      "Version": "2.1-0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "grDevices",
+        "graphics",
+        "methods",
+        "stats"
+      ],
+      "Hash": "f20c47fd52fae58b4e377c37bb8c335b"
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
     },
     "commonmark": {
       "Package": "commonmark",
       "Version": "2.0.0",
       "Source": "Repository",
+<<<<<<< HEAD
       "Type": "Package",
       "Title": "High Performance CommonMark and Github Markdown Rendering in R",
       "Authors@R": "c( person(\"Jeroen\", \"Ooms\", ,\"jeroenooms@gmail.com\", role = c(\"aut\", \"cre\"), comment = c(ORCID = \"0000-0002-4035-0289\")), person(\"John MacFarlane\", role = \"cph\", comment = \"Author of cmark\"))",
@@ -844,6 +965,10 @@
       "Author": "Jeroen Ooms [aut, cre] (ORCID: <https://orcid.org/0000-0002-4035-0289>), John MacFarlane [cph] (Author of cmark)",
       "Maintainer": "Jeroen Ooms <jeroenooms@gmail.com>",
       "Repository": "CRAN"
+=======
+      "Repository": "RSPM",
+      "Hash": "5d8225445acb167abf7797de48b2ee3c"
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
     },
     "conflicted": {
       "Package": "conflicted",
@@ -886,6 +1011,7 @@
       "Package": "cpp11",
       "Version": "0.5.5",
       "Source": "Repository",
+<<<<<<< HEAD
       "Title": "A C++11 Interface for R's C Interface",
       "Authors@R": "c( person(\"Davis\", \"Vaughan\", email = \"davis@posit.co\", role = c(\"aut\", \"cre\"), comment = c(ORCID = \"0000-0003-4777-038X\")), person(\"Jim\",\"Hester\", role = \"aut\", comment = c(ORCID = \"0000-0002-2739-7082\")), person(\"Romain\", \"François\", role = \"aut\", comment = c(ORCID = \"0000-0002-2444-4226\")), person(\"Benjamin\", \"Kietzman\", role = \"ctb\"), person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\")) )",
       "Description": "Provides a header only, C++11 interface to R's C interface.  Compared to other approaches 'cpp11' strives to be safe against long jumps from the C API as well as C++ exceptions, conform to normal R function semantics and supports interaction with 'ALTREP' vectors.",
@@ -894,6 +1020,11 @@
       "BugReports": "https://github.com/r-lib/cpp11/issues",
       "Depends": [
         "R (>= 4.0.0)"
+=======
+      "Repository": "CRAN",
+      "Requirements": [
+        "R"
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
       ],
       "Suggests": [
         "bench",
@@ -963,6 +1094,7 @@
       "Package": "credentials",
       "Version": "2.0.3",
       "Source": "Repository",
+<<<<<<< HEAD
       "Type": "Package",
       "Title": "Tools for Managing SSH and Git Credentials",
       "Authors@R": "person(\"Jeroen\", \"Ooms\", role = c(\"aut\", \"cre\"),  email = \"jeroenooms@gmail.com\", comment = c(ORCID = \"0000-0002-4035-0289\"))",
@@ -973,6 +1105,11 @@
       "Imports": [
         "openssl (>= 1.3)",
         "sys (>= 2.1)",
+=======
+      "Repository": "CRAN",
+      "Requirements": [
+        "askpass",
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
         "curl",
         "jsonlite",
         "askpass"
@@ -996,6 +1133,7 @@
       "Package": "curl",
       "Version": "7.1.0",
       "Source": "Repository",
+<<<<<<< HEAD
       "Type": "Package",
       "Title": "A Modern and Flexible Web Client for R",
       "Authors@R": "c( person(\"Jeroen\", \"Ooms\", role = c(\"aut\", \"cre\"), email = \"jeroenooms@gmail.com\", comment = c(ORCID = \"0000-0002-4035-0289\")), person(\"Hadley\", \"Wickham\", role = \"ctb\"), person(\"Posit Software, PBC\", role = \"cph\"))",
@@ -1013,6 +1151,11 @@
         "rmarkdown",
         "httpuv (>= 1.4.4)",
         "webutils"
+=======
+      "Repository": "CRAN",
+      "Requirements": [
+        "R"
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
       ],
       "VignetteBuilder": "knitr",
       "Depends": [
@@ -1030,11 +1173,17 @@
       "Package": "data.table",
       "Version": "1.18.4",
       "Source": "Repository",
+<<<<<<< HEAD
       "Title": "Extension of `data.frame`",
       "Depends": [
         "R (>= 3.4.0)"
       ],
       "Imports": [
+=======
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
         "methods"
       ],
       "Suggests": [
@@ -1064,6 +1213,7 @@
       "Package": "dbplyr",
       "Version": "2.5.2",
       "Source": "Repository",
+<<<<<<< HEAD
       "Type": "Package",
       "Title": "A 'dplyr' Back End for Databases",
       "Authors@R": "c( person(\"Hadley\", \"Wickham\", , \"hadley@posit.co\", role = c(\"aut\", \"cre\")), person(\"Maximilian\", \"Girlich\", role = \"aut\"), person(\"Edgar\", \"Ruiz\", role = \"aut\"), person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\")) )",
@@ -1081,6 +1231,18 @@
         "dplyr (>= 1.1.2)",
         "glue (>= 1.6.2)",
         "lifecycle (>= 1.0.3)",
+=======
+      "Repository": "CRAN",
+      "Requirements": [
+        "DBI",
+        "R",
+        "R6",
+        "blob",
+        "cli",
+        "dplyr",
+        "glue",
+        "lifecycle",
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
         "magrittr",
         "methods",
         "pillar (>= 1.9.0)",
@@ -1125,6 +1287,7 @@
       "Package": "desc",
       "Version": "1.4.3",
       "Source": "Repository",
+<<<<<<< HEAD
       "Title": "Manipulate DESCRIPTION Files",
       "Authors@R": "c( person(\"Gábor\", \"Csárdi\", , \"csardi.gabor@gmail.com\", role = c(\"aut\", \"cre\")), person(\"Kirill\", \"Müller\", role = \"aut\"), person(\"Jim\", \"Hester\", , \"james.f.hester@gmail.com\", role = \"aut\"), person(\"Maëlle\", \"Salmon\", role = \"ctb\", comment = c(ORCID = \"0000-0002-2815-0399\")), person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\")) )",
       "Maintainer": "Gábor Csárdi <csardi.gabor@gmail.com>",
@@ -1136,6 +1299,12 @@
         "R (>= 3.4)"
       ],
       "Imports": [
+=======
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "R6",
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
         "cli",
         "R6",
         "utils"
@@ -1192,6 +1361,7 @@
       "Package": "dplyr",
       "Version": "1.2.1",
       "Source": "Repository",
+<<<<<<< HEAD
       "Type": "Package",
       "Title": "A Grammar of Data Manipulation",
       "Authors@R": "c( person(\"Hadley\", \"Wickham\", , \"hadley@posit.co\", role = c(\"aut\", \"cre\"), comment = c(ORCID = \"0000-0003-4757-117X\")), person(\"Romain\", \"François\", role = \"aut\", comment = c(ORCID = \"0000-0002-2444-4226\")), person(\"Lionel\", \"Henry\", role = \"aut\"), person(\"Kirill\", \"Müller\", role = \"aut\", comment = c(ORCID = \"0000-0002-1416-3412\")), person(\"Davis\", \"Vaughan\", , \"davis@posit.co\", role = \"aut\", comment = c(ORCID = \"0000-0003-4777-038X\")), person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\")) )",
@@ -1201,6 +1371,24 @@
       "BugReports": "https://github.com/tidyverse/dplyr/issues",
       "Depends": [
         "R (>= 4.1.0)"
+=======
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "R6",
+        "cli",
+        "generics",
+        "glue",
+        "lifecycle",
+        "magrittr",
+        "methods",
+        "pillar",
+        "rlang",
+        "tibble",
+        "tidyselect",
+        "utils",
+        "vctrs"
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
       ],
       "Imports": [
         "cli (>= 3.6.2)",
@@ -1304,6 +1492,7 @@
       "Depends": [
         "R (>= 3.6.0)"
       ],
+<<<<<<< HEAD
       "Suggests": [
         "callr",
         "covr",
@@ -1316,6 +1505,19 @@
         "knitr",
         "testthat (>= 3.0.0)",
         "withr"
+=======
+      "Hash": "a1066cbc05caee9a4bf6d90f194ff4da"
+    },
+    "fansi": {
+      "Package": "fansi",
+      "Version": "1.0.6",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "grDevices",
+        "utils"
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
       ],
       "Config/Needs/website": "tidyverse/tidytemplate",
       "Config/testthat/edition": "3",
@@ -1330,6 +1532,7 @@
       "Package": "farver",
       "Version": "2.1.2",
       "Source": "Repository",
+<<<<<<< HEAD
       "Type": "Package",
       "Title": "High Performance Colour Space Manipulation",
       "Authors@R": "c( person(\"Thomas Lin\", \"Pedersen\", , \"thomas.pedersen@posit.co\", role = c(\"cre\", \"aut\"), comment = c(ORCID = \"0000-0002-5147-4711\")), person(\"Berendea\", \"Nicolae\", role = \"aut\", comment = \"Author of the ColorSpace C++ library\"), person(\"Romain\", \"François\", , \"romain@purrple.cat\", role = \"aut\", comment = c(ORCID = \"0000-0002-2444-4226\")), person(\"Posit, PBC\", role = c(\"cph\", \"fnd\")) )",
@@ -1348,11 +1551,16 @@
       "Author": "Thomas Lin Pedersen [cre, aut] (<https://orcid.org/0000-0002-5147-4711>), Berendea Nicolae [aut] (Author of the ColorSpace C++ library), Romain François [aut] (<https://orcid.org/0000-0002-2444-4226>), Posit, PBC [cph, fnd]",
       "Maintainer": "Thomas Lin Pedersen <thomas.pedersen@posit.co>",
       "Repository": "CRAN"
+=======
+      "Repository": "CRAN",
+      "Hash": "680887028577f3fa2a81e410ed0d6e42"
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
     },
     "fastmap": {
       "Package": "fastmap",
       "Version": "1.2.0",
       "Source": "Repository",
+<<<<<<< HEAD
       "Title": "Fast Data Structures",
       "Authors@R": "c( person(\"Winston\", \"Chang\", email = \"winston@posit.co\", role = c(\"aut\", \"cre\")), person(given = \"Posit Software, PBC\", role = c(\"cph\", \"fnd\")), person(given = \"Tessil\", role = \"cph\", comment = \"hopscotch_map library\") )",
       "Description": "Fast implementation of data structures, including a key-value store, stack, and queue. Environments are commonly used as key-value stores in R, but every time a new key is used, it is added to R's global symbol table, causing a small amount of memory leakage. This can be problematic in cases where many different keys are used. Fastmap avoids this memory leak issue by implementing the map using data structures in C++.",
@@ -1368,11 +1576,16 @@
       "Author": "Winston Chang [aut, cre], Posit Software, PBC [cph, fnd], Tessil [cph] (hopscotch_map library)",
       "Maintainer": "Winston Chang <winston@posit.co>",
       "Repository": "CRAN"
+=======
+      "Repository": "CRAN",
+      "Hash": "aa5e1cd11c2d15497494c5292d7ffcc8"
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
     },
     "fontawesome": {
       "Package": "fontawesome",
       "Version": "0.5.3",
       "Source": "Repository",
+<<<<<<< HEAD
       "Type": "Package",
       "Title": "Easily Work with 'Font Awesome' Icons",
       "Description": "Easily and flexibly insert 'Font Awesome' icons into 'R Markdown' documents and 'Shiny' apps. These icons can be inserted into HTML content through inline 'SVG' tags or 'i' tags. There is also a utility function for exporting 'Font Awesome' icons as 'PNG' images for those situations where raster graphics are needed.",
@@ -1385,6 +1598,13 @@
       "RoxygenNote": "7.3.2",
       "Depends": [
         "R (>= 3.3.0)"
+=======
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "htmltools",
+        "rlang"
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
       ],
       "Imports": [
         "rlang (>= 1.0.6)",
@@ -1408,6 +1628,7 @@
       "Package": "forcats",
       "Version": "1.0.1",
       "Source": "Repository",
+<<<<<<< HEAD
       "Title": "Tools for Working with Categorical Variables (Factors)",
       "Authors@R": "c( person(\"Hadley\", \"Wickham\", , \"hadley@posit.co\", role = c(\"aut\", \"cre\")), person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\"), comment = c(ROR = \"03wc8by49\")) )",
       "Description": "Helpers for reordering factor levels (including moving specified levels to front, ordering by first appearance, reversing, and randomly shuffling), and tools for modifying factor levels (including collapsing rare levels into other, 'anonymising', and manually 'recoding').",
@@ -1419,6 +1640,12 @@
       ],
       "Imports": [
         "cli (>= 3.4.0)",
+=======
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "cli",
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
         "glue",
         "lifecycle",
         "magrittr",
@@ -1450,6 +1677,7 @@
       "Package": "fs",
       "Version": "2.1.0",
       "Source": "Repository",
+<<<<<<< HEAD
       "Title": "Cross-Platform File System Operations Based on 'libuv'",
       "Authors@R": "c( person(\"Jim\", \"Hester\", role = \"aut\"), person(\"Hadley\", \"Wickham\", role = \"aut\"), person(\"Gábor\", \"Csárdi\", role = \"aut\"), person(\"Jeroen\", \"Ooms\", , \"jeroenooms@gmail.com\", role = \"cre\"), person(\"libuv project contributors\", role = \"cph\", comment = \"libuv library\"), person(\"Joyent, Inc. and other Node contributors\", role = \"cph\", comment = \"libuv library\"), person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\"), comment = c(ROR = \"03wc8by49\")) )",
       "Description": "A cross-platform interface to file system operations, built on top of the 'libuv' C library.",
@@ -1460,6 +1688,11 @@
         "R (>= 4.1)"
       ],
       "Imports": [
+=======
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
         "methods"
       ],
       "Suggests": [
@@ -1492,11 +1725,16 @@
       "Package": "future",
       "Version": "1.70.0",
       "Source": "Repository",
+<<<<<<< HEAD
       "Title": "Unified Parallel and Distributed Processing in R for Everyone",
       "Depends": [
         "R (>= 3.2.0)"
       ],
       "Imports": [
+=======
+      "Repository": "RSPM",
+      "Requirements": [
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
         "digest",
         "globals (>= 0.18.0)",
         "listenv (>= 0.8.0)",
@@ -1569,6 +1807,7 @@
       "Package": "gargle",
       "Version": "1.6.1",
       "Source": "Repository",
+<<<<<<< HEAD
       "Title": "Utilities for Working with Google APIs",
       "Authors@R": "c( person(\"Jennifer\", \"Bryan\", , \"jenny@posit.co\", role = c(\"aut\", \"cre\"), comment = c(ORCID = \"0000-0002-6983-2759\")), person(\"Craig\", \"Citro\", , \"craigcitro@google.com\", role = \"aut\"), person(\"Hadley\", \"Wickham\", , \"hadley@posit.co\", role = \"aut\", comment = c(ORCID = \"0000-0003-4757-117X\")), person(\"Google Inc\", role = \"cph\"), person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\")) )",
       "Description": "Provides utilities for working with Google APIs <https://developers.google.com/apis-explorer>.  This includes functions and classes for handling common credential types and for preparing, executing, and processing HTTP requests.",
@@ -1583,6 +1822,15 @@
         "fs (>= 1.3.1)",
         "glue (>= 1.3.0)",
         "httr (>= 1.4.5)",
+=======
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "cli",
+        "fs",
+        "glue",
+        "httr",
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
         "jsonlite",
         "lifecycle (>= 0.2.0)",
         "openssl",
@@ -1618,6 +1866,7 @@
       "Package": "generics",
       "Version": "0.1.4",
       "Source": "Repository",
+<<<<<<< HEAD
       "Title": "Common S3 Generics not Provided by Base R Methods Related to Model Fitting",
       "Authors@R": "c( person(\"Hadley\", \"Wickham\", , \"hadley@posit.co\", role = c(\"aut\", \"cre\"), comment = c(ORCID = \"0000-0003-4757-117X\")), person(\"Max\", \"Kuhn\", , \"max@posit.co\", role = \"aut\"), person(\"Davis\", \"Vaughan\", , \"davis@posit.co\", role = \"aut\"), person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\"), comment = c(ROR = \"https://ror.org/03wc8by49\")) )",
       "Description": "In order to reduce potential package dependencies and conflicts, generics provides a number of commonly used S3 generics.",
@@ -1628,6 +1877,11 @@
         "R (>= 3.6)"
       ],
       "Imports": [
+=======
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
         "methods"
       ],
       "Suggests": [
@@ -1685,6 +1939,7 @@
       "Package": "ggplot2",
       "Version": "4.0.3",
       "Source": "Repository",
+<<<<<<< HEAD
       "Title": "Create Elegant Data Visualisations Using the Grammar of Graphics",
       "Authors@R": "c( person(\"Hadley\", \"Wickham\", , \"hadley@posit.co\", role = \"aut\", comment = c(ORCID = \"0000-0003-4757-117X\")), person(\"Winston\", \"Chang\", role = \"aut\", comment = c(ORCID = \"0000-0002-1576-2126\")), person(\"Lionel\", \"Henry\", role = \"aut\"), person(\"Thomas Lin\", \"Pedersen\", , \"thomas.pedersen@posit.co\", role = c(\"aut\", \"cre\"), comment = c(ORCID = \"0000-0002-5147-4711\")), person(\"Kohske\", \"Takahashi\", role = \"aut\"), person(\"Claus\", \"Wilke\", role = \"aut\", comment = c(ORCID = \"0000-0002-7470-9261\")), person(\"Kara\", \"Woo\", role = \"aut\", comment = c(ORCID = \"0000-0002-5125-4188\")), person(\"Hiroaki\", \"Yutani\", role = \"aut\", comment = c(ORCID = \"0000-0002-3385-7233\")), person(\"Dewey\", \"Dunnington\", role = \"aut\", comment = c(ORCID = \"0000-0002-9415-4582\")), person(\"Teun\", \"van den Brand\", role = \"aut\", comment = c(ORCID = \"0000-0002-9335-7468\")), person(\"Posit, PBC\", role = c(\"cph\", \"fnd\"), comment = c(ROR = \"03wc8by49\")) )",
       "Description": "A system for 'declaratively' creating graphics, based on \"The Grammar of Graphics\". You provide the data, tell 'ggplot2' how to map variables to aesthetics, what graphical primitives to use, and it takes care of the details.",
@@ -1695,6 +1950,12 @@
         "R (>= 4.1)"
       ],
       "Imports": [
+=======
+      "Repository": "CRAN",
+      "Requirements": [
+        "MASS",
+        "R",
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
         "cli",
         "grDevices",
         "grid",
@@ -1758,6 +2019,7 @@
       "Package": "gh",
       "Version": "1.6.0",
       "Source": "Repository",
+<<<<<<< HEAD
       "Title": "'GitHub' 'API'",
       "Authors@R": "c( person(\"Gábor\", \"Csárdi\", , \"csardi.gabor@gmail.com\", role = c(\"cre\", \"ctb\")), person(\"Jennifer\", \"Bryan\", role = \"aut\"), person(\"Hadley\", \"Wickham\", role = \"aut\"), person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\"), comment = c(ROR = \"03wc8by49\")) )",
       "Description": "Minimal client to access the 'GitHub' 'API'.",
@@ -1769,6 +2031,12 @@
       ],
       "Imports": [
         "cli (>= 3.0.1)",
+=======
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "cli",
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
         "gitcreds",
         "glue",
         "httr2 (>= 1.0.6)",
@@ -1805,6 +2073,7 @@
       "Package": "gitcreds",
       "Version": "0.1.2",
       "Source": "Repository",
+<<<<<<< HEAD
       "Title": "Query 'git' Credentials from 'R'",
       "Authors@R": "c( person(\"Gábor\", \"Csárdi\", , \"csardi.gabor@gmail.com\", role = c(\"aut\", \"cre\")), person(\"RStudio\", role = c(\"cph\", \"fnd\")) )",
       "Description": "Query, set, delete credentials from the 'git' credential store. Manage 'GitHub' tokens and other 'git' credentials. This package is to be used by other packages that need to authenticate to 'GitHub' and/or other 'git' repositories.",
@@ -1813,6 +2082,11 @@
       "BugReports": "https://github.com/r-lib/gitcreds/issues",
       "Depends": [
         "R (>= 3.4)"
+=======
+      "Repository": "CRAN",
+      "Requirements": [
+        "R"
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
       ],
       "Suggests": [
         "codetools",
@@ -1839,10 +2113,16 @@
       "Package": "globals",
       "Version": "0.19.1",
       "Source": "Repository",
+<<<<<<< HEAD
       "Depends": [
         "R (>= 3.1.2)"
       ],
       "Imports": [
+=======
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
         "codetools"
       ],
       "Title": "Identify Global Objects in R Expressions",
@@ -1865,6 +2145,7 @@
       "Package": "glue",
       "Version": "1.8.1",
       "Source": "Repository",
+<<<<<<< HEAD
       "Title": "Interpreted String Literals",
       "Authors@R": "c( person(\"Jim\", \"Hester\", role = \"aut\", comment = c(ORCID = \"0000-0002-2739-7082\")), person(\"Jennifer\", \"Bryan\", , \"jenny@posit.co\", role = c(\"aut\", \"cre\"), comment = c(ORCID = \"0000-0002-6983-2759\")), person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\"), comment = c(ROR = \"03wc8by49\")) )",
       "Description": "An implementation of interpreted string literals, inspired by Python's Literal String Interpolation <https://www.python.org/dev/peps/pep-0498/> and Docstrings <https://www.python.org/dev/peps/pep-0257/> and Julia's Triple-Quoted String Literals <https://docs.julialang.org/en/v1.3/manual/strings/#Triple-Quoted-String-Literals-1>.",
@@ -1875,6 +2156,11 @@
         "R (>= 4.1)"
       ],
       "Imports": [
+=======
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
         "methods"
       ],
       "Suggests": [
@@ -1906,6 +2192,7 @@
       "Package": "googledrive",
       "Version": "2.1.2",
       "Source": "Repository",
+<<<<<<< HEAD
       "Title": "An Interface to Google Drive",
       "Authors@R": "c( person(\"Lucy\", \"D'Agostino McGowan\", , role = \"aut\"), person(\"Jennifer\", \"Bryan\", , \"jenny@posit.co\", role = c(\"aut\", \"cre\"), comment = c(ORCID = \"0000-0002-6983-2759\")), person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\")) )",
       "Description": "Manage Google Drive files from R.",
@@ -1919,6 +2206,14 @@
         "cli (>= 3.0.0)",
         "gargle (>= 1.6.0)",
         "glue (>= 1.4.2)",
+=======
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "cli",
+        "gargle",
+        "glue",
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
         "httr",
         "jsonlite",
         "lifecycle",
@@ -1955,6 +2250,7 @@
       "Package": "googlesheets4",
       "Version": "1.1.2",
       "Source": "Repository",
+<<<<<<< HEAD
       "Title": "Access Google Sheets using the Sheets API V4",
       "Authors@R": "c( person(\"Jennifer\", \"Bryan\", , \"jenny@posit.co\", role = c(\"cre\", \"aut\"), comment = c(ORCID = \"0000-0002-6983-2759\")), person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\")) )",
       "Description": "Interact with Google Sheets through the Sheets API v4 <https://developers.google.com/sheets/api>. \"API\" is an acronym for \"application programming interface\"; the Sheets API allows users to interact with Google Sheets programmatically, instead of via a web browser. The \"v4\" refers to the fact that the Sheets API is currently at version 4. This package can read and write both the metadata and the cell data in a Sheet.",
@@ -1965,6 +2261,11 @@
         "R (>= 3.6)"
       ],
       "Imports": [
+=======
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
         "cellranger",
         "cli (>= 3.0.0)",
         "curl",
@@ -2076,6 +2377,7 @@
       "Package": "gtable",
       "Version": "0.3.6",
       "Source": "Repository",
+<<<<<<< HEAD
       "Title": "Arrange 'Grobs' in Tables",
       "Authors@R": "c( person(\"Hadley\", \"Wickham\", , \"hadley@posit.co\", role = \"aut\"), person(\"Thomas Lin\", \"Pedersen\", , \"thomas.pedersen@posit.co\", role = c(\"aut\", \"cre\")), person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\")) )",
       "Description": "Tools to make it easier to work with \"tables\" of 'grobs'. The 'gtable' package defines a 'gtable' grob class that specifies a grid along with a list of grobs and their placement in the grid. Further the package makes it easy to manipulate and combine 'gtable' objects so that complex compositions can be built up sequentially.",
@@ -2086,6 +2388,11 @@
         "R (>= 4.0)"
       ],
       "Imports": [
+=======
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
         "cli",
         "glue",
         "grid",
@@ -2165,12 +2472,19 @@
       "Package": "highr",
       "Version": "0.12",
       "Source": "Repository",
+<<<<<<< HEAD
       "Type": "Package",
       "Title": "Syntax Highlighting for R Source Code",
       "Authors@R": "c( person(\"Yihui\", \"Xie\", role = c(\"aut\", \"cre\"), email = \"xie@yihui.name\", comment = c(ORCID = \"0000-0003-0645-5666\")), person(\"Yixuan\", \"Qiu\", role = \"aut\"), person(\"Christopher\", \"Gandrud\", role = \"ctb\"), person(\"Qiang\", \"Li\", role = \"ctb\") )",
       "Description": "Provides syntax highlighting for R source code. Currently it supports LaTeX and HTML output. Source code of other languages is supported via Andre Simon's highlight package (<https://gitlab.com/saalen/highlight>).",
       "Depends": [
         "R (>= 3.3.0)"
+=======
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "xfun"
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
       ],
       "Imports": [
         "xfun (>= 0.18)"
@@ -2195,6 +2509,7 @@
       "Package": "hms",
       "Version": "1.1.4",
       "Source": "Repository",
+<<<<<<< HEAD
       "Title": "Pretty Time of Day",
       "Date": "2025-10-11",
       "Authors@R": "c( person(\"Kirill\", \"Müller\", , \"kirill@cynkra.com\", role = c(\"aut\", \"cre\"), comment = c(ORCID = \"0000-0002-1416-3412\")), person(\"R Consortium\", role = \"fnd\"), person(\"Posit Software, PBC\", role = \"fnd\", comment = c(ROR = \"03wc8by49\")) )",
@@ -2204,6 +2519,10 @@
       "BugReports": "https://github.com/tidyverse/hms/issues",
       "Imports": [
         "cli",
+=======
+      "Repository": "CRAN",
+      "Requirements": [
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
         "lifecycle",
         "methods",
         "pkgconfig",
@@ -2229,6 +2548,7 @@
       "Package": "htmltools",
       "Version": "0.5.9",
       "Source": "Repository",
+<<<<<<< HEAD
       "Type": "Package",
       "Title": "Tools for HTML",
       "Authors@R": "c( person(\"Joe\", \"Cheng\", , \"joe@posit.co\", role = \"aut\"), person(\"Carson\", \"Sievert\", , \"carson@posit.co\", role = c(\"aut\", \"cre\"), comment = c(ORCID = \"0000-0002-4958-2844\")), person(\"Barret\", \"Schloerke\", , \"barret@posit.co\", role = \"aut\", comment = c(ORCID = \"0000-0001-9986-114X\")), person(\"Winston\", \"Chang\", , \"winston@posit.co\", role = \"aut\", comment = c(ORCID = \"0000-0002-1576-2126\")), person(\"Yihui\", \"Xie\", , \"yihui@posit.co\", role = \"aut\"), person(\"Jeff\", \"Allen\", role = \"aut\"), person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\")) )",
@@ -2240,6 +2560,11 @@
         "R (>= 2.14.1)"
       ],
       "Imports": [
+=======
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
         "base64enc",
         "digest",
         "fastmap (>= 1.1.0)",
@@ -2272,6 +2597,7 @@
       "Package": "htmlwidgets",
       "Version": "1.6.4",
       "Source": "Repository",
+<<<<<<< HEAD
       "Type": "Package",
       "Title": "HTML Widgets for R",
       "Authors@R": "c( person(\"Ramnath\", \"Vaidyanathan\", role = c(\"aut\", \"cph\")), person(\"Yihui\", \"Xie\", role = \"aut\"), person(\"JJ\", \"Allaire\", role = \"aut\"), person(\"Joe\", \"Cheng\", , \"joe@posit.co\", role = \"aut\"), person(\"Carson\", \"Sievert\", , \"carson@posit.co\", role = c(\"aut\", \"cre\"), comment = c(ORCID = \"0000-0002-4958-2844\")), person(\"Kenton\", \"Russell\", role = c(\"aut\", \"cph\")), person(\"Ellis\", \"Hughes\", role = \"ctb\"), person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\")) )",
@@ -2280,6 +2606,10 @@
       "URL": "https://github.com/ramnathv/htmlwidgets",
       "BugReports": "https://github.com/ramnathv/htmlwidgets/issues",
       "Imports": [
+=======
+      "Repository": "RSPM",
+      "Requirements": [
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
         "grDevices",
         "htmltools (>= 0.5.7)",
         "jsonlite (>= 0.9.16)",
@@ -2305,6 +2635,7 @@
       "Package": "httr",
       "Version": "1.4.8",
       "Source": "Repository",
+<<<<<<< HEAD
       "Title": "Tools for Working with URLs and HTTP",
       "Authors@R": "c( person(\"Hadley\", \"Wickham\", , \"hadley@posit.co\", role = c(\"aut\", \"cre\")), person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\")) )",
       "Description": "Useful tools for working with HTTP organised by HTTP verbs (GET(), POST(), etc). Configuration functions make it easy to control additional request components (authenticate(), add_headers() and so on).",
@@ -2316,6 +2647,13 @@
       ],
       "Imports": [
         "curl (>= 5.1.0)",
+=======
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "R6",
+        "curl",
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
         "jsonlite",
         "mime",
         "openssl (>= 0.8)",
@@ -2405,6 +2743,7 @@
       "Package": "ids",
       "Version": "1.0.1",
       "Source": "Repository",
+<<<<<<< HEAD
       "Title": "Generate Random Identifiers",
       "Authors@R": "person(\"Rich\", \"FitzJohn\", role = c(\"aut\", \"cre\"), email = \"rich.fitzjohn@gmail.com\")",
       "Description": "Generate random or human readable and pronounceable identifiers.",
@@ -2412,6 +2751,10 @@
       "URL": "https://github.com/richfitz/ids",
       "BugReports": "https://github.com/richfitz/ids/issues",
       "Imports": [
+=======
+      "Repository": "CRAN",
+      "Requirements": [
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
         "openssl",
         "uuid"
       ],
@@ -2432,6 +2775,7 @@
       "Package": "ini",
       "Version": "0.3.1",
       "Source": "Repository",
+<<<<<<< HEAD
       "Type": "Package",
       "Title": "Read and Write '.ini' Files",
       "Date": "2018-05-19",
@@ -2448,11 +2792,16 @@
       ],
       "NeedsCompilation": "no",
       "Repository": "CRAN"
+=======
+      "Repository": "CRAN",
+      "Hash": "6154ec2223172bce8162d4153cda21f7"
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
     },
     "isoband": {
       "Package": "isoband",
       "Version": "0.3.0",
       "Source": "Repository",
+<<<<<<< HEAD
       "Title": "Generate Isolines and Isobands from Regularly Spaced Elevation Grids",
       "Authors@R": "c( person(\"Hadley\", \"Wickham\", , \"hadley@posit.co\", role = \"aut\", comment = c(ORCID = \"0000-0003-4757-117X\")), person(\"Claus O.\", \"Wilke\", , \"wilke@austin.utexas.edu\", role = \"aut\", comment = c(\"Original author\", ORCID = \"0000-0002-7470-9261\")), person(\"Thomas Lin\", \"Pedersen\", , \"thomas.pedersen@posit.co\", role = c(\"aut\", \"cre\"), comment = c(ORCID = \"0000-0002-5147-4711\")), person(\"Posit, PBC\", role = c(\"cph\", \"fnd\"), comment = c(ROR = \"03wc8by49\")) )",
       "Description": "A fast C++ implementation to generate contour lines (isolines) and contour polygons (isobands) from regularly spaced grids containing elevation data.",
@@ -2461,6 +2810,10 @@
       "BugReports": "https://github.com/r-lib/isoband/issues",
       "Imports": [
         "cli",
+=======
+      "Repository": "CRAN",
+      "Requirements": [
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
         "grid",
         "rlang",
         "utils"
@@ -2541,6 +2894,7 @@
       "Package": "jquerylib",
       "Version": "0.1.4",
       "Source": "Repository",
+<<<<<<< HEAD
       "Title": "Obtain 'jQuery' as an HTML Dependency Object",
       "Authors@R": "c( person(\"Carson\", \"Sievert\", role = c(\"aut\", \"cre\"), email = \"carson@rstudio.com\", comment = c(ORCID = \"0000-0002-4958-2844\")), person(\"Joe\", \"Cheng\", role = \"aut\", email = \"joe@rstudio.com\"), person(family = \"RStudio\", role = \"cph\"), person(family = \"jQuery Foundation\", role = \"cph\", comment = \"jQuery library and jQuery UI library\"), person(family = \"jQuery contributors\", role = c(\"ctb\", \"cph\"), comment = \"jQuery library; authors listed in inst/lib/jquery-AUTHORS.txt\") )",
       "Description": "Obtain any major version of 'jQuery' (<https://code.jquery.com/>) and use it in any webpage generated by 'htmltools' (e.g. 'shiny', 'htmlwidgets', and 'rmarkdown'). Most R users don't need to use this package directly, but other R packages (e.g. 'shiny', 'rmarkdown', etc.) depend on this package to avoid bundling redundant copies of 'jQuery'.",
@@ -2549,6 +2903,10 @@
       "Config/testthat/edition": "3",
       "RoxygenNote": "7.0.2",
       "Imports": [
+=======
+      "Repository": "CRAN",
+      "Requirements": [
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
         "htmltools"
       ],
       "Suggests": [
@@ -2563,9 +2921,14 @@
       "Package": "jsonlite",
       "Version": "2.0.0",
       "Source": "Repository",
+<<<<<<< HEAD
       "Title": "A Simple and Robust JSON Parser and Generator for R",
       "License": "MIT + file LICENSE",
       "Depends": [
+=======
+      "Repository": "CRAN",
+      "Requirements": [
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
         "methods"
       ],
       "Authors@R": "c( person(\"Jeroen\", \"Ooms\", role = c(\"aut\", \"cre\"), email = \"jeroenooms@gmail.com\", comment = c(ORCID = \"0000-0002-4035-0289\")), person(\"Duncan\", \"Temple Lang\", role = \"ctb\"), person(\"Lloyd\", \"Hilaiel\", role = \"cph\", comment=\"author of bundled libyajl\"))",
@@ -2593,6 +2956,7 @@
       "Package": "juicyjuice",
       "Version": "0.1.0",
       "Source": "Repository",
+<<<<<<< HEAD
       "Title": "Inline CSS Properties into HTML Tags Using 'juice'",
       "Authors@R": "c( person(\"Richard\", \"Iannone\", , \"riannone@me.com\", c(\"aut\", \"cre\", \"cph\"), comment = c(ORCID = \"0000-0003-3925-190X\")), person(\"Automattic\", role = c(\"cph\"), comment = \"juice library\"), person(\"juice contributors\", role = c(\"ctb\"), comment = \"juice library\") )",
       "Description": "There are occasions where you need a piece of HTML with integrated styles. A prime example of this is HTML email. This transformation involves moving the CSS and associated formatting instructions from the style block in the head of your document into the body of the HTML. Many prominent email clients require integrated styles in HTML email; otherwise a received HTML email will be displayed without any styling. This package will quickly and precisely perform these CSS transformations when given HTML text and it does so by using the JavaScript 'juice' library.",
@@ -2603,6 +2967,11 @@
       "RoxygenNote": "7.2.1",
       "Imports": [
         "V8 (>= 4.2.0)"
+=======
+      "Repository": "RSPM",
+      "Requirements": [
+        "V8"
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
       ],
       "Suggests": [
         "testthat (>= 3.0.0)"
@@ -2682,6 +3051,7 @@
       "Package": "labeling",
       "Version": "0.4.3",
       "Source": "Repository",
+<<<<<<< HEAD
       "Type": "Package",
       "Title": "Axis Labeling",
       "Date": "2023-08-29",
@@ -2692,6 +3062,25 @@
       "Collate": "'labeling.R'",
       "NeedsCompilation": "no",
       "Imports": [
+=======
+      "Repository": "CRAN",
+      "Requirements": [
+        "graphics",
+        "stats"
+      ],
+      "Hash": "b64ec208ac5bc1852b285f665d6368b3"
+    },
+    "lattice": {
+      "Package": "lattice",
+      "Version": "0.22-6",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "grDevices",
+        "graphics",
+        "grid",
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
         "stats",
         "graphics"
       ],
@@ -2701,6 +3090,7 @@
       "Package": "lifecycle",
       "Version": "1.0.5",
       "Source": "Repository",
+<<<<<<< HEAD
       "Title": "Manage the Life Cycle of your Package Functions",
       "Authors@R": "c( person(\"Lionel\", \"Henry\", , \"lionel@posit.co\", role = c(\"aut\", \"cre\")), person(\"Hadley\", \"Wickham\", , \"hadley@posit.co\", role = \"aut\", comment = c(ORCID = \"0000-0003-4757-117X\")), person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\")) )",
       "Description": "Manage the life cycle of your exported functions with shared conventions, documentation badges, and user-friendly deprecation warnings.",
@@ -2709,6 +3099,14 @@
       "BugReports": "https://github.com/r-lib/lifecycle/issues",
       "Depends": [
         "R (>= 3.6)"
+=======
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "cli",
+        "glue",
+        "rlang"
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
       ],
       "Imports": [
         "cli (>= 3.4.0)",
@@ -2741,8 +3139,14 @@
       "Package": "listenv",
       "Version": "0.10.1",
       "Source": "Repository",
+<<<<<<< HEAD
       "Depends": [
         "R (>= 3.1.2)"
+=======
+      "Repository": "CRAN",
+      "Requirements": [
+        "R"
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
       ],
       "Suggests": [
         "R.utils",
@@ -2801,6 +3205,7 @@
       "Package": "lubridate",
       "Version": "1.9.5",
       "Source": "Repository",
+<<<<<<< HEAD
       "Type": "Package",
       "Title": "Make Dealing with Dates a Little Easier",
       "Authors@R": "c( person(\"Vitalie\", \"Spinu\", , \"spinuvit@gmail.com\", role = c(\"aut\", \"cre\")), person(\"Garrett\", \"Grolemund\", role = \"aut\"), person(\"Hadley\", \"Wickham\", role = \"aut\"), person(\"Davis\", \"Vaughan\", role = \"ctb\"), person(\"Ian\", \"Lyttle\", role = \"ctb\"), person(\"Imanuel\", \"Costigan\", role = \"ctb\"), person(\"Jason\", \"Law\", role = \"ctb\"), person(\"Doug\", \"Mitarotonda\", role = \"ctb\"), person(\"Joseph\", \"Larmarange\", role = \"ctb\"), person(\"Jonathan\", \"Boiser\", role = \"ctb\"), person(\"Chel Hee\", \"Lee\", role = \"ctb\") )",
@@ -2810,6 +3215,12 @@
       "URL": "https://lubridate.tidyverse.org, https://github.com/tidyverse/lubridate",
       "BugReports": "https://github.com/tidyverse/lubridate/issues",
       "Depends": [
+=======
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "generics",
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
         "methods",
         "R (>= 3.2)"
       ],
@@ -2910,6 +3321,7 @@
       "Package": "memoise",
       "Version": "2.0.1",
       "Source": "Repository",
+<<<<<<< HEAD
       "Title": "'Memoisation' of Functions",
       "Authors@R": "c(person(given = \"Hadley\", family = \"Wickham\", role = \"aut\", email = \"hadley@rstudio.com\"), person(given = \"Jim\", family = \"Hester\", role = \"aut\"), person(given = \"Winston\", family = \"Chang\", role = c(\"aut\", \"cre\"), email = \"winston@rstudio.com\"), person(given = \"Kirill\", family = \"Müller\", role = \"aut\", email = \"krlmlr+r@mailbox.org\"), person(given = \"Daniel\", family = \"Cook\", role = \"aut\", email = \"danielecook@gmail.com\"), person(given = \"Mark\", family = \"Edmondson\", role = \"ctb\", email = \"r@sunholo.com\"))",
       "Description": "Cache the results of a function so that when you call it again with the same arguments it returns the previously computed value.",
@@ -2919,6 +3331,12 @@
       "Imports": [
         "rlang (>= 0.4.10)",
         "cachem"
+=======
+      "Repository": "CRAN",
+      "Requirements": [
+        "cachem",
+        "rlang"
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
       ],
       "Suggests": [
         "digest",
@@ -2940,11 +3358,16 @@
       "Package": "mime",
       "Version": "0.13",
       "Source": "Repository",
+<<<<<<< HEAD
       "Type": "Package",
       "Title": "Map Filenames to MIME Types",
       "Authors@R": "c( person(\"Yihui\", \"Xie\", role = c(\"aut\", \"cre\"), email = \"xie@yihui.name\", comment = c(ORCID = \"0000-0003-0645-5666\", URL = \"https://yihui.org\")), person(\"Jeffrey\", \"Horner\", role = \"ctb\"), person(\"Beilei\", \"Bian\", role = \"ctb\") )",
       "Description": "Guesses the MIME type from a filename extension using the data derived from /etc/mime.types in UNIX-type systems.",
       "Imports": [
+=======
+      "Repository": "CRAN",
+      "Requirements": [
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
         "tools"
       ],
       "License": "GPL",
@@ -2980,11 +3403,24 @@
         "tidyselect",
         "vctrs"
       ],
+<<<<<<< HEAD
       "Suggests": [
         "compiler",
         "covr",
         "ggplot2",
         "testthat (>= 3.0.0)"
+=======
+      "Hash": "4f50122dc256b1b6996a4703fecea821"
+    },
+    "munsell": {
+      "Package": "munsell",
+      "Version": "0.5.1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "colorspace",
+        "methods"
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
       ],
       "Config/Needs/website": "tidyverse/tidytemplate",
       "Encoding": "UTF-8",
@@ -3000,6 +3436,7 @@
       "Package": "openssl",
       "Version": "2.4.1",
       "Source": "Repository",
+<<<<<<< HEAD
       "Type": "Package",
       "Title": "Toolkit for Encryption, Signatures and Certificates Based on OpenSSL",
       "Authors@R": "c(person(\"Jeroen\", \"Ooms\", role = c(\"aut\", \"cre\"), email = \"jeroenooms@gmail.com\", comment = c(ORCID = \"0000-0002-4035-0289\")), person(\"Oliver\", \"Keyes\", role = \"ctb\"))",
@@ -3010,6 +3447,10 @@
       "SystemRequirements": "OpenSSL >= 1.0.2",
       "VignetteBuilder": "knitr",
       "Imports": [
+=======
+      "Repository": "CRAN",
+      "Requirements": [
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
         "askpass"
       ],
       "Suggests": [
@@ -3033,8 +3474,13 @@
       "Package": "parallelly",
       "Version": "1.47.0",
       "Source": "Repository",
+<<<<<<< HEAD
       "Title": "Enhancing the 'parallel' Package",
       "Imports": [
+=======
+      "Repository": "RSPM",
+      "Requirements": [
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
         "parallel",
         "tools",
         "utils"
@@ -3063,6 +3509,7 @@
       "Package": "pillar",
       "Version": "1.11.1",
       "Source": "Repository",
+<<<<<<< HEAD
       "Title": "Coloured Formatting for Columns",
       "Authors@R": "c(person(given = \"Kirill\", family = \"M\\u00fcller\", role = c(\"aut\", \"cre\"), email = \"kirill@cynkra.com\", comment = c(ORCID = \"0000-0002-1416-3412\")), person(given = \"Hadley\", family = \"Wickham\", role = \"aut\"), person(given = \"RStudio\", role = \"cph\"))",
       "Description": "Provides 'pillar' and 'colonnade' generics designed for formatting columns of data using the full range of colours provided by modern terminals.",
@@ -3071,6 +3518,12 @@
       "BugReports": "https://github.com/r-lib/pillar/issues",
       "Imports": [
         "cli (>= 2.3.0)",
+=======
+      "Repository": "CRAN",
+      "Requirements": [
+        "cli",
+        "fansi",
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
         "glue",
         "lifecycle",
         "rlang (>= 1.0.2)",
@@ -3120,6 +3573,7 @@
       "Package": "pkgconfig",
       "Version": "2.0.3",
       "Source": "Repository",
+<<<<<<< HEAD
       "Title": "Private Configuration for 'R' Packages",
       "Author": "Gábor Csárdi",
       "Maintainer": "Gábor Csárdi <csardi.gabor@gmail.com>",
@@ -3127,6 +3581,10 @@
       "License": "MIT + file LICENSE",
       "LazyData": "true",
       "Imports": [
+=======
+      "Repository": "CRAN",
+      "Requirements": [
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
         "utils"
       ],
       "Suggests": [
@@ -3178,6 +3636,7 @@
       "Package": "prettyunits",
       "Version": "1.2.0",
       "Source": "Repository",
+<<<<<<< HEAD
       "Title": "Pretty, Human Readable Formatting of Quantities",
       "Authors@R": "c( person(\"Gabor\", \"Csardi\", email=\"csardi.gabor@gmail.com\", role=c(\"aut\", \"cre\")), person(\"Bill\", \"Denney\", email=\"wdenney@humanpredictions.com\", role=c(\"ctb\"), comment=c(ORCID=\"0000-0002-5759-428X\")), person(\"Christophe\", \"Regouby\", email=\"christophe.regouby@free.fr\", role=c(\"ctb\")) )",
       "Description": "Pretty, human readable formatting of quantities. Time intervals: '1337000' -> '15d 11h 23m 20s'. Vague time intervals: '2674000' -> 'about a month ago'. Bytes: '1337' -> '1.34 kB'. Rounding: '99' with 3 significant digits -> '99.0' p-values: '0.00001' -> '<0.0001'. Colors: '#FF0000' -> 'red'. Quantities: '1239437' -> '1.24 M'.",
@@ -3186,6 +3645,11 @@
       "BugReports": "https://github.com/r-lib/prettyunits/issues",
       "Depends": [
         "R(>= 2.10)"
+=======
+      "Repository": "CRAN",
+      "Requirements": [
+        "R"
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
       ],
       "Suggests": [
         "codetools",
@@ -3203,6 +3667,7 @@
       "Package": "processx",
       "Version": "3.9.0",
       "Source": "Repository",
+<<<<<<< HEAD
       "Title": "Execute and Control System Processes",
       "Authors@R": "c( person(\"Gábor\", \"Csárdi\", , \"csardi.gabor@gmail.com\", role = c(\"aut\", \"cre\", \"cph\"), comment = c(ORCID = \"0000-0001-7098-9676\")), person(\"Winston\", \"Chang\", role = \"aut\"), person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\"), comment = c(ROR = \"03wc8by49\")), person(\"Ascent Digital Services\", role = c(\"cph\", \"fnd\")) )",
       "Description": "Tools to run system processes in the background.  It can check if a background process is running; wait on a background process to finish; get the exit status of finished processes; kill background processes. It can read the standard output and error of the processes, using non-blocking connections. 'processx' can poll a process for standard output or error, with a timeout. It can also poll several processes at once.",
@@ -3214,6 +3679,11 @@
       ],
       "Imports": [
         "ps (>= 1.9.3)",
+=======
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
         "R6",
         "utils"
       ],
@@ -3244,6 +3714,7 @@
       "Package": "progress",
       "Version": "1.2.3",
       "Source": "Repository",
+<<<<<<< HEAD
       "Title": "Terminal Progress Bars",
       "Authors@R": "c( person(\"Gábor\", \"Csárdi\", , \"csardi.gabor@gmail.com\", role = c(\"aut\", \"cre\")), person(\"Rich\", \"FitzJohn\", role = \"aut\"), person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\")) )",
       "Description": "Configurable Progress bars, they may include percentage, elapsed time, and/or the estimated completion time. They work in terminals, in 'Emacs' 'ESS', 'RStudio', 'Windows' 'Rgui' and the 'macOS' 'R.app'. The package also provides a 'C++' 'API', that works with or without 'Rcpp'.",
@@ -3254,6 +3725,12 @@
         "R (>= 3.6)"
       ],
       "Imports": [
+=======
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "R6",
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
         "crayon",
         "hms",
         "prettyunits",
@@ -3277,6 +3754,7 @@
       "Package": "ps",
       "Version": "1.9.3",
       "Source": "Repository",
+<<<<<<< HEAD
       "Title": "List, Query, Manipulate System Processes",
       "Authors@R": "c( person(\"Jay\", \"Loden\", role = \"aut\"), person(\"Dave\", \"Daeschler\", role = \"aut\"), person(\"Giampaolo\", \"Rodola'\", role = \"aut\"), person(\"Gábor\", \"Csárdi\", , \"csardi.gabor@gmail.com\", role = c(\"aut\", \"cre\")), person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\"), comment = c(ROR = \"03wc8by49\")) )",
       "Description": "List, query and manipulate all system processes, on 'Windows', 'Linux' and 'macOS'.",
@@ -3287,6 +3765,11 @@
         "R (>= 3.4)"
       ],
       "Imports": [
+=======
+      "Repository": "RSPM",
+      "Requirements": [
+        "R",
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
         "utils"
       ],
       "Suggests": [
@@ -3317,6 +3800,7 @@
       "Package": "purrr",
       "Version": "1.2.2",
       "Source": "Repository",
+<<<<<<< HEAD
       "Title": "Functional Programming Tools",
       "Authors@R": "c( person(\"Hadley\", \"Wickham\", , \"hadley@posit.co\", role = c(\"aut\", \"cre\"), comment = c(ORCID = \"0000-0003-4757-117X\")), person(\"Lionel\", \"Henry\", , \"lionel@posit.co\", role = \"aut\"), person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\"), comment = c(ROR = \"https://ror.org/03wc8by49\")) )",
       "Description": "A complete and consistent functional programming toolkit for R.",
@@ -3325,6 +3809,16 @@
       "BugReports": "https://github.com/tidyverse/purrr/issues",
       "Depends": [
         "R (>= 4.1)"
+=======
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "cli",
+        "lifecycle",
+        "magrittr",
+        "rlang",
+        "vctrs"
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
       ],
       "Imports": [
         "cli (>= 3.6.1)",
@@ -3366,6 +3860,7 @@
       "Package": "ragg",
       "Version": "1.5.2",
       "Source": "Repository",
+<<<<<<< HEAD
       "Type": "Package",
       "Title": "Graphic Devices Based on AGG",
       "Authors@R": "c( person(\"Thomas Lin\", \"Pedersen\", , \"thomas.pedersen@posit.co\", role = c(\"cre\", \"aut\"), comment = c(ORCID = \"0000-0002-5147-4711\")), person(\"Maxim\", \"Shemanarev\", role = c(\"aut\", \"cph\"), comment = \"Author of AGG\"), person(\"Tony\", \"Juricic\", , \"tonygeek@yahoo.com\", role = c(\"ctb\", \"cph\"), comment = \"Contributor to AGG\"), person(\"Milan\", \"Marusinec\", , \"milan@marusinec.sk\", role = c(\"ctb\", \"cph\"), comment = \"Contributor to AGG\"), person(\"Spencer\", \"Garrett\", role = \"ctb\", comment = \"Contributor to AGG\"), person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\"), comment = c(ROR = \"03wc8by49\")) )",
@@ -3385,6 +3880,10 @@
         "testthat (>= 3.0.0)"
       ],
       "LinkingTo": [
+=======
+      "Repository": "CRAN",
+      "Requirements": [
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
         "systemfonts",
         "textshaping"
       ],
@@ -3403,6 +3902,7 @@
       "Package": "rappdirs",
       "Version": "0.3.4",
       "Source": "Repository",
+<<<<<<< HEAD
       "Type": "Package",
       "Title": "Application Directories: Determine Where to Save Data, Caches, and Logs",
       "Authors@R": "c( person(\"Hadley\", \"Wickham\", , \"hadley@posit.co\", role = c(\"trl\", \"cre\", \"cph\")), person(\"Sridhar\", \"Ratnakumar\", role = \"aut\"), person(\"Trent\", \"Mick\", role = \"aut\"), person(\"ActiveState\", role = \"cph\", comment = \"R/appdir.r, R/cache.r, R/data.r, R/log.r translated from appdirs\"), person(\"Eddy\", \"Petrisor\", role = \"ctb\"), person(\"Trevor\", \"Davis\", role = c(\"trl\", \"aut\"), comment = c(ORCID = \"0000-0001-6341-4639\")), person(\"Gabor\", \"Csardi\", role = \"ctb\"), person(\"Gregory\", \"Jefferis\", role = \"ctb\"), person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\"), comment = c(ROR = \"03wc8by49\")) )",
@@ -3412,6 +3912,11 @@
       "BugReports": "https://github.com/r-lib/rappdirs/issues",
       "Depends": [
         "R (>= 4.1)"
+=======
+      "Repository": "CRAN",
+      "Requirements": [
+        "R"
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
       ],
       "Suggests": [
         "covr",
@@ -3494,6 +3999,7 @@
       "Package": "reactable",
       "Version": "0.4.5",
       "Source": "Repository",
+<<<<<<< HEAD
       "Type": "Package",
       "Title": "Interactive Data Tables for R",
       "Authors@R": "c( person(\"Greg\", \"Lin\", email = \"glin@glin.io\", role = c(\"aut\", \"cre\")), person(\"Tanner\", \"Linsley\", role = c(\"ctb\", \"cph\"), comment = \"React Table library\"), person(family = \"Emotion team and other contributors\", role = c(\"ctb\", \"cph\"), comment = \"Emotion library\"), person(\"Kent\", \"Russell\", role = c(\"ctb\", \"cph\"), comment = \"reactR package\"), person(\"Ramnath\", \"Vaidyanathan\", role = c(\"ctb\", \"cph\"), comment = \"htmlwidgets package\"), person(\"Joe\", \"Cheng\", role = c(\"ctb\", \"cph\"), comment = \"htmlwidgets package\"), person(\"JJ\", \"Allaire\", role = c(\"ctb\", \"cph\"), comment = \"htmlwidgets package\"), person(\"Yihui\", \"Xie\", role = c(\"ctb\", \"cph\"), comment = \"htmlwidgets package\"), person(\"Kenton\", \"Russell\", role = c(\"ctb\", \"cph\"), comment = \"htmlwidgets package\"), person(family = \"Facebook, Inc. and its affiliates\", role = c(\"ctb\", \"cph\"), comment = \"React library\"), person(family = \"FormatJS\", role = c(\"ctb\", \"cph\"), comment = \"FormatJS libraries\"), person(family = \"Feross Aboukhadijeh, and other contributors\", role = c(\"ctb\", \"cph\"), comment = \"buffer library\"), person(\"Roman\", \"Shtylman\", role = c(\"ctb\", \"cph\"), comment = \"process library\"), person(\"James\", \"Halliday\", role = c(\"ctb\", \"cph\"), comment = \"stream-browserify library\"), person(family = \"Posit Software, PBC\", role = c(\"fnd\", \"cph\")) )",
@@ -3505,6 +4011,11 @@
         "R (>= 3.1)"
       ],
       "Imports": [
+=======
+      "Repository": "RSPM",
+      "Requirements": [
+        "R",
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
         "digest",
         "htmltools (>= 0.5.2)",
         "htmlwidgets (>= 1.5.3)",
@@ -3538,6 +4049,7 @@
       "Package": "readr",
       "Version": "2.2.0",
       "Source": "Repository",
+<<<<<<< HEAD
       "Title": "Read Rectangular Text Data",
       "Authors@R": "c( person(\"Hadley\", \"Wickham\", , \"hadley@posit.co\", role = \"aut\"), person(\"Jim\", \"Hester\", role = \"aut\"), person(\"Romain\", \"Francois\", role = \"ctb\"), person(\"Jennifer\", \"Bryan\", , \"jenny@posit.co\", role = c(\"aut\", \"cre\"), comment = c(ORCID = \"0000-0002-6983-2759\")), person(\"Shelby\", \"Bearrows\", role = \"ctb\"), person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\"), comment = c(ROR = \"03wc8by49\")), person(\"https://github.com/mandreyel/\", role = \"cph\", comment = \"mio library\"), person(\"Jukka\", \"Jylänki\", role = c(\"ctb\", \"cph\"), comment = \"grisu3 implementation\"), person(\"Mikkel\", \"Jørgensen\", role = c(\"ctb\", \"cph\"), comment = \"grisu3 implementation\") )",
       "Description": "The goal of 'readr' is to provide a fast and friendly way to read rectangular data (like 'csv', 'tsv', and 'fwf').  It is designed to flexibly parse many types of data found in the wild, while still cleanly failing when data unexpectedly changes.",
@@ -3548,6 +4060,12 @@
         "R (>= 4.1)"
       ],
       "Imports": [
+=======
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "R6",
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
         "cli",
         "clipr",
         "crayon",
@@ -3596,6 +4114,7 @@
       "Package": "readxl",
       "Version": "1.5.0",
       "Source": "Repository",
+<<<<<<< HEAD
       "Title": "Read Excel Files",
       "Authors@R": "c( person(\"Hadley\", \"Wickham\", , \"hadley@posit.co\", role = \"aut\", comment = c(ORCID = \"0000-0003-4757-117X\")), person(\"Jennifer\", \"Bryan\", , \"jenny@posit.co\", role = c(\"aut\", \"cre\"), comment = c(ORCID = \"0000-0002-6983-2759\")), person(\"Posit, PBC\", role = c(\"cph\", \"fnd\"), comment = \"Copyright holder of all R code and all C/C++ code without explicit copyright attribution\"), person(\"Marcin\", \"Kalicinski\", role = c(\"ctb\", \"cph\"), comment = \"Author of included RapidXML code\"), person(\"Komarov Valery\", role = c(\"ctb\", \"cph\"), comment = \"Author of included libxls code\"), person(\"Christophe Leitienne\", role = c(\"ctb\", \"cph\"), comment = \"Author of included libxls code\"), person(\"Bob Colbert\", role = c(\"ctb\", \"cph\"), comment = \"Author of included libxls code\"), person(\"David Hoerl\", role = c(\"ctb\", \"cph\"), comment = \"Author of included libxls code\"), person(\"Evan Miller\", role = c(\"ctb\", \"cph\"), comment = \"Author of included libxls code\") )",
       "Description": "Import excel files into R. Supports '.xls' via the embedded 'libxls' C library <https://github.com/libxls/libxls> and '.xlsx' via the embedded 'RapidXML' C++ library <https://rapidxml.sourceforge.net/>.  Works on Windows, Mac and Linux without external dependencies.",
@@ -3606,6 +4125,11 @@
         "R (>= 4.1)"
       ],
       "Imports": [
+=======
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
         "cellranger",
         "tibble (>= 2.0.1)",
         "utils"
@@ -3637,6 +4161,7 @@
       "Package": "rematch",
       "Version": "2.0.0",
       "Source": "Repository",
+<<<<<<< HEAD
       "Title": "Match Regular Expressions with a Nicer 'API'",
       "Author": "Gabor Csardi",
       "Maintainer": "Gabor Csardi <csardi.gabor@gmail.com>",
@@ -3652,11 +4177,16 @@
       "Encoding": "UTF-8",
       "NeedsCompilation": "no",
       "Repository": "CRAN"
+=======
+      "Repository": "CRAN",
+      "Hash": "cbff1b666c6fa6d21202f07e2318d4f1"
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
     },
     "rematch2": {
       "Package": "rematch2",
       "Version": "2.1.2",
       "Source": "Repository",
+<<<<<<< HEAD
       "Title": "Tidy Output from Regular Expression Matching",
       "Authors@R": "c( person(\"Gábor\", \"Csárdi\", email = \"csardi.gabor@gmail.com\", role = c(\"aut\", \"cre\")), person(\"Matthew\", \"Lincoln\", email = \"matthew.d.lincoln@gmail.com\", role = c(\"ctb\")))",
       "Description": "Wrappers on 'regexpr' and 'gregexpr' to return the match results in tidy data frames.",
@@ -3666,6 +4196,10 @@
       "BugReports": "https://github.com/r-lib/rematch2/issues",
       "RoxygenNote": "7.1.0",
       "Imports": [
+=======
+      "Repository": "CRAN",
+      "Requirements": [
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
         "tibble"
       ],
       "Suggests": [
@@ -3682,6 +4216,7 @@
       "Package": "renv",
       "Version": "1.2.3",
       "Source": "Repository",
+<<<<<<< HEAD
       "Type": "Package",
       "Title": "Project Environments",
       "Authors@R": "c( person(\"Kevin\", \"Ushey\", role = c(\"aut\", \"cre\"), email = \"kevin@rstudio.com\", comment = c(ORCID = \"0000-0003-2880-7407\")), person(\"Hadley\", \"Wickham\", role = c(\"aut\"), email = \"hadley@rstudio.com\", comment = c(ORCID = \"0000-0003-4757-117X\")), person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\")) )",
@@ -3690,6 +4225,10 @@
       "URL": "https://rstudio.github.io/renv/, https://github.com/rstudio/renv",
       "BugReports": "https://github.com/rstudio/renv/issues",
       "Imports": [
+=======
+      "Repository": "RSPM",
+      "Requirements": [
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
         "utils"
       ],
       "Suggests": [
@@ -3737,6 +4276,7 @@
       "Package": "reprex",
       "Version": "2.1.1",
       "Source": "Repository",
+<<<<<<< HEAD
       "Title": "Prepare Reproducible Example Code via the Clipboard",
       "Authors@R": "c( person(\"Jennifer\", \"Bryan\", , \"jenny@posit.co\", role = c(\"aut\", \"cre\"), comment = c(ORCID = \"0000-0002-6983-2759\")), person(\"Jim\", \"Hester\", role = \"aut\", comment = c(ORCID = \"0000-0002-2739-7082\")), person(\"David\", \"Robinson\", , \"admiral.david@gmail.com\", role = \"aut\"), person(\"Hadley\", \"Wickham\", , \"hadley@posit.co\", role = \"aut\", comment = c(ORCID = \"0000-0003-4757-117X\")), person(\"Christophe\", \"Dervieux\", , \"cderv@posit.co\", role = \"aut\", comment = c(ORCID = \"0000-0003-4474-2498\")), person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\")) )",
       "Description": "Convenience wrapper that uses the 'rmarkdown' package to render small snippets of code to target formats that include both code and output.  The goal is to encourage the sharing of small, reproducible, and runnable examples on code-oriented websites, such as <https://stackoverflow.com> and <https://github.com>, or in email. The user's clipboard is the default source of input code and the default target for rendered output. 'reprex' also extracts clean, runnable R code from various common formats, such as copy/paste from an R session.",
@@ -3750,6 +4290,14 @@
         "callr (>= 3.6.0)",
         "cli (>= 3.2.0)",
         "clipr (>= 0.4.0)",
+=======
+      "Repository": "RSPM",
+      "Requirements": [
+        "R",
+        "callr",
+        "cli",
+        "clipr",
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
         "fs",
         "glue",
         "knitr (>= 1.23)",
@@ -3953,6 +4501,7 @@
         "testthat (>= 3.2.0)",
         "withr"
       ],
+<<<<<<< HEAD
       "VignetteBuilder": "knitr",
       "Config/testthat/edition": "3",
       "Encoding": "UTF-8",
@@ -3964,11 +4513,76 @@
       "Author": "Kirill Müller [aut, cre] (ORCID: <https://orcid.org/0000-0002-1416-3412>)",
       "Maintainer": "Kirill Müller <kirill@cynkra.com>",
       "Repository": "CRAN"
+=======
+      "Hash": "1425f91b4d5d9a8f25352c44a3d914ed"
+    },
+    "rlang": {
+      "Package": "rlang",
+      "Version": "1.1.4",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "utils"
+      ],
+      "Hash": "3eec01f8b1dee337674b2e34ab1f9bc1"
+    },
+    "rmarkdown": {
+      "Package": "rmarkdown",
+      "Version": "2.27",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "bslib",
+        "evaluate",
+        "fontawesome",
+        "htmltools",
+        "jquerylib",
+        "jsonlite",
+        "knitr",
+        "methods",
+        "tinytex",
+        "tools",
+        "utils",
+        "xfun",
+        "yaml"
+      ],
+      "Hash": "27f9502e1cdbfa195f94e03b0f517484"
+    },
+    "robotstxt": {
+      "Package": "robotstxt",
+      "Version": "0.7.13",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "future",
+        "future.apply",
+        "httr",
+        "magrittr",
+        "spiderbar",
+        "stringr",
+        "utils"
+      ],
+      "Hash": "b1807416d9ca0daeb7c88aeda94ccb94"
+    },
+    "rprojroot": {
+      "Package": "rprojroot",
+      "Version": "2.0.4",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Requirements": [
+        "R"
+      ],
+      "Hash": "4c8415e0ec1e29f3f4f6fc108bef0144"
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
     },
     "rstudioapi": {
       "Package": "rstudioapi",
       "Version": "0.18.0",
       "Source": "Repository",
+<<<<<<< HEAD
       "Title": "Safely Access the RStudio API",
       "Description": "Access the RStudio API (if available) and provide informative error messages when it's not.",
       "Authors@R": "c( person(\"Kevin\", \"Ushey\", role = c(\"aut\", \"cre\"), email = \"kevin@rstudio.com\"), person(\"JJ\", \"Allaire\", role = c(\"aut\"), email = \"jj@posit.co\"), person(\"Hadley\", \"Wickham\", role = c(\"aut\"), email = \"hadley@posit.co\"), person(\"Gary\", \"Ritchie\", role = c(\"aut\"), email = \"gary@posit.co\"), person(family = \"RStudio\", role = \"cph\") )",
@@ -3992,6 +4606,10 @@
       "NeedsCompilation": "no",
       "Author": "Kevin Ushey [aut, cre], JJ Allaire [aut], Hadley Wickham [aut], Gary Ritchie [aut], RStudio [cph]",
       "Repository": "CRAN"
+=======
+      "Repository": "CRAN",
+      "Hash": "96710351d642b70e8f02ddeb237c46a7"
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
     },
     "rvest": {
       "Package": "rvest",
@@ -4048,6 +4666,7 @@
       "Package": "sass",
       "Version": "0.4.10",
       "Source": "Repository",
+<<<<<<< HEAD
       "Type": "Package",
       "Title": "Syntactically Awesome Style Sheets ('Sass')",
       "Description": "An 'SCSS' compiler, powered by the 'LibSass' library. With this, R developers can use variables, inheritance, and functions to generate dynamic style sheets. The package uses the 'Sass CSS' extension language, which is stable, powerful, and CSS compatible.",
@@ -4062,6 +4681,10 @@
         "fs (>= 1.2.4)",
         "rlang (>= 0.4.10)",
         "htmltools (>= 0.5.1)",
+=======
+      "Repository": "CRAN",
+      "Requirements": [
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
         "R6",
         "rappdirs"
       ],
@@ -4084,6 +4707,7 @@
       "Package": "scales",
       "Version": "1.4.0",
       "Source": "Repository",
+<<<<<<< HEAD
       "Title": "Scale Functions for Visualization",
       "Authors@R": "c( person(\"Hadley\", \"Wickham\", , \"hadley@posit.co\", role = \"aut\"), person(\"Thomas Lin\", \"Pedersen\", , \"thomas.pedersen@posit.co\", role = c(\"cre\", \"aut\"), comment = c(ORCID = \"0000-0002-5147-4711\")), person(\"Dana\", \"Seidel\", role = \"aut\"), person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\"), comment = c(ROR = \"03wc8by49\")) )",
       "Description": "Graphical scales map data to aesthetics, and provide methods for automatically determining breaks and labels for axes and legends.",
@@ -4094,6 +4718,13 @@
         "R (>= 4.1)"
       ],
       "Imports": [
+=======
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "R6",
+        "RColorBrewer",
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
         "cli",
         "farver (>= 2.0.3)",
         "glue",
@@ -4224,6 +4855,7 @@
       "Package": "stringi",
       "Version": "1.8.7",
       "Source": "Repository",
+<<<<<<< HEAD
       "Date": "2025-03-27",
       "Title": "Fast and Portable Character String Processing Facilities",
       "Description": "A collection of character string/text/natural language processing tools for pattern searching (e.g., with 'Java'-like regular expressions or the 'Unicode' collation algorithm), random string generation, case mapping, string transliteration, concatenation, sorting, padding, wrapping, Unicode normalisation, date-time formatting and parsing, and many more. They are fast, consistent, convenient, and - thanks to 'ICU' (International Components for Unicode) - portable across all locales and platforms. Documentation about 'stringi' is provided via its website at <https://stringi.gagolewski.com/> and the paper by Gagolewski (2022, <doi:10.18637/jss.v103.i02>).",
@@ -4233,6 +4865,14 @@
       "Type": "Package",
       "Depends": [
         "R (>= 3.4)"
+=======
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "stats",
+        "tools",
+        "utils"
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
       ],
       "Imports": [
         "tools",
@@ -4254,6 +4894,7 @@
       "Package": "stringr",
       "Version": "1.6.0",
       "Source": "Repository",
+<<<<<<< HEAD
       "Title": "Simple, Consistent Wrappers for Common String Operations",
       "Authors@R": "c( person(\"Hadley\", \"Wickham\", , \"hadley@posit.co\", role = c(\"aut\", \"cre\", \"cph\")), person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\")) )",
       "Description": "A consistent, simple and easy to use set of wrappers around the fantastic 'stringi' package. All function and argument names (and positions) are consistent, all functions deal with \"NA\"'s and zero length vectors in the same way, and the output from one function is easy to feed into the input of another.",
@@ -4262,6 +4903,18 @@
       "BugReports": "https://github.com/tidyverse/stringr/issues",
       "Depends": [
         "R (>= 4.1.0)"
+=======
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "cli",
+        "glue",
+        "lifecycle",
+        "magrittr",
+        "rlang",
+        "stringi",
+        "vctrs"
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
       ],
       "Imports": [
         "cli",
@@ -4299,6 +4952,7 @@
       "Package": "sys",
       "Version": "3.4.3",
       "Source": "Repository",
+<<<<<<< HEAD
       "Type": "Package",
       "Title": "Powerful and Reliable Tools for Running System Commands in R",
       "Authors@R": "c(person(\"Jeroen\", \"Ooms\", role = c(\"aut\", \"cre\"),  email = \"jeroenooms@gmail.com\", comment = c(ORCID = \"0000-0002-4035-0289\")), person(\"Gábor\", \"Csárdi\", , \"csardi.gabor@gmail.com\", role = \"ctb\"))",
@@ -4318,11 +4972,16 @@
       "Author": "Jeroen Ooms [aut, cre] (<https://orcid.org/0000-0002-4035-0289>), Gábor Csárdi [ctb]",
       "Maintainer": "Jeroen Ooms <jeroenooms@gmail.com>",
       "Repository": "CRAN"
+=======
+      "Repository": "CRAN",
+      "Hash": "3a1be13d68d47a8cd0bfd74739ca1555"
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
     },
     "systemfonts": {
       "Package": "systemfonts",
       "Version": "1.3.2",
       "Source": "Repository",
+<<<<<<< HEAD
       "Type": "Package",
       "Title": "System Native Font Finding",
       "Authors@R": "c( person(\"Thomas Lin\", \"Pedersen\", , \"thomas.pedersen@posit.co\", role = c(\"aut\", \"cre\"), comment = c(ORCID = \"0000-0002-5147-4711\")), person(\"Jeroen\", \"Ooms\", , \"jeroen@berkeley.edu\", role = \"aut\", comment = c(ORCID = \"0000-0002-4035-0289\")), person(\"Devon\", \"Govett\", role = \"aut\", comment = \"Author of font-manager\"), person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\"), comment = c(ROR = \"03wc8by49\")) )",
@@ -4332,6 +4991,13 @@
       "BugReports": "https://github.com/r-lib/systemfonts/issues",
       "Depends": [
         "R (>= 3.2.0)"
+=======
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "cpp11",
+        "lifecycle"
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
       ],
       "Imports": [
         "base64enc",
@@ -4371,6 +5037,7 @@
       "Package": "textshaping",
       "Version": "1.0.5",
       "Source": "Repository",
+<<<<<<< HEAD
       "Title": "Bindings to the 'HarfBuzz' and 'Fribidi' Libraries for Text Shaping",
       "Authors@R": "c( person(\"Thomas Lin\", \"Pedersen\", , \"thomas.pedersen@posit.co\", role = c(\"cre\", \"aut\"), comment = c(ORCID = \"0000-0002-5147-4711\")), person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\"), comment = c(ROR = \"03wc8by49\")) )",
       "Description": "Provides access to the text shaping functionality in the 'HarfBuzz' library and the bidirectional algorithm in the 'Fribidi' library. 'textshaping' is a low-level utility package mainly for graphic devices that expands upon the font tool-set provided by the 'systemfonts' package.",
@@ -4379,6 +5046,14 @@
       "BugReports": "https://github.com/r-lib/textshaping/issues",
       "Depends": [
         "R (>= 3.2.0)"
+=======
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "cpp11",
+        "lifecycle",
+        "systemfonts"
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
       ],
       "Imports": [
         "lifecycle",
@@ -4415,6 +5090,7 @@
       "Package": "tibble",
       "Version": "3.3.1",
       "Source": "Repository",
+<<<<<<< HEAD
       "Title": "Simple Data Frames",
       "Authors@R": "c( person(\"Kirill\", \"Müller\", , \"kirill@cynkra.com\", role = c(\"aut\", \"cre\"), comment = c(ORCID = \"0000-0002-1416-3412\")), person(\"Hadley\", \"Wickham\", , \"hadley@rstudio.com\", role = \"aut\"), person(\"Romain\", \"Francois\", , \"romain@r-enthusiasts.com\", role = \"ctb\"), person(\"Jennifer\", \"Bryan\", , \"jenny@rstudio.com\", role = \"ctb\"), person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\"), comment = c(ROR = \"03wc8by49\")) )",
       "Description": "Provides a 'tbl_df' class (the 'tibble') with stricter checking and better formatting than the traditional data frame.",
@@ -4427,6 +5103,13 @@
       "Imports": [
         "cli",
         "lifecycle (>= 1.0.0)",
+=======
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "fansi",
+        "lifecycle",
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
         "magrittr",
         "methods",
         "pillar (>= 1.8.1)",
@@ -4480,6 +5163,7 @@
       "Package": "tidyr",
       "Version": "1.3.2",
       "Source": "Repository",
+<<<<<<< HEAD
       "Title": "Tidy Messy Data",
       "Authors@R": "c( person(\"Hadley\", \"Wickham\", , \"hadley@posit.co\", role = c(\"aut\", \"cre\")), person(\"Davis\", \"Vaughan\", , \"davis@posit.co\", role = \"aut\"), person(\"Maximilian\", \"Girlich\", role = \"aut\"), person(\"Kevin\", \"Ushey\", , \"kevin@posit.co\", role = \"ctb\"), person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\")) )",
       "Description": "Tools to help to create tidy data, where each column is a variable, each row is an observation, and each cell contains a single value. 'tidyr' contains tools for changing the shape (pivoting) and hierarchy (nesting and 'unnesting') of a dataset, turning deeply nested lists into rectangular data frames ('rectangling'), and extracting values out of string columns. It also includes tools for working with missing values (both implicit and explicit).",
@@ -4488,6 +5172,24 @@
       "BugReports": "https://github.com/tidyverse/tidyr/issues",
       "Depends": [
         "R (>= 4.1.0)"
+=======
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "cli",
+        "cpp11",
+        "dplyr",
+        "glue",
+        "lifecycle",
+        "magrittr",
+        "purrr",
+        "rlang",
+        "stringr",
+        "tibble",
+        "tidyselect",
+        "utils",
+        "vctrs"
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
       ],
       "Imports": [
         "cli (>= 3.4.1)",
@@ -4531,6 +5233,7 @@
       "Package": "tidyselect",
       "Version": "1.2.1",
       "Source": "Repository",
+<<<<<<< HEAD
       "Title": "Select from a Set of Strings",
       "Authors@R": "c( person(\"Lionel\", \"Henry\", , \"lionel@posit.co\", role = c(\"aut\", \"cre\")), person(\"Hadley\", \"Wickham\", , \"hadley@posit.co\", role = \"aut\"), person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\")) )",
       "Description": "A backend for the selecting functions of the 'tidyverse'.  It makes it easy to implement select-like functions in your own packages in a way that is consistent with other 'tidyverse' interfaces for selection.",
@@ -4546,6 +5249,16 @@
         "lifecycle (>= 1.0.3)",
         "rlang (>= 1.0.4)",
         "vctrs (>= 0.5.2)",
+=======
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "cli",
+        "glue",
+        "lifecycle",
+        "rlang",
+        "vctrs",
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
         "withr"
       ],
       "Suggests": [
@@ -4638,11 +5351,18 @@
       "Package": "timechange",
       "Version": "0.4.0",
       "Source": "Repository",
+<<<<<<< HEAD
       "Title": "Efficient Manipulation of Date-Times",
       "Authors@R": "c(person(\"Vitalie\", \"Spinu\", email = \"spinuvit@gmail.com\", role = c(\"aut\", \"cre\")), person(\"Google Inc.\", role = c(\"ctb\", \"cph\")))",
       "Description": "Efficient routines for manipulation of date-time objects while accounting for time-zones and daylight saving times. The package includes utilities for updating of date-time components (year, month, day etc.), modification of time-zones, rounding of date-times, period addition and subtraction etc. Parts of the 'CCTZ' source code, released under the Apache 2.0 License, are included in this package. See <https://github.com/google/cctz> for more details.",
       "Depends": [
         "R (>= 3.3)"
+=======
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "cpp11"
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
       ],
       "License": "GPL (>= 3)",
       "Encoding": "UTF-8",
@@ -4666,12 +5386,18 @@
       "Package": "tinytex",
       "Version": "0.59",
       "Source": "Repository",
+<<<<<<< HEAD
       "Type": "Package",
       "Title": "Helper Functions to Install and Maintain TeX Live, and Compile LaTeX Documents",
       "Authors@R": "c( person(\"Yihui\", \"Xie\", role = c(\"aut\", \"cre\", \"cph\"), email = \"xie@yihui.name\", comment = c(ORCID = \"0000-0003-0645-5666\")), person(given = \"Posit Software, PBC\", role = c(\"cph\", \"fnd\")), person(\"Christophe\", \"Dervieux\", role = \"ctb\", comment = c(ORCID = \"0000-0003-4474-2498\")), person(\"Devon\", \"Ryan\", role = \"ctb\", email = \"dpryan79@gmail.com\", comment = c(ORCID = \"0000-0002-8549-0971\")), person(\"Ethan\", \"Heinzen\", role = \"ctb\"), person(\"Fernando\", \"Cagua\", role = \"ctb\"), person() )",
       "Description": "Helper functions to install and maintain the 'LaTeX' distribution named 'TinyTeX' (<https://yihui.org/tinytex/>), a lightweight, cross-platform, portable, and easy-to-maintain version of 'TeX Live'. This package also contains helper functions to compile 'LaTeX' documents, and install missing 'LaTeX' packages automatically.",
       "Imports": [
         "xfun (>= 0.48)"
+=======
+      "Repository": "CRAN",
+      "Requirements": [
+        "xfun"
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
       ],
       "Suggests": [
         "testit",
@@ -4691,6 +5417,7 @@
       "Package": "tzdb",
       "Version": "0.5.0",
       "Source": "Repository",
+<<<<<<< HEAD
       "Title": "Time Zone Database Information",
       "Authors@R": "c( person(\"Davis\", \"Vaughan\", , \"davis@posit.co\", role = c(\"aut\", \"cre\")), person(\"Howard\", \"Hinnant\", role = \"cph\", comment = \"Author of the included date library\"), person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\")) )",
       "Description": "Provides an up-to-date copy of the Internet Assigned Numbers Authority (IANA) Time Zone Database. It is updated periodically to reflect changes made by political bodies to time zone boundaries, UTC offsets, and daylight saving time rules. Additionally, this package provides a C++ interface for working with the 'date' library. 'date' provides comprehensive support for working with dates and date-times, which this package exposes to make it easier for other R packages to utilize. Headers are provided for calendar specific calculations, along with a limited interface for time zone manipulations.",
@@ -4699,6 +5426,12 @@
       "BugReports": "https://github.com/r-lib/tzdb/issues",
       "Depends": [
         "R (>= 4.0.0)"
+=======
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "cpp11"
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
       ],
       "Suggests": [
         "covr",
@@ -4721,6 +5454,7 @@
       "Package": "usethis",
       "Version": "3.2.1",
       "Source": "Repository",
+<<<<<<< HEAD
       "Title": "Automate Package and Project Setup",
       "Authors@R": "c( person(\"Hadley\", \"Wickham\", , \"hadley@posit.co\", role = \"aut\", comment = c(ORCID = \"0000-0003-4757-117X\")), person(\"Jennifer\", \"Bryan\", , \"jenny@posit.co\", role = c(\"aut\", \"cre\"), comment = c(ORCID = \"0000-0002-6983-2759\")), person(\"Malcolm\", \"Barrett\", , \"malcolmbarrett@gmail.com\", role = \"aut\", comment = c(ORCID = \"0000-0003-0299-5825\")), person(\"Andy\", \"Teucher\", , \"andy.teucher@posit.co\", role = \"aut\", comment = c(ORCID = \"0000-0002-7840-692X\")), person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\"), comment = c(ROR = \"03wc8by49\")) )",
       "Description": "Automate package and project setup tasks that are otherwise performed manually. This includes setting up unit testing, test coverage, continuous integration, Git, 'GitHub', licenses, 'Rcpp', 'RStudio' projects, and more.",
@@ -4733,6 +5467,13 @@
       "Imports": [
         "cli (>= 3.0.1)",
         "clipr (>= 0.3.0)",
+=======
+      "Repository": "RSPM",
+      "Requirements": [
+        "R",
+        "cli",
+        "clipr",
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
         "crayon",
         "curl (>= 2.7)",
         "desc (>= 1.4.2)",
@@ -4782,6 +5523,7 @@
       "Package": "utf8",
       "Version": "1.2.6",
       "Source": "Repository",
+<<<<<<< HEAD
       "Title": "Unicode Text Processing",
       "Authors@R": "c(person(given = c(\"Patrick\", \"O.\"), family = \"Perry\", role = c(\"aut\", \"cph\")), person(given = \"Kirill\", family = \"M\\u00fcller\", role = \"cre\", email = \"kirill@cynkra.com\", comment = c(ORCID = \"0000-0002-1416-3412\")), person(given = \"Unicode, Inc.\", role = c(\"cph\", \"dtc\"), comment = \"Unicode Character Database\"))",
       "Description": "Process and print 'UTF-8' encoded international text (Unicode). Input, validate, normalize, encode, format, and display.",
@@ -4790,6 +5532,11 @@
       "BugReports": "https://github.com/krlmlr/utf8/issues",
       "Depends": [
         "R (>= 2.10)"
+=======
+      "Repository": "CRAN",
+      "Requirements": [
+        "R"
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
       ],
       "Suggests": [
         "cli",
@@ -4813,12 +5560,18 @@
       "Package": "uuid",
       "Version": "1.2-2",
       "Source": "Repository",
+<<<<<<< HEAD
       "Title": "Tools for Generating and Handling of UUIDs",
       "Author": "Simon Urbanek [aut, cre, cph] (https://urbanek.org, ORCID: <https://orcid.org/0000-0003-2297-1732>), Theodore Ts'o [aut, cph] (libuuid)",
       "Maintainer": "Simon Urbanek <Simon.Urbanek@r-project.org>",
       "Authors@R": "c(person(\"Simon\", \"Urbanek\", role=c(\"aut\",\"cre\",\"cph\"), email=\"Simon.Urbanek@r-project.org\", comment=c(\"https://urbanek.org\", ORCID=\"0000-0003-2297-1732\")), person(\"Theodore\",\"Ts'o\", email=\"tytso@thunk.org\", role=c(\"aut\",\"cph\"), comment=\"libuuid\"))",
       "Depends": [
         "R (>= 2.9.0)"
+=======
+      "Repository": "CRAN",
+      "Requirements": [
+        "R"
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
       ],
       "Description": "Tools for generating and handling of UUIDs (Universally Unique Identifiers).",
       "License": "MIT + file LICENSE",
@@ -4831,6 +5584,7 @@
       "Package": "vctrs",
       "Version": "0.7.3",
       "Source": "Repository",
+<<<<<<< HEAD
       "Title": "Vector Helpers",
       "Authors@R": "c( person(\"Hadley\", \"Wickham\", , \"hadley@posit.co\", role = \"aut\"), person(\"Lionel\", \"Henry\", , \"lionel@posit.co\", role = \"aut\"), person(\"Davis\", \"Vaughan\", , \"davis@posit.co\", role = c(\"aut\", \"cre\")), person(\"data.table team\", role = \"cph\", comment = \"Radix sort based on data.table's forder() and their contribution to R's order()\"), person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\")) )",
       "Description": "Defines new notions of prototype and size that are used to provide tools for consistent and well-founded type-coercion and size-recycling, and are in turn connected to ideas of type- and size-stability useful for analysing function interfaces.",
@@ -4839,6 +5593,15 @@
       "BugReports": "https://github.com/r-lib/vctrs/issues",
       "Depends": [
         "R (>= 4.0.0)"
+=======
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "cli",
+        "glue",
+        "lifecycle",
+        "rlang"
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
       ],
       "Imports": [
         "cli (>= 3.4.0)",
@@ -4881,6 +5644,7 @@
       "Package": "viridisLite",
       "Version": "0.4.3",
       "Source": "Repository",
+<<<<<<< HEAD
       "Type": "Package",
       "Title": "Colorblind-Friendly Color Maps (Lite Version)",
       "Date": "2026-02-03",
@@ -4891,6 +5655,11 @@
       "Encoding": "UTF-8",
       "Depends": [
         "R (>= 2.10)"
+=======
+      "Repository": "CRAN",
+      "Requirements": [
+        "R"
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
       ],
       "Suggests": [
         "hexbin (>= 1.27.0)",
@@ -4909,6 +5678,7 @@
       "Package": "vroom",
       "Version": "1.7.1",
       "Source": "Repository",
+<<<<<<< HEAD
       "Title": "Read and Write Rectangular Text Data Quickly",
       "Authors@R": "c( person(\"Jim\", \"Hester\", role = \"aut\", comment = c(ORCID = \"0000-0002-2739-7082\")), person(\"Hadley\", \"Wickham\", , \"hadley@posit.co\", role = \"aut\", comment = c(ORCID = \"0000-0003-4757-117X\")), person(\"Jennifer\", \"Bryan\", , \"jenny@posit.co\", role = c(\"aut\", \"cre\"), comment = c(ORCID = \"0000-0002-6983-2759\")), person(\"Shelby\", \"Bearrows\", role = \"ctb\"), person(\"https://github.com/mandreyel/\", role = \"cph\", comment = \"mio library\"), person(\"Jukka\", \"Jylänki\", role = \"cph\", comment = \"grisu3 implementation\"), person(\"Mikkel\", \"Jørgensen\", role = \"cph\", comment = \"grisu3 implementation\"), person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\"), comment = c(ROR = \"03wc8by49\")) )",
       "Description": "The goal of 'vroom' is to read and write data (like 'csv', 'tsv' and 'fwf') quickly. When reading it uses a quick initial indexing step, then reads the values lazily , so only the data you actually use needs to be read.  The writer formats the data in parallel and writes to disk asynchronously from formatting.",
@@ -4919,6 +5689,11 @@
         "R (>= 4.1)"
       ],
       "Imports": [
+=======
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
         "bit64",
         "cli (>= 3.2.0)",
         "crayon",
@@ -4981,6 +5756,7 @@
       "Package": "whisker",
       "Version": "0.4.1",
       "Source": "Repository",
+<<<<<<< HEAD
       "Maintainer": "Edwin de Jonge <edwindjonge@gmail.com>",
       "License": "GPL-3",
       "Title": "{{mustache}} for R, Logicless Templating",
@@ -4995,11 +5771,16 @@
       "RoxygenNote": "6.1.1",
       "NeedsCompilation": "no",
       "Repository": "CRAN"
+=======
+      "Repository": "CRAN",
+      "Hash": "c6abfa47a46d281a7d5159d0a8891e88"
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
     },
     "withr": {
       "Package": "withr",
       "Version": "3.0.2",
       "Source": "Repository",
+<<<<<<< HEAD
       "Title": "Run Code 'With' Temporarily Modified Global State",
       "Authors@R": "c( person(\"Jim\", \"Hester\", role = \"aut\"), person(\"Lionel\", \"Henry\", , \"lionel@posit.co\", role = c(\"aut\", \"cre\")), person(\"Kirill\", \"Müller\", , \"krlmlr+r@mailbox.org\", role = \"aut\"), person(\"Kevin\", \"Ushey\", , \"kevinushey@gmail.com\", role = \"aut\"), person(\"Hadley\", \"Wickham\", , \"hadley@posit.co\", role = \"aut\"), person(\"Winston\", \"Chang\", role = \"aut\"), person(\"Jennifer\", \"Bryan\", role = \"ctb\"), person(\"Richard\", \"Cotton\", role = \"ctb\"), person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\")) )",
       "Description": "A set of functions to run code 'with' safely and temporarily modified global state. Many of these functions were originally a part of the 'devtools' package, this provides a simple package with limited dependencies to provide access to these functions.",
@@ -5008,6 +5789,13 @@
       "BugReports": "https://github.com/r-lib/withr/issues",
       "Depends": [
         "R (>= 3.6.0)"
+=======
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+        "grDevices",
+        "graphics"
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
       ],
       "Imports": [
         "graphics",
@@ -5086,6 +5874,7 @@
       "Package": "xml2",
       "Version": "1.5.2",
       "Source": "Repository",
+<<<<<<< HEAD
       "Title": "Parse XML",
       "Authors@R": "c( person(\"Hadley\", \"Wickham\", role = \"aut\"), person(\"Jim\", \"Hester\", role = \"aut\"), person(\"Jeroen\", \"Ooms\", email = \"jeroenooms@gmail.com\", role = c(\"aut\", \"cre\")), person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\")), person(\"R Foundation\", role = \"ctb\", comment = \"Copy of R-project homepage cached as example\") )",
       "Description": "Bindings to 'libxml2' for working with XML data using a simple,  consistent interface based on 'XPath' expressions. Also supports XML schema validation; for 'XSLT' transformations see the 'xslt' package.",
@@ -5096,6 +5885,11 @@
         "R (>= 3.6.0)"
       ],
       "Imports": [
+=======
+      "Repository": "CRAN",
+      "Requirements": [
+        "R",
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
         "cli",
         "methods",
         "rlang (>= 1.1.0)"
@@ -5152,6 +5946,7 @@
       "Package": "zip",
       "Version": "3.0.0",
       "Source": "Repository",
+<<<<<<< HEAD
       "Title": "Cross-Platform 'zip' Compression",
       "Authors@R": "c( person(\"Gábor\", \"Csárdi\", , \"csardi.gabor@gmail.com\", role = c(\"aut\", \"cre\")), person(\"Kuba\", \"Podgórski\", role = \"ctb\"), person(\"Rich\", \"Geldreich\", role = \"ctb\"), person(\"Arm Limited\", role = c(\"ctb\", \"cph\"), comment = \"bundled Mbed TLS crypto subset in src/mbedtls/ (Apache-2.0)\"), person(\"Posit Software, PBC\", role = c(\"cph\", \"fnd\"), comment = c(ROR = \"03wc8by49\")) )",
       "Description": "Cross-Platform 'zip' Compression Library. A replacement for the 'zip' function, that does not require any additional external tools on any platform.",
@@ -5183,6 +5978,10 @@
       "Author": "Gábor Csárdi [aut, cre], Kuba Podgórski [ctb], Rich Geldreich [ctb], Arm Limited [ctb, cph] (bundled Mbed TLS crypto subset in src/mbedtls/ (Apache-2.0)), Posit Software, PBC [cph, fnd] (ROR: <https://ror.org/03wc8by49>)",
       "Maintainer": "Gábor Csárdi <csardi.gabor@gmail.com>",
       "Repository": "CRAN"
+=======
+      "Repository": "CRAN",
+      "Hash": "fcc4bd8e6da2d2011eb64a5e5cc685ab"
+>>>>>>> 2862b609e45be69d0d4405f7601839b4d45dd54b
     }
   }
 }
