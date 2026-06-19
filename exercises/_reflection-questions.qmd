@@ -1,0 +1,20 @@
+## Reflection questions
+
+-   Why do you believe we are studying the content above?
+
+```{=html}
+<textarea rows="8" cols="80">
+</textarea>
+```
+-   List three topics that you feel from the content above.
+
+```{=html}
+<textarea rows="8" cols="80">
+</textarea>
+```
+-   List three topics that you feel could use more practice (or you are more curious about) from the content above.
+
+```{=html}
+<textarea rows="8" cols="80">
+</textarea>
+```

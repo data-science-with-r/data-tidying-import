@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(quarto check:*)",
+      "Bash(timeout 10 quarto preview:*)"
+    ]
+  }
+}
